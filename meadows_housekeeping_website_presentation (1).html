@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meadows Housekeeping Website Presentation</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #2f6f9f;
+      --sky: #eaf4fb;
+      --green: #2f7d4a;
+      --mint: #eaf6ee;
+      --gold: #b9821f;
+      --cream: #fff7e6;
+      --red: #a43b3b;
+      --rose: #fdeeee;
+      --gray-900: #1f2933;
+      --gray-700: #4b5966;
+      --gray-500: #73808c;
+      --gray-200: #d9e0e6;
+      --gray-100: #f4f6f8;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--gray-900);
+      background: #edf1f4;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 30px auto;
+      background: var(--white);
+      box-shadow: 0 10px 34px rgba(23, 50, 77, 0.14);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      padding: 42px 46px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+      line-height: 1.15;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.08rem;
+      opacity: 0.94;
+      max-width: 760px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .meta span {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      font-size: 0.9rem;
+    }
+
+    nav {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 14px 46px;
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 18px;
+      display: inline-block;
+      padding: 5px 0;
+    }
+
+    main {
+      padding: 38px 46px 48px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: 1.45rem;
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    h3 {
+      color: var(--navy);
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      margin: 10px 0 0 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .intro {
+      background: var(--sky);
+      border-left: 5px solid var(--blue);
+      padding: 20px 22px;
+      border-radius: 10px;
+    }
+
+    .step {
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 22px;
+      margin-top: 16px;
+      background: var(--white);
+    }
+
+    .step-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: bold;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .step-title {
+      display: inline;
+      font-size: 1.18rem;
+      color: var(--navy);
+      vertical-align: middle;
+    }
+
+    .use-cases {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .use-case {
+      background: var(--mint);
+      border: 1px solid #cce4d4;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .use-case strong {
+      display: block;
+      color: var(--green);
+      margin-bottom: 5px;
+    }
+
+    .quote {
+      margin-top: 18px;
+      background: var(--cream);
+      border-left: 5px solid var(--gold);
+      border-radius: 9px;
+      padding: 16px 18px;
+      font-weight: bold;
+      color: #6f4c10;
+    }
+
+    .three-functions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .function {
+      text-align: center;
+      border: 1px solid var(--gray-200);
+      border-radius: 11px;
+      padding: 18px 14px;
+      background: var(--gray-100);
+    }
+
+    .function strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 5px;
+      font-size: 1.05rem;
+    }
+
+    .next {
+      background: linear-gradient(180deg, #f7fbfd, #eef6f2);
+      border: 1px solid #cfdfe5;
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .data-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .data-card strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 5px;
+    }
+
+    .guardrail {
+      background: var(--rose);
+      border-left: 5px solid var(--red);
+      color: #6f2626;
+      padding: 16px 18px;
+      border-radius: 9px;
+      margin-top: 18px;
+    }
+
+    .closing {
+      background: var(--gray-100);
+      border-radius: 11px;
+      padding: 20px;
+    }
+
+    footer {
+      background: var(--gray-100);
+      color: var(--gray-500);
+      padding: 18px 46px;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        margin: 0;
+        border-radius: 0;
+      }
+
+      header, main, nav, footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .use-cases,
+      .three-functions,
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: none;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .step,
+      .use-case,
+      .function,
+      .data-card,
+      .next,
+      .closing {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Meadows Housekeeping Website</h1>
+      <p>A practical walkthrough of the calendar, live roster, issue form, and the data collection project now made possible by these connected tools.</p>
+      <div class="meta">
+        <span>Supervisor Presentation</span>
+        <span>Meeting Notes</span>
+        <span>Operational Demonstration</span>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#purpose">Purpose</a>
+      <a href="#walkthrough">Website Walkthrough</a>
+      <a href="#next">What’s Next</a>
+      <a href="#result">Overall Result</a>
+    </nav>
+
+    <main>
+      <section id="purpose">
+        <h2>Purpose of the Presentation</h2>
+        <div class="intro">
+          The website should be presented as an operational tool, not merely as a website. The central idea is:
+          <strong>“Here is what you can know and do from one page.”</strong>
+          The presentation should move quickly from the homepage into the actual housekeeping functions.
+        </div>
+      </section>
+
+      <section id="walkthrough">
+        <h2>Website Walkthrough</h2>
+
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3 class="step-title">Begin on the homepage: three primary functions</h3>
+          <p>Briefly explain that the website is a central access point for housekeeping communication, scheduling, assignments, and issue tracking.</p>
+          <p>Show the three large visual choices:</p>
+          <div class="three-functions">
+            <div class="function">
+              <strong>Calendar</strong>
+              Who is here, what is happening, and what is coming next?
+            </div>
+            <div class="function">
+              <strong>Roster</strong>
+              Where is each employee assigned, and when are they off?
+            </div>
+            <div class="function">
+              <strong>Issue Form</strong>
+              What needs attention, follow-up, or planning?
+            </div>
+          </div>
+          <p>Do not spend much time describing how Google Sites was built. Move directly into the functions.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3 class="step-title">Calendar: “Who is here, and what is happening?”</h3>
+          <p>Open the embedded calendar and demonstrate that the supervisor can move forward and backward through dates and use the month selector to look ahead. The calendar is already populated with roster events through Christmas.</p>
+          <p>Open a morning roster event and show the employee names. The event answers the immediate question:</p>
+          <div class="quote">“Who should be here this morning?”</div>
+
+          <h3 style="margin-top:20px;">Calendar use cases</h3>
+          <div class="use-cases">
+            <div class="use-case">
+              <strong>Employee requests a day off</strong>
+              The calendar can be updated immediately. Once the scheduling information changes, the roster event reflects the current information.
+            </div>
+            <div class="use-case">
+              <strong>Look ahead for anticipated absences</strong>
+              Days off entered into the calendar can be seen by using the embedded month selector to scan future weeks and months.
+            </div>
+            <div class="use-case">
+              <strong>Unofficial early notice</strong>
+              Employees may provide advance notice of requests before formal paperwork is submitted, giving the supervisor time to plan.
+            </div>
+            <div class="use-case">
+              <strong>Avoid last-minute paperwork surprises</strong>
+              The request becomes visible as a planning item before the official paperwork reaches the supervisor.
+            </div>
+            <div class="use-case">
+              <strong>Plan staffing adjustments</strong>
+              The supervisor can anticipate coverage, area assignments, or other changes before the affected day arrives.
+            </div>
+            <div class="use-case">
+              <strong>One visible planning timeline</strong>
+              Scheduling information no longer has to be reconstructed from conversations, texts, notes, and separate paperwork.
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <strong>Important distinction:</strong> The calendar does not replace the official leave-request or approval process. It provides earlier operational visibility and helps planning begin sooner.
+          </div>
+
+          <div class="quote">“The paperwork still makes it official. This lets us see it coming.”</div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3 class="step-title">Roster: “What is the current assignment?”</h3>
+          <p>Open the roster page and explain that it displays the existing roster spreadsheet directly from Google Drive.</p>
+          <p>The spreadsheet includes:</p>
+          <ul>
+            <li>Employee assignments by area</li>
+            <li>Scheduled days off</li>
+            <li>The current working roster information</li>
+          </ul>
+          <p>The page is not a second copy of the roster. It is a live view of the Drive spreadsheet. When the roster is updated in Drive, the website displays the current information.</p>
+          <div class="quote">“This page is a window into the current roster. We do not maintain a second copy.”</div>
+          <p>This prevents confusion caused by outdated printed schedules, downloaded files, or multiple versions of the same roster.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">4</span>
+          <h3 class="step-title">Issue Form: “Something needs attention—record it immediately”</h3>
+          <p>Open the issue form and explain that it is already being used as a practical capture tool.</p>
+          <p>Whenever a step, task, concern, or follow-up item is remembered, it can be entered immediately rather than relying on memory.</p>
+          <div class="quote">“Why try to remember it? The site is already open. Jot it down when the thought occurs.”</div>
+          <p>Possible uses include:</p>
+          <ul>
+            <li>Reporting a housekeeping issue</li>
+            <li>Recording a task that needs follow-up</li>
+            <li>Noting a request or supply need</li>
+            <li>Capturing an idea for improvement</li>
+            <li>Documenting something that should be reviewed later</li>
+          </ul>
+          <p>The main behavior being created is <strong>capture at the moment of recognition</strong>, instead of trying to rebuild a list later.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">5</span>
+          <h3 class="step-title">Return to the homepage: show the system as a whole</h3>
+          <p>Return to the three homepage icons and summarize the system using three questions:</p>
+          <ol>
+            <li><strong>Calendar:</strong> Who is here, what is happening, and what is coming next?</li>
+            <li><strong>Roster:</strong> Where are people assigned, and when are they off?</li>
+            <li><strong>Issue Form:</strong> What needs attention?</li>
+          </ol>
+          <p>The supervisor can open one page on a phone or computer and immediately begin using the system.</p>
+        </div>
+      </section>
+
+      <section id="next">
+        <h2>What’s Next: The Data Collection Project</h2>
+        <div class="next">
+          <p>The new website does more than display information. It creates the foundation for a practical housekeeping data collection system.</p>
+          <p>Because the calendar, roster, and issue form are now connected through one interface, the department can begin collecting information consistently over time.</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <strong>Issue patterns</strong>
+              Track what kinds of housekeeping issues are reported most often and where they occur.
+            </div>
+            <div class="data-card">
+              <strong>Area-specific needs</strong>
+              Identify which buildings, rooms, or assigned areas repeatedly require attention.
+            </div>
+            <div class="data-card">
+              <strong>Timing and frequency</strong>
+              See whether certain issues occur on particular days, shifts, or recurring intervals.
+            </div>
+            <div class="data-card">
+              <strong>Follow-up status</strong>
+              Distinguish between newly reported items, completed work, unresolved items, and matters awaiting approval.
+            </div>
+            <div class="data-card">
+              <strong>Supply and equipment demand</strong>
+              Record recurring supply shortages, equipment problems, and replacement needs.
+            </div>
+            <div class="data-card">
+              <strong>Planning information</strong>
+              Compare upcoming staffing, days off, area assignments, and reported work needs before scheduling decisions are made.
+            </div>
+            <div class="data-card">
+              <strong>Workload visibility</strong>
+              Build a clearer picture of what the department is being asked to do, including work that may otherwise remain invisible.
+            </div>
+            <div class="data-card">
+              <strong>Evidence for improvement</strong>
+              Use accumulated records to support changes in procedures, training, staffing, supplies, or priorities.
+            </div>
+          </div>
+
+          <h3 style="margin-top:22px;">Initial project approach</h3>
+          <ol>
+            <li>Use the issue form consistently for real tasks, issues, requests, and follow-up items.</li>
+            <li>Review the form responses with the supervisor and decide which categories are useful.</li>
+            <li>Add simple fields only when they answer a real operational question.</li>
+            <li>Establish a small number of clear statuses, such as New, In Progress, Completed, and Needs Review.</li>
+            <li>Begin reviewing the collected information weekly or monthly for recurring patterns.</li>
+            <li>Create summaries, charts, or dashboards only after enough consistent data has been collected.</li>
+          </ol>
+
+          <div class="guardrail">
+            The data project should remain focused on operations and communication. It does not replace official employee records, leave approvals, personnel systems, or required institutional documentation.
+          </div>
+        </div>
+      </section>
+
+      <section id="result">
+        <h2>Overall Result</h2>
+        <div class="closing">
+          The project has moved beyond separate Google tools. The website now provides one visible interface for future staffing, current roster assignments, days off, issue reporting, and reference materials.
+          <p>The next phase is to use these tools consistently enough to produce reliable operational information. The value will not come from collecting data for its own sake. It will come from making recurring needs, workload, delays, and opportunities for improvement easier to see.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Prepared for the Meadows Housekeeping supervisor presentation.
+    </footer>
+  </div>
+</body>
+</html>

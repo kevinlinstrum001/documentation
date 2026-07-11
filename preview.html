@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meadows HK V1 Build Report</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --line: #d9e1ec;
+      --blue: #1a73e8;
+      --green: #188038;
+      --amber: #b06000;
+      --purple: #6f42c1;
+      --code: #101828;
+      --codeText: #e6edf7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #0f3d75, #1a73e8);
+      color: white;
+      padding: 34px 20px;
+    }
+    header .wrap, main { max-width: 980px; margin: 0 auto; }
+    h1 { margin: 0 0 8px 0; font-size: 30px; line-height: 1.15; }
+    header p { margin: 0; font-size: 16px; opacity: 0.95; }
+    main { padding: 22px 16px 48px; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin: 0 0 18px;
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.05);
+    }
+    h2 { margin: 0 0 10px; font-size: 22px; }
+    h3 { margin: 18px 0 8px; font-size: 17px; }
+    p { margin: 8px 0; }
+    ul, ol { margin-top: 8px; padding-left: 24px; }
+    li { margin: 5px 0; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      background: #e8f0fe;
+      color: #174ea6;
+    }
+    .badge.green { background: #e6f4ea; color: #137333; }
+    .badge.amber { background: #fef7e0; color: #a14200; }
+    .badge.purple { background: #f3e8ff; color: #5b21b6; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(110px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .flow .box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fbfdff;
+      text-align: center;
+      font-weight: bold;
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flow .box small { display: block; color: var(--muted); font-weight: normal; margin-top: 4px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .callout {
+      border-left: 5px solid var(--blue);
+      background: #f7fbff;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+    .callout.green { border-left-color: var(--green); background: #f7fff9; }
+    .callout.amber { border-left-color: var(--amber); background: #fffaf2; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 4px; font-size: 14px; }
+    th, td { border: 1px solid var(--line); padding: 9px 10px; vertical-align: top; text-align: left; }
+    th { background: #f1f5fb; }
+    code {
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+    pre {
+      background: var(--code);
+      color: var(--codeText);
+      padding: 14px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    footer { color: var(--muted); font-size: 13px; text-align: center; padding: 14px; }
+    @media (max-width: 820px) {
+      .flow { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      header { background: white; color: black; border-bottom: 2px solid #000; }
+      section { break-inside: avoid; box-shadow: none; }
+      .badge { border: 1px solid #999; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Meadows HK V1 Build Report</h1>
+      <p>What we completed today: from cleaning up the Google Form to a working notification, viewer, and acknowledgement loop.</p>
+      <div class="badge-row">
+        <span class="badge green">Working V1</span>
+        <span class="badge">Google Form Intake</span>
+        <span class="badge">Apps Script</span>
+        <span class="badge purple">JSON Records</span>
+        <span class="badge amber">Phone Alerts</span>
+        <span class="badge green">Acknowledge Button</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Executive Summary</h2>
+      <p>
+        Today we turned the Meadows HK request system from a rough Google Form experiment into a working communication pipeline.
+        A user can submit a request, the system captures the submission, converts it into structured JSON, sends a phone alert
+        through a dedicated Gmail account, displays the record as a readable card on the Google Site, preserves the raw JSON,
+        and allows an acknowledgement action that sends a test acknowledgement email and logs the action.
+      </p>
+      <div class="callout green">
+        <strong>Current milestone:</strong>
+        The system now supports a complete loop: <em>Submit → Notify → View → Inspect JSON → Acknowledge → Log acknowledgement.</em>
+      </div>
+    </section>
+
+    <section>
+      <h2>Current Working Pipeline</h2>
+      <div class="flow" aria-label="Current system flow">
+        <div class="box">Google Form<br><small>request input</small></div>
+        <div class="box">Apps Script<br><small>trigger + normalization</small></div>
+        <div class="box">Submission_Log<br><small>history record</small></div>
+        <div class="box">Gmail Alert<br><small>phone notification</small></div>
+        <div class="box">Responses Page<br><small>card viewer</small></div>
+        <div class="box">Acknowledge<br><small>email + action log</small></div>
+      </div>
+      <p>
+        The most important design rule is that <code>Submission_Log</code> remains the historical record.
+        Other sheets and actions are derived from it rather than replacing or overwriting it.
+      </p>
+    </section>
+
+    <section>
+      <h2>What We Changed in the Google Form</h2>
+      <p>
+        The form was cleaned up so that it is easier to use while still capturing useful operational information.
+        Instead of trying to enumerate every possible situation ahead of time, the form now uses a smaller number of routes
+        plus flexible “Other” options.
+      </p>
+      <h3>Design improvement</h3>
+      <ul>
+        <li>Reduced the number of top-level routes so the form is easier to complete.</li>
+        <li>Added “Other” categories to catch edge cases that do not fit the current list.</li>
+        <li>Preserved location information such as unit, room, and area.</li>
+        <li>Allowed unexpected requests, such as “Activity Room — check microwave,” to still be captured coherently.</li>
+      </ul>
+      <div class="callout">
+        <strong>Key lesson:</strong>
+        Categories do not need to be perfect yet. The system works if it reliably captures location, description, and the original submission.
+      </div>
+    </section>
+
+    <section>
+      <h2>JSON and the Permanent Log</h2>
+      <p>
+        The Google Form response sheet can remain messy because it is only the intake pipe.
+        The useful record begins after Apps Script reads the submitted row, ignores blank branch fields, and creates a normalized JSON record.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Layer</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>Form Responses</code></td><td>Raw intake from Google Forms. It can have many branch-generated columns.</td></tr>
+          <tr><td><code>Submission_Log</code></td><td>Permanent receipt/history log. It should remain append-only and unchanged after write.</td></tr>
+          <tr><td><code>Normalized JSON</code></td><td>Full structured record stored in a single cell in <code>Submission_Log</code>.</td></tr>
+          <tr><td><code>Acknowledgement_Log</code></td><td>Derived action log showing which submissions have been acknowledged.</td></tr>
+        </tbody>
+      </table>
+      <h3>Important architecture rule</h3>
+      <pre>Submission_Log = what came in
+Acknowledgement_Log = what was done in response
+Future Task_Buffer = what needs action</pre>
+    </section>
+
+    <section>
+      <h2>Website Response Viewer</h2>
+      <p>
+        We deployed an Apps Script web app and embedded it into the Google Site on the Responses page.
+        The viewer reads the JSON records from <code>Submission_Log</code> and displays each one as a card.
+      </p>
+      <h3>What the card viewer now does</h3>
+      <ul>
+        <li>Loads the newest submissions from <code>Submission_Log</code>.</li>
+        <li>Displays each submission as a readable card.</li>
+        <li>Shows summary, category, timestamp, submission ID, and answered fields.</li>
+        <li>Includes a collapsible <strong>Show raw JSON</strong> section.</li>
+        <li>Includes an <strong>Acknowledge</strong> button.</li>
+      </ul>
+      <div class="callout green">
+        <strong>Why the raw JSON section matters:</strong>
+        The card is the human-readable surface, while raw JSON is the exact structured record underneath.
+      </div>
+    </section>
+
+    <section>
+      <h2>Dedicated Notification Channel</h2>
+      <p>
+        We separated work notifications from the personal inbox by using the alternate Gmail account as the Meadows alert inbox.
+        The Apps Script notification email now goes to the alternate account, and the phone is configured to notify for every message.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Channel</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Personal Gmail</td><td>Kept separate from Meadows system alerts.</td></tr>
+          <tr><td>Alternate Gmail</td><td>Dedicated Meadows HK alert inbox.</td></tr>
+          <tr><td>Phone notification</td><td>Alarm bell that something new was submitted.</td></tr>
+          <tr><td>Responses page</td><td>Actual work surface for reviewing the record.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>Operational discovery:</strong>
+        The email does not have to be the work surface. It only has to be the alert.
+      </div>
+    </section>
+
+    <section>
+      <h2>Acknowledge Button</h2>
+      <p>
+        We added a visible button to each response card, tested that it changed state in the browser, then connected it to Apps Script.
+        The button now triggers a real server-side action.
+      </p>
+      <h3>Current acknowledgement behavior</h3>
+      <ol>
+        <li>User clicks <strong>Acknowledge</strong> on a response card.</li>
+        <li>The browser sends the <code>submission_id</code> to Apps Script.</li>
+        <li>Apps Script looks up the original record in <code>Submission_Log</code>.</li>
+        <li>Apps Script sends an acknowledgement email to the fixed test address.</li>
+        <li>Apps Script appends a row to <code>Acknowledgement_Log</code>.</li>
+        <li>The card button changes to <strong>Acknowledged</strong>.</li>
+      </ol>
+      <div class="callout amber">
+        <strong>Testing choice:</strong>
+        Acknowledgements currently go to the alternate email account, not the supervisor. This lets the system be tested safely.
+      </div>
+    </section>
+
+    <section>
+      <h2>What We Proved Today</h2>
+      <div class="two-col">
+        <div>
+          <h3>System functions proved</h3>
+          <ul>
+            <li>Google Form submission triggers Apps Script.</li>
+            <li>Apps Script creates normalized JSON.</li>
+            <li>Submission history is preserved.</li>
+            <li>Email notifications arrive on the phone.</li>
+            <li>The Google Site can display a live embedded viewer.</li>
+            <li>The viewer can read from the sheet and build cards.</li>
+            <li>Buttons on cards can call server-side Apps Script.</li>
+            <li>Acknowledgement actions can be logged separately.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Design principles proved</h3>
+          <ul>
+            <li>Keep raw intake separate from derived views.</li>
+            <li>Preserve immutable history.</li>
+            <li>Use JSON as the flexible record format.</li>
+            <li>Use cards for human readability.</li>
+            <li>Use email as notification, not the main workspace.</li>
+            <li>Build action buttons on top of source records.</li>
+            <li>Test with safe targets before contacting real users.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Design Pressures Learned from V1</h2>
+      <p>
+        These are the pressures that should guide the next version instead of guessing from imagination.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Observed pressure</th><th>Implication for V2</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Form branching creates messy columns.</td><td>V2 should use fixed JSON objects from the beginning.</td></tr>
+          <tr><td>“Other” categories are necessary because many real cases are edge cases.</td><td>V2 should preserve free-text issue descriptions and not over-force categories.</td></tr>
+          <tr><td>Cards are much easier to read than raw Sheets.</td><td>V2 should use card views from the beginning.</td></tr>
+          <tr><td>Raw JSON is useful for confidence and debugging.</td><td>Every important card should preserve a raw JSON view.</td></tr>
+          <tr><td>Dedicated Gmail alerts work well.</td><td>V2 should keep a separate notification channel.</td></tr>
+          <tr><td>Acknowledge is immediately useful.</td><td>V2 should support simple communication actions early.</td></tr>
+          <tr><td>Sorting/routing is still manual.</td><td>Future buttons can route to Task Buffer, Meeting Notes, Suggestions, or Archive.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Current V1 Status</h2>
+      <div class="badge-row">
+        <span class="badge green">Form intake works</span>
+        <span class="badge green">JSON logging works</span>
+        <span class="badge green">Phone alerts work</span>
+        <span class="badge green">Card viewer works</span>
+        <span class="badge green">Raw JSON toggle works</span>
+        <span class="badge green">Acknowledge works</span>
+        <span class="badge amber">Routing not built yet</span>
+        <span class="badge amber">Task buffer not built yet</span>
+      </div>
+      <p>
+        V1 is now usable as a working intake, notification, review, and acknowledgement system.
+        It is not yet a full task-management system, but the pattern needed for routing and future task buffers has been proven.
+      </p>
+    </section>
+
+    <section>
+      <h2>Next Logical Steps</h2>
+      <ol>
+        <li><strong>Continue using V1</strong> to collect real experience and learn what the actual submissions look like.</li>
+        <li><strong>Keep testing edge cases</strong> in the Google Form to see whether cards remain readable.</li>
+        <li><strong>Add routing buttons later</strong>: Route to Task, Meeting Notes, Suggestions, Archive.</li>
+        <li><strong>Create derived buffers</strong> such as <code>Task_Buffer</code>, <code>Meeting_Notes</code>, and <code>Suggestions</code>.</li>
+        <li><strong>Build V2 in parallel</strong> only after V1 has taught us enough about real usage.</li>
+      </ol>
+      <div class="callout green">
+        <strong>Development doctrine:</strong>
+        Do not replace the working system because it is imperfect. Use the working system to discover what the better system should be.
+      </div>
+    </section>
+
+    <section>
+      <h2>One-Sentence Summary</h2>
+      <p>
+        Today we created a working Meadows HK communication loop: requests can be submitted, logged as JSON, viewed as cards,
+        alerted to a phone, inspected in raw form, acknowledged, and recorded as an action without disturbing the original history log.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Meadows HK V1 Build Report · generated as a local HTML reconstruction document
+  </footer>
+</body>
+</html>

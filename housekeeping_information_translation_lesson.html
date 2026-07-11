@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Housekeeping Information Translation</title>
+  <style>
+    :root{
+      --bg:#eef2f5;
+      --paper:#ffffff;
+      --ink:#1d2730;
+      --muted:#5f6f7c;
+      --accent:#245f73;
+      --accent2:#d9edf2;
+      --line:#d6dde2;
+      --good:#2f6f4e;
+      --warn:#8b5e16;
+      --shadow:0 10px 30px rgba(28,42,53,.10);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.58;
+    }
+    header{
+      background:linear-gradient(135deg,#173d49,#2b7187);
+      color:white;
+      padding:58px 24px 52px;
+    }
+    .wrap{max-width:1050px;margin:auto}
+    h1{font-size:clamp(2rem,5vw,4rem);line-height:1.05;margin:0 0 14px}
+    header p{max-width:800px;font-size:1.15rem;margin:0;color:#e3f1f5}
+    main{padding:34px 18px 70px}
+    section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:30px;
+      margin:22px auto;
+      box-shadow:var(--shadow);
+    }
+    h2{margin-top:0;color:var(--accent);font-size:1.7rem}
+    h3{color:#284958;margin-top:1.4rem}
+    .lead{
+      font-size:1.1rem;
+      border-left:5px solid var(--accent);
+      padding:12px 16px;
+      background:#f6fafb;
+      border-radius:8px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px;
+      background:#fbfcfd;
+    }
+    .card strong{display:block;color:var(--accent);font-size:1.08rem;margin-bottom:6px}
+    .flow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      margin:22px 0;
+    }
+    .node{
+      background:var(--accent2);
+      border:1px solid #a9cfd9;
+      color:#173f4b;
+      border-radius:12px;
+      padding:12px 16px;
+      font-weight:700;
+      text-align:center;
+      min-width:150px;
+    }
+    .arrow{font-size:1.5rem;color:var(--accent)}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+      font-size:.96rem;
+    }
+    th,td{
+      border:1px solid var(--line);
+      padding:12px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{background:#eaf3f6;color:#234b59}
+    code,pre{
+      font-family:Consolas,Monaco,monospace;
+    }
+    pre{
+      background:#152029;
+      color:#edf5f7;
+      padding:18px;
+      border-radius:12px;
+      overflow:auto;
+      font-size:.9rem;
+    }
+    .note{
+      background:#fff8e8;
+      border:1px solid #ead6a7;
+      color:#65480e;
+      border-radius:12px;
+      padding:16px;
+    }
+    .good{
+      background:#edf7f1;
+      border:1px solid #b9d9c6;
+      color:#234f39;
+      border-radius:12px;
+      padding:16px;
+    }
+    ul{padding-left:22px}
+    .question{
+      font-weight:700;
+      color:var(--accent);
+      margin-top:1.2rem;
+    }
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:20px;
+      font-size:.9rem;
+    }
+    @media print{
+      body{background:white}
+      section{box-shadow:none;break-inside:avoid}
+      header{padding:32px 24px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Housekeeping Information Translation</h1>
+    <p>How the department can preserve inputs and outputs, maintain required paperwork, improve observability, and use structured data to generate useful records automatically.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>Lesson objective</h2>
+    <p class="lead">The goal is not merely to digitize paperwork. The goal is to create a reliable information system in which operational events are recorded once, translated into management language, and reused to produce forms, schedules, reports, and later analysis.</p>
+    <div class="grid">
+      <div class="card"><strong>Preserve inputs</strong>Requests, assignments, attendance changes, inspections, supplies, and management requirements.</div>
+      <div class="card"><strong>Preserve outputs</strong>Completed work, submitted forms, updated rosters, approvals, reports, and verified conditions.</div>
+      <div class="card"><strong>Improve observability</strong>Make the current state of the department visible to employees, supervisors, and management.</div>
+      <div class="card"><strong>Use data repeatedly</strong>Collect a fact once and use it for calendars, forms, dashboards, totals, and pattern analysis.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>1. The housekeeping department as an information system</h2>
+    <p>Housekeeping performs physical work, but it also receives, transforms, and produces information. A department cannot be controlled well when its actual state is hidden in conversations, paper stacks, memory, or disconnected files.</p>
+    <table>
+      <tr><th>Category</th><th>Examples</th><th>Why it matters</th></tr>
+      <tr><td>Inputs</td><td>Staffing requests, work orders, employee availability, supply deliveries, inspection requirements</td><td>They define what the department must respond to.</td></tr>
+      <tr><td>Internal state</td><td>Who is assigned, what is complete, what is pending, who is absent, what needs approval</td><td>This is the condition the supervisor must be able to observe.</td></tr>
+      <tr><td>Outputs</td><td>Clean rooms, finished units, forms, roster updates, supply requests, inspection reports</td><td>These show what the department produced.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>2. The translation boundary</h2>
+    <p>The supervisor and management often describe the same event in different ways.</p>
+    <div class="grid">
+      <div class="card">
+        <strong>Supervisor language</strong>
+        Who worked, when the shift changed, what happened, why extra work was necessary, and what remains incomplete.
+      </div>
+      <div class="card">
+        <strong>Management language</strong>
+        Pay codes, approval fields, accounting periods, compliance categories, signatures, and official forms.
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="node">Operational event</div><div class="arrow">→</div>
+      <div class="node">Structured record</div><div class="arrow">→</div>
+      <div class="node">Translation rules</div><div class="arrow">→</div>
+      <div class="node">Official paperwork</div>
+    </div>
+
+    <p>The form is therefore a transport vehicle between levels. It should remain available because it is familiar, portable, signable, and accepted by the organization. But the underlying information should not have to be re-created every time a form is needed.</p>
+  </section>
+
+  <section>
+    <h2>3. Structured data before paperwork</h2>
+    <p>The strongest design is to create the structured record first and generate the paper form from that record.</p>
+    <div class="flow">
+      <div class="node">Google Form or app</div><div class="arrow">→</div>
+      <div class="node">JSON record</div><div class="arrow">→</div>
+      <div class="node">Google Sheet</div><div class="arrow">→</div>
+      <div class="node">Generated PDF</div>
+    </div>
+
+    <pre>{
+  "employee_name": "Kevin Linstrum",
+  "employee_id": "372692",
+  "department": "HK",
+  "supervisor": "Albert Lucero",
+  "week_ending": "2026-01-09",
+  "overtime_entries": [
+    {
+      "date": "2026-01-06",
+      "begin": "15:30",
+      "end": "20:00",
+      "paid": true,
+      "comp_time": false,
+      "total_hours": 4.5
+    }
+  ],
+  "signatures": {
+    "employee": true,
+    "supervisor": false,
+    "timekeeper": false
+  }
+}</pre>
+
+    <p class="good">The JSON preserves meaning. The PDF preserves appearance. The paper preserves portability and signatures. Each has a different purpose.</p>
+  </section>
+
+  <section>
+    <h2>4. Automatic generation workflow</h2>
+    <p>A practical implementation can support both new records and historical paper records.</p>
+
+    <h3>Preferred direction</h3>
+    <div class="flow">
+      <div class="node">Enter facts once</div><div class="arrow">→</div>
+      <div class="node">Store structured data</div><div class="arrow">→</div>
+      <div class="node">Generate required form</div><div class="arrow">→</div>
+      <div class="node">Print, sign, submit</div>
+    </div>
+
+    <h3>Historical or handwritten direction</h3>
+    <div class="flow">
+      <div class="node">Photograph paper</div><div class="arrow">→</div>
+      <div class="node">Extract fields</div><div class="arrow">→</div>
+      <div class="node">Review and correct</div><div class="arrow">→</div>
+      <div class="node">Save JSON</div>
+    </div>
+
+    <div class="note"><strong>Important:</strong> The original image should remain linked to the structured record. The JSON is a transcription or interpretation; the photographed form remains the source evidence.</div>
+  </section>
+
+  <section>
+    <h2>5. One event, many outputs</h2>
+    <p>An overtime event should not be entered independently into several systems. One structured record can produce several operational outputs.</p>
+    <table>
+      <tr><th>Output</th><th>Generated from the same record</th></tr>
+      <tr><td>Roster update</td><td>Shows who is available and who covered extra work.</td></tr>
+      <tr><td>Calendar event</td><td>Shows the date, time, and reason for the adjustment.</td></tr>
+      <tr><td>Kronos adjustment form</td><td>Places the values into the official administrative layout.</td></tr>
+      <tr><td>Approval queue</td><td>Shows whether supervisor or management approval is still missing.</td></tr>
+      <tr><td>Weekly totals</td><td>Calculates overtime, absences, coverage, and staffing demand.</td></tr>
+      <tr><td>Historical analysis</td><td>Supports pattern detection and future staffing estimates.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. Observability</h2>
+    <p>Observability means the system exposes the department’s current and recent state rather than forcing the supervisor to reconstruct it from memory.</p>
+    <div class="grid">
+      <div class="card"><strong>Current staffing</strong>Who is present, absent, assigned, or floating.</div>
+      <div class="card"><strong>Work state</strong>What is complete, delayed, failed inspection, or waiting.</div>
+      <div class="card"><strong>Administrative state</strong>Which forms are generated, signed, approved, submitted, or missing.</div>
+      <div class="card"><strong>Resource state</strong>Which supplies, tools, utilities, scripts, and forms are available.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>7. Inventory expansion</h2>
+    <p>The department inventory should include more than physical materials.</p>
+    <table>
+      <tr><th>Inventory class</th><th>Examples</th></tr>
+      <tr><td>Materials</td><td>Gloves, chemicals, liners, paper products</td></tr>
+      <tr><td>Equipment</td><td>Vacuums, carts, floor machines</td></tr>
+      <tr><td>Tools</td><td>Google Forms, Apps Script, QR codes, calendars, utilities</td></tr>
+      <tr><td>Templates</td><td>Kronos forms, request forms, inspection checklists</td></tr>
+      <tr><td>Records</td><td>Completed forms, rosters, attendance entries, inspections</td></tr>
+      <tr><td>Data structures</td><td>JSON schemas, tables, field definitions, mappings</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>8. Design principle</h2>
+    <p class="lead">Enter the facts once. Preserve the source. Translate the event into management categories. Generate every required representation from the same structured record.</p>
+
+    <p class="question">What should the first script do?</p>
+    <ol>
+      <li>Receive or load structured data.</li>
+      <li>Map the data to the correct form fields.</li>
+      <li>Generate a printable document or PDF.</li>
+      <li>Save the output with a consistent name.</li>
+      <li>Link the generated document to the original record.</li>
+      <li>Track signature and approval status as true or false.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>9. Review questions</h2>
+    <ol>
+      <li>Why is a paper form useful even when the underlying data is digital?</li>
+      <li>What is the difference between a source record and a structured record?</li>
+      <li>Why should both the operational event and the management classification be preserved?</li>
+      <li>How does observability improve supervisory control?</li>
+      <li>What additional outputs can be generated from the same record?</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  Meadows Housekeeping Information Systems Lesson
+</footer>
+</body>
+</html>

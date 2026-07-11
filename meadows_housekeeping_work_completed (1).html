@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meadows Housekeeping System - Work Completed</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #2f6f9f;
+      --light-blue: #eaf4fb;
+      --green: #2f7d4a;
+      --light-green: #eaf6ee;
+      --gold: #c58b22;
+      --light-gold: #fff7e6;
+      --gray: #5f6b76;
+      --light-gray: #f4f6f8;
+      --border: #d7dde3;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2933;
+      background: #eef2f5;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      background: var(--white);
+      box-shadow: 0 8px 28px rgba(23, 50, 77, 0.12);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      padding: 34px 38px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.92;
+      font-size: 1.05rem;
+    }
+
+    main {
+      padding: 34px 38px 40px;
+    }
+
+    .summary {
+      background: var(--light-blue);
+      border-left: 5px solid var(--blue);
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+
+    .summary strong {
+      color: var(--navy);
+    }
+
+    h2 {
+      color: var(--navy);
+      margin: 30px 0 14px;
+      font-size: 1.35rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+
+    .item h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 1.08rem;
+    }
+
+    .item ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    .item li {
+      margin: 5px 0;
+    }
+
+    .capabilities {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .capability {
+      background: var(--light-green);
+      border: 1px solid #cfe6d6;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .capability strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .pending {
+      background: var(--light-gold);
+      border: 1px solid #ead29f;
+      border-left: 5px solid var(--gold);
+      border-radius: 9px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+
+    .pending h3 {
+      margin: 0 0 8px;
+      color: #7a5512;
+    }
+
+    .meeting-focus {
+      background: var(--light-gray);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .meeting-focus ol {
+      margin: 10px 0 0 22px;
+      padding: 0;
+    }
+
+    .meeting-focus li {
+      margin: 7px 0;
+    }
+
+    footer {
+      background: var(--light-gray);
+      color: var(--gray);
+      padding: 18px 38px;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        margin: 0;
+        border-radius: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .capabilities {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: none;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .item,
+      .capability,
+      .pending,
+      .meeting-focus {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Meadows Housekeeping System</h1>
+      <p>Work completed and current capabilities for supervisor review</p>
+    </header>
+
+    <main>
+      <section class="summary">
+        <strong>Overview:</strong> A functional housekeeping communication website is now in place.
+        The calendar, employee roster information, housekeeping issue form, QR resources, and visual
+        navigation have been brought together into one system that can be accessed from a phone or computer.
+      </section>
+
+      <h2>Work Completed</h2>
+
+      <section class="item">
+        <h3>1. Calendar structure corrected</h3>
+        <ul>
+          <li>Philip was removed from the personal calendar and placed on the work calendar.</li>
+          <li>Work scheduling is now separated from the personal calendar, reducing clutter.</li>
+          <li>The work calendar was verified to contain events through Christmas.</li>
+        </ul>
+      </section>
+
+      <section class="item">
+        <h3>2. Meadows Housekeeping website created</h3>
+        <ul>
+          <li>A central website was created for housekeeping communication and reference material.</li>
+          <li>The homepage now provides direct access to the system's primary functions.</li>
+          <li>The site is designed to work well on both mobile devices and computers.</li>
+        </ul>
+      </section>
+
+      <section class="item">
+        <h3>3. Work calendar embedded</h3>
+        <ul>
+          <li>The supervisor can scroll through days and months directly from the website.</li>
+          <li>Calendar events can be opened to view additional details.</li>
+          <li>Each morning event contains the roster of employees expected to be present.</li>
+          <li>Calendar information is visible through the site without requiring the supervisor to search through separate files.</li>
+          <li>Events can also be copied to another calendar.</li>
+        </ul>
+      </section>
+
+      <section class="item">
+        <h3>4. Housekeeping issue form embedded</h3>
+        <ul>
+          <li>The Google issue form is available directly from its website page.</li>
+          <li>The form provides a consistent method for reporting housekeeping issues and requests.</li>
+          <li>The form will be reviewed with the supervisor during tomorrow's meeting.</li>
+        </ul>
+      </section>
+
+      <section class="item">
+        <h3>5. Homepage navigation images created</h3>
+        <ul>
+          <li>Calendar</li>
+          <li>Housekeeping Issue Form</li>
+          <li>Roster</li>
+        </ul>
+        <p>These images serve as clear visual shortcuts to the main functions of the site.</p>
+      </section>
+
+      <section class="item">
+        <h3>6. Images and QR resource page created</h3>
+        <ul>
+          <li>A separate page was added to retain QR code images and other reusable materials.</li>
+          <li>The supervisor can access, print, or reuse these materials as needed.</li>
+          <li>The page can later hold additional posters, reference graphics, and printable cards.</li>
+        </ul>
+      </section>
+
+      <section class="item">
+        <h3>7. QR access established</h3>
+        <ul>
+          <li>QR codes provide quick access to the website and forms.</li>
+          <li>These codes can be printed and posted in the office or other useful locations.</li>
+          <li>More decorative or compact versions can be created later for permanent display.</li>
+        </ul>
+      </section>
+
+      <h2>Current Supervisor Capabilities</h2>
+
+      <div class="capabilities">
+        <div class="capability">
+          <strong>View future staffing</strong>
+          Review calendar events and staffing information through Christmas.
+        </div>
+        <div class="capability">
+          <strong>Review daily rosters</strong>
+          Open morning events to see which employees are expected to be present.
+        </div>
+        <div class="capability">
+          <strong>Submit housekeeping issues</strong>
+          Open the embedded Google form directly from the website.
+        </div>
+        <div class="capability">
+          <strong>Use QR access</strong>
+          Reach the site or forms quickly from printed QR codes.
+        </div>
+        <div class="capability">
+          <strong>Access reference material</strong>
+          Retrieve saved QR images and other supervisor resources from the Images page.
+        </div>
+        <div class="capability">
+          <strong>Use one central interface</strong>
+          Calendar, roster, forms, and reference materials are connected in one location.
+        </div>
+      </div>
+
+      <h2>Items Still to Verify or Transfer</h2>
+
+      <section class="pending">
+        <h3>Calendar editing permissions</h3>
+        Confirm whether the supervisor can edit calendar events directly or whether editing requires a Google sign-in and additional permission.
+      </section>
+
+      <section class="pending">
+        <h3>Morning roster notification</h3>
+        The roster notification is still being delivered to the personal account rather than the supervisor. Notification ownership or delivery should eventually be transferred.
+      </section>
+
+      <section class="pending">
+        <h3>Supervisor access level</h3>
+        Determine whether the supervisor should have view-only access, event editing access, or full calendar management access.
+      </section>
+
+      <h2>Tomorrow's Meeting Focus</h2>
+
+      <section class="meeting-focus">
+        <ol>
+          <li>Demonstrate the website and homepage navigation.</li>
+          <li>Show the embedded calendar and daily employee roster information.</li>
+          <li>Review the housekeeping issue form and determine whether any questions or categories should be changed.</li>
+          <li>Test the supervisor's calendar access and editing permissions.</li>
+          <li>Discuss where QR codes should be printed and posted.</li>
+          <li>Decide who should receive roster notifications and form responses.</li>
+        </ol>
+      </section>
+
+      <h2>Overall Result</h2>
+
+      <section class="summary">
+        The project has moved beyond a collection of separate Google tools. The calendar, roster,
+        issue form, website, navigation images, and QR resources now operate as a connected housekeeping
+        communication system. A substantial amount of the foundation is already complete and ready for
+        supervisor review.
+      </section>
+    </main>
+
+    <footer>
+      Prepared for the Meadows Housekeeping supervisor meeting.
+    </footer>
+  </div>
+</body>
+</html>

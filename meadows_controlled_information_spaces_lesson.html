@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controlled Information Spaces: Privacy, Data Collection, and Query Responsibility</title>
+  <style>
+    :root{
+      --ink:#1f2933;
+      --muted:#5f6b76;
+      --paper:#f7f4ee;
+      --card:#ffffff;
+      --line:#d7dde3;
+      --blue:#2d6a8a;
+      --green:#4f7a5a;
+      --gold:#aa7a2f;
+      --red:#8b4545;
+      --shadow:0 10px 30px rgba(31,41,51,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#eef2f4 0%,var(--paper) 22%,var(--paper) 100%);
+      line-height:1.58;
+    }
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:42px 28px 70px;
+    }
+    header{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-top:9px solid var(--blue);
+      border-radius:16px;
+      padding:38px 42px;
+      box-shadow:var(--shadow);
+    }
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--blue);
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .subtitle{
+      margin:18px 0 0;
+      font-size:1.15rem;
+      color:var(--muted);
+      max-width:850px;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+    .tag{
+      background:#edf4f7;
+      border:1px solid #c9dce5;
+      color:#264d60;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:.86rem;
+      font-weight:700;
+    }
+    section{
+      margin-top:28px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:30px 34px;
+      box-shadow:var(--shadow);
+    }
+    h2{
+      margin:0 0 16px;
+      font-size:1.55rem;
+      color:#223846;
+    }
+    h3{
+      margin:24px 0 8px;
+      font-size:1.1rem;
+      color:#314b5b;
+    }
+    p{margin:0 0 14px}
+    ul,ol{margin:10px 0 0 22px}
+    li{margin:7px 0}
+    .callout{
+      margin:20px 0;
+      padding:18px 20px;
+      border-left:6px solid var(--gold);
+      background:#fbf5e8;
+      border-radius:8px;
+      font-weight:700;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:20px;
+      background:#fcfcfb;
+    }
+    .panel.raw{border-top:6px solid var(--red)}
+    .panel.controlled{border-top:6px solid var(--green)}
+    .panel h3{margin-top:0}
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-top:20px;
+      align-items:stretch;
+    }
+    .step{
+      min-height:115px;
+      padding:16px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#f9fbfc;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      font-weight:700;
+    }
+    .step small{
+      display:block;
+      font-weight:400;
+      color:var(--muted);
+      margin-top:6px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+      font-size:.96rem;
+    }
+    th,td{
+      border:1px solid var(--line);
+      padding:12px 14px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{
+      background:#edf3f6;
+      color:#243f50;
+    }
+    .role{
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .principles{
+      counter-reset:item;
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .principles li{
+      counter-increment:item;
+      margin:12px 0;
+      padding:14px 16px 14px 52px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      position:relative;
+      background:#fbfcfd;
+    }
+    .principles li::before{
+      content:counter(item);
+      position:absolute;
+      left:15px;
+      top:13px;
+      width:25px;
+      height:25px;
+      border-radius:50%;
+      background:var(--blue);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:.85rem;
+    }
+    .quiz{
+      background:#f2f6f3;
+      border-left:6px solid var(--green);
+    }
+    footer{
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:center;
+      padding-top:28px;
+    }
+    @media (max-width:800px){
+      .grid{grid-template-columns:1fr}
+      .flow{grid-template-columns:1fr}
+      header,section{padding:25px 22px}
+      table{font-size:.88rem}
+    }
+    @media print{
+      body{background:#fff}
+      .page{max-width:none;padding:0}
+      header,section{box-shadow:none;break-inside:avoid}
+      a{color:inherit;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">Meadows Housekeeping Lesson</div>
+      <h1>Controlled Information Spaces</h1>
+      <p class="subtitle">Privacy, data collection, query responsibility, and the difference between exposing raw records and providing role-appropriate answers.</p>
+      <div class="meta">
+        <span class="tag">Housekeeping Operations</span>
+        <span class="tag">Data Governance</span>
+        <span class="tag">Compartmentalization</span>
+        <span class="tag">Query Access</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Lesson Purpose</h2>
+      <p>Meadows Housekeeping produces operational information every day through schedules, attendance records, work requests, room lists, inspections, assignment sheets, completion records, and supervisor observations. As those records accumulate, the information becomes increasingly valuable.</p>
+      <p>The same records can support routine operations, staffing forecasts, performance reports, trend analysis, and management planning. The same records can also be misread, overextended, or used to create conclusions unrelated to the original operational purpose.</p>
+      <div class="callout">The central responsibility is not merely to collect data. The central responsibility is to control which questions may be asked, which answers may be returned, and which position is authorized to receive each answer.</div>
+    </section>
+
+    <section>
+      <h2>Learning Objectives</h2>
+      <ol>
+        <li>Distinguish a source record from a derived result.</li>
+        <li>Explain the difference between raw-data access and controlled query access.</li>
+        <li>Describe why the same dataset can produce different levels of sensitivity.</li>
+        <li>Assign information access according to operational position and responsibility.</li>
+        <li>Recognize how compartmentalization protects employees, supervisors, management, and the department.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Source Records and Derived Information</h2>
+      <p>A <strong>source record</strong> is a direct operational record. Examples include a submitted work request, a daily assignment sheet, an attendance entry, a completed inspection, or a time-stamped completion record.</p>
+      <p>A <strong>derived result</strong> is produced by comparing, filtering, grouping, counting, or relating source records. A derived result may answer a question that does not appear directly on any individual form.</p>
+
+      <div class="flow">
+        <div class="step">Source Records<small>Forms, schedules, paper logs, requests</small></div>
+        <div class="step">Structured Storage<small>Dates, areas, positions, statuses</small></div>
+        <div class="step">Defined Query<small>A permitted operational question</small></div>
+        <div class="step">Derived Result<small>Count, trend, queue, forecast</small></div>
+        <div class="step">Authorized View<small>Only the necessary answer</small></div>
+      </div>
+
+      <h3>Housekeeping Example</h3>
+      <p>A daily attendance sheet is a source record. A monthly calculation showing the average number of scheduled employees unavailable per day is a derived result. A recommendation for two float positions is a planning conclusion based on that derived result.</p>
+    </section>
+
+    <section>
+      <h2>Raw Data Access Versus Controlled Query Access</h2>
+      <div class="grid">
+        <div class="panel raw">
+          <h3>Raw Data Access</h3>
+          <p>Raw access exposes the underlying records and permits broad exploration.</p>
+          <ul>
+            <li>Large quantities of individual records become visible.</li>
+            <li>Unplanned comparisons become easy.</li>
+            <li>Context may be separated from the record.</li>
+            <li>Unexpected personal or evaluative conclusions may be derived.</li>
+            <li>Responsibility for interpretation shifts to every viewer.</li>
+          </ul>
+        </div>
+        <div class="panel controlled">
+          <h3>Controlled Query Access</h3>
+          <p>Controlled access exposes a defined answer to a defined operational question.</p>
+          <ul>
+            <li>The underlying records remain inside the authorized information space.</li>
+            <li>The permitted question is known in advance.</li>
+            <li>The returned answer is limited to the operational need.</li>
+            <li>Interpretation can be standardized.</li>
+            <li>Access can be assigned by position.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">A database contains possible answers. A controlled query interface determines which answers become available to each position.</div>
+    </section>
+
+    <section>
+      <h2>Why Raw Access Creates Additional Risk</h2>
+      <p>Raw records do not remain limited to the purpose for which each record was collected. Once broad access is provided, additional questions can be asked without redesigning the system.</p>
+      <p>For example, attendance records may be collected to determine daily coverage. The same records can later be grouped by employee, weekday, unit, month, or frequency. A staffing query may be legitimate for department planning. A ranking of named employees may create an unnecessary evaluative narrative.</p>
+      <p>The sensitivity therefore may emerge from the <strong>query</strong>, even when each source record appears ordinary.</p>
+    </section>
+
+    <section>
+      <h2>Housekeeping Information Spaces</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Information Space</th>
+            <th>Authorized Operational Content</th>
+            <th>Examples of Appropriate Queries</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role">Housekeeping Employee</td>
+            <td>Current assignments, work location, required action, own submitted information, relevant completion method.</td>
+            <td>What assignment is active? Which area requires service? Has the assigned request been closed?</td>
+          </tr>
+          <tr>
+            <td class="role">Housekeeping Supervisor</td>
+            <td>Individual attendance records, work requests, assignment history, inspection results, exceptions, completion records, staffing patterns.</td>
+            <td>Who is available? Which requests remain open? What staffing loss is expected? Which source records support a conclusion?</td>
+          </tr>
+          <tr>
+            <td class="role">Housekeeping Management</td>
+            <td>Department-level performance, aggregate staffing demand, trends, service levels, resource requirements, selected supervisory reports.</td>
+            <td>How many float positions are required? Is response time improving? Which areas create repeated demand?</td>
+          </tr>
+          <tr>
+            <td class="role">Nursing Administration</td>
+            <td>Submitted requests, request status, completion confirmation, relevant service trends, unresolved environmental needs.</td>
+            <td>Was the reported issue received? Has the issue been assigned? When was the issue completed?</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Frequently Asked Questions Become Named Queries</h2>
+      <p>A controlled system can be designed around recurring operational questions rather than around unrestricted database exploration.</p>
+      <ul>
+        <li><strong>Daily Coverage Query:</strong> How many employees are available after scheduled leave and observed attendance loss?</li>
+        <li><strong>Open Request Query:</strong> Which work requests remain unresolved?</li>
+        <li><strong>Response-Time Query:</strong> How quickly are requests acknowledged and closed?</li>
+        <li><strong>Floater Requirement Query:</strong> How much reserve capacity is required under normal attendance variability?</li>
+        <li><strong>Recurring Area Query:</strong> Which locations generate repeated requests?</li>
+        <li><strong>Completion Evidence Query:</strong> Which records corroborate that requested work was completed?</li>
+      </ul>
+      <p>Each query may use several source records internally. The requesting position receives only the answer required for the assigned responsibility.</p>
+    </section>
+
+    <section>
+      <h2>Responsibilities of Data Collection</h2>
+      <ol class="principles">
+        <li><strong>Collect for an operational purpose.</strong> Every field should support assignment, response, completion, forecasting, verification, or another defined housekeeping function.</li>
+        <li><strong>Separate records from conclusions.</strong> Source records, derived measures, and interpretations should remain distinguishable.</li>
+        <li><strong>Preserve provenance.</strong> A result should identify whether support came from a work request, attendance record, inspection, roster, completion entry, or another source.</li>
+        <li><strong>Restrict unnecessary detail.</strong> A position should receive the minimum information required to perform the assigned function.</li>
+        <li><strong>Control queries by position.</strong> Access should follow operational authority, not curiosity or technical capability.</li>
+        <li><strong>Standardize recurring answers.</strong> Frequently asked questions should become named, repeatable queries with consistent definitions.</li>
+        <li><strong>Avoid unsupported narratives.</strong> A numerical result should not be presented as motive, character, intent, or cause unless evidence supports that interpretation.</li>
+        <li><strong>Review the query catalog.</strong> New queries should be evaluated for purpose, audience, sensitivity, and likely consequences before routine use.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Practical Example: Attendance and Staffing</h2>
+      <p>Attendance data can support department planning without exposing every employee record to every position.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Question</th>
+            <th>Returned Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Employee Level</td>
+            <td>What schedule and assignment apply today?</td>
+            <td>Current schedule and assignment only.</td>
+          </tr>
+          <tr>
+            <td>Supervisor Level</td>
+            <td>Which absences contributed to today's coverage shortage?</td>
+            <td>Individual records necessary for daily supervision.</td>
+          </tr>
+          <tr>
+            <td>Management Level</td>
+            <td>How much reserve capacity is required over time?</td>
+            <td>Aggregate attendance-loss coefficient and recommended staffing reserve.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The underlying attendance records may be identical. The query, purpose, and authorized recipient determine the appropriate answer.</p>
+    </section>
+
+    <section class="quiz">
+      <h2>Lesson Check</h2>
+      <ol>
+        <li>What is the difference between a source record and a derived result?</li>
+        <li>Why can an ordinary source record become sensitive after aggregation?</li>
+        <li>Why is a named query safer than unrestricted raw-data access?</li>
+        <li>Which attendance information belongs in the supervisor information space?</li>
+        <li>Which staffing information can be presented to management as an aggregate?</li>
+        <li>Why should a numerical result remain separate from a narrative about motive or character?</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Core Principle</h2>
+      <div class="callout">Housekeeping data should not be treated as a shared pile of records. Housekeeping data should be treated as a controlled information space that returns authorized answers to defined operational questions.</div>
+      <p>Compartmentalization does not reduce the usefulness of the data. Compartmentalization makes the data more usable by preserving trust, limiting unnecessary exposure, clarifying responsibility, and allowing each position to receive the information required for effective operations.</p>
+    </section>
+
+    <footer>
+      Meadows Housekeeping — Training Lesson on Privacy, Data Collection, and Query Responsibility
+    </footer>
+  </main>
+</body>
+</html>

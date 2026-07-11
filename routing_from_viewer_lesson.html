@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Routing From the Submission Viewer</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d8dee9;
+      --blue: #2563eb;
+      --blue-soft: #e8f0ff;
+      --green: #0f766e;
+      --green-soft: #e6fffb;
+      --orange: #b45309;
+      --orange-soft: #fff7ed;
+      --purple: #6d28d9;
+      --purple-soft: #f3e8ff;
+      --red: #b91c1c;
+      --red-soft: #fee2e2;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #0f766e);
+      color: white;
+      padding: 34px 18px;
+    }
+
+    header .wrap,
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 760px;
+      font-size: 18px;
+      opacity: 0.94;
+    }
+
+    main {
+      padding: 22px 14px 60px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px;
+      margin: 18px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+    }
+
+    p { margin: 8px 0 12px; }
+
+    .tagline {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--blue-soft);
+      color: #1e40af;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .principle {
+      border-left: 6px solid var(--green);
+      background: var(--green-soft);
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .warning {
+      border-left: 6px solid var(--orange);
+      background: var(--orange-soft);
+      padding: 14px 16px;
+      border-radius: 12px;
+    }
+
+    .danger {
+      border-left: 6px solid var(--red);
+      background: var(--red-soft);
+      padding: 14px 16px;
+      border-radius: 12px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #111827;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .node {
+      background: var(--blue-soft);
+      color: #1e3a8a;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    code, pre {
+      font-family: Consolas, Monaco, 'Courier New', monospace;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 14px;
+      border-radius: 12px;
+      overflow-x: auto;
+      line-height: 1.45;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2ff;
+      color: #1e3a8a;
+    }
+
+    .button-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .fake-button {
+      display: inline-block;
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-weight: 700;
+      color: white;
+      background: var(--blue);
+      font-size: 14px;
+    }
+
+    .fake-button.note { background: var(--purple); }
+    .fake-button.archive { background: #64748b; }
+    .fake-button.info { background: var(--orange); }
+
+    ol, ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 0 0;
+      text-align: center;
+    }
+
+    @media print {
+      body { background: white; }
+      section { box-shadow: none; break-inside: avoid; }
+      header { background: #1d4ed8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Routing From the Submission Viewer</h1>
+      <p class="subtitle">A lesson page for the next step: turning readable submission cards into routed task, note, suggestion, meeting-topic, or archive records while preserving the permanent history log.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <span class="tagline">Current status</span>
+      <h2>What we already built</h2>
+      <p>The system already has a working capture-and-view pipeline. A Google Form submission is processed by Apps Script, converted into normalized JSON, written to <strong>Submission_Log</strong>, sent by email, and displayed as a readable card inside the Google Site.</p>
+
+      <div class="flow">
+        <div class="node">Google Form</div><div class="arrow">→</div>
+        <div class="node">Apps Script</div><div class="arrow">→</div>
+        <div class="node">Normalized JSON</div><div class="arrow">→</div>
+        <div class="node">Submission_Log</div><div class="arrow">→</div>
+        <div class="node">Card Viewer</div>
+      </div>
+
+      <p class="principle">The important success is that the log is preserved, while the website shows a clean derived view.</p>
+    </section>
+
+    <section>
+      <span class="tagline">Next step</span>
+      <h2>What routing means</h2>
+      <p>Routing means a human looks at a submission card and decides where that submission belongs next. The original log entry is not moved or changed. Instead, the routing action creates a new derived record in a working buffer.</p>
+
+      <div class="button-demo">
+        <span class="fake-button">Route to Task</span>
+        <span class="fake-button note">Route to Meeting Notes</span>
+        <span class="fake-button note">Route to Suggestions</span>
+        <span class="fake-button info">Needs More Info</span>
+        <span class="fake-button archive">Archive</span>
+      </div>
+
+      <p>These buttons are not intelligence yet. They are simple human decisions captured through the browser interface.</p>
+    </section>
+
+    <section>
+      <span class="tagline">Core rule</span>
+      <h2>Never change the history log</h2>
+      <p><strong>Submission_Log</strong> should remain append-only. It answers one question: <em>What was submitted?</em></p>
+      <p>The working buffers answer different questions:</p>
+      <div class="grid">
+        <div class="mini-card"><strong>Task_Buffer</strong>What needs action?</div>
+        <div class="mini-card"><strong>Meeting_Notes</strong>What should be discussed later?</div>
+        <div class="mini-card"><strong>Suggestions</strong>What ideas or improvements were submitted?</div>
+        <div class="mini-card"><strong>Needs_Info</strong>What cannot be acted on yet?</div>
+        <div class="mini-card"><strong>Archive</strong>What was reviewed and requires no further action?</div>
+      </div>
+      <p class="warning"><strong>Do not move records out of Submission_Log.</strong> A route creates a copy or derivative that points back to the original submission ID.</p>
+    </section>
+
+    <section>
+      <span class="tagline">How the route works</span>
+      <h2>The routing path</h2>
+      <p>The browser card is the visible interface. Apps Script remains the controller. Google Sheets remains the storage layer.</p>
+
+      <div class="flow">
+        <div class="node">Button click</div><div class="arrow">→</div>
+        <div class="node">submission_id + route</div><div class="arrow">→</div>
+        <div class="node">Apps Script</div><div class="arrow">→</div>
+        <div class="node">Look up JSON</div><div class="arrow">→</div>
+        <div class="node">Append derived record</div>
+      </div>
+
+      <h3>Important detail</h3>
+      <p>The button should not send the entire JSON object from the browser. It should send only:</p>
+      <pre>{
+  "submission_id": "6d0ec3a5-...",
+  "route": "task"
+}</pre>
+      <p>Then Apps Script looks up the real JSON inside <strong>Submission_Log</strong>. That keeps the log as the source of truth.</p>
+    </section>
+
+    <section>
+      <span class="tagline">Data model</span>
+      <h2>Source record vs routed record</h2>
+      <p>The source record and the task record are related, but they are not the same thing.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Record type</th>
+            <th>Where it lives</th>
+            <th>Purpose</th>
+            <th>Can it change?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Submission record</td>
+            <td>Submission_Log</td>
+            <td>Permanent history of what was submitted</td>
+            <td>No; append-only</td>
+          </tr>
+          <tr>
+            <td>Task record</td>
+            <td>Task_Buffer</td>
+            <td>Action item derived from a submission</td>
+            <td>Yes; status, priority, notes, completion details</td>
+          </tr>
+          <tr>
+            <td>Meeting note</td>
+            <td>Meeting_Notes</td>
+            <td>Item saved for discussion</td>
+            <td>Yes; can be reviewed, grouped, or closed</td>
+          </tr>
+          <tr>
+            <td>Suggestion</td>
+            <td>Suggestions</td>
+            <td>Idea or recommendation for later consideration</td>
+            <td>Yes; can be accepted, rejected, or parked</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <span class="tagline">Example</span>
+      <h2>What a derived task might look like</h2>
+      <p>When a submission is routed to the task buffer, the new record should carry its own task fields while preserving a link to the source submission.</p>
+
+      <pre>{
+  "task_id": "task-2026-0711-001",
+  "source_submission_id": "6d0ec3a5-...",
+  "created_at": "2026-07-11 12:45",
+  "route": "task",
+  "status": "New",
+  "priority": "Unassigned",
+  "task_title": "Review submitted cleanup issue",
+  "location": "Unknown until reviewed",
+  "description": "Derived from original submission card",
+  "source_json": {
+    "submission_id": "6d0ec3a5-...",
+    "submitted_at": "2026-07-11 12:42",
+    "non_empty_answers": []
+  }
+}</pre>
+
+      <p class="principle">The task is a working object. The source JSON is the evidence underneath it.</p>
+    </section>
+
+    <section>
+      <span class="tagline">Tools already in use</span>
+      <h2>What each tool does</h2>
+      <div class="grid">
+        <div class="mini-card"><strong>Google Form</strong>Input device for requests, notes, issues, suggestions, and other submissions.</div>
+        <div class="mini-card"><strong>Google Sheet</strong>Storage layer for logs, buffers, task lists, and future reports.</div>
+        <div class="mini-card"><strong>Apps Script</strong>Controller layer that reads records, creates JSON, sends email, serves HTML, and later routes records.</div>
+        <div class="mini-card"><strong>Cards.html</strong>Browser interface that shows each submission as a readable card.</div>
+        <div class="mini-card"><strong>Google Site</strong>Front door where the tools are embedded and organized.</div>
+      </div>
+    </section>
+
+    <section>
+      <span class="tagline">Build sequence</span>
+      <h2>Safe order of work</h2>
+      <ol>
+        <li><strong>Keep the existing card viewer working.</strong> Do not disturb the capture/log/view pipeline.</li>
+        <li><strong>Add visible buttons to each card.</strong> At first, the buttons can do nothing or only show a test message.</li>
+        <li><strong>Add a routing function in Apps Script.</strong> The browser calls it with a submission ID and destination.</li>
+        <li><strong>Create destination sheets.</strong> Start with <code>Task_Buffer</code>, then add other buffers later.</li>
+        <li><strong>Append a derived record.</strong> Do not edit the original log row.</li>
+        <li><strong>Show feedback on the card.</strong> Example: “Routed to Task_Buffer.”</li>
+        <li><strong>Add a separate Tasks page later.</strong> That page reads from <code>Task_Buffer</code>, not from <code>Submission_Log</code>.</li>
+      </ol>
+    </section>
+
+    <section>
+      <span class="tagline">Testing doctrine</span>
+      <h2>How to test without breaking the system</h2>
+      <ul>
+        <li>Use a test submission first.</li>
+        <li>Route it to <code>Task_Buffer</code>.</li>
+        <li>Confirm a new row appears in <code>Task_Buffer</code>.</li>
+        <li>Confirm <code>Submission_Log</code> did not change.</li>
+        <li>Confirm the task row includes <code>source_submission_id</code>.</li>
+        <li>Confirm the source JSON was copied or referenced correctly.</li>
+      </ul>
+      <p class="danger"><strong>Failure condition:</strong> if routing edits or deletes the original log row, the design is wrong.</p>
+    </section>
+
+    <section>
+      <span class="tagline">Future path</span>
+      <h2>Where this goes later</h2>
+      <p>At first, the human does the routing. Later, routing can be helped by fixed rules or by an agent.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Who routes?</th>
+            <th>How it works</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Now</td>
+            <td>Human</td>
+            <td>User reads card and clicks route button.</td>
+          </tr>
+          <tr>
+            <td>Next</td>
+            <td>Simple software rules</td>
+            <td>Fixed categories can suggest destinations.</td>
+          </tr>
+          <tr>
+            <td>Later</td>
+            <td>Agent-assisted</td>
+            <td>Agent reads messy submissions and suggests route, priority, missing info, and summary.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="principle">Capture first. Preserve the log. Route a copy. Work from buffers.</p>
+    </section>
+
+    <footer>
+      Routing lesson for the submission viewer pipeline. Built as a local reference document.
+    </footer>
+  </main>
+</body>
+</html>

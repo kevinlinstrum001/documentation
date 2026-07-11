@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Filing Cabinet and the Database</title>
+  <style>
+    :root{
+      --ink:#1f2933;
+      --muted:#5f6b76;
+      --paper:#f6f3ed;
+      --card:#ffffff;
+      --line:#d7dde3;
+      --blue:#2d6a8a;
+      --gold:#a8762b;
+      --green:#4f7659;
+      --shadow:0 10px 28px rgba(31,41,51,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#eaf0f3 0%,var(--paper) 22%,var(--paper) 100%);
+      line-height:1.62;
+    }
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      padding:40px 24px 64px;
+    }
+    header, section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:15px;
+      box-shadow:var(--shadow);
+    }
+    header{
+      border-top:9px solid var(--blue);
+      padding:36px 40px;
+    }
+    .eyebrow{
+      color:var(--blue);
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-size:.78rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .subtitle{
+      margin:16px 0 0;
+      color:var(--muted);
+      font-size:1.12rem;
+      max-width:760px;
+    }
+    section{
+      margin-top:26px;
+      padding:28px 34px;
+    }
+    h2{
+      margin:0 0 14px;
+      color:#294352;
+      font-size:1.45rem;
+    }
+    p{margin:0 0 14px}
+    .callout{
+      margin:20px 0;
+      padding:18px 20px;
+      border-left:6px solid var(--gold);
+      background:#fbf5e8;
+      border-radius:8px;
+      font-weight:700;
+    }
+    .analogy{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:20px;
+      background:#fbfcfd;
+    }
+    .card h3{
+      margin:0 0 10px;
+      color:#314b5b;
+    }
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .step{
+      text-align:center;
+      padding:16px 12px;
+      background:#f7fafb;
+      border:1px solid var(--line);
+      border-radius:10px;
+      font-weight:700;
+    }
+    .step small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-weight:400;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+    }
+    th,td{
+      border:1px solid var(--line);
+      padding:12px 14px;
+      text-align:left;
+      vertical-align:top;
+    }
+    th{
+      background:#edf3f6;
+      color:#294352;
+    }
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:.85rem;
+      padding-top:24px;
+    }
+    @media (max-width:760px){
+      .analogy,.flow{grid-template-columns:1fr}
+      header,section{padding:24px 22px}
+    }
+    @media print{
+      body{background:#fff}
+      .page{max-width:none;padding:0}
+      header,section{box-shadow:none;break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">Introductory Data Lesson</div>
+      <h1>The Filing Cabinet and the Database</h1>
+      <p class="subtitle">A simple comparison of digital data storage and the older paper-based method of organizing and retrieving information.</p>
+    </header>
+
+    <section>
+      <h2>The Filing Cabinet Is the Key Analogy</h2>
+      <p>A database can be understood by imagining a large office filing cabinet.</p>
+      <p>In a paper system, each event creates a document. Attendance records may go into one folder. Work requests may go into another. Inspection sheets, room lists, schedules, and daily assignments may each have separate folders or drawers.</p>
+      <div class="callout">The information already exists in the cabinet. The challenge is finding, comparing, and organizing it when a question must be answered.</div>
+    </section>
+
+    <section>
+      <h2>How a Paper Query Worked</h2>
+      <p>Suppose a supervisor asks:</p>
+      <div class="callout">How many Mondays were we short-staffed during the last six months?</div>
+      <p>To answer that question using paper, a staff member might retrieve six months of schedules, compare those schedules with attendance sheets, identify every Monday, count the days with missing staff, and write the result on another form.</p>
+      <p>That entire manual process is a <strong>query</strong>. The person searching the filing cabinet is doing the work that a computer later performs automatically.</p>
+
+      <div class="flow">
+        <div class="step">Retrieve<small>Find the correct folders</small></div>
+        <div class="step">Compare<small>Cross-check schedules and attendance</small></div>
+        <div class="step">Filter<small>Keep only Mondays</small></div>
+        <div class="step">Summarize<small>Count and report shortages</small></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Forms Were Early Query Tools</h2>
+      <p>Offices often made repeated questions easier by creating summary sheets, index cards, logs, and companion forms.</p>
+      <p>If management frequently asked about absences, a monthly attendance summary could accompany the original attendance papers. The summary did not replace the source records. It organized selected facts so the same question could be answered more quickly.</p>
+      <p>In that sense, the form acted like a prepared query. It took information from several papers and arranged it in a way that made a common question easy to answer.</p>
+    </section>
+
+    <section>
+      <h2>Paper System and Digital System</h2>
+      <div class="analogy">
+        <div class="card">
+          <h3>Paper Filing System</h3>
+          <p><strong>Filing cabinet:</strong> stores the records.</p>
+          <p><strong>Drawers and folders:</strong> separate categories of information.</p>
+          <p><strong>Paper forms:</strong> hold individual events and observations.</p>
+          <p><strong>Clerk or supervisor:</strong> performs the query manually.</p>
+        </div>
+        <div class="card">
+          <h3>Digital Database</h3>
+          <p><strong>Database:</strong> stores the records.</p>
+          <p><strong>Tables:</strong> separate categories of information.</p>
+          <p><strong>Digital entries:</strong> hold individual events and observations.</p>
+          <p><strong>Query:</strong> performs the retrieval and comparison automatically.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Main Difference Is Speed</h2>
+      <p>Digital storage does not necessarily create a new kind of information. In many cases, it makes the same information faster to retrieve, easier to cross-reference, and easier to summarize.</p>
+      <p>A paper query may take hours or days. A digital query may return the same answer in seconds.</p>
+      <div class="callout">The database is the filing cabinet. The query is the instruction given to the clerk standing in front of it.</div>
+    </section>
+
+    <section>
+      <h2>Why Access Still Matters</h2>
+      <p>Giving someone a prepared report is like handing over a summary sheet. Giving unrestricted database access is more like handing over the key to the entire filing cabinet.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Type of Access</th>
+            <th>Paper Analogy</th>
+            <th>Digital Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Prepared Report</td>
+            <td>A completed summary form</td>
+            <td>A limited answer to a defined question</td>
+          </tr>
+          <tr>
+            <td>Folder Access</td>
+            <td>One selected drawer or folder</td>
+            <td>Access to a limited category of records</td>
+          </tr>
+          <tr>
+            <td>Full Database Access</td>
+            <td>The key to the entire filing cabinet</td>
+            <td>Broad access to search, compare, and derive new information</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Core Lesson</h2>
+      <p>The records may be the same whether they are stored on paper or digitally. What changes is the speed, scale, and ease with which questions can be asked.</p>
+      <div class="callout">Digital storage makes the filing cabinet computationally legible.</div>
+      <p>Because digital queries are so easy to perform, information should be organized carefully and access should be limited to the questions and records needed for each position.</p>
+    </section>
+
+    <footer>
+      Meadows Housekeeping — Introductory Lesson on Paper Records, Databases, and Queries
+    </footer>
+  </main>
+</body>
+</html>
