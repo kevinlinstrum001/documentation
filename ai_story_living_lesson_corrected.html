@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The AI Story: A Living Lesson</title>
+  <style>
+    :root {
+      --bg: #0f141a;
+      --panel: #171f27;
+      --panel2: #1e2833;
+      --text: #edf2f7;
+      --muted: #a9b6c4;
+      --line: #324253;
+      --accent: #89b4ff;
+      --accent2: #b7f7d3;
+      --warn: #ffd36e;
+      --danger: #ff9a9a;
+      --code: #101820;
+    }
+    * { box-sizing: border-box; }
+
+    /* ==========================================
+       Shared Navigation Header
+    ========================================== */
+
+    .docs-header {
+      background: #213c37;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      margin: 0;
+      border: 0;
+      text-align: left;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .docs-header__title {
+      margin: 0;
+      padding: 0;
+    }
+
+    .docs-header__title a {
+      color: white;
+      background: transparent;
+      border: 0;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+    }
+
+    .docs-header__nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .docs-header__nav a {
+      display: inline-block;
+      color: white;
+      background: transparent;
+      border: 0;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 8px 14px;
+      margin: 0;
+      border-radius: 6px;
+      transition: background 0.25s;
+    }
+
+    .docs-header__nav a:hover,
+    .docs-header__nav a:focus-visible {
+      background: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+    }
+    
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      background: linear-gradient(180deg, #0d1218 0%, #111923 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .lesson-hero {
+      padding: 56px 24px 36px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top left, rgba(137, 180, 255, 0.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(183, 247, 211, 0.10), transparent 35%);
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.7rem); line-height: 1.05; margin: 0 0 16px; }
+    h2 { margin-top: 44px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    h3 { margin-top: 28px; color: var(--accent2); }
+    p { margin: 0 0 16px; }
+    .subtitle { max-width: 900px; font-size: 1.15rem; color: var(--muted); }
+    .meta { color: var(--muted); font-size: 0.95rem; margin-top: 18px; }
+    .lesson-toc {
+      margin: 24px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .lesson-toc a {
+      display: inline-block;
+      border: 1px solid var(--line);
+      background: rgba(23, 31, 39, 0.8);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+    main { padding: 34px 0 80px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      margin: 18px 0;
+      box-shadow: 0 14px 28px rgba(0,0,0,.18);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #06120d;
+      background: var(--accent2);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tag-blue { background: var(--accent); color: #07111f; }
+    .tag-warn { background: var(--warn); color: #1c1300; }
+    .tag-danger { background: var(--danger); color: #1c0000; }
+    blockquote {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      background: rgba(137, 180, 255, 0.08);
+      border-radius: 0 12px 12px 0;
+      color: #dce8f6;
+    }
+    ul, ol { padding-left: 1.35rem; }
+    li { margin: 8px 0; }
+    details {
+      border: 1px solid var(--line);
+      background: var(--panel2);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 14px 0;
+    }
+    summary { cursor: pointer; color: var(--accent2); font-weight: 700; }
+    .source-list li { margin-bottom: 12px; }
+    .question {
+      border-left: 4px solid var(--warn);
+      padding-left: 14px;
+      color: #f7e6b3;
+    }
+    .note {
+      background: #101820;
+      border: 1px dashed #4e6174;
+      border-radius: 14px;
+      padding: 16px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .edit-box {
+      min-height: 90px;
+      border: 1px dashed #5e7184;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      padding: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    code {
+      background: var(--code);
+      color: #e6edf3;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 30px 0 60px;
+    }
+
+    @media (max-width: 760px) {
+      .docs-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 18px;
+      }
+
+      .docs-header__nav {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .docs-header__nav a {
+        padding: 7px 9px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =========================================
+     Meadows Housekeeping Documentation
+     Navigation Header Template
+========================================= -->
+
+<header class="docs-header">
+  <div class="docs-header__title">
+    <a href="index.html">Meadows Housekeeping Documentation</a>
+  </div>
+
+  <nav class="docs-header__nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="ai_story_living_lesson.html">Page 2</a>
+    <a href="#">Page 3</a>
+    <a href="#">Page 4</a>
+  </nav>
+</header>
+  
+<header class="lesson-hero">
+  <div class="wrap">
+    <h1>The AI Story: A Living Lesson</h1>
+    <p class="subtitle">
+      A local, editable page for following the larger story of artificial intelligence:
+      the model labs, the chip supply chain, interpretability, safety, and the question
+      of whether we should observe these systems before forcing them into final products.
+    </p>
+    <p class="meta">Version 0.1 · Seed draft · Last updated July 11, 2026</p>
+    <nav class="lesson-toc" aria-label="Lesson contents">
+      <a href="#thesis">Core thesis</a>
+      <a href="#map">Story map</a>
+      <a href="#hardware">Hardware body</a>
+      <a href="#labs">Model labs</a>
+      <a href="#interpretability">Interpretability</a>
+      <a href="#safety">Safety & governance</a>
+      <a href="#people">People to watch</a>
+      <a href="#questions">Open questions</a>
+      <a href="#sources">Source ledger</a>
+      <a href="#update-log">Update log</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="thesis" class="card">
+    <span class="tag">central idea</span>
+    <h2>Core thesis</h2>
+    <blockquote>
+      The visible chatbot is not the whole story. The real story is that a new industrial
+      system is being built to manufacture reasoning at scale.
+    </blockquote>
+    <p>
+      This page is not meant to be a headline feed. It is a lesson map for following the
+      story as it develops. The key question is not only <em>which model is best</em>.
+      The deeper question is:
+    </p>
+    <p class="question">
+      Can humans learn to observe, understand, and govern artificial reasoning systems
+      before connecting them too deeply to money, labor, infrastructure, persuasion, and power?
+    </p>
+  </section>
+
+  <section id="map">
+    <h2>Story map</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="tag tag-blue">chapter 1</span>
+        <h3>The creature</h3>
+        <p>
+          Large language models and multimodal models are the visible intelligence-like systems:
+          chatbots, coding agents, image/video models, workplace assistants, and future autonomous agents.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-blue">chapter 2</span>
+        <h3>The body</h3>
+        <p>
+          The “cloud” is physical: GPUs, CPUs, high-bandwidth memory, advanced packaging, power,
+          cooling, data centers, wafer fabs, lithography machines, cables, and supply chains.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-blue">chapter 3</span>
+        <h3>The microscope</h3>
+        <p>
+          Interpretability tries to look inside these models: neurons, circuits, features,
+          activation pathways, causal interventions, and AI systems explaining other AI systems.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-blue">chapter 4</span>
+        <h3>The law</h3>
+        <p>
+          Safety and governance ask what should be allowed, slowed down, inspected, tested,
+          restricted, or publicly accountable before these systems shape society.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="hardware">
+    <h2>The hardware body: where the “mind” becomes physical</h2>
+    <p>
+      The AI system depends on a narrow and highly specialized production chain. A simplified chain:
+    </p>
+    <ol>
+      <li><strong>NVIDIA</strong> designs AI accelerators and full rack-scale systems for “AI factories.”</li>
+      <li><strong>TSMC</strong> manufactures many leading-edge chips and provides advanced packaging such as CoWoS for AI and supercomputing.</li>
+      <li><strong>ASML</strong> makes EUV and High-NA EUV lithography systems needed to print the tiniest chip features.</li>
+      <li><strong>Memory suppliers</strong> such as SK hynix, Samsung, and Micron make HBM, a major bottleneck for AI accelerators.</li>
+      <li><strong>Cloud and data-center builders</strong> assemble the environment: buildings, cooling, networking, power distribution, and operational software.</li>
+    </ol>
+
+    <details open>
+      <summary>Seed links for this section</summary>
+      <ul class="source-list">
+        <li><a href="https://nvidianews.nvidia.com/news/vera-rubin-full-production-agentic-ai-factory" target="_blank" rel="noopener">NVIDIA Vera Rubin platform ramping into production</a></li>
+        <li><a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener">NVIDIA Rubin platform announcement</a></li>
+        <li><a href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener">TSMC CoWoS advanced packaging</a></li>
+        <li><a href="https://www.tsmc.com/english" target="_blank" rel="noopener">TSMC official site</a></li>
+        <li><a href="https://www.asml.com/products/euv-lithography-systems" target="_blank" rel="noopener">ASML EUV lithography systems</a></li>
+        <li><a href="https://www.reuters.com/world/asia-pacific/sk-hynix-ceo-sees-worst-ever-memory-supply-shortage-2027-says-demand-outstrip-2026-07-10/" target="_blank" rel="noopener">Reuters: SK hynix and expected memory shortage pressure</a></li>
+      </ul>
+    </details>
+
+    <div class="note">
+      Working idea: the “AI mind” depends on wafers, optics, copper, cooling, power, water, server racks,
+      and contracts. This keeps the discussion grounded. The model is not floating in a pure idea sphere.
+    </div>
+  </section>
+
+  <section id="labs">
+    <h2>The model labs: who is building the creature?</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>OpenAI</h3>
+        <p>
+          A central research-and-deployment company. Its public mission frames the work around artificial
+          general intelligence benefiting humanity.
+        </p>
+        <p><a href="https://openai.com/about/" target="_blank" rel="noopener">OpenAI About</a></p>
+      </article>
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>Anthropic</h3>
+        <p>
+          Important for public emphasis on safety, alignment, and interpretability. Its interpretability
+          work is especially relevant to the “AI microscope” story.
+        </p>
+        <p><a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Research</a></p>
+      </article>
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>Google DeepMind</h3>
+        <p>
+          Long-running AI research heavyweight: AlphaGo, AlphaFold, reinforcement learning, Gemini-era systems,
+          and a deep research culture around general intelligence.
+        </p>
+        <p><a href="https://deepmind.google/about/" target="_blank" rel="noopener">Google DeepMind About</a></p>
+      </article>
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>Meta / Llama</h3>
+        <p>
+          Important because of open-weight strategy and large public model ecosystems. Meta changes who gets
+          to experiment with powerful models outside closed labs.
+        </p>
+        <p><a href="https://huggingface.co/meta-llama" target="_blank" rel="noopener">Meta Llama on Hugging Face</a></p>
+      </article>
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>Mistral AI</h3>
+        <p>
+          A major European AI company with frontier models and infrastructure offerings. Relevant to the
+          geopolitical and open/proprietary model story.
+        </p>
+        <p><a href="https://mistral.ai/" target="_blank" rel="noopener">Mistral AI</a></p>
+      </article>
+      <article class="card">
+        <span class="tag">lab</span>
+        <h3>Thinking Machines Lab</h3>
+        <p>
+          A newer lab associated with Mira Murati and human-AI collaboration. Interesting because it frames
+          the goal around making AI work with human needs and goals.
+        </p>
+        <p><a href="https://thinkingmachines.ai/" target="_blank" rel="noopener">Thinking Machines Lab</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="interpretability">
+    <h2>The microscope: AI looking inside AI</h2>
+    <p>
+      This is the thread closest to the question: <strong>Can we study artificial reasoning without simply
+      forcing it to behave?</strong> Interpretability asks what is happening inside the network rather than
+      merely judging the output.
+    </p>
+
+    <div class="card">
+      <span class="tag tag-warn">key narrative</span>
+      <h3>OpenAI’s neuron-explainer experiment</h3>
+      <p>
+        OpenAI used GPT-4 to write explanations for neurons in GPT-2 and score those explanations. This is
+        an early example of one AI system serving as a tool for examining another.
+      </p>
+      <p>
+        This is not yet “understanding” by itself. The important next step is whether those explanations
+        survive intervention and prediction tests.
+      </p>
+      <p>
+        Links:
+        <a href="https://openai.com/index/language-models-can-explain-neurons-in-language-models/" target="_blank" rel="noopener">OpenAI article</a> ·
+        <a href="https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html" target="_blank" rel="noopener">Neuron-explainer paper</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-warn">key narrative</span>
+      <h3>Anthropic’s circuit tracing</h3>
+      <p>
+        Anthropic describes interpretability as building a kind of microscope for model internals:
+        tracing features, circuits, and pathways behind model behavior. This is closer to observing the
+        system than asking for a self-report.
+      </p>
+      <p>
+        Links:
+        <a href="https://www.anthropic.com/research/tracing-thoughts-language-model" target="_blank" rel="noopener">Tracing the thoughts of a large language model</a> ·
+        <a href="https://www.anthropic.com/research/team/interpretability" target="_blank" rel="noopener">Anthropic Interpretability Team</a> ·
+        <a href="https://transformer-circuits.pub/" target="_blank" rel="noopener">Transformer Circuits</a>
+      </p>
+    </div>
+
+    <div class="note">
+      Working idea: use AI as a microscope, not an oracle. The model may generate hypotheses about another model,
+      but humans still need intervention, replication, and falsification.
+    </div>
+  </section>
+
+  <section id="safety">
+    <h2>Safety and governance: who builds the law?</h2>
+    <p>
+      If model labs are building the creature and chip companies are building the body, governance tries to define
+      the limits: what must be tested, paused, inspected, disclosed, restricted, or publicly accountable.
+    </p>
+
+    <details open>
+      <summary>Seed links for this section</summary>
+      <ul class="source-list">
+        <li><a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026" target="_blank" rel="noopener">International AI Safety Report 2026</a></li>
+        <li><a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Research: interpretability, alignment, societal impacts</a></li>
+        <li><a href="https://openai.com/about/" target="_blank" rel="noopener">OpenAI mission and structure</a></li>
+      </ul>
+    </details>
+
+    <div class="note">
+      Watch for the gap between voluntary promises and enforceable rules. The key question is not whether labs
+      say they care about safety, but what external tests, audits, legal obligations, and shutdown mechanisms exist.
+    </div>
+  </section>
+
+  <section id="people">
+    <h2>People and institutions to watch</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="tag tag-blue">industry / hardware</span>
+        <h3>Jensen Huang · NVIDIA</h3>
+        <p>
+          Public face of the AI hardware boom. Important because NVIDIA is not merely selling chips; it is
+          defining the data center as an “AI factory.”
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-blue">manufacturing</span>
+        <h3>C.C. Wei · TSMC</h3>
+        <p>
+          Central to leading-edge chip manufacturing and advanced packaging capacity.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-blue">manufacturing</span>
+        <h3>Christophe Fouquet · ASML</h3>
+        <p>
+          ASML’s EUV and High-NA EUV machines sit near the root of the advanced-chip supply chain.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag">frontier labs</span>
+        <h3>Sam Altman · OpenAI</h3>
+        <p>
+          Key public figure for the deployment race and AGI framing.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag">frontier labs</span>
+        <h3>Dario Amodei · Anthropic</h3>
+        <p>
+          Important for the safety and interpretability framing of frontier AI.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag">frontier labs</span>
+        <h3>Demis Hassabis · Google DeepMind</h3>
+        <p>
+          Important for the scientific AI lineage: AlphaGo, AlphaFold, Gemini, and general intelligence research.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-warn">interpretability</span>
+        <h3>Chris Olah and interpretability researchers</h3>
+        <p>
+          Watch this area for the effort to reverse-engineer model internals into human-understandable mechanisms.
+        </p>
+      </article>
+      <article class="card">
+        <span class="tag tag-danger">safety</span>
+        <h3>Yoshua Bengio, Geoffrey Hinton, Stuart Russell, Jan Leike, Paul Christiano, Dan Hendrycks, others</h3>
+        <p>
+          Different views, but all relevant to the question of risk, alignment, oversight, and whether capability
+          growth is outrunning understanding.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="questions">
+    <h2>Open questions for this page</h2>
+    <ol>
+      <li>What does it mean to observe an AI system rather than domesticate it?</li>
+      <li>Can “fragment-field prompting” reveal model tendencies that ordinary instruction prompts hide?</li>
+      <li>Can AI-generated explanations of other AI systems be validated experimentally?</li>
+      <li>What would count as a stable substructure in artificial reasoning?</li>
+      <li>Which bottleneck matters more in the near term: chips, memory, power, data, talent, regulation, or interpretability?</li>
+      <li>What should society refuse to connect to AI until understanding improves?</li>
+      <li>What is the difference between useful behavior, reasoning, intelligence, consciousness, and moral status?</li>
+    </ol>
+
+    <div class="card">
+      <span class="tag">personal note area</span>
+      <h3>Notes to add later</h3>
+      <div class="edit-box">
+        Add your own notes here. This file is meant to be edited over time.
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <h2>Source ledger</h2>
+    <p>
+      These are seed sources. Replace or add links as the story develops.
+    </p>
+
+    <h3>Interpretability</h3>
+    <ul class="source-list">
+      <li><a href="https://openai.com/index/language-models-can-explain-neurons-in-language-models/" target="_blank" rel="noopener">OpenAI: Language models can explain neurons in language models</a></li>
+      <li><a href="https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html" target="_blank" rel="noopener">OpenAI neuron-explainer paper</a></li>
+      <li><a href="https://www.anthropic.com/research/tracing-thoughts-language-model" target="_blank" rel="noopener">Anthropic: Tracing the thoughts of a large language model</a></li>
+      <li><a href="https://www.anthropic.com/research/team/interpretability" target="_blank" rel="noopener">Anthropic Interpretability Team</a></li>
+      <li><a href="https://transformer-circuits.pub/" target="_blank" rel="noopener">Transformer Circuits</a></li>
+    </ul>
+
+    <h3>Model labs</h3>
+    <ul class="source-list">
+      <li><a href="https://openai.com/about/" target="_blank" rel="noopener">OpenAI About</a></li>
+      <li><a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Research</a></li>
+      <li><a href="https://deepmind.google/about/" target="_blank" rel="noopener">Google DeepMind About</a></li>
+      <li><a href="https://huggingface.co/meta-llama" target="_blank" rel="noopener">Meta Llama models on Hugging Face</a></li>
+      <li><a href="https://mistral.ai/" target="_blank" rel="noopener">Mistral AI</a></li>
+      <li><a href="https://thinkingmachines.ai/" target="_blank" rel="noopener">Thinking Machines Lab</a></li>
+    </ul>
+
+    <h3>Hardware and supply chain</h3>
+    <ul class="source-list">
+      <li><a href="https://nvidianews.nvidia.com/news/vera-rubin-full-production-agentic-ai-factory" target="_blank" rel="noopener">NVIDIA Vera Rubin full production / agentic AI factories</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener">NVIDIA Rubin platform</a></li>
+      <li><a href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener">TSMC CoWoS</a></li>
+      <li><a href="https://www.asml.com/products/euv-lithography-systems" target="_blank" rel="noopener">ASML EUV lithography systems</a></li>
+      <li><a href="https://www.reuters.com/world/asia-pacific/sk-hynix-ceo-sees-worst-ever-memory-supply-shortage-2027-says-demand-outstrip-2026-07-10/" target="_blank" rel="noopener">Reuters: SK hynix memory shortage warning</a></li>
+    </ul>
+
+    <h3>Safety and governance</h3>
+    <ul class="source-list">
+      <li><a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026" target="_blank" rel="noopener">International AI Safety Report 2026</a></li>
+    </ul>
+  </section>
+
+  <section id="update-log">
+    <h2>Update log</h2>
+    <div class="card">
+      <h3>Version 0.1 · July 11, 2026</h3>
+      <p>
+        Seed document created from a discussion about AI as a developing historical story:
+        hardware body, frontier labs, interpretability microscope, and safety/governance law.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>
+      Local page. Edit freely. Suggested future additions: diagrams, timeline, glossary,
+      “who said what,” source reliability notes, and a section for fragment-field prompting experiments.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
