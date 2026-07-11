@@ -7,6 +7,55 @@
   <title>Meadows Housekeeping Documentation</title>
 
   <style>
+
+  /* ==========================================
+   Navigation Header
+========================================== */
+
+.site-header {
+    background: #213c37;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 32px;
+
+    position: sticky;
+    top: 0;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    z-index: 1000;
+}
+
+.site-title a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.site-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.site-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+    padding: 8px 14px;
+    border-radius: 6px;
+
+    transition: background .25s;
+}
+
+.site-nav a:hover {
+    background: rgba(255,255,255,.15);
+}
+    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -63,6 +112,24 @@
 
 <body>
 
+  <!-- =========================================
+     Meadows Housekeeping Documentation
+     Navigation Header Template
+========================================= -->
+
+<header class="site-header">
+    <div class="site-title">
+        <a href="index.html">Meadows Housekeeping Documentation</a>
+    </div>
+
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ai_story_living_lesson.html">Page 2</a>
+        <a href="#">Page 3</a>
+        <a href="#">Page 4</a>
+    </nav>
+</header>
+  
   <header>
     <h1>Meadows Housekeeping</h1>
     <p>System documentation, lessons, reports, and project history</p>
