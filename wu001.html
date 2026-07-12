@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meadows Housekeeping Work Queue Implementation Plan</title>
+  <style>
+    :root {
+      --green-900: #183a34;
+      --green-800: #214b43;
+      --green-700: #2f6559;
+      --green-100: #eaf3f0;
+      --gold: #d8b66b;
+      --blue-100: #eef5fb;
+      --blue-700: #2d5f87;
+      --red-100: #faeeee;
+      --red-700: #8a3d3d;
+      --gray-950: #1d2523;
+      --gray-800: #36413e;
+      --gray-600: #64716d;
+      --gray-300: #d8dfdc;
+      --gray-100: #f5f7f6;
+      --white: #ffffff;
+      --shadow: 0 8px 24px rgba(24, 58, 52, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--gray-950);
+      background: var(--gray-100);
+      line-height: 1.6;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--green-900), var(--green-700));
+      color: var(--white);
+      padding: 42px 24px 34px;
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .header-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #d9ebe6;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 18px 0 0;
+      font-size: 1.08rem;
+      color: #edf7f4;
+    }
+
+    .page-grid {
+      width: min(1120px, calc(100% - 32px));
+      margin: 28px auto 56px;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    nav {
+      position: sticky;
+      top: 18px;
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    nav h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--green-900);
+    }
+
+    nav a {
+      display: block;
+      padding: 7px 9px;
+      margin: 2px 0;
+      color: var(--gray-800);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.94rem;
+    }
+
+    nav a:hover {
+      background: var(--green-100);
+      color: var(--green-900);
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .overview,
+    .stage,
+    .final-test,
+    .principles {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--green-900);
+      line-height: 1.2;
+    }
+
+    h3 {
+      color: var(--green-800);
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .flow {
+      background: var(--green-100);
+      border-left: 5px solid var(--green-700);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      font-family: "Courier New", Courier, monospace;
+      white-space: pre-line;
+      color: var(--green-900);
+      font-weight: 700;
+    }
+
+    .stage-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-900);
+      color: var(--white);
+      font-weight: 700;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .stage-title {
+      display: inline;
+      vertical-align: middle;
+    }
+
+    .test-box {
+      margin-top: 22px;
+      background: var(--blue-100);
+      border-left: 5px solid var(--blue-700);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .test-box h3 {
+      color: var(--blue-700);
+      margin-top: 0;
+    }
+
+    .warning {
+      background: var(--red-100);
+      border-left: 5px solid var(--red-700);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 18px 0;
+    }
+
+    code {
+      background: #eef1f0;
+      border: 1px solid #d7ddda;
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 0.92em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #17231f;
+      color: #eef8f5;
+      border-radius: 12px;
+      padding: 18px;
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--gray-300);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--green-100);
+      color: var(--green-900);
+    }
+
+    ul,
+    ol {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .checklist li::before {
+      content: "□";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--green-700);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .rule {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--green-900);
+      background: var(--green-100);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--gray-600);
+      padding: 0 20px 40px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .page-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        position: static;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .site-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .page-grid {
+        width: 100%;
+        display: block;
+        margin: 0;
+      }
+
+      .overview,
+      .stage,
+      .final-test,
+      .principles {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Meadows Housekeeping Documentation</p>
+      <h1>Work Queue and Recommendation Queue Implementation Plan</h1>
+      <p class="subtitle">
+        A staged development and testing plan for moving from the current intake log viewer
+        to a complete operational workflow with sorting, queue views, status changes, notes,
+        completion records, and completion email notifications.
+      </p>
+    </div>
+  </header>
+
+  <div class="page-grid">
+    <nav aria-label="Document navigation">
+      <h2>Contents</h2>
+      <a href="#target">Target workflow</a>
+      <a href="#stage-1">1. Sheet structure</a>
+      <a href="#stage-2">2. Intake buttons</a>
+      <a href="#stage-3">3. Queue writers</a>
+      <a href="#stage-4">4. Persistent sorting state</a>
+      <a href="#stage-5">5. Work Queue viewer</a>
+      <a href="#stage-6">6. Recommendations viewer</a>
+      <a href="#stage-7">7. Status changes</a>
+      <a href="#stage-8">8. JSON notes</a>
+      <a href="#stage-9">9. Completed filtering</a>
+      <a href="#stage-10">10. Completion email</a>
+      <a href="#stage-11">11. Completed view</a>
+      <a href="#stage-12">12. Archiving</a>
+      <a href="#final-test">Final system test</a>
+      <a href="#order">Implementation order</a>
+    </nav>
+
+    <main>
+      <section class="overview" id="target">
+        <h2>Target workflow</h2>
+        <div class="flow">Supervisor submits form
+→ Source record is created
+→ Source record is normalized
+→ Intake viewer displays the record
+→ User sorts it into Work Queue or Recommendations Queue
+→ A working record is created using the source ID
+→ Queue viewer combines the source record with the working record
+→ Status and notes are updated on the working record
+→ Completed work leaves the active queue
+→ Completion email is sent
+→ Record remains available in completed history and may later be archived</div>
+
+        <p>
+          The system should be built in small, testable stages. Each stage must produce one
+          visible and reliable result before the next function is added.
+        </p>
+      </section>
+
+      <section class="stage" id="stage-1">
+        <h2><span class="stage-number">1</span><span class="stage-title">Define the sheet structure</span></h2>
+        <p>The current spreadsheet already contains:</p>
+        <pre>Form Responses
+Normalized</pre>
+        <p>Add two new tabs:</p>
+        <pre>Work Queue
+Recommendations Queue</pre>
+
+        <h3>Work Queue columns</h3>
+        <table>
+          <thead>
+            <tr><th>Column</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Source ID</td><td>Links the working record to the normalized source record.</td></tr>
+            <tr><td>Status</td><td>Pending, In Progress, Completed, and later Archived.</td></tr>
+            <tr><td>Sorted At</td><td>Timestamp showing when the item entered the queue.</td></tr>
+            <tr><td>Started At</td><td>Timestamp showing when work began.</td></tr>
+            <tr><td>Completed At</td><td>Timestamp showing when work finished.</td></tr>
+            <tr><td>Updated At</td><td>Most recent change to the working record.</td></tr>
+            <tr><td>Notes JSON</td><td>A JSON array containing notes and history entries.</td></tr>
+            <tr><td>Completion Email Sent</td><td>Prevents duplicate completion emails.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Recommendations Queue columns</h3>
+        <table>
+          <thead>
+            <tr><th>Column</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Source ID</td><td>Links the recommendation to the original source record.</td></tr>
+            <tr><td>Status</td><td>Unreviewed, Reviewed, Converted, or Archived.</td></tr>
+            <tr><td>Sorted At</td><td>Timestamp showing when it entered the queue.</td></tr>
+            <tr><td>Updated At</td><td>Most recent change.</td></tr>
+            <tr><td>Notes JSON</td><td>JSON history for comments or review notes.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="test-box">
+          <h3>Stage 1 tests</h3>
+          <ul class="checklist">
+            <li>Create one manual test row in each queue.</li>
+            <li>Confirm the headers are spelled consistently.</li>
+            <li>Confirm Source ID values remain text.</li>
+            <li>Confirm timestamps display correctly.</li>
+            <li>Confirm <code>[]</code> remains valid text in Notes JSON.</li>
+            <li>Confirm Apps Script can find each tab by name.</li>
+            <li>Delete the manual test rows after verification.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-2">
+        <h2><span class="stage-number">2</span><span class="stage-title">Add sorting controls to the intake viewer</span></h2>
+        <p>Add two buttons to every unsorted source-record card:</p>
+        <pre>[Send to Work Queue]
+[Send to Recommendations Queue]</pre>
+        <p>Each button must pass the card's unique source ID:</p>
+        <pre>sendToWorkQueue(sourceId);
+sendToRecommendationsQueue(sourceId);</pre>
+        <p>
+          At first, the buttons can act as placeholders and only display the selected source ID
+          in the browser console or on the card.
+        </p>
+
+        <div class="test-box">
+          <h3>Stage 2 tests</h3>
+          <ul class="checklist">
+            <li>Every card displays both buttons.</li>
+            <li>Each button returns the correct Source ID.</li>
+            <li>Clicking one card does not affect another card.</li>
+            <li>The buttons work on both laptop and mobile views.</li>
+            <li>Expected ID characters such as numbers and hyphens pass correctly.</li>
+            <li>No sheet changes occur yet.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-3">
+        <h2><span class="stage-number">3</span><span class="stage-title">Create queue-writing functions</span></h2>
+        <p>
+          Apps Script functions will accept a Source ID and append a new working record to the
+          correct queue sheet.
+        </p>
+
+        <h3>New Work Queue record</h3>
+        <pre>{
+  "sourceId": "REQ-0042",
+  "status": "Pending",
+  "sortedAt": "current timestamp",
+  "startedAt": "",
+  "completedAt": "",
+  "updatedAt": "current timestamp",
+  "notes": [],
+  "completionEmailSent": false
+}</pre>
+
+        <h3>New Recommendations Queue record</h3>
+        <pre>{
+  "sourceId": "REQ-0043",
+  "status": "Unreviewed",
+  "sortedAt": "current timestamp",
+  "updatedAt": "current timestamp",
+  "notes": []
+}</pre>
+
+        <p>
+          Before appending, the function must check both queue tabs. The same Source ID should
+          not be allowed to enter both queues accidentally.
+        </p>
+
+        <div class="test-box">
+          <h3>Stage 3 tests</h3>
+          <ol>
+            <li>Send one source record to Work Queue.</li>
+            <li>Send one source record to Recommendations Queue.</li>
+            <li>Confirm the correct row appears in each sheet.</li>
+            <li>Confirm the source record itself is unchanged.</li>
+            <li>Click the same button twice and confirm no duplicate is created.</li>
+            <li>Try placing the same Source ID in the other queue and confirm rejection.</li>
+            <li>Refresh the viewer and confirm queue records remain.</li>
+          </ol>
+          <p>A successful function can return:</p>
+          <pre>{
+  "success": true,
+  "queue": "work",
+  "sourceId": "REQ-0042"
+}</pre>
+          <p>A duplicate attempt can return:</p>
+          <pre>{
+  "success": false,
+  "reason": "already-sorted"
+}</pre>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-4">
+        <h2><span class="stage-number">4</span><span class="stage-title">Make sorting state persistent in the intake viewer</span></h2>
+        <p>The intake viewer must load:</p>
+        <ul>
+          <li>normalized source records;</li>
+          <li>Work Queue Source IDs;</li>
+          <li>Recommendations Queue Source IDs.</li>
+        </ul>
+        <p>It then combines those lists before rendering.</p>
+
+        <p>An unsorted card shows:</p>
+        <pre>[Send to Work Queue]
+[Send to Recommendations Queue]</pre>
+
+        <p>A sorted card shows:</p>
+        <pre>Sorted to Work Queue</pre>
+        <p>or:</p>
+        <pre>Sorted to Recommendations</pre>
+
+        <div class="test-box">
+          <h3>Stage 4 tests</h3>
+          <ul class="checklist">
+            <li>Sorted cards remain marked after refresh.</li>
+            <li>Sorting buttons do not reappear on handled records.</li>
+            <li>Unsorted cards still show both buttons.</li>
+            <li>Queue labels are correct.</li>
+            <li>Duplicate sorting is blocked even from two open browser tabs.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-5">
+        <h2><span class="stage-number">5</span><span class="stage-title">Build the Work Queue viewer</span></h2>
+        <p>
+          The Work Queue viewer begins with working records from the Work Queue sheet. For each
+          Source ID, it retrieves the original normalized source record and combines the two.
+        </p>
+
+        <pre>Mop Sagebrush
+
+Submitted: July 12, 8:15 AM
+Sorted: July 12, 8:20 AM
+Status: Pending
+
+Notes:
+No notes yet.
+
+[Start Work] [Add Note] [Complete]</pre>
+
+        <p>The active Work Queue should normally show only:</p>
+        <pre>Pending
+In Progress</pre>
+
+        <div class="test-box">
+          <h3>Stage 5 tests</h3>
+          <ul class="checklist">
+            <li>Each Work Queue row produces exactly one card.</li>
+            <li>The correct original request text is retrieved.</li>
+            <li>Source IDs match the correct source records.</li>
+            <li>No recommendation appears in the Work Queue.</li>
+            <li>A missing source record produces a warning card, not a page failure.</li>
+            <li>An empty queue displays “No active tasks.”</li>
+            <li>The viewer remains correct after refresh.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-6">
+        <h2><span class="stage-number">6</span><span class="stage-title">Build the Recommendations Queue viewer</span></h2>
+        <p>Each recommendation card should combine:</p>
+        <ul>
+          <li>the original recommendation text;</li>
+          <li>the current recommendation status;</li>
+          <li>notes;</li>
+          <li>the sorting timestamp.</li>
+        </ul>
+
+        <p>The first version may use:</p>
+        <pre>Unreviewed
+Reviewed
+Archived</pre>
+
+        <p>Later statuses can include:</p>
+        <pre>Converted to Work
+Declined
+Accepted</pre>
+
+        <div class="test-box">
+          <h3>Stage 6 tests</h3>
+          <ul class="checklist">
+            <li>Only recommendations appear in this viewer.</li>
+            <li>Each card displays the correct original content.</li>
+            <li>Recommendations never trigger work-completion email behavior.</li>
+            <li>Notes can be added without changing the source record.</li>
+            <li>Empty and malformed records are handled safely.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-7">
+        <h2><span class="stage-number">7</span><span class="stage-title">Add task status changes</span></h2>
+        <p>Initial task statuses:</p>
+        <pre>Pending
+In Progress
+Completed</pre>
+
+        <p>Allowed transitions:</p>
+        <pre>Pending → In Progress
+Pending → Completed
+In Progress → Completed</pre>
+
+        <p>Initially disallowed:</p>
+        <pre>Completed → In Progress
+Completed → Pending</pre>
+
+        <p>When <strong>Start Work</strong> is clicked:</p>
+        <ul>
+          <li>set Status to <code>In Progress</code>;</li>
+          <li>set Started At only if it is blank;</li>
+          <li>update Updated At.</li>
+        </ul>
+
+        <p>When <strong>Complete</strong> is clicked:</p>
+        <ul>
+          <li>set Status to <code>Completed</code>;</li>
+          <li>set Completed At only if it is blank;</li>
+          <li>update Updated At.</li>
+        </ul>
+
+        <div class="warning">
+          If a task is completed directly from Pending, the first version can set
+          <code>Started At = Completed At</code>. This avoids missing duration data for
+          immediate tasks.
+        </div>
+
+        <div class="test-box">
+          <h3>Stage 7 tests</h3>
+          <ul class="checklist">
+            <li>Pending changes to In Progress.</li>
+            <li>In Progress changes to Completed.</li>
+            <li>Pending can change directly to Completed.</li>
+            <li>Clicking Start twice does not replace Started At.</li>
+            <li>Clicking Complete twice does not replace Completed At.</li>
+            <li>Invalid backward transitions are rejected.</li>
+            <li>Original source data remains unchanged.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-8">
+        <h2><span class="stage-number">8</span><span class="stage-title">Add task notes using JSON</span></h2>
+        <p>Initial value:</p>
+        <pre>[]</pre>
+
+        <p>After one note:</p>
+        <pre>[
+  {
+    "createdAt": "2026-07-12T09:30:00",
+    "text": "Waiting for the floor machine."
+  }
+]</pre>
+
+        <p>After another:</p>
+        <pre>[
+  {
+    "createdAt": "2026-07-12T09:30:00",
+    "text": "Waiting for the floor machine."
+  },
+  {
+    "createdAt": "2026-07-12T10:05:00",
+    "text": "Floor machine is available."
+  }
+]</pre>
+
+        <p>The Add Note function should:</p>
+        <ol>
+          <li>read the existing Notes JSON cell;</li>
+          <li>parse it;</li>
+          <li>verify that it is an array;</li>
+          <li>append the new note;</li>
+          <li>convert the array back to JSON text;</li>
+          <li>write it back to the sheet;</li>
+          <li>update Updated At.</li>
+        </ol>
+
+        <div class="test-box">
+          <h3>Stage 8 tests</h3>
+          <ul class="checklist">
+            <li>Add the first note to an empty array.</li>
+            <li>Add several notes and preserve earlier entries.</li>
+            <li>Test commas, quotation marks, apostrophes, and line breaks.</li>
+            <li>Reject blank notes.</li>
+            <li>Handle malformed JSON without losing existing data.</li>
+            <li>Refresh and confirm notes remain in chronological order.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-9">
+        <h2><span class="stage-number">9</span><span class="stage-title">Remove completed work from the active queue</span></h2>
+        <p>
+          Completed records should not be deleted from the Work Queue sheet. The active viewer
+          should simply filter them out.
+        </p>
+
+        <pre>Active viewer:
+Status = Pending or In Progress
+
+Completed viewer:
+Status = Completed</pre>
+
+        <div class="test-box">
+          <h3>Stage 9 tests</h3>
+          <ul class="checklist">
+            <li>A completed task disappears from the active Work Queue.</li>
+            <li>The same task appears in the Completed view.</li>
+            <li>The source record still exists.</li>
+            <li>The working record still exists.</li>
+            <li>Timestamps and notes remain intact.</li>
+            <li>Refreshing does not return it to the active queue.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-10">
+        <h2><span class="stage-number">10</span><span class="stage-title">Send the completion email</span></h2>
+        <p>The completion email should be sent only after the working record is successfully completed.</p>
+
+        <div class="flow">Verify current status
+→ Write Completed status
+→ Write Completed At
+→ Save working record
+→ Send email
+→ Mark Completion Email Sent = true</div>
+
+        <p>The recipient should come from the original or normalized source record.</p>
+
+        <p>The completion email may include:</p>
+        <ul>
+          <li>the original request;</li>
+          <li>the Source ID;</li>
+          <li>the completion timestamp;</li>
+          <li>the final note, when appropriate;</li>
+          <li>a viewer link, when available.</li>
+        </ul>
+
+        <div class="warning">
+          The script must check <code>Completion Email Sent = false</code> before sending.
+          If email delivery fails, the task may remain Completed while the email flag remains
+          false so the email can be retried safely.
+        </div>
+
+        <div class="test-box">
+          <h3>Stage 10 tests</h3>
+          <ul class="checklist">
+            <li>Completing a task sends exactly one email.</li>
+            <li>Refreshing sends no second email.</li>
+            <li>Pressing Complete again sends no second email.</li>
+            <li>The correct recipient receives the email.</li>
+            <li>The message contains the correct Source ID and request.</li>
+            <li>A missing or invalid email address does not break the queue.</li>
+            <li>A failed send leaves the email flag false.</li>
+            <li>A retry function can send the email later.</li>
+            <li>Recommendations never trigger completion emails.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-11">
+        <h2><span class="stage-number">11</span><span class="stage-title">Add a completed-work view</span></h2>
+        <p>The Completed view should show:</p>
+        <ul>
+          <li>the original request;</li>
+          <li>Started At;</li>
+          <li>Completed At;</li>
+          <li>duration, when available;</li>
+          <li>notes;</li>
+          <li>whether the completion email was sent.</li>
+        </ul>
+
+        <p>Duration can be calculated later:</p>
+        <pre>Duration = Completed At − Started At</pre>
+
+        <div class="test-box">
+          <h3>Stage 11 tests</h3>
+          <ul class="checklist">
+            <li>Every completed task appears once.</li>
+            <li>Active tasks do not appear.</li>
+            <li>Missing timestamps do not break duration display.</li>
+            <li>Notes remain readable.</li>
+            <li>Email-delivery state is visible.</li>
+            <li>Records remain after refresh.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage" id="stage-12">
+        <h2><span class="stage-number">12</span><span class="stage-title">Add archiving later</span></h2>
+        <p>
+          Archiving should be added only after the active lifecycle is reliable. The simplest
+          first version is:
+        </p>
+
+        <pre>Status = Archived
+Archived At = timestamp</pre>
+
+        <p>
+          The original source record remains unchanged. Archived records load only when the
+          Archive view is requested.
+        </p>
+
+        <div class="test-box">
+          <h3>Stage 12 tests</h3>
+          <ul class="checklist">
+            <li>Archived tasks disappear from the Completed view.</li>
+            <li>Archived tasks appear in the Archive view.</li>
+            <li>They still retrieve their original source record.</li>
+            <li>Notes and timestamps remain intact.</li>
+            <li>Archiving does not delete anything.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="final-test" id="final-test">
+        <h2>Final end-to-end system test</h2>
+        <p>Use a test request such as:</p>
+        <pre>Mop Sagebrush hallway</pre>
+
+        <ol>
+          <li>Submit the Google Form.</li>
+          <li>Confirm the raw response is written.</li>
+          <li>Confirm the normalized source record is created.</li>
+          <li>Confirm the intake viewer displays the card.</li>
+          <li>Sort it into Work Queue.</li>
+          <li>Confirm one working record is created.</li>
+          <li>Confirm the intake card shows that it has been sorted.</li>
+          <li>Open the Work Queue viewer.</li>
+          <li>Confirm the original request and Pending status appear.</li>
+          <li>Start the task.</li>
+          <li>Confirm Started At is written.</li>
+          <li>Add two notes.</li>
+          <li>Confirm both notes remain.</li>
+          <li>Complete the task.</li>
+          <li>Confirm Completed At is written.</li>
+          <li>Confirm the item leaves the active queue.</li>
+          <li>Confirm it appears in Completed.</li>
+          <li>Confirm exactly one completion email is sent.</li>
+          <li>Refresh every viewer.</li>
+          <li>Confirm all state remains correct.</li>
+          <li>Confirm the original source record was never changed.</li>
+        </ol>
+      </section>
+
+      <section class="principles" id="order">
+        <h2>Recommended implementation order</h2>
+        <ol>
+          <li>Create the queue tabs.</li>
+          <li>Add intake-viewer buttons.</li>
+          <li>Write sorting functions.</li>
+          <li>Make sorting state persistent in the intake viewer.</li>
+          <li>Build the Work Queue viewer.</li>
+          <li>Build the Recommendations viewer.</li>
+          <li>Add status changes.</li>
+          <li>Add JSON notes.</li>
+          <li>Add Completed filtering and view.</li>
+          <li>Add completion email.</li>
+          <li>Add Archive.</li>
+          <li>Add validation and backups.</li>
+        </ol>
+
+        <div class="rule">
+          Every stage must be proven with visible test records before the next stage is added.
+        </div>
+
+        <p>
+          This prevents the queue, status, notes, email, and archive systems from all being
+          debugged at the same time.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    Meadows Housekeeping — Work Queue Implementation Plan
+  </footer>
+</body>
+</html>
