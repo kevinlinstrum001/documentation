@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Ship That Remembers</title>
+
+  <style>
+    :root {
+      --bg: #f3f6f5;
+      --paper: #ffffff;
+      --ink: #20302c;
+      --muted: #61716c;
+      --accent: #213c37;
+      --accent-2: #315c53;
+      --accent-3: #4d7c70;
+      --accent-soft: #eaf1ef;
+      --gold: #d8a64c;
+      --blue: #3d73a8;
+      --border: #d6dfdc;
+      --shadow: 0 12px 30px rgba(25, 49, 43, 0.10);
+      --nav-height: 74px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 26px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-wrap {
+      width: min(1200px, calc(100% - 32px));
+      min-height: var(--nav-height);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .back-link {
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .back-link:hover,
+    .back-link:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: thin;
+    }
+
+    .nav-links a {
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.89rem;
+      padding: 8px 11px;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: rgba(255, 255, 255, 0.16);
+      outline: none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(20, 45, 39, 0.90), rgba(33, 60, 55, 0.96)),
+        radial-gradient(circle at top right, #618b80, #213c37 58%);
+      color: white;
+      padding: 88px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "⚓";
+      position: absolute;
+      right: 5vw;
+      bottom: -48px;
+      font-size: clamp(9rem, 20vw, 18rem);
+      opacity: 0.07;
+      transform: rotate(-10deg);
+    }
+
+    .hero-inner {
+      width: min(950px, 100%);
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.82;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 800px;
+      margin: 22px auto 0;
+      font-size: clamp(1.08rem, 2.3vw, 1.38rem);
+      line-height: 1.55;
+      opacity: 0.93;
+    }
+
+    .hero-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero-icons span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: 999px;
+      font-size: 0.88rem;
+    }
+
+    main {
+      width: min(980px, calc(100% - 34px));
+      margin: -38px auto 66px;
+      position: relative;
+      z-index: 10;
+    }
+
+    article {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    section {
+      padding: 56px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    section:first-child {
+      border-top: none;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: clamp(1.72rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 34px 0 14px;
+      color: var(--accent-2);
+      font-size: 1.32rem;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 0 1.2em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 1em 0 1.35em 1.3em;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.5em 0;
+    }
+
+    .lead {
+      font-size: 1.14rem;
+      color: #34443f;
+    }
+
+    .callout {
+      margin: 30px 0;
+      padding: 24px 26px;
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent-2);
+      border-radius: 0 12px 12px 0;
+      font-size: 1.12rem;
+    }
+
+    .ship-map {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 30px 0 8px;
+    }
+
+    .ship-card {
+      background: #fbfcfc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .ship-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .tool-inline {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      width: 1.9em;
+      height: 1.9em;
+      margin: 0 0.15em;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid #cbd8d4;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95em;
+      cursor: help;
+      outline: none;
+    }
+
+    .tool-inline:hover,
+    .tool-inline:focus {
+      background: #dceae6;
+      border-color: var(--accent-3);
+    }
+
+    .tool-inline::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 11px);
+      transform: translateX(-50%) translateY(5px);
+      width: max-content;
+      max-width: 270px;
+      padding: 10px 12px;
+      background: #172824;
+      color: white;
+      border-radius: 9px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      text-align: left;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 50;
+    }
+
+    .tool-inline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 4px);
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-top-color: #172824;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 51;
+    }
+
+    .tool-inline:hover::after,
+    .tool-inline:hover::before,
+    .tool-inline:focus::after,
+    .tool-inline:focus::before {
+      opacity: 1;
+    }
+
+    .tool-inline:hover::after,
+    .tool-inline:focus::after {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 28px 0 10px;
+    }
+
+    .tool-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+      border: 1px solid var(--border);
+      background: #fbfcfc;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .tool-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      border: 1px solid #cfdbd7;
+      font-size: 1.55rem;
+      cursor: help;
+      position: relative;
+      outline: none;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+    }
+
+    .tool-card p {
+      font-size: 0.96rem;
+      color: #40504b;
+      margin: 0;
+    }
+
+    .flow {
+      margin: 34px 0;
+      padding: 30px;
+      background: var(--accent);
+      color: white;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 1.16rem;
+      line-height: 1.95;
+    }
+
+    .evidence-chain {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .evidence-step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fbfcfc;
+    }
+
+    .evidence-step .step-num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+
+    .closing {
+      background: linear-gradient(180deg, #ffffff, #f2f6f4);
+    }
+
+    .closing-box {
+      margin-top: 28px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      text-align: center;
+      font-size: 1.18rem;
+      line-height: 1.85;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+    }
+
+    .back-to-top {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 880px) {
+      :root {
+        --nav-height: 116px;
+      }
+
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 12px 0 8px;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      section {
+        padding: 44px 30px;
+      }
+
+      .ship-map,
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 20px, 980px);
+      }
+
+      .hero {
+        padding: 72px 18px 62px;
+      }
+
+      section {
+        padding: 36px 22px;
+      }
+
+      .tool-inline::after {
+        max-width: 220px;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .back-to-top {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .hero {
+        padding: 42px 20px;
+      }
+
+      main {
+        width: 100%;
+        margin: 0;
+      }
+
+      article {
+        border: none;
+        box-shadow: none;
+      }
+
+      .tool-inline::after,
+      .tool-inline::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="back-link"
+         href="https://sites.google.com/view/meadows-hk/home/documentation">
+        ← Back to Meadows
+      </a>
+
+      <nav class="nav-links" aria-label="Lesson navigation">
+        <a href="#ship">The Ship</a>
+        <a href="#communication">Communication</a>
+        <a href="#provenance">Provenance</a>
+        <a href="#corroboration">Corroboration</a>
+        <a href="#tools">Our Tools</a>
+        <a href="#multipliers">Multipliers</a>
+        <a href="#narrative">Narrative</a>
+        <a href="#conclusion">Conclusion</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="lesson-title">
+    <div class="hero-inner">
+      <p class="eyebrow">Digital Operations Lesson</p>
+      <h1 id="lesson-title">The Ship That Remembers</h1>
+      <p class="subtitle">
+        How structured communication, digital tools, inspections, and connected records
+        turn everyday work into visible evidence, organizational memory, and a reliable
+        account of how the department operates.
+      </p>
+
+      <div class="hero-icons" aria-label="Lesson themes">
+        <span>⚓ Direction</span>
+        <span>📡 Communication</span>
+        <span>🧭 Observability</span>
+        <span>🗂️ Memory</span>
+        <span>🔗 Corroboration</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <article>
+      <section id="ship">
+        <h2>A Ship Cannot Be Guided by Shouts Alone</h2>
+
+        <p class="lead">
+          Imagine a supervisor as the captain of a ship and the department as the crew.
+        </p>
+
+        <p>
+          Every day, the ship receives signals. Someone reports a spill. A unit requests
+          supplies. An employee is absent. A room is completed. A supervisor notices a
+          recurring problem. These signals are the voices, bells, flags, and instrument
+          readings of the department.
+        </p>
+
+        <p>
+          If every signal is shouted once and then forgotten, the ship may still move,
+          but the captain has no reliable chart of the voyage. The crew completes work,
+          yet little remains to show what happened, why it happened, or whether the ship
+          is moving more safely and efficiently than before.
+        </p>
+
+        <p>
+          A well-functioning ship does more than communicate. It records position,
+          direction, speed, weather, fuel, repairs, and changing conditions. Each entry
+          becomes part of the log. The log gives the voyage provenance. The instruments
+          corroborate the crew’s reports. Repeated entries form evidence of the ship’s
+          actual performance.
+        </p>
+
+        <div class="ship-map">
+          <div class="ship-card">
+            <h3>The Captain</h3>
+            <p>
+              Sets direction, interprets conditions, compares results with standards,
+              and decides what adjustment is needed.
+            </p>
+          </div>
+
+          <div class="ship-card">
+            <h3>The Crew</h3>
+            <p>
+              Performs the many functions through which the department reaches its
+              goals.
+            </p>
+          </div>
+
+          <div class="ship-card">
+            <h3>The Instruments</h3>
+            <p>
+              Make conditions visible: staffing, requests, assignments, delays,
+              inspections, supplies, and completed work.
+            </p>
+          </div>
+
+          <div class="ship-card">
+            <h3>The Logbook</h3>
+            <p>
+              Preserves the voyage so the organization can remember, compare, explain,
+              and improve.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          The purpose of digital tools is not to replace the captain or the crew. It is
+          to give the ship instruments, a logbook, and a clearer view of its own voyage.
+        </div>
+      </section>
+
+      <section id="communication">
+        <h2>Communication That Leaves a Trail</h2>
+
+        <p>
+          A text message is useful, but it is often like writing in sand near the water.
+          It may solve the immediate problem, yet it is soon buried beneath newer
+          messages or separated from the work it caused.
+        </p>
+
+        <p>
+          Structured communication is more like placing the message into the ship’s log.
+          Important facts are preserved in known places: who sent it, when it arrived,
+          what location was involved, what was requested, who received it, and what
+          result followed.
+        </p>
+
+        <p>
+          An online request entered through
+          <span class="tool-inline" tabindex="0"
+                aria-label="Google Forms: captures structured requests"
+                data-tooltip="Google Forms captures requests in a consistent format so important facts are not lost.">📝</span>
+          Google Forms can preserve the source and details of a request. A mobile phone
+          <span class="tool-inline" tabindex="0"
+                aria-label="Mobile phone: allows work to be reported where it happens"
+                data-tooltip="Mobile phones let employees and supervisors report, review, and acknowledge work from the field.">📱</span>
+          allows the communication to occur where the work happens. A QR code
+          <span class="tool-inline" tabindex="0"
+                aria-label="QR codes: provide quick access to forms and records"
+                data-tooltip="QR codes turn a wall, cart, supply shelf, or printed card into a direct doorway to the correct digital tool.">◩</span>
+          can provide immediate access to the correct form without searching through
+          menus or old messages.
+        </p>
+
+        <p>
+          The communication still performs its immediate purpose, but it also leaves a
+          record that can be used later.
+        </p>
+
+        <div class="flow">
+          Message → Structured record → Action → Result → Evidence → Memory
+        </div>
+      </section>
+
+      <section id="provenance">
+        <h2>Provenance: Knowing Where the Record Came From</h2>
+
+        <p>
+          Provenance is the history carried by a piece of information. It answers simple
+          but important questions:
+        </p>
+
+        <ul>
+          <li>Who created the record?</li>
+          <li>When did it enter the system?</li>
+          <li>What original event or request produced it?</li>
+          <li>Who received or changed it?</li>
+          <li>What action followed?</li>
+        </ul>
+
+        <p>
+          A request collected by
+          <span class="tool-inline" tabindex="0"
+                aria-label="Google Forms: original source record"
+                data-tooltip="Google Forms preserves the original submission and its fields, creating a clear source record.">📝</span>
+          can flow into
+          <span class="tool-inline" tabindex="0"
+                aria-label="Google Sheets: stores and organizes submissions"
+                data-tooltip="Google Sheets becomes the working ledger where records can be sorted, filtered, compared, and counted.">📊</span>
+          Google Sheets, where it becomes part of an organized ledger. The date and time
+          show when the event entered the system. The fields show what was reported. A
+          status change can show what happened next.
+        </p>
+
+        <p>
+          Provenance prevents a record from becoming an orphan. It remains connected to
+          its source, sequence, and outcome. Instead of merely saying, “A problem
+          happened,” the department can show how the information entered the system and
+          how the department responded.
+        </p>
+      </section>
+
+      <section id="corroboration">
+        <h2>Corroboration: Different Windows on the Same Event</h2>
+
+        <p>
+          Corroboration occurs when several independent records support the same account.
+          It is like several crew members observing the same lighthouse from different
+          parts of the ship. Each person sees only part of the scene, but their reports
+          strengthen one another.
+        </p>
+
+        <p>
+          Suppose a housekeeping employee records that an urgent cleanup was completed
+          in another unit. The daily report becomes more meaningful when it agrees with:
+        </p>
+
+        <div class="evidence-chain">
+          <div class="evidence-step">
+            <div class="step-num">1</div>
+            <div>
+              <strong>The original request</strong> from
+              <span class="tool-inline" tabindex="0"
+                    aria-label="Google Forms: request source"
+                    data-tooltip="The form provides the original request, location, priority, and submission time.">📝</span>
+              showing why the work was needed.
+            </div>
+          </div>
+
+          <div class="evidence-step">
+            <div class="step-num">2</div>
+            <div>
+              <strong>The assignment or roster</strong> in
+              <span class="tool-inline" tabindex="0"
+                    aria-label="Google Calendar: shows staffing and assignments"
+                    data-tooltip="Google Calendar provides time and staffing context: who was scheduled, where, and when.">📅</span>
+              showing the employee’s original duties and available coverage.
+            </div>
+          </div>
+
+          <div class="evidence-step">
+            <div class="step-num">3</div>
+            <div>
+              <strong>The acknowledgment or message trail</strong> in
+              <span class="tool-inline" tabindex="0"
+                    aria-label="Gmail: preserves communication history"
+                    data-tooltip="Gmail preserves the message thread, sender, time, and follow-through when email is part of the workflow.">✉️</span>
+              showing that the assignment was received.
+            </div>
+          </div>
+
+          <div class="evidence-step">
+            <div class="step-num">4</div>
+            <div>
+              <strong>The supervisor’s inspection</strong> confirming that the reported
+              work produced the expected condition.
+            </div>
+          </div>
+
+          <div class="evidence-step">
+            <div class="step-num">5</div>
+            <div>
+              <strong>The stored record</strong> in
+              <span class="tool-inline" tabindex="0"
+                    aria-label="Google Sheets: accumulates evidence"
+                    data-tooltip="Google Sheets lets the separate observations accumulate into a comparable history.">📊</span>
+              connecting the request, employee response, completion, and result.
+            </div>
+          </div>
+        </div>
+
+        <p>
+          No single record must carry the entire burden of proof. Together, the records
+          form a fairer and more convincing account of the work.
+        </p>
+
+        <p>
+          Inspections are especially valuable because they connect reported activity
+          with an observed outcome. The daily record says what the employee did. The
+          inspection shows the condition produced. This supports quality, recognition,
+          coaching, training, and improvement.
+        </p>
+      </section>
+
+      <section id="tools">
+        <h2>Our Tools as the Ship’s Working Systems</h2>
+
+        <p>
+          The tools may appear one at a time, but together they form a connected
+          operating environment. Hover over or focus each icon for a brief explanation.
+        </p>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Google Forms receives structured information.">📝</div>
+            <div>
+              <h3>Google Forms</h3>
+              <p>
+                The intake desk. It converts requests, reports, inspections, and daily
+                records into consistent fields.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Google Sheets organizes records and supports comparison.">📊</div>
+            <div>
+              <h3>Google Sheets</h3>
+              <p>
+                The ledger and index. It sorts, filters, counts, compares, and preserves
+                accumulated records.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Apps Script automates routine movement and transformation of information.">⚙️</div>
+            <div>
+              <h3>Apps Script</h3>
+              <p>
+                The ship’s machinery. It moves information, creates records, sends
+                notifications, updates status, and reduces repetitive manual steps.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Google Calendar coordinates time, assignments, staffing, and events.">📅</div>
+            <div>
+              <h3>Google Calendar</h3>
+              <p>
+                The navigation chart. It makes schedules, staffing, deadlines, meetings,
+                and future conditions visible.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Gmail preserves formal communication and message history.">✉️</div>
+            <div>
+              <h3>Gmail</h3>
+              <p>
+                The signal archive. It preserves senders, recipients, timestamps,
+                attachments, and message threads.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Google Sites gives people one clear place to reach the system.">🌐</div>
+            <div>
+              <h3>Google Sites</h3>
+              <p>
+                The bridge and front office. It gathers calendars, forms, rosters,
+                documentation, and shortcuts into one usable location.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="GitHub preserves documentation, code, and version history.">🗃️</div>
+            <div>
+              <h3>GitHub</h3>
+              <p>
+                The technical archive. It preserves documents, code, versions, and the
+                history of how the system developed.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="Mobile phones bring the system to the place where the work happens.">📱</div>
+            <div>
+              <h3>Mobile Phones</h3>
+              <p>
+                The field terminal. They allow requests, acknowledgments, photographs,
+                inspections, and updates to occur at the point of work.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="icon" tabindex="0" title="QR codes provide immediate access to the correct tool.">◩</div>
+            <div>
+              <h3>QR Codes</h3>
+              <p>
+                The doorway. They connect physical spaces, carts, shelves, posters, and
+                forms directly to the digital system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="multipliers">
+        <h2>Automation as a Productivity Multiplier</h2>
+
+        <p>
+          These tools repeatedly appear because the same organizational needs appear
+          everywhere: receive information, organize it, route it, preserve it, and make
+          it visible.
+        </p>
+
+        <p>
+          A single automation in
+          <span class="tool-inline" tabindex="0"
+                aria-label="Apps Script: performs repeated work automatically"
+                data-tooltip="Apps Script can perform the same reliable action every time a form is submitted or a schedule changes.">⚙️</span>
+          may save only a few minutes each time it runs. But if it performs that action
+          every day, for every request, across many employees, its value multiplies.
+        </p>
+
+        <p>
+          A form may automatically create a row in
+          <span class="tool-inline" tabindex="0"
+                aria-label="Google Sheets: receives automated records"
+                data-tooltip="Google Sheets can receive each submission automatically and maintain a continuing record.">📊</span>,
+          trigger a notification through
+          <span class="tool-inline" tabindex="0"
+                aria-label="Gmail: sends notifications"
+                data-tooltip="Gmail can deliver alerts, confirmations, or summaries without requiring a separate manual message.">✉️</span>,
+          and make the result visible through
+          <span class="tool-inline" tabindex="0"
+                aria-label="Google Sites: presents tools and results"
+                data-tooltip="Google Sites gives the supervisor and employees one location for current information and resources.">🌐</span>.
+        </p>
+
+        <p>
+          The result is not merely faster paperwork. The system reduces searching,
+          repeated typing, forgotten messages, duplicated work, and dependence on
+          memory. It allows people to spend more time on judgment and useful work while
+          the tools handle predictable movement and organization.
+        </p>
+
+        <div class="callout">
+          Automation is not one machine replacing one person. It is one reliable process
+          quietly assisting many people, many times.
+        </div>
+      </section>
+
+      <section id="narrative">
+        <h2>Records Become Narrative-Builders</h2>
+
+        <p>
+          Every completed task is a small event. By itself, it may appear ordinary. When
+          connected with other records, it becomes part of a larger story about how the
+          department functions.
+        </p>
+
+        <p>
+          A month of requests can show demand. A series of inspections can show quality.
+          A roster compared with response times can show the effect of staffing. Supply
+          records compared with work activity can explain consumption. Documentation in
+          <span class="tool-inline" tabindex="0"
+                aria-label="GitHub: preserves the history of system development"
+                data-tooltip="GitHub records how procedures, pages, and tools change over time, creating a technical history.">🗃️</span>
+          can show how the system itself evolved.
+        </p>
+
+        <p>
+          This is cumulative evidence. The department no longer has to rely only on
+          memory, impressions, or the loudest complaint. It can assemble a grounded
+          account of what happened and why.
+        </p>
+
+        <p>
+          The tools therefore become narrative-builders. They help the department say:
+        </p>
+
+        <ul>
+          <li>This was the condition.</li>
+          <li>This request entered the system.</li>
+          <li>This employee responded.</li>
+          <li>This inspection confirmed the result.</li>
+          <li>This pattern continued across time.</li>
+          <li>This change improved the outcome.</li>
+        </ul>
+
+        <p>
+          The narrative is not invented after the fact. It is built gradually from
+          records created during the work itself.
+        </p>
+      </section>
+
+      <section id="conclusion" class="closing">
+        <h2>A System That Can Act, Remember, and Explain</h2>
+
+        <p>
+          In an unstructured environment, communication disappears after it is used.
+          Work is completed, but little evidence accumulates. The department may be busy
+          every day and still struggle to explain its workload, needs, progress, or
+          accomplishments.
+        </p>
+
+        <p>
+          In a structured digital environment, each useful communication can leave a
+          trace. The source is preserved. The work is connected to the request. The
+          result can be corroborated. The records accumulate. Automation carries routine
+          information from one tool to another. The supervisor gains observability, and
+          employees gain a clearer record of their contribution.
+        </p>
+
+        <div class="closing-box">
+          The ship receives signals.<br>
+          The tools organize them.<br>
+          The crew acts.<br>
+          The instruments show the result.<br>
+          The log preserves the voyage.<br>
+          And the accumulated record helps the department steer with greater confidence.
+        </div>
+
+        <div class="legend" aria-label="Tool icon legend">
+          <span>📝 Forms</span>
+          <span>📊 Sheets</span>
+          <span>⚙️ Apps Script</span>
+          <span>📅 Calendar</span>
+          <span>✉️ Gmail</span>
+          <span>🌐 Sites</span>
+          <span>🗃️ GitHub</span>
+          <span>📱 Mobile</span>
+          <span>◩ QR Codes</span>
+        </div>
+
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    Meadows Housekeeping Documentation
+  </footer>
+</body>
+</html>
