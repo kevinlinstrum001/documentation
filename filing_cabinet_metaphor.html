@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Digital Office Metaphor</title>
+
+  <style>
+    :root {
+      --bg: #f4f6f5;
+      --paper: #ffffff;
+      --ink: #20302c;
+      --muted: #64736f;
+      --accent: #213c37;
+      --accent-2: #315c53;
+      --accent-soft: #eaf1ef;
+      --gold: #d8a64c;
+      --border: #d7dfdc;
+      --shadow: 0 12px 30px rgba(24, 48, 42, 0.09);
+      --nav-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .nav-wrap {
+      width: min(1180px, calc(100% - 32px));
+      min-height: var(--nav-height);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-link {
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-link:hover,
+    .brand-link:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: thin;
+    }
+
+    .nav-links a {
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      padding: 8px 11px;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: rgba(255, 255, 255, 0.16);
+      outline: none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(29, 58, 51, 0.92), rgba(33, 60, 55, 0.94)),
+        radial-gradient(circle at top right, #5d8178, #213c37 58%);
+      color: white;
+      padding: 84px 24px 76px;
+    }
+
+    .hero-inner {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.8;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin: 22px auto 0;
+      font-size: clamp(1.08rem, 2.2vw, 1.35rem);
+      line-height: 1.55;
+      opacity: 0.92;
+    }
+
+    main {
+      width: min(940px, calc(100% - 34px));
+      margin: -36px auto 64px;
+      position: relative;
+      z-index: 10;
+    }
+
+    article {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    section {
+      padding: 54px 58px;
+      border-top: 1px solid var(--border);
+    }
+
+    section:first-child {
+      border-top: none;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 34px 0 14px;
+      color: var(--accent-2);
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 0 1.2em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 1em 0 1.35em 1.3em;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.5em 0;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: #34443f;
+    }
+
+    .callout {
+      margin: 30px 0;
+      padding: 24px 26px;
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent-2);
+      border-radius: 0 12px 12px 0;
+      font-size: 1.12rem;
+    }
+
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 28px 0 8px;
+    }
+
+    .function-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      background: #fbfcfc;
+    }
+
+    .function-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      margin: 28px 0;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 15px 16px;
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--accent);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) td {
+      background: #f8faf9;
+    }
+
+    .system-flow {
+      margin: 32px 0;
+      padding: 28px;
+      background: var(--accent);
+      color: white;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 1.14rem;
+      line-height: 1.9;
+    }
+
+    .closing {
+      background: linear-gradient(180deg, #ffffff, #f2f6f4);
+    }
+
+    .closing-box {
+      margin-top: 28px;
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+      font-size: 1.18rem;
+      line-height: 1.8;
+    }
+
+    .back-to-top {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --nav-height: 112px;
+      }
+
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 12px 0 8px;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      section {
+        padding: 42px 28px;
+      }
+
+      .function-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main {
+        width: min(100% - 20px, 940px);
+      }
+
+      .hero {
+        padding: 70px 18px 62px;
+      }
+
+      section {
+        padding: 34px 22px;
+      }
+
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .back-to-top {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .hero {
+        padding: 40px 20px;
+      }
+
+      main {
+        width: 100%;
+        margin: 0;
+      }
+
+      article {
+        border: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand-link"
+         href="https://sites.google.com/view/meadows-hk/home/documentation">
+        ← Back to Meadows
+      </a>
+
+      <nav class="nav-links" aria-label="Lesson navigation">
+        <a href="#office">Traditional Office</a>
+        <a href="#functions">Office Functions</a>
+        <a href="#digital">Modern Stand-Ins</a>
+        <a href="#observability">Observability</a>
+        <a href="#operations">Operations</a>
+        <a href="#memory">Organizational Memory</a>
+        <a href="#conclusion">Conclusion</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="lesson-title">
+    <div class="hero-inner">
+      <p class="eyebrow">Organizational Systems Lesson</p>
+      <h1 id="lesson-title">The Digital Office Metaphor</h1>
+      <p class="subtitle">
+        How modern tools can perform the familiar work of the telephone, desk,
+        filing cabinet, index system, operations board, and records closet.
+      </p>
+    </div>
+  </section>
+
+  <main>
+    <article>
+      <section id="office">
+        <h2>The Traditional Office</h2>
+
+        <p class="lead">
+          A traditional office is not merely a room filled with furniture. Each object
+          performs a function within the organization.
+        </p>
+
+        <p>
+          Imagine an employee seated at a desk. A telephone rings beside them. A request
+          is received, a note is written, and a folder is opened. Active work is placed
+          on the desk where it can be seen and handled. Finished records are placed into
+          a filing cabinet. A card index or labeled folder system tells the employee
+          where each record belongs and how it can be found again.
+        </p>
+
+        <p>
+          Older files are moved into boxes and stored in a closet. They remain part of
+          the organization’s history, but the farther they move from the desk, the harder
+          they become to search, compare, or use.
+        </p>
+
+        <p>
+          The office functions because each physical object carries a responsibility.
+          The telephone receives information. The employee interprets and routes it. The
+          desk holds current work. The filing cabinet preserves active records. The
+          index system organizes those records. The storage closet retains older
+          history.
+        </p>
+
+        <div class="callout">
+          <strong>The physical office is already an information system.</strong>
+          Its furniture and tools divide the work of receiving, organizing, acting,
+          storing, retrieving, and remembering.
+        </div>
+      </section>
+
+      <section id="functions">
+        <h2>The Functions Behind the Furniture</h2>
+
+        <p>
+          The important part of the old office is not the cabinet, the telephone, or the
+          paper itself. The important part is the responsibility each object performs.
+        </p>
+
+        <div class="function-grid">
+          <div class="function-card">
+            <h3>The Telephone</h3>
+            <p>
+              Receives requests, questions, instructions, reports, and changes in
+              conditions.
+            </p>
+          </div>
+
+          <div class="function-card">
+            <h3>The Employee at the Desk</h3>
+            <p>
+              Interprets the information, decides where it belongs, and routes it toward
+              action.
+            </p>
+          </div>
+
+          <div class="function-card">
+            <h3>The Desk</h3>
+            <p>
+              Holds current work where it remains visible, accessible, and available for
+              follow-through.
+            </p>
+          </div>
+
+          <div class="function-card">
+            <h3>The Filing Cabinet</h3>
+            <p>
+              Preserves active records so they can be retrieved after the original event
+              has ended.
+            </p>
+          </div>
+
+          <div class="function-card">
+            <h3>The Index System</h3>
+            <p>
+              Gives structure to the records through names, categories, dates, labels,
+              and locations.
+            </p>
+          </div>
+
+          <div class="function-card">
+            <h3>The Storage Closet</h3>
+            <p>
+              Retains older records and protects the long-term history of the
+              organization.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          These same functions still exist in a modern department. The difference is
+          that they can now be performed by connected digital tools rather than by
+          separate piles, drawers, boxes, and conversations.
+        </p>
+      </section>
+
+      <section id="digital">
+        <h2>Modern Tools as Stand-Ins</h2>
+
+        <p>
+          The digital tools being built for the department do not represent an entirely
+          unfamiliar kind of work. They are modern stand-ins for functions that offices
+          have always needed.
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Traditional Office Function</th>
+              <th>Modern Stand-In</th>
+              <th>Responsibility Performed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Telephone or handwritten note</td>
+              <td>Online form or structured request</td>
+              <td>Receives information in a consistent and usable format.</td>
+            </tr>
+            <tr>
+              <td>Employee routing messages</td>
+              <td>Workflow rules, categories, and request routing</td>
+              <td>Directs information toward the proper person, location, or process.</td>
+            </tr>
+            <tr>
+              <td>Papers spread across a desk</td>
+              <td>Request queue or task dashboard</td>
+              <td>Shows current work, priorities, status, and unfinished items.</td>
+            </tr>
+            <tr>
+              <td>Wall calendar or handwritten schedule</td>
+              <td>Shared digital calendar</td>
+              <td>Coordinates time, staffing, deadlines, meetings, and future work.</td>
+            </tr>
+            <tr>
+              <td>Roster posted on a wall</td>
+              <td>Digital roster or schedule view</td>
+              <td>Shows who is available, where they are assigned, and what capacity exists.</td>
+            </tr>
+            <tr>
+              <td>Filing cabinet</td>
+              <td>Structured files, folders, records, and databases</td>
+              <td>Preserves active information for later use.</td>
+            </tr>
+            <tr>
+              <td>Card index or folder labels</td>
+              <td>Fields, categories, names, dates, links, and identifiers</td>
+              <td>Makes records searchable, sortable, and retrievable.</td>
+            </tr>
+            <tr>
+              <td>Archive boxes in a closet</td>
+              <td>Digital archive and historical records</td>
+              <td>Preserves institutional memory without making it inaccessible.</td>
+            </tr>
+            <tr>
+              <td>Supervisor walking through the office</td>
+              <td>Dashboard, reports, and status views</td>
+              <td>Makes current conditions visible across the department.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          The tools are new, but the responsibilities are familiar.
+        </p>
+
+        <div class="system-flow">
+          Information is received.<br>
+          It is organized.<br>
+          It is routed toward action.<br>
+          Its progress remains visible.<br>
+          Its result is preserved.<br>
+          Its history becomes available for later learning.
+        </div>
+      </section>
+
+      <section id="observability">
+        <h2>From Storage to Observability</h2>
+
+        <p>
+          The most important difference between the traditional office and the modern
+          system is that the newer tools do more than store documents.
+        </p>
+
+        <p>They improve observability.</p>
+
+        <p>
+          Observability means being able to see enough of the department’s activity to
+          understand its current condition. A supervisor can see incoming demand,
+          active work, staffing, completed tasks, unresolved requests, repeated
+          problems, and changing conditions as parts of one system.
+        </p>
+
+        <p>
+          In the old office, this information may exist in many places at once:
+        </p>
+
+        <ul>
+          <li>a note on the desk,</li>
+          <li>a message on the telephone,</li>
+          <li>a paper schedule on the wall,</li>
+          <li>a form in a filing cabinet,</li>
+          <li>a record in a storage box,</li>
+          <li>and an important detail remembered by one employee.</li>
+        </ul>
+
+        <p>
+          The modern tools bring these observations closer together. A form collects the
+          request. A queue shows its status. A calendar provides the timing. A roster
+          shows available staff. A record preserves the result. A report reveals whether
+          the same condition has occurred before.
+        </p>
+
+        <div class="callout">
+          The supervisor no longer has to reconstruct the whole office from scattered
+          papers, conversations, and memory. The system begins to present its own
+          condition.
+        </div>
+
+        <p>
+          This visibility does not replace judgment. It gives judgment a stronger
+          foundation.
+        </p>
+      </section>
+
+      <section id="operations">
+        <h2>The Modern Operations Desk</h2>
+
+        <p>
+          A traditional desk holds the work that requires attention now. A modern
+          operations system performs the same function with greater clarity.
+        </p>
+
+        <p>
+          A request queue can show which items are new, acknowledged, assigned, in
+          progress, completed, or waiting for review. A calendar can show when work is
+          expected. A roster can show who is available to perform it. A dashboard can
+          reveal where work is accumulating and where resources may be insufficient.
+        </p>
+
+        <p>
+          These tools create an operations desk that is not limited to one physical
+          surface.
+        </p>
+
+        <p>
+          The supervisor can observe:
+        </p>
+
+        <ul>
+          <li>what has entered the system,</li>
+          <li>what requires attention first,</li>
+          <li>who has received the assignment,</li>
+          <li>whether the work has been acknowledged,</li>
+          <li>how long it has remained open,</li>
+          <li>what has been completed,</li>
+          <li>and what conditions are causing delays.</li>
+        </ul>
+
+        <p>
+          Employees also benefit. They can see what is expected, what remains open, and
+          whether another person is already handling a request. This reduces repeated
+          instructions, forgotten messages, duplicated effort, and disagreements about
+          whether something was communicated.
+        </p>
+
+        <p>
+          The modern operations desk therefore supports both supervision and
+          participation.
+        </p>
+      </section>
+
+      <section id="memory">
+        <h2>The Filing Cabinet Becomes Organizational Memory</h2>
+
+        <p>
+          In the old office, the filing cabinet preserves records. The index allows them
+          to be located. The storage closet protects older history.
+        </p>
+
+        <p>
+          Digital systems can perform all three functions at once.
+        </p>
+
+        <p>
+          A completed request can remain connected to its date, location, priority,
+          assigned employee, completion time, supplies used, and final result. The record
+          can be retrieved later, but it can also be compared with other records.
+        </p>
+
+        <p>
+          This is where storage becomes organizational memory.
+        </p>
+
+        <p>
+          A single record tells what happened once. A collection of records can reveal:
+        </p>
+
+        <ul>
+          <li>which locations generate the most requests,</li>
+          <li>which times of day produce the greatest demand,</li>
+          <li>where response times are increasing,</li>
+          <li>which supplies are being consumed most rapidly,</li>
+          <li>which problems are recurring,</li>
+          <li>how staffing conditions affect operations,</li>
+          <li>and whether a change in procedure improved performance.</li>
+        </ul>
+
+        <p>
+          The archive is no longer a closet filled with boxes that are preserved but
+          rarely used. It becomes part of the department’s ability to understand itself.
+        </p>
+
+        <div class="callout">
+          The filing cabinet remembers individual events. The modern system can remember
+          the relationships between those events.
+        </div>
+      </section>
+
+      <section id="conclusion" class="closing">
+        <h2>One Office, Rebuilt in Digital Form</h2>
+
+        <p>
+          The forms, calendars, rosters, request queues, files, categories, dashboards,
+          and archives being developed for the department are not isolated tools.
+        </p>
+
+        <p>
+          Together, they form a modern office.
+        </p>
+
+        <p>
+          The online form acts as the front desk and telephone. The request queue acts
+          as the active work surface. The calendar coordinates time. The roster shows
+          available capacity. Structured files and records replace the filing cabinet.
+          Fields and categories replace the index. The archive replaces the storage
+          closet. Dashboards and reports give the supervisor the view that once required
+          walking through the entire office and assembling the situation from memory.
+        </p>
+
+        <p>
+          The purpose is not merely to remove paper.
+        </p>
+
+        <p>
+          The purpose is to preserve the useful responsibilities of the office while
+          making them more visible, connected, searchable, and capable of producing
+          value over time.
+        </p>
+
+        <div class="closing-box">
+          The modern system receives information, organizes it, guides action, preserves
+          results, reveals current conditions, and allows the department to learn from
+          its own history.
+        </div>
+
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    Meadows Housekeeping Documentation
+  </footer>
+</body>
+</html>
