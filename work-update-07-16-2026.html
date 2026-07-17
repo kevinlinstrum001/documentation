@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meadows Housekeeping Work Update — 07/16/2026</title>
+  <style>
+    :root {
+      --green-900: #164e2c;
+      --green-700: #24733f;
+      --green-500: #3d9a5f;
+      --green-100: #eaf6ee;
+      --blue-900: #12345b;
+      --blue-100: #eaf2fb;
+      --gold: #d99a18;
+      --ink: #1f2a24;
+      --muted: #617067;
+      --paper: #ffffff;
+      --page: #f3f7f4;
+      --line: #d8e5dc;
+      --shadow: 0 12px 32px rgba(22, 78, 44, 0.10);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--page);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px clamp(18px, 4vw, 52px);
+      background: rgba(22, 78, 44, 0.97);
+      color: white;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: rgba(255, 255, 255, 0.16);
+      outline: none;
+    }
+
+    .nav-links .documentation-link {
+      background: white;
+      color: var(--green-900);
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 28px auto 0;
+      padding: 0 20px;
+    }
+
+    .hero-card {
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, var(--green-100), var(--blue-100));
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 5vw, 54px);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green-700);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.05;
+    }
+
+    .lede {
+      max-width: 820px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 28px auto 64px;
+      padding: 0 20px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 7px 20px rgba(22, 78, 44, 0.06);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green-900);
+      font-size: 1.55rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 38px);
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(22, 78, 44, 0.06);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--green-900);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+    }
+
+    h3 {
+      color: var(--blue-900);
+      margin: 24px 0 8px;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .workflow-step {
+      position: relative;
+      min-height: 118px;
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--green-100);
+      border: 1px solid #cce5d4;
+    }
+
+    .workflow-step::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 41px;
+      color: var(--green-700);
+      font-size: 1.4rem;
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    .workflow-step:last-child::after {
+      display: none;
+    }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: var(--green-700);
+      color: white;
+      font-weight: 800;
+    }
+
+    .workflow-step b {
+      display: block;
+      line-height: 1.25;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      padding: 14px 16px 14px 48px;
+      border-radius: 12px;
+      background: #fbfdfb;
+      border: 1px solid var(--line);
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 13px;
+      display: grid;
+      place-items: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: var(--green-700);
+      color: white;
+      font-weight: 900;
+      font-size: 0.8rem;
+    }
+
+    .callout {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border-left: 6px solid var(--gold);
+      border-radius: 10px;
+      background: #fff8e8;
+    }
+
+    code {
+      padding: 0.15em 0.35em;
+      border-radius: 5px;
+      background: #edf1ee;
+      color: #143c28;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    footer {
+      padding: 28px 20px 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .workflow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .workflow-step::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .summary-grid,
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        margin-top: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Work update navigation">
+    <a class="brand" href="#top">Meadows Housekeeping</a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#problem">Problem</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#verification">Verification</a>
+      <a class="documentation-link"
+         href="https://sites.google.com/view/meadows-hk/home/documentation">
+        Back to Documentation
+      </a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-card">
+      <img
+        class="hero-image"
+        src="work-update-07-16-2026-cover.png"
+        alt="Meadows Housekeeping work update cover showing cleaning tools, schedules, charts, code, clocks, and task lists."
+      >
+      <div class="hero-copy">
+        <p class="eyebrow">Work Update · July 16, 2026</p>
+        <h1>Single-Page Operations Viewer</h1>
+        <p class="lede">
+          Today’s work converted four separate Apps Script queue pages into one stable
+          dashboard that runs inside the Meadows Housekeeping Google Sites page without
+          disappearing during navigation.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="summary-grid" aria-label="Update summary">
+      <div class="metric">
+        <strong>4</strong>
+        <span>Operational views unified</span>
+      </div>
+      <div class="metric">
+        <strong>1</strong>
+        <span>Persistent embedded viewer</span>
+      </div>
+      <div class="metric">
+        <strong>2</strong>
+        <span>Automated email events verified</span>
+      </div>
+      <div class="metric">
+        <strong>End-to-end</strong>
+        <span>Workflow tested successfully</span>
+      </div>
+    </div>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        The Meadows Housekeeping operations interface previously used separate Apps
+        Script HTML pages for Intake, Work Queue, Recommendations, and Completed Work.
+        Each navigation link attempted to load a new <code>/exec?view=...</code> page
+        inside the existing Google Sites embed.
+      </p>
+      <p>
+        The replacement uses one <code>Dashboard.html</code> document. Navigation now
+        changes only the content inside the dashboard. The Apps Script frame remains
+        loaded, and the browser never has to rebuild a nested web-app frame.
+      </p>
+    </section>
+
+    <section id="problem">
+      <h2>Problem Identified</h2>
+      <p>
+        The first queue change could load successfully, but later navigation caused the
+        embedded viewer to disappear. Browser-console testing confirmed that the links,
+        destinations, and <code>target="_self"</code> behavior were correct. The failure
+        came from repeated Apps Script page navigation inside the Google Sites iframe,
+        not from the queue data or action functions.
+      </p>
+      <div class="callout">
+        <strong>Design decision:</strong> preserve the existing Apps Script backend and
+        replace page-to-page navigation with a single-page interface.
+      </div>
+    </section>
+
+    <section id="implementation">
+      <h2>Work Completed</h2>
+      <ul class="checklist">
+        <li>
+          Replaced the multi-page <code>doGet(e)</code> HTML routing with a single
+          response that serves <code>Dashboard.html</code>, while preserving the
+          existing JSON response option.
+        </li>
+        <li>
+          Created one navigation bar with buttons for Intake, Work Queue,
+          Recommendations, and Completed Work.
+        </li>
+        <li>
+          Added a shared <code>#app-view</code> container where each operational view
+          is rendered without changing the web-app URL.
+        </li>
+        <li>
+          Connected each dashboard button to its existing server function:
+          submissions, active work, recommendations, and completed work.
+        </li>
+        <li>
+          Integrated the full Intake cards, including acknowledgement and queue-sorting
+          controls.
+        </li>
+        <li>
+          Integrated Work Queue controls for starting work, adding notes, and completing
+          tasks.
+        </li>
+        <li>
+          Integrated Recommendations controls for review, notes, and archive actions.
+        </li>
+        <li>
+          Integrated Completed Work cards with timestamps, duration, notes, and email
+          status.
+        </li>
+        <li>
+          Added loading states, active navigation states, error handling, and automatic
+          view refresh after every successful action.
+        </li>
+      </ul>
+
+      <h3>Current workflow</h3>
+      <div class="workflow" aria-label="Housekeeping request workflow">
+        <div class="workflow-step">
+          <span class="step-number">1</span>
+          <b>Submit Request</b>
+        </div>
+        <div class="workflow-step">
+          <span class="step-number">2</span>
+          <b>Acknowledge</b>
+        </div>
+        <div class="workflow-step">
+          <span class="step-number">3</span>
+          <b>Sort to Queue</b>
+        </div>
+        <div class="workflow-step">
+          <span class="step-number">4</span>
+          <b>Start Work</b>
+        </div>
+        <div class="workflow-step">
+          <span class="step-number">5</span>
+          <b>Add Notes</b>
+        </div>
+        <div class="workflow-step">
+          <span class="step-number">6</span>
+          <b>Complete &amp; Report</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="verification">
+      <h2>Verification</h2>
+      <p>
+        A new request was taken through the complete production workflow:
+        acknowledgement, queue sorting, work start, note entry, and completion.
+      </p>
+      <ul class="checklist">
+        <li>The dashboard refreshed correctly after each state change.</li>
+        <li>The Google Sites embed remained visible through every view change.</li>
+        <li>The acknowledgement email was sent successfully.</li>
+        <li>The completion email was sent successfully.</li>
+        <li>The finished item moved into Completed Work with its updated record.</li>
+      </ul>
+      <div class="callout">
+        <strong>Result:</strong> the single-page dashboard is now a functioning
+        end-to-end housekeeping request-management interface, not merely a display
+        prototype.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Meadows Housekeeping · Work Update · 07/16/2026
+  </footer>
+</body>
+</html>
