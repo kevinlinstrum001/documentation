@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meadows Housekeeping icons -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#174D2B" />
+    <title>Meadows Housekeeping — New User Guide</title>
+    <style>
+      :root {
+        --green-900: #174d2b;
+        --green-700: #287443;
+        --green-100: #eaf6ee;
+        --blue-900: #173b63;
+        --blue-100: #edf4fb;
+        --gold: #d79a1d;
+        --ink: #202b24;
+        --muted: #647168;
+        --paper: #fff;
+        --page: #f4f8f5;
+        --line: #d7e5dc;
+        --shadow: 0 12px 34px rgba(23, 77, 43, 0.1);
+        --radius: 20px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background: var(--page);
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+      }
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px clamp(18px, 4vw, 52px);
+        background: rgba(23, 77, 43, 0.97);
+        color: #fff;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+      }
+      .brand {
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      .nav-links a {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .nav-links a:hover,
+      .nav-links a:focus {
+        background: rgba(255, 255, 255, 0.16);
+        outline: none;
+      }
+      .nav-links .documentation-link {
+        background: #fff;
+        color: var(--green-900);
+      }
+      .hero {
+        max-width: 1180px;
+        margin: 30px auto 0;
+        padding: 0 20px;
+      }
+      .hero-card {
+        padding: clamp(30px, 6vw, 70px);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(75, 156, 101, 0.22),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #fff, #edf7f0);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--green-700);
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+      }
+      h1 {
+        margin: 0;
+        color: var(--blue-900);
+        font-size: clamp(2.25rem, 6vw, 4.7rem);
+        line-height: 1.03;
+      }
+      .lede {
+        max-width: 850px;
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.22rem);
+      }
+      main {
+        max-width: 1180px;
+        margin: 28px auto 70px;
+        padding: 0 20px;
+      }
+      .guide-section {
+        scroll-margin-top: 88px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+        gap: clamp(24px, 5vw, 54px);
+        align-items: start;
+        margin-bottom: 22px;
+        padding: clamp(24px, 4vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        box-shadow: 0 8px 24px rgba(23, 77, 43, 0.06);
+      }
+      .guide-section:nth-child(even) .section-copy {
+        order: 2;
+      }
+      .guide-section:nth-child(even) .portrait-frame {
+        order: 1;
+      }
+      h2 {
+        margin: 0 0 12px;
+        color: var(--green-900);
+        font-size: clamp(1.5rem, 3vw, 2.15rem);
+        line-height: 1.15;
+      }
+      p {
+        margin: 0 0 14px;
+      }
+      ul,
+      ol {
+        margin: 12px 0 0;
+        padding-left: 1.35rem;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      .portrait-frame {
+        width: 100%;
+        max-width: 360px;
+        justify-self: center;
+        margin: 0;
+        padding: 12px;
+        border-radius: 24px;
+        border: 3px solid var(--green-700);
+        background: linear-gradient(145deg, #fff, var(--green-100));
+        box-shadow: 0 10px 28px rgba(23, 77, 43, 0.14);
+      }
+      .portrait-frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        border-radius: 14px;
+        border: 1px solid #c9dacd;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(40, 116, 67, 0.08),
+            rgba(23, 59, 99, 0.08)
+          ),
+          repeating-linear-gradient(
+            45deg,
+            #f7faf8,
+            #f7faf8 16px,
+            #edf4ef 16px,
+            #edf4ef 32px
+          );
+      }
+      .portrait-frame figcaption {
+        margin-top: 10px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+      .callout {
+        margin-top: 20px;
+        padding: 17px 20px;
+        border-left: 6px solid var(--gold);
+        border-radius: 10px;
+        background: #fff8e8;
+      }
+      .cycle {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .cycle-step {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fbfdfb;
+      }
+      .cycle-number {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--green-700);
+        color: #fff;
+        font-weight: 800;
+      }
+      .cycle-step strong {
+        display: block;
+        color: var(--blue-900);
+        margin-bottom: 3px;
+      }
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .benefit {
+        padding: 16px;
+        border-radius: 14px;
+        background: var(--blue-100);
+        border: 1px solid #d4e1ef;
+      }
+      .benefit strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--blue-900);
+      }
+      footer {
+        padding: 28px 20px 45px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 850px) {
+        .guide-section {
+          grid-template-columns: 1fr;
+        }
+        .guide-section:nth-child(even) .section-copy,
+        .guide-section:nth-child(even) .portrait-frame {
+          order: initial;
+        }
+        .portrait-frame {
+          max-width: 320px;
+        }
+      }
+      @media (max-width: 620px) {
+        .site-nav {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .nav-links {
+          justify-content: flex-start;
+        }
+        .benefit-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          margin-top: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="New user guide navigation">
+      <a class="brand" href="#top">Meadows Housekeeping</a>
+      <div class="nav-links">
+        <a href="#website">Website</a><a href="#requests">Requests</a
+        ><a href="#calendar">Calendar</a><a href="#queues">Queues</a
+        ><a href="#cycle">Work Cycle</a>
+        <a
+          class="documentation-link"
+          href="https://sites.google.com/view/meadows-hk/home/documentation"
+          >Documentation</a
+        >
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-card">
+        <p class="eyebrow">Meadows Housekeeping</p>
+        <h1>New User Guide</h1>
+        <p class="lede">
+          A practical introduction to reporting cleanup issues, making
+          suggestions, checking schedules, updating roster information, managing
+          work queues, recording notes, and following a request from submission
+          through completion.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="guide-section" id="website">
+        <div class="section-copy">
+          <h2>1. Purpose of the Website</h2>
+          <p>
+            The Meadows Housekeeping website gives staff one place to report
+            issues, share suggestions, review schedules, manage work, record
+            progress, and keep supervisors informed.
+          </p>
+          <ul>
+            <li>Report cleanup and housekeeping issues.</li>
+            <li>Make recommendations and process suggestions.</li>
+            <li>View schedules and staffing information.</li>
+            <li>Track work from intake through completion.</li>
+            <li>Preserve notes, timestamps, and communication records.</li>
+          </ul>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image01.png"
+            alt="Portrait screenshot placeholder for the Meadows Housekeeping website home page."
+          />
+          <figcaption>image01.png — Website home page</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>2. Entering and Navigating the Website</h2>
+          <p>
+            Open the Meadows Housekeeping website and use its navigation to
+            reach the request form, calendar, roster, operational queues,
+            completed work, and documentation.
+          </p>
+          <p>
+            On a phone, scroll through the page or open the available navigation
+            menu. Each tool has a distinct purpose, but all of them support the
+            same daily housekeeping workflow.
+          </p>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image02.png"
+            alt="Portrait screenshot placeholder showing website navigation."
+          />
+          <figcaption>image02.png — Website navigation</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section" id="requests">
+        <div class="section-copy">
+          <h2>3. Reporting a Cleanup Issue</h2>
+          <p>
+            Use the request form when a room, unit, floor, or other area needs
+            housekeeping attention.
+          </p>
+          <ul>
+            <li>Select the unit, department, room, or area.</li>
+            <li>Describe the condition clearly.</li>
+            <li>Identify the type of cleanup needed.</li>
+            <li>Include urgency, timing, or safety details when relevant.</li>
+            <li>Review the information before submitting.</li>
+          </ul>
+          <div class="callout">
+            Once submitted, the report enters the Intake queue and becomes part
+            of the system’s permanent work record.
+          </div>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image03.png"
+            alt="Portrait screenshot placeholder for reporting a cleanup issue."
+          />
+          <figcaption>image03.png — Cleanup request form</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>4. Making a Suggestion or Recommendation</h2>
+          <p>
+            Suggestions are used for ideas that may improve housekeeping
+            operations but are not immediate cleanup tasks.
+          </p>
+          <ul>
+            <li>Cleaning routine improvements</li>
+            <li>Supply or equipment recommendations</li>
+            <li>Safety observations</li>
+            <li>Scheduling ideas</li>
+            <li>Process improvements</li>
+          </ul>
+          <p>
+            Choose the suggestion or recommendation option and provide enough
+            detail for later review.
+          </p>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image04.png"
+            alt="Portrait screenshot placeholder for making a suggestion."
+          />
+          <figcaption>image04.png — Suggestion form</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section" id="calendar">
+        <div class="section-copy">
+          <h2>5. Using the Calendar</h2>
+          <p>
+            The Calendar displays schedules, assignments, meetings, and other
+            housekeeping events.
+          </p>
+          <ul>
+            <li>Move between daily, weekly, and monthly views.</li>
+            <li>Select an event to view its details.</li>
+            <li>Check daily staffing before beginning work.</li>
+            <li>Review upcoming assignments and schedule changes.</li>
+            <li>Confirm which areas are covered.</li>
+          </ul>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image05.png"
+            alt="Portrait screenshot placeholder for the housekeeping calendar."
+          />
+          <figcaption>image05.png — Calendar view</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>6. Using the Roster</h2>
+          <p>
+            The Roster shows staff assignments and regular days off. Authorized
+            users can update regular days off when schedules change.
+          </p>
+          <ul>
+            <li>Review current employee assignments.</li>
+            <li>Confirm regular days off.</li>
+            <li>Update regular days off when authorized.</li>
+            <li>Verify that staffing coverage is accurate.</li>
+            <li>Check the update timestamp before relying on the roster.</li>
+          </ul>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image06.png"
+            alt="Portrait screenshot placeholder for the roster."
+          />
+          <figcaption>image06.png — Roster and days-off view</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section" id="queues">
+        <div class="section-copy">
+          <h2>7. Intake Queue</h2>
+          <p>
+            Intake contains newly submitted cleanup reports and suggestions.
+          </p>
+          <ol>
+            <li>Read the full submission.</li>
+            <li>Confirm the location and details.</li>
+            <li>Select <strong>Acknowledge</strong>.</li>
+            <li>
+              The system records receipt and sends an email to the supervisor.
+            </li>
+            <li>Sort the item to Work Queue or Recommendations.</li>
+          </ol>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image07.png"
+            alt="Portrait screenshot placeholder for the Intake queue."
+          />
+          <figcaption>image07.png — Intake queue</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>8. Work Queue</h2>
+          <p>
+            The Work Queue contains pending and in-progress housekeeping tasks.
+          </p>
+          <ul>
+            <li>Review the task and location.</li>
+            <li>Select <strong>Start Work</strong>.</li>
+            <li>Add notes about conditions, supplies, and progress.</li>
+            <li>Document communication with the requesting staff member.</li>
+            <li>Select <strong>Complete</strong> when work is finished.</li>
+          </ul>
+          <p>The view refreshes after each successful update.</p>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image08.png"
+            alt="Portrait screenshot placeholder for the Work Queue."
+          />
+          <figcaption>image08.png — Work Queue</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>9. Recommendations Queue</h2>
+          <p>
+            The Recommendations queue separates improvement ideas from immediate
+            cleanup tasks.
+          </p>
+          <ul>
+            <li>Review the suggestion or observation.</li>
+            <li>Mark the item reviewed.</li>
+            <li>Add notes about decisions or follow-up.</li>
+            <li>Archive the item when no further action is required.</li>
+          </ul>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image09.png"
+            alt="Portrait screenshot placeholder for the Recommendations queue."
+          />
+          <figcaption>image09.png — Recommendations queue</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>10. Creating Notes and Updates</h2>
+          <p>
+            Notes provide a clear record of what was found, what was done, and
+            who was informed.
+          </p>
+          <ul>
+            <li>Condition of the floor or area upon arrival</li>
+            <li>Supplies and equipment used</li>
+            <li>Work completed</li>
+            <li>Obstacles, delays, or repair needs</li>
+            <li>Updates given to the staff member who made the request</li>
+            <li>Follow-up instructions</li>
+          </ul>
+          <div class="callout">
+            Notes should be factual, brief, and useful to the next employee or
+            supervisor reviewing the record.
+          </div>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image10.png"
+            alt="Portrait screenshot placeholder showing notes and updates."
+          />
+          <figcaption>image10.png — Notes and updates</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>11. Documentation Page</h2>
+          <p>
+            The Documentation page is the reference center for the Meadows
+            Housekeeping system. It explains completed work, planned
+            improvements, and how the system is intended to operate.
+          </p>
+          <ul>
+            <li>Work updates</li>
+            <li>Planned work</li>
+            <li>Informational slide presentations</li>
+            <li>System explanations and development history</li>
+          </ul>
+          <p>
+            The main website is used to perform daily work. The Documentation
+            page explains the system, records progress, and communicates future
+            plans.
+          </p>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image11.png"
+            alt="Portrait screenshot placeholder for the Documentation page."
+          />
+          <figcaption>image11.png — Documentation page</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section" id="cycle">
+        <div class="section-copy">
+          <h2>12. Cleanup Issue Work Cycle</h2>
+          <div class="cycle">
+            <div class="cycle-step">
+              <span class="cycle-number">1</span>
+              <div>
+                <strong>Submit</strong>A staff member reports a cleanup issue.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">2</span>
+              <div>
+                <strong>Notification</strong>A housekeeping employee receives
+                notice of the new submission.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">3</span>
+              <div>
+                <strong>Check Intake</strong>The employee opens Intake and reads
+                the request.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">4</span>
+              <div>
+                <strong>Acknowledge</strong>The request is acknowledged and an
+                email is sent to the supervisor.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">5</span>
+              <div>
+                <strong>Sort</strong>The cleanup issue is sent to the Work
+                Queue.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">6</span>
+              <div>
+                <strong>Start Work</strong>The employee opens Work Queue and
+                changes the task to In Progress.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">7</span>
+              <div>
+                <strong>First Note</strong>The employee records supplies used
+                and the condition of the floor or area on arrival.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">8</span>
+              <div>
+                <strong>Staff Update</strong>The employee updates the staff
+                member who made the request and records that communication.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">9</span>
+              <div>
+                <strong>Complete</strong>The employee marks the work complete.
+              </div>
+            </div>
+            <div class="cycle-step">
+              <span class="cycle-number">10</span>
+              <div>
+                <strong>Automatic Follow-up</strong>The supervisor receives a
+                completion email and the record moves into Completed Work.
+              </div>
+            </div>
+          </div>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image12.png"
+            alt="Portrait screenshot placeholder illustrating the work cycle."
+          />
+          <figcaption>image12.png — Complete work cycle</figcaption>
+        </figure>
+      </section>
+
+      <section class="guide-section">
+        <div class="section-copy">
+          <h2>13. System Benefits</h2>
+          <div class="benefit-grid">
+            <div class="benefit">
+              <strong>Data Captured</strong>Requests, timestamps, notes,
+              supplies, communication, and completion details become a usable
+              work record.
+            </div>
+            <div class="benefit">
+              <strong>Communication Streamlined</strong>Automatic
+              acknowledgement and completion emails reduce repeated calls,
+              messages, and handwritten follow-up.
+            </div>
+            <div class="benefit">
+              <strong>Work Organized</strong>Intake, Work Queue,
+              Recommendations, and Completed Work make task status visible.
+            </div>
+            <div class="benefit">
+              <strong>Time Saved</strong>The system reduces lost requests,
+              duplicate work, manual tracking, and uncertainty.
+            </div>
+          </div>
+        </div>
+        <figure class="portrait-frame">
+          <img
+            src="image13.png"
+            alt="Portrait screenshot placeholder showing system benefits or completed work data."
+          />
+          <figcaption>image13.png — System benefits and results</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer>Meadows Housekeeping · New User Guide</footer>
+  </body>
+</html>
