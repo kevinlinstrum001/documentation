@@ -1,15 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      content="Meadows Housekeeping work update for July 19, 2026: inventory processing, reusable product and SDS views, and stable Apps Script navigation."
-      name="description"
-    />
-    <title>Meadows Housekeeping Work Update — 07/19/2026</title>
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Meadows Housekeeping work update for July 19, 2026: inventory processing, reusable product and SDS views, and stable Apps Script navigation." name="description"/>
+<title>Meadows Housekeeping Work Update — 07/19/2026</title>
+<style>
       :root {
         --navy: #102a43;
         --blue: #176b87;
@@ -729,53 +726,50 @@
           margin: 18px 0 0;
         }
       }
+    
+
+      /* Final cover-image corrections */
+      .hero-copy > img {
+        display: none;
+      }
+
+      .cover-image {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
     </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="nav-shell">
-        <a class="brand" href="#top">Klinswork <span>Inventory</span></a>
-        <nav aria-label="Page sections" class="nav-links">
-          <a href="#overview">Overview</a>
-          <a href="#problem">Troubleshooting</a>
-          <a href="#completed">Work Completed</a>
-          <a href="#verification">Verification</a>
-          <a href="#next">Next Steps</a>
-          <a class="back-link" href="index.html">Back to Documentation</a>
-        </nav>
-      </div>
-    </header>
-    <main id="top">
-      <section aria-labelledby="page-title" class="update-cover">
-        <figure class="cover-figure">
-          <img
-            alt="Meadows Housekeeping Work Update dated 07/19/2026, showing cleaning equipment, schedules, charts, task lists, and operations dashboards."
-            class="cover-image"
-            decoding="async"
-            fetchpriority="high"
-            height="941"
-            id="work-update-cover"
-            loading="eager"
-            src="https://kevinlinstrum001.github.io/images/work_upate_07_19_2026.png"
-            width="1672"
-          />
-          <figcaption class="cover-caption">
-            <span>Meadows Housekeeping</span>
-            <strong>Work Update · 07/19/2026</strong>
-          </figcaption>
-        </figure>
-        <div class="hero-copy">
-          <p class="eyebrow">Work Update · July 19, 2026</p>
-          <h1 id="page-title">Inventory Processing and Reusable Web Views</h1>
-          <img
-            class="cover-image"
-            src="../images/work_upate_07_19_2026.png"
-            alt="Meadows Housekeeping Work Update dated 07/19/2026."
-            width="1672"
-            height="941"
-          />
-          <div class="hero-summary-grid">
-            <p>
+</head>
+<body>
+<header class="site-header">
+<div class="nav-shell">
+<a class="brand" href="#top">Klinswork <span>Inventory</span></a>
+<nav aria-label="Page sections" class="nav-links">
+<a href="#overview">Overview</a>
+<a href="#problem">Troubleshooting</a>
+<a href="#completed">Work Completed</a>
+<a href="#verification">Verification</a>
+<a href="#next">Next Steps</a>
+<a class="back-link" href="../index.html">Back to Documentation</a>
+</nav>
+</div>
+</header>
+<main id="top">
+<section aria-labelledby="page-title" class="update-cover">
+<figure class="cover-figure">
+<img alt="Meadows Housekeeping Work Update dated 07/19/2026, showing cleaning equipment, schedules, charts, task lists, and operations dashboards." class="cover-image" decoding="async" fetchpriority="high" height="941" id="work-update-cover" loading="eager" src="https://kevinlinstrum001.github.io/documentation/images/work_update_07_19_2026.png" width="1672"/>
+<figcaption class="cover-caption">
+<span>Meadows Housekeeping</span>
+<strong>Work Update · 07/19/2026</strong>
+</figcaption>
+</figure>
+<div class="hero-copy">
+<p class="eyebrow">Work Update · July 19, 2026</p>
+<h1 id="page-title">Inventory Processing and Reusable Web Views</h1>
+
+<div class="hero-summary-grid">
+<p>
               This update covers major progress on the Klinswork Inventory
               system, including the transaction processor, product and SDS
               views, routing, and navigation. The system can now record
@@ -786,7 +780,7 @@
               with a shared navigation system that resolved the instability
               caused by embedded Apps Script pages.
             </p>
-            <p>
+<p>
               For housekeeping, this means staff can keep track of what they
               have, where it is, and how it is being used without relying on
               scattered notes or memory. Supervisors gain a much clearer view of
@@ -799,355 +793,326 @@
               transfer needs, and a reliable history that supports better
               planning and faster decisions.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-label="Project metrics" class="metrics metrics-clean">
-        <article class="metric">
-          <strong>5</strong>
-          <span>Inventory actions tested</span>
-        </article>
-        <article class="metric">
-          <strong>5</strong>
-          <span>Working application views</span>
-        </article>
-        <article class="metric">
-          <strong>1</strong>
-          <span>Reusable product template</span>
-        </article>
-        <article class="metric">
-          <strong>0</strong>
-          <span>Partial invalid transactions</span>
-        </article>
-      </section>
-      <section class="section" id="overview">
-        <div class="section-heading">
-          <div class="section-number">1</div>
-          <h2>Overview</h2>
-        </div>
-        <p class="lead">
+</div>
+</div>
+</section>
+<section aria-label="Project metrics" class="metrics metrics-clean">
+<article class="metric">
+<strong>5</strong>
+<span>Inventory actions tested</span>
+</article>
+<article class="metric">
+<strong>5</strong>
+<span>Working application views</span>
+</article>
+<article class="metric">
+<strong>1</strong>
+<span>Reusable product template</span>
+</article>
+<article class="metric">
+<strong>0</strong>
+<span>Partial invalid transactions</span>
+</article>
+</section>
+<section class="section" id="overview">
+<div class="section-heading">
+<div class="section-number">1</div>
+<h2>Overview</h2>
+</div>
+<p class="lead">
           Work completed across Milestones 6 and 7 moved the project from a
           collection of spreadsheet records and experimental pages into a
           functioning inventory application with validated transactions,
           permanent event history, live product information, current SDS access,
           and reusable browser views.
         </p>
-        <p>
+<p>
           Milestone 6 established the processing layer. Accepted inventory
           requests now update current quantities and create permanent
           operational events. Invalid requests remain available for diagnosis
           but cannot change inventory or create false event records.
         </p>
-        <p>
+<p>
           Milestone 7 then connected that data to a routed web application. The
           current interface includes Home, Inventory, Product Directory,
           reusable Product Detail, and SDS Directory views. The Product View
           combines product identity, an image, manufacturer information,
           inventory by location, and the current SDS record.
         </p>
-        <div class="callout">
+<div class="callout">
           The project now separates product definitions, current inventory,
           submitted requests, accepted inventory events, locations, and SDS
           records while presenting them through a consistent web interface.
         </div>
-      </section>
-      <section class="section" id="problem">
-        <div class="section-heading">
-          <div class="section-number">2</div>
-          <h2>Embedded Navigation Problem and Solution</h2>
-        </div>
-        <p class="lead">
+</section>
+<section class="section" id="problem">
+<div class="section-heading">
+<div class="section-number">2</div>
+<h2>Embedded Navigation Problem and Solution</h2>
+</div>
+<p class="lead">
           The route map worked, but page-to-page navigation became unstable when
           Apps Script pages were used inside an embedded environment.
         </p>
-        <div class="problem-box">
-          <article class="problem-state">
-            <h3>Problem</h3>
-            <p>
+<div class="problem-box">
+<article class="problem-state">
+<h3>Problem</h3>
+<p>
               Relative links such as <code>?view=inventory</code> depended on
               the browser resolving the correct frame and base URL. Links could
               work when opened directly yet fail, disappear, or replace the
               wrong frame when embedded.
             </p>
-          </article>
-          <div aria-hidden="true" class="arrow">→</div>
-          <article class="solution-state">
-            <h3>Solution</h3>
-            <p>
+</article>
+<div aria-hidden="true" class="arrow">→</div>
+<article class="solution-state">
+<h3>Solution</h3>
+<p>
               The server now provides one shared <code>appUrl</code> to every
               template. Navigation links use the complete Apps Script web-app
               URL and send every request back through <code>doGet(e)</code> and
               the route map.
             </p>
-          </article>
-        </div>
-        <h3>Why the problem occurred</h3>
-        <pre><code>Host page
+</article>
+</div>
+<h3>Why the problem occurred</h3>
+<pre><code>Host page
 └── embedded Apps Script web app
     └── sandboxed Apps Script HTML view</code></pre>
-        <p>
+<p>
           In this structure, <code>target="_top"</code>,
           <code>target="_parent"</code>, and relative paths can refer to
           different frame levels depending on how the application was opened.
           Routing and navigation therefore had to be treated as separate
           systems.
         </p>
-        <h3>Stable navigation flow</h3>
-        <pre><code>User clicks complete appUrl link
+<h3>Stable navigation flow</h3>
+<pre><code>User clicks complete appUrl link
 → Apps Script deployment receives request
 → doGet(e) reads the view parameter
 → route map selects the HTML template
 → destination view renders</code></pre>
-        <p>
+<p>
           The shared URL was added to Home, Inventory, Product Directory,
           Product View, and SDS Directory navigation. Product links use the same
           base URL with a stable product ID, such as
           <code>?view=product&amp;id=CHEM-001</code>.
         </p>
-      </section>
-      <section class="section" id="completed">
-        <div class="section-heading">
-          <div class="section-number">3</div>
-          <h2>Work Completed</h2>
-        </div>
-        <div class="work-grid">
-          <article class="work-card">
-            <h3>Inventory Processing</h3>
-            <ul>
-              <li>
+</section>
+<section class="section" id="completed">
+<div class="section-heading">
+<div class="section-number">3</div>
+<h2>Work Completed</h2>
+</div>
+<div class="work-grid">
+<article class="work-card">
+<h3>Inventory Processing</h3>
+<ul>
+<li>
                 Implemented Received, Used Up, Removed, Moved, and Count
                 Corrected actions.
               </li>
-              <li>Verified correct source and destination quantity changes.</li>
-              <li>
+<li>Verified correct source and destination quantity changes.</li>
+<li>
                 Created permanent event records for every accepted transaction.
               </li>
-              <li>
+<li>
                 Preserved explanatory notes and automatic transaction context.
               </li>
-            </ul>
-          </article>
-          <article class="work-card">
-            <h3>Defensive Validation</h3>
-            <ul>
-              <li>Rejected unknown source and destination locations.</li>
-              <li>
+</ul>
+</article>
+<article class="work-card">
+<h3>Defensive Validation</h3>
+<ul>
+<li>Rejected unknown source and destination locations.</li>
+<li>
                 Rejected removals and moves exceeding available inventory.
               </li>
-              <li>Prevented negative quantities and partial updates.</li>
-              <li>
+<li>Prevented negative quantities and partial updates.</li>
+<li>
                 Kept rejected requests out of the accepted Inventory Events
                 history.
               </li>
-            </ul>
-          </article>
-          <article class="work-card">
-            <h3>Reusable Web Views</h3>
-            <ul>
-              <li>
+</ul>
+</article>
+<article class="work-card">
+<h3>Reusable Web Views</h3>
+<ul>
+<li>
                 Created a route map for Home, Inventory, Products, Product, and
                 SDS.
               </li>
-              <li>
+<li>
                 Built one Product View template that loads different records by
                 product ID.
               </li>
-              <li>
+<li>
                 Added product identity, image, manufacturer details, and
                 external links.
               </li>
-              <li>
+<li>
                 Added loading states, empty states, error handling, and
                 responsive layouts.
               </li>
-            </ul>
-          </article>
-          <article class="work-card">
-            <h3>Inventory and Safety Data</h3>
-            <ul>
-              <li>
+</ul>
+</article>
+<article class="work-card">
+<h3>Inventory and Safety Data</h3>
+<ul>
+<li>
                 Displayed current quantities by tracked location on the Product
                 View.
               </li>
-              <li>Connected the Product View to current SDS data.</li>
-              <li>
+<li>Connected the Product View to current SDS data.</li>
+<li>
                 Built an SDS Directory using live sheet data, search, filters,
                 and document links.
               </li>
-              <li>
+<li>
                 Retained the working Inventory View and its ability to record
                 use.
               </li>
-            </ul>
-          </article>
-        </div>
-        <h3>Current system flow</h3>
-        <div aria-label="System architecture flow" class="flow">
-          <div class="flow-step">Browser URL</div>
-          <div class="flow-step">doGet(e)</div>
-          <div class="flow-step">Route Map</div>
-          <div class="flow-step">HTML View</div>
-          <div class="flow-step">Server Function</div>
-          <div class="flow-step">Spreadsheet Data</div>
-          <div class="flow-step">Rendered Page</div>
-        </div>
-      </section>
-      <section class="section" id="verification">
-        <div class="section-heading">
-          <div class="section-number">4</div>
-          <h2>Verification</h2>
-        </div>
-        <p class="lead">
+</ul>
+</article>
+</div>
+<h3>Current system flow</h3>
+<div aria-label="System architecture flow" class="flow">
+<div class="flow-step">Browser URL</div>
+<div class="flow-step">doGet(e)</div>
+<div class="flow-step">Route Map</div>
+<div class="flow-step">HTML View</div>
+<div class="flow-step">Server Function</div>
+<div class="flow-step">Spreadsheet Data</div>
+<div class="flow-step">Rendered Page</div>
+</div>
+</section>
+<section class="section" id="verification">
+<div class="section-heading">
+<div class="section-number">4</div>
+<h2>Verification</h2>
+</div>
+<p class="lead">
           Testing covered both successful operating paths and deliberate failure
           cases.
         </p>
-        <ul class="checklist">
-          <li>
+<ul class="checklist">
+<li>
             Received inventory increased the correct destination quantity.
           </li>
-          <li>
+<li>
             Used Up and Removed actions reduced the correct source quantity.
           </li>
-          <li>Moved inventory preserved the total while changing locations.</li>
-          <li>
+<li>Moved inventory preserved the total while changing locations.</li>
+<li>
             Count Corrected replaced the recorded amount with the verified
             count.
           </li>
-          <li>Unknown destinations produced no partial source subtraction.</li>
-          <li>Over-limit removals and moves produced no negative inventory.</li>
-          <li>
+<li>Unknown destinations produced no partial source subtraction.</li>
+<li>Over-limit removals and moves produced no negative inventory.</li>
+<li>
             Rejected requests remained visible for diagnosis but created no
             operational event.
           </li>
-          <li>
+<li>
             The same Product View displayed different products when only the ID
             changed.
           </li>
-          <li>Inventory-by-location displayed the correct matching records.</li>
-          <li>
+<li>Inventory-by-location displayed the correct matching records.</li>
+<li>
             Current SDS records and document links loaded from live sheet data.
           </li>
-          <li>Shared navigation worked across all existing views.</li>
-          <li>
+<li>Shared navigation worked across all existing views.</li>
+<li>
             The existing Inventory View continued to function after routing
             changes.
           </li>
-        </ul>
-        <div class="result">
-          <strong>Result</strong>
+</ul>
+<div class="result">
+<strong>Result</strong>
           Milestone 6 is complete, and Milestone 7 is approximately 70–75%
           complete. The application now has a safe transaction processor and a
           stable routed interface, not merely a set of independent spreadsheet
           forms and prototype pages.
         </div>
-      </section>
-      <section class="section" id="next">
-        <div class="section-heading">
-          <div class="section-number">5</div>
-          <h2>Current Status and Next Steps</h2>
-        </div>
-        <table class="status-table">
-          <thead>
-            <tr>
-              <th>Area</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Inventory transaction processor</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>Validation and event safety</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>Routing and shared navigation</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>Home and Inventory views</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>Product identity, inventory, and SDS</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>SDS Directory</td>
-              <td><span class="badge complete">Complete</span></td>
-            </tr>
-            <tr>
-              <td>Product Directory live data</td>
-              <td><span class="badge progress">In progress</span></td>
-            </tr>
-            <tr>
-              <td>Recent events on Product View</td>
-              <td><span class="badge pending">Not yet</span></td>
-            </tr>
-            <tr>
-              <td>Inventory History View</td>
-              <td><span class="badge pending">Not started</span></td>
-            </tr>
-            <tr>
-              <td>Final repeatable verification</td>
-              <td><span class="badge progress">Pending</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>Immediate next work</h3>
-        <ol class="next-list">
-          <li>
+</section>
+<section class="section" id="next">
+<div class="section-heading">
+<div class="section-number">5</div>
+<h2>Current Status and Next Steps</h2>
+</div>
+<table class="status-table">
+<thead>
+<tr>
+<th>Area</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory transaction processor</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>Validation and event safety</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>Routing and shared navigation</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>Home and Inventory views</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>Product identity, inventory, and SDS</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>SDS Directory</td>
+<td><span class="badge complete">Complete</span></td>
+</tr>
+<tr>
+<td>Product Directory live data</td>
+<td><span class="badge progress">In progress</span></td>
+</tr>
+<tr>
+<td>Recent events on Product View</td>
+<td><span class="badge pending">Not yet</span></td>
+</tr>
+<tr>
+<td>Inventory History View</td>
+<td><span class="badge pending">Not started</span></td>
+</tr>
+<tr>
+<td>Final repeatable verification</td>
+<td><span class="badge progress">Pending</span></td>
+</tr>
+</tbody>
+</table>
+<h3>Immediate next work</h3>
+<ol class="next-list">
+<li>
             Connect the Product Directory to <code>getProducts()</code> and load
             active product records from the Products sheet.
           </li>
-          <li>
+<li>
             Link each product card to the reusable Product View with its stable
             product ID.
           </li>
-          <li>Add recent inventory events to the Product View.</li>
-          <li>Create the standalone History View with filtering controls.</li>
-          <li>
+<li>Add recent inventory events to the Product View.</li>
+<li>Create the standalone History View with filtering controls.</li>
+<li>
             Run a final route, navigation, data, and regression verification
             pass.
           </li>
-        </ol>
-      </section>
-    </main>
-    <footer>
+</ol>
+</section>
+</main>
+<footer>
       Klinswork Inventory · Personal work-organization project · Work Update ·
       07/19/2026
     </footer>
-    <script>
-      (() => {
-        const image = document.getElementById("work-update-cover");
-        if (!image) return;
 
-        const sources = [
-          "https://kevinlinstrum001.github.io/images/work_upate_07_19_2026.png",
-          "https://kevinlinstrum001.github.io/images/work_update_07_19_2026.png",
-          "/images/work_upate_07_19_2026.png",
-          "/images/work_update_07_19_2026.png",
-          "./images/work_upate_07_19_2026.png",
-          "./images/work_update_07_19_2026.png",
-        ];
-
-        let sourceIndex = 0;
-
-        image.addEventListener("error", () => {
-          sourceIndex += 1;
-
-          if (sourceIndex < sources.length) {
-            image.src = sources[sourceIndex];
-            return;
-          }
-
-          image.closest(".cover-figure")?.classList.add("image-unavailable");
-          image.remove();
-        });
-      })();
-    </script>
-  </body>
+</body>
 </html>
