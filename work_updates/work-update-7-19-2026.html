@@ -1014,6 +1014,91 @@
           background: #f7fbfc;
         }
       }
+
+      /* Guaranteed phone navigation: independent of legacy .nav-links rules */
+      .phone-nav {
+        display: none;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding-bottom: calc(82px + env(safe-area-inset-bottom));
+        }
+
+        .site-header .nav-links {
+          display: none !important;
+        }
+
+        .site-header {
+          position: relative;
+        }
+
+        .phone-nav {
+          position: fixed !important;
+          left: 8px;
+          right: 8px;
+          bottom: calc(8px + env(safe-area-inset-bottom));
+          z-index: 99999;
+          display: grid !important;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          align-items: stretch;
+          gap: 4px;
+          min-height: 64px;
+          padding: 6px;
+          border: 1px solid rgba(16, 42, 67, 0.14);
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.97);
+          box-shadow: 0 14px 40px rgba(16, 42, 67, 0.28);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+        }
+
+        .phone-nav a {
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3px;
+          min-width: 0;
+          padding: 6px 2px;
+          border-radius: 12px;
+          color: #415868;
+          font-size: 0.68rem;
+          font-weight: 800;
+          line-height: 1;
+          text-align: center;
+          text-decoration: none;
+        }
+
+        .phone-nav a:active,
+        .phone-nav a:focus-visible {
+          color: var(--navy);
+          background: #eaf6f6;
+          outline: none;
+        }
+
+        .phone-nav-icon {
+          width: 27px;
+          height: 27px;
+          display: grid;
+          place-items: center;
+          border-radius: 9px;
+          color: #ffffff;
+          background: linear-gradient(135deg, var(--teal), var(--cyan));
+          font-size: 0.76rem;
+          font-weight: 900;
+        }
+
+        .phone-nav-docs {
+          color: #ffffff !important;
+          background: linear-gradient(135deg, var(--teal), var(--blue));
+        }
+
+        .phone-nav-docs .phone-nav-icon {
+          color: var(--teal);
+          background: #ffffff;
+        }
+      }
 </style>
 </head>
 <body>
@@ -1403,5 +1488,28 @@
       Klinswork Inventory · Personal work-organization project · Work Update ·
       07/19/2026
     </footer>
+
+<nav aria-label="Mobile work update navigation" class="phone-nav">
+<a href="#overview">
+<span aria-hidden="true" class="phone-nav-icon">1</span>
+<span>Overview</span>
+</a>
+<a href="#completed">
+<span aria-hidden="true" class="phone-nav-icon">3</span>
+<span>Work</span>
+</a>
+<a href="#verification">
+<span aria-hidden="true" class="phone-nav-icon">4</span>
+<span>Verify</span>
+</a>
+<a href="#next">
+<span aria-hidden="true" class="phone-nav-icon">5</span>
+<span>Next</span>
+</a>
+<a aria-label="Return to Meadows Housekeeping Documentation" class="phone-nav-docs" href="https://sites.google.com/view/meadows-hk/home/documentation">
+<span aria-hidden="true" class="phone-nav-icon">↗</span>
+<span>Docs</span>
+</a>
+</nav>
 </body>
 </html>
