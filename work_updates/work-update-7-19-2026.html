@@ -739,20 +739,311 @@
         max-width: 100%;
         height: auto;
       }
-    </style>
+    
+      /* Refined responsive navbar */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(16, 42, 67, 0.10);
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 8px 28px rgba(16, 42, 67, 0.08);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-shell {
+        width: min(1160px, calc(100% - 32px));
+        min-height: 76px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        flex: 0 0 auto;
+        margin-right: auto;
+        color: var(--navy);
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        color: #ffffff;
+        background: linear-gradient(135deg, var(--teal), var(--cyan));
+        box-shadow: 0 8px 18px rgba(15, 118, 110, 0.22);
+      }
+
+      .brand-mark svg {
+        width: 25px;
+        height: 25px;
+      }
+
+      .brand-copy {
+        display: grid;
+        line-height: 1.05;
+      }
+
+      .brand-copy strong {
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-copy small {
+        margin-top: 4px;
+        color: var(--teal);
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 10px 11px;
+        border-radius: 10px;
+        color: #465b6b;
+        font-size: 0.84rem;
+        font-weight: 760;
+        text-decoration: none;
+        transition:
+          color 160ms ease,
+          background 160ms ease,
+          transform 160ms ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 5px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--teal), var(--cyan));
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 160ms ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--navy);
+        background: #edf7f7;
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .documentation-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        flex: 0 0 auto;
+        padding: 11px 15px;
+        border: 1px solid rgba(15, 118, 110, 0.22);
+        border-radius: 12px;
+        color: #ffffff;
+        background: linear-gradient(135deg, var(--teal), var(--blue));
+        box-shadow: 0 8px 20px rgba(23, 107, 135, 0.18);
+        font-size: 0.84rem;
+        font-weight: 850;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .documentation-link svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .documentation-link:hover,
+      .documentation-link:focus-visible {
+        color: #ffffff;
+        outline: none;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(23, 107, 135, 0.25);
+      }
+
+      @media (max-width: 1040px) {
+        .nav-shell {
+          flex-wrap: wrap;
+          padding: 12px 0;
+        }
+
+        .nav-links {
+          order: 3;
+          width: 100%;
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding-bottom: 2px;
+          scrollbar-width: thin;
+        }
+
+        .nav-links a {
+          white-space: nowrap;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav-shell {
+          width: min(100% - 20px, 1160px);
+          min-height: 68px;
+          gap: 10px;
+        }
+
+        .brand-mark {
+          width: 34px;
+          height: 34px;
+        }
+
+        .brand-copy strong {
+          font-size: 0.94rem;
+        }
+
+        .documentation-link {
+          padding: 10px 12px;
+        }
+
+        .documentation-link span {
+          display: none;
+        }
+
+        .documentation-link svg {
+          width: 19px;
+          height: 19px;
+        }
+
+        .nav-links {
+          margin-top: 2px;
+          border-top: 1px solid rgba(16, 42, 67, 0.08);
+          padding-top: 9px;
+        }
+      }
+
+      /* Mobile navbar visibility fix */
+      @media (max-width: 1040px) {
+        .site-header .nav-shell {
+          display: flex !important;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        .site-header .nav-links {
+          display: flex !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          order: 3;
+          width: 100%;
+          min-width: 0;
+          justify-content: flex-start;
+          gap: 4px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 9px 0 4px;
+          border-top: 1px solid rgba(16, 42, 67, 0.08);
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: thin;
+        }
+
+        .site-header .nav-links a {
+          display: inline-flex !important;
+          flex: 0 0 auto;
+          white-space: nowrap;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .site-header {
+          position: sticky;
+          top: 0;
+        }
+
+        .site-header .nav-shell {
+          width: calc(100% - 20px);
+          min-height: auto;
+          padding: 10px 0 8px;
+        }
+
+        .site-header .brand {
+          min-width: 0;
+        }
+
+        .site-header .brand-copy strong {
+          font-size: 0.9rem;
+        }
+
+        .site-header .brand-copy small {
+          font-size: 0.66rem;
+        }
+
+        .site-header .documentation-link {
+          display: inline-flex !important;
+          padding: 9px 11px;
+        }
+
+        .site-header .nav-links {
+          margin-top: 0;
+          padding-top: 8px;
+        }
+
+        .site-header .nav-links a {
+          padding: 8px 10px;
+          font-size: 0.78rem;
+          border: 1px solid rgba(16, 42, 67, 0.08);
+          background: #f7fbfc;
+        }
+      }
+</style>
 </head>
 <body>
 <header class="site-header">
 <div class="nav-shell">
-<a class="brand" href="#top">Klinswork <span>Inventory</span></a>
-<nav aria-label="Page sections" class="nav-links">
+<a aria-label="Klinswork Inventory — return to top" class="brand" href="#top">
+<span aria-hidden="true" class="brand-mark">
+<svg role="img" viewbox="0 0 48 48">
+<path d="M10 34c8-2 13-7 14-20 5 8 6 15 2 22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path>
+<path d="M18 36c5-7 12-11 20-12-3 9-9 14-20 12Z" fill="currentColor" opacity=".88"></path>
+</svg>
+</span>
+<span class="brand-copy">
+<strong>Klinswork</strong>
+<small>Inventory</small>
+</span>
+</a>
+<nav aria-label="Work update sections" class="nav-links">
 <a href="#overview">Overview</a>
 <a href="#problem">Troubleshooting</a>
 <a href="#completed">Work Completed</a>
 <a href="#verification">Verification</a>
 <a href="#next">Next Steps</a>
-<a class="back-link" href="../index.html">Back to Documentation</a>
 </nav>
+<a aria-label="Return to Meadows Housekeeping Documentation" class="documentation-link" href="https://sites.google.com/view/meadows-hk/home/documentation">
+<span>Documentation</span>
+<svg aria-hidden="true" viewbox="0 0 20 20">
+<path d="M7 4h9v9M16 4 6 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</a>
 </div>
 </header>
 <main id="top">
@@ -767,7 +1058,6 @@
 <div class="hero-copy">
 <p class="eyebrow">Work Update · July 19, 2026</p>
 <h1 id="page-title">Inventory Processing and Reusable Web Views</h1>
-
 <div class="hero-summary-grid">
 <p>
               This update covers major progress on the Klinswork Inventory
@@ -1113,6 +1403,5 @@
       Klinswork Inventory · Personal work-organization project · Work Update ·
       07/19/2026
     </footer>
-
 </body>
 </html>
