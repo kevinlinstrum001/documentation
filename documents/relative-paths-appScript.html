@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relative Paths in Apps Script</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --ink: #17313f;
+      --muted: #617683;
+      --line: #d9e3e9;
+      --accent: #0f6f8f;
+      --accent-dark: #0a5068;
+      --accent-soft: #e1f2f7;
+      --code-bg: #111820;
+      --code-border: #263544;
+      --code-text: #edf6ff;
+      --code-keyword: #ff7ab2;
+      --code-string: #b7e27a;
+      --code-function: #72c7ff;
+      --code-comment: #7f93a6;
+      --code-number: #ffc777;
+      --shadow: 0 14px 36px rgba(23, 49, 63, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(15, 111, 143, 0.09), transparent 34%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: var(--accent);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 7px 18px rgba(15, 111, 143, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 11px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .nav-links .documentation-link {
+      background: var(--accent);
+      color: white;
+    }
+
+    .nav-links .documentation-link:hover {
+      background: var(--accent-dark);
+      color: white;
+    }
+
+    main {
+      width: min(1000px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    .hero {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(240,248,251,0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 4.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .lesson-map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .lesson-map a {
+      display: block;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      color: var(--accent-dark);
+      font-weight: 800;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .lesson-map a:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    section {
+      scroll-margin-top: 84px;
+      margin-top: 28px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    section h2 {
+      margin: 0 0 12px;
+      font-size: 1.65rem;
+    }
+
+    section h3 {
+      margin: 26px 0 10px;
+      font-size: 1.15rem;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }
+
+    .callout strong {
+      color: var(--accent-dark);
+    }
+
+    .path-example {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .path-card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fbfdfe;
+    }
+
+    .path-card span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .path-card code {
+      overflow-wrap: anywhere;
+      color: var(--accent-dark);
+      font-weight: 800;
+    }
+
+    .plus {
+      color: var(--accent);
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .code-block {
+      position: relative;
+      overflow-x: auto;
+      margin: 18px 0 22px;
+      padding: 22px;
+      border: 1px solid var(--code-border);
+      border-radius: 16px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    .code-label {
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      color: var(--code-comment);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    pre {
+      margin: 0;
+      padding-top: 10px;
+      white-space: pre;
+      font: 0.93rem/1.65 Consolas, Monaco, "Courier New", monospace;
+    }
+
+    .kw { color: var(--code-keyword); }
+    .str { color: var(--code-string); }
+    .fn { color: var(--code-function); }
+    .com { color: var(--code-comment); font-style: italic; }
+    .num { color: var(--code-number); }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdfe;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-weight: 900;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .warning {
+      border-left-color: #a96d00;
+      background: #fff5dc;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .comparison article {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdfe;
+    }
+
+    .comparison h3 {
+      margin: 0 0 10px;
+    }
+
+    footer {
+      width: min(1000px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 0 0 44px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .lesson-map,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .path-example {
+        grid-template-columns: 1fr;
+      }
+
+      .plus {
+        text-align: center;
+        transform: rotate(90deg);
+      }
+
+      main {
+        padding-top: 28px;
+      }
+
+      .hero,
+      section {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Lesson navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">K</span>
+        <span>Klinswork Lesson</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#idea">Core Idea</a>
+        <a href="#images">Images</a>
+        <a href="#documents">Documents</a>
+        <a href="#flow">Data Flow</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a
+          class="documentation-link"
+          href="https://sites.google.com/view/meadows-hk/home/documentation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Documentation
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <p class="eyebrow">Inventory2 · Apps Script Architecture</p>
+      <h1>How Relative Paths Work in Apps Script</h1>
+      <p>
+        A Google Sheet can store a short path such as
+        <strong>images/products/chem-007-air-freshener.png</strong>, but the
+        sheet does not know where that file lives. The Apps Script code gives
+        that path meaning by joining it to a public base URL.
+      </p>
+
+      <div class="lesson-map" aria-label="Lesson sections">
+        <a href="#idea">Understand the idea</a>
+        <a href="#images">Follow an image</a>
+        <a href="#documents">Follow a PDF</a>
+        <a href="#flow">See the complete flow</a>
+      </div>
+    </header>
+
+    <section id="idea">
+      <h2>The Core Idea</h2>
+
+      <p>
+        A relative path is an incomplete address. It describes where a file is
+        located <em>inside a known folder structure</em>, but it does not include
+        the website or repository address.
+      </p>
+
+      <div class="path-example">
+        <div class="path-card">
+          <span>Base URL supplied by Code.gs</span>
+          <code>https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/</code>
+        </div>
+
+        <div class="plus">+</div>
+
+        <div class="path-card">
+          <span>Relative value stored in the sheet</span>
+          <code>images/products/chem-007-air-freshener.png</code>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>The Google Sheet is only storing text.</strong>
+        The spreadsheet ID tells Apps Script which spreadsheet to open. It does
+        not tell the browser where images or documents are stored.
+      </div>
+
+      <h3>The base URL in your code</h3>
+
+      <div class="code-block">
+        <div class="code-label">JavaScript</div>
+        <pre><span class="kw">const</span> IMAGE_BASE_URL =
+  <span class="str">'https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/'</span>;</pre>
+      </div>
+
+      <p>
+        This line establishes the repository root. Every relative image path
+        stored in the sheet is interpreted from this location.
+      </p>
+    </section>
+
+    <section id="images">
+      <h2>How Images Are Referenced</h2>
+
+      <p>
+        In the Products sheet, an image can be stored as:
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">Sheet value</div>
+        <pre><span class="str">images/products/chem-007-air-freshener.png</span></pre>
+      </div>
+
+      <p>
+        Your original code sends that value through <code>getImageUrl()</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">Code.gs</div>
+        <pre><span class="kw">function</span> <span class="fn">getImageUrl</span>(value) {
+  <span class="kw">const</span> text = String(value || <span class="str">''</span>).trim();
+
+  <span class="kw">if</span> (!text) <span class="kw">return</span> <span class="str">''</span>;
+
+  <span class="kw">if</span> (<span class="str">/^https?:\/\//i</span>.test(text)) {
+    <span class="kw">return</span> text;
+  }
+
+  <span class="kw">return</span> IMAGE_BASE_URL + text.replace(<span class="str">/^\/+</span>/, <span class="str">''</span>);
+}</pre>
+      </div>
+
+      <p>The function performs three checks:</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Is the value blank?</strong>
+            <p>If so, return an empty string.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Is it already a complete URL?</strong>
+            <p>If it starts with HTTP or HTTPS, return it unchanged.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Otherwise, treat it as relative.</strong>
+            <p>Join it to the configured GitHub repository base URL.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Where the conversion occurs</h3>
+
+      <div class="code-block">
+        <div class="code-label">Code.gs</div>
+        <pre>product_image_url: <span class="fn">getImageUrl</span>(row[<span class="num">7</span>]),</pre>
+      </div>
+
+      <p>
+        By the time the SDS view receives <code>product_image_url</code>, the
+        value is already a complete URL.
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">SDS view</div>
+        <pre>&lt;img
+  class=<span class="str">"product-image"</span>
+  src=<span class="str">"${escapeAttribute(record.product_image_url)}"</span>
+  alt=<span class="str">"${escapeAttribute(record.product_name)}"</span>
+&gt;</pre>
+      </div>
+    </section>
+
+    <section id="documents">
+      <h2>How Documents Should Be Referenced</h2>
+
+      <p>
+        The SDS sheet can use the same principle. Store only the path from the
+        repository root:
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">Sheet value</div>
+        <pre><span class="str">docs/sds/Citrus-30-Day-Refill-SDS.pdf</span></pre>
+      </div>
+
+      <p>
+        The original code did not expand this path. It returned the cell value
+        unchanged:
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">Original Code.gs</div>
+        <pre>document_url: String(row[<span class="num">3</span>] || <span class="str">''</span>),</pre>
+      </div>
+
+      <p>
+        That caused the browser to interpret the PDF path relative to the
+        temporary Apps Script page address.
+      </p>
+
+      <div class="callout warning">
+        <strong>Why it failed:</strong>
+        Apps Script does not automatically publish a
+        <code>docs/sds/</code> folder. A relative link placed directly in the HTML
+        is resolved against the current <code>script.googleusercontent.com</code>
+        page.
+      </div>
+
+      <h3>Recommended document base</h3>
+
+      <p>
+        Use GitHub Pages for PDFs when you want them to open in the browser:
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">JavaScript</div>
+        <pre><span class="kw">const</span> DOCUMENT_BASE_URL =
+  <span class="str">'https://kevinlinstrum001.github.io/inventory/'</span>;</pre>
+      </div>
+
+      <h3>One reusable resolver</h3>
+
+      <div class="code-block">
+        <div class="code-label">Code.gs</div>
+        <pre><span class="kw">function</span> <span class="fn">resolveUrl_</span>(value, baseUrl) {
+  <span class="kw">const</span> path = String(value || <span class="str">''</span>).trim();
+
+  <span class="kw">if</span> (!path) {
+    <span class="kw">return</span> <span class="str">''</span>;
+  }
+
+  <span class="kw">if</span> (<span class="str">/^https?:\/\//i</span>.test(path)) {
+    <span class="kw">return</span> path;
+  }
+
+  <span class="kw">return</span> baseUrl + path.replace(<span class="str">/^\/+</span>/, <span class="str">''</span>);
+}</pre>
+      </div>
+
+      <div class="comparison">
+        <article>
+          <h3>Images</h3>
+          <div class="code-block">
+            <div class="code-label">Code.gs</div>
+            <pre>product_image_url:
+  <span class="fn">resolveUrl_</span>(
+    record.product_image_url,
+    IMAGE_BASE_URL
+  ),</pre>
+          </div>
+        </article>
+
+        <article>
+          <h3>SDS PDFs</h3>
+          <div class="code-block">
+            <div class="code-label">Code.gs</div>
+            <pre>document_url:
+  <span class="fn">resolveUrl_</span>(
+    record.document_url,
+    DOCUMENT_BASE_URL
+  ),</pre>
+          </div>
+        </article>
+      </div>
+
+      <p>
+        The HTML view can then use the complete PDF URL without any additional
+        path logic:
+      </p>
+
+      <div class="code-block">
+        <div class="code-label">SDS view</div>
+        <pre>&lt;a
+  class=<span class="str">"button"</span>
+  href=<span class="str">"${escapeAttribute(record.document_url)}"</span>
+  target=<span class="str">"_blank"</span>
+  rel=<span class="str">"noopener noreferrer"</span>
+&gt;
+  Open SDS PDF
+&lt;/a&gt;</pre>
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2>The Complete Data Flow</h2>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>The Google Sheet stores a relative path.</strong>
+            <p><code>docs/sds/Citrus-30-Day-Refill-SDS.pdf</code></p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Code.gs reads the cell.</strong>
+            <p>The value is ordinary text at this stage.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>The resolver joins it to a base URL.</strong>
+            <p>
+              The code decides whether the file belongs under the raw GitHub
+              base or the GitHub Pages base.
+            </p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <div>
+            <strong>The Apps Script view receives a complete URL.</strong>
+            <p>The HTML does not need to know anything about the repository.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <div>
+            <strong>The browser loads the resource.</strong>
+            <p>Images display in cards and SDS documents open in a new tab.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Key principle:</strong>
+        The relative path is not related to the spreadsheet ID. It is relative
+        to the base URL selected by your Apps Script code.
+      </div>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>Troubleshooting</h2>
+
+      <h3>The image or PDF returns 404</h3>
+      <p>
+        Check the filename, capitalization, repository branch, folder structure,
+        and whether the file was committed and pushed.
+      </p>
+
+      <h3>The PDF points to script.googleusercontent.com</h3>
+      <p>
+        The document URL reached the HTML as a relative path. Confirm that
+        <code>document_url</code> passes through the resolver in Code.gs.
+      </p>
+
+      <h3>The PDF downloads instead of opening</h3>
+      <p>
+        Use the GitHub Pages base for documents rather than the raw GitHub base.
+        Browser PDF settings can still force downloads, but GitHub Pages is the
+        correct host for normal browser viewing.
+      </p>
+
+      <h3>A complete external URL is already in the sheet</h3>
+      <p>
+        The resolver returns complete HTTP or HTTPS URLs unchanged, so both
+        relative paths and full URLs can coexist.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Inventory2 architecture lesson · Shared images and SDS documents
+  </footer>
+</body>
+</html>
