@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Work Update — July 23, 2026</title>
+
+  <meta
+    name="description"
+    content="Klinswork work update for July 23, 2026, covering Inventory 3.0 product pages, routing repairs, stable Apps Script deployment links, filtering improvements, product research, and deployment safeguards."
+  >
+
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --surface: #ffffff;
+      --surface-2: #f7f9fc;
+      --ink: #132238;
+      --muted: #5f6f82;
+      --line: #d9e2ec;
+      --blue: #0d47a1;
+      --blue-2: #1565c0;
+      --yellow: #ffd21f;
+      --shadow: 0 14px 34px rgba(19, 34, 56, 0.10);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(255, 210, 31, 0.18),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #f6f9fc 0%,
+          var(--bg) 100%
+        );
+      line-height: 1.65;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: var(--blue-2);
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 34, 78, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      outline: none;
+    }
+
+    .nav-links .klinswork-link {
+      background: var(--yellow);
+      color: #10264c;
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 28px auto 60px;
+    }
+
+    .hero {
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(13, 71, 161, 0.10);
+    }
+
+    .hero-image {
+      width: 100%;
+      background: #dce6f1;
+      object-fit: contain;
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 5vw, 52px);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13, 71, 161, 0.98),
+          rgba(21, 101, 192, 0.94)
+        ),
+        var(--blue);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2rem, 6vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy p {
+      max-width: 820px;
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0 0;
+    }
+
+    .summary-card {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 1.75rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      font-size: 0.91rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 38px);
+      box-shadow: 0 10px 28px rgba(19, 34, 56, 0.07);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--yellow);
+      color: #10264c;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 26px 0 8px;
+      color: var(--blue-2);
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .callout {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-left: 6px solid var(--yellow);
+      border-radius: 0 14px 14px 0;
+      background: #fff8d6;
+    }
+
+    .callout strong {
+      color: #17345f;
+    }
+
+    .code-block {
+      margin: 16px 0;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 14px;
+      background: #0e1c2f;
+      color: #e8f1fb;
+      font: 0.92rem/1.55 Consolas, Monaco, monospace;
+      white-space: pre;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: var(--surface-2);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+    }
+
+    .achievement {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 210, 31, 0.16),
+          rgba(21, 101, 192, 0.06)
+        ),
+        var(--surface);
+      border: 2px solid rgba(13, 71, 161, 0.16);
+    }
+
+    .quote {
+      margin: 18px 0 0;
+      padding: 22px;
+      border-radius: 16px;
+      background: #edf5ff;
+      color: #16345f;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 54px;
+      background: #071f45;
+      color: rgba(255, 255, 255, 0.82);
+      border-top: 4px solid var(--yellow);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 30px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: var(--yellow);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav-links a {
+        font-size: 0.88rem;
+        padding: 8px 10px;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .section-card {
+        border-radius: 16px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-number {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">
+        Klins<span>work</span> Update
+      </a>
+
+      <div class="nav-links">
+        <a href="#product-pages">Product Pages</a>
+        <a href="#inventory-browser">Inventory Browser</a>
+        <a href="#products">Products</a>
+        <a href="#routing">Routing Fix</a>
+        <a href="#deployment">Deployment</a>
+        <a href="#achievement">Achievement</a>
+
+        <a
+          class="klinswork-link"
+          href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        >
+          Back to Klinswork
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <img
+        class="hero-image"
+        src="https://kevinlinstrum001.github.io/documentation/images/work-update-07-23-2026.png"
+        alt="Work Update for July 23, 2026"
+      >
+
+      <div class="hero-copy">
+        <p class="eyebrow">
+          Work Update · July 23, 2026
+        </p>
+
+        <h1>
+          Inventory 3.0 gained complete product pages and stable internal routing.
+        </h1>
+
+        <p>
+          Today’s work transformed Inventory 3.0 from a working inventory browser
+          into a more complete product-information system. Full product pages,
+          improved filtering, SDS access, product research, and a difficult
+          Apps Script routing problem were brought together into a stable,
+          mobile-friendly application.
+        </p>
+
+        <div
+          class="summary-grid"
+          aria-label="Daily highlights"
+        >
+          <div class="summary-card">
+            <strong>1</strong>
+            <span>complete full-product-page system established</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>3</strong>
+            <span>major navigation paths repaired and verified</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>2</strong>
+            <span>trash-liner products documented for inventory</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>1</strong>
+            <span>stable deployment architecture confirmed</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section id="product-pages">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">1</div>
+
+          <div>
+            <h2>Full product pages</h2>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>
+            Inventory 3.0 now provides a complete standalone page for each product.
+          </strong>
+          The product page is no longer limited to a compact popup inside the
+          inventory browser.
+        </div>
+
+        <p>
+          Direct product routes were established with a product identifier in
+          the web-app address. The application can now open directly to a
+          specific product while preserving access to the main inventory screen.
+        </p>
+
+        <div class="code-block">?view=product&amp;id=PRODUCT-ID</div>
+
+        <h3>Information shown on each page</h3>
+
+        <ul>
+          <li>Product image and category</li>
+          <li>Product name and manufacturer</li>
+          <li>Manufacturer product code</li>
+          <li>Container size and inventory unit</li>
+          <li>Inventory product ID</li>
+          <li>SDS revision, source, and verification information</li>
+          <li>Direct SDS and manufacturer-information buttons when available</li>
+        </ul>
+
+        <h3>Navigation and presentation</h3>
+
+        <ul>
+          <li>The original Details popup was retained for quick reference.</li>
+          <li>An <strong>Open full product page</strong> button was added.</li>
+          <li>Back-to-Inventory links were provided at both the top and bottom.</li>
+          <li>Broken images now fall back to a clean placeholder.</li>
+          <li>Temporary route-testing alerts and debug material were removed.</li>
+          <li>The final detail page was tested and confirmed to look excellent.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="inventory-browser">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">2</div>
+
+          <div>
+            <h2>Inventory browsing and filtering</h2>
+          </div>
+        </div>
+
+        <p>
+          The product browser was refined so daily use remains focused while
+          products without an opening inventory balance remain accessible when
+          needed.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>In stock only</h3>
+
+            <ul>
+              <li>Made the default product view.</li>
+              <li>Shows products currently present at the selected location.</li>
+              <li>Reduces clutter during routine inventory work.</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>All products</h3>
+
+            <ul>
+              <li>Displays the entire active product catalog.</li>
+              <li>Allows products without inventory records to be found.</li>
+              <li>Supports creating a new opening balance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          Product filtering continues to respect the selected inventory location,
+          category, search text, and active product status.
+        </p>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">3</div>
+
+          <div>
+            <h2>Trash-can liner product documentation</h2>
+          </div>
+        </div>
+
+        <p>
+          Two clear trash-can liner products were photographed, identified, and
+          prepared for addition to Inventory 3.0.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Medium clear liner</h3>
+
+            <ul>
+              <li><strong>Brand:</strong> Highmark</li>
+              <li><strong>Item number:</strong> 792083</li>
+              <li><strong>Size:</strong> 33 × 39 inches</li>
+              <li><strong>Capacity:</strong> up to 33 gallons</li>
+              <li><strong>Thickness:</strong> 0.60 mil</li>
+              <li><strong>Case quantity:</strong> 250 liners</li>
+              <li><strong>Packaging:</strong> 25 bags per roll, 10 rolls per case</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Large clear liner</h3>
+
+            <ul>
+              <li><strong>Product code:</strong> L38582C</li>
+              <li><strong>Size:</strong> 38 × 58 inches</li>
+              <li><strong>Capacity:</strong> 55–60 gallons</li>
+              <li><strong>Thickness:</strong> 2 mil</li>
+              <li><strong>Case quantity:</strong> 100 liners</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          Consistent product names and Medium/Large classifications were
+          recommended. These liners belong under consumable supplies rather
+          than the SDS directory because they are manufactured articles rather
+          than chemical products.
+        </p>
+      </div>
+    </section>
+
+    <section id="routing">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">4</div>
+
+          <div>
+            <h2>Apps Script routing failure diagnosed and repaired</h2>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>
+            The stable deployment address was not changing.
+          </strong>
+          Internal navigation was accidentally rebuilding links from a temporary
+          Google-hosted iframe address.
+        </div>
+
+        <p>
+          Inventory 3.0 could open correctly from Google Sites, but the
+          <strong>Open full product page</strong> button could then lead to a
+          blank or older-looking page. The failure appeared to be a deployment
+          problem, but the actual cause was inside <code>Scripts.html</code>.
+        </p>
+
+        <h3>Incorrect routing source</h3>
+
+        <div class="code-block">window.location.origin +
+window.location.pathname</div>
+
+        <p>
+          Inside an Apps Script application, this can resolve to a temporary
+          address containing:
+        </p>
+
+        <div class="code-block">script.googleusercontent.com/userCodeAppPanel</div>
+
+        <h3>Correct routing source</h3>
+
+        <p>
+          The application was already receiving the stable deployment address
+          from Apps Script:
+        </p>
+
+        <div class="code-block">ScriptApp.getService().getUrl()
+→ window.APP_URL
+→ getAppBaseUrl()
+→ all internal links</div>
+
+        <p>
+          The <code>getAppBaseUrl()</code> helper was rewritten to use
+          <code>window.APP_URL</code>. This repaired the full-product-page link
+          and both Back-to-Inventory links without changing the outside
+          deployment URL.
+        </p>
+      </div>
+    </section>
+
+    <section id="deployment">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">5</div>
+
+          <div>
+            <h2>Stable deployment workflow established</h2>
+          </div>
+        </div>
+
+        <p>
+          The difference between an Apps Script deployment and a deployment
+          version was clarified.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Existing deployment</h3>
+
+            <ul>
+              <li>Edit through <strong>Manage deployments</strong>.</li>
+              <li>Select <strong>New version</strong>.</li>
+              <li>Keep the same deployment ID and <code>/exec</code> URL.</li>
+              <li>Preserve bookmarks, Google Sites buttons, and QR codes.</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>New deployment</h3>
+
+            <ul>
+              <li>Creates another deployment ID.</li>
+              <li>Produces another <code>/exec</code> URL.</li>
+              <li>Can leave older versions active and accessible.</li>
+              <li>Should not be used for ordinary code updates.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Protected navigation rules</h3>
+
+        <ul>
+          <li>Do not build internal app links from <code>window.location</code>.</li>
+          <li>Do not use <code>document.location</code> for application routing.</li>
+          <li>Do not store temporary <code>googleusercontent.com</code> addresses.</li>
+          <li>Do not hard-code deployment URLs inside client-side scripts.</li>
+          <li>Use the server-provided <code>window.APP_URL</code> consistently.</li>
+        </ul>
+
+        <h3>Short post-deployment test</h3>
+
+        <ul>
+          <li>Open the Inventory 3.0 homepage.</li>
+          <li>Select a location.</li>
+          <li>Open a product’s Details panel.</li>
+          <li>Open the full product page.</li>
+          <li>Test Back to Inventory.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">6</div>
+
+          <div>
+            <h2>Longer-term application architecture</h2>
+          </div>
+        </div>
+
+        <p>
+          A central Klinswork URL registry was considered as a way to manage the
+          addresses of Inventory 3.0, Tasker, Email Composer, and the Tool Center.
+          Such a registry may still be useful for internal navigation and future
+          replacement deployments.
+        </p>
+
+        <p>
+          The more important discovery, however, is that normal code updates
+          should not require any link changes at all. Stable deployment URLs
+          combined with a single canonical internal base URL remove most of the
+          need for manual link maintenance.
+        </p>
+
+        <div class="quote">
+          One stable deployment address should serve as both the front door and
+          the source for every internal route.
+        </div>
+      </div>
+    </section>
+
+    <section id="achievement">
+      <div class="section-card achievement">
+        <div class="section-heading">
+          <div class="section-number">7</div>
+
+          <div>
+            <h2>The larger achievement</h2>
+          </div>
+        </div>
+
+        <p>
+          Today’s work substantially expanded Inventory 3.0 while also resolving
+          one of the most confusing problems in Apps Script development:
+          apparently changing links that were actually temporary runtime
+          addresses.
+        </p>
+
+        <ul>
+          <li>A complete product-information page system was established.</li>
+          <li>Product filtering became more practical for daily inventory work.</li>
+          <li>SDS access was integrated into product pages.</li>
+          <li>Two trash-liner products were documented for the catalog.</li>
+          <li>The full-page routing failure was traced to its exact function.</li>
+          <li>The entire corrected Scripts.html file was produced and deployed.</li>
+          <li>The stable deployment URL was preserved and verified.</li>
+          <li>The final product detail page was confirmed to work and look excellent.</li>
+        </ul>
+
+        <p>
+          By the end of the session, Inventory 3.0 was no longer only a quantity
+          tracker. It had become a more complete product, inventory, and safety
+          information system with dependable routing and a clearer deployment
+          process.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>
+        &copy; 2026 Klinswork. All rights reserved.
+      </span>
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+      >
+        Return to Klinswork
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
