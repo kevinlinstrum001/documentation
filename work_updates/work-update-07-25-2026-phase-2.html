@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Work Queue 2.0 — Phase 2 Update — July 25, 2026</title>
+
+  <meta
+    name="description"
+    content="Klinswork Work Queue 2.0 Phase 2 update for July 25, 2026, covering task templates, formal validation, startup-data integration, interface testing, deployment, and mobile verification."
+  >
+
+  <style>
+    :root {
+      --bg: #fff7e8;
+      --surface: #fffdf8;
+      --surface-2: #fff5dc;
+      --ink: #20323a;
+      --muted: #6d7b7d;
+      --line: #efd9b2;
+      --teal: #0b7d77;
+      --teal-2: #129b8f;
+      --coral: #ef7d5b;
+      --sun: #ffd166;
+      --sky: #79c7d3;
+      --leaf: #6ba66f;
+      --shadow: 0 16px 38px rgba(75, 72, 45, 0.12);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(255, 209, 102, 0.34),
+          transparent 28rem
+        ),
+        radial-gradient(
+          circle at 90% 8%,
+          rgba(121, 199, 211, 0.24),
+          transparent 24rem
+        ),
+        linear-gradient(
+          180deg,
+          #fffaf0 0%,
+          var(--bg) 100%
+        );
+      line-height: 1.65;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: var(--teal);
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(9, 94, 91, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 4px solid var(--sun);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--sun);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 800;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+    }
+
+    .nav-links .klinswork-link {
+      background: var(--sun);
+      color: #184a48;
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 28px auto 64px;
+    }
+
+    .hero {
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(11, 125, 119, 0.16);
+    }
+
+    .hero-visual {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(255,255,255,.75), transparent 13rem),
+        linear-gradient(135deg, #8ed7d6 0%, #ffd58a 50%, #f49a75 100%);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: .34;
+    }
+
+    .hero-visual::before {
+      width: 240px;
+      height: 240px;
+      right: -50px;
+      top: -70px;
+      background: #fff7b2;
+    }
+
+    .hero-visual::after {
+      width: 190px;
+      height: 190px;
+      left: -45px;
+      bottom: -80px;
+      background: #e36f56;
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 2;
+      width: min(680px, calc(100% - 40px));
+      padding: 32px;
+      border-radius: 24px;
+      background: rgba(255, 253, 248, .92);
+      box-shadow: 0 18px 46px rgba(68, 70, 50, .18);
+      text-align: center;
+      border: 2px solid rgba(255,255,255,.85);
+    }
+
+    .hero-badge .mark {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 1.55rem;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(11,125,119,.25);
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--teal);
+      font-size: clamp(1.35rem, 4vw, 2.3rem);
+      line-height: 1.12;
+    }
+
+    .hero-badge span {
+      display: block;
+      margin-top: 8px;
+      color: #6a5b42;
+      font-weight: 700;
+    }
+
+    .hero-copy {
+      padding: clamp(26px, 5vw, 54px);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(11, 125, 119, 0.98),
+          rgba(18, 155, 143, 0.94)
+        ),
+        var(--teal);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--sun);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 930px;
+      font-size: clamp(2rem, 6vw, 4.35rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy p {
+      max-width: 860px;
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      color: rgba(255,255,255,.92);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .summary-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.19);
+      border-radius: 17px;
+      padding: 17px;
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--sun);
+      font-size: 1.78rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      color: rgba(255,255,255,.88);
+      font-size: .91rem;
+    }
+
+    section {
+      scroll-margin-top: 88px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 40px);
+      box-shadow: 0 11px 30px rgba(76, 67, 40, 0.08);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--sun);
+      color: #225652;
+      font-weight: 900;
+      box-shadow: 0 7px 15px rgba(255, 209, 102, .26);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--teal);
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 26px 0 8px;
+      color: #b64f38;
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .callout {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-left: 6px solid var(--coral);
+      border-radius: 0 15px 15px 0;
+      background: #fff0e7;
+    }
+
+    .callout strong {
+      color: #8b402f;
+    }
+
+    .code-block {
+      margin: 16px 0;
+      padding: 17px;
+      overflow-x: auto;
+      border-radius: 15px;
+      background: #173a3a;
+      color: #effcf8;
+      font: .92rem/1.58 Consolas, Monaco, monospace;
+      white-space: pre;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 21px;
+      background: var(--surface-2);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+    }
+
+    .achievement {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,209,102,.18),
+          rgba(121,199,211,.13)
+        ),
+        var(--surface);
+      border: 2px solid rgba(11,125,119,.18);
+    }
+
+    .quote {
+      margin: 18px 0 0;
+      padding: 22px;
+      border-radius: 17px;
+      background: #eaf9f5;
+      color: #225a56;
+      font-size: 1.08rem;
+      font-weight: 800;
+      border: 1px solid #cfeee8;
+    }
+
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .workflow-step {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e7f7f4;
+      color: #225b56;
+      font-weight: 800;
+      border: 1px solid #c5e8e3;
+    }
+
+    .workflow-arrow {
+      color: var(--coral);
+      font-weight: 900;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      background: #e9f8f5;
+      color: var(--teal);
+    }
+
+    .status-banner {
+      margin-top: 24px;
+      padding: 23px;
+      border-radius: 17px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,209,102,.2),
+          rgba(107,166,111,.12)
+        ),
+        #fff;
+      border: 2px solid rgba(11,125,119,.17);
+    }
+
+    .status-banner strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--teal);
+      font-size: 1.22rem;
+    }
+
+    footer {
+      margin-top: 56px;
+      background: #095e5b;
+      color: rgba(255,255,255,.84);
+      border-top: 4px solid var(--sun);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 31px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: var(--sun);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .data-table,
+      .data-table thead,
+      .data-table tbody,
+      .data-table th,
+      .data-table td,
+      .data-table tr {
+        display: block;
+      }
+
+      .data-table thead {
+        display: none;
+      }
+
+      .data-table tr {
+        margin-bottom: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .data-table td {
+        border: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .data-table td:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav-links a {
+        font-size: .87rem;
+        padding: 8px 10px;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .section-card {
+        border-radius: 17px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-number {
+        width: 39px;
+        height: 39px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">Klins<span>work</span> Update</a>
+
+      <div class="nav-links">
+        <a href="#service">Templates</a>
+        <a href="#validation">Validation</a>
+        <a href="#startup">Startup</a>
+        <a href="#form">New Task</a>
+        <a href="#browser">Browser</a>
+        <a href="#integration">Testing</a>
+        <a href="#deployment">Deployment</a>
+        <a href="#mobile">Mobile</a>
+        <a href="#process">Workflow</a>
+        <a href="#status">Status</a>
+
+        <a
+          class="klinswork-link"
+          href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        >
+          Back to Klinswork
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <div class="hero-visual" aria-label="Summer-themed Work Queue Phase 2 cover">
+        <div class="hero-badge">
+          <div class="mark">WQ</div>
+          <strong>Template-assisted work, fully tested</strong>
+          <span>Work Queue 2.0 · Phase 2 · July 25, 2026</span>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Development Update · Phase 2</p>
+
+        <h1>Work Queue 2.0 became fast, guided, and ready for real operational use.</h1>
+
+        <p>
+          This phase connected task-template data to the backend, added formal
+          validation across the application, extended startup data, rebuilt the
+          New Task experience, deployed the upgraded release, and verified the
+          workflow on desktop and mobile.
+        </p>
+
+        <div class="summary-grid" aria-label="Phase 2 highlights">
+          <div class="summary-card">
+            <strong>10</strong>
+            <span>active task templates</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>6</strong>
+            <span>template categories</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>0</strong>
+            <span>validation errors or warnings</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>2</strong>
+            <span>platforms verified: desktop and mobile</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section id="service">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">1</div>
+          <div><h2>Connected Task_Templates to the application</h2></div>
+        </div>
+
+        <p>
+          Phase 2 began by turning the populated <code>Task_Templates</code>
+          sheet into a dependable application service.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>New backend file</h3>
+            <p><code>TemplateService.gs</code></p>
+            <p>Responsible for retrieving, normalizing, filtering, and sorting template records.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Capabilities added</h3>
+            <ul>
+              <li>Retrieve all active templates</li>
+              <li>Retrieve one template by ID</li>
+              <li>Return distinct categories</li>
+              <li>Normalize active values and priorities</li>
+              <li>Sort by order, category, and name</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="code-block">{
+  templateId: "TPL-003",
+  category: "General Cleaning",
+  templateName: "Vacuum",
+  defaultDescription: "Vacuum the selected area.",
+  defaultPriority: "Normal",
+  active: true,
+  sortOrder: 30
+}</div>
+      </div>
+    </section>
+
+    <section id="retrieval">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">2</div>
+          <div><h2>Verified template retrieval before interface work</h2></div>
+        </div>
+
+        <p>
+          A compact <code>Code.gs</code> test called
+          <code>TemplateService.gs → getTaskTemplates()</code> and
+          <code>TemplateService.gs → getTaskTemplateCategories()</code>.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Verified totals</h3>
+            <ul>
+              <li><strong>10</strong> active templates</li>
+              <li><strong>6</strong> categories</li>
+              <li>Correct IDs and names</li>
+              <li>Correct descriptions and priorities</li>
+              <li>Correct sorting</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Verified categories</h3>
+            <ul>
+              <li>Carpet Care</li>
+              <li>Supplies</li>
+              <li>General Cleaning</li>
+              <li>Windows</li>
+              <li>Other</li>
+              <li>General</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote">
+          The spreadsheet-to-service layer was proven before templates were exposed
+          to the rest of the application.
+        </div>
+      </div>
+    </section>
+
+    <section id="validation">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">3</div>
+          <div><h2>Expanded formal system validation</h2></div>
+        </div>
+
+        <p>
+          <code>Validation.gs</code> now treats the template system as a required
+          part of the Work Queue configuration.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>New validation coverage</h3>
+            <ul>
+              <li><code>CONFIG.SHEETS.TASK_TEMPLATES</code> must exist</li>
+              <li>The <code>Task_Templates</code> sheet must exist</li>
+              <li>All seven required headers must be present</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Complete result</h3>
+            <div class="code-block">Success: true
+Errors: 0
+Warnings: 0</div>
+          </div>
+        </div>
+
+        <p>
+          The final validation confirmed the configuration object, Work Queue data
+          spreadsheet, all operational tabs, the shared location source, and all
+          163 active Work Queue locations.
+        </p>
+      </div>
+    </section>
+
+    <section id="startup">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">4</div>
+          <div><h2>Extended browser startup data</h2></div>
+        </div>
+
+        <p>
+          <code>WebApp.gs → getAppInitializationData()</code> and
+          <code>WebApp.gs → getStartupData()</code> were updated so the browser
+          receives templates and template categories during initial loading.
+        </p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Startup item</th><th>Verified result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Application</td><td>Work Queue 2.0</td></tr>
+            <tr><td>Units</td><td>8</td></tr>
+            <tr><td>Locations</td><td>163</td></tr>
+            <tr><td>Templates</td><td>10</td></tr>
+            <tr><td>Categories</td><td>6</td></tr>
+            <tr><td>Active tasks at test time</td><td>0</td></tr>
+            <tr><td>Completed tasks at test time</td><td>2</td></tr>
+          </tbody>
+        </table>
+
+        <div class="code-block">Task_Templates sheet
+→ TemplateService.gs
+→ Validation.gs
+→ WebApp.gs
+→ getStartupData()
+→ browser</div>
+      </div>
+    </section>
+
+    <section id="form">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">5</div>
+          <div><h2>Rebuilt the New Task form</h2></div>
+        </div>
+
+        <p>
+          The former free-text Category field was replaced with a guided,
+          two-step template selection process.
+        </p>
+
+        <div class="workflow" aria-label="New Task field order">
+          <span class="workflow-step">Unit</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Location</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Category</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Task</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Description</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Priority</span>
+        </div>
+
+        <ul>
+          <li>Category is now a required dropdown.</li>
+          <li>Task is a new required dropdown.</li>
+          <li>Task remains disabled until a category is selected.</li>
+          <li>Description and Priority receive defaults but remain editable.</li>
+          <li>Assigned To and Initial Note remain available.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Rendered structure test:</strong>
+          both controls existed, Task was initially disabled, and every field
+          appeared in the intended order.
+        </div>
+      </div>
+    </section>
+
+    <section id="browser">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">6</div>
+          <div><h2>Added browser-side template behavior</h2></div>
+        </div>
+
+        <p>
+          <code>Scripts.html</code> now stores and applies template data throughout
+          the New Task workflow.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Browser behavior</h3>
+            <ul>
+              <li>Populate Category options</li>
+              <li>Filter Task choices by Category</li>
+              <li>Autofill Description</li>
+              <li>Autofill Priority</li>
+              <li>Reset both controls correctly</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Preserved flexibility</h3>
+            <ul>
+              <li>Description remains editable</li>
+              <li>Priority remains editable</li>
+              <li>Category is saved with the task</li>
+              <li>Template ID is not stored yet</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="code-block">Category: General Cleaning
+Task template: Vacuum
+Description: Vacuum the selected area.
+Priority: Normal</div>
+      </div>
+    </section>
+
+    <section id="integration">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">7</div>
+          <div><h2>Added a full interface integration test</h2></div>
+        </div>
+
+        <p>
+          The rendered application was inspected before deployment to verify the
+          complete template wiring.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Checks included</h3>
+            <ul>
+              <li>Category and Task selects exist</li>
+              <li>Template state is stored</li>
+              <li>Change handlers are connected</li>
+              <li>Templates filter by category</li>
+              <li>Description and Priority autofill</li>
+              <li>Category submits correctly</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Result</h3>
+            <div class="code-block">Success: true
+Failed checks: 0
+Template count: 10
+Category count: 6</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deployment">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">8</div>
+          <div><h2>Deployed the template-assisted release</h2></div>
+        </div>
+
+        <p>
+          After every backend, validation, startup, HTML, and browser integration
+          test passed, a new Apps Script deployment was created and tested directly.
+        </p>
+
+        <h3>Desktop realistic-task test</h3>
+
+        <ul>
+          <li>Selected a unit and location.</li>
+          <li>Selected General Cleaning and Vacuum.</li>
+          <li>Used the autofilled description.</li>
+          <li>Edited the description.</li>
+          <li>Changed Priority to Urgent.</li>
+          <li>Added an initial note.</li>
+          <li>Created and opened the saved task.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Saved correctly:</strong>
+          Pending status, Urgent priority, General Cleaning category, chosen
+          location, edited description, task ID, creation activity, and initial-note activity.
+        </div>
+      </div>
+    </section>
+
+    <section id="mobile">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">9</div>
+          <div><h2>Verified the complete workflow on mobile</h2></div>
+        </div>
+
+        <p>
+          The new deployment was tested on a mobile phone using a realistic task
+          workflow.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Mobile results</h3>
+            <ul>
+              <li>Layout displayed correctly</li>
+              <li>Dropdowns were easy to use</li>
+              <li>Category filtered Task correctly</li>
+              <li>Description and Priority autofilled</li>
+              <li>Task creation succeeded</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Operational impact</h3>
+            <p>
+              The task-creation process changed from a long typing exercise into a
+              quick selection-and-review workflow suitable for use while moving
+              through the building.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">10</div>
+          <div><h2>Established a much stronger development workflow</h2></div>
+        </div>
+
+        <div class="code-block">Create data
+→ write service
+→ test service
+→ validate schema
+→ test validation
+→ extend startup response
+→ test startup response
+→ update HTML
+→ test rendered structure
+→ update browser behavior
+→ test integration
+→ deploy
+→ test realistic workflow
+→ test mobile workflow</div>
+
+        <p>
+          Each layer was proven before the next layer was changed. This reduced
+          uncertainty, made failures easier to isolate, and replaced trial-and-error
+          deployment with controlled system verification.
+        </p>
+
+        <div class="quote">
+          The deepest success of Phase 2 was not only the template feature. It was
+          the creation of a development method that can be trusted.
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">11</div>
+          <div><h2>User-experience result</h2></div>
+        </div>
+
+        <div class="workflow" aria-label="Guided task creation">
+          <span class="workflow-step">Choose Unit</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Choose Location</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Choose Category</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Choose Task</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Review</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Create</span>
+        </div>
+
+        <p>
+          Behind the scenes, Work Queue performs template lookup, filtering,
+          default selection, validation, persistence, activity logging, and
+          interface refresh. The user experiences only a fast, polished workflow.
+        </p>
+      </div>
+    </section>
+
+    <section id="library">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">12</div>
+          <div><h2>Current template library</h2></div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>ID</th><th>Category</th><th>Task</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>TPL-001</td><td>Carpet Care</td><td>Spot-shampoo carpet</td></tr>
+            <tr><td>TPL-002</td><td>Supplies</td><td>Restock supplies</td></tr>
+            <tr><td>TPL-003</td><td>General Cleaning</td><td>Vacuum</td></tr>
+            <tr><td>TPL-004</td><td>General Cleaning</td><td>Mop</td></tr>
+            <tr><td>TPL-005</td><td>General Cleaning</td><td>Spot-mop</td></tr>
+            <tr><td>TPL-006</td><td>General Cleaning</td><td>Sweep</td></tr>
+            <tr><td>TPL-007</td><td>General Cleaning</td><td>Clean</td></tr>
+            <tr><td>TPL-008</td><td>Windows</td><td>Clean windows</td></tr>
+            <tr><td>TPL-009</td><td>Other</td><td>Other request</td></tr>
+            <tr><td>TPL-010</td><td>General</td><td>General</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="section-card achievement">
+        <div class="section-heading">
+          <div class="section-number">13</div>
+          <div><h2>Current status and recommended next phase</h2></div>
+        </div>
+
+        <div class="status-banner">
+          <strong>Work Queue 2.0 is now a stable, template-assisted operational application.</strong>
+          It has passed backend, validation, startup, rendered-interface,
+          integration, desktop, mobile, and realistic-workflow testing.
+        </div>
+
+        <h3>Recommended sequence</h3>
+
+        <div class="workflow" aria-label="Recommended development sequence">
+          <span class="workflow-step">Use stable release</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Collect observations</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Refine templates</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Template administration</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Notifications</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Reporting</span>
+        </div>
+
+        <p>
+          The strongest next feature is a protected template-administration screen
+          that allows templates to be added, edited, reordered, activated, and
+          deactivated without manually editing the spreadsheet.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Klinswork. All rights reserved.</span>
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+      >
+        Return to Klinswork
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
