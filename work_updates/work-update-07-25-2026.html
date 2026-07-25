@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Work Update — July 25, 2026</title>
+
+  <meta
+    name="description"
+    content="Klinswork work update for July 25, 2026, covering the design, construction, testing, launch, and next development phase of Work Queue 2.0."
+  >
+
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --surface: #ffffff;
+      --surface-2: #f7f9fc;
+      --ink: #132238;
+      --muted: #5f6f82;
+      --line: #d9e2ec;
+      --blue: #0d47a1;
+      --blue-2: #1565c0;
+      --yellow: #ffd21f;
+      --shadow: 0 14px 34px rgba(19, 34, 56, 0.10);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(255, 210, 31, 0.18),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #f6f9fc 0%,
+          var(--bg) 100%
+        );
+      line-height: 1.65;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: var(--blue-2);
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 34, 78, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      outline: none;
+    }
+
+    .nav-links .klinswork-link {
+      background: var(--yellow);
+      color: #10264c;
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 28px auto 60px;
+    }
+
+    .hero {
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(13, 71, 161, 0.10);
+    }
+
+    .hero-image {
+      width: 100%;
+      background: #dce6f1;
+      object-fit: contain;
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 5vw, 52px);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13, 71, 161, 0.98),
+          rgba(21, 101, 192, 0.94)
+        ),
+        var(--blue);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2rem, 6vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy p {
+      max-width: 820px;
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0 0;
+    }
+
+    .summary-card {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 1.75rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      font-size: 0.91rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 38px);
+      box-shadow: 0 10px 28px rgba(19, 34, 56, 0.07);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--yellow);
+      color: #10264c;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 26px 0 8px;
+      color: var(--blue-2);
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .callout {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-left: 6px solid var(--yellow);
+      border-radius: 0 14px 14px 0;
+      background: #fff8d6;
+    }
+
+    .callout strong {
+      color: #17345f;
+    }
+
+    .code-block {
+      margin: 16px 0;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 14px;
+      background: #0e1c2f;
+      color: #e8f1fb;
+      font: 0.92rem/1.55 Consolas, Monaco, monospace;
+      white-space: pre;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: var(--surface-2);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+    }
+
+    .achievement {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 210, 31, 0.16),
+          rgba(21, 101, 192, 0.06)
+        ),
+        var(--surface);
+      border: 2px solid rgba(13, 71, 161, 0.16);
+    }
+
+    .quote {
+      margin: 18px 0 0;
+      padding: 22px;
+      border-radius: 16px;
+      background: #edf5ff;
+      color: #16345f;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 54px;
+      background: #071f45;
+      color: rgba(255, 255, 255, 0.82);
+      border-top: 4px solid var(--yellow);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 30px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: var(--yellow);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav-links a {
+        font-size: 0.88rem;
+        padding: 8px 10px;
+      }
+
+      .summary-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .section-card {
+        border-radius: 16px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-number {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  
+    .status-banner {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 16px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 210, 31, 0.18),
+          rgba(21, 101, 192, 0.08)
+        ),
+        #ffffff;
+      border: 2px solid rgba(13, 71, 161, 0.16);
+    }
+
+    .status-banner strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 1.2rem;
+    }
+
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .workflow-step {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #edf5ff;
+      color: #17345f;
+      font-weight: 800;
+      border: 1px solid #cfe0f4;
+    }
+
+    .workflow-arrow {
+      color: var(--blue-2);
+      font-weight: 900;
+    }
+
+    .file-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+    }
+
+    .file-table th,
+    .file-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .file-table th {
+      background: #edf5ff;
+      color: var(--blue);
+    }
+
+    .file-table code {
+      white-space: nowrap;
+    }
+
+    .lesson-card {
+      border-left: 6px solid var(--yellow);
+    }
+
+    @media (max-width: 700px) {
+      .file-table,
+      .file-table thead,
+      .file-table tbody,
+      .file-table th,
+      .file-table td,
+      .file-table tr {
+        display: block;
+      }
+
+      .file-table thead {
+        display: none;
+      }
+
+      .file-table tr {
+        margin-bottom: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .file-table td {
+        border: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .file-table td:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">Klins<span>work</span> Update</a>
+
+      <div class="nav-links">
+        <a href="#scope">Application</a>
+<a href="#locations">Shared</a>
+<a href="#data">Operational</a>
+<a href="#backend">Modular</a>
+<a href="#testing">Backend-first</a>
+<a href="#interface">Interface</a>
+<a href="#interface-testing">Lifecycle</a>
+<a href="#real-task">Created</a>
+        <a href="#templates">Templates</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#status">Status</a>
+
+        <a
+          class="klinswork-link"
+          href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        >
+          Back to Klinswork
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <img
+        class="hero-image"
+        src="https://kevinlinstrum001.github.io/documentation/images/work-update-07-25-2026.png"
+        alt="Work Update for July 25, 2026"
+      >
+
+      <div class="hero-copy">
+        <p class="eyebrow">Work Update · July 25, 2026</p>
+
+        <h1>Work Queue 2.0 moved from concept to a working functional beta.</h1>
+
+        <p>
+          Today we defined the application, designed its shared data architecture,
+          built and tested the backend, launched a polished interface, verified the
+          complete task lifecycle, and prepared the next major enhancement:
+          task templates.
+        </p>
+
+        <div class="summary-grid" aria-label="Daily highlights">
+          <div class="summary-card">
+            <strong>8</strong>
+            <span>shared units connected</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>163</strong>
+            <span>active Work Queue locations</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>1</strong>
+            <span>complete task lifecycle proven end to end</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>10</strong>
+            <span>starter task templates prepared</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    
+    <section id="scope">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">1</div>
+          <div><h2>Application scope and architecture</h2></div>
+        </div>
+        
+<p>
+  We began by deciding that the existing Tasker app should be replaced rather
+  than incrementally repaired. Before writing code, we defined Work Queue 2.0's
+  purpose, boundaries, workflow, data ownership, and relationship to the wider
+  Klinswork tool system.
+</p>
+
+<div class="callout">
+  <strong>Core workflow:</strong>
+  Pending → In Progress → Completed, with the ability to reopen completed work
+  and preserve every action in a permanent activity history.
+</div>
+
+<ul>
+  <li>Create tasks directly inside the application.</li>
+  <li>Remove the old Google Form intake.</li>
+  <li>Eliminate the Recommendations feature.</li>
+  <li>Separate active work from completed work.</li>
+  <li>Keep Work Queue compatible with other Klinswork tools.</li>
+  <li>Build it as a separate project so the older Tasker deployment could remain online during development.</li>
+</ul>
+
+      </div>
+    </section>
+    
+
+    <section id="locations">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">2</div>
+          <div><h2>Shared location architecture</h2></div>
+        </div>
+        
+<p>
+  A centralized location directory was designed before the task system itself.
+  This prevents Inventory 3.0, Work Queue, and future scheduling tools from
+  maintaining separate copies of the same location data.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3>Shared directory</h3>
+    <p><code>Klinswork_Locations</code> became the common reference source for units, rooms, offices, restrooms, common areas, and other work locations.</p>
+  </div>
+
+  <div class="mini-card">
+    <h3>Completed coverage</h3>
+    <ul>
+      <li><strong>8</strong> units</li>
+      <li><strong>163</strong> active Work Queue locations</li>
+      <li>Application-specific enablement</li>
+      <li>Reusable parent-and-child relationships</li>
+    </ul>
+  </div>
+</div>
+
+<p>
+  This was also one of the first major uses of direct spreadsheet generation
+  and editing, substantially reducing repetitive setup work.
+</p>
+
+      </div>
+    </section>
+    
+
+    <section id="data">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">3</div>
+          <div><h2>Operational data structure</h2></div>
+        </div>
+        
+<p>
+  A separate spreadsheet was created for Work Queue 2.0 operational data.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3><code>Tasks</code></h3>
+    <p>Stores each task's current state, including ID, status, priority, category, location, description, assignee, timestamps, completion note, and archived state.</p>
+  </div>
+
+  <div class="mini-card">
+    <h3><code>Task_Activity</code></h3>
+    <p>Stores the full chronological history of task creation, starts, notes, completions, reopenings, and later changes.</p>
+  </div>
+
+  <div class="mini-card">
+    <h3><code>Settings</code></h3>
+    <p>Stores app version, default priority, completion-note requirements, notification settings, and location cache duration.</p>
+  </div>
+
+  <div class="mini-card">
+    <h3><code>Task_Templates</code></h3>
+    <p>Provides the foundation for reusable task choices that reduce typing during task creation.</p>
+  </div>
+</div>
+
+<div class="quote">
+  Work Queue does not overwrite task history. Every action is appended as a new
+  activity record, creating a true audit trail.
+</div>
+
+      </div>
+    </section>
+    
+
+    <section id="backend">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">4</div>
+          <div><h2>Modular Apps Script backend</h2></div>
+        </div>
+        
+<p>
+  The backend was divided into focused files rather than written as one large
+  script.
+</p>
+
+<table class="file-table">
+  <thead>
+    <tr><th>File</th><th>Responsibility</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>Config.gs</code></td><td>Spreadsheet IDs, sheet names, app name, version, and configuration.</td></tr>
+    <tr><td><code>Code.gs</code></td><td>Setup, diagnostics, and backend test functions.</td></tr>
+    <tr><td><code>WebApp.gs</code></td><td>Web app entry point and startup data.</td></tr>
+    <tr><td><code>Validation.gs</code></td><td>Configuration, schema, input, status, and transition validation.</td></tr>
+    <tr><td><code>Utilities.gs</code></td><td>IDs, dates, formatting, normalization, sorting, and user attribution.</td></tr>
+    <tr><td><code>LocationService.gs</code></td><td>Shared location retrieval and unit/location resolution.</td></tr>
+    <tr><td><code>TaskService.gs</code></td><td>Complete task lifecycle, spreadsheet persistence, and activity logging.</td></tr>
+  </tbody>
+</table>
+
+      </div>
+    </section>
+    
+
+    <section id="testing">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">5</div>
+          <div><h2>Backend-first testing</h2></div>
+        </div>
+        
+<p>
+  One of the most valuable process improvements of the day was testing the
+  backend directly through <strong>Apps Script → Run → test function</strong>
+  before launching the interface.
+</p>
+
+<div class="workflow" aria-label="Backend lifecycle test">
+  <span class="workflow-step">Created</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Started</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Note added</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Completed</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Reopened</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Completed again</span>
+</div>
+
+<p>
+  Tests covered spreadsheet setup, schema validation, location retrieval, task
+  creation, notes, status transitions, activity history, and startup data.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3>Startup summary</h3>
+    <ul>
+      <li>App: Work Queue 2.0</li>
+      <li>8 units</li>
+      <li>163 locations</li>
+      <li>Default priority: Normal</li>
+    </ul>
+  </div>
+
+  <div class="mini-card">
+    <h3>Why this mattered</h3>
+    <p>It isolated backend problems before introducing browser JavaScript, interface rendering, deployment versions, filters, and modals.</p>
+  </div>
+</div>
+
+      </div>
+    </section>
+    
+
+    <section id="interface">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">6</div>
+          <div><h2>Interface and user feedback</h2></div>
+        </div>
+        
+<p>
+  The application interface was created in <code>Dashboard.html</code>,
+  <code>Styles.html</code>, and <code>Scripts.html</code>.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3>Interface structure</h3>
+    <ul>
+      <li>Branded header and summary cards</li>
+      <li>Active Work and Completed Work tabs</li>
+      <li>Filters, task cards, and detail modals</li>
+      <li>Activity timeline and action forms</li>
+      <li>Confirmation dialog and toast notifications</li>
+    </ul>
+  </div>
+
+  <div class="mini-card">
+    <h3>Visible feedback</h3>
+    <ul>
+      <li>Loading spinners</li>
+      <li>Busy button labels such as “Saving...”</li>
+      <li>Green success messages</li>
+      <li>Inline error messages</li>
+      <li>Empty-state guidance</li>
+      <li>Retry-safe forms</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout">
+  <strong>Early interface issue:</strong>
+  <code>Scripts.html</code> initially contained CSS rather than JavaScript. The
+  page looked correct but remained on “Loading Work Queue.” The file was
+  corrected, the deployment was updated, and the application came to life.
+</div>
+
+      </div>
+    </section>
+    
+
+    <section id="interface-testing">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">7</div>
+          <div><h2>Lifecycle testing through the interface</h2></div>
+        </div>
+        
+<p>
+  After the backend passed independently, the same task lifecycle was repeated
+  through the actual web interface.
+</p>
+
+<ul>
+  <li>Opened Completed Work.</li>
+  <li>Displayed the backend test task.</li>
+  <li>Opened the task-detail modal.</li>
+  <li>Displayed the entire activity history.</li>
+  <li>Reopened the task.</li>
+  <li>Added notes.</li>
+  <li>Completed it again.</li>
+  <li>Confirmed that earlier events remained intact.</li>
+</ul>
+
+<div class="code-block">Interface
+→ Apps Script server call
+→ TaskService
+→ spreadsheet update
+→ task refresh
+→ interface redraw</div>
+
+      </div>
+    </section>
+    
+
+    <section id="real-task">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">8</div>
+          <div><h2>Created and completed a real task</h2></div>
+        </div>
+        
+<p>
+  A new task was created entirely through the interface using a selected unit,
+  selected location, free-text category, free-text assignee, description,
+  initial note, and normal priority.
+</p>
+
+<p>The interface correctly:</p>
+
+<ul>
+  <li>Changed the button label while saving.</li>
+  <li>Saved the task to the spreadsheet.</li>
+  <li>Displayed a green success notification.</li>
+  <li>Refreshed the task collections.</li>
+  <li>Opened the new task automatically.</li>
+  <li>Displayed its task ID and metadata.</li>
+  <li>Recorded creation and the initial note as separate activities.</li>
+  <li>Moved the task into Completed Work after completion.</li>
+</ul>
+
+      </div>
+    </section>
+    
+
+    <section id="error">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">9</div>
+          <div><h2>Real error handling</h2></div>
+        </div>
+        
+<p>
+  During one completion attempt, the browser experienced an HTTP 0 connection
+  failure. This became a useful real-world test of the app's recovery behavior.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3>The app did correctly</h3>
+    <ul>
+      <li>Displayed the failure visibly.</li>
+      <li>Did not falsely report success.</li>
+      <li>Preserved the completion note.</li>
+      <li>Allowed the user to retry.</li>
+    </ul>
+  </div>
+
+  <div class="mini-card">
+    <h3>After retry</h3>
+    <ul>
+      <li>The task completed successfully.</li>
+      <li>The task moved into Completed Work.</li>
+      <li>The task history remained intact.</li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </section>
+    
+
+    <section id="future">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">10</div>
+          <div><h2>Future photo support</h2></div>
+        </div>
+        
+<p>
+  A later version may allow users to photograph either the condition being
+  reported or the work after completion.
+</p>
+
+<ul>
+  <li>Snap a photo directly from a phone.</li>
+  <li>Choose an existing image.</li>
+  <li>Compress the image before upload.</li>
+  <li>Store the image in Google Drive.</li>
+  <li>Attach the image to the relevant activity entry.</li>
+</ul>
+
+<p>
+  This feature was intentionally deferred so the current workflow could remain
+  stable and focused.
+</p>
+
+      </div>
+    </section>
+    
+
+    <section id="templates">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">11</div>
+          <div><h2>Task templates: the next immediate feature</h2></div>
+        </div>
+        
+<p>
+  Repeated housekeeping tasks should require minimal typing. The next feature
+  will allow users to choose common task templates and automatically prefill
+  category, description, and priority.
+</p>
+
+<div class="two-column">
+  <div class="mini-card">
+    <h3>Starter templates</h3>
+    <ul>
+      <li>Spot-shampoo carpet</li>
+      <li>Restock supplies</li>
+      <li>Vacuum</li>
+      <li>Mop</li>
+      <li>Spot-mop</li>
+    </ul>
+  </div>
+
+  <div class="mini-card">
+    <h3>Additional templates</h3>
+    <ul>
+      <li>Sweep</li>
+      <li>Clean</li>
+      <li>Clean windows</li>
+      <li>Other request</li>
+      <li>General</li>
+    </ul>
+  </div>
+</div>
+
+<p>
+  The new <code>Task_Templates</code> tab was populated and formatted directly,
+  including template IDs, categories, descriptions, priorities, active flags,
+  sort order, frozen headers, column sizing, and validation.
+</p>
+
+      </div>
+    </section>
+    
+
+    <section id="lessons">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">12</div>
+          <div><h2>Development lessons</h2></div>
+        </div>
+        
+<div class="two-column">
+  <div class="mini-card lesson-card">
+    <h3>Test the backend first</h3>
+    <div class="code-block">Data structure
+→ backend services
+→ compact test functions
+→ startup response
+→ interface
+→ real workflow testing</div>
+  </div>
+
+  <div class="mini-card lesson-card">
+    <h3>Use direct spreadsheet assistance</h3>
+    <p>
+      Direct Google Sheets editing can now accelerate table creation, reference
+      data, formatting, validation, frozen headers, settings, and column sizing.
+    </p>
+  </div>
+</div>
+
+<div class="quote">
+  Visible feedback is part of functionality. A user should never have to wonder
+  whether an action registered or whether the application is still working.
+</div>
+
+      </div>
+    </section>
+    
+
+    <section id="status">
+      <div class="section-card achievement">
+        <div class="section-heading">
+          <div class="section-number">13</div>
+          <div><h2>Current status and next step</h2></div>
+        </div>
+        
+<div class="status-banner">
+  <strong>Work Queue 2.0 is now a functional beta.</strong>
+  It is ready for real use, observation, and refinement.
+</div>
+
+<h3>Working lifecycle</h3>
+
+<div class="workflow" aria-label="Working Work Queue lifecycle">
+  <span class="workflow-step">Create</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Pending</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Start</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">In Progress</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Notes</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Complete</span>
+  <span class="workflow-arrow">→</span>
+  <span class="workflow-step">Reopen</span>
+</div>
+
+<h3>Next active development step</h3>
+
+<p>
+  Connect the new <code>Task_Templates</code> tab to the New Task interface so
+  users can select common housekeeping tasks with minimal typing.
+</p>
+
+      </div>
+    </section>
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Klinswork. All rights reserved.</span>
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+      >
+        Return to Klinswork
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
