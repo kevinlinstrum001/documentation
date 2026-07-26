@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Locations Viewer — A Speculative Vision</title>
+
+  <meta
+    name="description"
+    content="A speculative Klinswork concept paper exploring how the shared Locations Viewer could become a building-wide operational interface for housekeeping work, alerts, assets, audits, scheduling, inventory, and reporting."
+  >
+
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --surface: #ffffff;
+      --surface-2: #f7f9fc;
+      --ink: #132238;
+      --muted: #5f6f82;
+      --line: #d9e2ec;
+      --blue: #0d47a1;
+      --blue-2: #1565c0;
+      --yellow: #ffd21f;
+      --green: #16834b;
+      --orange: #d96800;
+      --purple: #6f42c1;
+      --shadow: 0 14px 34px rgba(19, 34, 56, 0.10);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(255, 210, 31, 0.18),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #f6f9fc 0%,
+          var(--bg) 100%
+        );
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--blue-2);
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 34, 78, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      outline: none;
+    }
+
+    .nav-links .klinswork-link {
+      background: var(--yellow);
+      color: #10264c;
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 28px auto 60px;
+    }
+
+    .hero {
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(13, 71, 161, 0.10);
+    }
+
+    .hero-visual {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13, 71, 161, 0.96),
+          rgba(22, 198, 186, 0.86)
+        );
+    }
+
+    .building-grid {
+      width: min(880px, 100%);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .building-cell {
+      min-height: 86px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.13);
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .building-cell strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .status-line {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 0 4px rgba(255,210,31,0.15);
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 5vw, 52px);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13, 71, 161, 0.98),
+          rgba(21, 101, 192, 0.94)
+        ),
+        var(--blue);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 940px;
+      font-size: clamp(2rem, 6vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy p {
+      max-width: 860px;
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0 0;
+    }
+
+    .summary-card {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 1.65rem;
+      color: var(--yellow);
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      font-size: 0.91rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 38px);
+      box-shadow: 0 10px 28px rgba(19, 34, 56, 0.07);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--yellow);
+      color: #10264c;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 26px 0 8px;
+      color: var(--blue-2);
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .callout {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-left: 6px solid var(--yellow);
+      border-radius: 0 14px 14px 0;
+      background: #fff8d6;
+    }
+
+    .callout strong {
+      color: #17345f;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: var(--surface-2);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+    }
+
+    .quote {
+      margin: 18px 0 0;
+      padding: 22px;
+      border-radius: 16px;
+      background: #edf5ff;
+      color: #16345f;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .workflow-step {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #edf5ff;
+      color: #16345f;
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+
+    .workflow-arrow {
+      color: var(--blue-2);
+      font-weight: 900;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .signal {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .signal strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .signal.low { border-top: 5px solid var(--orange); }
+    .signal.alert { border-top: 5px solid #c62828; }
+    .signal.pending { border-top: 5px solid var(--yellow); }
+    .signal.active { border-top: 5px solid var(--green); }
+    .signal.unassigned { border-top: 5px solid var(--purple); }
+
+    .scenario {
+      padding: 22px;
+      border-radius: 18px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,210,31,0.12),
+          rgba(13,71,161,0.05)
+        ),
+        #fff;
+      border: 2px solid rgba(13,71,161,0.12);
+    }
+
+    .scenario h3 {
+      margin-top: 0;
+    }
+
+    .status-banner {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 16px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 210, 31, 0.18),
+          rgba(21, 101, 192, 0.08)
+        ),
+        #ffffff;
+      border: 2px solid rgba(13, 71, 161, 0.16);
+    }
+
+    .status-banner strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 1.2rem;
+    }
+
+    footer {
+      margin-top: 54px;
+      background: #071f45;
+      color: rgba(255, 255, 255, 0.82);
+      border-top: 4px solid var(--yellow);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 30px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: var(--yellow);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid,
+      .building-grid,
+      .signal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .three-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav-links a {
+        font-size: 0.86rem;
+        padding: 8px 10px;
+      }
+
+      .summary-grid,
+      .building-grid,
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .section-card {
+        border-radius: 16px;
+      }
+
+      .hero-visual {
+        min-height: 0;
+        padding: 18px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-number {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">Klins<span>work</span> Concept</a>
+
+      <div class="nav-links">
+        <a href="#directory">Directory</a>
+        <a href="#search">Search</a>
+        <a href="#batch">Batch Work</a>
+        <a href="#assets">Assets</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#building">Building View</a>
+        <a href="#data">Data</a>
+        <a
+          class="klinswork-link"
+          href="https://sites.google.com/view/meadows-hk/home/documentation"
+        >
+          Documentation
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <div class="hero-visual" aria-label="Conceptual building operations view">
+        <div class="building-grid">
+          <div class="building-cell">
+            <strong>Juniper North</strong>
+            <div class="status-line"><span class="status-dot"></span> 2 active alerts</div>
+          </div>
+          <div class="building-cell">
+            <strong>Aspen South</strong>
+            <div class="status-line"><span class="status-dot"></span> Bed-frame audit due</div>
+          </div>
+          <div class="building-cell">
+            <strong>Mesquite North</strong>
+            <div class="status-line"><span class="status-dot"></span> 3 low-inventory points</div>
+          </div>
+          <div class="building-cell">
+            <strong>Sagebrush</strong>
+            <div class="status-line"><span class="status-dot"></span> 4 pending tasks</div>
+          </div>
+          <div class="building-cell">
+            <strong>Front</strong>
+            <div class="status-line"><span class="status-dot"></span> 1 unassigned task</div>
+          </div>
+          <div class="building-cell">
+            <strong>Juniper South</strong>
+            <div class="status-line"><span class="status-dot"></span> Dispenser service due</div>
+          </div>
+          <div class="building-cell">
+            <strong>Aspen North</strong>
+            <div class="status-line"><span class="status-dot"></span> Work in progress</div>
+          </div>
+          <div class="building-cell">
+            <strong>Mesquite South</strong>
+            <div class="status-line"><span class="status-dot"></span> No active alerts</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Speculative Vision · Locations Viewer</p>
+
+        <h1>What if every room, asset, alert, and assignment shared the same map of the building?</h1>
+
+        <p>
+          The Locations Viewer begins as a simple way to search rooms and areas.
+          But once every Klinswork tool agrees on the same locations, it can become
+          the selection engine, routing layer, and operational memory for an entire
+          housekeeping system.
+        </p>
+
+        <div class="summary-grid" aria-label="Core ideas">
+          <div class="summary-card">
+            <strong>One</strong>
+            <span>shared building directory</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>Many</strong>
+            <span>connected workflows</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>Every</strong>
+            <span>task tied to a place or asset</span>
+          </div>
+
+          <div class="summary-card">
+            <strong>More</strong>
+            <span>useful data with every action</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section id="directory">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">1</div>
+          <div><h2>The directory becomes the common language</h2></div>
+        </div>
+
+        <p>
+          The shared location sheet already gives Work Queue, Inventory, Calendar,
+          and the Locations Viewer a common understanding of units, resident rooms,
+          offices, restrooms, hallways, showers, closets, laundries, and common
+          areas. That agreement is more important than it first appears.
+        </p>
+
+        <p>
+          When every tool refers to the same stable location ID, information can
+          move between applications without asking the user to identify the same
+          room again. A nurse can report a problem in a room, the supervisor can
+          approve it, Work Queue can create the assignment, Inventory can show the
+          supplies attached to that area, and a later report can analyze the full
+          history—all without losing the location connection.
+        </p>
+
+        <div class="quote">
+          A shared directory does not merely describe the building. It gives the
+          entire ecosystem a common coordinate system.
+        </div>
+      </div>
+    </section>
+
+    <section id="search">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">2</div>
+          <div><h2>Search becomes a way to describe work</h2></div>
+        </div>
+
+        <p>
+          A location search does not have to stop at “find Room 224.” It can become
+          a structured way to define a group of places or assets:
+        </p>
+
+        <div class="three-column">
+          <div class="mini-card">
+            <h3>Quick search</h3>
+            <p>Find a known room, unit, restroom, office, closet, or location ID immediately.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Filter search</h3>
+            <p>Choose units, room types, active status, or which apps are enabled for a location.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Saved operational searches</h3>
+            <p>Reuse groups such as Thursday bed cleaning, public restrooms, or audit focus areas.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Example:</strong>
+          Select Juniper North and Aspen South, then choose all active beds.
+          The system understands this as
+          <code>(Juniper North OR Aspen South) AND Asset Type = Bed</code>.
+        </div>
+
+        <p>
+          Searches could be saved and named. “Thursday Bed Cleaning,” “Saturday
+          Bed Cleaning,” “All Public Restrooms,” “Monthly Window Cleaning,” and
+          “Audit Focus Areas” would then become reusable operational objects rather
+          than temporary filter choices.
+        </p>
+      </div>
+    </section>
+
+    <section id="batch">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">3</div>
+          <div><h2>Search results become batch work orders</h2></div>
+        </div>
+
+        <p>
+          Once a search defines a meaningful group, the next step is natural:
+          select the results and issue work across the entire group.
+        </p>
+
+        <div class="workflow" aria-label="Batch task workflow">
+          <span class="workflow-step">Search</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Select results</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Choose task template</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Preview</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Create one task per location or asset</span>
+        </div>
+
+        <p>
+          A supervisor could search for all windows and create a “Clean windows”
+          task for every matching location. The system should create separate tasks,
+          not one enormous assignment. That preserves status and accountability:
+          sixteen completed, two pending, one skipped, and one requiring follow-up.
+        </p>
+
+        <p>
+          The scheduler could use those same saved searches automatically. Bed
+          cleaning for selected units could be generated every Thursday and
+          Saturday. Planned maintenance could create recurring collateral duties.
+          After an audit, the supervisor could temporarily emphasize one kind of
+          cleaning across selected areas without rebuilding the normal schedule.
+        </p>
+      </div>
+    </section>
+
+    <section id="assets">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">4</div>
+          <div><h2>Rooms can contain trackable assets</h2></div>
+        </div>
+
+        <p>
+          A room is not always the smallest useful unit. Beds, dispensers, and
+          service points may need their own records because they are cleaned,
+          inspected, refilled, replaced, and audited independently.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Bed frames</h3>
+            <ul>
+              <li>Bed ID and parent room</li>
+              <li>Date last cleaned</li>
+              <li>Date last audited</li>
+              <li>Pass, needs attention, or corrective work required</li>
+              <li>Full Work Queue history</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Dispensers and service points</h3>
+            <ul>
+              <li>Hand-sanitizer stations</li>
+              <li>Hand-soap dispensers</li>
+              <li>Paper-towel roll dispensers</li>
+              <li>Product expiration date</li>
+              <li>Date last changed or serviced</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          A dispenser that is empty, expired, low, or overdue for service could
+          create a task tied to the exact asset. A bed-frame inspection could record
+          the condition of Bed A separately from Bed B in the same room.
+        </p>
+
+        <div class="quote">
+          “Room cleaned” is useful. “Bed A frame cleaned and audited at 10:42 AM”
+          is operationally verifiable.
+        </div>
+      </div>
+    </section>
+
+    <section id="alerts">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">5</div>
+          <div><h2>Frontline reports can reveal patterns</h2></div>
+        </div>
+
+        <div class="scenario">
+          <h3>A possible real-world workflow</h3>
+
+          <p>
+            A nurse notices buildup on a bed frame and submits a housekeeping alert
+            from a QR code or phone shortcut. The alert includes the unit, room,
+            bed, issue type, description, time, and reporter.
+          </p>
+
+          <p>
+            The alert enters a Supervisor Review queue. The supervisor confirms the
+            details and approves a Work Queue assignment for that exact bed.
+          </p>
+
+          <p>
+            Later, another nurse reports the same kind of issue on a different bed
+            in the same unit. The system does not automatically declare a crisis.
+            Instead, it raises a pattern flag and prepares a proposed unit-wide
+            bed-frame audit.
+          </p>
+
+          <p>
+            The supervisor approves the audit and either performs it or delegates it
+            to the assistant supervisor. Each bed receives an inspection result.
+            Failed beds generate corrective tasks automatically.
+          </p>
+        </div>
+
+        <div class="workflow" aria-label="Alert to audit workflow">
+          <span class="workflow-step">Nurse alert</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Supervisor review</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Corrective task</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Pattern detected</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Audit proposed</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Audit delegated</span>
+        </div>
+
+        <p>
+          The more nurses, technicians, charge nurses, and designated unit personnel
+          use the alert system consistently, the more useful the reporting becomes.
+          Their observations do not merely create more complaints. They create a
+          clearer, location-specific picture of building conditions and of the
+          cooperation between nursing and housekeeping.
+        </p>
+      </div>
+    </section>
+
+    <section id="building">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">6</div>
+          <div><h2>A building view could show operational conditions at a glance</h2></div>
+        </div>
+
+        <p>
+          Because locations and assets are shared across tools, the system could
+          eventually present a building-wide view with live indicators for each
+          unit, room, area, or service point.
+        </p>
+
+        <div class="signal-grid">
+          <div class="signal low">
+            <strong>Low inventory</strong>
+            Closets or dispensers below target levels.
+          </div>
+
+          <div class="signal alert">
+            <strong>Active alerts</strong>
+            Reported spills, odors, full trash, or cleanliness concerns.
+          </div>
+
+          <div class="signal pending">
+            <strong>Pending tasks</strong>
+            Approved work waiting to begin.
+          </div>
+
+          <div class="signal active">
+            <strong>Active tasks</strong>
+            Work currently in progress.
+          </div>
+
+          <div class="signal unassigned">
+            <strong>No one assigned</strong>
+            Work requiring supervisory attention.
+          </div>
+        </div>
+
+        <p>
+          The supervisor would not need to open five separate applications to
+          understand the day. The building itself becomes the interface: choose a
+          unit, see its conditions, open its alerts, review its inventory, create a
+          task, or launch an audit.
+        </p>
+      </div>
+    </section>
+
+    <section id="management">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">7</div>
+          <div><h2>The viewer can become a location manager</h2></div>
+        </div>
+
+        <p>
+          A simple <strong>New</strong> button on each search result could open
+          actions in the context of that location:
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Operational actions</h3>
+            <ul>
+              <li>Create a new task</li>
+              <li>Create a housekeeping alert</li>
+              <li>Add an inspection</li>
+              <li>Schedule recurring work</li>
+              <li>Add an asset or service point</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Directory actions</h3>
+            <ul>
+              <li>Add room</li>
+              <li>Edit room</li>
+              <li>Deactivate room</li>
+              <li>Correct display information</li>
+              <li>Control which apps use the location</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Important design rule:</strong>
+          deleting a room should normally mean setting it inactive, not erasing it.
+          Historical tasks, inventory records, audits, and reports may already
+          reference its stable location ID.
+        </div>
+      </div>
+    </section>
+
+    <section id="data">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">8</div>
+          <div><h2>Every workflow creates richer operational data</h2></div>
+        </div>
+
+        <p>
+          The value of this system would grow with use. Every alert, task, audit,
+          inventory reading, dispenser change, and scheduled cleaning would add
+          structured information tied to an exact place or asset.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <h3>Questions the system could answer</h3>
+            <ul>
+              <li>Which units generate the most alerts?</li>
+              <li>Which bed frames repeatedly fail inspection?</li>
+              <li>Where are tasks most often left unassigned?</li>
+              <li>Which dispensers require frequent service?</li>
+              <li>How quickly are nursing reports resolved?</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Decisions the data could support</h3>
+            <ul>
+              <li>Staffing and workload distribution</li>
+              <li>Preventive-cleaning schedules</li>
+              <li>Supply placement and reorder levels</li>
+              <li>Audit priorities and corrective action</li>
+              <li>Training and process improvement</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          The data would become especially meaningful because it would not be
+          collected in isolation. It would preserve the full chain from observation
+          to approval, assignment, completion, audit, and follow-up.
+        </p>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">9</div>
+          <div><h2>The larger idea: the building becomes computable</h2></div>
+        </div>
+
+        <p>
+          The speculative leap is not merely that the Locations Viewer gains more
+          buttons. It is that the building becomes a structured environment that
+          software can understand well enough to help organize work.
+        </p>
+
+        <p>
+          A room is no longer only a name on a list. It can be a parent for beds,
+          dispensers, inspections, recurring duties, inventory levels, alerts, and
+          completed work. A saved search is no longer only a filter. It can become a
+          reusable definition of a workload. An alert is no longer only a message.
+          It can become the first signal in a supervised chain of response,
+          verification, and learning.
+        </p>
+
+        <div class="status-banner">
+          <strong>What begins as a viewer could become the operational lens for the entire facility.</strong>
+          The shared location directory makes separate tools capable of acting like
+          one connected system.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Klinswork</strong><br>
+        Speculative concept document for Locations Viewer
+      </div>
+
+      <div>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
