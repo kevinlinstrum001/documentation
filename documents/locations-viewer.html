@@ -535,6 +535,51 @@
         height: 38px;
       }
     }
+
+    .concept-figure {
+      margin: 24px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px rgba(19, 34, 56, 0.09);
+    }
+
+    .concept-figure a {
+      display: block;
+      background: #dce6f1;
+    }
+
+    .concept-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .concept-figure figcaption {
+      padding: 16px 18px 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+      background: var(--surface);
+    }
+
+    .concept-figure figcaption strong {
+      color: var(--blue);
+    }
+
+    .hero-figure {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero-figure figcaption {
+      border-top: 1px solid rgba(13, 71, 161, 0.10);
+      text-align: center;
+    }
+
   </style>
 </head>
 
@@ -563,42 +608,25 @@
 
   <main id="top">
     <article class="hero">
-      <div class="hero-visual" aria-label="Conceptual building operations view">
-        <div class="building-grid">
-          <div class="building-cell">
-            <strong>Juniper North</strong>
-            <div class="status-line"><span class="status-dot"></span> 2 active alerts</div>
-          </div>
-          <div class="building-cell">
-            <strong>Aspen South</strong>
-            <div class="status-line"><span class="status-dot"></span> Bed-frame audit due</div>
-          </div>
-          <div class="building-cell">
-            <strong>Mesquite North</strong>
-            <div class="status-line"><span class="status-dot"></span> 3 low-inventory points</div>
-          </div>
-          <div class="building-cell">
-            <strong>Sagebrush</strong>
-            <div class="status-line"><span class="status-dot"></span> 4 pending tasks</div>
-          </div>
-          <div class="building-cell">
-            <strong>Front</strong>
-            <div class="status-line"><span class="status-dot"></span> 1 unassigned task</div>
-          </div>
-          <div class="building-cell">
-            <strong>Juniper South</strong>
-            <div class="status-line"><span class="status-dot"></span> Dispenser service due</div>
-          </div>
-          <div class="building-cell">
-            <strong>Aspen North</strong>
-            <div class="status-line"><span class="status-dot"></span> Work in progress</div>
-          </div>
-          <div class="building-cell">
-            <strong>Mesquite South</strong>
-            <div class="status-line"><span class="status-dot"></span> No active alerts</div>
-          </div>
-        </div>
-      </div>
+      <figure class="concept-figure hero-figure">
+        <a
+          href="https://kevinlinstrum001.github.io/documentation/images/web-apps/locations-viewer-overview.png"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/locations-viewer-overview.png"
+            alt="Concept overview of the Locations Viewer with search results, saved searches, building status cards, charts, alerts, inventory indicators, and operational dashboards."
+          >
+        </a>
+
+        <figcaption>
+          <strong>Locations Viewer overview:</strong>
+          a shared search and operations dashboard that could connect rooms,
+          alerts, tasks, inventory, audits, saved searches, and reporting through
+          one consistent building directory. Select the image to view it full size.
+        </figcaption>
+      </figure>
 
       <div class="hero-copy">
         <p class="eyebrow">Speculative Vision · Locations Viewer</p>
@@ -734,6 +762,29 @@
           <span class="workflow-arrow">→</span>
           <span class="workflow-step">Create one task per location or asset</span>
         </div>
+
+        <figure class="concept-figure">
+          <a
+            href="https://kevinlinstrum001.github.io/documentation/images/web-apps/locations-viewer-detail.png"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="https://kevinlinstrum001.github.io/documentation/images/web-apps/locations-viewer-detail.png"
+              alt="Concept detail showing a batch job being created to clean all selected bed frames in Juniper North and Mesquite South."
+              loading="lazy"
+            >
+          </a>
+
+          <figcaption>
+            <strong>Batch job detail:</strong>
+            the supervisor filters for active bed frames in Juniper North and
+            Mesquite South, reviews the matching assets, and creates a separate
+            “Clean all bed frames” task for each one. Individual tasks preserve
+            location, assignment, progress, completion, and audit history while
+            the batch remains visible as one coordinated operation.
+          </figcaption>
+        </figure>
 
         <p>
           A supervisor could search for all windows and create a “Clean windows”
