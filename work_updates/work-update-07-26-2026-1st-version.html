@@ -755,7 +755,6 @@
         <a href="#validation">Validation</a>
         <a href="#testing">Testing</a>
         <a href="#cleanup">Cleanup</a>
-        <a href="#rollout">Sheet Rollout</a>
         <a href="#status">Status</a>
         <a
           class="primary-link"
@@ -778,9 +777,8 @@
             In one day, the project moved from a protected beta branch into a
             structured work-management platform connecting nested locations,
             task templates, physical inventory holders, append-only events,
-            task completion, holder history, diagnostics, a fully audited
-            17-file codebase, and a 267-holder restroom inventory rollout
-            spanning seven Meadows units.
+            task completion, holder history, diagnostics, and a fully audited
+            17-file codebase.
           </p>
         </div>
 
@@ -823,13 +821,13 @@
         </div>
 
         <div class="metric">
-          <strong>267</strong>
-          <span>restroom inventory holders deployed</span>
+          <strong>11</strong>
+          <span>tasks in final integration validation</span>
         </div>
 
         <div class="metric">
-          <strong>89</strong>
-          <span>restroom locations configured</span>
+          <strong>0</strong>
+          <span>final errors and warnings</span>
         </div>
 
         <div class="metric">
@@ -859,8 +857,7 @@
         <a href="#testing">14. End-to-End Testing</a>
         <a href="#cleanup">15. Phase 14 Cleanup</a>
         <a href="#audit">16. Final Audit</a>
-        <a href="#rollout">17. Beta Testing and Sheet Rollout</a>
-        <a href="#status">18. Current Status</a>
+        <a href="#status">17. Current Status</a>
       </div>
     </section>
 
@@ -1586,176 +1583,10 @@ testTemplateInterfaceIntegration()</div>
       </div>
     </section>
 
-
-    <section id="rollout">
-      <div class="section-card">
-        <div class="section-heading">
-          <div class="section-number">17</div>
-          <div><h2>Completed beta testing and the restroom-holder sheet rollout</h2></div>
-        </div>
-
-        <p class="lead">
-          After the code audit was complete, the beta moved into live workflow
-          testing. The test confirmed that Work Queue could create a
-          location-specific supply task, attach it to a physical inventory
-          holder, complete the work, update the holder state, and write a
-          permanent event to <code>Inventory_Holder_Events</code>.
-        </p>
-
-        <h3>Verified end-to-end workflow</h3>
-        <div class="workflow" aria-label="Verified inventory-holder workflow">
-          <span class="workflow-step">Select location</span>
-          <span class="workflow-arrow">→</span>
-          <span class="workflow-step">Choose supply task</span>
-          <span class="workflow-arrow">→</span>
-          <span class="workflow-step">Select holder</span>
-          <span class="workflow-arrow">→</span>
-          <span class="workflow-step">Complete task</span>
-          <span class="workflow-arrow">→</span>
-          <span class="workflow-step">Write holder event</span>
-        </div>
-
-        <p>
-          Three holder-linked completion events were created successfully:
-          <code>IHE-5F00BB315F95</code>,
-          <code>IHE-FEC62F9216B0</code>, and
-          <code>IHE-905DC7B81B2F</code>.
-        </p>
-
-        <div class="grid-2">
-          <div class="mini-card">
-            <h3>Activation problem corrected</h3>
-            <p>
-              The first Juniper North pilot holders were present but did not
-              appear because capacity, tracking, state, condition, and active
-              values were incomplete. The rows were repaired and the cache was
-              cleared.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Exact room-name mapping corrected</h3>
-            <p>
-              Task availability required exact <strong>Room / Area Name</strong>
-              matches. Mappings were added for <code>Staff Restroom</code> and
-              <code>Resident Restroom</code> in addition to
-              <code>Restroom</code>.
-            </p>
-          </div>
-        </div>
-
-        <h3>Standard restroom-holder set</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Holder</th>
-                <th>Product ID</th>
-                <th>Capacity</th>
-                <th>Tracking</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Toilet Paper Dispenser</td>
-                <td><code>PAPER-001</code></td>
-                <td>1 roll</td>
-                <td>Status</td>
-              </tr>
-              <tr>
-                <td>Hand Soap Dispenser</td>
-                <td><code>CHEM-010</code></td>
-                <td>1 refill</td>
-                <td>Status</td>
-              </tr>
-              <tr>
-                <td>C-fold Towel Dispenser</td>
-                <td><code>PAPER-002</code></td>
-                <td>1 bundle</td>
-                <td>Status</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          New holders were initialized as <code>Unknown</code>,
-          <code>Operational</code>, and <code>Active: TRUE</code>. This allows
-          the first real refill completion to establish an observed state
-          instead of inserting an assumed one.
-        </p>
-
-        <h3>Unit rollout summary</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Unit</th>
-                <th>Restroom locations</th>
-                <th>Inventory holders</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Juniper North</td><td>12</td><td>36</td></tr>
-              <tr><td>Juniper South</td><td>14</td><td>42</td></tr>
-              <tr><td>Mesquite North</td><td>12</td><td>36</td></tr>
-              <tr><td>Mesquite South</td><td>13</td><td>39</td></tr>
-              <tr><td>Aspen North</td><td>13</td><td>39</td></tr>
-              <tr><td>Aspen South</td><td>13</td><td>39</td></tr>
-              <tr><td>Sagebrush</td><td>12</td><td>36</td></tr>
-              <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>89</strong></td>
-                <td><strong>267</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          The rollout covers resident-room restrooms, hallway resident
-          restrooms, staff restrooms, and shower restrooms. Holder IDs now use
-          consistent prefixes:
-          <code>TPD-&lt;LOCATION-ID&gt;</code>,
-          <code>HSD-&lt;LOCATION-ID&gt;</code>, and
-          <code>CTD-&lt;LOCATION-ID&gt;</code>.
-        </p>
-
-        <h3>Test-data cleanup</h3>
-        <p>
-          After verification, test records were cleared from
-          <code>Tasks</code> and <code>Task_Activity</code> while preserving
-          headers, formatting, validation, and sheet structure. The temporary
-          shower holder was standardized into the production naming pattern.
-        </p>
-
-        <div class="callout success-callout">
-          <strong>Result:</strong>
-          Work Queue 2.1 Beta now has a working, location-aware restroom supply
-          network across seven units, with task completion and inventory-holder
-          history functioning together.
-        </div>
-
-        <h3>Cache reset procedure</h3>
-        <div class="code-block">File: InventoryHolderService.gs
-Function: clearInventoryHolderCache()</div>
-
-        <h3>Next expansion areas</h3>
-        <div>
-          <span class="tag">Remaining rooms</span>
-          <span class="tag">Hand sanitizer dispensers</span>
-          <span class="tag">J-Fill stations</span>
-          <span class="tag">Housekeeping closets</span>
-          <span class="tag">Chemical station slots</span>
-          <span class="tag">Carts and cabinets</span>
-        </div>
-      </div>
-    </section>
-
     <section id="status">
       <div class="section-card emphasis">
         <div class="section-heading">
-          <div class="section-number">18</div>
+          <div class="section-number">17</div>
           <div><h2>Current project status</h2></div>
         </div>
 
@@ -1819,17 +1650,16 @@ Function: clearInventoryHolderCache()</div>
 
             <p>
               Today completed the functional build, end-to-end scenario, source
-              cleanup, schema audit, interface audit, validation, final
-              read-only regression test pass, beta workflow verification, and
-              a 267-holder restroom rollout across seven units.
+              cleanup, schema audit, interface audit, validation, and final
+              read-only regression test pass.
             </p>
           </div>
         </div>
 
         <div class="quote">
-          The beta is clean, stable, fully tested, and now supported by a
-          functioning 267-holder restroom inventory network—while the current
-          production application remains untouched.
+          The beta is clean, stable, fully tested, and positioned for a controlled
+          production-readiness review—while the current production application
+          remains untouched.
         </div>
       </div>
     </section>
