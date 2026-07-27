@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Work Queue 2.1 Beta — Full Development Update — July 26, 2026</title>
+
+  <meta
+    name="description"
+    content="Klinswork development update for July 26, 2026, documenting the creation, testing, cleanup, and final audit of Work Queue 2.1 Beta."
+  >
+
+  <style>
+    :root {
+      --navy-950: #081b2c;
+      --navy-900: #102f4a;
+      --navy-800: #174664;
+      --navy-700: #23617d;
+      --blue-100: #eaf4f8;
+      --blue-200: #d7eaf1;
+      --teal-700: #087b78;
+      --teal-500: #12a39b;
+      --teal-100: #e5f7f5;
+      --gold-500: #f3bc39;
+      --gold-300: #ffda77;
+      --gold-100: #fff8df;
+      --coral-500: #ef7657;
+      --coral-100: #fff0ea;
+      --green-700: #28764f;
+      --green-100: #e8f6ee;
+      --red-700: #a83a45;
+      --red-100: #fdecee;
+      --ink: #183041;
+      --muted: #657784;
+      --line: #d7e2e8;
+      --surface: #ffffff;
+      --surface-soft: #f6f9fb;
+      --surface-warm: #fffdf8;
+      --shadow-sm: 0 8px 22px rgba(8, 27, 44, 0.08);
+      --shadow-md: 0 18px 45px rgba(8, 27, 44, 0.13);
+      --shadow-lg: 0 28px 80px rgba(8, 27, 44, 0.22);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #edf4f7;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(243, 188, 57, 0.24), transparent 24rem),
+        radial-gradient(circle at 92% 5%, rgba(18, 163, 155, 0.16), transparent 27rem),
+        linear-gradient(180deg, #f7fbfd 0%, #edf4f7 52%, #f7fafb 100%);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--teal-700);
+    }
+
+    code {
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      background: rgba(8, 27, 44, 0.96);
+      border-bottom: 3px solid var(--gold-500);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 28px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--gold-300);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 9px 11px;
+      color: rgba(255,255,255,.9);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .87rem;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255,255,255,.12);
+      outline: none;
+    }
+
+    .nav-links .primary-link {
+      color: var(--navy-950);
+      background: var(--gold-500);
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 28px auto 72px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.14), transparent 18rem),
+        radial-gradient(circle at 10% 90%, rgba(243,188,57,.18), transparent 20rem),
+        linear-gradient(135deg, var(--navy-950), var(--navy-800) 55%, var(--teal-700));
+      box-shadow: var(--shadow-lg);
+      color: #fff;
+    }
+
+    .hero::before {
+      position: absolute;
+      top: -110px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      right: 120px;
+      bottom: -170px;
+      width: 340px;
+      height: 340px;
+      background: rgba(243,188,57,.09);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 34px;
+      padding: clamp(34px, 6vw, 72px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--gold-300);
+      font-size: .79rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(2.4rem, 7vw, 5.15rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .hero-lead {
+      max-width: 850px;
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.9);
+      font-size: clamp(1rem, 2.2vw, 1.22rem);
+    }
+
+    .hero-panel {
+      align-self: stretch;
+      padding: 24px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 24px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-mark {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--navy-950);
+      background: linear-gradient(145deg, var(--gold-300), var(--gold-500));
+      border-radius: 22px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.2);
+      font-size: 1.25rem;
+      font-weight: 950;
+      letter-spacing: .05em;
+    }
+
+    .hero-panel h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+
+    .hero-panel p {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,.79);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      font-size: .9rem;
+    }
+
+    .meta-row span:first-child {
+      color: rgba(255,255,255,.63);
+    }
+
+    .meta-row strong {
+      color: #fff;
+      text-align: right;
+    }
+
+    .metric-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 clamp(34px, 6vw, 72px) clamp(34px, 6vw, 56px);
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 17px;
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 17px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--gold-300);
+      font-size: 1.85rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.78);
+      font-size: .84rem;
+    }
+
+    .toc {
+      margin-top: 28px;
+      padding: clamp(22px, 4vw, 38px);
+      background: rgba(255,255,255,.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc h2 {
+      margin: 0;
+      color: var(--navy-900);
+      font-size: 1.45rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin-top: 18px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--navy-800);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 750;
+    }
+
+    .toc a:hover,
+    .toc a:focus-visible {
+      color: #fff;
+      background: var(--teal-700);
+      border-color: var(--teal-700);
+      outline: none;
+    }
+
+    section {
+      scroll-margin-top: 88px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255,255,255,.96);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-card.emphasis {
+      background:
+        linear-gradient(135deg, rgba(229,247,245,.8), rgba(255,248,223,.7)),
+        var(--surface);
+      border: 2px solid rgba(8,123,120,.16);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 22px;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      color: var(--navy-950);
+      background: linear-gradient(145deg, var(--gold-300), var(--gold-500));
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(243,188,57,.24);
+      font-weight: 950;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--navy-900);
+      font-size: clamp(1.55rem, 3.3vw, 2.35rem);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      color: var(--teal-700);
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 0 0 15px;
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 0;
+      padding-left: 1.3rem;
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .callout {
+      margin: 22px 0;
+      padding: 20px 22px;
+      background: var(--coral-100);
+      border-left: 6px solid var(--coral-500);
+      border-radius: 0 15px 15px 0;
+    }
+
+    .callout strong {
+      color: #99462f;
+    }
+
+    .success-callout {
+      background: var(--green-100);
+      border-left-color: var(--green-700);
+    }
+
+    .success-callout strong {
+      color: var(--green-700);
+    }
+
+    .code-block {
+      margin: 18px 0;
+      padding: 18px 20px;
+      overflow-x: auto;
+      color: #eef9fc;
+      background: #0e2c3d;
+      border: 1px solid #23495d;
+      border-radius: 15px;
+      font: .91rem/1.62 Consolas, Monaco, monospace;
+      white-space: pre;
+    }
+
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .workflow-step {
+      padding: 9px 13px;
+      color: var(--teal-700);
+      background: var(--teal-100);
+      border: 1px solid #c5e8e4;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .workflow-arrow {
+      color: var(--coral-500);
+      font-weight: 950;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .mini-card {
+      min-width: 0;
+      padding: 20px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+    }
+
+    .mini-card strong.stat {
+      display: block;
+      color: var(--teal-700);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .mini-card span.stat-label {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .data-table {
+      width: 100%;
+      margin-top: 18px;
+      border-collapse: collapse;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      color: var(--navy-900);
+      background: var(--blue-100);
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 3px 4px 3px 0;
+      padding: 5px 9px;
+      color: var(--navy-800);
+      background: var(--blue-100);
+      border: 1px solid var(--blue-200);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .status-board {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .status-panel {
+      padding: 24px;
+      background: var(--navy-950);
+      border-radius: 18px;
+      color: #fff;
+    }
+
+    .status-panel h3 {
+      margin-top: 0;
+      color: var(--gold-300);
+    }
+
+    .status-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .status-line:last-child {
+      border-bottom: 0;
+    }
+
+    .status-line span {
+      color: rgba(255,255,255,.7);
+    }
+
+    .status-line strong {
+      text-align: right;
+    }
+
+    .quote {
+      margin-top: 18px;
+      padding: 23px;
+      color: var(--navy-900);
+      background: var(--gold-100);
+      border: 1px solid #f2e1a7;
+      border-radius: 17px;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 58px;
+      color: rgba(255,255,255,.82);
+      background: var(--navy-950);
+      border-top: 4px solid var(--gold-500);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-inner a {
+      color: var(--gold-300);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .status-board {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .toc-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .data-table,
+      .data-table thead,
+      .data-table tbody,
+      .data-table tr,
+      .data-table th,
+      .data-table td {
+        display: block;
+      }
+
+      .data-table thead {
+        display: none;
+      }
+
+      .data-table tr {
+        overflow: hidden;
+        margin-bottom: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+
+      .data-table td {
+        border: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .data-table td:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .hero {
+        border-radius: 20px;
+      }
+
+      .hero-inner {
+        padding: 28px 22px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 22px 28px;
+      }
+
+      .toc-grid,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-card,
+      .toc {
+        border-radius: 17px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-number {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">Klins<span>work</span> Update</a>
+
+      <div class="nav-links">
+        <a href="#architecture">Architecture</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#events">Events</a>
+        <a href="#validation">Validation</a>
+        <a href="#testing">Testing</a>
+        <a href="#cleanup">Cleanup</a>
+        <a href="#status">Status</a>
+        <a
+          class="primary-link"
+          href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        >
+          Back to Klinswork
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Full Development Update · July 26, 2026</p>
+          <h1>Work Queue 2.1 Beta became a complete operational system.</h1>
+
+          <p class="hero-lead">
+            In one day, the project moved from a protected beta branch into a
+            structured work-management platform connecting nested locations,
+            task templates, physical inventory holders, append-only events,
+            task completion, holder history, diagnostics, and a fully audited
+            17-file codebase.
+          </p>
+        </div>
+
+        <aside class="hero-panel" aria-label="Project identity">
+          <div class="hero-mark">WQ</div>
+          <h2>Work Queue 2.1 Beta</h2>
+          <p>
+            A controlled redesign built alongside the stable release, with
+            production preserved as the rollback baseline.
+          </p>
+
+          <div class="hero-meta">
+            <div class="meta-row">
+              <span>Version</span>
+              <strong>2.1.02-beta</strong>
+            </div>
+
+            <div class="meta-row">
+              <span>Development stage</span>
+              <strong>Production-readiness review</strong>
+            </div>
+
+            <div class="meta-row">
+              <span>Final result</span>
+              <strong>All tests passed</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="metric-grid" aria-label="Project results">
+        <div class="metric">
+          <strong>17</strong>
+          <span>source files cleaned and audited</span>
+        </div>
+
+        <div class="metric">
+          <strong>23</strong>
+          <span>required task-schema columns aligned</span>
+        </div>
+
+        <div class="metric">
+          <strong>11</strong>
+          <span>tasks in final integration validation</span>
+        </div>
+
+        <div class="metric">
+          <strong>0</strong>
+          <span>final errors and warnings</span>
+        </div>
+
+        <div class="metric">
+          <strong>100%</strong>
+          <span>final read-only tests passed</span>
+        </div>
+      </div>
+    </article>
+
+    <section class="toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">Table of Contents</h2>
+
+      <div class="toc-grid">
+        <a href="#overview">1. Overview</a>
+        <a href="#beta">2. Protected Beta Environment</a>
+        <a href="#locations">3. Shared Location Hierarchy</a>
+        <a href="#workflow">4. Recursive Location Workflow</a>
+        <a href="#templates">5. Location-Specific Templates</a>
+        <a href="#architecture">6. Inventory-Holder Architecture</a>
+        <a href="#schema">7. Task Schema Expansion</a>
+        <a href="#creation">8. Server-Controlled Task Creation</a>
+        <a href="#selection">9. Holder Selection</a>
+        <a href="#events">10. Holder Event Service</a>
+        <a href="#completion">11. Completion and History</a>
+        <a href="#workspace">12. Holder Workspace</a>
+        <a href="#validation">13. Validation and Diagnostics</a>
+        <a href="#testing">14. End-to-End Testing</a>
+        <a href="#cleanup">15. Phase 14 Cleanup</a>
+        <a href="#audit">16. Final Audit</a>
+        <a href="#status">17. Current Status</a>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="section-card emphasis">
+        <div class="section-heading">
+          <div class="section-number">1</div>
+          <div>
+            <h2>A fundamental redesign, not a routine update</h2>
+          </div>
+        </div>
+
+        <p class="lead">
+          The day began with a strategic decision: stop modifying the working
+          application directly and create a fully separate Work Queue 2.1 Beta.
+          That decision protected the stable release while giving the beta enough
+          freedom to become something substantially more capable.
+        </p>
+
+        <div class="quote">
+          Templates define what should happen. Locations identify where it happens.
+          Holders identify what physical object is affected. Tasks record requested
+          work. Holder events record what happened to the object.
+        </div>
+
+        <p>
+          This distinction resolved a central data-modeling problem. Rooms,
+          restrooms, hallways, closets, and units remain locations. Soap
+          dispensers, toilet-paper dispensers, towel dispensers, shelves,
+          cabinets, carts, and other physical containers are represented as
+          inventory holders attached to those locations.
+        </p>
+
+        <div class="workflow" aria-label="Core system architecture">
+          <span class="workflow-step">Location</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Holder</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Product</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Holder Event</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Work Queue Task</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">2</div>
+          <div><h2>Established a protected beta environment</h2></div>
+        </div>
+
+        <p>
+          The beta received its own Apps Script deployment, its own task-data
+          spreadsheet, its own application identity, and its own version number.
+          It continued to read shared reference information from the location and
+          inventory system without writing into the working production task data.
+        </p>
+
+        <div class="grid-3">
+          <div class="mini-card">
+            <h3>Identity</h3>
+            <p><strong>Work Queue 2.1 Beta</strong></p>
+            <p><code>2.1.02-beta</code></p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Isolation</h3>
+            <p>
+              Beta task records were separated from production so major schema and
+              service changes could be tested safely.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Rollback protection</h3>
+            <p>
+              The existing release remained unchanged and available as the
+              immediate fallback baseline.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout success-callout">
+          <strong>Configuration audit:</strong>
+          no production spreadsheet references, production deployment URLs,
+          private email addresses, API keys, or secrets were introduced.
+        </div>
+      </div>
+    </section>
+
+    <section id="locations">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">3</div>
+          <div><h2>Strengthened the shared location hierarchy</h2></div>
+        </div>
+
+        <p>
+          Work Queue now reads only locations that are active and enabled for the
+          application. The location service normalizes records, resolves units,
+          builds parent-child relationships, supports nested locations, and caches
+          the directory briefly to reduce repeated spreadsheet reads.
+        </p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Reliability improvements</h3>
+            <ul>
+              <li>Duplicate active Location IDs now fail validation.</li>
+              <li>Missing and inactive parent locations are detected.</li>
+              <li>Self-parenting and circular chains are rejected.</li>
+              <li>Only Work Queue-enabled locations are exposed.</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Nested hierarchy proven</h3>
+            <div class="code-block">JUNIPER-N-220
+Resident Room 220
+
+└── JUNIPER-N-220-RR
+    Room 220 Restroom</div>
+          </div>
+        </div>
+
+        <p>
+          The hierarchy is no longer constrained to one unit and one child level.
+          Future room sections, fixtures, assets, or other additional levels can be
+          added without redesigning the application.
+        </p>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">4</div>
+          <div><h2>Rebuilt task creation around recursive location selection</h2></div>
+        </div>
+
+        <div class="workflow" aria-label="Task creation workflow">
+          <span class="workflow-step">Select Unit</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Select Location</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Select Deeper Location</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Load Relevant Tasks</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Resolve Holder</span>
+        </div>
+
+        <p>
+          The browser dynamically creates additional selectors whenever the
+          selected location has children. The deepest selected location becomes
+          the canonical Location ID saved with the task.
+        </p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Browser capabilities</h3>
+            <ul>
+              <li>Unlimited practical hierarchy depth</li>
+              <li>Automatic removal of obsolete deeper selectors</li>
+              <li>Root-to-location path reconstruction</li>
+              <li>Room-number disambiguation</li>
+              <li>Responsive mobile path display</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Stale-response protection</h3>
+            <p>
+              Browser request IDs prevent an older server response from replacing
+              a more recent location or template selection when the user moves
+              quickly through the form.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="templates">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">5</div>
+          <div><h2>Made task recommendations location-specific</h2></div>
+        </div>
+
+        <p>
+          Work Queue now loads only task templates mapped to the selected
+          location. The location-task map remains the applicability source, while
+          the template service filters, normalizes, and sorts the result.
+        </p>
+
+        <div class="grid-4">
+          <div class="mini-card">
+            <strong class="stat">1</strong>
+            <span class="stat-label">selected canonical location</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">8</strong>
+            <span class="stat-label">verified restroom-relevant templates</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">0</strong>
+            <span class="stat-label">silent unrelated-template fallbacks</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">∞</strong>
+            <span class="stat-label">future location hierarchy depth</span>
+          </div>
+        </div>
+
+        <p>
+          The browser distinguishes between no location, loading, mapped
+          templates, no mapped templates, and lookup failure. It also caches
+          results by location ID, rebuilds categories after location changes, and
+          clears only values previously generated by a template.
+        </p>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-card emphasis">
+        <div class="section-heading">
+          <div class="section-number">6</div>
+          <div><h2>Implemented the inventory-holder architecture</h2></div>
+        </div>
+
+        <p>
+          The new holder model represents physical operational objects separately
+          from locations. This gives Work Queue a precise answer to both
+          <em>where</em> the work occurs and <em>what object</em> is affected.
+        </p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Inventory_Holders</h3>
+            <p>
+              Stores holder identity, type, location, position, service area,
+              product assignment, capacity, tracking method, current state,
+              condition, active status, and notes.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Inventory_Holder_Events</h3>
+            <p>
+              Stores append-only history including event type, previous and new
+              state, condition, product, quantity, related task, timestamp,
+              recorder, and notes.
+            </p>
+          </div>
+        </div>
+
+        <h3>InventoryHolderService.gs now provides</h3>
+
+        <div>
+          <span class="tag">Normalization</span>
+          <span class="tag">Holder lookup</span>
+          <span class="tag">Location lookup</span>
+          <span class="tag">Compatibility resolution</span>
+          <span class="tag">Caching</span>
+          <span class="tag">Create</span>
+          <span class="tag">Update</span>
+          <span class="tag">Deactivate</span>
+          <span class="tag">Duplicate detection</span>
+          <span class="tag">Location validation</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="schema">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">7</div>
+          <div><h2>Expanded the Tasks schema from 18 to 23 columns</h2></div>
+        </div>
+
+        <p>
+          Five new fields completed the task-template-holder-event chain:
+        </p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>New task field</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Template ID</code></td>
+              <td>Records which task template defined the work.</td>
+            </tr>
+            <tr>
+              <td><code>Related Holder ID</code></td>
+              <td>Identifies the physical holder affected by the task.</td>
+            </tr>
+            <tr>
+              <td><code>Completion Event Type</code></td>
+              <td>Defines the holder event that completion should record.</td>
+            </tr>
+            <tr>
+              <td><code>Completion State</code></td>
+              <td>Defines the holder state expected after completion.</td>
+            </tr>
+            <tr>
+              <td><code>Related Holder Event ID</code></td>
+              <td>Links the completed task to its append-only holder event.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <strong>Important cleanup discovery:</strong>
+          the old setup code still knew only the original 18 columns. It was
+          corrected to use the same required-header functions as services and
+          validation, eliminating a major source of future schema drift.
+        </div>
+      </div>
+    </section>
+
+    <section id="creation">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">8</div>
+          <div><h2>Made task creation server-controlled</h2></div>
+        </div>
+
+        <div class="grid-3">
+          <div class="mini-card">
+            <h3>Manual task</h3>
+            <p>
+              May be created without a template, holder, completion event, or
+              holder-event linkage.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Holder-free template task</h3>
+            <p>
+              Saves its Template ID while remaining free of holder and holder-event
+              fields.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Holder-required task</h3>
+            <p>
+              Requires a valid, active, compatible holder at the selected
+              location.
+            </p>
+          </div>
+        </div>
+
+        <h3>Server validation now confirms</h3>
+        <ul>
+          <li>The template exists, is active, and applies to the selected location.</li>
+          <li>The holder exists, is active, and belongs to the selected location.</li>
+          <li>The holder type and product category match template requirements.</li>
+          <li>Completion Event Type and Completion State come from server-side template data.</li>
+          <li>Invalid combinations are rejected rather than saved incompletely.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="selection">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">9</div>
+          <div><h2>Added intelligent holder selection in the browser</h2></div>
+        </div>
+
+        <div class="grid-3">
+          <div class="mini-card">
+            <h3>No compatible holder</h3>
+            <p>
+              The interface explains that no valid holder is registered and blocks
+              submission.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>One compatible holder</h3>
+            <p>
+              The holder is selected automatically and its operational details are
+              displayed.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Multiple compatible holders</h3>
+            <p>
+              The user receives a required selector to identify the exact physical
+              holder.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          Holder-free and custom tasks keep the holder interface hidden. The
+          browser submits both <code>templateId</code> and
+          <code>relatedHolderId</code>, while the server remains authoritative.
+        </p>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="section-card emphasis">
+        <div class="section-heading">
+          <div class="section-number">10</div>
+          <div><h2>Created an append-only holder event service</h2></div>
+        </div>
+
+        <p>
+          <code>InventoryHolderEventService.gs</code> now owns holder-event
+          creation, retrieval, sorting, task linkage, duplicate prevention,
+          holder-state synchronization, and script-lock protection.
+        </p>
+
+        <div class="code-block">Event ID format: IHE-XXXXXXXXXXXX
+
+Task completion
+→ find existing event for task
+→ create only when necessary
+→ update holder state
+→ save event ID to task
+→ preserve append-only history</div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Duplicate prevention</h3>
+            <p>
+              Repeated automatic event requests for the same task resolve to the
+              existing event rather than creating another row.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Shared responsibilities</h3>
+            <p>
+              Task completion calls the event service, while holder-state updates
+              remain delegated to <code>InventoryHolderService.gs</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="completion">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">11</div>
+          <div><h2>Connected task completion to holder history</h2></div>
+        </div>
+
+        <div class="workflow" aria-label="Holder-linked completion">
+          <span class="workflow-step">Validate Task</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Validate Holder</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Resolve Event</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Update Holder</span>
+          <span class="workflow-arrow">→</span>
+          <span class="workflow-step">Complete Task</span>
+        </div>
+
+        <p>
+          Holder-linked completion creates or reuses exactly one event, updates
+          the holder to the template-defined completion state, saves the event ID
+          to the task, and writes normal task activity. Holder-free and manual
+          tasks complete without creating holder events.
+        </p>
+
+        <h3>History-preservation rule</h3>
+        <ul>
+          <li>Reopening preserves Related Holder ID and Related Holder Event ID.</li>
+          <li>The original holder event is never deleted or modified.</li>
+          <li>Holder state is not automatically reversed.</li>
+          <li>Re-completion reuses the original event.</li>
+          <li>A second automatic holder event is not created.</li>
+        </ul>
+
+        <div class="quote">
+          One automatic holder event per task, preserved through reopening and
+          re-completion.
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">12</div>
+          <div><h2>Added complete holder details and a holder workspace</h2></div>
+        </div>
+
+        <p>
+          Holder-linked tasks now display holder identity, type, position, service
+          area, state, condition, completion behavior, and related event directly
+          in the task-detail modal.
+        </p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Task-detail holder panel</h3>
+            <ul>
+              <li>Loading and error states</li>
+              <li>Event pending or recorded status</li>
+              <li>Preserved linkage if detail lookup fails</li>
+              <li>Open Holder Workspace action</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Holder workspace</h3>
+            <ul>
+              <li>Full location path</li>
+              <li>Current configuration and condition</li>
+              <li>Open and completed linked tasks</li>
+              <li>Append-only event history</li>
+              <li>Clickable related task references</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          The browser-facing <code>getHolderWorkspace(holderId)</code> endpoint
+          consolidates holder details, location path, open tasks, completed tasks,
+          events, and summary counts into one response.
+        </p>
+      </div>
+    </section>
+
+    <section id="validation">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">13</div>
+          <div><h2>Expanded validation into a complete integration audit</h2></div>
+        </div>
+
+        <p>
+          Validation now reaches far beyond basic configuration. It checks
+          spreadsheet access, required headers, location hierarchy, duplicate
+          identifiers, template relationships, holder compatibility, task-event
+          consistency, and holder-state alignment.
+        </p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Hierarchy checks</h3>
+            <ul>
+              <li>Missing or inactive parents</li>
+              <li>Self-parenting locations</li>
+              <li>Circular parent chains</li>
+              <li>Duplicate active IDs</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Linkage checks</h3>
+            <ul>
+              <li>Missing templates or holders</li>
+              <li>Wrong-location or wrong-type holders</li>
+              <li>Missing or orphaned event references</li>
+              <li>Duplicate automatic events</li>
+              <li>Invalid completion-state fields</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testing">
+      <div class="section-card emphasis">
+        <div class="section-heading">
+          <div class="section-number">14</div>
+          <div><h2>Completed a full end-to-end beta scenario</h2></div>
+        </div>
+
+        <p>
+          Phase 13 tested the entire workflow rather than isolated functions:
+          location selection, mapped task lookup, holder resolution, task
+          creation, task details, start, completion, holder event creation,
+          holder state change, reopen, re-completion, event reuse, holder
+          workspace, and consolidated validation.
+        </p>
+
+        <div class="grid-4">
+          <div class="mini-card">
+            <strong class="stat">11</strong>
+            <span class="stat-label">tasks validated</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">3</strong>
+            <span class="stat-label">holder-linked tasks</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">3</strong>
+            <span class="stat-label">holder events referenced</span>
+          </div>
+
+          <div class="mini-card">
+            <strong class="stat">0</strong>
+            <span class="stat-label">errors or warnings</span>
+          </div>
+        </div>
+
+        <div class="callout success-callout">
+          <strong>Phase 13 result:</strong>
+          the complete operational chain passed, including reopen and
+          re-completion without duplicate holder events.
+        </div>
+      </div>
+    </section>
+
+    <section id="cleanup">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">15</div>
+          <div><h2>Completed a 17-file Phase 14 cleanup</h2></div>
+        </div>
+
+        <p>
+          After the functional work passed, the entire project was reviewed
+          file-by-file. Every source file now begins with its exact filename and
+          project identity, making incorrect pastes or uploads immediately visible.
+        </p>
+
+        <h3>Final source structure</h3>
+        <div class="code-block">Code.gs
+Config.gs
+WebApp.gs
+TaskService.gs
+LocationService.gs
+Validation.gs
+Utilities.gs
+Dashboard.html
+Styles.html
+Scripts.html
+TemplateService.gs
+InventoryHolderService.gs
+Tests.gs
+InventoryHolderEventService.gs
+WebAppTests.gs
+ValidationTests.gs
+CodeTests.gs</div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Test separation</h3>
+            <p>
+              Application code and test code were separated into
+              <code>CodeTests.gs</code>, <code>WebAppTests.gs</code>,
+              <code>ValidationTests.gs</code>, and <code>Tests.gs</code>.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Stale assumptions removed</h3>
+            <p>
+              Old Work Queue 2.0 wording, obsolete phase comments, fixed counts,
+              stale browser expectations, brittle IDs, and old schema assumptions
+              were removed or corrected.
+            </p>
+          </div>
+        </div>
+
+        <h3>Interface and code quality improvements</h3>
+        <div>
+          <span class="tag">Exact file headers</span>
+          <span class="tag">23-column schema alignment</span>
+          <span class="tag">Accessible tab roles</span>
+          <span class="tag">lang="en"</span>
+          <span class="tag">Reduced-motion support</span>
+          <span class="tag">Mobile modal behavior</span>
+          <span class="tag">Dead state removed</span>
+          <span class="tag">Unused helper removed</span>
+          <span class="tag">Syntax checks passed</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">16</div>
+          <div><h2>Ran the final cross-file audit</h2></div>
+        </div>
+
+        <p>
+          The audit checked file presence, exact headers, schema consistency,
+          browser/server integration, interface IDs, event linkage, test
+          separation, accessibility structure, obsolete wording, private data,
+          production references, and syntax.
+        </p>
+
+        <div class="code-block">validateSystemConfiguration()
+testValidateTaskHolderLinkage()
+testGetTaskHolderDetails()
+testGetTaskHolderDetailsWithoutHolder()
+testGetHolderWorkspace()
+testGetTemplatesForLocationId()
+testGetStartupDataSummary()
+testDashboardTemplateControls()
+testTemplateInterfaceIntegration()</div>
+
+        <div class="callout success-callout">
+          <strong>Final test result:</strong>
+          every audit and regression test passed with no errors.
+        </div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="section-card emphasis">
+        <div class="section-heading">
+          <div class="section-number">17</div>
+          <div><h2>Current project status</h2></div>
+        </div>
+
+        <p class="lead">
+          Work Queue 2.1 Beta is no longer simply a renamed task list. It is now a
+          structured operational system capable of representing where work is
+          needed, what work applies, which physical object is affected, what state
+          change should result, what event occurred, and how that history relates
+          back to the task.
+        </p>
+
+        <div class="status-board">
+          <div class="status-panel">
+            <h3>Final Status</h3>
+
+            <div class="status-line">
+              <span>Functional development</span>
+              <strong>Complete</strong>
+            </div>
+
+            <div class="status-line">
+              <span>End-to-end scenario</span>
+              <strong>Passed</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Schema alignment</span>
+              <strong>Complete</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Project cleanup</span>
+              <strong>Complete</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Final validation</span>
+              <strong>Passed</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Errors / warnings</span>
+              <strong>0 / 0</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Production impact</span>
+              <strong>None</strong>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <h3>Next roadmap position</h3>
+            <div class="workflow">
+              <span class="workflow-step">Phase 14 Cleanup</span>
+              <span class="workflow-arrow">→</span>
+              <span class="workflow-step">Phase 15 Production Readiness</span>
+              <span class="workflow-arrow">→</span>
+              <span class="workflow-step">Phase 16 Controlled Release</span>
+            </div>
+
+            <p>
+              Today completed the functional build, end-to-end scenario, source
+              cleanup, schema audit, interface audit, validation, and final
+              read-only regression test pass.
+            </p>
+          </div>
+        </div>
+
+        <div class="quote">
+          The beta is clean, stable, fully tested, and positioned for a controlled
+          production-readiness review—while the current production application
+          remains untouched.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Klinswork. All rights reserved.</span>
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+      >
+        Return to Klinswork
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
