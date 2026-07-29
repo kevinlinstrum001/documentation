@@ -210,6 +210,11 @@
     "category": "Uncategorized"
   },
   {
+    "name": "Delivery Service",
+    "file": "web-apps/delivery-service.png",
+    "category": "Web Apps"
+  },
+  {
     "name": "Locations Viewer Detail",
     "file": "web-apps/locations-viewer-detail.png",
     "category": "Web Apps"
