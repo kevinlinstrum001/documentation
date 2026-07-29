@@ -210,8 +210,13 @@
     "category": "Uncategorized"
   },
   {
-    "name": "Delivery Service",
-    "file": "web-apps/delivery-service.png",
+    "name": "Delivery Service 01",
+    "file": "web-apps/delivery-service-01.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Delivery Service 02",
+    "file": "web-apps/delivery-service-02.png",
     "category": "Web Apps"
   },
   {
