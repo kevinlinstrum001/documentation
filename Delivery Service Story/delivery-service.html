@@ -1,202 +1,724 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Narrative of the Monkey | Local Delivery Service</title>
-<style>
-:root{--ink:#17324a;--navy:#0c2740;--blue:#1f7aa8;--gold:#f5b942;--orange:#ef7f3b;--red:#d94c4c;--green:#4d8f5b;--paper:#fff;--line:rgba(23,50,74,.14);--shadow:0 18px 45px rgba(23,50,74,.16)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(245,185,66,.22),transparent 24rem),radial-gradient(circle at 90% 20%,rgba(31,122,168,.18),transparent 26rem),linear-gradient(180deg,#f8fcff 0%,#eef6fb 100%)}
-.site-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 22px;color:white;background:linear-gradient(135deg,var(--navy),#123e62);box-shadow:0 8px 22px rgba(0,0,0,.18)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--orange));color:var(--navy);box-shadow:inset 0 0 0 3px rgba(255,255,255,.45);font-size:1.3rem}
-.nav-links{display:flex;flex-wrap:wrap;gap:8px}.nav-links a{color:white;text-decoration:none;padding:8px 11px;border-radius:999px;font-size:.86rem;background:rgba(255,255,255,.08)}.nav-links a:hover{background:rgba(255,255,255,.18)}
-.hero{width:min(1180px,calc(100% - 28px));margin:24px auto 18px;overflow:hidden;border-radius:24px;background:linear-gradient(135deg,#0c2740,#1a5f86 60%,#ef7f3b);color:white;box-shadow:var(--shadow)}
-.hero img{width:100%;max-height:520px;display:block;object-fit:cover}.hero-copy{padding:28px clamp(22px,5vw,60px) 34px}.eyebrow{color:#9fe3ff;font-size:.78rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
-h1{margin:8px 0 10px;font-size:clamp(2.2rem,6vw,4.8rem);line-height:.95}.subtitle{max-width:820px;margin:0;color:#e7f7ff;font-size:1.05rem;line-height:1.65}
-.quick-links{width:min(1180px,calc(100% - 28px));margin:0 auto 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.quick-links a{padding:14px;border-radius:15px;color:var(--navy);background:rgba(255,255,255,.86);border:1px solid var(--line);text-decoration:none;font-weight:700;box-shadow:0 8px 20px rgba(23,50,74,.08)}
-main{width:min(1180px,calc(100% - 28px));margin:0 auto 60px}.story-card{position:relative;display:grid;grid-template-columns:70px minmax(0,1fr);gap:22px;margin:18px 0;padding:24px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.94);box-shadow:0 10px 26px rgba(23,50,74,.09);overflow:hidden}
-.story-card:nth-child(3n+1){border-top:6px solid var(--blue)}.story-card:nth-child(3n+2){border-top:6px solid var(--orange)}.story-card:nth-child(3n){border-top:6px solid var(--green)}
-.step-badge{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;color:white;background:linear-gradient(135deg,var(--navy),var(--blue));font-size:1.1rem;font-weight:900;box-shadow:0 8px 18px rgba(31,122,168,.25)}
-.story-copy h2{margin:2px 0 12px;color:var(--navy);font-size:clamp(1.25rem,2vw,1.7rem)}.story-copy ul{margin:0;padding-left:1.2rem;line-height:1.65}.story-copy li+li{margin-top:7px}
-.story-image{grid-column:1/-1;margin:10px 0 0;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#dff5ff}.story-image img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
-.callout{margin:24px 0;padding:26px;border-radius:22px;background:linear-gradient(135deg,#fff4cf,#ffe0ba);border:1px solid rgba(239,127,59,.35);box-shadow:0 10px 24px rgba(239,127,59,.12)}.callout strong{display:block;margin-bottom:8px;color:#8d3e1c;font-size:1.25rem}
-.future{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.future>div{padding:22px;border-radius:20px;background:rgba(255,255,255,.92);border:1px solid var(--line)}.future h2{margin-top:0}.future ul{line-height:1.65;padding-left:1.2rem}
-.back-link{display:inline-flex;margin-top:22px;padding:13px 18px;border-radius:999px;color:white;background:linear-gradient(135deg,var(--orange),var(--red));text-decoration:none;font-weight:800;box-shadow:0 10px 20px rgba(217,76,76,.22)}
-footer{padding:34px 20px;color:#dff5ff;background:var(--navy);text-align:center}footer strong{display:block;margin-bottom:6px;color:white}
-@media(max-width:800px){.site-nav{align-items:flex-start;flex-direction:column}.quick-links{grid-template-columns:1fr 1fr}.story-card{grid-template-columns:52px minmax(0,1fr);padding:18px;gap:14px}.step-badge{width:48px;height:48px;border-radius:14px}.future{grid-template-columns:1fr}}
-@media(max-width:520px){.quick-links{grid-template-columns:1fr}.nav-links{gap:6px}.nav-links a{padding:7px 9px;font-size:.78rem}.story-card{grid-template-columns:1fr}.step-badge{width:46px;height:46px}}
-</style>
-</head>
-<body>
-<nav class="site-nav">
-  <div class="brand"><div class="brand-mark">🐒</div><span>KLINSWORK · LOCAL DELIVERY SERVICE</span></div>
-  <div class="nav-links">
-    <a href="https://sites.google.com/view/meadows-hk/home">Home</a>
-    <a href="https://sites.google.com/view/meadows-hk/home/documentation">Documentation</a>
-    <a href="https://sites.google.com/view/meadows-hk/home/calendar">Calendar</a>
-    <a href="https://sites.google.com/view/meadows-hk/home/roster">Roster</a>
-    <a href="https://sites.google.com/view/meadows-hk/home">Tools</a>
-  </div>
-</nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Narrative of the Monkey | Local Delivery Service</title>
+    <style>
+      :root {
+        --ink: #17324a;
+        --navy: #0c2740;
+        --blue: #1f7aa8;
+        --gold: #f5b942;
+        --orange: #ef7f3b;
+        --red: #d94c4c;
+        --green: #4d8f5b;
+        --paper: #fff;
+        --line: rgba(23, 50, 74, 0.14);
+        --shadow: 0 18px 45px rgba(23, 50, 74, 0.16);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(245, 185, 66, 0.22),
+            transparent 24rem
+          ),
+          radial-gradient(
+            circle at 90% 20%,
+            rgba(31, 122, 168, 0.18),
+            transparent 26rem
+          ),
+          linear-gradient(180deg, #f8fcff 0%, #eef6fb 100%);
+      }
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 22px;
+        color: white;
+        background: linear-gradient(135deg, var(--navy), #123e62);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--orange));
+        color: var(--navy);
+        box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.45);
+        font-size: 1.3rem;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 11px;
+        border-radius: 999px;
+        font-size: 0.86rem;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .hero {
+        width: min(1180px, calc(100% - 28px));
+        margin: 24px auto 18px;
+        overflow: hidden;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #0c2740, #1a5f86 60%, #ef7f3b);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+      .hero img {
+        width: 100%;
+        max-height: 520px;
+        display: block;
+        object-fit: cover;
+      }
+      .hero-copy {
+        padding: 28px clamp(22px, 5vw, 60px) 34px;
+      }
+      .eyebrow {
+        color: #9fe3ff;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 8px 0 10px;
+        font-size: clamp(2.2rem, 6vw, 4.8rem);
+        line-height: 0.95;
+      }
+      .subtitle {
+        max-width: 820px;
+        margin: 0;
+        color: #e7f7ff;
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+      .quick-links {
+        width: min(1180px, calc(100% - 28px));
+        margin: 0 auto 18px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .quick-links a {
+        padding: 14px;
+        border-radius: 15px;
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid var(--line);
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(23, 50, 74, 0.08);
+      }
+      main {
+        width: min(1180px, calc(100% - 28px));
+        margin: 0 auto 60px;
+      }
+      .story-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 70px minmax(0, 1fr);
+        gap: 22px;
+        margin: 18px 0;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 10px 26px rgba(23, 50, 74, 0.09);
+        overflow: hidden;
+      }
+      .story-card:nth-child(3n + 1) {
+        border-top: 6px solid var(--blue);
+      }
+      .story-card:nth-child(3n + 2) {
+        border-top: 6px solid var(--orange);
+      }
+      .story-card:nth-child(3n) {
+        border-top: 6px solid var(--green);
+      }
+      .step-badge {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        color: white;
+        background: linear-gradient(135deg, var(--navy), var(--blue));
+        font-size: 1.1rem;
+        font-weight: 900;
+        box-shadow: 0 8px 18px rgba(31, 122, 168, 0.25);
+      }
+      .story-copy h2 {
+        margin: 2px 0 12px;
+        color: var(--navy);
+        font-size: clamp(1.25rem, 2vw, 1.7rem);
+      }
+      .story-copy ul {
+        margin: 0;
+        padding-left: 1.2rem;
+        line-height: 1.65;
+      }
+      .story-copy li + li {
+        margin-top: 7px;
+      }
+      .story-image {
+        grid-column: 1/-1;
+        margin: 10px 0 0;
+        overflow: hidden;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: #dff5ff;
+      }
+      .story-image img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .callout {
+        margin: 24px 0;
+        padding: 26px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fff4cf, #ffe0ba);
+        border: 1px solid rgba(239, 127, 59, 0.35);
+        box-shadow: 0 10px 24px rgba(239, 127, 59, 0.12);
+      }
+      .callout strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #8d3e1c;
+        font-size: 1.25rem;
+      }
+      .future {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .future > div {
+        padding: 22px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+      }
+      .future h2 {
+        margin-top: 0;
+      }
+      .future ul {
+        line-height: 1.65;
+        padding-left: 1.2rem;
+      }
+      .back-link {
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 13px 18px;
+        border-radius: 999px;
+        color: white;
+        background: linear-gradient(135deg, var(--orange), var(--red));
+        text-decoration: none;
+        font-weight: 800;
+        box-shadow: 0 10px 20px rgba(217, 76, 76, 0.22);
+      }
+      footer {
+        padding: 34px 20px;
+        color: #dff5ff;
+        background: var(--navy);
+        text-align: center;
+      }
+      footer strong {
+        display: block;
+        margin-bottom: 6px;
+        color: white;
+      }
+      @media (max-width: 800px) {
+        .site-nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .quick-links {
+          grid-template-columns: 1fr 1fr;
+        }
+        .story-card {
+          grid-template-columns: 52px minmax(0, 1fr);
+          padding: 18px;
+          gap: 14px;
+        }
+        .step-badge {
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
+        }
+        .future {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .quick-links {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          gap: 6px;
+        }
+        .nav-links a {
+          padding: 7px 9px;
+          font-size: 0.78rem;
+        }
+        .story-card {
+          grid-template-columns: 1fr;
+        }
+        .step-badge {
+          width: 46px;
+          height: 46px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="brand">
+        <div class="brand-mark">🐒</div>
+        <span>KLINSWORK · LOCAL DELIVERY SERVICE</span>
+      </div>
+      <div class="nav-links">
+        <a href="https://sites.google.com/view/meadows-hk/home/documentation"
+          >Back to Documentation</a
+        >
+      </div>
+    </nav>
 
-<header class="hero">
-  <img src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-01.png" alt="Local Delivery Service cover art">
-  <div class="hero-copy">
-    <div class="eyebrow">Monkey Business · Systems Narrative</div>
-    <h1>The Narrative of the Monkey</h1>
-    <p class="subtitle">A colorful systems story about a worker who learns the visible motions of a job, produces useful local results, and gradually causes the physical system and the official system to drift apart.</p>
-  </div>
-</header>
+    <header class="hero">
+      <img
+        src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-01.png"
+        alt="Local Delivery Service cover art"
+      />
+      <div class="hero-copy">
+        <div class="eyebrow">Monkey Business · Systems Narrative</div>
+        <h1>The Narrative of the Monkey</h1>
+        <p class="subtitle">
+          A colorful systems story about a worker who learns the visible motions
+          of a job, produces useful local results, and gradually causes the
+          physical system and the official system to drift apart.
+        </p>
+      </div>
+    </header>
 
-<div class="quick-links">
-  <a href="#unused-truck">🚚 The Unused Truck</a>
-  <a href="#banana-rule">🍌 The Banana Rule</a>
-  <a href="#junk-problem">📦 The Junk Problem</a>
-  <a href="#roe">🤖 Roe Detects the Fault</a>
-</div>
+    <div class="quick-links">
+      <a href="#unused-truck">🚚 The Unused Truck</a>
+      <a href="#banana-rule">🍌 The Banana Rule</a>
+      <a href="#junk-problem">📦 The Junk Problem</a>
+      <a href="#roe">🤖 Roe Detects the Fault</a>
+    </div>
 
-<main>
-<section class="callout">
-  <strong>Purpose of the Narrative</strong>
-  Monkey represents a worker who has learned the visible motions of a job without understanding the system that gives those motions meaning. He can collect and deliver packages successfully while remaining disconnected from dispatch, inventory, authorization, billing, custody, and recordkeeping. The story models a service that appears to work locally while gradually causing the physical system and the official system to separate.
-</section>
+    <main>
+      <section class="callout">
+        <strong>Purpose of the Narrative</strong>
+        Monkey represents a worker who has learned the visible motions of a job
+        without understanding the system that gives those motions meaning. He
+        can collect and deliver packages successfully while remaining
+        disconnected from dispatch, inventory, authorization, billing, custody,
+        and recordkeeping. The story models a service that appears to work
+        locally while gradually causing the physical system and the official
+        system to separate.
+      </section>
 
-<section class="story-card">
-<div class="step-badge">01</div><div class="story-copy"><h2>Monkey Observes the Delivery Operation</h2><ul>
-<li>Maintenance workers drive a fixed circuit between the <strong>Warehouse</strong>, <strong>Willow Cottage</strong>, the <strong>Bakery</strong>, and <strong>Town Hall</strong>.</li>
-<li>Two delivery trucks are usually parked outside because one of the regular workers is off on any given day.</li>
-<li>Monkey watches the visible routine without understanding dispatch, inventory, authorization, billing, or recordkeeping.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">01</div>
+        <div class="story-copy">
+          <h2>Monkey Observes the Delivery Operation</h2>
+          <ul>
+            <li>
+              Maintenance workers drive a fixed circuit between the
+              <strong>Warehouse</strong>, <strong>Willow Cottage</strong>, the
+              <strong>Bakery</strong>, and <strong>Town Hall</strong>.
+            </li>
+            <li>
+              Two delivery trucks are usually parked outside because one of the
+              regular workers is off on any given day.
+            </li>
+            <li>
+              Monkey watches the visible routine without understanding dispatch,
+              inventory, authorization, billing, or recordkeeping.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card" id="unused-truck">
-<div class="step-badge">02</div><div class="story-copy"><h2>Monkey Takes the Apparently Unused Truck</h2><ul>
-<li>A maintenance worker takes one truck, leaving the other behind.</li>
-<li>Monkey takes the remaining truck and follows the route he has observed.</li>
-<li>The next day, the returning maintenance worker uses the truck Monkey drove previously, while Monkey takes the other available truck.</li>
-<li>Because the trucks continue rotating, nobody realizes that an unknown additional driver has inserted himself into the roster.</li>
-</ul></div>
-<figure class="story-image"><img src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-02.png" alt="Monkey leaves the warehouse in the Local Delivery Service truck"></figure>
-</section>
+      <section class="story-card" id="unused-truck">
+        <div class="step-badge">02</div>
+        <div class="story-copy">
+          <h2>Monkey Takes the Apparently Unused Truck</h2>
+          <ul>
+            <li>
+              A maintenance worker takes one truck, leaving the other behind.
+            </li>
+            <li>
+              Monkey takes the remaining truck and follows the route he has
+              observed.
+            </li>
+            <li>
+              The next day, the returning maintenance worker uses the truck
+              Monkey drove previously, while Monkey takes the other available
+              truck.
+            </li>
+            <li>
+              Because the trucks continue rotating, nobody realizes that an
+              unknown additional driver has inserted himself into the roster.
+            </li>
+          </ul>
+        </div>
+        <figure class="story-image">
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-02.png"
+            alt="Monkey leaves the warehouse in the Local Delivery Service truck"
+          />
+        </figure>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">03</div><div class="story-copy"><h2>Monkey Imitates Package Collection</h2><ul>
-<li>At each stop, Monkey sees packages in the outgoing area.</li>
-<li>He loads every package onto the truck.</li>
-<li>He does not initially attempt to deliver anything locally.</li>
-<li>At the end of the circuit, he unloads everything at the <strong>Warehouse Receiving Dock</strong>.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">03</div>
+        <div class="story-copy">
+          <h2>Monkey Imitates Package Collection</h2>
+          <ul>
+            <li>At each stop, Monkey sees packages in the outgoing area.</li>
+            <li>He loads every package onto the truck.</li>
+            <li>He does not initially attempt to deliver anything locally.</li>
+            <li>
+              At the end of the circuit, he unloads everything at the
+              <strong>Warehouse Receiving Dock</strong>.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">04</div><div class="story-copy"><h2>Monkey Becomes an Unofficial Collection Service</h2><ul>
-<li>Outgoing packages disappear from the stops and arrive at the warehouse.</li>
-<li>From each location’s narrow perspective, the service appears to work.</li>
-<li>Monkey has not been hired, assigned, authorized, entered into the roster, or connected to the official delivery records.</li>
-<li>He is operationally present but administratively nonexistent.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">04</div>
+        <div class="story-copy">
+          <h2>Monkey Becomes an Unofficial Collection Service</h2>
+          <ul>
+            <li>
+              Outgoing packages disappear from the stops and arrive at the
+              warehouse.
+            </li>
+            <li>
+              From each location’s narrow perspective, the service appears to
+              work.
+            </li>
+            <li>
+              Monkey has not been hired, assigned, authorized, entered into the
+              roster, or connected to the official delivery records.
+            </li>
+            <li>
+              He is operationally present but administratively nonexistent.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">05</div><div class="story-copy"><h2>Monkey Recognizes the Willow Cottage Symbol</h2><ul>
-<li>While loading the truck at Willow Cottage, Monkey notices that one package bears the same symbol used for Willow Cottage.</li>
-<li>He accidentally connects the symbol on the package with the location where he is standing.</li>
-<li>Instead of carrying that package back to the warehouse, he unloads it at Willow Cottage.</li>
-<li>This becomes his first successful local delivery.</li>
-</ul></div>
-<figure class="story-image"><img src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-03.png" alt="Monkey delivers a package at Willow Cottage"></figure>
-</section>
+      <section class="story-card">
+        <div class="step-badge">05</div>
+        <div class="story-copy">
+          <h2>Monkey Recognizes the Willow Cottage Symbol</h2>
+          <ul>
+            <li>
+              While loading the truck at Willow Cottage, Monkey notices that one
+              package bears the same symbol used for Willow Cottage.
+            </li>
+            <li>
+              He accidentally connects the symbol on the package with the
+              location where he is standing.
+            </li>
+            <li>
+              Instead of carrying that package back to the warehouse, he unloads
+              it at Willow Cottage.
+            </li>
+            <li>This becomes his first successful local delivery.</li>
+          </ul>
+        </div>
+        <figure class="story-image">
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-03.png"
+            alt="Monkey delivers a package at Willow Cottage"
+          />
+        </figure>
+      </section>
 
-<section class="story-card" id="banana-rule">
-<div class="step-badge">06</div><div class="story-copy"><h2>The Successful Delivery Is Rewarded</h2><ul>
-<li>Someone at Willow Cottage gives Monkey a banana after he leaves the correctly marked package there.</li>
-<li>Monkey learns a simple association: <strong>Willow Cottage symbol + Willow Cottage = unload package + receive banana.</strong></li>
-<li>He does not yet understand destinations as a general system.</li>
-<li>He has learned one rewarded exception to his normal collection routine.</li>
-</ul></div></section>
+      <section class="story-card" id="banana-rule">
+        <div class="step-badge">06</div>
+        <div class="story-copy">
+          <h2>The Successful Delivery Is Rewarded</h2>
+          <ul>
+            <li>
+              Someone at Willow Cottage gives Monkey a banana after he leaves
+              the correctly marked package there.
+            </li>
+            <li>
+              Monkey learns a simple association:
+              <strong
+                >Willow Cottage symbol + Willow Cottage = unload package +
+                receive banana.</strong
+              >
+            </li>
+            <li>
+              He does not yet understand destinations as a general system.
+            </li>
+            <li>
+              He has learned one rewarded exception to his normal collection
+              routine.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">07</div><div class="story-copy"><h2>Monkey Repeats the Willow Cottage Behavior</h2><ul>
-<li>Monkey continues collecting everything from every outgoing area.</li>
-<li>Packages bearing the Willow Cottage symbol remain on the truck until he reaches Willow Cottage.</li>
-<li>He unloads them there and receives bananas.</li>
-<li>Anything without a symbol he recognizes still goes to the Warehouse Receiving Dock.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">07</div>
+        <div class="story-copy">
+          <h2>Monkey Repeats the Willow Cottage Behavior</h2>
+          <ul>
+            <li>
+              Monkey continues collecting everything from every outgoing area.
+            </li>
+            <li>
+              Packages bearing the Willow Cottage symbol remain on the truck
+              until he reaches Willow Cottage.
+            </li>
+            <li>He unloads them there and receives bananas.</li>
+            <li>
+              Anything without a symbol he recognizes still goes to the
+              Warehouse Receiving Dock.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">08</div><div class="story-copy"><h2>Monkey Gradually Discovers the Other Symbols</h2><ul>
-<li>Through coincidence, repetition, and successful outcomes, Monkey connects additional package symbols with the Bakery and Town Hall.</li>
-<li>He begins delivering marked packages to those locations.</li>
-<li>His understanding remains a collection of local associations rather than a model of the delivery system.</li>
-<li>Unknown, unmarked, or confusing objects continue to be unloaded at the warehouse.</li>
-</ul></div>
-<figure class="story-image"><img src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-04.png" alt="Monkey makes another successful town delivery"></figure>
-</section>
+      <section class="story-card">
+        <div class="step-badge">08</div>
+        <div class="story-copy">
+          <h2>Monkey Gradually Discovers the Other Symbols</h2>
+          <ul>
+            <li>
+              Through coincidence, repetition, and successful outcomes, Monkey
+              connects additional package symbols with the Bakery and Town Hall.
+            </li>
+            <li>He begins delivering marked packages to those locations.</li>
+            <li>
+              His understanding remains a collection of local associations
+              rather than a model of the delivery system.
+            </li>
+            <li>
+              Unknown, unmarked, or confusing objects continue to be unloaded at
+              the warehouse.
+            </li>
+          </ul>
+        </div>
+        <figure class="story-image">
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-04.png"
+            alt="Monkey makes another successful town delivery"
+          />
+        </figure>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">09</div><div class="story-copy"><h2>The Townspeople Discover the Free Service</h2><ul>
-<li>People notice that anything placed in an outgoing area will be removed without a request, fee, explanation, or apparent limit.</li>
-<li>They begin using Monkey more frequently.</li>
-<li>Legitimate packages are joined by unwanted belongings, surplus objects, broken materials, and miscellaneous junk.</li>
-<li>The users adapt to the service Monkey has accidentally created.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">09</div>
+        <div class="story-copy">
+          <h2>The Townspeople Discover the Free Service</h2>
+          <ul>
+            <li>
+              People notice that anything placed in an outgoing area will be
+              removed without a request, fee, explanation, or apparent limit.
+            </li>
+            <li>They begin using Monkey more frequently.</li>
+            <li>
+              Legitimate packages are joined by unwanted belongings, surplus
+              objects, broken materials, and miscellaneous junk.
+            </li>
+            <li>
+              The users adapt to the service Monkey has accidentally created.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card" id="junk-problem">
-<div class="step-badge">10</div><div class="story-copy"><h2>Monkey Transports the Junk Exactly as Trained</h2><ul>
-<li>Junk does not carry a destination symbol Monkey recognizes.</li>
-<li>He therefore treats it like every other unknown object.</li>
-<li>He collects it, completes his circuit, and unloads it at the Warehouse Receiving Dock.</li>
-<li>Monkey is not malfunctioning; he is applying his learned rule correctly to bad or undefined inputs.</li>
-</ul></div></section>
+      <section class="story-card" id="junk-problem">
+        <div class="step-badge">10</div>
+        <div class="story-copy">
+          <h2>Monkey Transports the Junk Exactly as Trained</h2>
+          <ul>
+            <li>Junk does not carry a destination symbol Monkey recognizes.</li>
+            <li>He therefore treats it like every other unknown object.</li>
+            <li>
+              He collects it, completes his circuit, and unloads it at the
+              Warehouse Receiving Dock.
+            </li>
+            <li>
+              Monkey is not malfunctioning; he is applying his learned rule
+              correctly to bad or undefined inputs.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">11</div><div class="story-copy"><h2>The Warehouse Absorbs the Hidden Cost</h2><ul>
-<li>The townspeople experience a convenient free removal service.</li>
-<li>Monkey experiences successful completion of his learned routine.</li>
-<li>The warehouse receives increasing quantities of unexplained material.</li>
-<li>Nothing identifies who sent it, why it was moved, whether it is cargo or waste, or who is responsible for it.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">11</div>
+        <div class="story-copy">
+          <h2>The Warehouse Absorbs the Hidden Cost</h2>
+          <ul>
+            <li>
+              The townspeople experience a convenient free removal service.
+            </li>
+            <li>
+              Monkey experiences successful completion of his learned routine.
+            </li>
+            <li>
+              The warehouse receives increasing quantities of unexplained
+              material.
+            </li>
+            <li>
+              Nothing identifies who sent it, why it was moved, whether it is
+              cargo or waste, or who is responsible for it.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="story-card">
-<div class="step-badge">12</div><div class="story-copy"><h2>The Operational and Official Systems Diverge</h2><ul>
-<li>Monkey now performs useful collections and some correct deliveries.</li>
-<li>None of his movements are connected to dispatch, inventory records, billing, custody, or searchable history.</li>
-<li>The physical location of objects increasingly differs from the location represented by the official system.</li>
-<li>The more successfully Monkey operates, the larger the discrepancy becomes.</li>
-</ul></div></section>
+      <section class="story-card">
+        <div class="step-badge">12</div>
+        <div class="story-copy">
+          <h2>The Operational and Official Systems Diverge</h2>
+          <ul>
+            <li>
+              Monkey now performs useful collections and some correct
+              deliveries.
+            </li>
+            <li>
+              None of his movements are connected to dispatch, inventory
+              records, billing, custody, or searchable history.
+            </li>
+            <li>
+              The physical location of objects increasingly differs from the
+              location represented by the official system.
+            </li>
+            <li>
+              The more successfully Monkey operates, the larger the discrepancy
+              becomes.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-<section class="callout"><strong>The service works in the world while failing to exist in the system’s memory.</strong>The more successfully Monkey operates, the larger the gap becomes between physical reality and the official records intended to represent it.</section>
+      <section class="callout">
+        <strong
+          >The service works in the world while failing to exist in the system’s
+          memory.</strong
+        >The more successfully Monkey operates, the larger the gap becomes
+        between physical reality and the official records intended to represent
+        it.
+      </section>
 
-<section class="story-card" id="roe">
-<div class="step-badge">13</div><div class="story-copy"><h2>The Warehouse Robot Detects the Fault</h2><ul>
-<li><strong>Robot In Charge (ROINC)</strong>, known as <strong>Roe</strong> to his coworkers—or <strong>(0011;11;@%$)s</strong>, as he calls them—works inside the warehouse.</li>
-<li>Roe encounters the accumulating unexplained material.</li>
-<li>He detects a growing mismatch between expected warehouse conditions and actual warehouse conditions.</li>
-<li>The warehouse is receiving outputs from a process that does not exist in the official model.</li>
-<li>At this point, Roe begins to analyze the fault.</li>
-</ul></div>
-<figure class="story-image"><img src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-05.png" alt="Roe analyzes the warehouse discrepancy"></figure>
-</section>
+      <section class="story-card" id="roe">
+        <div class="step-badge">13</div>
+        <div class="story-copy">
+          <h2>The Warehouse Robot Detects the Fault</h2>
+          <ul>
+            <li>
+              <strong>Robot In Charge (ROINC)</strong>, known as
+              <strong>Roe</strong> to his coworkers—or
+              <strong>(0011;11;@%$)s</strong>, as he calls them—works inside the
+              warehouse.
+            </li>
+            <li>Roe encounters the accumulating unexplained material.</li>
+            <li>
+              He detects a growing mismatch between expected warehouse
+              conditions and actual warehouse conditions.
+            </li>
+            <li>
+              The warehouse is receiving outputs from a process that does not
+              exist in the official model.
+            </li>
+            <li>At this point, Roe begins to analyze the fault.</li>
+          </ul>
+        </div>
+        <figure class="story-image">
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-05.png"
+            alt="Roe analyzes the warehouse discrepancy"
+          />
+        </figure>
+      </section>
 
-<section class="future">
-<div>
-<h2>Sections to Develop Later</h2>
-<ul>
-<li>Roe’s first observations of the discrepancy</li>
-<li>How Roe distinguishes inventory from junk</li>
-<li>Whether Monkey is treated as a worker, error, outside process, or unauthorized service</li>
-<li>The missing records created by Monkey’s activity</li>
-<li>Dispatch, billing, custody, and inventory consequences</li>
-<li>Attempts to reconcile physical reality with recorded reality</li>
-<li>What happens when the service is audited</li>
-<li>What the simulation teaches about local success and system failure</li>
-</ul>
-</div>
-<div>
-<h2>Central Question</h2>
-<p><strong>What happens when a process receives inputs from a system and provides useful outputs to that system, but is not connected to the system’s authorization, memory, or controls?</strong></p>
-<a class="back-link" href="https://sites.google.com/view/meadows-hk/home/documentation">← Back to Documentation</a>
-</div>
-</section>
-</main>
+      <section class="future">
+        <div>
+          <h2>Sections to Develop Later</h2>
+          <ul>
+            <li>Roe’s first observations of the discrepancy</li>
+            <li>How Roe distinguishes inventory from junk</li>
+            <li>
+              Whether Monkey is treated as a worker, error, outside process, or
+              unauthorized service
+            </li>
+            <li>The missing records created by Monkey’s activity</li>
+            <li>Dispatch, billing, custody, and inventory consequences</li>
+            <li>
+              Attempts to reconcile physical reality with recorded reality
+            </li>
+            <li>What happens when the service is audited</li>
+            <li>
+              What the simulation teaches about local success and system failure
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2>Central Question</h2>
+          <p>
+            <strong
+              >What happens when a process receives inputs from a system and
+              provides useful outputs to that system, but is not connected to
+              the system’s authorization, memory, or controls?</strong
+            >
+          </p>
+          <a
+            class="back-link"
+            href="https://sites.google.com/view/meadows-hk/home/documentation"
+            >← Back to Documentation</a
+          >
+        </div>
+      </section>
+    </main>
 
-<footer><strong>KLINSWORK · MONKEY BUSINESS</strong>A playful systems narrative about local success, hidden cost, and missing memory.</footer>
-</body>
+    <footer>
+      <strong>KLINSWORK · MONKEY BUSINESS</strong>A playful systems narrative
+      about local success, hidden cost, and missing memory.
+    </footer>
+  </body>
 </html>
