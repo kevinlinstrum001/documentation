@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NMBHI Meadows Housekeeping — August 2026</title>
+  <style>
+    :root {
+      --navy: #143f79;
+      --green: #238b45;
+      --purple: #7a4aa8;
+      --orange: #d76613;
+      --teal: #138c8c;
+      --line: #8ba4c2;
+      --board: #fdfefe;
+      --ink: #172235;
+      --muted: #5e6b78;
+      --shadow: 0 12px 36px rgba(18, 42, 70, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 1180px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.9), transparent 35%),
+        linear-gradient(135deg, #d6dde4, #eef2f5);
+      color: var(--ink);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    .page {
+      width: 1480px;
+      margin: 24px auto;
+      padding: 22px 26px 18px;
+      background: var(--board);
+      border: 12px solid #7d858c;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border: 2px solid #c8ced3;
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 90px 1fr 90px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .leaf, .home {
+      font-size: 52px;
+      text-align: center;
+      color: var(--green);
+      user-select: none;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 54px;
+      letter-spacing: 0.5px;
+      color: var(--navy);
+      line-height: 1.05;
+    }
+
+    h1 span { color: var(--green); }
+
+    .instructions {
+      margin: 2px 0 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border: 2px solid var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .weekday {
+      padding: 10px 6px;
+      text-align: center;
+      color: white;
+      background: var(--navy);
+      font-size: 20px;
+      font-weight: 800;
+      border-right: 1px solid rgba(255,255,255,.35);
+    }
+
+    .weekday:last-child { border-right: 0; }
+
+    .day {
+      min-height: 126px;
+      padding: 8px;
+      border-right: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      position: relative;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.95), rgba(249,252,255,.95));
+      transition: background .15s ease, outline .15s ease;
+    }
+
+    .day:nth-child(7n) { border-right: 0; }
+
+    .day.blank {
+      background: #f4f7f9;
+    }
+
+    .day.drag-over {
+      background: #eaf5ff;
+      outline: 3px dashed #3f83c8;
+      outline-offset: -5px;
+    }
+
+    .date {
+      font-weight: 900;
+      font-size: 21px;
+      margin-bottom: 6px;
+    }
+
+    .events {
+      min-height: 82px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .event {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 7px 9px;
+      border-radius: 7px;
+      box-shadow: 0 3px 7px rgba(30,55,80,.16);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.12;
+      cursor: grab;
+      user-select: none;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .event:active { cursor: grabbing; }
+    .event.dragging { opacity: .42; }
+
+    .event .icon {
+      flex: 0 0 auto;
+      font-size: 22px;
+    }
+
+    .beds-sunday { background: #e9d8f5; color: #542c78; }
+    .beds-thursday { background: #dff2cf; color: #21672f; }
+    .payday { background: #fff19b; color: #c64e16; font-size: 18px; justify-content: center; }
+    .maintenance { background: #cfeaf7; color: #154d69; }
+
+    .lower {
+      display: grid;
+      grid-template-columns: 1.05fr .93fr .68fr 1.55fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      border: 2px solid #9fb0c4;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .panel h2 {
+      margin: 0;
+      padding: 8px 12px;
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: .4px;
+    }
+
+    .core h2 { background: var(--purple); }
+    .support h2 { background: var(--navy); }
+    .supervisors h2 { background: var(--orange); }
+    .off h2 { background: var(--green); }
+
+    .assignment-row {
+      display: grid;
+      grid-template-columns: 1.25fr .8fr;
+      gap: 10px;
+      padding: 6px 10px;
+      border-top: 1px solid #d6dee7;
+      font-size: 15px;
+    }
+
+    .assignment-row:first-of-type { border-top: 0; }
+    .assignment-row strong { color: var(--navy); }
+
+    .supervisor-list {
+      padding: 12px 18px;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .off-list {
+      columns: 2;
+      column-gap: 30px;
+      padding: 12px 20px 14px 34px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    .off-list li { break-inside: avoid; }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding-top: 15px;
+      font-size: 19px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .status {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: rgba(20,63,121,.94);
+      color: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.2);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .2s ease;
+      pointer-events: none;
+    }
+
+    .status.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1500px) {
+      body { min-width: 1040px; }
+      .page {
+        width: 1020px;
+        transform-origin: top center;
+      }
+      h1 { font-size: 40px; }
+      .weekday { font-size: 16px; }
+      .day { min-height: 112px; }
+      .event { font-size: 12px; padding: 6px; }
+      .lower { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="leaf" aria-hidden="true">🌿</div>
+      <h1>NMBHI Meadows Housekeeping — <span>August 2026</span></h1>
+      <div class="home" aria-hidden="true">⌂</div>
+    </header>
+
+    <p class="instructions">Drag any colored event card and drop it into another day.</p>
+
+    <section class="calendar" aria-label="August 2026 housekeeping calendar">
+      <div class="weekday">Sunday</div>
+      <div class="weekday">Monday</div>
+      <div class="weekday">Tuesday</div>
+      <div class="weekday">Wednesday</div>
+      <div class="weekday">Thursday</div>
+      <div class="weekday">Friday</div>
+      <div class="weekday">Saturday</div>
+
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-01"><div class="date">1</div><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-02"><div class="date">2</div><div class="events">
+        <div class="event beds-sunday" draggable="true"><span class="icon">🛏️</span><span>Beds — Mesquite / Juniper</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-03"><div class="date">3</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-04"><div class="date">4</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-05"><div class="date">5</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-06"><div class="date">6</div><div class="events">
+        <div class="event beds-thursday" draggable="true"><span class="icon">🛏️</span><span>Beds — Aspen / Sagebrush</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-07"><div class="date">7</div><div class="events">
+        <div class="event payday" draggable="true"><span>Payday</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-08"><div class="date">8</div><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-09"><div class="date">9</div><div class="events">
+        <div class="event beds-sunday" draggable="true"><span class="icon">🛏️</span><span>Beds — Mesquite / Juniper</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-10"><div class="date">10</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-11"><div class="date">11</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-12"><div class="date">12</div><div class="events">
+        <div class="event maintenance" draggable="true"><span class="icon">🧼</span><span><strong>MTC-CC-0812</strong><br>Clean Cart Wash</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-13"><div class="date">13</div><div class="events">
+        <div class="event beds-thursday" draggable="true"><span class="icon">🛏️</span><span>Beds — Aspen / Sagebrush</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-14"><div class="date">14</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-15"><div class="date">15</div><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-16"><div class="date">16</div><div class="events">
+        <div class="event beds-sunday" draggable="true"><span class="icon">🛏️</span><span>Beds — Mesquite / Juniper</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-17"><div class="date">17</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-18"><div class="date">18</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-19"><div class="date">19</div><div class="events">
+        <div class="event maintenance" draggable="true"><span class="icon">🪟</span><span><strong>MTC-EVG-0819</strong><br>Evergreen Window Washing Check</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-20"><div class="date">20</div><div class="events">
+        <div class="event beds-thursday" draggable="true"><span class="icon">🛏️</span><span>Beds — Aspen / Sagebrush</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-21"><div class="date">21</div><div class="events">
+        <div class="event payday" draggable="true"><span>Payday</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-22"><div class="date">22</div><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-23"><div class="date">23</div><div class="events">
+        <div class="event beds-sunday" draggable="true"><span class="icon">🛏️</span><span>Beds — Mesquite / Juniper</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-24"><div class="date">24</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-25"><div class="date">25</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-26"><div class="date">26</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-27"><div class="date">27</div><div class="events">
+        <div class="event beds-thursday" draggable="true"><span class="icon">🛏️</span><span>Beds — Aspen / Sagebrush</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-28"><div class="date">28</div><div class="events"></div></div>
+      <div class="day" data-date="2026-08-29"><div class="date">29</div><div class="events"></div></div>
+
+      <div class="day" data-date="2026-08-30"><div class="date">30</div><div class="events">
+        <div class="event beds-sunday" draggable="true"><span class="icon">🛏️</span><span>Beds — Mesquite / Juniper</span></div>
+      </div></div>
+      <div class="day" data-date="2026-08-31"><div class="date">31</div><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+      <div class="day blank"><div class="events"></div></div>
+    </section>
+
+    <section class="lower">
+      <div class="panel core">
+        <h2>CORE ASSIGNMENTS</h2>
+        <div class="assignment-row"><span>Juniper North</span><strong>Amor</strong></div>
+        <div class="assignment-row"><span>Juniper South</span><strong>Terry</strong></div>
+        <div class="assignment-row"><span>Aspen North</span><strong>Kevin M</strong></div>
+        <div class="assignment-row"><span>Aspen South</span><strong>Philip</strong></div>
+        <div class="assignment-row"><span>Mesquite North</span><strong>Robert Scott</strong></div>
+        <div class="assignment-row"><span>Mesquite South</span><strong>Tanya</strong></div>
+        <div class="assignment-row"><span>Sagebrush</span><strong>Phyllis</strong></div>
+      </div>
+
+      <div class="panel support">
+        <h2>SUPPORT ASSIGNMENTS</h2>
+        <div class="assignment-row"><span>Floater 1</span><strong>Gina</strong></div>
+        <div class="assignment-row"><span>Floater 2</span><strong>Kevin L</strong></div>
+        <div class="assignment-row"><span>Floater 3</span><strong>Pam</strong></div>
+        <div class="assignment-row"><span>Front</span><strong>Karina</strong></div>
+        <div class="assignment-row"><span>Floater</span><strong>Jamie</strong></div>
+      </div>
+
+      <div class="panel supervisors">
+        <h2>SUPERVISORS</h2>
+        <div class="supervisor-list">👤 Joe<br>👤 Michael</div>
+      </div>
+
+      <div class="panel off">
+        <h2>DAYS OFF PATTERNS</h2>
+        <ul class="off-list">
+          <li>Philip: Tue/Wed</li>
+          <li>Terry: Thu/Fri</li>
+          <li>Amor: Sun/Mon</li>
+          <li>Phyllis: Wed/Thu</li>
+          <li>Robert Scott: Sun/Mon</li>
+          <li>Tanya: Wed/Thu</li>
+          <li>Pam: Sat/Sun</li>
+          <li>Kevin L: Sat/Sun</li>
+          <li>Gina: Fri/Sat</li>
+          <li>Kevin M: Mon/Tue</li>
+          <li>Karina: Sat/Sun</li>
+          <li>Jamie: Sat/Sun</li>
+          <li>Joe: Sat/Sun</li>
+          <li>Michael: Thu/Fri</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span>Teamwork makes Meadows shine!</span>
+      <span>♡</span>
+      <span>Safety • Respect • Pride • Service</span>
+    </footer>
+  </main>
+
+  <div class="status" id="status">Event moved</div>
+
+  <script>
+    (() => {
+      let dragged = null;
+      const status = document.getElementById("status");
+
+      function showStatus(message) {
+        status.textContent = message;
+        status.classList.add("show");
+        clearTimeout(showStatus.timer);
+        showStatus.timer = setTimeout(() => status.classList.remove("show"), 1200);
+      }
+
+      function bindEvent(eventCard) {
+        eventCard.addEventListener("dragstart", () => {
+          dragged = eventCard;
+          eventCard.classList.add("dragging");
+        });
+
+        eventCard.addEventListener("dragend", () => {
+          eventCard.classList.remove("dragging");
+          document.querySelectorAll(".day.drag-over").forEach(day => day.classList.remove("drag-over"));
+          dragged = null;
+        });
+      }
+
+      document.querySelectorAll(".event").forEach(bindEvent);
+
+      document.querySelectorAll(".day:not(.blank)").forEach(day => {
+        day.addEventListener("dragover", event => {
+          event.preventDefault();
+          day.classList.add("drag-over");
+        });
+
+        day.addEventListener("dragleave", event => {
+          if (!day.contains(event.relatedTarget)) {
+            day.classList.remove("drag-over");
+          }
+        });
+
+        day.addEventListener("drop", event => {
+          event.preventDefault();
+          day.classList.remove("drag-over");
+          if (!dragged) return;
+
+          const target = day.querySelector(".events");
+          if (target && dragged.parentElement !== target) {
+            target.appendChild(dragged);
+            const dayNumber = day.querySelector(".date")?.textContent || "";
+            showStatus(`Moved to August ${dayNumber}`);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

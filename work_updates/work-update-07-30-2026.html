@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Meadows Housekeeping Calendar App — Work Update — July 30, 2026</title>
+
+  <meta
+    name="description"
+    content="Detailed July 30, 2026 work update documenting the complete design and construction of the Meadows Housekeeping Calendar App."
+  >
+
+  <style>
+    :root {
+      --forest-950: #102a1b;
+      --forest-900: #173b26;
+      --forest-800: #205132;
+      --forest-700: #2e6b40;
+      --forest-600: #3d8250;
+      --forest-500: #58a864;
+      --leaf-300: #a9d77f;
+      --leaf-100: #e9f6d8;
+
+      --sun-500: #f4c83f;
+      --sun-400: #ffda63;
+      --sun-300: #ffe58b;
+      --sun-100: #fff8d8;
+
+      --lime-100: #f2f9df;
+      --cream: #fffef5;
+      --surface: #ffffff;
+      --surface-soft: #f7faef;
+      --surface-green: #eef7e7;
+
+      --ink: #183224;
+      --muted: #647568;
+      --line: #d6e2cf;
+      --code-bg: #13291c;
+      --danger: #b83d3d;
+
+      --shadow-sm: 0 8px 24px rgba(30, 70, 39, 0.09);
+      --shadow-md: 0 20px 50px rgba(30, 70, 39, 0.14);
+      --shadow-lg: 0 30px 90px rgba(22, 56, 31, 0.22);
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #eef5e8;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 0%, rgba(244, 200, 63, 0.34), transparent 25rem),
+        radial-gradient(circle at 95% 4%, rgba(88, 168, 100, 0.22), transparent 29rem),
+        linear-gradient(180deg, #fbfdea 0%, #eef5e8 45%, #f8faef 100%);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--forest-700);
+    }
+
+    code {
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      border-bottom: 4px solid var(--sun-500);
+      background: rgba(16, 42, 27, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 28px));
+      min-height: 70px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 950;
+      letter-spacing: 0.015em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--sun-300);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      color: rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+    }
+
+    .nav-links .documentation-link {
+      color: var(--forest-950);
+      background: var(--sun-500);
+    }
+
+    .nav-links .documentation-link:hover,
+    .nav-links .documentation-link:focus-visible {
+      background: var(--sun-300);
+    }
+
+    main {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 28px auto 78px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 88% 12%, rgba(255, 229, 139, 0.18), transparent 18rem),
+        radial-gradient(circle at 8% 96%, rgba(169, 215, 127, 0.2), transparent 22rem),
+        linear-gradient(135deg, var(--forest-950), var(--forest-800) 58%, var(--forest-600));
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero::before {
+      position: absolute;
+      top: -120px;
+      right: -85px;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      right: 130px;
+      bottom: -185px;
+      width: 360px;
+      height: 360px;
+      background: rgba(244, 200, 63, 0.1);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 34px;
+      padding: clamp(34px, 6vw, 74px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--sun-300);
+      font-size: 0.8rem;
+      font-weight: 950;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2.45rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.047em;
+    }
+
+    .hero-lead {
+      max-width: 860px;
+      margin: 23px 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1rem, 2.2vw, 1.22rem);
+    }
+
+    .hero-panel {
+      align-self: stretch;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(7px);
+    }
+
+    .hero-mark {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--forest-950);
+      background: linear-gradient(145deg, var(--sun-300), var(--sun-500));
+      border-radius: 23px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+      font-size: 1.35rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-panel h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.45rem;
+    }
+
+    .hero-panel p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.9rem;
+    }
+
+    .meta-row span:first-child {
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .meta-row strong {
+      color: #fff;
+      text-align: right;
+    }
+
+    .metric-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 clamp(34px, 6vw, 72px) clamp(34px, 6vw, 56px);
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--sun-300);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.79);
+      font-size: 0.84rem;
+    }
+
+    .toc {
+      margin-top: 28px;
+      padding: clamp(22px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc h2 {
+      margin: 0;
+      color: var(--forest-900);
+      font-size: 1.5rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin-top: 18px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--forest-800);
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 760;
+    }
+
+    .toc a:hover,
+    .toc a:focus-visible {
+      color: var(--forest-950);
+      border-color: var(--sun-500);
+      background: var(--sun-100);
+      outline: none;
+    }
+
+    .document-content {
+      margin-top: 28px;
+    }
+
+    .document-content > h2 {
+      scroll-margin-top: 92px;
+      margin: 28px 0 0;
+      padding: 28px 34px 18px;
+      color: var(--forest-900);
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      background:
+        linear-gradient(135deg, rgba(233, 246, 216, 0.88), rgba(255, 248, 216, 0.82)),
+        var(--surface);
+      font-size: clamp(1.55rem, 3.3vw, 2.35rem);
+      line-height: 1.16;
+      letter-spacing: -0.024em;
+    }
+
+    .document-content > h2::before {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-right: 12px;
+      color: var(--forest-950);
+      background: linear-gradient(145deg, var(--sun-300), var(--sun-500));
+      border-radius: 12px;
+      box-shadow: 0 7px 16px rgba(244, 200, 63, 0.25);
+      content: "§";
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
+    .document-content > h2 + * {
+      margin-top: 0;
+    }
+
+    .document-content > h2 ~ p,
+    .document-content > h2 ~ h3,
+    .document-content > h2 ~ ul,
+    .document-content > h2 ~ ol,
+    .document-content > h2 ~ pre,
+    .document-content > h2 ~ table,
+    .document-content > h2 ~ blockquote {
+      /* Content is grouped visually using the card background below. */
+    }
+
+    .document-content {
+      counter-reset: report-section;
+    }
+
+    .section-wrap {
+      padding: 0;
+    }
+
+    .document-content > p,
+    .document-content > h3,
+    .document-content > ul,
+    .document-content > ol,
+    .document-content > pre,
+    .document-content > table,
+    .document-content > blockquote {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .document-content > p,
+    .document-content > ul,
+    .document-content > ol,
+    .document-content > pre,
+    .document-content > table,
+    .document-content > blockquote,
+    .document-content > h3 {
+      padding-left: 34px;
+      padding-right: 34px;
+      background: rgba(255, 255, 255, 0.97);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .document-content > p {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .document-content > h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 22px;
+      padding-bottom: 7px;
+      color: var(--forest-700);
+      font-size: 1.13rem;
+    }
+
+    .document-content > ul,
+    .document-content > ol {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      padding-left: 58px;
+    }
+
+    .document-content li + li {
+      margin-top: 7px;
+    }
+
+    .document-content > pre {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 14px;
+      padding-bottom: 16px;
+      overflow-x: auto;
+    }
+
+    .document-content pre code {
+      display: block;
+      padding: 18px 20px;
+      color: #eff9e9;
+      border: 1px solid #31543b;
+      border-radius: 15px;
+      background: var(--code-bg);
+      font: 0.9rem/1.62 Consolas, Monaco, monospace;
+      white-space: pre;
+    }
+
+    .document-content code:not(pre code) {
+      padding: 0.12em 0.34em;
+      color: var(--forest-900);
+      border: 1px solid #d7e5c8;
+      border-radius: 5px;
+      background: var(--lime-100);
+      font-size: 0.9em;
+    }
+
+    .document-content > blockquote {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      color: var(--forest-900);
+      background: var(--sun-100);
+    }
+
+    .document-content table {
+      width: calc(100% - 68px);
+      margin: 12px 34px;
+      border-collapse: collapse;
+      background: var(--surface);
+    }
+
+    .document-content th,
+    .document-content td {
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .document-content th {
+      color: var(--forest-900);
+      background: var(--surface-green);
+    }
+
+    .section-end {
+      height: 24px;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 11px 20px;
+      color: var(--forest-950);
+      border: 1px solid #d1a925;
+      border-radius: 999px;
+      background: linear-gradient(145deg, var(--sun-300), var(--sun-500));
+      box-shadow: 0 10px 24px rgba(160, 124, 12, 0.2);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: rgba(255, 255, 255, 0.83);
+      border-top: 4px solid var(--sun-500);
+      background: var(--forest-950);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 34px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-inner a {
+      color: var(--sun-300);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .toc-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .document-content > h2 {
+        scroll-margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      main {
+        width: min(100% - 16px, var(--max));
+        margin-top: 12px;
+      }
+
+      .hero {
+        border-radius: 21px;
+      }
+
+      .hero-inner {
+        padding: 28px 22px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 22px 28px;
+      }
+
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .document-content > h2 {
+        padding: 23px 20px 15px;
+        border-radius: 17px 17px 0 0;
+      }
+
+      .document-content > h2::before {
+        width: 34px;
+        height: 34px;
+      }
+
+      .document-content > p,
+      .document-content > h3,
+      .document-content > ul,
+      .document-content > ol,
+      .document-content > pre,
+      .document-content > blockquote {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .document-content > ul,
+      .document-content > ol {
+        padding-left: 42px;
+      }
+
+      .document-content table {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .section-end {
+        border-radius: 0 0 17px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Page navigation">
+      <a class="brand" href="#top">Klins<span>work</span> Update</a>
+
+      <div class="nav-links">
+        <a href="#1-established-the-data-model">Data Model</a>
+<a href="#3-designed-the-schedule-resolution-architecture">Architecture</a>
+<a href="#9-built-the-schedule-service">Services</a>
+<a href="#14-built-day-and-month-views">Views</a>
+<a href="#19-designed-cancellation-as-an-override-rather-than-deletion">Cancellation</a>
+<a href="#23-created-the-initial-visual-design">Design</a>
+<a href="#35-reduced-stylesheet-redundancy">Cleanup</a>
+<a href="#38-current-functional-boundary">Status</a>
+        <a
+          class="documentation-link"
+          href="https://sites.google.com/view/meadows-hk/home/documentation"
+        >
+          Back to Documentation
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Complete Build Update · July 30, 2026</p>
+
+          <h1>The housekeeping schedule became a responsive calendar application.</h1>
+
+          <p class="hero-lead">
+            The work moved from a structured employee-and-assignment data model
+            into a complete Google Apps Script calendar with live schedule data,
+            Day and Month views, desktop and mobile compositions, selected-day
+            details, cancellation controls, a proper confirmation modal, defensive
+            initialization, and a unified custom visual identity.
+          </p>
+        </div>
+
+        <aside class="hero-panel" aria-label="Project identity">
+          <div class="hero-mark">CAL</div>
+
+          <h2>Meadows Housekeeping Calendar</h2>
+
+          <p>
+            A purpose-built calendar interface for interpreting dated housekeeping
+            assignments without reducing the schedule to a spreadsheet display.
+          </p>
+
+          <div class="hero-meta">
+            <div class="meta-row">
+              <span>Platform</span>
+              <strong>Google Apps Script</strong>
+            </div>
+
+            <div class="meta-row">
+              <span>Views</span>
+              <strong>Responsive Day + Month</strong>
+            </div>
+
+            <div class="meta-row">
+              <span>Current boundary</span>
+              <strong>Cancellation UI complete; server write remains</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="metric-grid" aria-label="Project results">
+        <div class="metric">
+          <strong>38</strong>
+          <span>detailed development areas documented</span>
+        </div>
+
+        <div class="metric">
+          <strong>11</strong>
+          <span>server and client project files organized</span>
+        </div>
+
+        <div class="metric">
+          <strong>2</strong>
+          <span>responsive calendar views</span>
+        </div>
+
+        <div class="metric">
+          <strong>3</strong>
+          <span>connected schedule data domains</span>
+        </div>
+
+        <div class="metric">
+          <strong>1</strong>
+          <span>unified visual and interaction system</span>
+        </div>
+      </div>
+    </article>
+
+    <section class="toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">Table of Contents</h2>
+
+      <div class="toc-grid">
+        <a href="#1-established-the-data-model">1. Established the data model</a>
+<a href="#2-defined-the-regular-employee-schedule">2. Defined the regular employee schedule</a>
+<a href="#3-designed-the-schedule-resolution-architecture">3. Designed the schedule-resolution architecture</a>
+<a href="#4-created-the-apps-script-project-structure">4. Created the Apps Script project structure</a>
+<a href="#5-centralized-configuration">5. Centralized configuration</a>
+<a href="#6-built-the-apps-script-web-entry-point">6. Built the Apps Script web entry point</a>
+<a href="#7-built-reusable-sheet-reading-utilities">7. Built reusable sheet-reading utilities</a>
+<a href="#8-added-date-utilities">8. Added date utilities</a>
+<a href="#9-built-the-schedule-service">9. Built the schedule service</a>
+<a href="#10-assembled-the-html-application">10. Assembled the HTML application</a>
+<a href="#11-built-the-application-shell">11. Built the application shell</a>
+<a href="#12-fixed-an-initialization-failure">12. Fixed an initialization failure</a>
+<a href="#13-created-client-side-calendar-state">13. Created client-side calendar state</a>
+<a href="#14-built-day-and-month-views">14. Built Day and Month views</a>
+<a href="#15-added-calendar-navigation">15. Added calendar navigation</a>
+<a href="#16-built-the-desktop-month-view">16. Built the desktop month view</a>
+<a href="#17-built-the-mobile-month-view">17. Built the mobile month view</a>
+<a href="#18-built-the-full-day-view">18. Built the full Day view</a>
+<a href="#19-designed-cancellation-as-an-override-rather-than-deletion">19. Designed cancellation as an override rather than deletion</a>
+<a href="#20-added-the-cancellation-modal">20. Added the cancellation modal</a>
+<a href="#21-added-cancellation-buttons-to-day-view">21. Added cancellation buttons to Day view</a>
+<a href="#22-added-cancellation-placement-to-the-desktop-selected-day-panel">22. Added cancellation placement to the desktop selected-day panel</a>
+<a href="#23-created-the-initial-visual-design">23. Created the initial visual design</a>
+<a href="#24-reviewed-the-desktop-appearance-professionally">24. Reviewed the desktop appearance professionally</a>
+<a href="#25-removed-the-unnecessary-fixed-desktop-height">25. Removed the unnecessary fixed desktop height</a>
+<a href="#26-widened-the-desktop-app">26. Widened the desktop app</a>
+<a href="#27-softened-the-month-grid-lines">27. Softened the month-grid lines</a>
+<a href="#28-improved-the-month-cells">28. Improved the month cells</a>
+<a href="#29-improved-the-selected-day-panel">29. Improved the selected-day panel</a>
+<a href="#30-harmonized-the-color-system">30. Harmonized the color system</a>
+<a href="#31-restyled-the-day-view-time-column">31. Restyled the Day-view time column</a>
+<a href="#32-standardized-buttons">32. Standardized buttons</a>
+<a href="#33-improved-accessibility-and-interaction-feedback">33. Improved accessibility and interaction feedback</a>
+<a href="#34-escaped-rendered-data">34. Escaped rendered data</a>
+<a href="#35-reduced-stylesheet-redundancy">35. Reduced stylesheet redundancy</a>
+<a href="#36-preserved-responsive-behavior-during-the-redesign">36. Preserved responsive behavior during the redesign</a>
+<a href="#37-final-visual-result">37. Final visual result</a>
+<a href="#38-current-functional-boundary">38. Current functional boundary</a>
+      </div>
+    </section>
+
+    <article class="document-content">
+<p>We created a responsive Google Apps Script calendar application for viewing the Meadows housekeeping schedule. The app began as a basic schedule viewer and developed into a polished desktop-and-mobile calendar with day and month views, live schedule data, assignment details, navigation controls, cancellation controls, and a consistent visual system.</p>
+<h2 id="1-established-the-data-model">1. Established the data model</h2>
+<p>We began by separating employee information, locations, and assignments into structured sheets rather than trying to build the calendar directly from an informal roster.</p>
+<h3 id="employees-spreadsheet">Employees spreadsheet</h3>
+<p>Spreadsheet ID:</p>
+<pre><code class="language-text">1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo
+</code></pre>
+<p>Primary sheets:</p>
+<pre><code class="language-text">Employees
+Assignments
+</code></pre>
+<p>The <code>Employees</code> sheet was designed with fields such as:</p>
+<pre><code class="language-text">Employee_ID
+Display_Name
+Email
+Active
+Assignment_Eligible
+Role
+Notification_Enabled
+Program_Update_Enabled
+Created_At
+Updated_At
+</code></pre>
+<p>The employee records use nonpersonal internal identifiers such as:</p>
+<pre><code class="language-text">EMP-001
+EMP-002
+EMP-003
+</code></pre>
+<p>This lets the schedule refer to employees without using names as keys.</p>
+<h3 id="assignments-sheet">Assignments sheet</h3>
+<p>The <code>Assignments</code> sheet was designed around individual dated work assignments:</p>
+<pre><code class="language-text">Assignment_ID
+Work_Date
+Employee_ID
+Location_ID
+Assignment_Type
+Shift_Start
+Shift_End
+Status
+Notes
+Created_At
+Updated_At
+</code></pre>
+<p>Each assignment therefore represents:</p>
+<pre><code class="language-text">one employee
+on one date
+at one location
+for one shift
+with one status
+</code></pre>
+<p>This is much more flexible than storing the entire calendar in a wide schedule grid.</p>
+<h3 id="locations-spreadsheet">Locations spreadsheet</h3>
+<p>Spreadsheet ID:</p>
+<pre><code class="language-text">16tLQNEfc7OEF6WCX1eYp97_4-gsyB5eUe9s39julHfc
+</code></pre>
+<p>The calendar uses the existing <code>Locations</code> sheet from the Work Queue locations system.</p>
+<p>That means calendar assignments can refer to normalized location identifiers such as:</p>
+<pre><code class="language-text">JUNIPER-N
+JUNIPER-S
+MESQUITE-N
+MESQUITE-S
+ASPEN-N
+ASPEN-S
+SAGEBRUSH
+FRONT
+MEADOWS
+</code></pre>
+<p>We also accepted <code>MEADOWS</code> as the location for employees whose assignment is facility-wide, such as supervisors or floaters.</p>
+<h2 id="2-defined-the-regular-employee-schedule">2. Defined the regular employee schedule</h2>
+<p>We identified the active housekeeping employees, their normal locations, and their regular days off.</p>
+<p>The schedule information included employees such as:</p>
+<pre><code class="language-text">Joe — Supervisor
+Michael — Supervisor
+Gina — Floater
+Tanya — Mesquite South
+Phyllis — Sagebrush
+Robert Scott — Mesquite North
+Terry — Juniper South
+Jamie — Floater
+Pam — Floater
+Kevin M — Aspen North
+Kevin L — Floater
+Karina — Front
+Philip — Aspen South
+Amor — Juniper North
+</code></pre>
+<p>Most employees use the standard shift:</p>
+<pre><code class="language-text">7:00 AM–3:30 PM
+</code></pre>
+<p>Karina uses:</p>
+<pre><code class="language-text">11:30 AM–8:00 PM
+</code></pre>
+<p>The schedule changes approximately every two months, so we treated it as a date-bounded schedule rather than a permanent weekly roster.</p>
+<h2 id="3-designed-the-schedule-resolution-architecture">3. Designed the schedule-resolution architecture</h2>
+<p>We decided that the app should eventually distinguish between:</p>
+<pre><code class="language-text">the normal schedule
+temporary exceptions
+the final resolved schedule
+</code></pre>
+<p>The planned resolution order is:</p>
+<pre><code class="language-text">1. Read the employee’s regular weekly schedule
+2. Read any employee-specific schedule events
+3. Apply overrides for the selected date
+4. Return the final resolved assignment
+</code></pre>
+<p>The main schedule-event types discussed were:</p>
+<pre><code class="language-text">TIME_OFF
+CALL_OFF
+CANCEL_ASSIGNMENT
+REASSIGNMENT
+SHIFT_CHANGE
+EXTRA_SHIFT
+</code></pre>
+<p>This allows the original assignment to remain available for history while the calendar displays the corrected result.</p>
+<h2 id="4-created-the-apps-script-project-structure">4. Created the Apps Script project structure</h2>
+<p>We divided the application into separate server-side and client-side files.</p>
+<h3 id="server-side-files">Server-side files</h3>
+<pre><code class="language-text">Config.gs
+Code.gs
+DateService.gs
+ScheduleService.gs
+SheetService.gs
+</code></pre>
+<h3 id="client-side-files">Client-side files</h3>
+<pre><code class="language-text">Index.html
+Styles.html
+App.html
+ClientData.html
+CalendarViews.html
+DayDetails.html
+</code></pre>
+<p>This prevented the entire application from becoming one large HTML file.</p>
+<h2 id="5-centralized-configuration">5. Centralized configuration</h2>
+<h3 id="config-gs"><code>Config.gs</code></h3>
+<p>We created a central configuration object containing:</p>
+<pre><code class="language-javascript">const CONFIG = Object.freeze({
+  APP_NAME: &quot;Meadows Housekeeping Schedule&quot;,
+  APP_VERSION: &quot;0.1.0&quot;,
+  TIME_ZONE: &quot;America/Denver&quot;,
+
+  EMPLOYEES_SPREADSHEET_ID:
+    &quot;1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo&quot;,
+
+  LOCATIONS_SPREADSHEET_ID:
+    &quot;16tLQNEfc7OEF6WCX1eYp97_4-gsyB5eUe9s39julHfc&quot;,
+
+  SHEETS: Object.freeze({
+    EMPLOYEES: &quot;Employees&quot;,
+    ASSIGNMENTS: &quot;Assignments&quot;,
+    LOCATIONS: &quot;Locations&quot;
+  })
+});
+</code></pre>
+<p>This gives the app one location for:</p>
+<pre><code class="language-text">spreadsheet IDs
+sheet names
+application name
+version
+timezone
+</code></pre>
+<h2 id="6-built-the-apps-script-web-entry-point">6. Built the Apps Script web entry point</h2>
+<h3 id="code-gs"><code>Code.gs</code></h3>
+<p>We created <code>doGet()</code> to serve the application:</p>
+<pre><code class="language-javascript">function doGet() {
+  return HtmlService
+    .createTemplateFromFile(&quot;Index&quot;)
+    .evaluate()
+    .setTitle(CONFIG.APP_NAME)
+    .addMetaTag(
+      &quot;viewport&quot;,
+      &quot;width=device-width, initial-scale=1&quot;
+    );
+}
+</code></pre>
+<p>We also created an include helper:</p>
+<pre><code class="language-javascript">function include(filename) {
+  return HtmlService
+    .createHtmlOutputFromFile(filename)
+    .getContent();
+}
+</code></pre>
+<p>The server exposes calendar data through a function such as:</p>
+<pre><code class="language-javascript">function getCalendarData(startDate, endDate) {
+  return ScheduleService.getCalendarData(
+    startDate,
+    endDate
+  );
+}
+</code></pre>
+<h2 id="7-built-reusable-sheet-reading-utilities">7. Built reusable sheet-reading utilities</h2>
+<h3 id="sheetservice-gs"><code>SheetService.gs</code></h3>
+<p>We created a generic utility for reading a sheet into JavaScript objects.</p>
+<p>Instead of returning raw arrays such as:</p>
+<pre><code class="language-javascript">[
+  [&quot;EMP-001&quot;, &quot;Joe&quot;, true]
+]
+</code></pre>
+<p>the service converts the rows into objects such as:</p>
+<pre><code class="language-javascript">{
+  employeeId: &quot;EMP-001&quot;,
+  displayName: &quot;Joe&quot;,
+  active: true
+}
+</code></pre>
+<p>Headers such as:</p>
+<pre><code class="language-text">Employee_ID
+Display_Name
+Shift_Start
+</code></pre>
+<p>are normalized to:</p>
+<pre><code class="language-text">employeeId
+displayName
+shiftStart
+</code></pre>
+<p>This made the rest of the application easier to read and maintain.</p>
+<h2 id="8-added-date-utilities">8. Added date utilities</h2>
+<h3 id="dateservice-gs"><code>DateService.gs</code></h3>
+<p>We created helpers for:</p>
+<pre><code class="language-text">parsing dates
+formatting date keys
+formatting time values
+generating inclusive date ranges
+</code></pre>
+<p>The primary calendar date format is:</p>
+<pre><code class="language-text">YYYY-MM-DD
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-text">2026-08-01
+</code></pre>
+<p>This provides a stable key for grouping assignments by day.</p>
+<h2 id="9-built-the-schedule-service">9. Built the schedule service</h2>
+<h3 id="scheduleservice-gs"><code>ScheduleService.gs</code></h3>
+<p>The schedule service:</p>
+<ol>
+<li>Reads active employees.</li>
+<li>Reads enabled locations.</li>
+<li>Reads assignments within the requested range.</li>
+<li>Resolves employee IDs to employee names.</li>
+<li>Resolves location IDs to display names.</li>
+<li>Groups assignments by work date.</li>
+<li>Returns a browser-friendly calendar object.</li>
+</ol>
+<p>A returned assignment contains values such as:</p>
+<pre><code class="language-javascript">{
+  assignmentId: &quot;ASN-...&quot;,
+  employeeId: &quot;EMP-014&quot;,
+  employeeName: &quot;Amor&quot;,
+  locationId: &quot;JUNIPER-N&quot;,
+  locationName: &quot;Juniper North&quot;,
+  shiftStart: &quot;07:00&quot;,
+  shiftEnd: &quot;15:30&quot;,
+  status: &quot;SCHEDULED&quot;
+}
+</code></pre>
+<p>The data is grouped by date so the browser can quickly retrieve:</p>
+<pre><code class="language-javascript">CalendarState.data.days[&quot;2026-08-01&quot;]
+</code></pre>
+<h2 id="10-assembled-the-html-application">10. Assembled the HTML application</h2>
+<h3 id="index-html"><code>Index.html</code></h3>
+<p>The application shell includes the component files in this order:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;base target=&quot;_top&quot;&gt;
+  &lt;?!= include(&quot;Styles&quot;); ?&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;?!= include(&quot;App&quot;); ?&gt;
+  &lt;?!= include(&quot;ClientData&quot;); ?&gt;
+  &lt;?!= include(&quot;CalendarViews&quot;); ?&gt;
+  &lt;?!= include(&quot;DayDetails&quot;); ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The include order matters because:</p>
+<pre><code class="language-text">App creates the page elements
+ClientData creates the state and data functions
+CalendarViews attaches behavior and renders the interface
+DayDetails remains available for later expansion
+</code></pre>
+<h2 id="11-built-the-application-shell">11. Built the application shell</h2>
+<h3 id="app-html"><code>App.html</code></h3>
+<p>We created the permanent interface structure with IDs used by JavaScript:</p>
+<pre><code class="language-text">todayButton
+dayViewButton
+monthViewButton
+refreshButton
+previousButton
+nextButton
+periodTitle
+periodSubtitle
+calendarContent
+</code></pre>
+<p>The app header contains:</p>
+<pre><code class="language-text">Today
+Day
+Month
+Refresh
+</code></pre>
+<p>The period header contains:</p>
+<pre><code class="language-text">current month or day title
+selected-date subtitle
+previous button
+next button
+</code></pre>
+<p>The main calendar content is rendered dynamically inside:</p>
+<pre><code class="language-html">&lt;div id=&quot;calendarContent&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="12-fixed-an-initialization-failure">12. Fixed an initialization failure</h2>
+<p>At one point the browser reported:</p>
+<pre><code class="language-text">Uncaught TypeError:
+Cannot read properties of null
+(reading 'addEventListener')
+</code></pre>
+<p>The cause was that <code>initialize()</code> attempted to attach listeners to elements that were missing or not yet available.</p>
+<p>We rewrote initialization so it:</p>
+<ol>
+<li>Finds all required elements.</li>
+<li>Builds a list of missing elements.</li>
+<li>Logs a clear error if anything is absent.</li>
+<li>Stops initialization instead of crashing.</li>
+<li>Treats optional controls such as Refresh safely.</li>
+</ol>
+<p>We also discovered that a pasted file labeled as <code>App.html</code> actually contained CSS from <code>Styles.html</code>. That was caused by copy-and-paste lag, so we began checking the actual contents rather than relying only on the pasted filename.</p>
+<h2 id="13-created-client-side-calendar-state">13. Created client-side calendar state</h2>
+<h3 id="clientdata-html"><code>ClientData.html</code></h3>
+<p>We introduced a central state object for the browser:</p>
+<pre><code class="language-javascript">const CalendarState = {
+  view: &quot;month&quot;,
+  visibleDate: new Date(),
+  selectedDate: new Date(),
+  data: null
+};
+</code></pre>
+<p>The client-data layer handles:</p>
+<pre><code class="language-text">loading visible calendar data
+refreshing calendar data
+normalizing server responses
+storing assignments
+returning assignments for a date
+</code></pre>
+<p>The app loads a buffered range rather than only the exact visible day.</p>
+<p>For month view, it can load enough data for:</p>
+<pre><code class="language-text">the previous month
+the visible month
+the following month
+</code></pre>
+<p>For day view, it can load a range around the selected date.</p>
+<p>That reduces unnecessary server calls during normal navigation.</p>
+<h2 id="14-built-day-and-month-views">14. Built Day and Month views</h2>
+<h3 id="calendarviews-html"><code>CalendarViews.html</code></h3>
+<p>We created a full rendering module:</p>
+<pre><code class="language-javascript">const CalendarViews = (() =&gt; {
+  // private state and functions
+
+  return Object.freeze({
+    initialize,
+    render,
+    renderLoading,
+    renderError,
+    setView
+  });
+})();
+</code></pre>
+<p>This module handles:</p>
+<pre><code class="language-text">initialization
+navigation
+view switching
+period titles
+month-grid rendering
+day-agenda rendering
+selected-date behavior
+loading states
+error states
+date formatting
+time formatting
+HTML escaping
+</code></pre>
+<h2 id="15-added-calendar-navigation">15. Added calendar navigation</h2>
+<p>The controls behave differently depending on the active view.</p>
+<h3 id="month-view">Month view</h3>
+<p>Previous and Next move by one month:</p>
+<pre><code class="language-text">July → August → September
+</code></pre>
+<h3 id="day-view">Day view</h3>
+<p>Previous and Next move by one day:</p>
+<pre><code class="language-text">August 1 → August 2 → August 3
+</code></pre>
+<h3 id="today">Today</h3>
+<p>The Today button resets:</p>
+<pre><code class="language-text">visible date
+selected date
+displayed period
+</code></pre>
+<p>to the current date.</p>
+<h2 id="16-built-the-desktop-month-view">16. Built the desktop month view</h2>
+<p>The desktop month view contains two areas:</p>
+<pre><code class="language-text">month grid
+selected-day details panel
+</code></pre>
+<p>The layout uses a responsive grid similar to:</p>
+<pre><code class="language-css">grid-template-columns:
+  minmax(720px, 1fr)
+  minmax(300px, 360px);
+</code></pre>
+<p>The calendar takes most of the available space while the selected-day panel remains wide enough to display assignment details.</p>
+<p>Each month cell can show:</p>
+<pre><code class="language-text">date number
+number scheduled
+first employee name
+remaining assignment count
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-text">11 scheduled
+Terry
++10 more
+</code></pre>
+<p>We deliberately reduced the original cell summary because displaying several employee names made narrow cells crowded.</p>
+<h2 id="17-built-the-mobile-month-view">17. Built the mobile month view</h2>
+<p>The mobile view was designed to resemble the familiar mobile calendar application layout.</p>
+<p>It includes:</p>
+<pre><code class="language-text">fixed top controls
+Day and Month buttons
+previous and next controls
+compact seven-column month grid
+selected-day agenda below the grid
+</code></pre>
+<p>On mobile:</p>
+<ul>
+<li>assignment summaries are hidden inside month cells</li>
+<li>date numbers are centered</li>
+<li>the selected day’s full assignments appear below the month</li>
+<li>the desktop side panel is removed</li>
+</ul>
+<p>The desktop and mobile versions use the same schedule data but different visual compositions.</p>
+<h2 id="18-built-the-full-day-view">18. Built the full Day view</h2>
+<p>The Day view displays one agenda row for every scheduled employee.</p>
+<p>Each row contains:</p>
+<pre><code class="language-text">shift start time
+calendar label
+employee name
+location
+cancel control
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-text">7:00 AM
+
+Housekeeping
+Terry — Juniper South
+Juniper South
+
+Cancel
+</code></pre>
+<p>The time column is visually separated from the assignment details.</p>
+<p>We considered forcing every assignment to fit into one screen by dividing the available height evenly, but decided to postpone that refinement.</p>
+<h2 id="19-designed-cancellation-as-an-override-rather-than-deletion">19. Designed cancellation as an override rather than deletion</h2>
+<p>We discussed how cancellation should work at the data level.</p>
+<p>The assignment should not be deleted. Instead, a cancellation should create a schedule event that overrides it.</p>
+<p>A future event row could resemble:</p>
+<pre><code class="language-text">Event_ID
+Employee_ID
+Start_Date
+End_Date
+Event_Type
+Reason_Type
+Assignment_ID
+Status
+Notes
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">EVT-001
+EMP-011
+2026-08-12
+2026-08-12
+CANCEL_ASSIGNMENT
+CALL_OFF
+ASN-...
+ACTIVE
+Called off
+</code></pre>
+<p>This preserves:</p>
+<pre><code class="language-text">the original assignment
+the cancellation reason
+the time the change occurred
+the ability to reverse the cancellation
+the assignment history
+</code></pre>
+<h2 id="20-added-the-cancellation-modal">20. Added the cancellation modal</h2>
+<p>We explicitly avoided browser alerts and browser confirmation boxes.</p>
+<p>Instead, we created a real modal:</p>
+<pre><code class="language-text">Cancel this event?
+
+No    Yes
+</code></pre>
+<h3 id="modal-markup">Modal markup</h3>
+<p>The modal was added to <code>App.html</code> with:</p>
+<pre><code class="language-text">cancelModal
+cancelModalTitle
+cancelModalDescription
+cancelNoButton
+cancelYesButton
+</code></pre>
+<p>It uses:</p>
+<pre><code class="language-html">role=&quot;dialog&quot;
+aria-modal=&quot;true&quot;
+aria-labelledby=&quot;cancelModalTitle&quot;
+</code></pre>
+<h3 id="modal-behavior">Modal behavior</h3>
+<p>The modal supports:</p>
+<pre><code class="language-text">opening from a Cancel button
+closing with No
+closing by clicking the backdrop
+closing with Escape
+confirming with Yes
+focusing the Yes button
+storing the pending assignment ID
+</code></pre>
+<p>At the current stage, confirmation logs the assignment ID. The server-side cancellation write can be added later.</p>
+<h2 id="21-added-cancellation-buttons-to-day-view">21. Added cancellation buttons to Day view</h2>
+<p>Every Day-view assignment received a red Cancel button with assignment metadata:</p>
+<pre><code class="language-html">&lt;button
+  class=&quot;cancel-event-button&quot;
+  data-assignment-id=&quot;...&quot;
+  data-employee-name=&quot;...&quot;
+  data-location-name=&quot;...&quot;
+&gt;
+  Cancel
+&lt;/button&gt;
+</code></pre>
+<p>The metadata allows the modal to display a specific confirmation such as:</p>
+<pre><code class="language-text">Cancel Terry’s assignment at Juniper South?
+</code></pre>
+<h2 id="22-added-cancellation-placement-to-the-desktop-selected-day-panel">22. Added cancellation placement to the desktop selected-day panel</h2>
+<p>You marked the desired button locations with red boxes in the screenshot.</p>
+<p>We agreed that the right side of each compact assignment row is the correct location.</p>
+<p>The compact row was redesigned conceptually as:</p>
+<pre><code class="language-text">Employee information           Cancel
+</code></pre>
+<p>The associated CSS uses:</p>
+<pre><code class="language-css">grid-template-columns:
+  minmax(0, 1fr)
+  auto;
+</code></pre>
+<p>This keeps the assignment information aligned on the left while placing a compact Cancel button on the right.</p>
+<p>The listener logic was expanded so the same modal can respond to both:</p>
+<pre><code class="language-text">.cancel-event-button
+.compact-cancel-button
+</code></pre>
+<h2 id="23-created-the-initial-visual-design">23. Created the initial visual design</h2>
+<p>The first design intentionally resembled a familiar calendar application.</p>
+<p>It used:</p>
+<pre><code class="language-text">light blue header
+blue active view button
+blue weekday bar
+white month cells
+selected-date highlight
+right-side details panel
+mobile calendar-style layout
+</code></pre>
+<p>This provided a recognizable starting point before introducing a distinct identity.</p>
+<h2 id="24-reviewed-the-desktop-appearance-professionally">24. Reviewed the desktop appearance professionally</h2>
+<p>We evaluated the desktop screenshot and identified several issues:</p>
+<pre><code class="language-text">large unused white area below the calendar
+calendar width that was too constrained
+grid lines that were too dark
+selected-day panel that felt visually attached rather than intentional
+month cells that were too tall
+crowded summaries
+stray horizontal lines
+inconsistent padding
+</code></pre>
+<p>We then refined:</p>
+<pre><code class="language-text">page width
+calendar height
+panel proportions
+grid-line weight
+month-cell height
+day-panel padding
+empty-state appearance
+outer shadows
+card borders
+corner radii
+</code></pre>
+<h2 id="25-removed-the-unnecessary-fixed-desktop-height">25. Removed the unnecessary fixed desktop height</h2>
+<p>The earlier design used values such as:</p>
+<pre><code class="language-css">min-height: 700px;
+</code></pre>
+<p>and:</p>
+<pre><code class="language-css">min-height: 620px;
+</code></pre>
+<p>These created a large blank white area below the calendar.</p>
+<p>We changed the relevant containers to:</p>
+<pre><code class="language-css">min-height: 0;
+</code></pre>
+<p>This allowed the page to end naturally after the content.</p>
+<h2 id="26-widened-the-desktop-app">26. Widened the desktop app</h2>
+<p>The desktop application was changed to use approximately:</p>
+<pre><code class="language-css">width: min(calc(100% - 48px), 1280px);
+</code></pre>
+<p>This gave the calendar more room on large screens while preserving side margins.</p>
+<p>The month grid and details panel were balanced so neither felt cramped.</p>
+<h2 id="27-softened-the-month-grid-lines">27. Softened the month-grid lines</h2>
+<p>The original cell borders were dark and visually dominant.</p>
+<p>We replaced individual dark borders with a one-pixel grid-gap method:</p>
+<pre><code class="language-css">.month-grid {
+  gap: 1px;
+  padding: 1px;
+  background: var(--border);
+}
+
+.month-day {
+  border: 0;
+}
+</code></pre>
+<p>The neutral background shows through the one-pixel gaps, producing cleaner grid separators.</p>
+<h2 id="28-improved-the-month-cells">28. Improved the month cells</h2>
+<p>Month cells were refined with:</p>
+<pre><code class="language-text">shorter height
+more consistent padding
+smaller date numbers
+ellipsis for overflowing text
+lighter outside-month backgrounds
+clearer selected-day outline
+clearer today indicator
+</code></pre>
+<p>The final approximate cell height became:</p>
+<pre><code class="language-css">min-height: 92px;
+</code></pre>
+<h2 id="29-improved-the-selected-day-panel">29. Improved the selected-day panel</h2>
+<p>The panel received:</p>
+<pre><code class="language-text">its own border
+rounded corners
+soft background
+header background
+consistent internal padding
+clean row separators
+better empty state
+</code></pre>
+<p>Assignment details are now presented in a compact hierarchy:</p>
+<pre><code class="language-text">employee name
+location
+shift time
+cancel action
+</code></pre>
+<h2 id="30-harmonized-the-color-system">30. Harmonized the color system</h2>
+<p>The earlier interface combined:</p>
+<pre><code class="language-text">bright blue
+terracotta time columns
+strong red Cancel buttons
+gray borders
+</code></pre>
+<p>The terracotta did not visually belong with the blue interface.</p>
+<p>We replaced it with a unified blue-and-slate palette.</p>
+<h3 id="primary-colors">Primary colors</h3>
+<pre><code class="language-css">--primary: #315f8f;
+--primary-dark: #24496f;
+--primary-soft: #dce8f3;
+--primary-faint: #edf4fa;
+</code></pre>
+<h3 id="slate-time-column-colors">Slate time-column colors</h3>
+<pre><code class="language-css">--accent: #58758f;
+--accent-dark: #405b72;
+</code></pre>
+<h3 id="neutral-colors">Neutral colors</h3>
+<pre><code class="language-css">--text: #18212b;
+--muted-text: #667482;
+--border: #d4dde6;
+--surface: #ffffff;
+--surface-soft: #f6f8fb;
+--surface-muted: #eef3f8;
+</code></pre>
+<h3 id="danger-colors">Danger colors</h3>
+<pre><code class="language-css">--danger: #c9363e;
+--danger-dark: #a62b31;
+--danger-soft: #f9e7e9;
+</code></pre>
+<p>The result is:</p>
+<pre><code class="language-text">blue for navigation and selection
+slate blue for time information
+neutral white and gray for content
+red only for destructive actions
+</code></pre>
+<h2 id="31-restyled-the-day-view-time-column">31. Restyled the Day-view time column</h2>
+<p>The earlier time column used terracotta with dark text.</p>
+<p>It was changed to a muted slate gradient:</p>
+<pre><code class="language-css">background:
+  linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-dark)
+  );
+
+color: #ffffff;
+</code></pre>
+<p>This ties the time column to the blue header without making every part of the page the same blue.</p>
+<h2 id="32-standardized-buttons">32. Standardized buttons</h2>
+<p>The controls now share common rules for:</p>
+<pre><code class="language-text">border radius
+font weight
+hover behavior
+pressed behavior
+focus behavior
+padding
+transitions
+</code></pre>
+<p>The active Day or Month control uses a primary-blue gradient.</p>
+<p>Navigation buttons use pale blue-white surfaces.</p>
+<p>Cancel buttons remain red because they perform a destructive action.</p>
+<h2 id="33-improved-accessibility-and-interaction-feedback">33. Improved accessibility and interaction feedback</h2>
+<p>The interface includes:</p>
+<pre><code class="language-text">modal dialog roles
+keyboard Escape support
+focus placement
+focus-visible outlines
+hover states
+active states
+disabled states
+aria-busy loading state
+escaped display text
+button labels and date labels
+</code></pre>
+<p>Dates in the month grid also receive descriptive <code>aria-label</code> values.</p>
+<h2 id="34-escaped-rendered-data">34. Escaped rendered data</h2>
+<p>The calendar uses an <code>escapeHtml_()</code> helper before inserting values such as:</p>
+<pre><code class="language-text">employee name
+location name
+assignment ID
+</code></pre>
+<p>into generated markup.</p>
+<p>This prevents names or spreadsheet values from accidentally becoming HTML.</p>
+<h2 id="35-reduced-stylesheet-redundancy">35. Reduced stylesheet redundancy</h2>
+<p>Over several design rounds, <code>Styles.html</code> accumulated:</p>
+<pre><code class="language-text">the original styles
+desktop-refinement overrides
+polished-desktop overrides
+day-color overrides
+additional mobile overrides
+</code></pre>
+<p>This caused the file to become difficult to predict because later rules silently overrode earlier ones.</p>
+<p>The stylesheet reached roughly:</p>
+<pre><code class="language-text">1,100 lines
+</code></pre>
+<p>The first cleanup attempt still left the original rules plus another theme block appended to the bottom.</p>
+<p>We recognized that this was not a true overhaul.</p>
+<p>We then rebuilt <code>Styles.html</code> as a genuine replacement with:</p>
+<pre><code class="language-text">one root color system
+one base layout
+one controls section
+one month-view section
+one desktop section
+one day-view section
+one modal section
+one mobile breakpoint
+one small-phone breakpoint
+</code></pre>
+<p>The cleaned replacement was approximately:</p>
+<pre><code class="language-text">797 lines
+</code></pre>
+<p>The important improvement was not just the line count. It removed competing definitions so future style changes can be made directly rather than through additional override blocks.</p>
+<h2 id="36-preserved-responsive-behavior-during-the-redesign">36. Preserved responsive behavior during the redesign</h2>
+<p>The desktop overhaul did not discard the mobile design.</p>
+<p>At widths under approximately:</p>
+<pre><code class="language-css">760px
+</code></pre>
+<p>the app changes to:</p>
+<pre><code class="language-text">full-width layout
+no outer desktop margins
+no desktop card shadow
+hidden desktop details panel
+visible mobile month and agenda composition
+compact cells
+smaller typography
+two-column agenda rows
+</code></pre>
+<p>At widths under approximately:</p>
+<pre><code class="language-css">390px
+</code></pre>
+<p>the time column and typography become narrower and smaller.</p>
+<h2 id="37-final-visual-result">37. Final visual result</h2>
+<p>The finished design now has:</p>
+<pre><code class="language-text">a centered desktop application card
+a cohesive pale-blue header
+clear Day and Month controls
+a polished month grid
+a selected-date outline
+compact assignment summaries
+a separate selected-day panel
+slate time columns
+red cancellation controls
+consistent spacing
+rounded panels
+subtle shadows
+responsive mobile behavior
+</code></pre>
+<p>The visual progression was essentially:</p>
+<pre><code class="language-text">spreadsheet-like schedule
+→ calendar prototype
+→ Google Calendar-style interface
+→ responsive desktop/mobile calendar
+→ integrated assignment details
+→ cancellation workflow
+→ polished internal application
+→ unified custom visual identity
+</code></pre>
+<h2 id="38-current-functional-boundary">38. Current functional boundary</h2>
+<p>The application currently provides the interface and client-side behavior for cancellation, including the modal and assignment identification.</p>
+<p>The remaining cancellation step is the server-side write that would:</p>
+<pre><code class="language-text">receive the assignment ID
+create a cancellation event
+preserve the original assignment
+refresh the calendar data
+show the resolved cancellation state
+</code></pre>
+<p>We also left several future capabilities intentionally open:</p>
+<pre><code class="language-text">time-off entry
+call-off entry
+reassignment
+shift changes
+extra shifts
+schedule editing
+employee-specific colors
+location-based colors
+assignment history
+cancelled-assignment display
+day-detail expansion
+notifications
+</code></pre>
+<p>The foundation now supports those features without needing to rebuild the calendar itself.</p>
+
+    </article>
+
+    <div class="back-row">
+      <a class="back-button" href="https://sites.google.com/view/meadows-hk/home/documentation">
+        Back to Documentation
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Meadows Housekeeping Calendar App</strong><br>
+        Complete work update · July 30, 2026
+      </div>
+
+      <div>
+        <a href="#top">Return to top</a>
+        &nbsp;·&nbsp;
+        <a href="https://sites.google.com/view/meadows-hk/home/documentation">Documentation</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const content = document.querySelector(".document-content");
+
+      if (!content) {
+        return;
+      }
+
+      const headings = [...content.querySelectorAll(":scope > h2")];
+
+      headings.forEach((heading, index) => {
+        let cursor = heading.nextElementSibling;
+
+        while (cursor && cursor.tagName !== "H2") {
+          cursor = cursor.nextElementSibling;
+        }
+
+        const end = document.createElement("div");
+        end.className = "section-end";
+
+        if (cursor) {
+          content.insertBefore(end, cursor);
+        } else {
+          content.appendChild(end);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

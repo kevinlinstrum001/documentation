@@ -210,6 +210,21 @@
     "category": "Uncategorized"
   },
   {
+    "name": "Calendar 01",
+    "file": "web-apps/calendar-01.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Calendar Monthly",
+    "file": "web-apps/calendar-monthly.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Calendar Weekly",
+    "file": "web-apps/calendar-weekly.png",
+    "category": "Web Apps"
+  },
+  {
     "name": "Delivery Service 01",
     "file": "web-apps/delivery-service-01.png",
     "category": "Web Apps"
@@ -272,6 +287,26 @@
   {
     "name": "Meadows 03",
     "file": "web-apps/meadows-03.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Meadows Hk 01",
+    "file": "web-apps/meadows-hk-01.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Roster 01",
+    "file": "web-apps/roster-01.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Roster 02",
+    "file": "web-apps/roster-02.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Roster 03",
+    "file": "web-apps/roster-03.png",
     "category": "Web Apps"
   },
   {
