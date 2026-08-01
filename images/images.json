@@ -150,11 +150,6 @@
     "category": "Monkeys"
   },
   {
-    "name": "Apd Aerial",
-    "file": "personal/apd-aerial.png",
-    "category": "Personal"
-  },
-  {
     "name": "Floor Image",
     "file": "personal/floor-image.png",
     "category": "Personal"
@@ -203,6 +198,11 @@
     "name": "Img 20241218 170541",
     "file": "req-forms/IMG_20241218_170541.jpg",
     "category": "Req Forms"
+  },
+  {
+    "name": "Apd Supervisor Overview 01",
+    "file": "scenarios/apd-supervisor-overview-01.png",
+    "category": "Scenarios"
   },
   {
     "name": "Sds View",
