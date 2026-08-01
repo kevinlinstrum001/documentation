@@ -150,6 +150,11 @@
     "category": "Monkeys"
   },
   {
+    "name": "Apd Aerial",
+    "file": "personal/apd-aerial.png",
+    "category": "Personal"
+  },
+  {
     "name": "Floor Image",
     "file": "personal/floor-image.png",
     "category": "Personal"
