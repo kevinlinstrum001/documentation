@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Profile of the author’s first housekeeping supervisor at NMBHI, Adult Psychiatric Division, February 2024.">
+<title>Profile of My First Supervisor at NMBHI</title>
+<style>
+:root {
+  color-scheme: light;
+  --navy: #17324d;
+  --navy-deep: #0f2234;
+  --gold: #c89434;
+  --ink: #25313b;
+  --muted: #65717c;
+  --paper: #ffffff;
+  --page: #edf1f4;
+  --line: #d7dee4;
+  --soft: #f6f8fa;
+  --quote: #f3f6f8;
+  --max: 920px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(200,148,52,.10), transparent 28rem),
+    var(--page);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.72;
+}
+a { color: #235d8c; }
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  background: white;
+  padding: .7rem 1rem;
+  border-radius: .5rem;
+}
+.site-header {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+  color: white;
+  border-bottom: 5px solid var(--gold);
+}
+.header-inner {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: auto;
+  padding: 3.25rem 0 2.8rem;
+}
+.eyebrow {
+  margin: 0 0 .65rem;
+  color: #f0c86b;
+  font-size: .77rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.site-header h1 {
+  margin: 0;
+  max-width: 760px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 7vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+}
+.site-header p {
+  margin: 1rem 0 0;
+  color: rgba(255,255,255,.82);
+  font-size: clamp(1rem, 2.5vw, 1.18rem);
+}
+.layout {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 2rem auto 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+.toc {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(20,39,57,.07);
+  overflow: hidden;
+}
+.toc summary {
+  cursor: pointer;
+  padding: 1rem 1.2rem;
+  color: var(--navy);
+  font-weight: 800;
+}
+.toc ol {
+  margin: 0;
+  padding: 0 1.2rem 1.15rem 2.4rem;
+}
+.toc li { margin: .35rem 0; }
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: #235d8c; text-decoration: underline; }
+.document {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(20,39,57,.09);
+  padding: clamp(1.25rem, 4vw, 3.6rem);
+  overflow: hidden;
+}
+.document > h1:first-child,
+.document > h2:nth-child(2) {
+  display: none;
+}
+.document h2 {
+  margin: 3.2rem 0 1rem;
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 4vw, 2.1rem);
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  border-top: 1px solid var(--line);
+  padding-top: 1.8rem;
+  scroll-margin-top: 1rem;
+}
+.document h2:first-of-type { margin-top: 0; }
+.document p {
+  margin: 1rem 0;
+}
+.document ul {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.35rem;
+}
+.document li { margin: .38rem 0; }
+.document blockquote {
+  margin: 1.35rem 0;
+  padding: .9rem 1.15rem;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  background: var(--quote);
+  color: #374550;
+}
+.document blockquote p { margin: .25rem 0; }
+.document code {
+  overflow-wrap: anywhere;
+  color: #314b61;
+  font-size: .86em;
+}
+.document-figure {
+  margin: 2rem 0 2.35rem;
+}
+.image-shell {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #cbd4dc;
+  background:
+    linear-gradient(135deg, rgba(23,50,77,.97), rgba(15,34,52,.97));
+  box-shadow: 0 14px 34px rgba(20,39,57,.16);
+}
+.image-shell img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.image-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: .65rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  text-align: center;
+  color: white;
+}
+.image-loaded .image-fallback { display: none; }
+.image-fallback strong {
+  max-width: 42rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 4vw, 2.2rem);
+  line-height: 1.13;
+}
+.image-fallback p {
+  max-width: 42rem;
+  margin: 0;
+  color: rgba(255,255,255,.8);
+}
+.image-fallback small {
+  max-width: 100%;
+  color: rgba(255,255,255,.55);
+  overflow-wrap: anywhere;
+}
+.fallback-label {
+  color: #f0c86b;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+figcaption {
+  display: grid;
+  gap: .25rem;
+  padding: .8rem .2rem 0;
+  color: var(--muted);
+  font-size: .94rem;
+}
+figcaption strong { color: var(--navy); }
+.image-brief {
+  margin-top: .7rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--soft);
+}
+.image-brief summary {
+  cursor: pointer;
+  padding: .65rem .85rem;
+  color: var(--navy);
+  font-size: .85rem;
+  font-weight: 750;
+}
+.image-brief dl {
+  margin: 0;
+  padding: 0 .9rem .9rem;
+  display: grid;
+  grid-template-columns: 5rem minmax(0,1fr);
+  gap: .5rem .75rem;
+  font-size: .84rem;
+}
+.image-brief dt { color: var(--navy); font-weight: 800; }
+.image-brief dd { margin: 0; color: var(--muted); }
+.page-footer {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: 0 auto 3rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: .85rem;
+}
+@media (min-width: 1040px) {
+  .layout {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+  .toc {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
+  }
+  .toc summary { cursor: default; }
+}
+@media (max-width: 620px) {
+  body { line-height: 1.62; }
+  .header-inner { padding: 2.4rem 0 2.1rem; }
+  .layout { width: min(100% - 1rem, 1180px); margin-top: 1rem; }
+  .document { border-radius: 13px; }
+  .image-shell, .document-figure { border-radius: 11px; }
+  .image-brief dl { grid-template-columns: 1fr; }
+  .image-brief dt { margin-top: .35rem; }
+}
+@media print {
+  body { background: white; }
+  .site-header { color: black; background: white; border-bottom: 2px solid black; }
+  .site-header p, .eyebrow { color: #333; }
+  .layout { display: block; width: 100%; margin: 0; }
+  .toc, .image-brief { display: none; }
+  .document { box-shadow: none; border: 0; padding: 0; }
+  .document-figure { break-inside: avoid; }
+  .page-footer { margin-top: 2rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to document</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <p class="eyebrow">New Mexico Behavioral Health Institute</p>
+    <h1>Profile of My First Supervisor at NMBHI</h1>
+    <p>Adult Psychiatric Division · February 2024</p>
+  </div>
+</header>
+
+<div class="layout">
+  <details class="toc" open>
+    <summary>Contents</summary>
+    <ol>
+      <li><a href="#adult-psychiatric-division-february-2024">Adult Psychiatric Division, February 2024</a></li>
+<li><a href="#a-predictable-daily-operating-system">A predictable daily operating system</a></li>
+<li><a href="#advance-planning-and-daily-alignment">Advance planning and daily alignment</a></li>
+<li><a href="#a-continuous-and-unmistakable-chain-of-command">A continuous and unmistakable chain of command</a></li>
+<li><a href="#uniform-onboarding-and-one-shared-standard">Uniform onboarding and one shared standard</a></li>
+<li><a href="#communication-as-part-of-the-work">Communication as part of the work</a></li>
+<li><a href="#regular-rounds-that-connected-the-entire-operation">Regular rounds that connected the entire operation</a></li>
+<li><a href="#predictable-nearly-white-glove-inspections">Predictable, nearly white-glove inspections</a></li>
+<li><a href="#specific-praise-as-well-as-specific-correction">Specific praise as well as specific correction</a></li>
+<li><a href="#friendly-correction-without-loss-of-authority">Friendly correction without loss of authority</a></li>
+<li><a href="#neutrality-and-professional-inscrutability">Neutrality and professional inscrutability</a></li>
+<li><a href="#standardized-housekeeping-closets">Standardized housekeeping closets</a></li>
+<li><a href="#paperwork-connected-to-physical-reality">Paperwork connected to physical reality</a></li>
+<li><a href="#ongoing-feedback-and-unsurprising-evaluations">Ongoing feedback and unsurprising evaluations</a></li>
+<li><a href="#uniform-results-from-different-workers">Uniform results from different workers</a></li>
+<li><a href="#why-the-days-passed-quickly">Why the days passed quickly</a></li>
+<li><a href="#the-complete-leadership-system">The complete leadership system</a></li>
+<li><a href="#the-lesson-she-established-for-me">The lesson she established for me</a></li>
+    </ol>
+  </details>
+
+  <main class="document" id="main-content">
+    <h1 id="profile-of-my-first-supervisor-at-nmbhi">Profile of My First Assignment at NMBHI</h1>
+<h2 id="adult-psychiatric-division-february-2024">Adult Psychiatric Division, February 2024</h2>
+<p><h3>Adult Psychiatric Division</h3>My first assignment at the New Mexico Behavioral Health Institute was in the <strong>Adult Psychiatric Division (APD)</strong>. My first supervisor there established my original understanding of what a well-run housekeeping operation could look like.</p>
+<img src="">
+<figure class="document-figure" id="apd-supervisor-overview-01">
+<div class="image-shell" data-image-id="apd-supervisor-overview-01">
+<img alt="A tightly managed APD housekeeping operation" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-01.png">
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>A tightly managed APD housekeeping operation</strong>
+<p>Introduce the supervisor as the central coordinating presence behind a tightly managed operation.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>APD from the air: AI rendering</strong>
+<span>NMBHI in Las Vegas New Mexico is a sprawling campus of many buildings.</span>
+</figcaption>
+
+</figure>
+<p><h3>The Supervisor at APD was quick to begin onboarding and training. I was in the rotation within three days.</h3>She ran a demanding operation, but it was orderly rather than chaotic. The days moved quickly because we always knew what to do. The schedule, standards, communication, supervision, inventory, inspections, and paperwork all reinforced one another.</p>
+<p>She did not depend on workers having exceptional attitudes or unusually high motivation. She created a system that produced consistent results from employees with different personalities, skill levels, and degrees of engagement.</p>
+<h2 id="a-predictable-daily-operating-system">A predictable daily operating system</h2>
+<p>Every worker followed a known schedule. We began and ended work in our assigned areas at approximately the same times each day and performed the same established routines.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-daily-operating-system-01
+concept: A predictable daily housekeeping operating system
+scene: A wide view of a structured housekeeping workday across connected hospital areas: a dining room, administrative hallway, common space, and unit entrance. Paired workers move smoothly from one known task to the next, with clocks and subtle visual sequencing suggesting predictable timing. Nobody is standing around waiting for instructions.
+purpose: Show momentum, routine, and employees always knowing exactly what comes next.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-daily-operating-system-01">
+<div class="image-shell" data-image-id="apd-daily-operating-system-01">
+<img alt="A predictable daily housekeeping operating system" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png" title="A wide view of a structured housekeeping workday across connected hospital areas: a dining room, administrative hallway, common space, and unit entrance. Paired workers move smoothly from one known task to the next, with clocks and subtle visual sequencing suggesting predictable timing. Nobody is standing around waiting for instructions."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>A predictable daily housekeeping operating system</strong>
+<p>Show momentum, routine, and employees always knowing exactly what comes next.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>A predictable daily housekeeping operating system</strong>
+<span>Show momentum, routine, and employees always knowing exactly what comes next.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A wide view of a structured housekeeping workday across connected hospital areas: a dining room, administrative hallway, common space, and unit entrance. Paired workers move smoothly from one known task to the next, with clocks and subtle visual sequencing suggesting predictable timing. Nobody is standing around waiting for instructions.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>The operational areas included:</p>
+<ul>
+<li>SPU, the Special Psychiatric Unit</li>
+<li>Choices</li>
+<li>Pinewood</li>
+<li>Tesuque 1</li>
+<li>Tesuque 2</li>
+<li>Dining room</li>
+<li>Common area</li>
+<li>Administrative hallway</li>
+</ul>
+<p>The routine was demanding, but there was very little uncertainty. When one activity ended, the next activity was already known.</p>
+<p>We did not repeatedly have to ask:</p>
+<blockquote>
+<p>Where should I be?
+What should I do next?
+Is this my responsibility?
+How much of this am I expected to complete?
+Which instruction takes priority?</p>
+</blockquote>
+<p>We knew what we were doing, why we were doing it, when it was to be done, how it was to be performed, and what a completed result was supposed to look like.</p>
+<p>Our days usually passed <strong>without incident</strong> that would leave us standing around wondering what to do.</p> If an emergency came up when the supervisor was gone, we always had verbal and written instructions to let us know who to call.
+<h2 id="advance-planning-and-daily-alignment">Advance planning and daily alignment</h2>
+<p>The supervisor planned ahead.</p>
+<p>Special priorities, changes in emphasis, and override orders were outlined approximately a week in advance and posted clearly on the whiteboard in the breakroom.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-morning-huddle-01
+concept: Weekly planning and daily alignment before work begins
+scene: A small housekeeping team gathers in a breakroom for a brief morning huddle. The supervisor stands beside a large whiteboard containing a clearly organized weekly schedule, unit assignments, routine announcements, and highlighted override orders. Workers are attentive and relaxed, receiving the same information together before beginning the shift.
+purpose: Show how the supervisor kept everyone on the same page through advance planning and practical daily meetings.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-morning-huddle-01">
+<div class="image-shell" data-image-id="apd-morning-huddle-01">
+<img alt="Weekly planning and daily alignment before work begins" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png" title="A small housekeeping team gathers in a breakroom for a brief morning huddle. The supervisor stands beside a large whiteboard containing a clearly organized weekly schedule, unit assignments, routine announcements, and highlighted override orders. Workers are attentive and relaxed, receiving the same information together before beginning the shift."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Weekly planning and daily alignment before work begins</strong>
+<p>Show how the supervisor kept everyone on the same page through advance planning and practical daily meetings.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Weekly planning and daily alignment before work begins</strong>
+<span>Show how the supervisor kept everyone on the same page through advance planning and practical daily meetings.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A small housekeeping team gathers in a breakroom for a brief morning huddle. The supervisor stands beside a large whiteboard containing a clearly organized weekly schedule, unit assignments, routine announcements, and highlighted override orders. Workers are attentive and relaxed, receiving the same information together before beginning the shift.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>Every morning also began with a brief huddle. The team received the usual announcements, learned about changes, and reviewed any immediate overrides before beginning work.</p>
+<p>These meetings were not ceremonial. They were how she ensured that everyone began the day with the same information.</p>
+<p>If something changed, she did not allow separate versions of the plan to develop among different workers. She made sure everyone remained on the same page.</p>
+<h2 id="a-continuous-and-unmistakable-chain-of-command">A continuous and unmistakable chain of command</h2>
+<p>The supervisor was either present herself or had a particularly qualified, capable, and friendly worker covering her responsibilities.</p>
+<p>That counterpart remained in regular contact with the supervisor and could take over duties when necessary. The chain of command therefore never felt broken or uncertain.</p>
+<p>Workers knew:</p>
+<ul>
+<li>who was directing the operation;</li>
+<li>who could answer a question;</li>
+<li>who could approve an exception;</li>
+<li>who was responsible for following up;</li>
+<li>how information would reach the supervisor.</li>
+</ul>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-chain-of-command-01
+concept: Continuous supervisory coverage and an unmistakable chain of command
+scene: The primary housekeeping supervisor and her trusted, experienced counterpart coordinate in a hospital hallway. One speaks briefly by phone while the other answers a worker’s operational question, showing that supervisory coverage continues even when the primary supervisor is elsewhere. Workers appear comfortable approaching either person.
+purpose: Illustrate continuity, clear authority, friendly competence, and no uncertainty about who is responsible.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-chain-of-command-01">
+<div class="image-shell" data-image-id="apd-chain-of-command-01">
+<img alt="Continuous supervisory coverage and an unmistakable chain of command" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png" title="The primary housekeeping supervisor and her trusted, experienced counterpart coordinate in a hospital hallway. One speaks briefly by phone while the other answers a worker’s operational question, showing that supervisory coverage continues even when the primary supervisor is elsewhere. Workers appear comfortable approaching either person."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Continuous supervisory coverage and an unmistakable chain of command</strong>
+<p>Illustrate continuity, clear authority, friendly competence, and no uncertainty about who is responsible.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Continuous supervisory coverage and an unmistakable chain of command</strong>
+<span>Illustrate continuity, clear authority, friendly competence, and no uncertainty about who is responsible.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The primary housekeeping supervisor and her trusted, experienced counterpart coordinate in a hospital hallway. One speaks briefly by phone while the other answers a worker’s operational question, showing that supervisory coverage continues even when the primary supervisor is elsewhere. Workers appear comfortable approaching either person.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>There was no vacuum in which employees had to invent their own authority structure or guess whose instructions mattered.</p>
+<h2 id="uniform-onboarding-and-one-shared-standard">Uniform onboarding and one shared standard</h2>
+<p>The supervisor did not assume that a new employee already possessed the necessary skills.</p>
+<p>Previous housekeeping experience did not exempt anyone from learning the APD method. Every worker received the same basic onboarding for the routines they would be expected to perform.</p>
+<p>That created a shared operating standard rather than a collection of personal habits.</p>
+<p>Everyone learned:</p>
+<ul>
+<li>the sequence of work;</li>
+<li>the expected method;</li>
+<li>the required level of detail;</li>
+<li>the timing of routines;</li>
+<li>proper equipment handling;</li>
+<li>closet organization;</li>
+<li>communication expectations;</li>
+<li>how to work in patient environment;</li>
+<li>what counted as complete.</li>
+</ul>
+<p>Because everyone received the same training, correction remained connected to a known standard. It was not one worker’s opinion against another’s.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-uniform-onboarding-01
+concept: Uniform onboarding and one shared housekeeping standard
+scene: The supervisor gives the same careful hands-on housekeeping training to two new workers in a clean institutional room. She demonstrates a detailed routine step by step, including correct surface cleaning, equipment handling, and final inspection. A simple checklist is visible on a clipboard. The workers have different levels of apparent experience, but both receive the same complete instruction.
+purpose: Show that the APD standard was taught uniformly rather than assumed from prior experience.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-uniform-onboarding-01">
+<div class="image-shell" data-image-id="apd-uniform-onboarding-01">
+<img alt="Uniform onboarding and one shared housekeeping standard" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png" title="The supervisor gives the same careful hands-on housekeeping training to two new workers in a clean institutional room. She demonstrates a detailed routine step by step, including correct surface cleaning, equipment handling, and final inspection. A simple checklist is visible on a clipboard. The workers have different levels of apparent experience, but both receive the same complete instruction."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Uniform onboarding and one shared housekeeping standard</strong>
+<p>Show that the APD standard was taught uniformly rather than assumed from prior experience.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Uniform onboarding and one shared housekeeping standard</strong>
+<span>Show that the APD standard was taught uniformly rather than assumed from prior experience.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor gives the same careful hands-on housekeeping training to two new workers in a clean institutional room. She demonstrates a detailed routine step by step, including correct surface cleaning, equipment handling, and final inspection. A simple checklist is visible on a clipboard. The workers have different levels of apparent experience, but both receive the same complete instruction.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<h2 id="communication-as-part-of-the-work">Communication as part of the work</h2>
+<p>Communication was treated as an operational requirement, not merely a courtesy.</p>
+<p>Workers did not ordinarily walk alone. Partners moved together.</p>
+<p>When an exception was necessary, the employee leaving the pair had to communicate clearly:</p>
+<ul>
+<li>where they were going;</li>
+<li>why they were leaving;</li>
+<li>approximately when they expected to return.</li>
+</ul>
+<p>The supervisor actively reinforced this rule.</p>
+<p>If she encountered one worker alone, her first question was almost always:</p>
+<blockquote>
+<p>“Where is X?”</p>
+</blockquote>
+<p>If the worker did not know, the absent partner could expect a friendly but definite scolding.</p>
+<p>This rule supported several things at once:</p>
+<ul>
+<li>safety;</li>
+<li>awareness of employee locations;</li>
+<li>coordination;</li>
+<li>accountability;</li>
+<li>continuity of the assignment;</li>
+<li>respect between partners.</li>
+</ul>
+<p>Nobody was supposed to disappear and leave the other employee wondering what had happened. Employee accounts of situations were always corroborated by each other's presence.</p>
+<h2 id="regular-rounds-that-connected-the-entire-operation">Regular rounds that connected the entire operation</h2>
+<p>The supervisor made rounds consistently throughout the day.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-supervisor-rounds-01
+concept: Supervisor rounds connecting the entire operation
+scene: The supervisor conducts a multipurpose round through a hospital unit. In one coherent scene she checks completed work, observes whether two workers remain paired, examines a housekeeping closet, notes a low supply, and compares conditions with a clipboard.
+purpose: Show inspection, compliance, communication, inventory, restocking, and follow-up combined into one efficient routine.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-supervisor-rounds-01">
+<div class="image-shell" data-image-id="apd-supervisor-rounds-01">
+<img alt="Supervisor rounds connecting the entire operation" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png" title="The supervisor conducts a multipurpose round through a hospital unit. In one coherent scene she checks completed work, observes whether two workers remain paired, examines a housekeeping closet, notes a low supply, and compares conditions with a clipboard."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Supervisor rounds connecting the entire operation</strong>
+<p>Show inspection, compliance, communication, inventory, restocking, and follow-up combined into one efficient routine.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Supervisor rounds connecting the entire operation</strong>
+<span>Show inspection, compliance, communication, inventory, restocking, and follow-up combined into one efficient routine.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor conducts a multipurpose round through a hospital unit. In one coherent scene she checks completed work, observes whether two workers remain paired, examines a housekeeping closet, notes a low supply, and compares conditions with a clipboard.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>Her rounds combined several responsibilities:</p>
+<ul>
+<li>inspecting completed work;</li>
+<li>inspecting the general condition of spaces;</li>
+<li>checking compliance;</li>
+<li>checking whether workers were properly paired;</li>
+<li>observing whether routines were being followed;</li>
+<li>identifying supply shortages;</li>
+<li>restocking closets;</li>
+<li>following up on special instructions;</li>
+<li>verifying that operational changes were producing the intended result.</li>
+</ul>
+<p>She did not announce a change and then assume that it had worked.</p>
+<p>If she introduced a new emphasis or corrected a procedure, you could count on her returning almost like clockwork to see whether the desired outcome was actually being produced.</p>
+<p>Her management cycle was complete:</p>
+<blockquote>
+<p>instruction → work → inspection → feedback → correction or confirmation</p>
+</blockquote>
+<h2 id="predictable-nearly-white-glove-inspections">Predictable, nearly white-glove inspections</h2>
+<p>Her inspections were demanding and extremely consistent.</p>
+<p>If crumbs were left on the dining-room floor, you knew she would find them.</p>
+<p>If even a small dribble remained on a toilet seat, she would notice it.</p>
+<p>If dusty windowsills had already been discussed, she would notice whether you remembered them without being reminded again.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-white-glove-inspection-01
+concept: Predictable, nearly white-glove inspection
+scene: A close professional scene shows the supervisor inspecting the details of a recently cleaned dining room and adjacent restroom. She notices a few crumbs near a table leg, checks a windowsill for dust, and examines the condition of a toilet seat with careful attention. Her expression is calm and exact rather than angry.
+purpose: Show that she checked the same small details every time and made the standard completely predictable.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-white-glove-inspection-01">
+<div class="image-shell" data-image-id="apd-white-glove-inspection-01">
+<img alt="Predictable, nearly white-glove inspection" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png" title="A close professional scene shows the supervisor inspecting the details of a recently cleaned dining room and adjacent restroom. She notices a few crumbs near a table leg, checks a windowsill for dust, and examines the condition of a toilet seat with careful attention. Her expression is calm and exact rather than angry."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Predictable, nearly white-glove inspection</strong>
+<p>Show that she checked the same small details every time and made the standard completely predictable.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Predictable, nearly white-glove inspection</strong>
+<span>Show that she checked the same small details every time and made the standard completely predictable.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A close professional scene shows the supervisor inspecting the details of a recently cleaned dining room and adjacent restroom. She notices a few crumbs near a table leg, checks a windowsill for dust, and examines the condition of a toilet seat with careful attention. Her expression is calm and exact rather than angry.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>She paid attention to the same details every time. Her inspections were almost as predictable as a train schedule.</p>
+<p>That predictability mattered. Workers did not have to wonder whether a detail would suddenly matter one day and be ignored the next. The standard did not shift according to her mood or according to which employee had performed the work.</p>
+<p>Over time, her attention trained our attention. We began to see the room through the anticipated inspection before she arrived.</p>
+<h2 id="specific-praise-as-well-as-specific-correction">Specific praise as well as specific correction</h2>
+<p>Because she paid close attention, she also noticed when the details were done correctly.</p>
+<p>If a worker remembered the windowsills, improved a routine, left an area in excellent condition, or corrected a previous weakness, she would acknowledge the exact thing that had been done well.</p>
+<p>Her praise was not vague or pro forma. She did not appear to invent compliments merely because supervisors are sometimes told to praise employees.</p>
+<p>She could identify:</p>
+<ul>
+<li>what was done correctly;</li>
+<li>where it was done;</li>
+<li>why it mattered;</li>
+<li>how it reflected improvement.</li>
+</ul>
+<p>That made the praise credible.</p>
+<p>Workers knew that mistakes were visible, but good work was visible too.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-specific-praise-01
+concept: Specific praise grounded in observed work
+scene: The supervisor gives a worker quiet, specific praise beside a spotless windowsill and carefully finished room. She points to the exact detail that was done correctly while the worker listens with visible satisfaction. The interaction feels genuine and earned rather than ceremonial.
+purpose: Show that careful work was noticed as precisely as mistakes were noticed.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-specific-praise-01">
+<div class="image-shell" data-image-id="apd-specific-praise-01">
+<img alt="Specific praise grounded in observed work" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png" title="The supervisor gives a worker quiet, specific praise beside a spotless windowsill and carefully finished room. She points to the exact detail that was done correctly while the worker listens with visible satisfaction. The interaction feels genuine and earned rather than ceremonial."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Specific praise grounded in observed work</strong>
+<p>Show that careful work was noticed as precisely as mistakes were noticed.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Specific praise grounded in observed work</strong>
+<span>Show that careful work was noticed as precisely as mistakes were noticed.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor gives a worker quiet, specific praise beside a spotless windowsill and carefully finished room. She points to the exact detail that was done correctly while the worker listens with visible satisfaction. The interaction feels genuine and earned rather than ceremonial.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<h2 id="friendly-correction-without-loss-of-authority">Friendly correction without loss of authority</h2>
+<p>She often delivered corrections in a friendly, almost humorous way.</p>
+<p>The tone could be light, but the expectation remained firm. Nobody misunderstood the humor as permission to ignore the standard.</p>
+<p>She was someone workers took seriously, but she was not mean.</p>
+<p>She could communicate:</p>
+<blockquote>
+<p>“You know better than this.”</p>
+</blockquote>
+<p>without humiliating the employee or turning the interaction into a personal conflict.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-friendly-correction-01
+concept: Friendly correction without loss of authority
+scene: The supervisor gives a worker a light, almost humorous but unmistakably serious correction about a small missed housekeeping detail. Her expression is composed with a slight knowing smile; the worker understands the expectation without being humiliated. Other workers continue normally in the background.
+purpose: Show authority without hostility, correction without theatrics, and the message: you know better than this.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-friendly-correction-01">
+<div class="image-shell" data-image-id="apd-friendly-correction-01">
+<img alt="Friendly correction without loss of authority" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png" title="The supervisor gives a worker a light, almost humorous but unmistakably serious correction about a small missed housekeeping detail. Her expression is composed with a slight knowing smile; the worker understands the expectation without being humiliated. Other workers continue normally in the background."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Friendly correction without loss of authority</strong>
+<p>Show authority without hostility, correction without theatrics, and the message: you know better than this.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Friendly correction without loss of authority</strong>
+<span>Show authority without hostility, correction without theatrics, and the message: you know better than this.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor gives a worker a light, almost humorous but unmistakably serious correction about a small missed housekeeping detail. Her expression is composed with a slight knowing smile; the worker understands the expectation without being humiliated. Other workers continue normally in the background.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>She remained professional. She did not yell theatrically, become emotionally erratic, or use correction to display power.</p>
+<h2 id="neutrality-and-professional-inscrutability">Neutrality and professional inscrutability</h2>
+<p>She listened to her workers and made herself available for individual conversations. A worker could receive a one-on-one meeting regularly or at a moment’s notice when something needed to be discussed.</p>
+<p>At the same time, she showed no obvious favoritism.</p>
+<p>She was friendly but professionally inscrutable. Workers could not easily manipulate her through closeness, flattery, complaints, cliques, or emotional pressure.</p>
+<p>Her standards remained larger than her personal relationships.</p>
+<p>That helped employees trust that:</p>
+<ul>
+<li>the same work would be inspected;</li>
+<li>the same expectations would apply;</li>
+<li>praise would be earned;</li>
+<li>correction would be connected to performance;</li>
+<li>personal preference would not redefine the job.</li>
+</ul>
+<h2 id="standardized-housekeeping-closets">Standardized housekeeping closets</h2>
+<p>Inventory and supply organization followed the same operating philosophy.</p>
+<p>The housekeeping closets in the different units were expected to contain the same inventory, arranged in the same way, with known quantities of each item on hand.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-standardized-closet-01
+concept: A standardized housekeeping closet maintained in a known expected state
+scene: A perfectly maintained psychiatric-unit housekeeping closet with supplies arranged in fixed, clearly recognizable locations. Identical shelves hold known quantities of paper products, liners, cleaning chemicals, cloths, and equipment. Everything is clean, orderly, and ready for use.
+purpose: Illustrate standardization, readiness, inventory control, and the certainty that workers would find the same arrangement in every unit.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-standardized-closet-01">
+<div class="image-shell" data-image-id="apd-standardized-closet-01">
+<img alt="A standardized housekeeping closet maintained in a known expected state" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png" title="A perfectly maintained psychiatric-unit housekeeping closet with supplies arranged in fixed, clearly recognizable locations. Identical shelves hold known quantities of paper products, liners, cleaning chemicals, cloths, and equipment. Everything is clean, orderly, and ready for use."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>A standardized housekeeping closet maintained in a known expected state</strong>
+<p>Illustrate standardization, readiness, inventory control, and the certainty that workers would find the same arrangement in every unit.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>A standardized housekeeping closet maintained in a known expected state</strong>
+<span>Illustrate standardization, readiness, inventory control, and the certainty that workers would find the same arrangement in every unit.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A perfectly maintained psychiatric-unit housekeeping closet with supplies arranged in fixed, clearly recognizable locations. Identical shelves hold known quantities of paper products, liners, cleaning chemicals, cloths, and equipment. Everything is clean, orderly, and ready for use.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>A worker entering another unit’s closet did not encounter an entirely different system. The expected condition was already known.</p>
+<p>The supervisor’s rounds included closet inspection and restocking. She did not separate those activities unnecessarily. While inspecting the closet, she also restored supplies to their expected quantities.</p>
+<p>As a result, employees rarely encountered a closet that:</p>
+<ul>
+<li>had quietly run out of essential items;</li>
+<li>had been rearranged unpredictably;</li>
+<li>contained neglected equipment;</li>
+<li>had deteriorated into disorder;</li>
+<li>required a worker to search for ordinary supplies.</li>
+</ul>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-closet-restocking-01
+concept: Closet inspection combined with immediate restocking
+scene: The supervisor inspects a standardized housekeeping closet while simultaneously restoring several supplies to their expected quantities. She compares shelf contents with a small inventory sheet and places replacement items exactly where they belong. A worker nearby collects what is needed without searching or encountering empty shelves.
+purpose: Show inspection and replenishment as one continuous operation that preserved readiness.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-closet-restocking-01">
+<div class="image-shell" data-image-id="apd-closet-restocking-01">
+<img alt="Closet inspection combined with immediate restocking" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png" title="The supervisor inspects a standardized housekeeping closet while simultaneously restoring several supplies to their expected quantities. She compares shelf contents with a small inventory sheet and places replacement items exactly where they belong. A worker nearby collects what is needed without searching or encountering empty shelves."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Closet inspection combined with immediate restocking</strong>
+<p>Show inspection and replenishment as one continuous operation that preserved readiness.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Closet inspection combined with immediate restocking</strong>
+<span>Show inspection and replenishment as one continuous operation that preserved readiness.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor inspects a standardized housekeeping closet while simultaneously restoring several supplies to their expected quantities. She compares shelf contents with a small inventory sheet and places replacement items exactly where they belong. A worker nearby collects what is needed without searching or encountering empty shelves.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>The closet itself had a defined state:</p>
+<ul>
+<li>each item in its assigned place;</li>
+<li>expected quantities on hand;</li>
+<li>equipment cleaned;</li>
+<li>equipment stored correctly;</li>
+<li>the space left ready for the next worker.</li>
+</ul>
+<p>A common infraction was leaving a mop on the floor rather than stowing it properly so it could dry.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-mop-storage-01
+concept: Proper mop storage as sanitation, safety, and equipment care
+scene: A clear before-and-after comparison within one housekeeping closet: a wet mop is improperly left on the floor in the before view, while the after view shows it correctly suspended in a wall-mounted drying position. The corrected arrangement is clean, safe, and sanitary.
+purpose: Show why a seemingly small storage rule protected drying, sanitation, safety, equipment life, and readiness for the next worker.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-mop-storage-01">
+<div class="image-shell" data-image-id="apd-mop-storage-01">
+<img alt="Proper mop storage as sanitation, safety, and equipment care" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png" title="A clear before-and-after comparison within one housekeeping closet: a wet mop is improperly left on the floor in the before view, while the after view shows it correctly suspended in a wall-mounted drying position. The corrected arrangement is clean, safe, and sanitary."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Proper mop storage as sanitation, safety, and equipment care</strong>
+<p>Show why a seemingly small storage rule protected drying, sanitation, safety, equipment life, and readiness for the next worker.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Proper mop storage as sanitation, safety, and equipment care</strong>
+<span>Show why a seemingly small storage rule protected drying, sanitation, safety, equipment life, and readiness for the next worker.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A clear before-and-after comparison within one housekeeping closet: a wet mop is improperly left on the floor in the before view, while the after view shows it correctly suspended in a wall-mounted drying position. The corrected arrangement is clean, safe, and sanitary.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>That detail represented more than neatness. It involved sanitation, equipment care, safety, readiness, and respect for the next employee.</p>
+<h2 id="paperwork-connected-to-physical-reality">Paperwork connected to physical reality</h2>
+<p>APD used the same general kind of paper daily sheets later used at Meadows.</p>
+<p>The difference was not primarily the form. The difference was how seriously she used it.</p>
+<p>She:</p>
+<ul>
+<li>reviewed the daily sheets;</li>
+<li>audited them;</li>
+<li>dated the audits;</li>
+<li>compared recorded work with actual room conditions;</li>
+<li>followed up when the record and the physical space did not agree.</li>
+</ul>
+<p>A checked box was not treated as an empty administrative gesture. It represented a claim that the work had been completed.</p>
+<p>If a bathroom was marked complete and she found a dribble on the toilet seat, the physical condition contradicted the recorded completion.</p>
+<p>Her audits gave the paperwork deeper operational meaning.</p>
+<p>The paper still had its full suite of shortcomings:</p>
+<ul>
+<li>difficult to search;</li>
+<li>difficult to aggregate;</li>
+<li>difficult to analyze over time;</li>
+<li>difficult to share;</li>
+<li>difficult to preserve as an accessible history;</li>
+<li>dependent on physical handling;</li>
+<li>unable to automate follow-up.</li>
+</ul>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-paper-limitations-01
+concept: The operational limitations of paper records
+scene: A professional workstation holds daily housekeeping sheets, handwritten checkboxes, dated forms, clipboards, folders, and stacked paper records. The records are orderly but difficult to search or compare, visually conveying isolated information, physical storage, and no easy way to analyze history.
+purpose: Illustrate that disciplined use could make paper meaningful while the medium still retained serious limitations.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-paper-limitations-01">
+<div class="image-shell" data-image-id="apd-paper-limitations-01">
+<img alt="The operational limitations of paper records" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png" title="A professional workstation holds daily housekeeping sheets, handwritten checkboxes, dated forms, clipboards, folders, and stacked paper records. The records are orderly but difficult to search or compare, visually conveying isolated information, physical storage, and no easy way to analyze history."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>The operational limitations of paper records</strong>
+<p>Illustrate that disciplined use could make paper meaningful while the medium still retained serious limitations.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>The operational limitations of paper records</strong>
+<span>Illustrate that disciplined use could make paper meaningful while the medium still retained serious limitations.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A professional workstation holds daily housekeeping sheets, handwritten checkboxes, dated forms, clipboards, folders, and stacked paper records. The records are orderly but difficult to search or compare, visually conveying isolated information, physical storage, and no easy way to analyze history.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>But she supplied the discipline and intelligence that the medium lacked.</p>
+<p>The paperwork mattered because someone was actually reading it, testing it, dating the review, and connecting it to observable conditions.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-paper-audit-01
+concept: Paperwork tested against physical reality
+scene: The supervisor holds a completed daily housekeeping sheet while inspecting the actual restroom associated with the checked tasks. She dates and initials the audit on the paper, then compares the recorded completion with the physical condition of the toilet, sink, floor, and windowsill.
+purpose: Show that a checked box represented a factual claim that had to agree with observable conditions.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-paper-audit-01">
+<div class="image-shell" data-image-id="apd-paper-audit-01">
+<img alt="Paperwork tested against physical reality" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png" title="The supervisor holds a completed daily housekeeping sheet while inspecting the actual restroom associated with the checked tasks. She dates and initials the audit on the paper, then compares the recorded completion with the physical condition of the toilet, sink, floor, and windowsill."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Paperwork tested against physical reality</strong>
+<p>Show that a checked box represented a factual claim that had to agree with observable conditions.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Paperwork tested against physical reality</strong>
+<span>Show that a checked box represented a factual claim that had to agree with observable conditions.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>The supervisor holds a completed daily housekeeping sheet while inspecting the actual restroom associated with the checked tasks. She dates and initials the audit on the paper, then compares the recorded completion with the physical condition of the toilet, sink, floor, and windowsill.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<h2 id="ongoing-feedback-and-unsurprising-evaluations">Ongoing feedback and unsurprising evaluations</h2>
+<p>By formal evaluation time, employees already knew how they were doing.</p>
+<p>They knew:</p>
+<ul>
+<li>which metrics she used;</li>
+<li>which details mattered;</li>
+<li>where they were meeting expectations;</li>
+<li>where improvement was still needed;</li>
+<li>whether previous corrections had been resolved;</li>
+<li>what she expected next.</li>
+</ul>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-continuous-evaluation-01
+concept: Ongoing feedback leading to an unsurprising formal evaluation
+scene: A calm one-on-one meeting between the supervisor and a housekeeping worker at a small office table. The formal evaluation form sits beside earlier notes, dated audits, and familiar performance metrics. Both people appear composed because the discussion continues feedback already given throughout the year.
+purpose: Show that evaluation was a continuation of known expectations and regular coaching, not an ambush.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-continuous-evaluation-01">
+<div class="image-shell" data-image-id="apd-continuous-evaluation-01">
+<img alt="Ongoing feedback leading to an unsurprising formal evaluation" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png" title="A calm one-on-one meeting between the supervisor and a housekeeping worker at a small office table. The formal evaluation form sits beside earlier notes, dated audits, and familiar performance metrics. Both people appear composed because the discussion continues feedback already given throughout the year."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>Ongoing feedback leading to an unsurprising formal evaluation</strong>
+<p>Show that evaluation was a continuation of known expectations and regular coaching, not an ambush.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>Ongoing feedback leading to an unsurprising formal evaluation</strong>
+<span>Show that evaluation was a continuation of known expectations and regular coaching, not an ambush.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A calm one-on-one meeting between the supervisor and a housekeeping worker at a small office table. The formal evaluation form sits beside earlier notes, dated audits, and familiar performance metrics. Both people appear composed because the discussion continues feedback already given throughout the year.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>The formal evaluation was not an ambush.</p>
+<p>It was a continuation of:</p>
+<ul>
+<li>daily observations;</li>
+<li>regular rounds;</li>
+<li>specific praise;</li>
+<li>immediate correction;</li>
+<li>dated audits;</li>
+<li>personal one-on-one conversations;</li>
+<li>ongoing coaching.</li>
+</ul>
+<p>The evaluation therefore confirmed an existing understanding rather than revealing a hidden opinion.</p>
+<h2 id="uniform-results-from-different-workers">Uniform results from different workers</h2>
+<p>Perhaps the strongest evidence of her effectiveness was that she produced relatively uniform results from workers with very different levels of engagement and different attitudes toward the job.</p>
+<p>Some employees were highly motivated.</p>
+<p>Others were less invested, more difficult, tired, indifferent, or simply interested in completing the shift.</p>
+<p>The operation did not require every worker to become personally enthusiastic.</p>
+<p>The system still produced consistent results because:</p>
+<ul>
+<li>everyone received the same training;</li>
+<li>the schedule was known;</li>
+<li>routines were standardized;</li>
+<li>supplies were controlled;</li>
+<li>closets had a known expected state;</li>
+<li>workers knew what would be inspected;</li>
+<li>communication was required;</li>
+<li>the supervisor followed up;</li>
+<li>incomplete work was found;</li>
+<li>good work was recognized;</li>
+<li>performance feedback was continuous.</li>
+</ul>
+<p>A worker’s attitude might affect how pleasantly the person moved through the day, but it did not substantially change the definition of acceptable work.</p>
+<p>She reduced variation in results without trying to make every employee the same kind of person.</p>
+<h2 id="why-the-days-passed-quickly">Why the days passed quickly</h2>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-workday-momentum-01
+concept: A demanding workday moving quickly because everyone knows what to do
+scene: A dynamic but orderly montage of paired housekeeping workers progressing through a full shift: preparing equipment, entering a unit, cleaning the dining room, servicing a restroom, checking supplies, and returning equipment properly. Each task flows naturally into the next. No one waits for direction or searches for missing materials.
+purpose: Show how clarity, sequence, supplies, and shared expectations gave the workday momentum.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-workday-momentum-01">
+<div class="image-shell" data-image-id="apd-workday-momentum-01">
+<img alt="A demanding workday moving quickly because everyone knows what to do" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png" title="A dynamic but orderly montage of paired housekeeping workers progressing through a full shift: preparing equipment, entering a unit, cleaning the dining room, servicing a restroom, checking supplies, and returning equipment properly. Each task flows naturally into the next. No one waits for direction or searches for missing materials."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>A demanding workday moving quickly because everyone knows what to do</strong>
+<p>Show how clarity, sequence, supplies, and shared expectations gave the workday momentum.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>A demanding workday moving quickly because everyone knows what to do</strong>
+<span>Show how clarity, sequence, supplies, and shared expectations gave the workday momentum.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A dynamic but orderly montage of paired housekeeping workers progressing through a full shift: preparing equipment, entering a unit, cleaning the dining room, servicing a restroom, checking supplies, and returning equipment properly. Each task flows naturally into the next. No one waits for direction or searches for missing materials.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<p>The days passed quickly because we always knew what to do.</p>
+<p>We were not repeatedly stopped by uncertainty.</p>
+<p>We did not spend large portions of the shift:</p>
+<ul>
+<li>hunting for instructions;</li>
+<li>waiting for someone to assign work;</li>
+<li>deciding among competing priorities;</li>
+<li>searching through disorganized closets;</li>
+<li>trying to locate missing coworkers;</li>
+<li>wondering whether a rule still applied;</li>
+<li>negotiating the meaning of “finished”;</li>
+<li>discovering late in the day that someone had understood the plan differently.</li>
+</ul>
+<p>The schedule gave the day momentum.</p>
+<p>The standards gave the work direction.</p>
+<p>The meetings kept everyone aligned.</p>
+<p>The rounds prevented drift.</p>
+<p>The inspections maintained quality.</p>
+<p>The inventory system preserved readiness.</p>
+<p>The feedback made performance visible.</p>
+<h2 id="the-complete-leadership-system">The complete leadership system</h2>
+<p>Her effectiveness did not come from one exceptional personality trait. It came from a connected set of management practices:</p>
+<ul>
+<li>stable daily schedules;</li>
+<li>clear unit assignments;</li>
+<li>uniform onboarding;</li>
+<li>known completion standards;</li>
+<li>advance planning;</li>
+<li>posted weekly overrides;</li>
+<li>daily morning huddles;</li>
+<li>continuous supervisory coverage;</li>
+<li>a clear chain of command;</li>
+<li>paired movement;</li>
+<li>explicit communication rules;</li>
+<li>regular rounds;</li>
+<li>predictable inspections;</li>
+<li>specific correction;</li>
+<li>specific praise;</li>
+<li>standardized closets;</li>
+<li>controlled inventory quantities;</li>
+<li>combined inspection and restocking;</li>
+<li>audited daily paperwork;</li>
+<li>dated audits;</li>
+<li>accessible one-on-one meetings;</li>
+<li>evaluations tied to known metrics;</li>
+<li>consistent treatment of employees.</li>
+</ul>
+<p>Together, these practices created a coherent operating system.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-leadership-system-01
+concept: The complete APD housekeeping leadership system
+scene: A polished editorial infographic-style illustration centers the supervisor and surrounds her with connected operational scenes: morning huddle and whiteboard, uniform training, paired workers, inspection rounds, standardized closet, audited paperwork, specific praise, friendly correction, and a one-on-one evaluation. Subtle connecting lines or a circular composition show that these are parts of one coherent system.
+purpose: Present the supervisor’s effectiveness as a connected management system rather than a single personality trait.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-leadership-system-01">
+<div class="image-shell" data-image-id="apd-leadership-system-01">
+<img alt="The complete APD housekeeping leadership system" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png" title="A polished editorial infographic-style illustration centers the supervisor and surrounds her with connected operational scenes: morning huddle and whiteboard, uniform training, paired workers, inspection rounds, standardized closet, audited paperwork, specific praise, friendly correction, and a one-on-one evaluation. Subtle connecting lines or a circular composition show that these are parts of one coherent system."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>The complete APD housekeeping leadership system</strong>
+<p>Present the supervisor’s effectiveness as a connected management system rather than a single personality trait.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>The complete APD housekeeping leadership system</strong>
+<span>Present the supervisor’s effectiveness as a connected management system rather than a single personality trait.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A polished editorial infographic-style illustration centers the supervisor and surrounds her with connected operational scenes: morning huddle and whiteboard, uniform training, paired workers, inspection rounds, standardized closet, audited paperwork, specific praise, friendly correction, and a one-on-one evaluation. Subtle connecting lines or a circular composition show that these are parts of one coherent system.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png</code></dd>
+</dl>
+</details>
+</figure>
+<h2 id="the-lesson-she-established-for-me">The lesson she established for me</h2>
+<p>She was my first supervisor at NMBHI, so she became my original reference point for housekeeping supervision.</p>
+<p>She showed me that a housekeeping department could be:</p>
+<ul>
+<li>demanding without being chaotic;</li>
+<li>exact without being cruel;</li>
+<li>disciplined without being hostile;</li>
+<li>friendly without becoming unprofessional;</li>
+<li>predictable without becoming passive;</li>
+<li>highly accountable without depending on fear.</li>
+</ul>
+<p>She also showed that workplace harmony can be an outcome of operational clarity.</p>
+<p>When workers know exactly what to do, why to do it, when to do it, how to do it, and what completed work looks like, many interpersonal conflicts never develop.</p>
+<p>She did not rely on harmony first and hope that good work would follow.</p>
+<p>She created the conditions for good work, and harmony followed.</p>
+<p>That makes APD the essential beginning of the later Meadows story. I did not arrive at Meadows without a standard for comparison. I had already experienced a system in which supervision, communication, training, inventory, inspections, paperwork, and employee relationships worked together—and produced dependable results regardless of individual attitude.</p>
+<!-- Original Markdown image metadata:
+&lt;!-- IMAGE PLACEHOLDER
+id: apd-foundational-lesson-01
+concept: The operational standard carried forward from APD
+scene: A reflective closing image shows a housekeeper leaving the orderly APD environment with a clear internal standard for good operations. Behind him are visual echoes of the supervisor, morning huddle, organized closet, paired workers, inspection, and audited paperwork. Ahead is another institutional workplace, suggesting that this experience will become the basis for future comparison.
+purpose: Show APD as the foundational experience that later made the contrast with Meadows meaningful.
+style: Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.
+format: landscape 16:9
+future-url: https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png
+--&amp;gt;
+-->
+<figure class="document-figure" id="apd-foundational-lesson-01">
+<div class="image-shell" data-image-id="apd-foundational-lesson-01">
+<img alt="The operational standard carried forward from APD" decoding="async" loading="lazy" onerror="this.closest('.image-shell').classList.add('image-missing'); this.style.display='none'" onload="this.closest('.image-shell').classList.add('image-loaded')" src="https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png" title="A reflective closing image shows a housekeeper leaving the orderly APD environment with a clear internal standard for good operations. Behind him are visual echoes of the supervisor, morning huddle, organized closet, paired workers, inspection, and audited paperwork. Ahead is another institutional workplace, suggesting that this experience will become the basis for future comparison."/>
+<div aria-hidden="true" class="image-fallback">
+<span class="fallback-label">Planned image · landscape 16:9</span>
+<strong>The operational standard carried forward from APD</strong>
+<p>Show APD as the foundational experience that later made the contrast with Meadows meaningful.</p>
+<small>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png</small>
+</div>
+</div>
+<figcaption>
+<strong>The operational standard carried forward from APD</strong>
+<span>Show APD as the foundational experience that later made the contrast with Meadows meaningful.</span>
+</figcaption>
+<details class="image-brief">
+<summary>Image brief</summary>
+<dl>
+<dt>Scene</dt>
+<dd>A reflective closing image shows a housekeeper leaving the orderly APD environment with a clear internal standard for good operations. Behind him are visual echoes of the supervisor, morning huddle, organized closet, paired workers, inspection, and audited paperwork. Ahead is another institutional workplace, suggesting that this experience will become the basis for future comparison.</dd>
+<dt>Style</dt>
+<dd>Landscape 16:9 editorial illustration, semi-realistic digital painting, professional documentary style, New Mexico state psychiatric hospital housekeeping environment in 2024, clean institutional architecture, warm natural lighting, grounded and respectful atmosphere, workers wearing ordinary housekeeping uniforms, no visible patients, no readable personal names, no institutional logos, no exaggerated expressions, visually consistent characters and locations across the image series.</dd>
+<dt>File</dt>
+<dd><code>https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png</code></dd>
+</dl>
+</details>
+</figure>
+
+  </main>
+</div>
+
+<footer class="page-footer">
+  Image URLs and briefs are embedded from the source document. Missing images display their planned-image cards until the files are published.
+</footer>
+</body>
+</html>

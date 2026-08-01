@@ -200,6 +200,16 @@
     "category": "Req Forms"
   },
   {
+    "name": "Apd Daily Operating System 01",
+    "file": "scenarios/apd-daily-operating-system-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Morning Huddle 01",
+    "file": "scenarios/apd-morning-huddle-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Supervisor Overview 01",
     "file": "scenarios/apd-supervisor-overview-01.png",
     "category": "Scenarios"
