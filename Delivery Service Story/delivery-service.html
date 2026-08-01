@@ -193,18 +193,19 @@
         margin-top: 7px;
       }
       .story-image {
-        grid-column: 1/-1;
+        grid-column: 2;
+        width: 100%;
         margin: 10px 0 0;
         overflow: hidden;
         border-radius: 18px;
         border: 1px solid var(--line);
-        background: #dff5ff;
+        background: #f4f9fc;
       }
       .story-image img {
         width: 100%;
         display: block;
         aspect-ratio: 16/9;
-        object-fit: cover;
+        object-fit: fit;
       }
       .callout {
         margin: 24px 0;
@@ -311,17 +312,14 @@
         <span>KLINSWORK · LOCAL DELIVERY SERVICE</span>
       </div>
       <div class="nav-links">
-        <a href="https://sites.google.com/view/meadows-hk/home/documentation"
+        <a
+          href="https://sites.google.com/view/meadows-hk/home/documentation#h.isuuw8ix5vy6n"
           >Back to Documentation</a
         >
       </div>
     </nav>
 
     <header class="hero">
-      <img
-        src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-01.png"
-        alt="Local Delivery Service cover art"
-      />
       <div class="hero-copy">
         <div class="eyebrow">Monkey Business · Systems Narrative</div>
         <h1>The Narrative of the Monkey</h1>
@@ -372,6 +370,12 @@
             </li>
           </ul>
         </div>
+        <figure class="story-image">
+          <img
+            src="https://kevinlinstrum001.github.io/documentation/images/web-apps/delivery-service-01.png"
+            alt="Local Delivery Service cover art"
+          />
+        </figure>
       </section>
 
       <section class="story-card" id="unused-truck">

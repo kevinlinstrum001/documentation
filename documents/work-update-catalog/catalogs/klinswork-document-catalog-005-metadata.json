@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0",
+  "resource": {
+    "resourceId": "klinswork-document-catalog",
+    "filePath": "klinswork-document-catalog-005.json",
+    "url": "",
+    "title": "Klinswork Documentation Catalog",
+    "description": "Generated collection of Klinswork document sidecars used for search, filtering, descriptions, previews, and repository navigation.",
+    "resourceType": "document-catalog",
+    "format": "application/json",
+    "catalogSchemaVersion": "1.0",
+    "createdTimestamp": "",
+    "updatedTimestamp": "2026-08-01T03:39:25+00:00"
+  },
+  "catalogSummary": {
+    "entryCount": 6,
+    "dateRange": {
+      "earliest": "2026-07-19",
+      "latest": "2026-07-30"
+    },
+    "documentTypes": {
+      "work-update": 6
+    },
+    "projects": [
+      "Inventory 3.0",
+      "Klinswork",
+      "Klinswork Calendar",
+      "Klinswork Inventory",
+      "Work Queue 2.0",
+      "Work Queue 2.1 Beta"
+    ],
+    "primaryAppsAndAffectedApps": [
+      "Assignments",
+      "Email Composer",
+      "Employee Directory",
+      "Inventory 3.0",
+      "Klinswork Calendar",
+      "Klinswork Documentation",
+      "Klinswork Locations",
+      "Klinswork Tool Center",
+      "Locations",
+      "SDS Directory",
+      "Tasker",
+      "Tool Center",
+      "Work Queue 2.0",
+      "Work Queue 2.1 Beta"
+    ],
+    "versions": [
+      "2.1.02-beta",
+      "Inventory 3.0",
+      "Phase 2",
+      "Work Queue 2.0",
+      "Work Queue 2.1 Beta"
+    ]
+  },
+  "contents": {
+    "entryDocumentIds": [
+      "work-update-2026-07-30-klinswork-calendar",
+      "work-update-2026-07-19-klinswork-inventory",
+      "work-update-2026-07-23-inventory-3-product-pages-routing",
+      "work-update-2026-07-25-work-queue-2-phase-2",
+      "work-update-2026-07-26-work-queue-2-1-beta",
+      "work-update-2026-07-21-inventory-3-tool-center"
+    ],
+    "entryTitles": [
+      "Meadows Housekeeping Calendar App — Work Update — July 30, 2026",
+      "Meadows Housekeeping Work Update — 07/19/2026",
+      "Work Update — July 23, 2026",
+      "Work Queue 2.0 — Phase 2 Update — July 25, 2026",
+      "Work Queue 2.1 Beta — Full Development Update — July 26, 2026",
+      "Work Update — July 21, 2026"
+    ],
+    "entryDates": [
+      "2026-07-19",
+      "2026-07-21",
+      "2026-07-23",
+      "2026-07-25",
+      "2026-07-26",
+      "2026-07-30"
+    ],
+    "majorTopics": [
+      "calendar application",
+      "employee schedules",
+      "housekeeping assignments",
+      "schedule resolution",
+      "day view",
+      "month view",
+      "responsive design",
+      "mobile interface",
+      "cancellation overrides",
+      "Apps Script services",
+      "accessibility",
+      "interface redesign",
+      "defensive initialization",
+      "inventory processing",
+      "Inventory 3.0",
+      "SDS records",
+      "product views",
+      "reusable components",
+      "Apps Script navigation",
+      "troubleshooting",
+      "verification",
+      "responsive interface",
+      "work update",
+      "full product pages",
+      "inventory filtering"
+    ]
+  },
+  "purpose": {
+    "description": "Describes the cumulative Klinswork documentation catalog that aggregates individual document sidecars for search, filtering, previews, navigation, repository indexing, and future application use.",
+    "intendedUses": [
+      "Search across Klinswork documentation",
+      "Filter documents by project, application, date, topic, and version",
+      "Generate previews and navigation results",
+      "Locate public document URLs and repository file paths",
+      "Support future documentation interfaces and automated indexing"
+    ]
+  },
+  "relationships": {
+    "containsSidecars": true,
+    "sourceCatalogId": "klinswork-document-catalog",
+    "previousCatalogFile": "klinswork-document-catalog-004.json",
+    "nextCatalogFile": "",
+    "sidecarMetadataFields": {
+      "filePath": "",
+      "url": ""
+    }
+  },
+  "technical": {
+    "platforms": [
+      "GitHub Pages",
+      "JSON"
+    ],
+    "dataModel": [
+      "catalog",
+      "entries",
+      "document",
+      "metadata",
+      "workCoverage",
+      "subject",
+      "sections",
+      "technical",
+      "links",
+      "graphics"
+    ],
+    "generationMethod": "Cumulative append with documentId deduplication",
+    "generatedTimestamp": "2026-08-01T03:40:21+00:00"
+  }
+}

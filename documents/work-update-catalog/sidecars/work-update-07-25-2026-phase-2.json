@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "1.0",
+  "document": {
+    "documentId": "work-update-2026-07-25-work-queue-2-phase-2",
+    "filePath": "work-update-07-25-2026-phase-2.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026-phase-2.html",
+    "title": "Work Queue 2.0 — Phase 2 Update — July 25, 2026",
+    "headline": "Work Queue 2.0 became fast, guided, and ready for real operational use.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-25",
+    "updatedTimestamp": ""
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "phase-update",
+    "coverageDescription": "Covers Work Queue 2.0 Phase 2 work completed on July 25, 2026, including task-template services, validation, startup-data integration, New Task form changes, browser behavior, integration testing, deployment, desktop verification, and mobile verification. Exact session times are not stated.",
+    "coverageConfidence": "high"
+  },
+  "subject": {
+    "projectName": "Work Queue 2.0",
+    "primaryApp": "Work Queue 2.0",
+    "mainFocus": "Connecting task templates throughout the Work Queue stack and proving the upgraded workflow through validation, deployment, and realistic desktop and mobile testing.",
+    "description": "Klinswork Work Queue 2.0 Phase 2 update for July 25, 2026, covering task templates, formal validation, startup-data integration, interface testing, deployment, and mobile verification.",
+    "topics": [
+      "task templates",
+      "template service",
+      "formal validation",
+      "startup data",
+      "guided task creation",
+      "browser-side filtering",
+      "autofill behavior",
+      "integration testing",
+      "Apps Script deployment",
+      "desktop testing",
+      "mobile testing",
+      "development workflow",
+      "template administration"
+    ],
+    "keywords": [
+      "Work Queue 2.0",
+      "Phase 2",
+      "Task_Templates",
+      "TemplateService.gs",
+      "Validation.gs",
+      "WebApp.gs",
+      "Scripts.html",
+      "guided New Task form",
+      "template categories",
+      "mobile workflow",
+      "Apps Script deployment"
+    ],
+    "appsAffected": [
+      "Work Queue 2.0",
+      "Klinswork Tool Center",
+      "Klinswork Locations"
+    ]
+  },
+  "sections": [
+    {
+      "title": "Connected Task_Templates to the application",
+      "anchor": "#service",
+      "contentSummary": "Phase 2 began by turning the populated Task_Templates sheet into a dependable application service. New backend file TemplateService.gs Responsible for retrieving, normalizing, filtering, and sorting template records. Capabilities added Retrieve all active templates Retrieve one template by ID Return distinct categories Normalize active values and priorities Sort by order, category, and name",
+      "graphics": []
+    },
+    {
+      "title": "Verified template retrieval before interface work",
+      "anchor": "#retrieval",
+      "contentSummary": "A compact Code.gs test called TemplateService.gs → getTaskTemplates() and TemplateService.gs → getTaskTemplateCategories() . Verified totals 10 active templates 6 categories Correct IDs and names Correct descriptions and priorities Correct sorting Verified categories Carpet Care Supplies General Cleaning Windows Other General",
+      "graphics": []
+    },
+    {
+      "title": "Expanded formal system validation",
+      "anchor": "#validation",
+      "contentSummary": "Validation.gs now treats the template system as a required part of the Work Queue configuration. New validation coverage CONFIG.SHEETS.TASK_TEMPLATES must exist The Task_Templates sheet must exist All seven required headers must be present Complete result The final validation confirmed the configuration object, Work Queue data spreadsheet, all operational tabs, the shared location source, and all 163 active Work Queue locations.",
+      "graphics": []
+    },
+    {
+      "title": "Extended browser startup data",
+      "anchor": "#startup",
+      "contentSummary": "WebApp.gs → getAppInitializationData() and WebApp.gs → getStartupData() were updated so the browser receives templates and template categories during initial loading. Application Work Queue 2.0 Units 8 Locations 163 Templates 10 Categories 6 Active tasks at test time 0 Completed tasks at test time 2",
+      "graphics": []
+    },
+    {
+      "title": "Rebuilt the New Task form",
+      "anchor": "#form",
+      "contentSummary": "The former free-text Category field was replaced with a guided, two-step template selection process. Category is now a required dropdown. Task is a new required dropdown. Task remains disabled until a category is selected. Description and Priority receive defaults but remain editable. Assigned To and Initial Note remain available.",
+      "graphics": []
+    },
+    {
+      "title": "Added browser-side template behavior",
+      "anchor": "#browser",
+      "contentSummary": "Scripts.html now stores and applies template data throughout the New Task workflow. Browser behavior Populate Category options Filter Task choices by Category Autofill Description Autofill Priority Reset both controls correctly Preserved flexibility Description remains editable Priority remains editable Category is saved with the task Template ID is not stored yet",
+      "graphics": []
+    },
+    {
+      "title": "Added a full interface integration test",
+      "anchor": "#integration",
+      "contentSummary": "The rendered application was inspected before deployment to verify the complete template wiring. Checks included Category and Task selects exist Template state is stored Change handlers are connected Templates filter by category Description and Priority autofill Category submits correctly Result",
+      "graphics": []
+    },
+    {
+      "title": "Deployed the template-assisted release",
+      "anchor": "#deployment",
+      "contentSummary": "After every backend, validation, startup, HTML, and browser integration test passed, a new Apps Script deployment was created and tested directly. Desktop realistic-task test Selected a unit and location. Selected General Cleaning and Vacuum. Used the autofilled description. Edited the description. Changed Priority to Urgent. Added an initial note. Created and opened the saved task.",
+      "graphics": []
+    },
+    {
+      "title": "Verified the complete workflow on mobile",
+      "anchor": "#mobile",
+      "contentSummary": "The new deployment was tested on a mobile phone using a realistic task workflow. Mobile results Layout displayed correctly Dropdowns were easy to use Category filtered Task correctly Description and Priority autofilled Task creation succeeded Operational impact The task-creation process changed from a long typing exercise into a quick selection-and-review workflow suitable for use while moving through the building.",
+      "graphics": []
+    },
+    {
+      "title": "Established a much stronger development workflow",
+      "anchor": "#process",
+      "contentSummary": "Each layer was proven before the next layer was changed. This reduced uncertainty, made failures easier to isolate, and replaced trial-and-error deployment with controlled system verification.",
+      "graphics": []
+    },
+    {
+      "title": "User-experience result",
+      "anchor": "#experience",
+      "contentSummary": "Behind the scenes, Work Queue performs template lookup, filtering, default selection, validation, persistence, activity logging, and interface refresh. The user experiences only a fast, polished workflow.",
+      "graphics": []
+    },
+    {
+      "title": "Current template library",
+      "anchor": "#library",
+      "contentSummary": "TPL-001 Carpet Care Spot-shampoo carpet TPL-002 Supplies Restock supplies TPL-003 General Cleaning Vacuum TPL-004 Mop TPL-005 Spot-mop TPL-006 Sweep TPL-007 Clean TPL-008 Windows Clean windows TPL-009 Other Other request TPL-010 General",
+      "graphics": []
+    },
+    {
+      "title": "Current status and recommended next phase",
+      "anchor": "#status",
+      "contentSummary": "Recommended sequence The strongest next feature is a protected template-administration screen that allows templates to be added, edited, reordered, activated, and deactivated without manually editing the spreadsheet.",
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Work Queue 2.0"
+    ],
+    "scripts": [
+      "Code.gs",
+      "Scripts.html",
+      "TemplateService.gs",
+      "Validation.gs",
+      "WebApp.gs"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Task_Templates",
+      "Tasks",
+      "Task_Activity",
+      "Settings",
+      "Klinswork_Locations"
+    ],
+    "files": [
+      "Code.gs",
+      "Scripts.html",
+      "TemplateService.gs",
+      "Validation.gs",
+      "WebApp.gs"
+    ],
+    "integrations": [
+      "Task template data",
+      "Startup data",
+      "Shared location data",
+      "New Task interface",
+      "Task persistence",
+      "Activity logging"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [
+      "Work Queue 2.0",
+      "Phase 2"
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+    ],
+    "sourceUrls": []
+  },
+  "graphics": []
+}

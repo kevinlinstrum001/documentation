@@ -150,6 +150,11 @@
     "category": "Monkeys"
   },
   {
+    "name": "Floor Image",
+    "file": "personal/floor-image.png",
+    "category": "Personal"
+  },
+  {
     "name": "Report Issue",
     "file": "report-issue.png",
     "category": "Uncategorized"

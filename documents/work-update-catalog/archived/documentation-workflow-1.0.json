@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": "1.0-draft",
+  "workflow": {
+    "workflowId": "klinswork-documentation-workflow",
+    "title": "Klinswork Documentation Workflow",
+    "purpose": "Define the complete process for turning a completed body of work into a project-aware summary, updated project state, public work-update document, structured sidecar, searchable catalogs, indexed visual artifact, published documentation, and supervisor communication.",
+    "workflowType": "documentation-production-and-publication",
+    "currentStatus": "draft",
+    "stepCount": 20,
+    "initialState": "WORK_SESSION",
+    "finalState": "DOCUMENTATION_RUN_COMPLETE",
+    "authoritativeArtifacts": {
+      "workflowSpecification": "documentation-workflow.json",
+      "workSummaryInstructionSet": "summary-md-template.json",
+      "documentSidecarTemplate": "document-sidecar-template-v2-draft.json",
+      "workSummary": "summary.md",
+      "publicDocument": "work-update.html",
+      "documentSidecar": "sidecar.json",
+      "catalog": "work-update-catalog.json",
+      "catalogMetadata": "work-update-catalog-metadata.json",
+      "imageManifest": "images.json",
+      "projectRecord": "project.json",
+      "projectNarrative": "PROJECT.md",
+      "projectRoadmap": "ROADMAP.md"
+    },
+    "designPrinciples": [
+      "Project context must be loaded before formal documentation is written.",
+      "The approved summary.md is the authoritative narrative source for downstream artifacts.",
+      "The work narrative must preserve method, chronology, causation, wrong turns, and turning points.",
+      "Project state must be reconciled rather than silently overwritten.",
+      "Individual sidecars are retained even after they are added to the cumulative catalog.",
+      "The public HTML document supports both full reading and a supervisor skim path.",
+      "Canonical URLs must be distinguished from temporary, historical, or unresolved URLs.",
+      "Generated catalogs and manifests must be validated against their source records.",
+      "Instruction sets should be loaded at the workflow stage where they are needed.",
+      "Missing project records or roadmaps must be acknowledged rather than invented."
+    ]
+  },
+  "workflowStates": [
+    {
+      "stateId": "WORK_SESSION",
+      "description": "Active building, testing, troubleshooting, discussion, and decision-making."
+    },
+    {
+      "stateId": "DOCUMENTATION_CHECKPOINT",
+      "description": "Active work has paused and a defined body of work is ready to be preserved."
+    },
+    {
+      "stateId": "PROJECT_CONTEXT_ESTABLISHED",
+      "description": "The primary project, related projects, and available project state have been identified."
+    },
+    {
+      "stateId": "SUMMARY_IN_PROGRESS",
+      "description": "summary.md is being reconstructed and refined."
+    },
+    {
+      "stateId": "SUMMARY_APPROVED",
+      "description": "The authoritative work summary has passed human and model review."
+    },
+    {
+      "stateId": "PROJECT_STATE_RECONCILED",
+      "description": "The project delta and revised roadmap have been determined."
+    },
+    {
+      "stateId": "DOCUMENT_ARTIFACTS_GENERATED",
+      "description": "The work-update HTML and individual sidecar have been created."
+    },
+    {
+      "stateId": "DOCUMENT_ARTIFACTS_VALIDATED",
+      "description": "The summary, HTML, sidecar, anchors, and structured records have passed validation."
+    },
+    {
+      "stateId": "CATALOGS_UPDATED",
+      "description": "The individual sidecar has been aggregated and catalog metadata regenerated."
+    },
+    {
+      "stateId": "VISUAL_ARTIFACT_INDEXED",
+      "description": "The work-update image has been generated, saved, and added to the image manifest."
+    },
+    {
+      "stateId": "DOCUMENTATION_PUBLISHED",
+      "description": "Artifacts have been committed, pushed, and made available through canonical URLs."
+    },
+    {
+      "stateId": "DOCUMENTATION_RUN_COMPLETE",
+      "description": "Publication, indexing, communication, and final verification are complete."
+    }
+  ],
+  "globalInputTypes": [
+    "current conversation",
+    "source files",
+    "screenshots",
+    "test results",
+    "logs and console output",
+    "deployment information",
+    "primary project records",
+    "related project records",
+    "project roadmap",
+    "recent summaries and sidecars",
+    "instruction sets",
+    "publication records"
+  ],
+  "globalOutputTypes": [
+    "approved summary.md",
+    "project delta",
+    "updated project state",
+    "updated roadmap",
+    "work-update HTML",
+    "individual document sidecar",
+    "cumulative catalog",
+    "catalog metadata",
+    "work-update image",
+    "image manifest entry",
+    "canonical publication URLs",
+    "documentation index entry",
+    "supervisor email",
+    "documentation run record"
+  ],
+  "instructionSets": [
+    {
+      "instructionSetId": "documentation-checkpoint",
+      "suggestedFileName": "documentation-checkpoint.json",
+      "loadedAtStep": 3,
+      "purpose": "Switch from performing work to preserving and interpreting it."
+    },
+    {
+      "instructionSetId": "summary-md-template",
+      "suggestedFileName": "summary-md-template.json",
+      "loadedAtStep": 6,
+      "purpose": "Guide creation of the project-aware narrative source summary."
+    },
+    {
+      "instructionSetId": "update-project-state",
+      "suggestedFileName": "update-project-state.json",
+      "loadedAtStep": 9,
+      "purpose": "Reconcile the approved summary against the prior project state and roadmap."
+    },
+    {
+      "instructionSetId": "create-work-update-html",
+      "suggestedFileName": "create-work-update-html.json",
+      "loadedAtStep": 11,
+      "purpose": "Generate the public HTML document and supervisor reading path."
+    },
+    {
+      "instructionSetId": "create-document-sidecar",
+      "suggestedFileName": "create-document-sidecar.json",
+      "loadedAtStep": 12,
+      "purpose": "Describe the finished HTML document in structured form."
+    },
+    {
+      "instructionSetId": "create-work-update-image",
+      "suggestedFileName": "create-work-update-image.json",
+      "loadedAtStep": 16,
+      "purpose": "Generate the visual artifact from approved publication material."
+    },
+    {
+      "instructionSetId": "publish-documentation",
+      "suggestedFileName": "publish-documentation.json",
+      "loadedAtStep": 18,
+      "purpose": "Publish artifacts, record canonical URLs, and rebuild the documentation index."
+    },
+    {
+      "instructionSetId": "complete-documentation-run",
+      "suggestedFileName": "complete-documentation-run.json",
+      "loadedAtStep": 20,
+      "purpose": "Send the update, verify all outputs, and close the documentation cycle."
+    }
+  ],
+  "phases": [
+    {
+      "phaseId": "phase-1",
+      "title": "Perform and Close the Work Session",
+      "stepRange": [
+        1,
+        3
+      ]
+    },
+    {
+      "phaseId": "phase-2",
+      "title": "Establish Project Context",
+      "stepRange": [
+        4,
+        6
+      ]
+    },
+    {
+      "phaseId": "phase-3",
+      "title": "Create the Authoritative Work Summary",
+      "stepRange": [
+        7,
+        8
+      ]
+    },
+    {
+      "phaseId": "phase-4",
+      "title": "Reconcile the Project State",
+      "stepRange": [
+        9,
+        10
+      ]
+    },
+    {
+      "phaseId": "phase-5",
+      "title": "Generate the Document Artifacts",
+      "stepRange": [
+        11,
+        13
+      ]
+    },
+    {
+      "phaseId": "phase-6",
+      "title": "Update the Document Indexes",
+      "stepRange": [
+        14,
+        15
+      ]
+    },
+    {
+      "phaseId": "phase-7",
+      "title": "Create and Index the Visual Artifact",
+      "stepRange": [
+        16,
+        17
+      ]
+    },
+    {
+      "phaseId": "phase-8",
+      "title": "Publish the Documentation",
+      "stepRange": [
+        18,
+        19
+      ]
+    },
+    {
+      "phaseId": "phase-9",
+      "title": "Communicate and Close the Run",
+      "stepRange": [
+        20,
+        20
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "stepId": "perform-work",
+      "phaseId": "phase-1",
+      "title": "Perform the work",
+      "stateBefore": "WORK_SESSION",
+      "stateAfter": "WORK_SESSION",
+      "purpose": "Complete the actual building, testing, troubleshooting, discussion, and decision-making.",
+      "inputs": [
+        "current project context when available",
+        "current conversation",
+        "source files",
+        "applications and data",
+        "tests and observations"
+      ],
+      "actions": [
+        "build or modify the system",
+        "test behavior",
+        "investigate failures",
+        "make and record decisions in the conversation",
+        "collect screenshots, logs, outputs, and deployment evidence"
+      ],
+      "outputs": [
+        "completed or advanced work",
+        "conversation history",
+        "changed files",
+        "test results",
+        "decisions",
+        "errors and discoveries"
+      ],
+      "validation": [
+        "The work has reached a meaningful stopping point before documentation begins."
+      ],
+      "automationPotential": "low",
+      "humanReviewRequired": true,
+      "nextStep": 2
+    },
+    {
+      "stepNumber": 2,
+      "stepId": "declare-documentation-checkpoint",
+      "phaseId": "phase-1",
+      "title": "Declare a documentation checkpoint",
+      "stateBefore": "WORK_SESSION",
+      "stateAfter": "DOCUMENTATION_CHECKPOINT",
+      "purpose": "Define the body of work that is ready to be preserved.",
+      "inputs": [
+        "current conversation",
+        "current work state",
+        "recent test and deployment evidence"
+      ],
+      "actions": [
+        "stop active development temporarily",
+        "identify where the documented work begins and ends",
+        "classify the coverage as a session, milestone, phase, release, or complete build",
+        "identify unfinished work outside the documentation boundary"
+      ],
+      "outputs": [
+        "documentation boundary",
+        "coverage type",
+        "checkpoint declaration"
+      ],
+      "validation": [
+        "The body of work is bounded clearly enough to summarize.",
+        "Unfinished work is not falsely presented as completed."
+      ],
+      "automationPotential": "low",
+      "humanReviewRequired": true,
+      "nextStep": 3
+    },
+    {
+      "stepNumber": 3,
+      "stepId": "load-documentation-checkpoint-instructions",
+      "phaseId": "phase-1",
+      "title": "Load the documentation-checkpoint instruction set",
+      "stateBefore": "DOCUMENTATION_CHECKPOINT",
+      "stateAfter": "DOCUMENTATION_CHECKPOINT",
+      "purpose": "Load the procedural context for the documentation cycle.",
+      "inputs": [
+        "documentation-checkpoint.json",
+        "documentation boundary",
+        "workflow specification"
+      ],
+      "actions": [
+        "load the current workflow stage",
+        "identify required evidence and expected outputs",
+        "identify out-of-scope actions",
+        "identify the next instruction set"
+      ],
+      "outputs": [
+        "active documentation instructions",
+        "documentation run orientation"
+      ],
+      "validation": [
+        "The instruction set identifies the current stage, required inputs, outputs, and next stage."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 4
+    },
+    {
+      "stepNumber": 4,
+      "stepId": "identify-projects",
+      "phaseId": "phase-2",
+      "title": "Identify the primary and related projects",
+      "stateBefore": "DOCUMENTATION_CHECKPOINT",
+      "stateAfter": "DOCUMENTATION_CHECKPOINT",
+      "purpose": "Place the work into its durable project context.",
+      "inputs": [
+        "current conversation",
+        "available project records",
+        "recent summaries",
+        "sidecars and catalogs",
+        "affected apps, components, and shared data"
+      ],
+      "actions": [
+        "identify the primary project",
+        "identify the parent project or umbrella program",
+        "identify related projects",
+        "distinguish projects from apps, releases, components, and shared foundations",
+        "record confidence and evidence for each classification"
+      ],
+      "outputs": [
+        "primary project identification",
+        "parent project identification",
+        "related project list",
+        "shared foundation list",
+        "confidence notes"
+      ],
+      "validation": [
+        "A project is not inferred merely because it is mentioned.",
+        "Primary and related projects are distinguished.",
+        "Provisional classifications are labeled."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": 5
+    },
+    {
+      "stepNumber": 5,
+      "stepId": "load-project-context",
+      "phaseId": "phase-2",
+      "title": "Load the available project context",
+      "stateBefore": "DOCUMENTATION_CHECKPOINT",
+      "stateAfter": "PROJECT_CONTEXT_ESTABLISHED",
+      "purpose": "Establish the project's durable goal, previous state, roadmap, and recent history.",
+      "inputs": [
+        "PROJECT.md when available",
+        "ROADMAP.md when available",
+        "project.json when available",
+        "recent project updates",
+        "important decisions",
+        "related project summaries when relevant"
+      ],
+      "actions": [
+        "load the primary project record",
+        "load the project roadmap",
+        "load recent updates and decisions",
+        "load related project context only when materially relevant",
+        "reconstruct context cautiously when records do not yet exist"
+      ],
+      "outputs": [
+        "project goal",
+        "previous project state",
+        "previous roadmap",
+        "recent project history",
+        "provisional context notes when required"
+      ],
+      "validation": [
+        "Missing project records are acknowledged.",
+        "Missing roadmap items are not invented.",
+        "Related project context is loaded only when useful."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 6
+    },
+    {
+      "stepNumber": 6,
+      "stepId": "load-summary-template",
+      "phaseId": "phase-2",
+      "title": "Load summary-md-template.json",
+      "stateBefore": "PROJECT_CONTEXT_ESTABLISHED",
+      "stateAfter": "PROJECT_CONTEXT_ESTABLISHED",
+      "purpose": "Load the reasoning and writing instructions for creating summary.md.",
+      "inputs": [
+        "summary-md-template.json",
+        "project context",
+        "documentation boundary",
+        "work evidence"
+      ],
+      "actions": [
+        "load required sections",
+        "load interpretation rules",
+        "load missing-context behavior",
+        "load downstream mappings",
+        "load quality checks"
+      ],
+      "outputs": [
+        "active summary-writing instructions"
+      ],
+      "validation": [
+        "The template is valid JSON.",
+        "The template identifies required context, ordered sections, and quality checks."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 7
+    },
+    {
+      "stepNumber": 7,
+      "stepId": "construct-summary",
+      "phaseId": "phase-3",
+      "title": "Construct and refine summary.md",
+      "stateBefore": "PROJECT_CONTEXT_ESTABLISHED",
+      "stateAfter": "SUMMARY_IN_PROGRESS",
+      "purpose": "Create the authoritative narrative source for the documented body of work.",
+      "inputs": [
+        "current conversation",
+        "project context",
+        "prior roadmap",
+        "source files",
+        "screenshots",
+        "tests and evidence",
+        "summary-md-template.json"
+      ],
+      "actions": [
+        "write project context",
+        "establish the situation before the work",
+        "preserve the narrative, method, chronology, and causation",
+        "record work performed",
+        "record decisions and wrong turns",
+        "record verification and evidence",
+        "describe resulting capabilities",
+        "draft project delta and revised roadmap",
+        "describe related-project effects",
+        "extract reusable knowledge",
+        "draft supervisor-facing material",
+        "draft publication material",
+        "record uncertainties"
+      ],
+      "outputs": [
+        "draft summary.md",
+        "draft project delta",
+        "draft supervisor view",
+        "draft publication material"
+      ],
+      "validation": [
+        "The summary preserves how the result was reached.",
+        "The summary distinguishes completed, partial, planned, and unverified work.",
+        "The summary contains enough information for downstream artifacts."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": 8
+    },
+    {
+      "stepNumber": 8,
+      "stepId": "approve-summary",
+      "phaseId": "phase-3",
+      "title": "Review and approve the summary",
+      "stateBefore": "SUMMARY_IN_PROGRESS",
+      "stateAfter": "SUMMARY_APPROVED",
+      "purpose": "Confirm that summary.md is accurate, complete, useful, and ready to become the source for downstream artifacts.",
+      "inputs": [
+        "draft summary.md",
+        "summary template quality checks",
+        "source evidence",
+        "user corrections and additions"
+      ],
+      "actions": [
+        "review factual accuracy",
+        "restore missing steps and turning points",
+        "remove unsupported claims",
+        "correct project placement",
+        "verify supervisor readability",
+        "confirm evidence and unresolved questions",
+        "approve the summary"
+      ],
+      "outputs": [
+        "approved summary.md"
+      ],
+      "validation": [
+        "All applicable summary quality checks pass.",
+        "The user approves the summary as the authoritative source."
+      ],
+      "automationPotential": "low",
+      "humanReviewRequired": true,
+      "nextStep": 9
+    },
+    {
+      "stepNumber": 9,
+      "stepId": "derive-project-delta",
+      "phaseId": "phase-4",
+      "title": "Derive the project delta",
+      "stateBefore": "SUMMARY_APPROVED",
+      "stateAfter": "SUMMARY_APPROVED",
+      "purpose": "Calculate how the documented work changed the project and roadmap.",
+      "inputs": [
+        "approved summary.md",
+        "previous project state",
+        "previous roadmap",
+        "update-project-state instruction set"
+      ],
+      "actions": [
+        "identify the previous state",
+        "classify prior items as completed, partial, still open, deferred, or superseded",
+        "identify newly discovered work",
+        "describe the resulting state",
+        "create the revised ordered next-step list"
+      ],
+      "outputs": [
+        "project delta",
+        "roadmap reconciliation",
+        "revised next steps"
+      ],
+      "validation": [
+        "Prior state is preserved.",
+        "No prior roadmap item disappears without classification.",
+        "Newly inferred work is labeled appropriately."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": 10
+    },
+    {
+      "stepNumber": 10,
+      "stepId": "update-project-records",
+      "phaseId": "phase-4",
+      "title": "Update the project records while preserving history",
+      "stateBefore": "SUMMARY_APPROVED",
+      "stateAfter": "PROJECT_STATE_RECONCILED",
+      "purpose": "Integrate the project delta into the durable project records.",
+      "inputs": [
+        "project delta",
+        "project.json when available",
+        "PROJECT.md when available",
+        "ROADMAP.md when available"
+      ],
+      "actions": [
+        "update current project state",
+        "revise the roadmap",
+        "preserve completed, deferred, and superseded history",
+        "link the summary and future work update",
+        "record unresolved questions"
+      ],
+      "outputs": [
+        "updated project.json when available",
+        "updated PROJECT.md when available",
+        "updated ROADMAP.md when available",
+        "project history linkage"
+      ],
+      "validation": [
+        "Earlier state is not silently overwritten.",
+        "The updated roadmap agrees with the approved summary.",
+        "Missing project-record infrastructure is recorded as pending."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": 11
+    },
+    {
+      "stepNumber": 11,
+      "stepId": "generate-work-update-html",
+      "phaseId": "phase-5",
+      "title": "Generate the work-update HTML document",
+      "stateBefore": "PROJECT_STATE_RECONCILED",
+      "stateAfter": "PROJECT_STATE_RECONCILED",
+      "purpose": "Create the public document from the approved summary.",
+      "inputs": [
+        "approved summary.md",
+        "create-work-update-html instruction set",
+        "HTML template and stylesheet",
+        "supervisor view",
+        "publication material"
+      ],
+      "actions": [
+        "generate the complete narrative and technical document",
+        "add a gold Supervisor Brief near the beginning",
+        "add ordered supervisor-relevance callouts",
+        "add pointing-hand links to the next supervisor note",
+        "preserve the complete full-reading path",
+        "add stable anchors and accessible labels"
+      ],
+      "outputs": [
+        "work-update.html"
+      ],
+      "validation": [
+        "The HTML is valid and readable.",
+        "Supervisor callouts are visually and semantically distinct.",
+        "The full document remains available outside the skim path."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": true,
+      "nextStep": 12
+    },
+    {
+      "stepNumber": 12,
+      "stepId": "generate-document-sidecar",
+      "phaseId": "phase-5",
+      "title": "Generate and retain the individual document sidecar",
+      "stateBefore": "PROJECT_STATE_RECONCILED",
+      "stateAfter": "DOCUMENT_ARTIFACTS_GENERATED",
+      "purpose": "Create a structured description that allows rapid understanding of the finished HTML document.",
+      "inputs": [
+        "work-update.html",
+        "approved summary.md",
+        "document-sidecar-template-v2-draft.json",
+        "create-document-sidecar instruction set"
+      ],
+      "actions": [
+        "describe document identity and coverage",
+        "record project context represented in the document",
+        "record narrative structure and project contribution",
+        "summarize sections and anchors",
+        "record supervisor callouts and sequence",
+        "record technical content",
+        "record communications, graphics, publication, deployment, and provenance",
+        "save the sidecar individually"
+      ],
+      "outputs": [
+        "individual sidecar.json"
+      ],
+      "validation": [
+        "The sidecar is valid JSON.",
+        "The sidecar accurately describes the finished HTML.",
+        "The sidecar does not replace the project record or workflow run record."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": true,
+      "nextStep": 13
+    },
+    {
+      "stepNumber": 13,
+      "stepId": "validate-document-artifacts",
+      "phaseId": "phase-5",
+      "title": "Validate the summary, HTML, and sidecar",
+      "stateBefore": "DOCUMENT_ARTIFACTS_GENERATED",
+      "stateAfter": "DOCUMENT_ARTIFACTS_VALIDATED",
+      "purpose": "Catch structural, linkage, schema, and publication errors before indexing.",
+      "inputs": [
+        "approved summary.md",
+        "work-update.html",
+        "individual sidecar.json",
+        "validation rules"
+      ],
+      "actions": [
+        "check required summary sections",
+        "check HTML anchors and navigation",
+        "check supervisor callout order and next-note links",
+        "validate sidecar JSON and schema version",
+        "check document ID uniqueness",
+        "compare the sidecar with the HTML",
+        "check alt text and publication descriptions",
+        "check canonical URL handling"
+      ],
+      "outputs": [
+        "validation report",
+        "validated document artifacts"
+      ],
+      "validation": [
+        "All blocking validation errors are resolved.",
+        "Narrative and project interpretation have received human or model review."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": true,
+      "nextStep": 14
+    },
+    {
+      "stepNumber": 14,
+      "stepId": "append-sidecar-to-catalog",
+      "phaseId": "phase-6",
+      "title": "Append the individual sidecar to the cumulative catalog",
+      "stateBefore": "DOCUMENT_ARTIFACTS_VALIDATED",
+      "stateAfter": "DOCUMENT_ARTIFACTS_VALIDATED",
+      "purpose": "Add the new document record to the searchable aggregate.",
+      "inputs": [
+        "validated individual sidecar",
+        "current cumulative catalog"
+      ],
+      "actions": [
+        "append by documentId",
+        "deduplicate existing document IDs",
+        "preserve the individual sidecar",
+        "record the new catalog generation"
+      ],
+      "outputs": [
+        "updated work-update catalog"
+      ],
+      "validation": [
+        "The sidecar appears exactly once.",
+        "No unrelated record is altered.",
+        "The individual sidecar remains available."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 15
+    },
+    {
+      "stepNumber": 15,
+      "stepId": "regenerate-catalog-metadata",
+      "phaseId": "phase-6",
+      "title": "Regenerate catalog metadata and validate the catalog",
+      "stateBefore": "DOCUMENT_ARTIFACTS_VALIDATED",
+      "stateAfter": "CATALOGS_UPDATED",
+      "purpose": "Recalculate catalog summaries and verify aggregate consistency.",
+      "inputs": [
+        "updated work-update catalog",
+        "catalog metadata template or generator"
+      ],
+      "actions": [
+        "recalculate entry count",
+        "recalculate date range",
+        "recalculate projects, document types, applications, topics, and versions",
+        "rebuild document ID and title lists",
+        "set the generation timestamp",
+        "validate metadata against the catalog"
+      ],
+      "outputs": [
+        "updated catalog metadata",
+        "catalog validation report"
+      ],
+      "validation": [
+        "Entry counts agree.",
+        "Every expected sidecar appears exactly once.",
+        "Metadata and catalog fields are internally consistent."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 16
+    },
+    {
+      "stepNumber": 16,
+      "stepId": "generate-work-update-image",
+      "phaseId": "phase-7",
+      "title": "Generate the work-update image",
+      "stateBefore": "CATALOGS_UPDATED",
+      "stateAfter": "CATALOGS_UPDATED",
+      "purpose": "Create a visual artifact representing the significance of the documented work.",
+      "inputs": [
+        "approved summary.md",
+        "publication material",
+        "create-work-update-image instruction set",
+        "reference images when applicable",
+        "visual identity guidance"
+      ],
+      "actions": [
+        "identify the central achievement",
+        "select relevant applications or interfaces",
+        "preserve visual continuity where appropriate",
+        "set headline and date",
+        "set dimensions or aspect ratio",
+        "create alt text",
+        "generate the image"
+      ],
+      "outputs": [
+        "work-update image",
+        "image alt text",
+        "image metadata"
+      ],
+      "validation": [
+        "The image represents the documented significance rather than an incidental screenshot.",
+        "The image has appropriate alt text.",
+        "The image follows the intended publication format."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": 17
+    },
+    {
+      "stepNumber": 17,
+      "stepId": "save-and-index-image",
+      "phaseId": "phase-7",
+      "title": "Save and index the image",
+      "stateBefore": "CATALOGS_UPDATED",
+      "stateAfter": "VISUAL_ARTIFACT_INDEXED",
+      "purpose": "Store the image and update the image repository manifest.",
+      "inputs": [
+        "work-update image",
+        "image metadata",
+        "image repository",
+        "build_images_json.py"
+      ],
+      "actions": [
+        "save the image in the repository",
+        "run build_images_json.py",
+        "rebuild the image manifest",
+        "verify the image entry",
+        "record the document and project relationship"
+      ],
+      "outputs": [
+        "saved image",
+        "updated image manifest",
+        "image manifest validation result"
+      ],
+      "validation": [
+        "The image file exists at the expected path.",
+        "The manifest contains the image exactly once.",
+        "The manifest includes description, alt text, and document relationship."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": false,
+      "nextStep": 18
+    },
+    {
+      "stepNumber": 18,
+      "stepId": "commit-push-and-record-urls",
+      "phaseId": "phase-8",
+      "title": "Commit, push, and record canonical URLs",
+      "stateBefore": "VISUAL_ARTIFACT_INDEXED",
+      "stateAfter": "DOCUMENTATION_PUBLISHED",
+      "purpose": "Publish the coordinated artifacts and establish their canonical resource locations.",
+      "inputs": [
+        "summary.md",
+        "work-update.html",
+        "individual sidecar",
+        "catalog and metadata",
+        "work-update image",
+        "image manifest",
+        "project updates when available",
+        "publish-documentation instruction set"
+      ],
+      "actions": [
+        "commit repository changes",
+        "push changes",
+        "verify publication",
+        "record the GitHub Pages document URL",
+        "record the image URL",
+        "record repository paths",
+        "record canonical Apps Script /exec URLs",
+        "record replaced or historical URLs",
+        "update the sidecar and catalogs when post-publication URLs become available"
+      ],
+      "outputs": [
+        "published artifacts",
+        "canonical URLs",
+        "publication verification"
+      ],
+      "validation": [
+        "Public resources are accessible where expected.",
+        "Temporary runtime URLs are not recorded as canonical.",
+        "Post-publication sidecar changes are reflected in regenerated catalogs."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": true,
+      "nextStep": 19
+    },
+    {
+      "stepNumber": 19,
+      "stepId": "regenerate-documentation-index",
+      "phaseId": "phase-8",
+      "title": "Regenerate and publish the canonical documentation index",
+      "stateBefore": "DOCUMENTATION_PUBLISHED",
+      "stateAfter": "DOCUMENTATION_PUBLISHED",
+      "purpose": "Update the scriptable public index from the structured catalog.",
+      "inputs": [
+        "validated catalog",
+        "catalog metadata",
+        "canonical document and image URLs",
+        "index generator",
+        "hosting configuration"
+      ],
+      "actions": [
+        "regenerate the documentation index",
+        "publish the updated index",
+        "verify the new work update appears",
+        "retain Google Sites as a portal or curated presentation surface when useful",
+        "update Google Sites manually only for selected or structural changes"
+      ],
+      "outputs": [
+        "updated canonical documentation index",
+        "verified index entry"
+      ],
+      "validation": [
+        "The new update appears in the canonical index.",
+        "Project, date, topic, and link information resolve correctly.",
+        "The hosting choice is recorded."
+      ],
+      "automationPotential": "high",
+      "humanReviewRequired": true,
+      "nextStep": 20
+    },
+    {
+      "stepNumber": 20,
+      "stepId": "communicate-and-close-run",
+      "phaseId": "phase-9",
+      "title": "Send the update and complete the documentation run",
+      "stateBefore": "DOCUMENTATION_PUBLISHED",
+      "stateAfter": "DOCUMENTATION_RUN_COMPLETE",
+      "purpose": "Communicate the update, verify all required outputs, and formally close the documentation cycle.",
+      "inputs": [
+        "approved supervisor email",
+        "canonical work-update URL",
+        "Email Composer",
+        "complete-documentation-run instruction set",
+        "validation reports",
+        "publication records"
+      ],
+      "actions": [
+        "load the approved email subject and body",
+        "review and edit if needed",
+        "send the update to intended recipients",
+        "verify all required artifacts exist",
+        "verify catalogs and manifests are current",
+        "verify canonical URLs are recorded",
+        "verify the public document and index are accessible",
+        "record unresolved publication issues",
+        "mark the documentation run complete"
+      ],
+      "outputs": [
+        "sent supervisor communication",
+        "completed documentation run record",
+        "final verification result",
+        "recorded unresolved issues"
+      ],
+      "validation": [
+        "All required artifacts exist or missing artifacts are explicitly recorded.",
+        "The communication has been sent or intentionally deferred.",
+        "The documentation run has a clear final status."
+      ],
+      "automationPotential": "medium",
+      "humanReviewRequired": true,
+      "nextStep": null
+    }
+  ],
+  "validationSummary": {
+    "blockingConditions": [
+      "summary.md has not been approved",
+      "work-update HTML is missing or structurally invalid",
+      "sidecar JSON is invalid",
+      "documentId is missing or duplicated",
+      "supervisor navigation contains broken anchors",
+      "catalog and metadata counts disagree",
+      "image manifest references a missing image",
+      "a temporary Apps Script URL is presented as canonical",
+      "publication claims cannot be verified"
+    ],
+    "nonBlockingConditions": [
+      "project-record infrastructure does not yet exist",
+      "a related project record is unavailable",
+      "a canonical URL is not yet available before publication",
+      "Google Sites has not been manually updated",
+      "a knowledge-base candidate has not yet been promoted"
+    ]
+  },
+  "openDesignDecisions": [
+    {
+      "decisionId": "project-record-storage",
+      "question": "Where will project.json, PROJECT.md, ROADMAP.md, and project history be stored?",
+      "status": "open"
+    },
+    {
+      "decisionId": "canonical-index-host",
+      "question": "Where will the generated canonical documentation index be hosted?",
+      "status": "open",
+      "currentCandidates": [
+        "GitHub Pages",
+        "another generated static host",
+        "Apps Script if private or Workspace-integrated behavior becomes necessary"
+      ]
+    },
+    {
+      "decisionId": "workflow-run-record",
+      "question": "What schema and storage location will be used for each per-update documentation run record?",
+      "status": "open"
+    },
+    {
+      "decisionId": "formal-json-schemas",
+      "question": "When will formal JSON Schemas be created for summaries, sidecars, project records, catalogs, and workflow runs?",
+      "status": "planned"
+    },
+    {
+      "decisionId": "validator-implementation",
+      "question": "Which checks will be implemented first in validate_documentation.py?",
+      "status": "planned"
+    }
+  ]
+}

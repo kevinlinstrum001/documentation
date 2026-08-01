@@ -1,0 +1,158 @@
+LOCAL JSON EXPLORER DIAGNOSTIC REPORT v1.1.0
+Generated: 2026-08-01 10:55:00 -06:00
+Diagnostic folder: C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog
+Computer: LAPTOP-7C3EIMLS
+User: kevin
+PowerShell: 5.1.26100.8875
+
+==============================================================================
+1. VIEWER FILES IN THIS FOLDER
+==============================================================================
+
+FullName: C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py
+Length: 33243
+LastWriteTime: 2026-08-01 10:49:38
+SHA256: A92C7055F4B0AF9F26CD3A4FCCA19224B46587B3459A9448EBF985785B50DC77
+APP_VERSION marker: 1.1.0
+BUILD_ID marker: 2026-08-01-scroll-fix
+New grid row rule present: True
+Viewport app rule present: True
+Overscroll rule present: True
+About endpoint present: True
+
+==============================================================================
+2. RELEVANT CSS BLOCKS
+==============================================================================
+
+FILE: C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py
+
+Selector search: \.app
+--- Match 1 ---
+.app {
+      display: grid;
+      grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+      width: 100vw;
+      height: 100vh;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+--- Match 2 ---
+.app {
+        grid-template-columns: 1fr;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+Selector search: \.main
+--- Match 1 ---
+.main {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      min-width: 0;
+      min-height: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+Selector search: \.content
+--- Match 1 ---
+.content {
+      min-width: 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      overscroll-behavior: contain;
+      padding: 1rem;
+      scrollbar-gutter: stable both-edges;
+      -webkit-overflow-scrolling: touch;
+    }
+
+Selector search: html, body
+--- Match 1 ---
+html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+Selector search: body
+--- Match 1 ---
+body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+--- Match 2 ---
+body {
+      margin: 0;
+      min-width: 0;
+      min-height: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow: hidden;
+    }
+
+==============================================================================
+3. PYTHON SYNTAX CHECK
+==============================================================================
+
+Checking: C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py
+py_compile exit code: 0
+
+==============================================================================
+4. RUNNING JSON VIEWER PROCESSES
+==============================================================================
+
+ProcessId: 14712
+Name: py.exe
+ExecutablePath: C:\WINDOWS\py.exe
+CommandLine: py  -3 "C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py"
+CreationDate: 08/01/2026 10:54:36
+Listening ports: none found for this process.
+
+ProcessId: 9200
+Name: python.exe
+ExecutablePath: C:\Python314\python.exe
+CommandLine: C:\Python314\python.exe "C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py"
+CreationDate: 08/01/2026 10:54:36
+Listening: 127.0.0.1:60455
+Testing URL: http://127.0.0.1:60455/
+HTTP status: 200
+Served HTML length: 25545
+Served v1.1.0 text: True
+Served new grid row rule: True
+Served main uses grid: True
+Served content overflow auto: True
+About endpoint:
+
+
+app        : Local JSON Explorer
+version    : 1.1.0
+buildId    : 2026-08-01-scroll-fix
+scriptPath : C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-v1.1.0.py
+folder     : C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog
+processId  : 9200
+port       : 60455
+
+
+
+
+
+==============================================================================
+5. LAUNCHER FILES IN THIS FOLDER
+==============================================================================
+C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\open-json-viewer-v1.1.0.bat | 428 bytes | 2026-08-01 10:49:42
+
+==============================================================================
+6. SUMMARY
+==============================================================================
+Viewer file count: 1
+Running viewer process count: 2
+Launcher count: 1
+
+Upload this report to ChatGPT:
+C:\Users\kevin\Documents\VSCode\Projects\web\documentation\documents\work-update-catalog\json-viewer-diagnostics-v1.1.0.txt

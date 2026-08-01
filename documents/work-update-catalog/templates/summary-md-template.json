@@ -1,0 +1,845 @@
+{
+  "schemaVersion": "1.0-draft",
+  "template": {
+    "templateId": "summary-md-template",
+    "title": "Project-Aware Work Summary Template",
+    "purpose": "Guide the creation of a durable Markdown source document that preserves the project context, narrative of the work, technical evidence, project-state change, audience-specific views, and publication material for one documented body of work.",
+    "documentRole": "The generated summary.md is the authoritative narrative source for the work update. The public HTML document, sidecar JSON, project delta, supervisor email, image brief, listing description, and other publication artifacts are derived from it.",
+    "notIntendedToBe": [
+      "a transcript of the conversation",
+      "a replacement for the complete project record",
+      "a replacement for the documentation workflow specification",
+      "a publication-ready HTML document",
+      "a complete copy of the sidecar schema"
+    ]
+  },
+  "output": {
+    "format": "Markdown",
+    "fileNamePattern": "summary-{date}-{slug}.md",
+    "includeYamlFrontMatter": true,
+    "frontMatter": {
+      "summary_id": "",
+      "primary_project_id": "",
+      "document_type": "work-summary",
+      "status": "draft",
+      "created": "",
+      "updated": "",
+      "source_conversation_reference": "",
+      "documentation_run_id": ""
+    },
+    "writingStyle": {
+      "voice": "clear, factual, reflective, and project-aware",
+      "preserveChronology": true,
+      "preserveCausation": true,
+      "distinguishFactFromInference": true,
+      "avoidFalseInevitability": true,
+      "avoidUnnecessaryTechnicalDetailInAudienceSections": true,
+      "retainTechnicalSpecificityWhereItSupportsReconstruction": true
+    }
+  },
+  "requiredContext": {
+    "currentConversation": {
+      "required": true,
+      "purpose": "Recover the actual work, reasoning, decisions, errors, tests, and outcomes."
+    },
+    "primaryProjectRecord": {
+      "required": "when available",
+      "purpose": "Establish the durable project goal, scope, parent relationship, and current state."
+    },
+    "primaryProjectRoadmap": {
+      "required": "when available",
+      "purpose": "Reconcile completed work against prior open work and revise the still-to-do list."
+    },
+    "recentProjectUpdates": {
+      "required": "when available",
+      "purpose": "Preserve continuity and identify previous state, unresolved work, and direction changes."
+    },
+    "relatedProjectRecords": {
+      "required": "when materially affected",
+      "purpose": "Explain cross-project effects, dependencies, and shared foundations."
+    },
+    "workFiles": {
+      "required": "when relevant",
+      "purpose": "Confirm filenames, components, data structures, scripts, and artifacts."
+    },
+    "screenshotsAndImages": {
+      "required": "when relevant",
+      "purpose": "Support interface, visual, and publication claims."
+    },
+    "testsAndVerificationResults": {
+      "required": "when available",
+      "purpose": "Separate implemented and verified work from planned or discussed work."
+    },
+    "deploymentAndPublicationInformation": {
+      "required": "when available",
+      "purpose": "Record canonical URLs, deployment status, and publication readiness."
+    }
+  },
+  "missingContextBehavior": {
+    "projectRecordUnavailable": "Infer the probable project context cautiously from the available work evidence. Label the conclusion as provisional and do not invent a stable project ID.",
+    "roadmapUnavailable": "State that no prior roadmap was available. Do not invent earlier outstanding work.",
+    "relatedProjectRecordUnavailable": "Describe the observed relationship without presenting the related project's broader state or goals as known.",
+    "verificationUnavailable": "Distinguish work described or implemented from work actually tested or observed.",
+    "canonicalUrlUnavailable": "Record the URL as still needed rather than guessing or copying a temporary runtime URL."
+  },
+  "interpretationRules": {
+    "confidenceLabels": [
+      "explicit",
+      "observed",
+      "strong-inference",
+      "tentative-inference",
+      "unknown"
+    ],
+    "doNotPresentInferenceAsFact": true,
+    "preserveContradictions": true,
+    "doNotInventMissingRoadmapItems": true,
+    "doNotTreatMentionAsProjectMembership": true,
+    "distinguishPrimaryProjectFromRelatedProjects": true,
+    "distinguishProjectFromApplicationReleaseComponentAndSharedFoundation": true,
+    "distinguishCompletedFromPartiallyCompletedPlannedAndDiscussed": true,
+    "distinguishCurrentCanonicalUrlsFromHistoricalOrTemporaryUrls": true,
+    "preserveUnsuccessfulApproachesWhenTheyExplainTheFinalMethod": true,
+    "promoteReusableLessonsOnlyWhenSupportedByTheWork": true
+  },
+  "sectionOrder": [
+    "document-identity",
+    "executive-summary",
+    "project-context",
+    "situation-before-the-work",
+    "narrative-of-the-work",
+    "work-performed",
+    "decisions-and-design-reasoning",
+    "problems-wrong-turns-and-resolutions",
+    "verification-and-evidence",
+    "resulting-capabilities-and-current-state",
+    "project-delta-and-roadmap-reconciliation",
+    "related-projects-and-shared-systems",
+    "knowledge-produced",
+    "supervisor-view",
+    "publication-material",
+    "files-resources-and-references",
+    "uncertainties-and-unresolved-questions"
+  ],
+  "sections": [
+    {
+      "sectionId": "document-identity",
+      "heading": "Document Identity",
+      "required": true,
+      "purpose": "Identify the body of work and provide stable processing information.",
+      "questionsToAnswer": [
+        "What is this summary called?",
+        "What date or work period does it cover?",
+        "What is the primary project, if known?",
+        "What documentation run or source conversation does it belong to?"
+      ],
+      "outputGuidance": {
+        "format": "short metadata block or compact introductory lines",
+        "avoid": [
+          "long narrative",
+          "duplicate title information already present in YAML front matter"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.document",
+        "sidecar.metadata",
+        "catalog identity",
+        "file naming"
+      ]
+    },
+    {
+      "sectionId": "executive-summary",
+      "heading": "Executive Summary",
+      "required": true,
+      "purpose": "Provide a concise account of what the work was, why it mattered, and what changed.",
+      "questionsToAnswer": [
+        "What body of work was completed or advanced?",
+        "What problem or goal prompted it?",
+        "What was the principal result?",
+        "What remains unfinished or uncertain?"
+      ],
+      "outputGuidance": {
+        "format": "two to five coherent paragraphs",
+        "audience": "general reader",
+        "avoid": [
+          "implementation minutiae",
+          "unsupported claims of completion",
+          "mere chronology without significance"
+        ]
+      },
+      "downstreamUses": [
+        "work-update introduction",
+        "sidecar.subject.description",
+        "general audience summary",
+        "catalog preview"
+      ]
+    },
+    {
+      "sectionId": "project-context",
+      "heading": "Project Context",
+      "required": true,
+      "purpose": "Explain the durable undertaking that gives the work its meaning.",
+      "questionsToAnswer": [
+        "What is the primary project?",
+        "What parent project or umbrella program contains it?",
+        "What is the project's durable goal?",
+        "What phase or condition was the project in before this work?",
+        "Which applications, releases, components, or shared foundations are involved?",
+        "What prior work or roadmap established the starting context?",
+        "How confident is the project identification?"
+      ],
+      "outputGuidance": {
+        "format": "structured subsections followed by concise explanation",
+        "requiredSubsections": [
+          "Primary Project",
+          "Parent Project or Program",
+          "Project Goal",
+          "Project Phase",
+          "Relevant Applications and Components",
+          "Previous Project State",
+          "Previous Outstanding Work"
+        ],
+        "allowProvisionalLanguage": true
+      },
+      "downstreamUses": [
+        "sidecar.projectContext",
+        "project-record references",
+        "project index",
+        "context recreation"
+      ]
+    },
+    {
+      "sectionId": "situation-before-the-work",
+      "heading": "Situation Before the Work",
+      "required": true,
+      "purpose": "Establish the problem, condition, limitation, or opportunity that existed before the work began.",
+      "questionsToAnswer": [
+        "What was true before this body of work?",
+        "What problem or limitation presented itself?",
+        "What evidence showed that work was needed?",
+        "What assumptions or expectations existed at the start?"
+      ],
+      "outputGuidance": {
+        "format": "plain-language explanatory prose",
+        "avoid": [
+          "retelling the final solution prematurely",
+          "describing the initial state using knowledge learned only afterward without noting the hindsight"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.narrative.promptingSituation",
+        "sidecar.projectDelta.previousState",
+        "work-update problem statement"
+      ]
+    },
+    {
+      "sectionId": "narrative-of-the-work",
+      "heading": "Narrative of the Work",
+      "required": true,
+      "purpose": "Preserve how the problem, investigation, construction, decisions, and final approach actually developed, including the method by which the result was reached.",
+      "questionsToAnswer": [
+        "What situation prompted the work?",
+        "How was the problem initially understood?",
+        "What outcome was intended?",
+        "What approach was chosen and why?",
+        "What happened as the work progressed?",
+        "What evidence changed the understanding of the problem?",
+        "What failed, proved misleading, or required revision?",
+        "What turning points altered the direction?",
+        "How did the final approach emerge?",
+        "What method or reusable rule was established?",
+        "What did the work teach us?"
+      ],
+      "outputGuidance": {
+        "format": "coherent chronological and causal narrative",
+        "preserveChronology": true,
+        "preserveCausation": true,
+        "includeWrongTurnsWhenRelevant": true,
+        "avoid": [
+          "mere task lists",
+          "false appearance that the solution was inevitable",
+          "removing uncertainty that materially shaped the work"
+        ]
+      },
+      "downstreamUses": [
+        "work-update narrative",
+        "sidecar.narrative",
+        "decision history",
+        "method documentation",
+        "knowledge extraction"
+      ]
+    },
+    {
+      "sectionId": "work-performed",
+      "heading": "Work Performed",
+      "required": true,
+      "purpose": "Provide a precise accounting of the actions, artifacts, files, features, and changes involved.",
+      "questionsToAnswer": [
+        "What was created, changed, removed, tested, deployed, or documented?",
+        "Which files, services, data stores, interfaces, or records were affected?",
+        "Which work items were completed versus merely discussed?",
+        "What concrete artifacts now exist?"
+      ],
+      "outputGuidance": {
+        "format": "organized subsections and lists where useful",
+        "separateFromNarrative": true,
+        "filenameSpecificity": "include exact filenames when known and materially useful",
+        "avoid": [
+          "claiming implementation when only planning occurred",
+          "duplicating the entire narrative"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.sections",
+        "sidecar.technical",
+        "project accomplishments",
+        "technical reference"
+      ]
+    },
+    {
+      "sectionId": "decisions-and-design-reasoning",
+      "heading": "Decisions and Design Reasoning",
+      "required": "when decisions materially shaped the work",
+      "purpose": "Preserve important choices, alternatives, reasons, and consequences.",
+      "questionsToAnswer": [
+        "What important decisions were made?",
+        "Why was each decision made?",
+        "What alternatives were considered?",
+        "What tradeoffs or consequences followed?",
+        "Did any decision change the project's direction or architecture?"
+      ],
+      "outputGuidance": {
+        "format": "decision-by-decision subsections",
+        "preserveAlternatives": true,
+        "avoid": [
+          "inventing alternatives that were not discussed",
+          "presenting later outcomes as the original reason"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.narrative.keyDecisions",
+        "project decisions record",
+        "architecture history"
+      ]
+    },
+    {
+      "sectionId": "problems-wrong-turns-and-resolutions",
+      "heading": "Problems, Wrong Turns, and Resolutions",
+      "required": "when relevant",
+      "purpose": "Record failures, misleading symptoms, rejected approaches, and how they were resolved.",
+      "questionsToAnswer": [
+        "What problems were encountered?",
+        "What effect did they have?",
+        "Which attempted approaches did not work?",
+        "Why were those approaches reasonable at the time?",
+        "What evidence showed they were wrong or insufficient?",
+        "How was each problem resolved or left unresolved?",
+        "What was learned from the failure?"
+      ],
+      "outputGuidance": {
+        "format": "problem-resolution entries or short narrative subsections",
+        "doNotHideFailure": true,
+        "avoid": [
+          "blaming language",
+          "excessive low-value detail that does not aid future reconstruction"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.narrative.problemsEncountered",
+        "sidecar.narrative.unsuccessfulApproaches",
+        "knowledge-base candidates",
+        "future troubleshooting"
+      ]
+    },
+    {
+      "sectionId": "verification-and-evidence",
+      "heading": "Verification and Evidence",
+      "required": true,
+      "purpose": "State what supports the account and distinguish verified results from assumptions or plans.",
+      "questionsToAnswer": [
+        "What tests were performed?",
+        "What results were observed?",
+        "What screenshots, files, logs, outputs, or records support the claims?",
+        "What deployments or interfaces were verified?",
+        "Which claims remain unverified?",
+        "Were any regressions or failure cases checked?"
+      ],
+      "outputGuidance": {
+        "format": "clear evidence grouped by type",
+        "requiredLabels": [
+          "Verified",
+          "Observed",
+          "Not Yet Verified"
+        ],
+        "avoid": [
+          "using 'working' without describing the evidence",
+          "implying successful testing from code inspection alone"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.technical.tests",
+        "sidecar.technical.validation",
+        "publication confidence",
+        "future audit"
+      ]
+    },
+    {
+      "sectionId": "resulting-capabilities-and-current-state",
+      "heading": "Resulting Capabilities and Current State",
+      "required": true,
+      "purpose": "Describe what is now possible and the exact condition of the work after the documented session.",
+      "questionsToAnswer": [
+        "What capabilities now exist?",
+        "What is the current operational or development status?",
+        "What is stable, experimental, beta, incomplete, or unavailable?",
+        "What practical difference does the result make?",
+        "What limitations remain?"
+      ],
+      "outputGuidance": {
+        "format": "plain-language state description with technical detail where needed",
+        "avoid": [
+          "confusing completed code with a completed project",
+          "omitting beta or experimental status"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.projectDelta.resultingState",
+        "supervisor current status",
+        "work-update conclusion",
+        "project current state"
+      ]
+    },
+    {
+      "sectionId": "project-delta-and-roadmap-reconciliation",
+      "heading": "Project Delta and Roadmap Reconciliation",
+      "required": true,
+      "purpose": "Explain exactly how the project state and roadmap changed because of this work.",
+      "questionsToAnswer": [
+        "What was the previous project state?",
+        "Which prior roadmap items were completed?",
+        "Which were partially completed?",
+        "Which remain open?",
+        "Which were deferred?",
+        "Which were superseded or made unnecessary?",
+        "What new work was discovered?",
+        "What is the resulting project state?",
+        "What is the revised ordered still-to-do list?"
+      ],
+      "outputGuidance": {
+        "format": "explicit status categories followed by a revised roadmap",
+        "requiredSubsections": [
+          "Previous State",
+          "Completed Prior Work",
+          "Partially Completed Work",
+          "Still Open",
+          "Newly Discovered Work",
+          "Deferred Work",
+          "Superseded Work",
+          "Resulting State",
+          "Revised Next Steps"
+        ],
+        "omitEmptySubsections": true,
+        "preserveOldState": true
+      },
+      "downstreamUses": [
+        "sidecar.projectDelta",
+        "project roadmap update",
+        "project history",
+        "next-session context"
+      ]
+    },
+    {
+      "sectionId": "related-projects-and-shared-systems",
+      "heading": "Related Projects and Shared Systems",
+      "required": "when the work materially touches another project, component, or foundation",
+      "purpose": "Explain cross-project effects rather than merely listing affected apps.",
+      "questionsToAnswer": [
+        "What other projects were affected?",
+        "How was each related project affected?",
+        "Was the relationship functional, technical, informational, visual, operational, or infrastructural?",
+        "What shared data, services, directories, or foundations were used?",
+        "Did the work create or change a dependency?",
+        "Did another project receive a new capability, obligation, or risk?"
+      ],
+      "outputGuidance": {
+        "format": "one subsection per related project or shared foundation",
+        "distinguishMentionFromImpact": true,
+        "avoid": [
+          "treating all affected applications as equal project memberships",
+          "asserting the state of a related project without evidence"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.projectContext.relatedProjects",
+        "sidecar.projectContext.sharedFoundations",
+        "dependency views",
+        "project overview"
+      ]
+    },
+    {
+      "sectionId": "knowledge-produced",
+      "heading": "Knowledge Produced",
+      "required": "when the work produced reusable knowledge",
+      "purpose": "Identify lessons, recurring problems, rules, and possible knowledge-base additions.",
+      "questionsToAnswer": [
+        "What project-specific lessons were learned?",
+        "What lessons apply across projects?",
+        "Was a recurring problem recognized?",
+        "Was an existing rule confirmed, revised, or contradicted?",
+        "Should any lesson become a permanent knowledge-base article or development rule?",
+        "What evidence supports promoting the lesson?"
+      ],
+      "outputGuidance": {
+        "format": "categorized lessons with concise explanations",
+        "requiredSubsections": [
+          "Project-Specific Lessons",
+          "General Lessons",
+          "Recurring Problems",
+          "Knowledge-Base Candidates",
+          "Rules Confirmed or Revised"
+        ],
+        "omitEmptySubsections": true,
+        "avoid": [
+          "turning one incident into a general rule without support"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.knowledgeProduced",
+        "knowledge-base backlog",
+        "development rules",
+        "future troubleshooting"
+      ]
+    },
+    {
+      "sectionId": "supervisor-view",
+      "heading": "Supervisor View",
+      "required": "for published work updates intended for supervisor review",
+      "purpose": "Create the plain-language material for the supervisor reading path, callouts, and email.",
+      "questionsToAnswer": [
+        "What changed in plain language?",
+        "Why does it matter operationally?",
+        "What is the current status?",
+        "Is any action, approval, decision, or testing required?",
+        "What risks or limitations should a supervisor know?",
+        "What would staff notice?",
+        "What is the next operational step?",
+        "Which points deserve separate supervisor callouts in the HTML?"
+      ],
+      "outputGuidance": {
+        "format": "short labeled subsections",
+        "requiredSubsections": [
+          "Plain-Language Summary",
+          "Operational Impact",
+          "Current Status",
+          "Action or Decision Required",
+          "Risks or Limitations",
+          "What Staff Would Notice",
+          "Next Operational Step",
+          "Supervisor Callout Sequence"
+        ],
+        "plainLanguageRequired": true,
+        "omitImplementationDetailsUnlessOperationallyRelevant": true,
+        "calloutGuidance": {
+          "ordered": true,
+          "eachCalloutIncludes": [
+            "sequence",
+            "title",
+            "related summary section",
+            "plain-language text",
+            "callout type"
+          ],
+          "supportsNextCalloutNavigation": true
+        }
+      },
+      "downstreamUses": [
+        "sidecar.audienceViews.supervisor",
+        "gold HTML supervisor brief",
+        "inline supervisor callouts",
+        "supervisor reading path",
+        "supervisor email"
+      ]
+    },
+    {
+      "sectionId": "publication-material",
+      "heading": "Publication Material",
+      "required": "when the summary will produce public or internal publication artifacts",
+      "purpose": "Collect canonical reusable text and visual direction for later publication products.",
+      "questionsToAnswer": [
+        "What should the work-update headline be?",
+        "What short listing description should appear in an index or portal?",
+        "What should the supervisor email subject and body say?",
+        "What should the work-update image communicate?",
+        "What alt text should describe the image?",
+        "Which canonical URLs exist and which are still needed?"
+      ],
+      "outputGuidance": {
+        "format": "labeled reusable blocks",
+        "requiredSubsections": [
+          "Work-Update Headline",
+          "Short Listing Description",
+          "Supervisor Email Subject",
+          "Supervisor Email Body",
+          "Work-Update Image Concept",
+          "Image Alt Text",
+          "Canonical URLs",
+          "URLs Still Needed"
+        ],
+        "emailDerivedFromSupervisorView": true,
+        "listingDescriptionLength": "one or two concise sentences",
+        "avoid": [
+          "independently rewriting contradictory summaries for each destination",
+          "using temporary Apps Script runtime URLs as canonical URLs"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.communications",
+        "sidecar.graphics",
+        "sidecar.publication",
+        "image-generation workflow",
+        "Google Sites or generated index listing",
+        "Email Composer"
+      ]
+    },
+    {
+      "sectionId": "files-resources-and-references",
+      "heading": "Files, Resources, and References",
+      "required": "when relevant",
+      "purpose": "Identify the artifacts needed to continue, verify, publish, or reconstruct the work.",
+      "questionsToAnswer": [
+        "Which source files were created or changed?",
+        "Which spreadsheets, repositories, applications, services, or documents were involved?",
+        "What are the canonical public or deployed URLs?",
+        "Which resources are historical, temporary, replaced, or still unknown?",
+        "Where should a future conversation look first?"
+      ],
+      "outputGuidance": {
+        "format": "categorized reference list",
+        "categories": [
+          "Files",
+          "Data Stores",
+          "Applications",
+          "Repositories",
+          "Deployments",
+          "Documents",
+          "Images",
+          "Canonical URLs"
+        ],
+        "avoid": [
+          "inventing repository paths",
+          "presenting unresolved URLs as final"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.technical",
+        "sidecar.links",
+        "sidecar.deployment",
+        "sidecar.provenance",
+        "future context recreation"
+      ]
+    },
+    {
+      "sectionId": "uncertainties-and-unresolved-questions",
+      "heading": "Uncertainties and Unresolved Questions",
+      "required": true,
+      "purpose": "Preserve ambiguity, missing evidence, provisional interpretations, and questions for later work.",
+      "questionsToAnswer": [
+        "What remains uncertain?",
+        "Which conclusions are inferred rather than explicit?",
+        "What evidence is missing?",
+        "What project relationships remain provisional?",
+        "What decisions or validations are still needed?",
+        "What should the next conversation verify first?"
+      ],
+      "outputGuidance": {
+        "format": "concise explicit list",
+        "allowNoneStatement": true,
+        "avoid": [
+          "hiding uncertainty to make the document appear complete"
+        ]
+      },
+      "downstreamUses": [
+        "sidecar.provenance.unresolvedQuestions",
+        "sidecar.provenance.interpretationNotes",
+        "next-session checklist",
+        "validation planning"
+      ]
+    }
+  ],
+  "conditionalRules": [
+    {
+      "condition": "technical files, scripts, schemas, or code were changed",
+      "requireSection": "work-performed",
+      "requireDetail": "exact filenames when known and materially useful"
+    },
+    {
+      "condition": "a decision materially changed architecture, scope, or workflow",
+      "includeSection": "decisions-and-design-reasoning"
+    },
+    {
+      "condition": "a failed or misleading approach affected the final method",
+      "includeSection": "problems-wrong-turns-and-resolutions"
+    },
+    {
+      "condition": "the work affects another durable project",
+      "includeSection": "related-projects-and-shared-systems"
+    },
+    {
+      "condition": "the work produced reusable or recurring knowledge",
+      "includeSection": "knowledge-produced"
+    },
+    {
+      "condition": "the update is intended for supervisor review",
+      "includeSection": "supervisor-view"
+    },
+    {
+      "condition": "the update will be published or emailed",
+      "includeSection": "publication-material"
+    },
+    {
+      "condition": "an Apps Script application was deployed or modified",
+      "requirePublicationField": "canonical /exec URL when known"
+    },
+    {
+      "condition": "a work-update image is created",
+      "requirePublicationField": "image concept, repository path when known, URL when known, and alt text"
+    },
+    {
+      "condition": "project records do not yet exist",
+      "behavior": "Use provisional project context and explicitly record the missing project record."
+    }
+  ],
+  "downstreamMappings": {
+    "document-identity": [
+      "sidecar.document",
+      "sidecar.metadata"
+    ],
+    "executive-summary": [
+      "sidecar.subject.description",
+      "work-update introduction",
+      "catalog preview"
+    ],
+    "project-context": [
+      "sidecar.projectContext",
+      "project record references"
+    ],
+    "situation-before-the-work": [
+      "sidecar.narrative.promptingSituation",
+      "sidecar.projectDelta.previousState"
+    ],
+    "narrative-of-the-work": [
+      "sidecar.narrative",
+      "work-update narrative"
+    ],
+    "work-performed": [
+      "sidecar.sections",
+      "sidecar.technical"
+    ],
+    "decisions-and-design-reasoning": [
+      "sidecar.narrative.keyDecisions",
+      "project decisions record"
+    ],
+    "problems-wrong-turns-and-resolutions": [
+      "sidecar.narrative.problemsEncountered",
+      "sidecar.narrative.unsuccessfulApproaches"
+    ],
+    "verification-and-evidence": [
+      "sidecar.technical.tests",
+      "sidecar.technical.validation"
+    ],
+    "resulting-capabilities-and-current-state": [
+      "sidecar.projectDelta.resultingState",
+      "sidecar.audienceViews.supervisor.currentStatus"
+    ],
+    "project-delta-and-roadmap-reconciliation": [
+      "sidecar.projectDelta",
+      "project roadmap update"
+    ],
+    "related-projects-and-shared-systems": [
+      "sidecar.projectContext.relatedProjects",
+      "sidecar.projectContext.sharedFoundations"
+    ],
+    "knowledge-produced": [
+      "sidecar.knowledgeProduced",
+      "knowledge-base candidates"
+    ],
+    "supervisor-view": [
+      "sidecar.audienceViews.supervisor",
+      "HTML supervisor brief",
+      "HTML supervisor callouts",
+      "supervisor email"
+    ],
+    "publication-material": [
+      "sidecar.communications",
+      "sidecar.graphics",
+      "sidecar.publication",
+      "publication workflow"
+    ],
+    "files-resources-and-references": [
+      "sidecar.technical",
+      "sidecar.links",
+      "sidecar.deployment",
+      "sidecar.provenance"
+    ],
+    "uncertainties-and-unresolved-questions": [
+      "sidecar.provenance.interpretationNotes",
+      "sidecar.provenance.unresolvedQuestions"
+    ]
+  },
+  "qualityChecks": [
+    {
+      "checkId": "problem-origin",
+      "question": "Does the summary explain what situation or problem prompted the work?"
+    },
+    {
+      "checkId": "method-preserved",
+      "question": "Does the summary preserve how the solution or method emerged rather than only listing the final result?"
+    },
+    {
+      "checkId": "chronology-and-causation",
+      "question": "Are chronology and causal relationships clear where they matter?"
+    },
+    {
+      "checkId": "fact-vs-inference",
+      "question": "Are explicit facts, observations, inferences, and unknowns properly distinguished?"
+    },
+    {
+      "checkId": "completion-status",
+      "question": "Does the summary distinguish completed, partially completed, planned, discussed, deferred, and superseded work?"
+    },
+    {
+      "checkId": "verification-supported",
+      "question": "Are claims of success supported by tests, observations, files, screenshots, or deployment evidence?"
+    },
+    {
+      "checkId": "project-context",
+      "question": "Does the summary explain the primary project and its goal without confusing the project with an app version or component?"
+    },
+    {
+      "checkId": "roadmap-reconciled",
+      "question": "Does the summary reconcile the previous roadmap and produce a revised still-to-do list?"
+    },
+    {
+      "checkId": "cross-project-relations",
+      "question": "Are related-project effects explained rather than merely named?"
+    },
+    {
+      "checkId": "supervisor-readable",
+      "question": "Can a supervisor understand the operational significance, status, limitations, and required action?"
+    },
+    {
+      "checkId": "supervisor-reading-path",
+      "question": "Are the supervisor callouts ordered and suitable for a jump-linked skim path through the HTML?"
+    },
+    {
+      "checkId": "publication-ready-source",
+      "question": "Can the HTML, sidecar, email, image brief, and listing description be generated without rereading the whole conversation?"
+    },
+    {
+      "checkId": "future-context",
+      "question": "Can a future conversation use the summary to understand where the project stands and what to do next?"
+    },
+    {
+      "checkId": "uncertainty-preserved",
+      "question": "Are unresolved questions and missing evidence recorded rather than silently filled?"
+    }
+  ]
+}

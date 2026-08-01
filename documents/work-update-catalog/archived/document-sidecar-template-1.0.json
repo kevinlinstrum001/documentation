@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "",
+    "coverageDescription": "",
+    "coverageConfidence": ""
+  },
+  "subject": {
+    "projectName": "",
+    "primaryApp": "",
+    "mainFocus": "",
+    "description": "",
+    "topics": [],
+    "keywords": [],
+    "appsAffected": []
+  },
+  "sections": [
+    {
+      "title": "",
+      "anchor": "",
+      "contentSummary": "",
+      "graphics": [
+        {
+          "url": "",
+          "altText": "",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [],
+    "integrations": [],
+    "apis": [],
+    "versions": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": []
+  }
+}

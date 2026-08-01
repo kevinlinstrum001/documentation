@@ -1,0 +1,1254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A project-aware documentation framework for preserving work narrative, project context, workflow state, structured records, publication artifacts, and supervisor-readable updates.">
+  <meta name="author" content="Kevin Linstrum">
+  <meta name="document-id" content="work-update-2026-08-01-documentation-workflow-bootstrap">
+  <title>A Documentation System for Projects, Narrative, and Repeatable Work</title>
+  <style>
+    :root {
+      --ink: #1c2735;
+      --muted: #5d6875;
+      --paper: #ffffff;
+      --page: #eef2f6;
+      --navy: #17324d;
+      --blue: #2f628f;
+      --blue-soft: #eaf2f9;
+      --line: #d6dde5;
+      --gold: #9a7419;
+      --gold-border: #c9a84d;
+      --gold-paper: #fff8dc;
+      --gold-ink: #382b0b;
+      --green: #266148;
+      --green-soft: #edf7f1;
+      --shadow: 0 16px 45px rgba(21, 41, 62, 0.10);
+      --radius: 16px;
+      --content-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 1.25rem;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(47, 98, 143, 0.09), transparent 34rem),
+        var(--page);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: 0.18em;
+      text-decoration-thickness: 0.08em;
+    }
+
+    a:hover {
+      color: var(--navy);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #3478b5;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 10;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 0.5rem;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-header {
+      color: #fff;
+      background:
+        linear-gradient(132deg, rgba(23, 50, 77, 0.97), rgba(39, 78, 111, 0.94)),
+        var(--navy);
+      border-bottom: 5px solid var(--gold-border);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 4.4rem 0 3.8rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: #d7e7f5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.45rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    .dek {
+      max-width: 800px;
+      margin: 1.35rem 0 0;
+      color: #e6eef5;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.55;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.6rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.35rem 0.75rem;
+      color: #eef7ff;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 2.2rem 0 5rem;
+    }
+
+    .bootstrap-banner {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.2rem;
+      background: var(--blue-soft);
+      border: 1px solid #b9cfe1;
+      border-left: 6px solid var(--blue);
+      border-radius: 12px;
+    }
+
+    .bootstrap-banner strong {
+      color: var(--navy);
+    }
+
+    .supervisor-path-intro {
+      margin: 0 0 1.5rem;
+      padding: 1.25rem 1.4rem;
+      color: var(--gold-ink);
+      background: linear-gradient(145deg, #fff9e3, #fff5c9);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(80, 60, 10, 0.08);
+    }
+
+    .supervisor-path-intro h2 {
+      margin: 0 0 0.35rem;
+      color: #5b430c;
+      font-size: 1.25rem;
+    }
+
+    .supervisor-path-intro p {
+      margin: 0;
+    }
+
+    .toc {
+      margin: 0 0 1.8rem;
+      padding: 1.25rem 1.4rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toc h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .toc ol {
+      columns: 2 280px;
+      column-gap: 2.2rem;
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .toc li {
+      break-inside: avoid;
+      margin: 0.22rem 0;
+    }
+
+    .content-section {
+      margin: 1.35rem 0;
+      padding: clamp(1.35rem, 3vw, 2.3rem);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .content-section > h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.65rem);
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    .section-eyebrow {
+      margin: 0 0 0.35rem;
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .section-body {
+      margin-top: 1.25rem;
+    }
+
+    .section-body h3 {
+      margin: 2rem 0 0.55rem;
+      color: var(--navy);
+      font-size: 1.35rem;
+      line-height: 1.28;
+    }
+
+    .section-body h4 {
+      margin: 1.5rem 0 0.4rem;
+      color: #314d66;
+      font-size: 1.08rem;
+    }
+
+    .section-body p {
+      margin: 0.8rem 0;
+    }
+
+    .section-body ul,
+    .section-body ol {
+      padding-left: 1.35rem;
+    }
+
+    .section-body li {
+      margin: 0.36rem 0;
+    }
+
+    .section-body blockquote {
+      margin: 1.25rem 0;
+      padding: 0.8rem 1.15rem;
+      color: #3e5366;
+      background: #f3f7fa;
+      border-left: 5px solid #8fb3cf;
+    }
+
+    code {
+      padding: 0.12em 0.32em;
+      color: #17324d;
+      background: #edf3f8;
+      border: 1px solid #d8e3ec;
+      border-radius: 0.28rem;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.91em;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 1rem 1.1rem;
+      color: #edf6ff;
+      background: #172a3a;
+      border-radius: 10px;
+    }
+
+    pre code {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+      border: 0;
+    }
+
+    .supervisor-callout {
+      margin: 1.35rem 0;
+      padding: clamp(1.3rem, 3vw, 2rem);
+      color: var(--gold-ink);
+      background:
+        linear-gradient(145deg, rgba(255, 252, 234, 0.96), rgba(255, 245, 202, 0.96)),
+        var(--gold-paper);
+      border: 1px solid var(--gold-border);
+      border-left: 8px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(72, 55, 12, 0.10);
+    }
+
+    .supervisor-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+
+    .supervisor-label {
+      margin: 0;
+      color: #73540d;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .callout-type {
+      padding: 0.18rem 0.55rem;
+      color: #5c4208;
+      background: rgba(154, 116, 25, 0.10);
+      border: 1px solid rgba(154, 116, 25, 0.35);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .supervisor-callout h2 {
+      margin: 0.55rem 0 0.45rem;
+      color: #4d390b;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      line-height: 1.18;
+    }
+
+    .supervisor-callout p {
+      max-width: 850px;
+      margin: 0.6rem 0;
+      font-size: 1.04rem;
+    }
+
+    .supervisor-navigation {
+      margin-top: 1.05rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(114, 83, 13, 0.25);
+    }
+
+    .supervisor-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #5e450c;
+      font-weight: 850;
+      text-decoration-thickness: 2px;
+    }
+
+    .hand {
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .bootstrap-next-steps {
+      border-color: #b9d7c7;
+    }
+
+    .bootstrap-note {
+      margin-top: 1.1rem;
+      padding: 0.9rem 1rem;
+      color: #244c3b;
+      background: var(--green-soft);
+      border: 1px solid #bad8c7;
+      border-left: 5px solid var(--green);
+      border-radius: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      padding: 0.7rem;
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--navy);
+      background: #f2f6f9;
+    }
+
+    .page-footer {
+      margin-top: 2rem;
+      padding: 1.4rem 0 0;
+      color: var(--muted);
+      border-top: 1px solid #cbd4dd;
+      font-size: 0.88rem;
+    }
+
+    .page-footer p {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 16px;
+      }
+
+      .header-inner {
+        padding: 3.2rem 0 2.8rem;
+      }
+
+      .page {
+        width: min(calc(100% - 1rem), var(--content-width));
+      }
+
+      .content-section,
+      .supervisor-callout,
+      .toc,
+      .supervisor-path-intro {
+        border-radius: 12px;
+      }
+
+      .toc ol {
+        columns: 1;
+      }
+    }
+
+    @media print {
+      :root {
+        --page: #fff;
+        --shadow: none;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11pt;
+      }
+
+      .site-header {
+        color: #000;
+        background: #fff;
+        border-bottom: 2px solid #9a7419;
+      }
+
+      .kicker, .dek {
+        color: #333;
+      }
+
+      .meta-chip {
+        color: #222;
+        background: #fff;
+        border-color: #aaa;
+      }
+
+      .page {
+        width: 100%;
+        padding-top: 1rem;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .content-section,
+      .supervisor-callout {
+        break-inside: avoid-page;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .supervisor-navigation {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body id="document-top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="kicker">Klinswork · Work Update · August 1, 2026</p>
+      <h1>A Documentation System for Projects, Narrative, and Repeatable Work</h1>
+      <p class="dek">
+        Six to seven hours of design transformed an implicit documentation habit into
+        a structured, project-aware workflow with durable narrative, machine-readable
+        records, supervisor-ready reading paths, and staged instruction sets.
+      </p>
+      <div class="meta-row" aria-label="Document metadata">
+        <span class="meta-chip">Bootstrap milestone</span>
+        <span class="meta-chip">3 JSON artifacts created</span>
+        <span class="meta-chip">20-step workflow</span>
+        <span class="meta-chip">Project identity provisional</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="main-content">
+    <div class="bootstrap-banner" role="note">
+      <strong>Bootstrap exception:</strong>
+      Formal project reconciliation is intentionally skipped in this update because
+      authoritative project files and a project roadmap have not yet been created.
+      Project names and relationships are therefore identified provisionally.
+    </div>
+
+    <section class="supervisor-path-intro" aria-labelledby="supervisor-path-title">
+      <h2 id="supervisor-path-title">Supervisor reading path</h2>
+      <p>
+        This document contains five gold supervisor notes. Follow the
+        <strong>pointing-hand links</strong> to move through the operational summary
+        without reading every technical section. The complete account remains available.
+      </p>
+    </section>
+
+    <nav class="toc" aria-labelledby="contents-title">
+      <h2 id="contents-title">Contents</h2>
+      <ol>
+        <li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#project-context">Project Context</a></li>
+<li><a href="#situation-before">Situation Before the Work</a></li>
+<li><a href="#narrative">Narrative of the Work</a></li>
+<li><a href="#work-performed">Work Performed</a></li>
+<li><a href="#decisions">Decisions and Design Reasoning</a></li>
+<li><a href="#problems">Problems and Resolutions</a></li>
+<li><a href="#verification">Verification and Evidence</a></li>
+<li><a href="#current-state">Resulting Capabilities</a></li>
+<li><a href="#bootstrap-next-steps">Bootstrap Next Steps</a></li>
+<li><a href="#related-projects">Related Projects</a></li>
+<li><a href="#knowledge">Knowledge Produced</a></li>
+<li><a href="#files-references">Files and References</a></li>
+<li><a href="#unresolved">Unresolved Questions</a></li>
+      </ol>
+    </nav>
+
+    
+<section class="content-section" id="executive-summary" aria-labelledby="executive-summary-title">
+  <p class="section-eyebrow">What changed</p>
+  <h2 id="executive-summary-title">Executive Summary</h2>
+  <div class="section-body">
+    <p>This body of work addressed a persistent problem in the way Klinswork projects have been developed and documented: substantial work has been completed and described in many individual conversations, work updates, HTML pages, sidecars, screenshots, applications, repositories, and memories, but there has not yet been a stable project layer explaining what each enduring undertaking is, how it relates to the others, where it currently stands, or how a new body of work changes its state.</p>
+<p>The immediate work began with a review of the existing document-sidecar model. That model was useful for describing individual HTML work-update documents, but it was not designed to represent project identity, project history, the narrative of how work unfolded, roadmap reconciliation, audience-specific relevance, reusable knowledge, or the complete documentation workflow. The work therefore expanded from revising one sidecar template into designing a coordinated documentation architecture.</p>
+<p>Three major JSON files were created:</p>
+<ol>
+<li><code>document-sidecar-template-v2-draft.json</code></li>
+<li><code>summary-md-template.json</code></li>
+<li><code>documentation-workflow.json</code></li>
+</ol>
+<p>Together, they establish three different but connected responsibilities:</p>
+<ul>
+<li>The <strong>sidecar template</strong> describes a finished HTML document in a structured form that can be read rapidly.</li>
+<li>The <strong>summary template</strong> instructs the model how to create durable notes that preserve project context, narrative, evidence, project-state change, audience views, and publication material.</li>
+<li>The <strong>workflow specification</strong> defines a twenty-step process that carries work from the active work session through documentation, project-state reconciliation, artifact generation, validation, publication, communication, and final closure.</li>
+</ul>
+<p>The central conceptual result is that our collaboration can become a stateful, staged process. Instead of requiring one conversation to hold every project fact, every procedural rule, and every publication requirement at once, each workflow boundary can load the specific project context and instruction set required for the next transformation.</p>
+<p>The work is not complete. Formal project files do not yet exist, and the new templates have not yet been tested through a complete publication cycle. The next major milestone is to build project records that define each undertaking, its goal, scope, boundaries, relationships, state, and roadmap.</p>
+<hr/>
+
+  </div>
+</section>
+
+<aside class="supervisor-callout" id="supervisor-note-1" aria-labelledby="supervisor-note-1-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 1 of 5</p>
+    <span class="callout-type">Outcome</span>
+  </div>
+  <h2 id="supervisor-note-1-title">What was built</h2>
+  <p>Three coordinated JSON artifacts now define the first working structure of a project-aware documentation system: a richer document sidecar, an instruction set for creating durable narrative summaries, and a twenty-step documentation workflow.</p>
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    
+        <a class="supervisor-next" href="#supervisor-note-2">
+          <span class="hand" aria-hidden="true">☞</span>
+          <span>Next supervisor note: Why this matters</span>
+        </a>
+        
+  </nav>
+</aside>
+
+<section class="content-section" id="project-context" aria-labelledby="project-context-title">
+  <p class="section-eyebrow">Provisional project placement</p>
+  <h2 id="project-context-title">Project Context</h2>
+  <div class="section-body">
+    <h3 id="primary-project">Primary Project</h3>
+<p><strong>Provisional name:</strong> Klinswork Documentation System</p>
+<p><strong>Provisional project type:</strong> Shared documentation and knowledge-management infrastructure</p>
+<p><strong>Identification confidence:</strong> Strong inference</p>
+<p>The work consistently concerns the design of the system used to preserve, interpret, index, publish, and resume work across Klinswork projects. A formal project record has not yet been created, so the project ID and exact name remain provisional.</p>
+<h3 id="parent-project-or-program">Parent Project or Program</h3>
+<p><strong>Provisional parent:</strong> Klinswork</p>
+<p>The documentation system serves the larger collection of Klinswork applications, datasets, utilities, publications, and work processes.</p>
+<h3 id="project-goal">Project Goal</h3>
+<p>Create a durable, project-centered documentation system that can:</p>
+<ul>
+<li>define what each project is;</li>
+<li>preserve the narrative and method of work;</li>
+<li>track how each body of work changes project state;</li>
+<li>distinguish project records from document records;</li>
+<li>support different reader needs without discarding technical depth;</li>
+<li>make historical documents and project context rapidly readable;</li>
+<li>generate consistent publication and communication artifacts;</li>
+<li>allow collaboration to resume from a known workflow state;</li>
+<li>reduce repeated reconstruction of context and procedure.</li>
+</ul>
+<h3 id="project-phase">Project Phase</h3>
+<p><strong>Bootstrap design and first-template implementation</strong></p>
+<p>The project currently has working draft specifications but lacks the project-record layer that will provide authoritative project identities and roadmaps.</p>
+<h3 id="relevant-applications-and-components">Relevant Applications and Components</h3>
+<ul>
+<li>Documentation repository and GitHub Pages site</li>
+<li>Existing work-update HTML documents</li>
+<li>Individual document sidecars</li>
+<li>Cumulative work-update catalog</li>
+<li>Catalog metadata</li>
+<li>Image repository and <code>build_images_json.py</code></li>
+<li>Google Sites documentation portal</li>
+<li>Email Composer</li>
+<li>Future project records</li>
+<li>Future workflow-run records</li>
+<li>Future validation scripts and JSON Schemas</li>
+</ul>
+<h3 id="previous-project-state">Previous Project State</h3>
+<p>Before this work, the documentation process existed mostly as a repeated practice:</p>
+<ul>
+<li>complete a body of work;</li>
+<li>discuss and refine a summary;</li>
+<li>use a template to format information;</li>
+<li>create an HTML work update;</li>
+<li>create an image;</li>
+<li>create a sidecar;</li>
+<li>append the sidecar to a catalog;</li>
+<li>update catalog metadata;</li>
+<li>publish through GitHub;</li>
+<li>add or feature the update on Google Sites;</li>
+<li>send an email through Email Composer;</li>
+<li>rebuild the image manifest.</li>
+</ul>
+<p>The process worked, but much of its logic remained implicit in conversation and memory. The sidecar described documents but did not adequately connect them to durable project state or preserve the narrative of how results emerged.</p>
+<h3 id="previous-outstanding-work">Previous Outstanding Work</h3>
+<p>No authoritative project roadmap was available. Based on the current conversation, the unresolved needs before this session included:</p>
+<ul>
+<li>identify the actual projects;</li>
+<li>establish project IDs and relationships;</li>
+<li>define project goals and boundaries;</li>
+<li>create durable project records;</li>
+<li>improve the document sidecar;</li>
+<li>preserve the narrative of the work;</li>
+<li>formalize the documentation process;</li>
+<li>support supervisor-oriented reading;</li>
+<li>reduce repeated context reconstruction.</li>
+</ul>
+<p>These items are reconstructed from the conversation and should not yet be treated as an authoritative prior roadmap.</p>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="situation-before" aria-labelledby="situation-before-title">
+  <p class="section-eyebrow">The problem</p>
+  <h2 id="situation-before-title">Situation Before the Work</h2>
+  <div class="section-body">
+    <p>The existing documentation system was extensive but document-centered. Individual work updates could describe what happened during a specific period, and the cumulative catalog could make those documents searchable. However, the catalog did not provide a durable model of the projects producing those updates.</p>
+<p>This created several practical problems:</p>
+<ul>
+<li>A project had to be reconstructed from scattered documents.</li>
+<li>A new conversation could learn what happened but not always what enduring undertaking the work belonged to.</li>
+<li>The current project state and roadmap were not stored authoritatively.</li>
+<li>The reasoning and method behind a result could disappear into a simplified list of accomplishments.</li>
+<li>Technical details and supervisor-relevant information were mixed together.</li>
+<li>The documentation workflow itself had to be repeatedly reconstructed.</li>
+<li>A brief new prompt could not reliably be placed into a larger project and workflow context.</li>
+<li>The user found it difficult to explain what he does because the projects themselves had not been explicitly defined.</li>
+</ul>
+<p>The initial task was to consider changes to <code>sidecar-template.json</code>. As the discussion progressed, it became clear that the missing information could not all be placed responsibly into one larger sidecar. Separate descriptive and procedural artifacts were needed.</p>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="narrative" aria-labelledby="narrative-title">
+  <p class="section-eyebrow">How the method emerged</p>
+  <h2 id="narrative-title">Narrative of the Work</h2>
+  <div class="section-body">
+    <h3 id="the-first-problem-identifying-projects-from-documents">The first problem: identifying projects from documents</h3>
+<p>The work began by examining an existing cumulative work-update catalog and its metadata. The catalog contained several dated updates relating to Inventory, Work Queue, Calendar, shared locations, and the documentation system itself.</p>
+<p>From that review, a distinction emerged:</p>
+<ul>
+<li>A <strong>work-update record</strong> describes a dated document.</li>
+<li>A <strong>project record</strong> describes an enduring undertaking.</li>
+</ul>
+<p>The existing catalog could show which apps and topics appeared in an update, but it could not reliably answer what the project was, what its durable goal was, how it related to other projects, what state it was in before the update, or what remained afterward.</p>
+<p>This led to the first major architectural decision: add a project layer above document records rather than trying to infer project identity repeatedly from HTML updates.</p>
+<h3 id="the-second-problem-identifying-the-authoritative-source">The second problem: identifying the authoritative source</h3>
+<p>An early possibility was to derive project context by rereading the finished HTML work update. That approach was rejected as the preferred future method because the HTML is already a downstream presentation artifact.</p>
+<p>The stronger direction became:</p>
+<pre><code class="language-text">project context + conversation evidence + summary instructions
+    → summary.md
+    → HTML, sidecar, project delta, email, image brief, and listing material
+</code></pre>
+<p>The Markdown summary would become the authoritative narrative source for one documented body of work. The HTML would present it. The sidecar would describe the finished HTML. The project delta would update the durable project record.</p>
+<p>This reversed the dependency in an important way. Project understanding would no longer need to be reconstructed from a publication artifact that had already compressed and styled the work.</p>
+<h3 id="the-third-problem-preserving-the-narrative">The third problem: preserving the narrative</h3>
+<p>The discussion then identified a missing layer beyond technical status and project state: the narrative.</p>
+<p>A useful record must preserve not only:</p>
+<ul>
+<li>what was completed;</li>
+<li>what remains;</li>
+<li>what files changed;</li>
+<li>what the resulting state is;</li>
+</ul>
+<p>but also:</p>
+<ul>
+<li>what situation prompted the work;</li>
+<li>how the problem was initially understood;</li>
+<li>what approach was taken;</li>
+<li>what failed or proved misleading;</li>
+<li>what evidence changed the direction;</li>
+<li>what turning point produced the final approach;</li>
+<li>what method emerged;</li>
+<li>what the work taught us.</li>
+</ul>
+<p>This was compared to the tradition of doing the work and then writing about the method. The narrative protects the work from appearing simpler and more inevitable than it really was. It also allows future work to reuse the reasoning, not merely the result.</p>
+<p>The sidecar design was therefore expanded to include a structured narrative section, while the summary template was designed to require a coherent chronological and causal account.</p>
+<h3 id="the-fourth-problem-multiple-audiences-inside-one-document">The fourth problem: multiple audiences inside one document</h3>
+<p>The work-update HTML has several readers with different needs. A technical or historical reader may want the full account, while a supervisor is likely to skim for operational meaning, current status, risk, required action, and next steps.</p>
+<p>The solution was not to remove technical detail. Instead, the document would support two reading paths:</p>
+<ol>
+<li>a complete reading path containing the full narrative and technical record;</li>
+<li>a supervisor skim path made of visually distinct callouts.</li>
+</ol>
+<p>The proposed supervisor sections use a muted gold textbook-style background and plain language. Each callout can contain a small pointing-hand link that jumps to the next supervisor-relevant section. This allows a reader to move through the operational summary without scrolling through every technical passage, while the full document remains intact.</p>
+<p>The summary source and sidecar were both designed to preserve this ordered supervisor callout sequence so the HTML generator can create the navigation automatically.</p>
+<h3 id="the-fifth-problem-the-sidecar-was-becoming-too-large-in-purpose">The fifth problem: the sidecar was becoming too large in purpose</h3>
+<p>Once project context, narrative, roadmap change, audience views, knowledge, communications, publication, and deployment were considered, it became necessary to clarify the role of the sidecar.</p>
+<p>The decision was:</p>
+<blockquote>
+<p>The sidecar exists primarily so the model can read and understand the HTML document quickly.</p>
+</blockquote>
+<p>It can describe the project contribution represented by the document, but it should not replace:</p>
+<ul>
+<li>the complete project record;</li>
+<li>the project roadmap;</li>
+<li>the workflow specification;</li>
+<li>the per-run workflow state.</li>
+</ul>
+<p>This boundary led to the creation of <code>document-sidecar-template-v2-draft.json</code>, which expands the document description while maintaining references to larger systems rather than absorbing them.</p>
+<h3 id="the-sixth-problem-notes-need-instructions-not-just-fields">The sixth problem: notes need instructions, not just fields</h3>
+<p>The sidecar is descriptive. It records what a finished document contains.</p>
+<p>The summary template needed to be procedural. It had to tell the model:</p>
+<ul>
+<li>what context to load;</li>
+<li>how to behave when project files are missing;</li>
+<li>what questions to answer;</li>
+<li>how to distinguish fact, observation, inference, and unknowns;</li>
+<li>how to preserve narrative and evidence;</li>
+<li>how to reconcile project state;</li>
+<li>how to construct the supervisor view;</li>
+<li>what downstream artifacts depend on each section;</li>
+<li>how to review the finished summary.</li>
+</ul>
+<p>This produced <code>summary-md-template.json</code>, an instruction set rather than a blank data record.</p>
+<h3 id="the-seventh-problem-the-entire-process-remained-implicit">The seventh problem: the entire process remained implicit</h3>
+<p>After the sidecar and summary-template roles were separated, the larger process could be formalized.</p>
+<p>A twenty-step workflow was reconstructed, beginning with active work and ending with publication, communication, and closure. Each step was then encoded with:</p>
+<ul>
+<li>purpose;</li>
+<li>state before and after;</li>
+<li>inputs;</li>
+<li>actions;</li>
+<li>outputs;</li>
+<li>validation;</li>
+<li>automation potential;</li>
+<li>human-review requirements;</li>
+<li>next step.</li>
+</ul>
+<p>This produced <code>documentation-workflow.json</code>.</p>
+<h3 id="the-broader-realization">The broader realization</h3>
+<p>The final conceptual shift was that focused instruction sets can be loaded at the boundaries between workflow stages.</p>
+<p>The system does not need the model to hold every detail continuously. It needs:</p>
+<ul>
+<li>the correct current state;</li>
+<li>the relevant project context;</li>
+<li>the instruction set for the next operation;</li>
+<li>the outputs from the previous operation.</li>
+</ul>
+<p>The collaboration therefore begins to resemble a stateful function or pipeline in which the model performs the interpretive work between structured handoffs.</p>
+<hr/>
+
+  </div>
+</section>
+
+<aside class="supervisor-callout" id="supervisor-note-2" aria-labelledby="supervisor-note-2-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 2 of 5</p>
+    <span class="callout-type">Operational impact</span>
+  </div>
+  <h2 id="supervisor-note-2-title">Why this matters</h2>
+  <p>The framework reduces repeated reconstruction. Future work can load the right project context and the focused instruction set for the current workflow stage instead of requiring every conversation to carry the entire system at once.</p>
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    
+        <a class="supervisor-next" href="#supervisor-note-3">
+          <span class="hand" aria-hidden="true">☞</span>
+          <span>Next supervisor note: Current status</span>
+        </a>
+        
+  </nav>
+</aside>
+
+<section class="content-section" id="work-performed" aria-labelledby="work-performed-title">
+  <p class="section-eyebrow">Artifacts and concepts</p>
+  <h2 id="work-performed-title">Work Performed</h2>
+  <div class="section-body">
+    <h3 id="files-created">Files created</h3>
+<h4 id="document-sidecar-template-v2-draft-json"><code>document-sidecar-template-v2-draft.json</code></h4>
+<p>A major revision of the document-sidecar structure was created with support for:</p>
+<ul>
+<li>document identity and metadata;</li>
+<li>workflow context;</li>
+<li>work coverage;</li>
+<li>primary and related project context;</li>
+<li>shared foundations;</li>
+<li>subject classification;</li>
+<li>narrative;</li>
+<li>project delta;</li>
+<li>general, technical, and supervisor audience views;</li>
+<li>ordered supervisor callouts;</li>
+<li>knowledge produced;</li>
+<li>section-level project and supervisor relevance;</li>
+<li>technical tests and validation;</li>
+<li>communications;</li>
+<li>graphics;</li>
+<li>publication;</li>
+<li>deployment;</li>
+<li>links;</li>
+<li>provenance and unresolved questions.</li>
+</ul>
+<h4 id="summary-md-template-json"><code>summary-md-template.json</code></h4>
+<p>A project-aware instruction set for creating <code>summary.md</code> was created.</p>
+<p>It includes:</p>
+<ul>
+<li>template identity and purpose;</li>
+<li>output and YAML front-matter rules;</li>
+<li>required context;</li>
+<li>missing-context behavior;</li>
+<li>interpretation rules;</li>
+<li>seventeen ordered summary sections;</li>
+<li>conditional inclusion rules;</li>
+<li>downstream mappings;</li>
+<li>fourteen quality checks.</li>
+</ul>
+<h4 id="documentation-workflow-json"><code>documentation-workflow.json</code></h4>
+<p>A complete twenty-step documentation workflow was created.</p>
+<p>It includes:</p>
+<ul>
+<li>workflow identity and design principles;</li>
+<li>workflow states;</li>
+<li>global input and output types;</li>
+<li>eight referenced stage-specific instruction sets;</li>
+<li>nine phases;</li>
+<li>twenty fully specified steps;</li>
+<li>blocking and nonblocking validation conditions;</li>
+<li>open design decisions.</li>
+</ul>
+<h3 id="concepts-defined">Concepts defined</h3>
+<ul>
+<li>project records versus document records;</li>
+<li>descriptive records versus procedural instruction sets;</li>
+<li><code>summary.md</code> as the authoritative narrative source;</li>
+<li>HTML as public presentation;</li>
+<li>sidecar as structured HTML description;</li>
+<li>project delta as the bridge between work and project state;</li>
+<li>individual sidecars as retained source records;</li>
+<li>catalog as a generated aggregate;</li>
+<li>supervisor reading path inside the full HTML document;</li>
+<li>staged loading of context and instructions;</li>
+<li>explicit authority for different artifact types;</li>
+<li>workflow state as a durable handoff mechanism.</li>
+</ul>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="decisions" aria-labelledby="decisions-title">
+  <p class="section-eyebrow">Architecture</p>
+  <h2 id="decisions-title">Decisions and Design Reasoning</h2>
+  <div class="section-body">
+    <h3 id="decision-create-separate-project-records">Decision: create separate project records</h3>
+<p><strong>Reason:</strong> Project identity, purpose, scope, relationships, current state, and roadmap are durable properties that should not be reconstructed from each document.</p>
+<p><strong>Consequence:</strong> Tomorrow's work should create the project-record model and initial project files.</p>
+<h3 id="decision-preserve-both-markdown-and-json">Decision: preserve both Markdown and JSON</h3>
+<p><strong>Reason:</strong> Markdown is appropriate for rich explanation, method, and narrative. JSON is appropriate for validation, indexing, automation, and targeted retrieval.</p>
+<p><strong>Consequence:</strong> The system will maintain complementary human-readable and machine-readable artifacts rather than forcing one format to serve every purpose.</p>
+<h3 id="decision-make-summary-md-the-narrative-source">Decision: make <code>summary.md</code> the narrative source</h3>
+<p><strong>Reason:</strong> The summary is created close to the work and can preserve context before publication compresses or styles it.</p>
+<p><strong>Consequence:</strong> HTML, sidecar, email, image brief, and project delta should derive from the approved summary.</p>
+<h3 id="decision-retain-individual-sidecars">Decision: retain individual sidecars</h3>
+<p><strong>Reason:</strong> A cumulative catalog is useful for search, but individual records support rebuilding, correction, modular retrieval, and provenance.</p>
+<p><strong>Consequence:</strong> The catalog is generated from sidecars rather than becoming their only surviving copy.</p>
+<h3 id="decision-separate-full-reading-from-supervisor-skimming">Decision: separate full reading from supervisor skimming</h3>
+<p><strong>Reason:</strong> Different readers require different levels of detail, but removing technical or narrative information would damage the historical record.</p>
+<p><strong>Consequence:</strong> Supervisor callouts and jump navigation create an alternate path through the same complete HTML document.</p>
+<h3 id="decision-create-focused-instruction-sets-by-workflow-stage">Decision: create focused instruction sets by workflow stage</h3>
+<p><strong>Reason:</strong> One enormous instruction file would recreate the same context overload the system is intended to solve.</p>
+<p><strong>Consequence:</strong> The workflow references smaller instruction sets loaded only when a particular transformation is being performed.</p>
+<h3 id="decision-acknowledge-missing-context-during-bootstrap">Decision: acknowledge missing context during bootstrap</h3>
+<p><strong>Reason:</strong> Formal project files and roadmaps do not yet exist.</p>
+<p><strong>Consequence:</strong> The templates explicitly require provisional inference and forbid invention of missing project IDs or roadmap items.</p>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="problems" aria-labelledby="problems-title">
+  <p class="section-eyebrow">Lessons from the design</p>
+  <h2 id="problems-title">Problems, Wrong Turns, and Resolutions</h2>
+  <div class="section-body">
+    <h3 id="risk-placing-every-responsibility-in-the-sidecar">Risk: placing every responsibility in the sidecar</h3>
+<p>As the design expanded, the sidecar risked becoming a duplicate project record, workflow specification, and summary.</p>
+<p><strong>Resolution:</strong> Define its authority narrowly: it describes the finished HTML document and the project contribution represented there.</p>
+<h3 id="risk-deriving-future-project-context-from-html">Risk: deriving future project context from HTML</h3>
+<p>HTML is convenient to read but is downstream and may contain audience-specific compression.</p>
+<p><strong>Resolution:</strong> Use project files and the approved Markdown summary as the future source context. Use HTML reconstruction only for legacy documents during bootstrap.</p>
+<h3 id="risk-flattening-the-work-into-accomplishments">Risk: flattening the work into accomplishments</h3>
+<p>A task list would preserve outputs but lose the method, changing understanding, failed approaches, and turning points.</p>
+<p><strong>Resolution:</strong> Make the narrative a required central section of the summary and a structured part of the sidecar.</p>
+<h3 id="risk-making-supervisor-material-a-separate-document">Risk: making supervisor material a separate document</h3>
+<p>A separate supervisor-only summary could drift away from the technical record and require independent rewriting.</p>
+<p><strong>Resolution:</strong> Store supervisor-facing content in the same approved source summary and render it as a visible alternate reading path in the HTML.</p>
+<h3 id="risk-treating-all-context-as-always-necessary">Risk: treating all context as always necessary</h3>
+<p>Loading everything for every operation would be slow, confusing, and difficult to maintain.</p>
+<p><strong>Resolution:</strong> Load durable project context plus one focused instruction set at each workflow boundary.</p>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="verification" aria-labelledby="verification-title">
+  <p class="section-eyebrow">What is confirmed</p>
+  <h2 id="verification-title">Verification and Evidence</h2>
+  <div class="section-body">
+    <h3 id="verified">Verified</h3>
+<ul>
+<li><code>document-sidecar-template-v2-draft.json</code> was generated as valid JSON.</li>
+<li><code>summary-md-template.json</code> was generated as valid JSON.</li>
+<li><code>documentation-workflow.json</code> was generated as valid JSON.</li>
+<li>The summary template contains seventeen defined sections.</li>
+<li>The summary template contains fourteen quality checks.</li>
+<li>The workflow contains exactly twenty ordered steps.</li>
+<li>The workflow contains nine phases.</li>
+<li>The workflow references eight future stage-specific instruction sets.</li>
+</ul>
+<h3 id="observed">Observed</h3>
+<ul>
+<li>The current conversation contains the reasoning and decisions described in this summary.</li>
+<li>The new files have already changed how the documentation process is being discussed and understood.</li>
+<li>The current documentation checkpoint is the first practical use of the new summary-template concept.</li>
+</ul>
+<h3 id="not-yet-verified">Not Yet Verified</h3>
+<ul>
+<li>The sidecar v2 draft has not been populated from a real finished HTML document.</li>
+<li>The summary template has not yet been validated across multiple kinds of work updates.</li>
+<li>The twenty-step workflow has not yet been completed end to end.</li>
+<li>Project records do not yet exist.</li>
+<li>No formal JSON Schema has been created.</li>
+<li>No automated documentation validator has been implemented.</li>
+<li>The gold supervisor callouts and jump-linked reading path have not yet been implemented in an HTML work update.</li>
+<li>The canonical generated documentation index and its hosting location remain undecided.</li>
+<li>The stage-specific instruction-set files referenced by the workflow have not yet been created.</li>
+</ul>
+<hr/>
+
+  </div>
+</section>
+
+<aside class="supervisor-callout" id="supervisor-note-3" aria-labelledby="supervisor-note-3-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 3 of 5</p>
+    <span class="callout-type">Status</span>
+  </div>
+  <h2 id="supervisor-note-3-title">Current status</h2>
+  <p>The three JSON files were created and validated structurally. They are usable as drafts, but the system has not yet completed an end-to-end publication cycle, and formal project records do not yet exist.</p>
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    
+        <a class="supervisor-next" href="#supervisor-note-4">
+          <span class="hand" aria-hidden="true">☞</span>
+          <span>Next supervisor note: What remains</span>
+        </a>
+        
+  </nav>
+</aside>
+
+<section class="content-section" id="current-state" aria-labelledby="current-state-title">
+  <p class="section-eyebrow">What is now possible</p>
+  <h2 id="current-state-title">Resulting Capabilities and Current State</h2>
+  <div class="section-body">
+    <p>The documentation system can now describe its own intended process in structured terms.</p>
+<p>The work has produced:</p>
+<ul>
+<li>a machine-readable model for describing future HTML work updates;</li>
+<li>a machine-readable instruction set for creating authoritative work summaries;</li>
+<li>a machine-readable twenty-step workflow for documentation production and publication;</li>
+<li>an explicit model of the relationship among projects, summaries, HTML documents, sidecars, catalogs, images, indexes, and communications;</li>
+<li>a method for preserving narrative and project-state change;</li>
+<li>an alternate supervisor reading path that does not remove technical depth;</li>
+<li>a framework for loading focused instruction sets at workflow boundaries.</li>
+</ul>
+<p>The current state is <strong>draft but usable for experimentation</strong>. The files are not yet final schemas, and they should be tested against real documentation cycles before being declared stable.</p>
+<hr/>
+
+  </div>
+</section>
+
+<aside class="supervisor-callout" id="supervisor-note-4" aria-labelledby="supervisor-note-4-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 4 of 5</p>
+    <span class="callout-type">Limitations</span>
+  </div>
+  <h2 id="supervisor-note-4-title">What remains</h2>
+  <p>The next layer is the project-record system itself. After that, the templates must be tested through real documentation cycles, the supervisor callouts implemented in the standard HTML template, and validation and indexing automation added.</p>
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    
+        <a class="supervisor-next" href="#supervisor-note-5">
+          <span class="hand" aria-hidden="true">☞</span>
+          <span>Next supervisor note: Next operational step</span>
+        </a>
+        
+  </nav>
+</aside>
+
+<section class="content-section bootstrap-next-steps" id="bootstrap-next-steps"
+         aria-labelledby="bootstrap-next-steps-title">
+  <p class="section-eyebrow">Bootstrap continuation</p>
+  <h2 id="bootstrap-next-steps-title">Bootstrap Next Steps</h2>
+  <div class="bootstrap-note">
+    <strong>Formal project reconciliation is intentionally deferred.</strong>
+    The project records and authoritative roadmap do not yet exist. These are the
+    practical continuation steps identified from the current work, not a claim that
+    an established project roadmap has been reconciled.
+  </div>
+  <div class="section-body">
+    <ol>
+<li>Review this summary and correct or expand the narrative.</li>
+<li>Approve this summary as the first source record created under the new model.</li>
+<li>Use it to test the sidecar and future HTML-generation process.</li>
+<li>Design the project-record structure.</li>
+<li>Identify the initial project inventory and project types.</li>
+<li>Create project files for the documentation system first.</li>
+<li>Create project files for the other major Klinswork projects.</li>
+<li>Reconcile existing work updates into those project records.</li>
+<li>Create the first stage-specific workflow instruction set.</li>
+<li>Define and implement the per-run documentation record.</li>
+</ol>
+<hr/>
+
+  </div>
+</section>
+
+<aside class="supervisor-callout" id="supervisor-note-5" aria-labelledby="supervisor-note-5-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 5 of 5</p>
+    <span class="callout-type">Next step</span>
+  </div>
+  <h2 id="supervisor-note-5-title">Next operational step</h2>
+  <p>Create project files that define each major undertaking, its purpose, scope, relationships, current state, and roadmap. No outside action is required during this bootstrap stage.</p>
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    
+        <a class="supervisor-next" href="#document-top">
+          <span class="hand" aria-hidden="true">☝</span>
+          <span>Return to the beginning</span>
+        </a>
+        
+  </nav>
+</aside>
+
+<section class="content-section" id="related-projects" aria-labelledby="related-projects-title">
+  <p class="section-eyebrow">System relationships</p>
+  <h2 id="related-projects-title">Related Projects and Shared Systems</h2>
+  <div class="section-body">
+    <h3 id="klinswork-program">Klinswork Program</h3>
+<p>The documentation system provides the shared historical, procedural, and publication layer for the broader Klinswork program.</p>
+<h3 id="work-queue">Work Queue</h3>
+<p>Future project files will allow Work Queue prompts and updates to be interpreted against its defined purpose, roadmap, employee relationships, location data, and inventory integration.</p>
+<h3 id="inventory">Inventory</h3>
+<p>Future project records will clarify the relationship between Inventory, inventory holders, Work Queue events, source holders, and shared location data.</p>
+<h3 id="calendar">Calendar</h3>
+<p>The Calendar project is an example of a system whose role can be better explained through shared dimensions such as who, where, and when.</p>
+<h3 id="employee-directory-and-locations">Employee Directory and Locations</h3>
+<p>These appear to be shared foundations rather than ordinary application projects. Formal project classification is still pending.</p>
+<h3 id="documentation-site-and-github-pages">Documentation Site and GitHub Pages</h3>
+<p>These are publication and navigation surfaces that will consume the structured records and generated artifacts.</p>
+<h3 id="google-sites">Google Sites</h3>
+<p>Google Sites currently serves as a convenient portal and curated presentation layer. Its future relationship to a generated canonical index remains open.</p>
+<h3 id="email-composer">Email Composer</h3>
+<p>Email Composer can eventually retrieve approved supervisor-facing communication from structured summary or sidecar content.</p>
+<h3 id="image-repository">Image Repository</h3>
+<p>The image repository and <code>build_images_json.py</code> remain part of the publication workflow and should eventually carry document and project relationships.</p>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="knowledge" aria-labelledby="knowledge-title">
+  <p class="section-eyebrow">Reusable understanding</p>
+  <h2 id="knowledge-title">Knowledge Produced</h2>
+  <div class="section-body">
+    <h3 id="project-specific-lessons">Project-Specific Lessons</h3>
+<ul>
+<li>A document catalog cannot substitute for project definitions.</li>
+<li>Project state must be reconciled at documentation time, not reconstructed only when work resumes.</li>
+<li>A durable summary must preserve both narrative and technical accounting.</li>
+<li>Audience-specific presentation can be layered onto one complete source document.</li>
+<li>A sidecar is most useful when its authority is clearly bounded.</li>
+</ul>
+<h3 id="general-lessons">General Lessons</h3>
+<ul>
+<li>Structured collaboration improves when state, context, procedure, and evidence are stored separately.</li>
+<li>Instruction sets are more useful when they describe where they operate within a larger workflow.</li>
+<li>A model does not need all information at all times; it needs the correct context at the transition between stages.</li>
+<li>Historical accuracy requires preserving failed approaches and uncertainty, not only successful outcomes.</li>
+<li>Automation becomes safer when every stage has explicit inputs, outputs, validation, and handoff conditions.</li>
+</ul>
+<h3 id="recurring-problems">Recurring Problems</h3>
+<ul>
+<li>Reconstructing project identity from scattered outputs.</li>
+<li>Losing the reason and method behind a technical result.</li>
+<li>Repeating the same workflow explanation across conversations.</li>
+<li>Mixing operational and technical audiences in one undifferentiated document.</li>
+<li>Treating temporary URLs or current conversation memory as durable system state.</li>
+</ul>
+<h3 id="knowledge-base-candidates">Knowledge-Base Candidates</h3>
+<ul>
+<li><strong>Artifact Authority in the Klinswork Documentation System</strong></li>
+<li><strong>How to Distinguish Projects, Apps, Components, Releases, and Shared Foundations</strong></li>
+<li><strong>The Documentation Checkpoint</strong></li>
+<li><strong>Preserving Narrative and Method in Technical Work Updates</strong></li>
+<li><strong>Designing Alternate Reading Paths for Different Audiences</strong></li>
+<li><strong>Using Focused Instruction Sets at Workflow Boundaries</strong></li>
+<li><strong>Bootstrap Rules When Project Records Do Not Yet Exist</strong></li>
+</ul>
+<h3 id="rules-confirmed-or-revised">Rules Confirmed or Revised</h3>
+<ul>
+<li><strong>Confirmed:</strong> Preserve individual sidecars after catalog aggregation.</li>
+<li><strong>Confirmed:</strong> Do not treat an application mention as proof of project membership.</li>
+<li><strong>Confirmed:</strong> Do not invent missing roadmap items.</li>
+<li><strong>Revised:</strong> The HTML document is no longer the preferred source from which future project context should be reconstructed.</li>
+<li><strong>Established:</strong> The approved Markdown summary is the authoritative narrative source for downstream documentation artifacts.</li>
+<li><strong>Established:</strong> Project records will be authoritative for durable project identity and state.</li>
+</ul>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="files-references" aria-labelledby="files-references-title">
+  <p class="section-eyebrow">Artifacts</p>
+  <h2 id="files-references-title">Files, Resources, and References</h2>
+  <div class="section-body">
+    <h3 id="files">Files</h3>
+<ul>
+<li><code>document-sidecar-template-v2-draft.json</code></li>
+<li><code>summary-md-template.json</code></li>
+<li><code>documentation-workflow.json</code></li>
+<li>this summary file</li>
+</ul>
+<h3 id="future-files">Future Files</h3>
+<ul>
+<li><code>project.json</code></li>
+<li><code>PROJECT.md</code></li>
+<li><code>ROADMAP.md</code></li>
+<li><code>documentation-checkpoint.json</code></li>
+<li><code>update-project-state.json</code></li>
+<li><code>create-work-update-html.json</code></li>
+<li><code>create-document-sidecar.json</code></li>
+<li><code>create-work-update-image.json</code></li>
+<li><code>publish-documentation.json</code></li>
+<li><code>complete-documentation-run.json</code></li>
+<li>per-run documentation record</li>
+<li>formal JSON Schemas</li>
+<li><code>validate_documentation.py</code></li>
+</ul>
+<h3 id="repositories-and-publication-surfaces">Repositories and Publication Surfaces</h3>
+<ul>
+<li>Klinswork documentation repository</li>
+<li>GitHub Pages documentation site</li>
+<li>Google Sites documentation portal</li>
+<li>documentation image repository</li>
+</ul>
+<h3 id="applications-and-services">Applications and Services</h3>
+<ul>
+<li>Email Composer</li>
+<li>GitHub</li>
+<li>Google Sites</li>
+<li>future generated documentation index</li>
+</ul>
+<hr/>
+
+  </div>
+</section>
+
+<section class="content-section" id="unresolved" aria-labelledby="unresolved-title">
+  <p class="section-eyebrow">Open design work</p>
+  <h2 id="unresolved-title">Uncertainties and Unresolved Questions</h2>
+  <div class="section-body">
+    <ul>
+<li>What is the final authoritative name and ID of the documentation project?</li>
+<li>Is Klinswork best represented as a program, system, or parent project?</li>
+<li>Which existing efforts are projects, subprojects, apps, shared foundations, releases, or experiments?</li>
+<li>Where will the project files be stored?</li>
+<li>What project-record schema will be used?</li>
+<li>How will project history be preserved structurally?</li>
+<li>What schema will represent a documentation run?</li>
+<li>Which stage-specific instruction set should be created first?</li>
+<li>How should instruction sets discover and load related files?</li>
+<li>Which fields in the sidecar v2 draft are redundant or unnecessary?</li>
+<li>Which summary sections should be mandatory for every update and which should remain conditional?</li>
+<li>Where should the canonical generated documentation index be hosted?</li>
+<li>Which validation checks should be implemented first?</li>
+<li>How will legacy HTML documents and sidecars be incorporated into the new project layer?</li>
+<li>What exact boundaries separate the documentation project from the broader Klinswork program?</li>
+</ul>
+
+  </div>
+</section>
+
+
+    <footer class="page-footer">
+      <p><strong>Document ID:</strong> work-update-2026-08-01-documentation-workflow-bootstrap</p>
+      <p><strong>Source:</strong> summary-2026-08-01-documentation-workflow-bootstrap.md</p>
+      <p><strong>Project status:</strong> Bootstrap design and first-template implementation</p>
+    </footer>
+  </main>
+</body>
+</html>

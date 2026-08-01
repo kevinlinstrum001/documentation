@@ -1,0 +1,1342 @@
+{
+  "schemaVersion": "1.0",
+  "catalog": {
+    "catalogId": "klinswork-document-catalog",
+    "title": "Klinswork Documentation Catalog",
+    "description": "Generated collection of Klinswork document sidecars used for search, filtering, descriptions, previews, and repository navigation.",
+    "generatedTimestamp": "2026-08-01T03:39:25+00:00",
+    "entryCount": 6
+  },
+  "entries": [
+    {
+      "schemaVersion": "1.0",
+      "document": {
+        "documentId": "work-update-2026-07-30-klinswork-calendar",
+        "filePath": "work-update-7-30-2026.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-7-30-2026.html",
+        "title": "Meadows Housekeeping Calendar App — Work Update — July 30, 2026",
+        "headline": "The housekeeping schedule became a responsive calendar application.",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-30",
+        "updatedTimestamp": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "complete-build-update",
+        "coverageDescription": "Covers the calendar application's design and construction through July 30, 2026. The document does not state exact session start and end times.",
+        "coverageConfidence": "medium"
+      },
+      "subject": {
+        "projectName": "Klinswork Calendar",
+        "primaryApp": "Klinswork Calendar",
+        "mainFocus": "Building a responsive housekeeping calendar from structured employee, location, and assignment data.",
+        "description": "Detailed build update covering the data model, schedule-resolution architecture, Apps Script services, responsive Day and Month views, cancellation controls, visual redesign, accessibility, cleanup, and the application's functional boundary.",
+        "topics": [
+          "calendar application",
+          "employee schedules",
+          "housekeeping assignments",
+          "schedule resolution",
+          "day view",
+          "month view",
+          "responsive design",
+          "mobile interface",
+          "cancellation overrides",
+          "Apps Script services",
+          "accessibility",
+          "interface redesign",
+          "defensive initialization"
+        ],
+        "keywords": [
+          "Klinswork Calendar",
+          "Meadows Housekeeping Calendar",
+          "housekeeping schedule",
+          "employee roster",
+          "assignment calendar",
+          "Google Apps Script calendar",
+          "responsive calendar",
+          "schedule exceptions",
+          "cancellation modal"
+        ],
+        "appsAffected": [
+          "Klinswork Calendar",
+          "Employee Directory",
+          "Locations",
+          "Assignments"
+        ]
+      },
+      "sections": [
+        {
+          "title": "1. Established the data model",
+          "anchor": "#1-established-the-data-model",
+          "contentSummary": "We began by separating employee information, locations, and assignments into structured sheets rather than trying to build the calendar directly from an informal roster. Spreadsheet ID: 1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo Primary sheets: The Employees sheet was designed with fields such as: Employee_ID Display_Name Email Active Assignment_Eligible Role Notification_Enabled Program_Update_Enabled Created_At Updated_At…",
+          "graphics": []
+        },
+        {
+          "title": "2. Defined the regular employee schedule",
+          "anchor": "#2-defined-the-regular-employee-schedule",
+          "contentSummary": "We identified the active housekeeping employees, their normal locations, and their regular days off. The schedule information included employees such as: Joe — Supervisor Michael — Supervisor Gina — Floater Tanya — Mesquite South Phyllis — Sagebrush Robert Scott — Mesquite North Terry — Juniper South Jamie — Floater Pam — Floater Kevin M — Aspen North Kevin L — Floater Karina — Front Philip — Aspen South Amor — Juniper North…",
+          "graphics": []
+        },
+        {
+          "title": "3. Designed the schedule-resolution architecture",
+          "anchor": "#3-designed-the-schedule-resolution-architecture",
+          "contentSummary": "We decided that the app should eventually distinguish between: the normal schedule temporary exceptions the final resolved schedule The planned resolution order is: 1. Read the employee’s regular weekly schedule 2. Read any employee-specific schedule events 3. Apply overrides for the selected date 4. Return the final resolved assignment The main schedule-event types discussed were: TIME_OFF CALL_OFF CANCEL_ASSIGNMENT…",
+          "graphics": []
+        },
+        {
+          "title": "4. Created the Apps Script project structure",
+          "anchor": "#4-created-the-apps-script-project-structure",
+          "contentSummary": "We divided the application into separate server-side and client-side files. Config.gs Code.gs DateService.gs ScheduleService.gs SheetService.gs Index.html Styles.html App.html ClientData.html CalendarViews.html DayDetails.html This prevented the entire application from becoming one large HTML file.",
+          "graphics": []
+        },
+        {
+          "title": "5. Centralized configuration",
+          "anchor": "#5-centralized-configuration",
+          "contentSummary": "We created a central configuration object containing: const CONFIG = Object.freeze({ APP_NAME: \"Meadows Housekeeping Schedule\", APP_VERSION: \"0.1.0\", TIME_ZONE: \"America/Denver\", EMPLOYEES_SPREADSHEET_ID: \"1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo\", LOCATIONS_SPREADSHEET_ID: \"16tLQNEfc7OEF6WCX1eYp97_4-gsyB5eUe9s39julHfc\", SHEETS: Object.freeze({ EMPLOYEES: \"Employees\", ASSIGNMENTS: \"Assignments\", LOCATIONS: \"Locations\" })…",
+          "graphics": []
+        },
+        {
+          "title": "6. Built the Apps Script web entry point",
+          "anchor": "#6-built-the-apps-script-web-entry-point",
+          "contentSummary": "We created doGet() to serve the application: function doGet() { return HtmlService .createTemplateFromFile(\"Index\") .evaluate() .setTitle(CONFIG.APP_NAME) .addMetaTag( \"viewport\", \"width=device-width, initial-scale=1\" ); } We also created an include helper: function include(filename) { return HtmlService .createHtmlOutputFromFile(filename) .getContent(); } The server exposes calendar data through a function such as: function…",
+          "graphics": []
+        },
+        {
+          "title": "7. Built reusable sheet-reading utilities",
+          "anchor": "#7-built-reusable-sheet-reading-utilities",
+          "contentSummary": "We created a generic utility for reading a sheet into JavaScript objects. Instead of returning raw arrays such as: [ [\"EMP-001\", \"Joe\", true] ] the service converts the rows into objects such as: { employeeId: \"EMP-001\", displayName: \"Joe\", active: true } Headers such as: Employee_ID Display_Name Shift_Start are normalized to: employeeId displayName shiftStart This made the rest of the application easier to read and maintain.",
+          "graphics": []
+        },
+        {
+          "title": "8. Added date utilities",
+          "anchor": "#8-added-date-utilities",
+          "contentSummary": "We created helpers for: parsing dates formatting date keys formatting time values generating inclusive date ranges The primary calendar date format is: For example: This provides a stable key for grouping assignments by day.",
+          "graphics": []
+        },
+        {
+          "title": "9. Built the schedule service",
+          "anchor": "#9-built-the-schedule-service",
+          "contentSummary": "The schedule service: Reads active employees. Reads enabled locations. Reads assignments within the requested range. Resolves employee IDs to employee names. Resolves location IDs to display names. Groups assignments by work date. Returns a browser-friendly calendar object. A returned assignment contains values such as: { assignmentId: \"ASN-...\", employeeId: \"EMP-014\", employeeName: \"Amor\", locationId: \"JUNIPER-N\",…",
+          "graphics": []
+        },
+        {
+          "title": "10. Assembled the HTML application",
+          "anchor": "#10-assembled-the-html-application",
+          "contentSummary": "The application shell includes the component files in this order: <!DOCTYPE html> <html> <head> <base target=\"_top\"> <?!= include(\"Styles\"); ?> </head> <body> <?!= include(\"App\"); ?> <?!= include(\"ClientData\"); ?> <?!= include(\"CalendarViews\"); ?> <?!= include(\"DayDetails\"); ?> </body> </html> The include order matters because: App creates the page elements ClientData creates the state and data functions CalendarViews…",
+          "graphics": []
+        },
+        {
+          "title": "11. Built the application shell",
+          "anchor": "#11-built-the-application-shell",
+          "contentSummary": "We created the permanent interface structure with IDs used by JavaScript: todayButton dayViewButton monthViewButton refreshButton previousButton nextButton periodTitle periodSubtitle calendarContent The app header contains: The period header contains: current month or day title selected-date subtitle previous button next button The main calendar content is rendered dynamically inside: <div id=\"calendarContent\"></div>",
+          "graphics": []
+        },
+        {
+          "title": "12. Fixed an initialization failure",
+          "anchor": "#12-fixed-an-initialization-failure",
+          "contentSummary": "At one point the browser reported: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') The cause was that initialize() attempted to attach listeners to elements that were missing or not yet available. We rewrote initialization so it: Finds all required elements. Builds a list of missing elements. Logs a clear error if anything is absent. Stops initialization instead of crashing. Treats optional…",
+          "graphics": []
+        },
+        {
+          "title": "13. Created client-side calendar state",
+          "anchor": "#13-created-client-side-calendar-state",
+          "contentSummary": "We introduced a central state object for the browser: const CalendarState = { view: \"month\", visibleDate: new Date(), selectedDate: new Date(), data: null }; The client-data layer handles: loading visible calendar data refreshing calendar data normalizing server responses storing assignments returning assignments for a date The app loads a buffered range rather than only the exact visible day. For month view, it can load…",
+          "graphics": []
+        },
+        {
+          "title": "14. Built Day and Month views",
+          "anchor": "#14-built-day-and-month-views",
+          "contentSummary": "We created a full rendering module: const CalendarViews = (() => { // private state and functions return Object.freeze({ initialize, render, renderLoading, renderError, setView }); })(); This module handles: initialization navigation view switching period titles month-grid rendering day-agenda rendering selected-date behavior loading states error states date formatting time formatting HTML escaping",
+          "graphics": []
+        },
+        {
+          "title": "15. Added calendar navigation",
+          "anchor": "#15-added-calendar-navigation",
+          "contentSummary": "The controls behave differently depending on the active view. Previous and Next move by one month: Previous and Next move by one day: August 1 → August 2 → August 3 The Today button resets: visible date selected date displayed period to the current date.",
+          "graphics": []
+        },
+        {
+          "title": "16. Built the desktop month view",
+          "anchor": "#16-built-the-desktop-month-view",
+          "contentSummary": "The desktop month view contains two areas: month grid selected-day details panel The layout uses a responsive grid similar to: grid-template-columns: minmax(720px, 1fr) minmax(300px, 360px); The calendar takes most of the available space while the selected-day panel remains wide enough to display assignment details. Each month cell can show: date number number scheduled first employee name remaining assignment count For…",
+          "graphics": []
+        },
+        {
+          "title": "17. Built the mobile month view",
+          "anchor": "#17-built-the-mobile-month-view",
+          "contentSummary": "The mobile view was designed to resemble the familiar mobile calendar application layout. It includes: fixed top controls Day and Month buttons previous and next controls compact seven-column month grid selected-day agenda below the grid On mobile: assignment summaries are hidden inside month cells date numbers are centered the selected day’s full assignments appear below the month the desktop side panel is removed The…",
+          "graphics": []
+        },
+        {
+          "title": "18. Built the full Day view",
+          "anchor": "#18-built-the-full-day-view",
+          "contentSummary": "The Day view displays one agenda row for every scheduled employee. Each row contains: shift start time calendar label employee name location cancel control For example: 7:00 AM Housekeeping Terry — Juniper South Juniper South Cancel The time column is visually separated from the assignment details. We considered forcing every assignment to fit into one screen by dividing the available height evenly, but decided to postpone…",
+          "graphics": []
+        },
+        {
+          "title": "19. Designed cancellation as an override rather than deletion",
+          "anchor": "#19-designed-cancellation-as-an-override-rather-than-deletion",
+          "contentSummary": "We discussed how cancellation should work at the data level. The assignment should not be deleted. Instead, a cancellation should create a schedule event that overrides it. A future event row could resemble: Event_ID Employee_ID Start_Date End_Date Event_Type Reason_Type Assignment_ID Status Notes Example: EVT-001 EMP-011 2026-08-12 2026-08-12 CANCEL_ASSIGNMENT CALL_OFF ASN-... ACTIVE Called off This preserves: the original…",
+          "graphics": []
+        },
+        {
+          "title": "20. Added the cancellation modal",
+          "anchor": "#20-added-the-cancellation-modal",
+          "contentSummary": "We explicitly avoided browser alerts and browser confirmation boxes. Instead, we created a real modal: The modal was added to App.html with: cancelModal cancelModalTitle cancelModalDescription cancelNoButton cancelYesButton It uses: role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"cancelModalTitle\" The modal supports: opening from a Cancel button closing with No closing by clicking the backdrop closing with Escape confirming…",
+          "graphics": []
+        },
+        {
+          "title": "21. Added cancellation buttons to Day view",
+          "anchor": "#21-added-cancellation-buttons-to-day-view",
+          "contentSummary": "Every Day-view assignment received a red Cancel button with assignment metadata: <button class=\"cancel-event-button\" data-assignment-id=\"...\" data-employee-name=\"...\" data-location-name=\"...\" > Cancel </button> The metadata allows the modal to display a specific confirmation such as: Cancel Terry’s assignment at Juniper South?",
+          "graphics": []
+        },
+        {
+          "title": "22. Added cancellation placement to the desktop selected-day panel",
+          "anchor": "#22-added-cancellation-placement-to-the-desktop-selected-day-panel",
+          "contentSummary": "You marked the desired button locations with red boxes in the screenshot. We agreed that the right side of each compact assignment row is the correct location. The compact row was redesigned conceptually as: The associated CSS uses: grid-template-columns: minmax(0, 1fr) auto; This keeps the assignment information aligned on the left while placing a compact Cancel button on the right. The listener logic was expanded so the…",
+          "graphics": []
+        },
+        {
+          "title": "23. Created the initial visual design",
+          "anchor": "#23-created-the-initial-visual-design",
+          "contentSummary": "The first design intentionally resembled a familiar calendar application. It used: light blue header blue active view button blue weekday bar white month cells selected-date highlight right-side details panel mobile calendar-style layout This provided a recognizable starting point before introducing a distinct identity.",
+          "graphics": []
+        },
+        {
+          "title": "24. Reviewed the desktop appearance professionally",
+          "anchor": "#24-reviewed-the-desktop-appearance-professionally",
+          "contentSummary": "We evaluated the desktop screenshot and identified several issues: large unused white area below the calendar calendar width that was too constrained grid lines that were too dark selected-day panel that felt visually attached rather than intentional month cells that were too tall crowded summaries stray horizontal lines inconsistent padding We then refined: page width calendar height panel proportions grid-line weight…",
+          "graphics": []
+        },
+        {
+          "title": "25. Removed the unnecessary fixed desktop height",
+          "anchor": "#25-removed-the-unnecessary-fixed-desktop-height",
+          "contentSummary": "The earlier design used values such as: min-height: 700px; and: min-height: 620px; These created a large blank white area below the calendar. We changed the relevant containers to: min-height: 0; This allowed the page to end naturally after the content.",
+          "graphics": []
+        },
+        {
+          "title": "26. Widened the desktop app",
+          "anchor": "#26-widened-the-desktop-app",
+          "contentSummary": "The desktop application was changed to use approximately: width: min(calc(100% - 48px), 1280px); This gave the calendar more room on large screens while preserving side margins. The month grid and details panel were balanced so neither felt cramped.",
+          "graphics": []
+        },
+        {
+          "title": "27. Softened the month-grid lines",
+          "anchor": "#27-softened-the-month-grid-lines",
+          "contentSummary": "The original cell borders were dark and visually dominant. We replaced individual dark borders with a one-pixel grid-gap method: .month-grid { gap: 1px; padding: 1px; background: var(--border); } .month-day { border: 0; } The neutral background shows through the one-pixel gaps, producing cleaner grid separators.",
+          "graphics": []
+        },
+        {
+          "title": "28. Improved the month cells",
+          "anchor": "#28-improved-the-month-cells",
+          "contentSummary": "Month cells were refined with: shorter height more consistent padding smaller date numbers ellipsis for overflowing text lighter outside-month backgrounds clearer selected-day outline clearer today indicator The final approximate cell height became: min-height: 92px;",
+          "graphics": []
+        },
+        {
+          "title": "29. Improved the selected-day panel",
+          "anchor": "#29-improved-the-selected-day-panel",
+          "contentSummary": "The panel received: its own border rounded corners soft background header background consistent internal padding clean row separators better empty state Assignment details are now presented in a compact hierarchy: employee name location shift time cancel action",
+          "graphics": []
+        },
+        {
+          "title": "30. Harmonized the color system",
+          "anchor": "#30-harmonized-the-color-system",
+          "contentSummary": "The earlier interface combined: bright blue terracotta time columns strong red Cancel buttons gray borders The terracotta did not visually belong with the blue interface. We replaced it with a unified blue-and-slate palette. --primary: #315f8f; --primary-dark: #24496f; --primary-soft: #dce8f3; --primary-faint: #edf4fa; --accent: #58758f; --accent-dark: #405b72; --text: #18212b; --muted-text: #667482; --border: #d4dde6;…",
+          "graphics": []
+        },
+        {
+          "title": "31. Restyled the Day-view time column",
+          "anchor": "#31-restyled-the-day-view-time-column",
+          "contentSummary": "The earlier time column used terracotta with dark text. It was changed to a muted slate gradient: background: linear-gradient( 135deg, var(--accent), var(--accent-dark) ); color: #ffffff; This ties the time column to the blue header without making every part of the page the same blue.",
+          "graphics": []
+        },
+        {
+          "title": "32. Standardized buttons",
+          "anchor": "#32-standardized-buttons",
+          "contentSummary": "The controls now share common rules for: border radius font weight hover behavior pressed behavior focus behavior padding transitions The active Day or Month control uses a primary-blue gradient. Navigation buttons use pale blue-white surfaces. Cancel buttons remain red because they perform a destructive action.",
+          "graphics": []
+        },
+        {
+          "title": "33. Improved accessibility and interaction feedback",
+          "anchor": "#33-improved-accessibility-and-interaction-feedback",
+          "contentSummary": "The interface includes: modal dialog roles keyboard Escape support focus placement focus-visible outlines hover states active states disabled states aria-busy loading state escaped display text button labels and date labels Dates in the month grid also receive descriptive aria-label values.",
+          "graphics": []
+        },
+        {
+          "title": "34. Escaped rendered data",
+          "anchor": "#34-escaped-rendered-data",
+          "contentSummary": "The calendar uses an escapeHtml_() helper before inserting values such as: employee name location name assignment ID into generated markup. This prevents names or spreadsheet values from accidentally becoming HTML.",
+          "graphics": []
+        },
+        {
+          "title": "35. Reduced stylesheet redundancy",
+          "anchor": "#35-reduced-stylesheet-redundancy",
+          "contentSummary": "Over several design rounds, Styles.html accumulated: the original styles desktop-refinement overrides polished-desktop overrides day-color overrides additional mobile overrides This caused the file to become difficult to predict because later rules silently overrode earlier ones. The stylesheet reached roughly: The first cleanup attempt still left the original rules plus another theme block appended to the bottom. We…",
+          "graphics": []
+        },
+        {
+          "title": "36. Preserved responsive behavior during the redesign",
+          "anchor": "#36-preserved-responsive-behavior-during-the-redesign",
+          "contentSummary": "The desktop overhaul did not discard the mobile design. At widths under approximately: the app changes to: full-width layout no outer desktop margins no desktop card shadow hidden desktop details panel visible mobile month and agenda composition compact cells smaller typography two-column agenda rows At widths under approximately: the time column and typography become narrower and smaller.",
+          "graphics": []
+        },
+        {
+          "title": "37. Final visual result",
+          "anchor": "#37-final-visual-result",
+          "contentSummary": "The finished design now has: a centered desktop application card a cohesive pale-blue header clear Day and Month controls a polished month grid a selected-date outline compact assignment summaries a separate selected-day panel slate time columns red cancellation controls consistent spacing rounded panels subtle shadows responsive mobile behavior The visual progression was essentially: spreadsheet-like schedule → calendar…",
+          "graphics": []
+        },
+        {
+          "title": "38. Current functional boundary",
+          "anchor": "#38-current-functional-boundary",
+          "contentSummary": "The application currently provides the interface and client-side behavior for cancellation, including the modal and assignment identification. The remaining cancellation step is the server-side write that would: receive the assignment ID create a cancellation event preserve the original assignment refresh the calendar data show the resolved cancellation state We also left several future capabilities intentionally open:…",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "GitHub Pages"
+        ],
+        "apps": [
+          "Klinswork Calendar",
+          "Meadows Housekeeping Calendar"
+        ],
+        "scripts": [
+          "App.html",
+          "CalendarViews.html",
+          "ClientData.html",
+          "Code.gs",
+          "Config.gs",
+          "DateService.gs",
+          "Index.html",
+          "ScheduleService.gs",
+          "SheetService.gs",
+          "Styles.html"
+        ],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "services": [
+          "Google Sheets",
+          "Google Apps Script HTML Service"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Employees",
+          "Locations",
+          "Assignments",
+          "Schedule exceptions"
+        ],
+        "files": [
+          "App.html",
+          "CalendarViews.html",
+          "ClientData.html",
+          "Code.gs",
+          "Config.gs",
+          "DateService.gs",
+          "Index.html",
+          "ScheduleService.gs",
+          "SheetService.gs",
+          "Styles.html"
+        ],
+        "integrations": [
+          "Employee data",
+          "Location data",
+          "Assignment data"
+        ],
+        "apis": [
+          "google.script.run"
+        ],
+        "versions": []
+      },
+      "graphics": [],
+      "links": {
+        "externalUrls": [
+          "https://sites.google.com/view/meadows-hk/home/documentation"
+        ],
+        "sourceUrls": []
+      },
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "document": {
+        "documentId": "work-update-2026-07-19-klinswork-inventory",
+        "filePath": "work-update-7-19-2026.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-7-19-2026.html",
+        "title": "Meadows Housekeeping Work Update — 07/19/2026",
+        "headline": "Inventory Processing and Reusable Web Views",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-19",
+        "updatedTimestamp": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "daily-work-update",
+        "coverageDescription": "Covers inventory application work summarized in the July 19, 2026 update, including troubleshooting, reusable product and SDS views, navigation repairs, verification, and next steps. Exact session times are not stated.",
+        "coverageConfidence": "medium"
+      },
+      "subject": {
+        "projectName": "Klinswork Inventory",
+        "primaryApp": "Inventory 3.0",
+        "mainFocus": "Stabilizing the inventory application and building reusable product, SDS, processing, and navigation structures.",
+        "description": "Meadows Housekeeping work update for July 19, 2026: inventory processing, reusable product and SDS views, and stable Apps Script navigation.",
+        "topics": [
+          "inventory processing",
+          "Inventory 3.0",
+          "SDS records",
+          "product views",
+          "reusable components",
+          "Apps Script navigation",
+          "troubleshooting",
+          "verification",
+          "responsive interface",
+          "work update"
+        ],
+        "keywords": [
+          "Klinswork Inventory",
+          "Meadows Housekeeping inventory",
+          "inventory app",
+          "SDS directory",
+          "product cards",
+          "Apps Script include navigation",
+          "inventory processing workflow",
+          "July 19 2026"
+        ],
+        "appsAffected": [
+          "Inventory 3.0",
+          "SDS Directory",
+          "Klinswork Documentation"
+        ]
+      },
+      "sections": [
+        {
+          "title": "Overview",
+          "anchor": "#overview",
+          "contentSummary": "Work completed across Milestones 6 and 7 moved the project from a collection of spreadsheet records and experimental pages into a functioning inventory application with validated transactions, permanent event history, live product information, current SDS access, and reusable browser views. Milestone 6 established the processing layer. Accepted inventory requests now update current quantities and create permanent operational events. Invalid requests remain available for diagnosis but cannot change inventory or…",
+          "graphics": []
+        },
+        {
+          "title": "Embedded Navigation Problem and Solution",
+          "anchor": "#problem",
+          "contentSummary": "The route map worked, but page-to-page navigation became unstable when Apps Script pages were used inside an embedded environment. Problem Relative links such as ?view=inventory depended on the browser resolving the correct frame and base URL. Links could work when opened directly yet fail, disappear, or replace the wrong frame when embedded. Solution The server now provides one shared appUrl to every template. Navigation links use the complete Apps Script web-app URL and send every request back through doGet(e)…",
+          "graphics": []
+        },
+        {
+          "title": "Work Completed",
+          "anchor": "#completed",
+          "contentSummary": "Inventory Processing Implemented Received, Used Up, Removed, Moved, and Count Corrected actions. Verified correct source and destination quantity changes. Created permanent event records for every accepted transaction. Preserved explanatory notes and automatic transaction context. Defensive Validation Rejected unknown source and destination locations. Rejected removals and moves exceeding available inventory. Prevented negative quantities and partial updates. Kept rejected requests out of the accepted Inventory…",
+          "graphics": []
+        },
+        {
+          "title": "Verification",
+          "anchor": "#verification",
+          "contentSummary": "Testing covered both successful operating paths and deliberate failure cases. Received inventory increased the correct destination quantity. Used Up and Removed actions reduced the correct source quantity. Moved inventory preserved the total while changing locations. Count Corrected replaced the recorded amount with the verified count. Unknown destinations produced no partial source subtraction. Over-limit removals and moves produced no negative inventory. Rejected requests remained visible for diagnosis but…",
+          "graphics": []
+        },
+        {
+          "title": "Current Status and Next Steps",
+          "anchor": "#next",
+          "contentSummary": "Immediate next work Connect the Product Directory to getProducts() and load active product records from the Products sheet. Link each product card to the reusable Product View with its stable product ID. Add recent inventory events to the Product View. Create the standalone History View with filtering controls. Run a final route, navigation, data, and regression verification pass.",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "GitHub Pages"
+        ],
+        "apps": [
+          "Inventory 3.0",
+          "Klinswork Inventory",
+          "SDS Directory"
+        ],
+        "scripts": [],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "services": [
+          "Google Sheets",
+          "Google Apps Script HTML Service"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Inventory records",
+          "Product records",
+          "SDS records",
+          "Inventory activity"
+        ],
+        "files": [],
+        "integrations": [
+          "Inventory data",
+          "Product data",
+          "SDS data",
+          "Klinswork documentation"
+        ],
+        "apis": [
+          "google.script.run"
+        ],
+        "versions": [
+          "Inventory 3.0"
+        ]
+      },
+      "links": {
+        "externalUrls": [
+          "https://sites.google.com/view/meadows-hk/home/documentation"
+        ],
+        "sourceUrls": []
+      },
+      "graphics": [
+        {
+          "url": "https://kevinlinstrum001.github.io/documentation/images/work_update_07_19_2026.png",
+          "altText": "Meadows Housekeeping Work Update dated 07/19/2026, showing cleaning equipment, schedules, charts, task lists, and operations dashboards.",
+          "description": ""
+        }
+      ],
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "document": {
+        "documentId": "work-update-2026-07-23-inventory-3-product-pages-routing",
+        "filePath": "work-update-07-23-2026.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-23-2026.html",
+        "title": "Work Update — July 23, 2026",
+        "headline": "Inventory 3.0 gained complete product pages and stable internal routing.",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-23",
+        "updatedTimestamp": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "daily-work-update",
+        "coverageDescription": "Covers the July 23, 2026 Inventory 3.0 work session, including full product pages, inventory filtering, trash-liner product documentation, Apps Script routing repairs, deployment safeguards, and longer-term URL architecture. Exact session times are not stated.",
+        "coverageConfidence": "high"
+      },
+      "subject": {
+        "projectName": "Inventory 3.0",
+        "primaryApp": "Inventory 3.0",
+        "mainFocus": "Expanding Inventory 3.0 into a product-information system while repairing internal routing and stabilizing the Apps Script deployment workflow.",
+        "description": "Klinswork work update for July 23, 2026, covering Inventory 3.0 product pages, routing repairs, stable Apps Script deployment links, filtering improvements, product research, and deployment safeguards.",
+        "topics": [
+          "full product pages",
+          "inventory filtering",
+          "product catalog",
+          "SDS access",
+          "trash-can liners",
+          "Apps Script routing",
+          "stable deployment URLs",
+          "deployment safeguards",
+          "mobile-friendly interface",
+          "product research",
+          "application architecture"
+        ],
+        "keywords": [
+          "Inventory 3.0",
+          "product detail page",
+          "full product page",
+          "inventory browser",
+          "SDS",
+          "trash liner",
+          "window.APP_URL",
+          "getAppBaseUrl",
+          "ScriptApp.getService().getUrl",
+          "Google Apps Script deployment",
+          "stable exec URL"
+        ],
+        "appsAffected": [
+          "Inventory 3.0",
+          "SDS Directory",
+          "Tool Center",
+          "Email Composer",
+          "Tasker"
+        ]
+      },
+      "sections": [
+        {
+          "title": "Full product pages",
+          "anchor": "#product-pages",
+          "contentSummary": "Direct product routes were established with a product identifier in the web-app address. The application can now open directly to a specific product while preserving access to the main inventory screen. Information shown on each page Product image and category Product name and manufacturer Manufacturer product code Container size and inventory unit Inventory product ID SDS revision, source, and verification information Direct SDS and manufacturer-information buttons when available Navigation and presentation The…",
+          "graphics": []
+        },
+        {
+          "title": "Inventory browsing and filtering",
+          "anchor": "#inventory-browser",
+          "contentSummary": "The product browser was refined so daily use remains focused while products without an opening inventory balance remain accessible when needed. In stock only Made the default product view. Shows products currently present at the selected location. Reduces clutter during routine inventory work. All products Displays the entire active product catalog. Allows products without inventory records to be found. Supports creating a new opening balance. Product filtering continues to respect the selected inventory location,…",
+          "graphics": []
+        },
+        {
+          "title": "Trash-can liner product documentation",
+          "anchor": "#products",
+          "contentSummary": "Two clear trash-can liner products were photographed, identified, and prepared for addition to Inventory 3.0. Medium clear liner Brand: Highmark Item number: 792083 Size: 33 × 39 inches Capacity: up to 33 gallons Thickness: 0.60 mil Case quantity: 250 liners Packaging: 25 bags per roll, 10 rolls per case Large clear liner Product code: L38582C Size: 38 × 58 inches Capacity: 55–60 gallons Thickness: 2 mil Case quantity: 100 liners Consistent product names and Medium/Large classifications were recommended. These…",
+          "graphics": []
+        },
+        {
+          "title": "Apps Script routing failure diagnosed and repaired",
+          "anchor": "#routing",
+          "contentSummary": "Inventory 3.0 could open correctly from Google Sites, but the Open full product page button could then lead to a blank or older-looking page. The failure appeared to be a deployment problem, but the actual cause was inside Scripts.html . Incorrect routing source Inside an Apps Script application, this can resolve to a temporary address containing: Correct routing source The application was already receiving the stable deployment address from Apps Script: The getAppBaseUrl() helper was rewritten to use…",
+          "graphics": []
+        },
+        {
+          "title": "Stable deployment workflow established",
+          "anchor": "#deployment",
+          "contentSummary": "The difference between an Apps Script deployment and a deployment version was clarified. Existing deployment Edit through Manage deployments . Select New version . Keep the same deployment ID and /exec URL. Preserve bookmarks, Google Sites buttons, and QR codes. New deployment Creates another deployment ID. Produces another /exec URL. Can leave older versions active and accessible. Should not be used for ordinary code updates. Protected navigation rules Do not build internal app links from window.location . Do not…",
+          "graphics": []
+        },
+        {
+          "title": "Longer-term application architecture",
+          "anchor": "#architecture",
+          "contentSummary": "A central Klinswork URL registry was considered as a way to manage the addresses of Inventory 3.0, Tasker, Email Composer, and the Tool Center. Such a registry may still be useful for internal navigation and future replacement deployments. The more important discovery, however, is that normal code updates should not require any link changes at all. Stable deployment URLs combined with a single canonical internal base URL remove most of the need for manual link maintenance.",
+          "graphics": []
+        },
+        {
+          "title": "The larger achievement",
+          "anchor": "#achievement",
+          "contentSummary": "Today’s work substantially expanded Inventory 3.0 while also resolving one of the most confusing problems in Apps Script development: apparently changing links that were actually temporary runtime addresses. A complete product-information page system was established. Product filtering became more practical for daily inventory work. SDS access was integrated into product pages. Two trash-liner products were documented for the catalog. The full-page routing failure was traced to its exact function. The entire…",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "GitHub Pages",
+          "Google Sites"
+        ],
+        "apps": [
+          "Inventory 3.0",
+          "SDS Directory",
+          "Tool Center",
+          "Email Composer",
+          "Tasker"
+        ],
+        "scripts": [
+          "Scripts.html"
+        ],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "services": [
+          "Google Apps Script HTML Service",
+          "Google Sheets"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Product catalog",
+          "Inventory balances",
+          "SDS records"
+        ],
+        "files": [
+          "Scripts.html"
+        ],
+        "integrations": [
+          "Product pages",
+          "Inventory browser",
+          "SDS links",
+          "Google Sites launch links",
+          "QR codes"
+        ],
+        "apis": [
+          "ScriptApp.getService().getUrl",
+          "window.location",
+          "document.location"
+        ],
+        "versions": [
+          "Inventory 3.0"
+        ]
+      },
+      "links": {
+        "externalUrls": [
+          "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        ],
+        "sourceUrls": []
+      },
+      "graphics": [
+        {
+          "url": "https://kevinlinstrum001.github.io/documentation/images/work-update-07-23-2026.png",
+          "altText": "Work Update for July 23, 2026",
+          "description": "Document graphic"
+        }
+      ],
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "document": {
+        "documentId": "work-update-2026-07-25-work-queue-2-phase-2",
+        "filePath": "work-update-07-25-2026-phase-2.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026-phase-2.html",
+        "title": "Work Queue 2.0 — Phase 2 Update — July 25, 2026",
+        "headline": "Work Queue 2.0 became fast, guided, and ready for real operational use.",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-25",
+        "updatedTimestamp": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "phase-update",
+        "coverageDescription": "Covers Work Queue 2.0 Phase 2 work completed on July 25, 2026, including task-template services, validation, startup-data integration, New Task form changes, browser behavior, integration testing, deployment, desktop verification, and mobile verification. Exact session times are not stated.",
+        "coverageConfidence": "high"
+      },
+      "subject": {
+        "projectName": "Work Queue 2.0",
+        "primaryApp": "Work Queue 2.0",
+        "mainFocus": "Connecting task templates throughout the Work Queue stack and proving the upgraded workflow through validation, deployment, and realistic desktop and mobile testing.",
+        "description": "Klinswork Work Queue 2.0 Phase 2 update for July 25, 2026, covering task templates, formal validation, startup-data integration, interface testing, deployment, and mobile verification.",
+        "topics": [
+          "task templates",
+          "template service",
+          "formal validation",
+          "startup data",
+          "guided task creation",
+          "browser-side filtering",
+          "autofill behavior",
+          "integration testing",
+          "Apps Script deployment",
+          "desktop testing",
+          "mobile testing",
+          "development workflow",
+          "template administration"
+        ],
+        "keywords": [
+          "Work Queue 2.0",
+          "Phase 2",
+          "Task_Templates",
+          "TemplateService.gs",
+          "Validation.gs",
+          "WebApp.gs",
+          "Scripts.html",
+          "guided New Task form",
+          "template categories",
+          "mobile workflow",
+          "Apps Script deployment"
+        ],
+        "appsAffected": [
+          "Work Queue 2.0",
+          "Klinswork Tool Center",
+          "Klinswork Locations"
+        ]
+      },
+      "sections": [
+        {
+          "title": "Connected Task_Templates to the application",
+          "anchor": "#service",
+          "contentSummary": "Phase 2 began by turning the populated Task_Templates sheet into a dependable application service. New backend file TemplateService.gs Responsible for retrieving, normalizing, filtering, and sorting template records. Capabilities added Retrieve all active templates Retrieve one template by ID Return distinct categories Normalize active values and priorities Sort by order, category, and name",
+          "graphics": []
+        },
+        {
+          "title": "Verified template retrieval before interface work",
+          "anchor": "#retrieval",
+          "contentSummary": "A compact Code.gs test called TemplateService.gs → getTaskTemplates() and TemplateService.gs → getTaskTemplateCategories() . Verified totals 10 active templates 6 categories Correct IDs and names Correct descriptions and priorities Correct sorting Verified categories Carpet Care Supplies General Cleaning Windows Other General",
+          "graphics": []
+        },
+        {
+          "title": "Expanded formal system validation",
+          "anchor": "#validation",
+          "contentSummary": "Validation.gs now treats the template system as a required part of the Work Queue configuration. New validation coverage CONFIG.SHEETS.TASK_TEMPLATES must exist The Task_Templates sheet must exist All seven required headers must be present Complete result The final validation confirmed the configuration object, Work Queue data spreadsheet, all operational tabs, the shared location source, and all 163 active Work Queue locations.",
+          "graphics": []
+        },
+        {
+          "title": "Extended browser startup data",
+          "anchor": "#startup",
+          "contentSummary": "WebApp.gs → getAppInitializationData() and WebApp.gs → getStartupData() were updated so the browser receives templates and template categories during initial loading. Application Work Queue 2.0 Units 8 Locations 163 Templates 10 Categories 6 Active tasks at test time 0 Completed tasks at test time 2",
+          "graphics": []
+        },
+        {
+          "title": "Rebuilt the New Task form",
+          "anchor": "#form",
+          "contentSummary": "The former free-text Category field was replaced with a guided, two-step template selection process. Category is now a required dropdown. Task is a new required dropdown. Task remains disabled until a category is selected. Description and Priority receive defaults but remain editable. Assigned To and Initial Note remain available.",
+          "graphics": []
+        },
+        {
+          "title": "Added browser-side template behavior",
+          "anchor": "#browser",
+          "contentSummary": "Scripts.html now stores and applies template data throughout the New Task workflow. Browser behavior Populate Category options Filter Task choices by Category Autofill Description Autofill Priority Reset both controls correctly Preserved flexibility Description remains editable Priority remains editable Category is saved with the task Template ID is not stored yet",
+          "graphics": []
+        },
+        {
+          "title": "Added a full interface integration test",
+          "anchor": "#integration",
+          "contentSummary": "The rendered application was inspected before deployment to verify the complete template wiring. Checks included Category and Task selects exist Template state is stored Change handlers are connected Templates filter by category Description and Priority autofill Category submits correctly Result",
+          "graphics": []
+        },
+        {
+          "title": "Deployed the template-assisted release",
+          "anchor": "#deployment",
+          "contentSummary": "After every backend, validation, startup, HTML, and browser integration test passed, a new Apps Script deployment was created and tested directly. Desktop realistic-task test Selected a unit and location. Selected General Cleaning and Vacuum. Used the autofilled description. Edited the description. Changed Priority to Urgent. Added an initial note. Created and opened the saved task.",
+          "graphics": []
+        },
+        {
+          "title": "Verified the complete workflow on mobile",
+          "anchor": "#mobile",
+          "contentSummary": "The new deployment was tested on a mobile phone using a realistic task workflow. Mobile results Layout displayed correctly Dropdowns were easy to use Category filtered Task correctly Description and Priority autofilled Task creation succeeded Operational impact The task-creation process changed from a long typing exercise into a quick selection-and-review workflow suitable for use while moving through the building.",
+          "graphics": []
+        },
+        {
+          "title": "Established a much stronger development workflow",
+          "anchor": "#process",
+          "contentSummary": "Each layer was proven before the next layer was changed. This reduced uncertainty, made failures easier to isolate, and replaced trial-and-error deployment with controlled system verification.",
+          "graphics": []
+        },
+        {
+          "title": "User-experience result",
+          "anchor": "#experience",
+          "contentSummary": "Behind the scenes, Work Queue performs template lookup, filtering, default selection, validation, persistence, activity logging, and interface refresh. The user experiences only a fast, polished workflow.",
+          "graphics": []
+        },
+        {
+          "title": "Current template library",
+          "anchor": "#library",
+          "contentSummary": "TPL-001 Carpet Care Spot-shampoo carpet TPL-002 Supplies Restock supplies TPL-003 General Cleaning Vacuum TPL-004 Mop TPL-005 Spot-mop TPL-006 Sweep TPL-007 Clean TPL-008 Windows Clean windows TPL-009 Other Other request TPL-010 General",
+          "graphics": []
+        },
+        {
+          "title": "Current status and recommended next phase",
+          "anchor": "#status",
+          "contentSummary": "Recommended sequence The strongest next feature is a protected template-administration screen that allows templates to be added, edited, reordered, activated, and deactivated without manually editing the spreadsheet.",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "Google Sheets",
+          "GitHub Pages"
+        ],
+        "apps": [
+          "Work Queue 2.0"
+        ],
+        "scripts": [
+          "Code.gs",
+          "Scripts.html",
+          "TemplateService.gs",
+          "Validation.gs",
+          "WebApp.gs"
+        ],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "services": [
+          "Google Apps Script HTML Service",
+          "Google Sheets"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Task_Templates",
+          "Tasks",
+          "Task_Activity",
+          "Settings",
+          "Klinswork_Locations"
+        ],
+        "files": [
+          "Code.gs",
+          "Scripts.html",
+          "TemplateService.gs",
+          "Validation.gs",
+          "WebApp.gs"
+        ],
+        "integrations": [
+          "Task template data",
+          "Startup data",
+          "Shared location data",
+          "New Task interface",
+          "Task persistence",
+          "Activity logging"
+        ],
+        "apis": [
+          "google.script.run"
+        ],
+        "versions": [
+          "Work Queue 2.0",
+          "Phase 2"
+        ]
+      },
+      "links": {
+        "externalUrls": [
+          "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        ],
+        "sourceUrls": []
+      },
+      "graphics": [],
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      }
+    },
+    {
+      "schemaVersion": "1.1",
+      "document": {
+        "documentId": "work-update-2026-07-26-work-queue-2-1-beta",
+        "filePath": "work-update-07-26-2026.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-26-2026.html",
+        "title": "Work Queue 2.1 Beta — Full Development Update — July 26, 2026",
+        "headline": "Work Queue 2.1 Beta became a complete operational system.",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-26",
+        "updatedTimestamp": ""
+      },
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "full-development-update",
+        "coverageDescription": "Covers the July 26, 2026 development cycle for Work Queue 2.1 Beta, including the protected beta environment, recursive locations, location-specific templates, inventory-holder architecture, task schema expansion, holder-event history, end-to-end testing, 17-file cleanup, final audit, and restroom-holder rollout. Exact session times are not stated.",
+        "coverageConfidence": "high"
+      },
+      "subject": {
+        "projectName": "Work Queue 2.1 Beta",
+        "primaryApp": "Work Queue 2.1 Beta",
+        "mainFocus": "Transforming Work Queue into a holder-aware operational system that connects locations, templates, physical inventory holders, tasks, completion events, history, diagnostics, and rollout data.",
+        "description": "Klinswork development update for July 26, 2026, documenting the creation, testing, cleanup, and final audit of Work Queue 2.1 Beta.",
+        "topics": [
+          "protected beta environment",
+          "recursive location hierarchy",
+          "location-specific task templates",
+          "inventory holders",
+          "inventory holder events",
+          "task schema expansion",
+          "server-controlled task creation",
+          "holder selection",
+          "task completion",
+          "append-only history",
+          "holder workspace",
+          "system validation",
+          "end-to-end testing",
+          "code cleanup",
+          "cross-file audit",
+          "restroom holder rollout"
+        ],
+        "keywords": [
+          "Work Queue 2.1 Beta",
+          "2.1.02-beta",
+          "Inventory_Holders",
+          "Inventory_Holder_Events",
+          "InventoryHolderService.gs",
+          "InventoryHolderEventService.gs",
+          "Related Holder ID",
+          "Related Holder Event ID",
+          "recursive location selection",
+          "holder workspace",
+          "267 holders",
+          "89 restroom locations"
+        ],
+        "appsAffected": [
+          "Work Queue 2.1 Beta",
+          "Inventory 3.0",
+          "Klinswork Locations",
+          "Klinswork Tool Center"
+        ]
+      },
+      "sections": [
+        {
+          "title": "A fundamental redesign, not a routine update",
+          "anchor": "#overview",
+          "contentSummary": "The day began with a strategic decision: stop modifying the working application directly and create a fully separate Work Queue 2.1 Beta. That decision protected the stable release while giving the beta enough freedom to become something substantially more capable. This distinction resolved a central data-modeling problem. Rooms, restrooms, hallways, closets, and units remain locations. Soap dispensers, toilet-paper dispensers, towel dispensers, shelves, cabinets, carts, and other physical containers are represented as inventory holders attached to those locations.",
+          "graphics": []
+        },
+        {
+          "title": "Established a protected beta environment",
+          "anchor": "#beta",
+          "contentSummary": "The beta received its own Apps Script deployment, its own task-data spreadsheet, its own application identity, and its own version number. It continued to read shared reference information from the location and inventory system without writing into the working production task data. Identity Work Queue 2.1 Beta 2.1.02-beta Isolation Beta task records were separated from production so major schema and service changes could be tested safely. Rollback protection The existing release remained unchanged and available as the immediate fallback baseline.",
+          "graphics": []
+        },
+        {
+          "title": "Strengthened the shared location hierarchy",
+          "anchor": "#locations",
+          "contentSummary": "Work Queue now reads only locations that are active and enabled for the application. The location service normalizes records, resolves units, builds parent-child relationships, supports nested locations, and caches the directory briefly to reduce repeated spreadsheet reads. Reliability improvements Duplicate active Location IDs now fail validation. Missing and inactive parent locations are detected. Self-parenting and circular chains are rejected. Only Work Queue-enabled locations are exposed. Nested hierarchy proven The hierarchy is no longer constrained to one unit and one child level.…",
+          "graphics": []
+        },
+        {
+          "title": "Rebuilt task creation around recursive location selection",
+          "anchor": "#workflow",
+          "contentSummary": "The browser dynamically creates additional selectors whenever the selected location has children. The deepest selected location becomes the canonical Location ID saved with the task. Browser capabilities Unlimited practical hierarchy depth Automatic removal of obsolete deeper selectors Root-to-location path reconstruction Room-number disambiguation Responsive mobile path display Stale-response protection Browser request IDs prevent an older server response from replacing a more recent location or template selection when the user moves quickly through the form.",
+          "graphics": []
+        },
+        {
+          "title": "Made task recommendations location-specific",
+          "anchor": "#templates",
+          "contentSummary": "Work Queue now loads only task templates mapped to the selected location. The location-task map remains the applicability source, while the template service filters, normalizes, and sorts the result. The browser distinguishes between no location, loading, mapped templates, no mapped templates, and lookup failure. It also caches results by location ID, rebuilds categories after location changes, and clears only values previously generated by a template.",
+          "graphics": []
+        },
+        {
+          "title": "Implemented the inventory-holder architecture",
+          "anchor": "#architecture",
+          "contentSummary": "The new holder model represents physical operational objects separately from locations. This gives Work Queue a precise answer to both where the work occurs and what object is affected. Inventory_Holders Stores holder identity, type, location, position, service area, product assignment, capacity, tracking method, current state, condition, active status, and notes. Inventory_Holder_Events Stores append-only history including event type, previous and new state, condition, product, quantity, related task, timestamp, recorder, and notes. InventoryHolderService.gs now provides",
+          "graphics": []
+        },
+        {
+          "title": "Expanded the Tasks schema from 18 to 23 columns",
+          "anchor": "#schema",
+          "contentSummary": "Five new fields completed the task-template-holder-event chain: Template ID Records which task template defined the work. Related Holder ID Identifies the physical holder affected by the task. Completion Event Type Defines the holder event that completion should record. Completion State Defines the holder state expected after completion. Related Holder Event ID Links the completed task to its append-only holder event.",
+          "graphics": []
+        },
+        {
+          "title": "Made task creation server-controlled",
+          "anchor": "#creation",
+          "contentSummary": "Manual task May be created without a template, holder, completion event, or holder-event linkage. Holder-free template task Saves its Template ID while remaining free of holder and holder-event fields. Holder-required task Requires a valid, active, compatible holder at the selected location. Server validation now confirms The template exists, is active, and applies to the selected location. The holder exists, is active, and belongs to the selected location. The holder type and product category match template requirements. Completion Event Type and Completion State come from server-side…",
+          "graphics": []
+        },
+        {
+          "title": "Added intelligent holder selection in the browser",
+          "anchor": "#selection",
+          "contentSummary": "No compatible holder The interface explains that no valid holder is registered and blocks submission. One compatible holder The holder is selected automatically and its operational details are displayed. Multiple compatible holders The user receives a required selector to identify the exact physical holder. Holder-free and custom tasks keep the holder interface hidden. The browser submits both templateId and relatedHolderId , while the server remains authoritative.",
+          "graphics": []
+        },
+        {
+          "title": "Created an append-only holder event service",
+          "anchor": "#events",
+          "contentSummary": "InventoryHolderEventService.gs now owns holder-event creation, retrieval, sorting, task linkage, duplicate prevention, holder-state synchronization, and script-lock protection. Duplicate prevention Repeated automatic event requests for the same task resolve to the existing event rather than creating another row. Shared responsibilities Task completion calls the event service, while holder-state updates remain delegated to InventoryHolderService.gs .",
+          "graphics": []
+        },
+        {
+          "title": "Connected task completion to holder history",
+          "anchor": "#completion",
+          "contentSummary": "Holder-linked completion creates or reuses exactly one event, updates the holder to the template-defined completion state, saves the event ID to the task, and writes normal task activity. Holder-free and manual tasks complete without creating holder events. History-preservation rule Reopening preserves Related Holder ID and Related Holder Event ID. The original holder event is never deleted or modified. Holder state is not automatically reversed. Re-completion reuses the original event. A second automatic holder event is not created.",
+          "graphics": []
+        },
+        {
+          "title": "Added complete holder details and a holder workspace",
+          "anchor": "#workspace",
+          "contentSummary": "Holder-linked tasks now display holder identity, type, position, service area, state, condition, completion behavior, and related event directly in the task-detail modal. Task-detail holder panel Loading and error states Event pending or recorded status Preserved linkage if detail lookup fails Open Holder Workspace action Holder workspace Full location path Current configuration and condition Open and completed linked tasks Append-only event history Clickable related task references The browser-facing getHolderWorkspace(holderId) endpoint consolidates holder details, location path, open…",
+          "graphics": []
+        },
+        {
+          "title": "Expanded validation into a complete integration audit",
+          "anchor": "#validation",
+          "contentSummary": "Validation now reaches far beyond basic configuration. It checks spreadsheet access, required headers, location hierarchy, duplicate identifiers, template relationships, holder compatibility, task-event consistency, and holder-state alignment. Hierarchy checks Missing or inactive parents Self-parenting locations Circular parent chains Duplicate active IDs Linkage checks Missing templates or holders Wrong-location or wrong-type holders Missing or orphaned event references Duplicate automatic events Invalid completion-state fields",
+          "graphics": []
+        },
+        {
+          "title": "Completed a full end-to-end beta scenario",
+          "anchor": "#testing",
+          "contentSummary": "Phase 13 tested the entire workflow rather than isolated functions: location selection, mapped task lookup, holder resolution, task creation, task details, start, completion, holder event creation, holder state change, reopen, re-completion, event reuse, holder workspace, and consolidated validation.",
+          "graphics": []
+        },
+        {
+          "title": "Completed a 17-file Phase 14 cleanup",
+          "anchor": "#cleanup",
+          "contentSummary": "After the functional work passed, the entire project was reviewed file-by-file. Every source file now begins with its exact filename and project identity, making incorrect pastes or uploads immediately visible. Final source structure Test separation Application code and test code were separated into CodeTests.gs , WebAppTests.gs , ValidationTests.gs , and Tests.gs . Stale assumptions removed Old Work Queue 2.0 wording, obsolete phase comments, fixed counts, stale browser expectations, brittle IDs, and old schema assumptions were removed or corrected. Interface and code quality improvements",
+          "graphics": []
+        },
+        {
+          "title": "Ran the final cross-file audit",
+          "anchor": "#audit",
+          "contentSummary": "The audit checked file presence, exact headers, schema consistency, browser/server integration, interface IDs, event linkage, test separation, accessibility structure, obsolete wording, private data, production references, and syntax.",
+          "graphics": []
+        },
+        {
+          "title": "Completed beta testing and the restroom-holder sheet rollout",
+          "anchor": "#rollout",
+          "contentSummary": "After the code audit was complete, the beta moved into live workflow testing. The test confirmed that Work Queue could create a location-specific supply task, attach it to a physical inventory holder, complete the work, update the holder state, and write a permanent event to Inventory_Holder_Events . Verified end-to-end workflow Three holder-linked completion events were created successfully: IHE-5F00BB315F95 , IHE-FEC62F9216B0 , and IHE-905DC7B81B2F . Activation problem corrected The first Juniper North pilot holders were present but did not appear because capacity, tracking, state,…",
+          "graphics": []
+        },
+        {
+          "title": "Current project status",
+          "anchor": "#status",
+          "contentSummary": "Work Queue 2.1 Beta is no longer simply a renamed task list. It is now a structured operational system capable of representing where work is needed, what work applies, which physical object is affected, what state change should result, what event occurred, and how that history relates back to the task. Final Status Next roadmap position Today completed the functional build, end-to-end scenario, source cleanup, schema audit, interface audit, validation, final read-only regression test pass, beta workflow verification, and a 267-holder restroom rollout across seven units.",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "Google Sheets",
+          "GitHub Pages"
+        ],
+        "apps": [
+          "Work Queue 2.1 Beta",
+          "Inventory 3.0"
+        ],
+        "scripts": [
+          "Code.gs",
+          "CodeTests.gs",
+          "Config.gs",
+          "Dashboard.html",
+          "InventoryHolderEventService.gs",
+          "InventoryHolderService.gs",
+          "LocationService.gs",
+          "Scripts.html",
+          "Styles.html",
+          "TaskService.gs",
+          "TemplateService.gs",
+          "Tests.gs",
+          "Utilities.gs",
+          "Validation.gs",
+          "ValidationTests.gs",
+          "WebApp.gs",
+          "WebAppTests.gs"
+        ],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "services": [
+          "Google Apps Script HTML Service",
+          "Google Sheets"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Tasks",
+          "Task_Activity",
+          "Task_Templates",
+          "Location_Task_Map",
+          "Inventory_Holders",
+          "Inventory_Holder_Events",
+          "Klinswork_Locations"
+        ],
+        "files": [
+          "Code.gs",
+          "CodeTests.gs",
+          "Config.gs",
+          "Dashboard.html",
+          "InventoryHolderEventService.gs",
+          "InventoryHolderService.gs",
+          "LocationService.gs",
+          "Scripts.html",
+          "Styles.html",
+          "TaskService.gs",
+          "TemplateService.gs",
+          "Tests.gs",
+          "Utilities.gs",
+          "Validation.gs",
+          "ValidationTests.gs",
+          "WebApp.gs",
+          "WebAppTests.gs"
+        ],
+        "integrations": [
+          "Shared location hierarchy",
+          "Location-specific templates",
+          "Inventory holder lookup",
+          "Holder event creation",
+          "Task completion",
+          "Holder workspace",
+          "System diagnostics",
+          "Restroom-holder rollout"
+        ],
+        "apis": [
+          "google.script.run"
+        ],
+        "versions": [
+          "Work Queue 2.1 Beta",
+          "2.1.02-beta"
+        ]
+      },
+      "links": {
+        "externalUrls": [
+          "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        ],
+        "sourceUrls": []
+      },
+      "graphics": []
+    },
+    {
+      "schemaVersion": "1.1",
+      "document": {
+        "documentId": "work-update-2026-07-21-inventory-3-tool-center",
+        "filePath": "work-update-07-21-2026.html",
+        "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-21-2026.html",
+        "title": "Work Update — July 21, 2026",
+        "headline": "Inventory 3.0 was conceived and created today.",
+        "documentType": "work-update",
+        "createdTimestamp": "2026-07-21",
+        "updatedTimestamp": ""
+      },
+      "metadata": {
+        "filePath": "",
+        "url": ""
+      },
+      "workCoverage": {
+        "workStartedAt": null,
+        "workEndedAt": null,
+        "workDurationHours": null,
+        "coverageType": "daily-work-update",
+        "coverageDescription": "Covers the July 21, 2026 work session in which Inventory 3.0 was conceived and created, the Klinswork Tool Center was refined, mobile rendering and image behavior were corrected, favicon and manifest issues were investigated, and product-image preparation workflows were developed. Exact session times are not stated.",
+        "coverageConfidence": "high"
+      },
+      "subject": {
+        "projectName": "Klinswork",
+        "primaryApp": "Inventory 3.0",
+        "mainFocus": "Creating Inventory 3.0 as a new personal inventory system while unifying the Klinswork tools, repairing mobile presentation, and improving image and branding workflows.",
+        "description": "Klinswork work update for July 21, 2026, covering Inventory 3.0, Tool Center improvements, mobile fixes, image troubleshooting, and next steps.",
+        "topics": [
+          "Inventory 3.0 creation",
+          "inventory architecture",
+          "cart inventory",
+          "inventory adjustments",
+          "history and accountability",
+          "Klinswork Tool Center",
+          "mobile viewport repair",
+          "responsive images",
+          "favicon troubleshooting",
+          "web app manifest",
+          "image transparency",
+          "product image repair",
+          "image batch processing",
+          "Email Composer integration"
+        ],
+        "keywords": [
+          "Inventory 3.0",
+          "Config.gs",
+          "DataService.gs",
+          "InventoryService.gs",
+          "Validation.gs",
+          "Klinswork Tool Center",
+          "Tasker",
+          "Email Composer",
+          "viewport meta tag",
+          "object-fit contain",
+          "favicon",
+          "web app manifest",
+          "PNG transparency",
+          "GIMP",
+          "Pillow"
+        ],
+        "appsAffected": [
+          "Inventory 3.0",
+          "Klinswork Tool Center",
+          "Tasker",
+          "Email Composer"
+        ]
+      },
+      "sections": [
+        {
+          "title": "Inventory 3.0",
+          "anchor": "#inventory",
+          "contentSummary": "Inventory 3.0 was defined as a fresh start rather than another patch to the earlier inventory versions. The goal is a stable personal system for tracking cart inventory, recording quantity changes, documenting reasons, and preserving a reliable history. Architecture established Config.gs for configuration and shared constants. DataService.gs for spreadsheet and data-access operations. InventoryService.gs for inventory rules and business logic. Validation.gs for checking inputs and preventing invalid operations. This separated configuration, data access,…",
+          "graphics": []
+        },
+        {
+          "title": "Klinswork Tool Center",
+          "anchor": "#tool-center",
+          "contentSummary": "The Tool Center was refined as the main entrance to the growing set of work apps. It now presents the tools as parts of one system instead of isolated experiments. Connected tools Inventory 3.0 Tasker Email Composer Identity and usability Monkey favicon added and improved. Yellow-and-blue visual identity strengthened. Mobile access corrected. Tool descriptions and card presentation refined.",
+          "graphics": []
+        },
+        {
+          "title": "Issues diagnosed and troubleshooting fixes",
+          "anchor": "#troubleshooting",
+          "contentSummary": "Phone layout appeared tiny The Apps Script page was initially being rendered at desktop width and then shrunk to fit the phone. The cause was a missing viewport setting in doGet() . After saving and redeploying, the page rendered at the correct mobile scale. Text became readable, cards became usable, and the interface stopped behaving like a miniature desktop page. Images cropped after the mobile fix Once the page scaled correctly, some images were cropped because fixed heights and object-fit: cover were forcing them to fill boxes by cutting away part…",
+          "graphics": []
+        },
+        {
+          "title": "Image preparation and transparency work",
+          "anchor": "#images",
+          "contentSummary": "Product and interface images were reviewed and adjusted so they work more reliably inside Inventory 3.0 and the Tool Center. Topics worked through Exact pixel dimensions PNG versus JPEG White and transparent backgrounds Alpha channels Checkerboard transparency Flattening and merged layers Gray halos and edge artifacts Scaling without cropping Reliable transparency test Place a bright-colored layer underneath the image in GIMP: If the color shows through, the pixels are transparent. If the checkerboard remains, it is baked into the image. Prominence…",
+          "graphics": []
+        },
+        {
+          "title": "Email Composer",
+          "anchor": "#email",
+          "contentSummary": "Email Composer continued to be integrated into the Tool Center. Its cover art, presentation, and identity were refined so it functions as a visible part of the larger Klinswork system alongside Inventory 3.0 and Tasker.",
+          "graphics": []
+        },
+        {
+          "title": "The larger achievement",
+          "anchor": "#achievement",
+          "contentSummary": "Today combined creation and troubleshooting. Inventory 3.0 was conceived and created, while the surrounding Klinswork environment became more unified, mobile-friendly, recognizable, and practical. A new inventory architecture was established. The Tool Center became the common entrance to the work apps. Mobile scaling was corrected. Responsive image behavior was improved. Browser branding and mobile installation requirements were clarified. Product images were repaired and standardized. A future image-automation workflow was identified. By the end of the…",
+          "graphics": []
+        }
+      ],
+      "technical": {
+        "platforms": [
+          "Google Apps Script",
+          "Google Sheets",
+          "GitHub Pages",
+          "GIMP"
+        ],
+        "apps": [
+          "Inventory 3.0",
+          "Klinswork Tool Center",
+          "Tasker",
+          "Email Composer"
+        ],
+        "scripts": [
+          "Config.gs",
+          "DataService.gs",
+          "InventoryService.gs",
+          "Validation.gs"
+        ],
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Python"
+        ],
+        "services": [
+          "Google Apps Script HTML Service",
+          "Google Sheets",
+          "GitHub Pages"
+        ],
+        "subscriptions": [],
+        "dataStores": [
+          "Inventory records",
+          "Inventory history",
+          "Product images"
+        ],
+        "files": [
+          "Config.gs",
+          "DataService.gs",
+          "InventoryService.gs",
+          "Validation.gs"
+        ],
+        "integrations": [
+          "Tool Center navigation",
+          "Inventory application",
+          "Tasker",
+          "Email Composer",
+          "Mobile home-screen installation",
+          "GitHub-hosted images"
+        ],
+        "apis": [
+          "google.script.run"
+        ],
+        "versions": [
+          "Inventory 3.0"
+        ]
+      },
+      "links": {
+        "externalUrls": [
+          "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+        ],
+        "sourceUrls": []
+      },
+      "graphics": [
+        {
+          "url": "https://kevinlinstrum001.github.io/documentation/images/work-update-07-21-2026.png",
+          "altText": "Work Update for July 21, 2026",
+          "description": "Document graphic"
+        }
+      ]
+    }
+  ]
+}
