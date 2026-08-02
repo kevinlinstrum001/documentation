@@ -1,0 +1,987 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "lesson-routing-from-submission-viewer",
+    "filePath": "routing_from_viewer_lesson.html",
+    "documentUrl": "",
+    "title": "Routing From the Submission Viewer",
+    "headline": "Preserve the log, route a copy, and work from buffers.",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "routing-from-viewer-lesson-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-routing-from-submission-viewer"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "instructional-reference",
+    "coverageDescription": "Describes the next architectural step after a working submission capture-and-view pipeline: human routing from readable submission cards into task, meeting-note, suggestion, needs-information, or archive buffers while preserving Submission_Log as an append-only source of truth. The lesson covers routing controls, source-versus-derived records, browser-to-Apps-Script boundaries, sample routed-task data, safe implementation order, testing doctrine, and a future progression from human routing to rules and agent assistance.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Submission Viewer Routing",
+      "projectType": "workflow architecture and instructional reference",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Extend the existing capture-and-view pipeline into a safe routing system that creates actionable derived records without altering the permanent submission history.",
+      "projectPhase": "routing design and implementation guidance",
+      "contributionType": "architecture definition, instructional design, data-model clarification, and testing doctrine",
+      "identificationBasis": "The document explicitly teaches how to route submission cards into working buffers while preserving Submission_Log.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Submission Viewer",
+        "relationshipType": "existing source interface",
+        "relationshipDescription": "Readable cards are the human-facing surface from which routing decisions are initiated.",
+        "impact": "The viewer becomes the control point for creating tasks, notes, suggestions, needs-information records, or archive decisions.",
+        "evidenceSectionAnchors": [
+          "#current-status",
+          "#what-routing-means",
+          "#routing-path"
+        ],
+        "identificationBasis": "The lesson begins from an already working capture-and-view pipeline.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Work Queue",
+        "relationshipType": "future routed-record destination",
+        "relationshipDescription": "Task_Buffer is described as the first working destination and a later Tasks page would read from that buffer.",
+        "impact": "Submission records can become actionable task objects without changing the original evidence.",
+        "evidenceSectionAnchors": [
+          "#source-vs-routed-record",
+          "#derived-task-example",
+          "#safe-order-of-work"
+        ],
+        "identificationBasis": "The document explicitly defines Task_Buffer and future task-page behavior.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Submission_Log",
+        "foundationType": "append-only source record",
+        "relationshipDescription": "Stores normalized submission JSON and permanently answers what was submitted.",
+        "impact": "Provides the authoritative evidence layer beneath all later routed records."
+      },
+      {
+        "foundationId": "",
+        "name": "Working buffers",
+        "foundationType": "derived operational record layer",
+        "relationshipDescription": "Task_Buffer, Meeting_Notes, Suggestions, Needs_Info, and Archive receive records derived from source submissions.",
+        "impact": "Separates immutable history from mutable operational work."
+      },
+      {
+        "foundationId": "",
+        "name": "Submission ID linkage",
+        "foundationType": "traceability mechanism",
+        "relationshipDescription": "Each routed record points back to the original submission through source_submission_id.",
+        "impact": "Allows operational records to remain traceable to the original evidence."
+      }
+    ],
+    "relationshipSummary": "The lesson defines how the Submission Viewer, Apps Script controller, Google Sheets storage, and future Work Queue layer fit together: the viewer initiates routing, Apps Script resolves the authoritative source record, and a new working record is appended to the correct buffer."
+  },
+  "subject": {
+    "projectName": "Submission Viewer Routing",
+    "primaryApp": "Submission Viewer",
+    "mainFocus": "Teaching a safe routing architecture in which users classify submission cards while Submission_Log remains immutable and new derived records are created in destination buffers.",
+    "description": "Instructional reference for turning readable submission cards into tasks, meeting notes, suggestions, needs-information, or archive records without altering the permanent submission history.",
+    "topics": [
+      "submission routing",
+      "append-only history",
+      "derived records",
+      "Task_Buffer",
+      "Meeting_Notes",
+      "Suggestions",
+      "Needs_Info",
+      "Archive",
+      "source of truth",
+      "human-in-the-loop routing",
+      "Apps Script controller",
+      "Google Sheets storage",
+      "browser interface",
+      "traceability",
+      "testing doctrine",
+      "agent-assisted routing"
+    ],
+    "keywords": [
+      "Submission_Log",
+      "submission_id",
+      "source_submission_id",
+      "route",
+      "Task_Buffer",
+      "Meeting_Notes",
+      "Suggestions",
+      "Needs_Info",
+      "Archive",
+      "normalized JSON",
+      "derived record",
+      "append-only",
+      "Cards.html"
+    ],
+    "appsAffected": [
+      "Submission Viewer",
+      "Future Tasks page",
+      "Google Site"
+    ],
+    "systemsAffected": [
+      "submission capture",
+      "routing workflow",
+      "task creation",
+      "meeting-note capture",
+      "suggestion management",
+      "archive decisions"
+    ],
+    "componentsAffected": [
+      "routing buttons",
+      "Apps Script routing function",
+      "destination sheets",
+      "source record lookup",
+      "derived record creation",
+      "routing feedback",
+      "task-page data source"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The capture-and-view pipeline was already working: Google Form submissions were normalized into JSON, written to Submission_Log, emailed, and displayed as readable cards. The next problem was deciding what should happen to a submission after a person reviewed it.",
+    "initialUnderstanding": "Routing should not move or rewrite the original submission. The permanent log and the working records answer different questions and therefore need separate storage and behavior.",
+    "intendedOutcome": "Define a safe, understandable path from a submission card to a task, meeting note, suggestion, needs-information record, or archive decision, with traceability back to the source.",
+    "approach": "Establish the append-only rule, define destination buffers, describe the browser-to-Apps-Script message, distinguish source and routed records, show an example derived task, assign clear tool responsibilities, specify a cautious build sequence, and define failure-based tests.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Established the working baseline",
+        "description": "Documented the existing Google Form → Apps Script → normalized JSON → Submission_Log → Card Viewer pipeline.",
+        "result": "The lesson starts from a known stable capture-and-view system."
+      },
+      {
+        "sequence": 2,
+        "title": "Defined routing as a human decision",
+        "description": "Introduced route buttons for task, meeting notes, suggestions, needs more information, and archive.",
+        "result": "Routing became an explicit browser action rather than an inferred or automated behavior."
+      },
+      {
+        "sequence": 3,
+        "title": "Separated source records from working records",
+        "description": "Defined Submission_Log as append-only and destination buffers as mutable operational layers.",
+        "result": "History and current work gained distinct purposes and rules."
+      },
+      {
+        "sequence": 4,
+        "title": "Defined the technical routing boundary",
+        "description": "Specified that the browser sends only submission_id and route, while Apps Script retrieves the authoritative JSON.",
+        "result": "The source log remains authoritative and browser payloads stay small and controlled."
+      },
+      {
+        "sequence": 5,
+        "title": "Specified implementation and testing",
+        "description": "Outlined a safe build order and tests that prove the derived record was created without changing the source log.",
+        "result": "The design became actionable and verifiable."
+      },
+      {
+        "sequence": 6,
+        "title": "Mapped the future automation path",
+        "description": "Described progression from human routing to fixed software rules and later agent-assisted suggestions.",
+        "result": "Automation was positioned as an aid layered on top of preserved evidence and explicit routing structure."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "A submission needs to become actionable without destroying or confusing the original history.",
+        "effect": "Moving or editing source records would make it difficult to reconstruct what was originally submitted.",
+        "resolution": "Keep Submission_Log append-only and create linked derived records in destination buffers.",
+        "status": "resolved in design"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Move records out of Submission_Log when routing.",
+        "whyItWasTried": "Moving a row might appear to simplify categorization.",
+        "whyItDidNotWork": "It would destroy the permanent record of what was submitted and mix evidence management with operational work.",
+        "whatWasLearned": "Classification should create a derivative rather than relocate the source."
+      },
+      {
+        "approach": "Send the entire JSON object from the browser during routing.",
+        "whyItWasTried": "The browser already displays the record and could appear to have all required data.",
+        "whyItDidNotWork": "The browser copy should not replace the authoritative record stored in Submission_Log.",
+        "whatWasLearned": "The browser should send only identity and intent; the controller should resolve the source record."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "The log and buffers were assigned different questions",
+        "description": "Submission_Log answers what was submitted, while buffers answer what needs action, discussion, review, or no further work.",
+        "effectOnDirection": "The data model shifted from one record moving through stages to linked records with different responsibilities."
+      },
+      {
+        "title": "Routing became a derived-record operation",
+        "description": "The routing action was defined as appending a new object that points back to the source submission.",
+        "effectOnDirection": "Traceability and auditability became structural properties of the workflow."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Keep Submission_Log append-only.",
+        "reason": "It is the permanent source of truth for what was submitted.",
+        "alternativesConsidered": [
+          "Move routed rows to destination sheets",
+          "Edit source rows to become tasks"
+        ],
+        "consequences": [
+          "Original evidence remains intact.",
+          "Derived records require explicit linkage to the source."
+        ]
+      },
+      {
+        "decision": "Use separate destination buffers.",
+        "reason": "Tasks, meeting notes, suggestions, missing-information items, and archive decisions have different operational purposes.",
+        "alternativesConsidered": [
+          "Use one universal working sheet",
+          "Add status columns directly to Submission_Log"
+        ],
+        "consequences": [
+          "Each record type can evolve according to its own workflow.",
+          "The source log stays simple and historical."
+        ]
+      },
+      {
+        "decision": "Send only submission_id and route from the browser.",
+        "reason": "Apps Script should look up the authoritative JSON rather than trust a browser copy.",
+        "alternativesConsidered": [
+          "Send full JSON from Cards.html"
+        ],
+        "consequences": [
+          "The routing interface stays lightweight.",
+          "Server-side validation and source lookup remain authoritative."
+        ]
+      },
+      {
+        "decision": "Begin with human routing.",
+        "reason": "The categories and data relationships should be proven before introducing software or agent judgment.",
+        "alternativesConsidered": [
+          "Automatic routing from the beginning"
+        ],
+        "consequences": [
+          "The system captures explicit decisions and creates training evidence for later automation."
+        ]
+      }
+    ],
+    "methodEstablished": "Capture first, preserve the log, route a copy, link every derivative to the source submission, and perform operational work from buffers.",
+    "result": "The document defines a complete routing architecture, safe implementation sequence, and failure-based test doctrine for extending the Submission Viewer into an operational workflow.",
+    "lessonsLearned": [
+      "Historical evidence and operational records should not share mutation rules.",
+      "A route is a decision that creates a new record, not a movement of the source.",
+      "The browser should communicate identity and intent while the server resolves authoritative data.",
+      "A valid routing system must prove that the source record remains unchanged.",
+      "Human routing can create the structured examples needed for later rule-based or agent-assisted routing."
+    ],
+    "directionChange": "The system moves from passive capture and display toward controlled operational routing while preserving the original evidence layer.",
+    "narrativeSummary": "This lesson converts the existing submission viewer into a blueprint for human-in-the-loop routing: immutable source history, linked working buffers, server-authoritative source lookup, cautious implementation, explicit tests, and a future path toward automation."
+  },
+  "projectDelta": {
+    "previousState": "The system could capture, normalize, store, email, and display submissions, but it did not yet define how reviewed submissions should become tasks, notes, suggestions, information requests, or archive decisions.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Routing architecture defined",
+        "description": "Specified human routing from submission cards into linked destination buffers.",
+        "evidenceSectionAnchors": [
+          "#what-routing-means",
+          "#routing-path"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Append-only history rule established",
+        "description": "Defined Submission_Log as immutable history rather than a working queue.",
+        "evidenceSectionAnchors": [
+          "#never-change-history-log"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Source and routed record model distinguished",
+        "description": "Clarified that source submissions and tasks, notes, or suggestions are related but separate records.",
+        "evidenceSectionAnchors": [
+          "#source-vs-routed-record",
+          "#derived-task-example"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Safe implementation sequence documented",
+        "description": "Provided an ordered build plan that preserves the existing viewer while routing capabilities are introduced.",
+        "evidenceSectionAnchors": [
+          "#safe-order-of-work"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Routing test doctrine documented",
+        "description": "Defined tests for destination-row creation, source immutability, linkage, and copied or referenced source JSON.",
+        "evidenceSectionAnchors": [
+          "#testing-doctrine"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Routing implementation",
+        "completedPortion": "The architecture, button set, message contract, destination model, build sequence, and tests are defined.",
+        "remainingPortion": "The browser buttons, Apps Script routing function, destination sheets, append logic, feedback, and separate Tasks page still need implementation.",
+        "evidenceSectionAnchors": [
+          "#what-routing-means",
+          "#safe-order-of-work"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Add routing buttons to submission cards",
+        "description": "Expose Task, Meeting Notes, Suggestions, Needs More Info, and Archive actions in the viewer.",
+        "reasonStillOpen": "The document is instructional and describes the next build step."
+      },
+      {
+        "workItemId": "",
+        "title": "Create Apps Script routing function",
+        "description": "Accept submission_id and route, resolve the source JSON, and append the derived record.",
+        "reasonStillOpen": "The function is specified but not shown as implemented."
+      },
+      {
+        "workItemId": "",
+        "title": "Create destination sheets",
+        "description": "Begin with Task_Buffer and add other buffers after the first route is verified.",
+        "reasonStillOpen": "The sheets are part of the proposed build sequence."
+      },
+      {
+        "workItemId": "",
+        "title": "Build separate Tasks page",
+        "description": "Read actionable records from Task_Buffer rather than Submission_Log.",
+        "reasonStillOpen": "The lesson explicitly places this later in the implementation sequence."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Routing decisions as future training data",
+        "description": "Human routing can later support fixed-rule or agent-assisted suggestions.",
+        "source": "#future-path"
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "Agent-assisted routing",
+        "reasonDeferred": "The human routing structure and destination records should be proven first.",
+        "reconsiderAfter": "Enough routed examples and stable schemas exist to evaluate suggestion quality."
+      }
+    ],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Treat Submission_Log as the working queue",
+        "supersededBy": "Linked destination buffers",
+        "reason": "The permanent source history and mutable operational records serve different purposes."
+      }
+    ],
+    "resultingState": "The next system phase is now clearly specified: route from readable cards, send only identity and intent, resolve authoritative JSON server-side, append linked derived records, preserve Submission_Log, and work from destination buffers.",
+    "roadmapChangeSummary": "The roadmap advances from capture-and-view toward human-controlled routing, with Task_Buffer as the first implementation target and rule-based or agent-assisted routing deferred until the structure is proven.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Add non-destructive test buttons",
+        "description": "Place routing controls on cards and first verify browser behavior without writing data.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Create Task_Buffer",
+        "description": "Create the first destination sheet for actionable routed records.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Implement server-side route lookup",
+        "description": "Resolve the source submission by ID and append a linked task derivative.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Run immutability and linkage tests",
+        "description": "Confirm the destination row exists, Submission_Log is unchanged, and source_submission_id is present.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "",
+        "title": "Add remaining routing destinations",
+        "description": "Expand from Task_Buffer to meeting notes, suggestions, needs information, and archive.",
+        "priority": "medium",
+        "status": "planned"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains how reviewed submissions can become tasks, meeting notes, suggestions, information requests, or archived items without changing the original submission history.",
+      "operationalImpact": "Each submission can remain available as evidence while a separate working record is created for follow-up.",
+      "currentStatus": "The capture-and-view pipeline is working. The routing architecture and safe implementation sequence are documented, but routing is not yet described as deployed.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Editing or deleting Submission_Log during routing would violate the design.",
+        "The destination buffers and routing function still require implementation.",
+        "Automated or agent routing should not precede stable human-routing records."
+      ],
+      "staffVisibleChanges": [
+        "Future route buttons on submission cards",
+        "Separate task and discussion buffers",
+        "Visible routing confirmation",
+        "Traceability to the original submission"
+      ],
+      "nextOperationalStep": "Add test routing buttons and implement the first Task_Buffer route without changing Submission_Log.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-core-rule",
+          "relatedSectionAnchor": "#never-change-history-log",
+          "type": "rule",
+          "title": "The original log stays intact",
+          "text": "Routing creates a linked copy or derivative; it does not move or rewrite the original submission."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-routing-path",
+          "relatedSectionAnchor": "#routing-path",
+          "type": "method",
+          "title": "The server remains authoritative",
+          "text": "The browser sends a submission ID and destination, and Apps Script retrieves the source JSON from the log."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-testing",
+          "relatedSectionAnchor": "#testing-doctrine",
+          "type": "verification",
+          "title": "A source change is a failure",
+          "text": "The route is valid only if the new buffer record appears and the original log row remains unchanged."
+        }
+      ]
+    },
+    "general": {
+      "summary": "A lesson on safely routing immutable submission records into mutable working buffers.",
+      "keyPoints": [
+        "Preserve Submission_Log",
+        "Route a derivative",
+        "Link by source submission ID",
+        "Work from destination buffers",
+        "Begin with human decisions",
+        "Automate later"
+      ]
+    },
+    "technical": {
+      "summary": "Cards.html should send only submission_id and route. Apps Script should resolve the authoritative normalized JSON in Submission_Log and append a linked derived record to the selected Google Sheet buffer.",
+      "keyPoints": [
+        "Browser sends identity and intent",
+        "Server looks up source JSON",
+        "Destination record carries source_submission_id",
+        "Submission_Log remains append-only",
+        "Task_Buffer is the first implementation target",
+        "Immutability is a required test"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The Submission Viewer is a suitable human-routing surface because it already presents normalized submissions as readable cards.",
+      "Task_Buffer should become the source for a future Tasks page rather than reusing Submission_Log as a queue."
+    ],
+    "generalLessons": [
+      "Immutable source records and mutable operational records should be separate objects.",
+      "Derived records should preserve explicit lineage to their source.",
+      "Browser clients should send minimal commands while servers resolve authoritative data.",
+      "A failure condition can be more useful than a success description: changing the source log means the routing design is wrong.",
+      "Human decisions can establish the labeled examples needed for later automation."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Historical logs are used as mutable work queues.",
+        "pattern": "A source record is edited, moved, or deleted as it advances through operational stages.",
+        "projectsObservedIn": [
+          "Submission Viewer Routing"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Append-only source logs with derived working records",
+        "description": "Separate permanent evidence from mutable tasks, notes, suggestions, and archive decisions.",
+        "suggestedDestination": "Klinswork data architecture",
+        "supportingSectionAnchors": [
+          "#never-change-history-log",
+          "#source-vs-routed-record"
+        ]
+      },
+      {
+        "title": "Minimal browser command, authoritative server lookup",
+        "description": "Send only record identity and intended route from the browser, then resolve the real source object server-side.",
+        "suggestedDestination": "Klinswork application architecture",
+        "supportingSectionAnchors": [
+          "#routing-path"
+        ]
+      },
+      {
+        "title": "Testing routing by proving source immutability",
+        "description": "Verify that destination records are created with source linkage while the original log remains unchanged.",
+        "suggestedDestination": "Klinswork testing practices",
+        "supportingSectionAnchors": [
+          "#testing-doctrine"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Never move or rewrite a source submission when routing it.",
+        "changeType": "added",
+        "explanation": "The source log preserves evidence; operational destinations receive derivatives."
+      },
+      {
+        "rule": "Every routed record must reference the source submission ID.",
+        "changeType": "added",
+        "explanation": "Lineage is required to connect working records back to the original submission."
+      },
+      {
+        "rule": "The browser should send only the submission ID and route.",
+        "changeType": "added",
+        "explanation": "The server should retrieve authoritative source JSON from Submission_Log."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "current-status",
+      "title": "What We Already Built",
+      "anchor": "#current-status",
+      "contentSummary": "The existing system captures a Google Form submission, processes it with Apps Script, creates normalized JSON, writes it to Submission_Log, sends email, and displays it as a readable card. The main success is preserving the log while presenting a clean derived view.",
+      "narrativeRole": "baseline",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the stable platform on which routing will be added.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only source logs with derived working records"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "what-routing-means",
+      "title": "What Routing Means",
+      "anchor": "#what-routing-means",
+      "contentSummary": "A human reads a submission card and chooses a destination such as Task, Meeting Notes, Suggestions, Needs More Info, or Archive. The action creates a new working record rather than moving or changing the original submission.",
+      "narrativeRole": "concept-definition",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines routing as an explicit human classification event.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only source logs with derived working records"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "never-change-history-log",
+      "title": "Never Change the History Log",
+      "anchor": "#never-change-history-log",
+      "contentSummary": "Submission_Log remains append-only and answers what was submitted. Separate buffers answer what needs action, discussion, consideration, additional information, or no further work. Routing creates a copy or derivative linked to the original submission ID.",
+      "narrativeRole": "core-rule",
+      "projectRelevance": {
+        "primaryProjectContribution": "Establishes the central data-governance rule for routing.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-core-rule",
+        "reason": "Explains how permanent evidence is protected."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only source logs with derived working records"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "routing-path",
+      "title": "The Routing Path",
+      "anchor": "#routing-path",
+      "contentSummary": "The browser card triggers the action, Apps Script remains the controller, and Google Sheets remains storage. The browser sends only submission_id and route. Apps Script retrieves the real JSON from Submission_Log and appends the derivative.",
+      "narrativeRole": "technical-flow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the application boundary and authoritative lookup path.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-routing-path",
+        "reason": "Clarifies that routing remains controlled and traceable."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Minimal browser command, authoritative server lookup"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "source-vs-routed-record",
+      "title": "Source Record vs Routed Record",
+      "anchor": "#source-vs-routed-record",
+      "contentSummary": "Submission records remain immutable in Submission_Log, while task, meeting-note, and suggestion records live in separate buffers and can change according to their operational workflows.",
+      "narrativeRole": "data-model-comparison",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates evidence records from operational records.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only source logs with derived working records"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "derived-task-example",
+      "title": "What a Derived Task Might Look Like",
+      "anchor": "#derived-task-example",
+      "contentSummary": "The sample task includes its own ID, status, priority, title, location, and description while preserving source_submission_id and a copy of the source JSON. The task is a working object and the source JSON remains its evidence.",
+      "narrativeRole": "worked-example",
+      "projectRelevance": {
+        "primaryProjectContribution": "Provides a concrete candidate schema for Task_Buffer.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Supplies a future Work Queue record pattern."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only source logs with derived working records"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "tools-in-use",
+      "title": "What Each Tool Does",
+      "anchor": "#tools-in-use",
+      "contentSummary": "Google Form captures input, Google Sheets stores logs and buffers, Apps Script controls processing and routing, Cards.html displays submissions, and Google Sites provides the organized front door.",
+      "narrativeRole": "responsibility-map",
+      "projectRelevance": {
+        "primaryProjectContribution": "Clarifies component boundaries in the routing architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Minimal browser command, authoritative server lookup"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "safe-order-of-work",
+      "title": "Safe Order of Work",
+      "anchor": "#safe-order-of-work",
+      "contentSummary": "Preserve the existing viewer, add visible test buttons, add the Apps Script routing function, create Task_Buffer first, append a derivative, show routing feedback, and later build a Tasks page that reads from Task_Buffer.",
+      "narrativeRole": "implementation-sequence",
+      "projectRelevance": {
+        "primaryProjectContribution": "Turns the conceptual architecture into an incremental build plan.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Testing routing by proving source immutability"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "testing-doctrine",
+      "title": "How to Test Without Breaking the System",
+      "anchor": "#testing-doctrine",
+      "contentSummary": "Use a test submission, route it to Task_Buffer, confirm a new destination row, confirm Submission_Log is unchanged, confirm source_submission_id, and verify the source JSON was copied or referenced correctly. Editing or deleting the source is a failure.",
+      "narrativeRole": "testing-doctrine",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the acceptance criteria for the first routing implementation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-testing",
+        "reason": "Defines the non-negotiable safety test."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Testing routing by proving source immutability"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "future-path",
+      "title": "Where This Goes Later",
+      "anchor": "#future-path",
+      "contentSummary": "Routing begins with human decisions, may later use fixed software rules to suggest destinations, and can eventually become agent-assisted for route, priority, missing information, and summary suggestions.",
+      "narrativeRole": "future-roadmap",
+      "projectRelevance": {
+        "primaryProjectContribution": "Places automation after stable human routing and preserved evidence.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Human routing as training data for later automation"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Forms",
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Sites"
+    ],
+    "apps": [
+      "Submission Viewer",
+      "Future Tasks page"
+    ],
+    "scripts": [],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "JSON"
+    ],
+    "services": [
+      "Google Apps Script",
+      "Email delivery"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Submission_Log",
+      "Task_Buffer",
+      "Meeting_Notes",
+      "Suggestions",
+      "Needs_Info",
+      "Archive"
+    ],
+    "files": [
+      "Cards.html",
+      "routing_from_viewer_lesson.html"
+    ],
+    "integrations": [
+      "Google Form submission processing",
+      "normalized JSON",
+      "submission email",
+      "card viewer",
+      "routing controls",
+      "derived record creation"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [],
+    "tests": [
+      {
+        "name": "Create routed task",
+        "type": "integration",
+        "result": "planned",
+        "notes": "A test submission should create a new Task_Buffer row."
+      },
+      {
+        "name": "Preserve Submission_Log",
+        "type": "data-integrity",
+        "result": "planned",
+        "notes": "The original Submission_Log row must remain unchanged."
+      },
+      {
+        "name": "Preserve source linkage",
+        "type": "traceability",
+        "result": "planned",
+        "notes": "The routed task must include source_submission_id."
+      },
+      {
+        "name": "Preserve source evidence",
+        "type": "data-integrity",
+        "result": "planned",
+        "notes": "The source JSON must be copied or referenced correctly."
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "not yet implemented",
+      "notes": [
+        "The document defines acceptance tests but does not claim that routing has been deployed.",
+        "Editing or deleting the original log row is explicitly defined as a failure condition."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Submission Viewer Routing Design",
+      "body": "The next step for the submission viewer is to add human routing from each readable card into separate working buffers. The original Submission_Log will remain unchanged, and every routed task, note, suggestion, information request, or archive record will point back to the source submission. Task_Buffer is the proposed first implementation target.",
+      "audiences": [
+        "project collaborator",
+        "supervisor"
+      ],
+      "detailLevel": "plain-language architectural summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "local reference",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Routing From the Submission Viewer",
+    "listingDescription": "Instructional reference for routing immutable submission records into linked working buffers.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "Local HTML",
+        "resourceName": "Routing From the Submission Viewer lesson",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "local reference document",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML lesson",
+    "sourceFiles": [
+      "routing_from_viewer_lesson.html",
+      "document-sidecar-template(21).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T02:44:02+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "This source is an instructional lesson rather than a dated work update.",
+      "The sidecar therefore emphasizes principles, architecture, implementation sequence, testing doctrine, and future roadmap.",
+      "The document identifies itself as a local reference and provides no publication URL or creation date.",
+      "Routing capabilities are described as planned next steps rather than completed deployment."
+    ],
+    "unresolvedQuestions": [
+      "What formal project should own this lesson: Submission Viewer, Work Queue, or the broader Klinswork documentation system?",
+      "What is the canonical filename and repository path for publication?",
+      "Which exact sheet schema should Task_Buffer use?",
+      "Should source_json be copied into every derivative or referenced by source_submission_id only?",
+      "What fields and statuses should be standardized across all routing destinations?"
+    ]
+  }
+}

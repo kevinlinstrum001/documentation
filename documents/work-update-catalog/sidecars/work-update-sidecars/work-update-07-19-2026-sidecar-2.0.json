@@ -1,0 +1,831 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-19-inventory-processing-reusable-views",
+    "filePath": "work-update-7-19-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-7-19-2026.html",
+    "title": "Meadows Housekeeping Work Update — 07/19/2026",
+    "headline": "Inventory Processing and Reusable Web Views",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-19",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-19-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-19-inventory-processing-reusable-views"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "milestone-work-update",
+    "coverageDescription": "Covers July 19, 2026 progress across Inventory Milestones 6 and 7, including validated inventory transaction processing, permanent event history, reusable Product and SDS views, route-map navigation, embedded Apps Script navigation repair, live inventory and SDS data, and verification of both successful and failure paths.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Klinswork Inventory",
+      "projectType": "inventory tracking and product-information application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide validated inventory processing, permanent operational history, current quantities by location, product information, and safety-document access through reusable web views.",
+      "projectPhase": "Milestones 6 and 7",
+      "contributionType": "transaction processing, validation, routing, reusable views, and verification",
+      "identificationBasis": "The work update explicitly describes Milestones 6 and 7 of the Klinswork Inventory system.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "SDS Directory",
+        "relationshipType": "safety-information integration",
+        "relationshipDescription": "The product view and SDS Directory use live SDS records and document links.",
+        "impact": "Inventory and safety information became available through one routed application.",
+        "evidenceSectionAnchors": [
+          "#overview",
+          "#completed",
+          "#verification"
+        ],
+        "identificationBasis": "Explicit SDS references throughout the update.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Meadows Housekeeping Documentation",
+        "relationshipType": "publication and navigation destination",
+        "relationshipDescription": "The work update links back to the shared documentation site.",
+        "impact": "The inventory work is documented within the broader Meadows Housekeeping knowledge system.",
+        "evidenceSectionAnchors": [],
+        "identificationBasis": "Explicit navigation link in the HTML.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Inventory Events",
+        "foundationType": "append-only operational history",
+        "relationshipDescription": "Accepted inventory requests create permanent event records.",
+        "impact": "Provides traceability for received, used, removed, moved, and corrected inventory."
+      },
+      {
+        "foundationId": "",
+        "name": "Route map",
+        "foundationType": "shared application navigation",
+        "relationshipDescription": "Routes Home, Inventory, Products, Product, and SDS views through doGet(e).",
+        "impact": "Supports reusable pages and consistent navigation."
+      }
+    ],
+    "relationshipSummary": "The project joined inventory transactions, product records, current quantities, locations, and SDS records through a stable routed web application."
+  },
+  "subject": {
+    "projectName": "Klinswork Inventory",
+    "primaryApp": "Inventory",
+    "mainFocus": "Completing the inventory transaction processor and connecting inventory, product, and SDS data through reusable routed web views.",
+    "description": "Meadows Housekeeping work update for July 19, 2026: inventory processing, reusable product and SDS views, and stable Apps Script navigation.",
+    "topics": [
+      "inventory transaction processing",
+      "inventory validation",
+      "permanent inventory events",
+      "product directory",
+      "reusable product view",
+      "SDS directory",
+      "inventory by location",
+      "Apps Script routing",
+      "embedded navigation",
+      "failure-path testing",
+      "Milestone 6",
+      "Milestone 7"
+    ],
+    "keywords": [
+      "Received",
+      "Used Up",
+      "Removed",
+      "Moved",
+      "Count Corrected",
+      "Inventory Events",
+      "Product View",
+      "SDS Directory",
+      "appUrl",
+      "doGet(e)",
+      "route map",
+      "Apps Script embedding"
+    ],
+    "appsAffected": [
+      "Klinswork Inventory",
+      "SDS Directory",
+      "Product Directory",
+      "Product View"
+    ],
+    "systemsAffected": [
+      "inventory records",
+      "inventory events",
+      "locations",
+      "product records",
+      "SDS records",
+      "Apps Script navigation"
+    ],
+    "componentsAffected": [
+      "transaction processor",
+      "validation layer",
+      "route map",
+      "shared navigation",
+      "Product View",
+      "SDS Directory",
+      "Inventory View"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The inventory project still consisted partly of spreadsheet records and experimental pages. Inventory requests needed safe processing, and navigation became unstable when Apps Script pages were embedded.",
+    "initialUnderstanding": "The application needed a transactional core that rejected invalid requests without partial effects, plus reusable routed views that could combine product, inventory, and SDS information.",
+    "intendedOutcome": "Create a functioning inventory application with validated quantity changes, permanent history, stable navigation, and reusable live-data views.",
+    "approach": "Implement the five inventory actions, validate all source and destination conditions before mutation, create accepted event records, build a route map and reusable product template, then replace relative embedded navigation with a shared server-provided appUrl.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Built the transaction processor",
+        "description": "Implemented Received, Used Up, Removed, Moved, and Count Corrected actions.",
+        "result": "Accepted requests update quantities and create permanent inventory events."
+      },
+      {
+        "sequence": 2,
+        "title": "Added defensive validation",
+        "description": "Rejected unknown locations, over-limit removals and moves, negative results, and invalid partial operations.",
+        "result": "Rejected requests remain diagnosable without changing inventory or event history."
+      },
+      {
+        "sequence": 3,
+        "title": "Created reusable routed views",
+        "description": "Built Home, Inventory, Product Directory, reusable Product Detail, and SDS Directory views.",
+        "result": "One product template can display different records by product ID."
+      },
+      {
+        "sequence": 4,
+        "title": "Repaired embedded navigation",
+        "description": "Passed one shared appUrl to every template and routed all links through doGet(e).",
+        "result": "Navigation became stable across direct and embedded use."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Relative links behaved inconsistently inside embedded Apps Script pages.",
+        "effect": "Links could fail, disappear, or replace the wrong frame.",
+        "resolution": "Used complete appUrl links supplied by the server and routed each request through doGet(e).",
+        "status": "resolved"
+      },
+      {
+        "problem": "Invalid inventory operations could risk partial quantity changes or false event records.",
+        "effect": "Inventory history and current quantities could become inaccurate.",
+        "resolution": "Validated the full request before applying changes and excluded rejected requests from Inventory Events.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Use relative links such as ?view=inventory inside embedded pages.",
+        "whyItWasTried": "Relative navigation was simple and worked when the app was opened directly.",
+        "whyItDidNotWork": "The browser could resolve the wrong frame or base URL in the embedded environment.",
+        "whatWasLearned": "Routing and navigation are separate concerns; embedded Apps Script links need a stable complete base URL."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Validation became transactional",
+        "description": "The system was required to reject invalid operations before any quantity or event mutation.",
+        "effectOnDirection": "The application moved from form handling toward safe inventory processing."
+      },
+      {
+        "title": "Shared appUrl replaced relative navigation",
+        "description": "Every view received one canonical web-app URL.",
+        "effectOnDirection": "The routed interface became stable across all existing views."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Keep rejected requests visible but out of accepted Inventory Events.",
+        "reason": "Failures should remain diagnosable without becoming operational history.",
+        "alternativesConsidered": [
+          "Delete rejected requests",
+          "Write them as accepted events"
+        ],
+        "consequences": [
+          "The system preserves troubleshooting evidence while protecting inventory history."
+        ]
+      },
+      {
+        "decision": "Use one reusable Product View template.",
+        "reason": "Product pages share structure and differ mainly by product ID.",
+        "alternativesConsidered": [
+          "Create a separate HTML file for each product"
+        ],
+        "consequences": [
+          "Product detail pages became easier to maintain and extend."
+        ]
+      },
+      {
+        "decision": "Provide a complete appUrl from the server.",
+        "reason": "Relative paths were unreliable in embedded Apps Script contexts.",
+        "alternativesConsidered": [
+          "Use target=_top",
+          "Use target=_parent",
+          "Continue relative links"
+        ],
+        "consequences": [
+          "All navigation returns through the deployment and route map."
+        ]
+      }
+    ],
+    "methodEstablished": "Validate the complete inventory request before mutation, create permanent events only for accepted operations, and route every browser view through one server-provided canonical application URL.",
+    "result": "Milestone 6 was completed and Milestone 7 reached approximately 70–75 percent, producing a safe transaction processor and a stable routed interface rather than disconnected forms and prototypes.",
+    "lessonsLearned": [
+      "Rejected operations should be diagnosable without altering operational history.",
+      "Inventory movement must preserve totals while changing source and destination balances.",
+      "Reusable views are more maintainable than one page per record.",
+      "Embedded navigation requires explicit canonical URLs."
+    ],
+    "directionChange": "The project moved from spreadsheet records and experimental pages toward a functioning inventory, product, and safety-information application.",
+    "narrativeSummary": "The July 19 work completed safe inventory processing, expanded reusable product and SDS views, and stabilized Apps Script navigation by separating routing from frame-dependent relative links."
+  },
+  "projectDelta": {
+    "previousState": "The project contained spreadsheet records, submitted requests, and prototype pages, but lacked a complete safe transaction processor and stable routed navigation across embedded views.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Inventory transaction processor",
+        "description": "Implemented and tested five inventory actions.",
+        "evidenceSectionAnchors": [
+          "#completed",
+          "#verification"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Validation and event safety",
+        "description": "Prevented unknown locations, over-limit changes, negatives, and partial updates.",
+        "evidenceSectionAnchors": [
+          "#completed",
+          "#verification"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Routing and shared navigation",
+        "description": "Added shared appUrl navigation through doGet(e) and the route map.",
+        "evidenceSectionAnchors": [
+          "#problem",
+          "#verification"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Reusable Product View",
+        "description": "Created one product template driven by stable product IDs.",
+        "evidenceSectionAnchors": [
+          "#overview",
+          "#completed",
+          "#verification"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "SDS Directory and current SDS integration",
+        "description": "Connected live safety records, filters, and document links.",
+        "evidenceSectionAnchors": [
+          "#completed",
+          "#verification"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Milestone 7 routed web application",
+        "completedPortion": "Home, Inventory, Product Directory, Product View, SDS Directory, route map, and shared navigation are working.",
+        "remainingPortion": "The update reports Milestone 7 at approximately 70–75 percent.",
+        "evidenceSectionAnchors": [
+          "#verification",
+          "#next"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Complete Milestone 7",
+        "description": "Finish remaining routed web-application features and integration work.",
+        "reasonStillOpen": "The source explicitly reports Milestone 7 as approximately 70–75 percent complete."
+      },
+      {
+        "workItemId": "",
+        "title": "Expand inventory coverage",
+        "description": "Extend the structure to additional employees, supply closets, and storerooms.",
+        "reasonStillOpen": "The work update describes this as future expansion."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Embedded navigation architecture",
+        "description": "Treat routing and browser-frame navigation as separate systems.",
+        "source": "#problem"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Relative navigation links",
+        "supersededBy": "Server-provided complete appUrl links",
+        "reason": "Relative links were unstable in embedded Apps Script environments."
+      }
+    ],
+    "resultingState": "The inventory system now has validated transaction processing, permanent accepted-event history, reusable product and SDS views, live inventory-by-location data, and stable navigation across five application views.",
+    "roadmapChangeSummary": "Milestone 6 is complete. Milestone 7 is substantially complete, with remaining work focused on finishing the routed application and expanding operational coverage.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Complete remaining Milestone 7 work",
+        "description": "Finish the remaining routed-view and integration features.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Expand tracked locations and users",
+        "description": "Extend inventory coverage to more employees, closets, and storerooms.",
+        "priority": "medium",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Preserve regression testing",
+        "description": "Continue testing successful and deliberate failure paths after each routing or processing change.",
+        "priority": "high",
+        "status": "ongoing"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The inventory system can now safely record supplies being received, used, removed, moved, or corrected, while also showing product details, quantities by location, and current safety documents.",
+      "operationalImpact": "Invalid requests no longer create partial quantity changes or false history, and supervisors can review inventory activity, shortages, corrections, and product information more clearly.",
+      "currentStatus": "The transaction processor is complete. The routed web application is stable and approximately 70–75 percent through Milestone 7.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Milestone 7 remains incomplete.",
+        "The broader rollout to all employees, closets, and storerooms has not yet occurred."
+      ],
+      "staffVisibleChanges": [
+        "Five supported inventory actions",
+        "Product Directory and reusable Product View",
+        "Inventory quantities by location",
+        "SDS Directory and document links",
+        "Stable navigation across app views"
+      ],
+      "nextOperationalStep": "Complete the remaining Milestone 7 work and expand inventory coverage.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-overview",
+          "relatedSectionAnchor": "#overview",
+          "type": "capability",
+          "title": "A functioning inventory application",
+          "text": "The project now combines validated transactions, permanent history, product information, quantities, and SDS access."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-verification",
+          "relatedSectionAnchor": "#verification",
+          "type": "verification",
+          "title": "Failure paths were tested",
+          "text": "Unknown locations and over-limit moves produced no partial updates, negative quantities, or false events."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-next",
+          "relatedSectionAnchor": "#next",
+          "type": "status",
+          "title": "Milestone 6 complete",
+          "text": "The processor is complete, while the routed web application remains approximately 70–75 percent complete."
+        }
+      ]
+    },
+    "general": {
+      "summary": "The Klinswork Inventory project gained safe transaction processing, permanent event history, reusable product and SDS views, and stable routed navigation.",
+      "keyPoints": [
+        "5 inventory actions tested",
+        "5 working application views",
+        "1 reusable product template",
+        "0 partial invalid transactions"
+      ]
+    },
+    "technical": {
+      "summary": "The system validates inventory requests before mutation, creates events only for accepted transactions, routes Home, Inventory, Products, Product, and SDS through doGet(e), and passes one shared appUrl to every template.",
+      "keyPoints": [
+        "Received, Used Up, Removed, Moved, Count Corrected",
+        "No negative or partial invalid updates",
+        "Reusable Product View by product ID",
+        "Live SDS and inventory-by-location data",
+        "Canonical appUrl navigation"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Inventory requests and accepted inventory events should remain separate records.",
+      "One reusable Product View can combine product, inventory, and SDS information.",
+      "Rejected requests can support diagnosis without entering accepted operational history."
+    ],
+    "generalLessons": [
+      "Validate all dependencies before applying a multi-record transaction.",
+      "Stable routing does not guarantee stable embedded navigation.",
+      "Canonical complete URLs are safer than relative links in framed Apps Script applications."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Embedded Apps Script navigation fails unpredictably.",
+        "pattern": "Relative links resolve against different frame levels or base URLs.",
+        "projectsObservedIn": [
+          "Klinswork Inventory"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Stable Apps Script navigation in embedded environments",
+        "description": "Pass a complete server-provided appUrl to every template and route requests through doGet(e).",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#problem"
+        ]
+      },
+      {
+        "title": "Failure-safe inventory transactions",
+        "description": "Validate source, destination, and available quantities before applying changes or writing accepted events.",
+        "suggestedDestination": "Klinswork inventory architecture",
+        "supportingSectionAnchors": [
+          "#completed",
+          "#verification"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Do not create accepted inventory events for rejected requests.",
+        "changeType": "confirmed",
+        "explanation": "Rejected operations remain available for diagnosis but cannot alter operational history."
+      },
+      {
+        "rule": "Use complete canonical URLs for embedded Apps Script navigation.",
+        "changeType": "added",
+        "explanation": "Relative links were unstable across frame levels and opening contexts."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "overview",
+      "title": "Overview",
+      "anchor": "#overview",
+      "contentSummary": "Work completed across Milestones 6 and 7 moved the project from a collection of spreadsheet records and experimental pages into a functioning inventory application with validated transactions, permanent event history, live product information, current SDS access, and reusable browser views. Milestone 6 established the processing layer. Accepted inventory requests now update current quantities and create permanent operational events. Invalid requests remain available for diagnosis but cannot change inventory or create false event records. Milestone 7 then connected that data to a routed web application. The current interface includes Home, Inventory, Product Directory, reusable Product Detail, and SDS Directory views. The Product View combines product identity, an image, manufacturer information, inventory by location, and the current SDS record.",
+      "narrativeRole": "milestone-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 19 Inventory project contribution: Overview.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-overview",
+        "reason": "Explains operational capability, verification results, or current project status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "problem",
+      "title": "Embedded Navigation Problem and Solution",
+      "anchor": "#problem",
+      "contentSummary": "The route map worked, but page-to-page navigation became unstable when Apps Script pages were used inside an embedded environment. Problem Relative links such as ?view=inventory depended on the browser resolving the correct frame and base URL. Links could work when opened directly yet fail, disappear, or replace the wrong frame when embedded. Solution The server now provides one shared appUrl to every template. Navigation links use the complete Apps Script web-app URL and send every request back through doGet(e) and the route map. Why the problem occurred In this structure, target=\"_top\" , target=\"_parent\" , and relative paths can refer to different frame levels depending on how the application was opened. Routing and navigation therefore had to be treated as separate systems. Stable navigation flow The shared URL was added to Home, Inventory, Product Directory, Product View, and SDS Directory navigation. Product links use the same…",
+      "narrativeRole": "problem-resolution",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 19 Inventory project contribution: Embedded Navigation Problem and Solution.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Stable Apps Script navigation in embedded environments"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "completed",
+      "title": "Work Completed",
+      "anchor": "#completed",
+      "contentSummary": "Inventory Processing Implemented Received, Used Up, Removed, Moved, and Count Corrected actions. Verified correct source and destination quantity changes. Created permanent event records for every accepted transaction. Preserved explanatory notes and automatic transaction context. Defensive Validation Rejected unknown source and destination locations. Rejected removals and moves exceeding available inventory. Prevented negative quantities and partial updates. Kept rejected requests out of the accepted Inventory Events history. Reusable Web Views Created a route map for Home, Inventory, Products, Product, and SDS. Built one Product View template that loads different records by product ID. Added product identity, image, manufacturer details, and external links. Added loading states, empty states, error handling, and responsive layouts. Inventory and Safety Data Displayed current quantities by tracked location on the Product View.…",
+      "narrativeRole": "implementation-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 19 Inventory project contribution: Work Completed.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Validated inventory transaction processing"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "verification",
+      "title": "Verification",
+      "anchor": "#verification",
+      "contentSummary": "Testing covered both successful operating paths and deliberate failure cases. Received inventory increased the correct destination quantity. Used Up and Removed actions reduced the correct source quantity. Moved inventory preserved the total while changing locations. Count Corrected replaced the recorded amount with the verified count. Unknown destinations produced no partial source subtraction. Over-limit removals and moves produced no negative inventory. Rejected requests remained visible for diagnosis but created no operational event. The same Product View displayed different products when only the ID changed. Inventory-by-location displayed the correct matching records. Current SDS records and document links loaded from live sheet data. Shared navigation worked across all existing views. The existing Inventory View continued to function after routing changes.",
+      "narrativeRole": "verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 19 Inventory project contribution: Verification.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-verification",
+        "reason": "Explains operational capability, verification results, or current project status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Failure-path testing without partial inventory updates"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "next",
+      "title": "Current Status and Next Steps",
+      "anchor": "#next",
+      "contentSummary": "Inventory transaction processor Complete Validation and event safety Routing and shared navigation Home and Inventory views Product identity, inventory, and SDS SDS Directory Product Directory live data In progress Recent events on Product View Not yet Inventory History View Not started Final repeatable verification Pending Immediate next work Connect the Product Directory to getProducts() and load active product records from the Products sheet. Link each product card to the reusable Product View with its stable product ID. Add recent inventory events to the Product View. Create the standalone History View with filtering controls. Run a final route, navigation, data, and regression verification pass.",
+      "narrativeRole": "status-and-roadmap",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 19 Inventory project contribution: Current Status and Next Steps.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-next",
+        "reason": "Explains operational capability, verification results, or current project status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Sites",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Klinswork Inventory",
+      "SDS Directory",
+      "Product Directory"
+    ],
+    "scripts": [],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Products",
+      "Current Inventory",
+      "Inventory Requests",
+      "Inventory Events",
+      "Locations",
+      "SDS Records"
+    ],
+    "files": [],
+    "integrations": [
+      "Inventory processing",
+      "Product Directory",
+      "Product View",
+      "SDS Directory",
+      "Google Sites embedding",
+      "shared application navigation"
+    ],
+    "apis": [
+      "doGet(e)",
+      "google.script.run"
+    ],
+    "versions": [
+      "Milestone 6",
+      "Milestone 7"
+    ],
+    "tests": [
+      {
+        "name": "Received inventory",
+        "type": "transaction",
+        "result": "passed",
+        "notes": "Increased the correct destination quantity and created an accepted event."
+      },
+      {
+        "name": "Used Up and Removed",
+        "type": "transaction",
+        "result": "passed",
+        "notes": "Reduced the correct source quantity without allowing negative inventory."
+      },
+      {
+        "name": "Moved inventory",
+        "type": "transaction",
+        "result": "passed",
+        "notes": "Preserved total quantity while changing source and destination locations."
+      },
+      {
+        "name": "Count Corrected",
+        "type": "transaction",
+        "result": "passed",
+        "notes": "Replaced the recorded amount with the verified count."
+      },
+      {
+        "name": "Invalid request failure paths",
+        "type": "validation",
+        "result": "passed",
+        "notes": "Unknown locations and over-limit changes caused no partial updates, negative inventory, or accepted event."
+      },
+      {
+        "name": "Reusable Product View",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The same template displayed different products when the product ID changed."
+      },
+      {
+        "name": "Shared routed navigation",
+        "type": "integration",
+        "result": "passed",
+        "notes": "Navigation worked across all existing views and the Inventory View remained functional."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "Successful and deliberate failure paths were tested.",
+        "No partial invalid transactions were produced.",
+        "Rejected requests created no accepted inventory event."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Klinswork Inventory Milestones 6 and 7 Update",
+      "body": "The inventory system can now safely process supplies being received, used, removed, moved, or corrected. Invalid requests are blocked before they can create partial quantity changes or false history. The application also now combines product details, current quantities by location, and SDS documents through stable reusable views. Milestone 6 is complete, and Milestone 7 is approximately 70–75 percent complete.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "work-update-07-19-2026-cover",
+      "role": "work-update-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work_update_07_19_2026.png",
+      "repositoryPath": "",
+      "altText": "Meadows Housekeeping Work Update dated 07/19/2026, showing cleaning equipment, schedules, charts, task lists, and operations dashboards.",
+      "description": "Cover image for the July 19, 2026 Meadows Housekeeping work update.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-7-19-2026.html",
+    "listingTitle": "Meadows Housekeeping Work Update — 07/19/2026",
+    "listingDescription": "Meadows Housekeeping work update for July 19, 2026: inventory processing, reusable product and SDS views, and stable Apps Script navigation.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": true,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-7-19-2026.html",
+        "status": "published"
+      },
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Klinswork Inventory",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "deployed routed application; canonical exec URL not stated in source",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 19, 2026 inventory work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-7-19-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-7-19-2026.html",
+      "document-sidecar-template(18).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:43:34+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The canonical GitHub Pages URL follows the established documentation filename convention.",
+      "Cataloged status reflects the earlier catalog workflow in this conversation.",
+      "The source does not state the canonical Apps Script /exec URL."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal Inventory project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "Which remaining items completed Milestone 7 after this update?",
+      "What is the canonical deployed Apps Script URL?",
+      "How far has inventory coverage expanded beyond the initial tracked locations?"
+    ]
+  }
+}

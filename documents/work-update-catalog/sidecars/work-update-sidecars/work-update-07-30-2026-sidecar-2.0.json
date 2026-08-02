@@ -1,0 +1,1680 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-30-meadows-housekeeping-calendar",
+    "filePath": "work-update-07-30-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-30-2026.html",
+    "title": "Meadows Housekeeping Calendar App — Work Update — July 30, 2026",
+    "headline": "The housekeeping schedule became a responsive calendar application.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-30",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-30-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-30-meadows-housekeeping-calendar"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "complete-build-update",
+    "coverageDescription": "Covers the July 30, 2026 design and construction of the Meadows Housekeeping Calendar App, including structured employee, location, and assignment data; schedule-resolution architecture; Google Apps Script services; responsive Day and Month views; navigation; selected-day details; cancellation controls; defensive initialization; accessibility; HTML escaping; visual redesign; stylesheet cleanup; and the remaining server-side cancellation-write boundary.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Calendar",
+      "projectType": "responsive operational scheduling application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a clear desktop-and-mobile calendar for interpreting dated housekeeping assignments from structured employee, location, assignment, and future schedule-event data.",
+      "projectPhase": "initial complete application build with cancellation UI complete",
+      "contributionType": "data modeling, architecture, full-stack implementation, interface design, and functional-boundary definition",
+      "identificationBasis": "The work update explicitly names and documents the complete construction of the calendar app.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Klinswork Employees",
+        "relationshipType": "shared employee and assignment data source",
+        "relationshipDescription": "The calendar reads structured Employees and Assignments sheets using stable employee IDs.",
+        "impact": "Calendar records no longer rely on employee names as keys and can support eligibility, notifications, and date-bounded assignments.",
+        "evidenceSectionAnchors": [
+          "#1-established-the-data-model",
+          "#2-defined-the-regular-employee-schedule"
+        ],
+        "identificationBasis": "Explicit spreadsheet and schema references.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Locations",
+        "relationshipType": "shared normalized location directory",
+        "relationshipDescription": "Calendar assignments use existing normalized location IDs from the Work Queue locations system.",
+        "impact": "The calendar shares location identity with other Klinswork applications.",
+        "evidenceSectionAnchors": [
+          "#1-established-the-data-model",
+          "#9-built-the-schedule-service"
+        ],
+        "identificationBasis": "Explicit reference to the existing Locations sheet.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Work Queue",
+        "relationshipType": "shared location foundation",
+        "relationshipDescription": "The calendar reuses the normalized location system originally established for Work Queue.",
+        "impact": "Assignment and task systems can refer to the same facility locations.",
+        "evidenceSectionAnchors": [
+          "#1-established-the-data-model"
+        ],
+        "identificationBasis": "Explicitly stated in the work update.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Employees spreadsheet",
+        "foundationType": "shared personnel and assignment datastore",
+        "relationshipDescription": "Contains Employees and Assignments sheets used by the calendar.",
+        "impact": "Provides employee identity, eligibility, shift, status, and dated assignment data."
+      },
+      {
+        "foundationId": "",
+        "name": "Locations spreadsheet",
+        "foundationType": "shared location datastore",
+        "relationshipDescription": "Provides normalized location IDs and display names.",
+        "impact": "Supports consistent assignment display across Klinswork applications."
+      },
+      {
+        "foundationId": "",
+        "name": "Schedule-event override model",
+        "foundationType": "planned shared scheduling logic",
+        "relationshipDescription": "Defines how time off, call-offs, cancellations, reassignments, shift changes, and extra shifts will override the normal schedule.",
+        "impact": "Preserves original assignments while allowing the displayed schedule to reflect dated changes."
+      }
+    ],
+    "relationshipSummary": "The calendar is a new operational interface built on the shared employee, assignment, and location foundations of the Klinswork system."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Calendar",
+    "primaryApp": "Meadows Housekeeping Calendar",
+    "mainFocus": "Building a responsive Google Apps Script calendar that converts structured housekeeping schedule data into Day and Month views with navigation, selected-day details, cancellation controls, defensive initialization, and a unified desktop-and-mobile visual system.",
+    "description": "Detailed July 30, 2026 work update documenting the complete design and construction of the Meadows Housekeeping Calendar App.",
+    "topics": [
+      "employee data model",
+      "assignment data model",
+      "location integration",
+      "schedule resolution",
+      "Google Apps Script architecture",
+      "sheet reading utilities",
+      "date utilities",
+      "schedule service",
+      "calendar state",
+      "Day view",
+      "Month view",
+      "desktop calendar",
+      "mobile calendar",
+      "calendar navigation",
+      "cancellation overrides",
+      "confirmation modal",
+      "visual design",
+      "accessibility",
+      "HTML escaping",
+      "stylesheet cleanup"
+    ],
+    "keywords": [
+      "Meadows Housekeeping Calendar",
+      "Employees",
+      "Assignments",
+      "Locations",
+      "Employee_ID",
+      "Assignment_ID",
+      "CalendarState",
+      "ScheduleService.gs",
+      "DateService.gs",
+      "SheetService.gs",
+      "CalendarViews.html",
+      "DayDetails.html",
+      "cancellation override",
+      "Google Apps Script"
+    ],
+    "appsAffected": [
+      "Meadows Housekeeping Calendar",
+      "Klinswork Employees",
+      "Klinswork Locations",
+      "Work Queue"
+    ],
+    "systemsAffected": [
+      "housekeeping schedule",
+      "employee records",
+      "assignment records",
+      "shared location directory",
+      "Klinswork documentation"
+    ],
+    "componentsAffected": [
+      "data model",
+      "server configuration",
+      "sheet utilities",
+      "date utilities",
+      "schedule service",
+      "application shell",
+      "client state",
+      "Day view",
+      "Month view",
+      "selected-day panel",
+      "cancellation modal",
+      "responsive styles"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "Housekeeping assignments existed as roster and schedule information, but a spreadsheet-style display would not provide a clear operational calendar, and schedule changes needed a model that preserved history instead of overwriting the original assignment.",
+    "initialUnderstanding": "The application needed a structured employee, location, and dated-assignment foundation before interface construction, with future support for regular schedules, temporary events, and final resolved assignments.",
+    "intendedOutcome": "Create a polished desktop-and-mobile calendar with Day and Month views, live assignment data, navigation, selected-day detail, and a cancellation workflow designed around overrides.",
+    "approach": "Build the data model first, centralize configuration, create reusable server services, assemble modular client files, establish browser state, construct responsive views, add cancellation controls, then professionally review and refine the visual and interaction system.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Established structured schedule data",
+        "description": "Separated employees, assignments, and locations into normalized records with stable IDs.",
+        "result": "The calendar gained a flexible data foundation independent of names and wide roster grids."
+      },
+      {
+        "sequence": 2,
+        "title": "Built the Apps Script service layer",
+        "description": "Created configuration, web entry point, sheet utilities, date utilities, and schedule service.",
+        "result": "The server could return browser-friendly assignment data grouped by date."
+      },
+      {
+        "sequence": 3,
+        "title": "Built responsive calendar views",
+        "description": "Created client state, navigation, Month and Day views, desktop selected-day detail, and mobile compositions.",
+        "result": "The schedule became a usable calendar rather than a spreadsheet display."
+      },
+      {
+        "sequence": 4,
+        "title": "Added cancellation interaction",
+        "description": "Designed cancellation as an override and added confirmation controls in Day and desktop selected-day views.",
+        "result": "The complete client-side cancellation workflow exists, while the server write remains unfinished."
+      },
+      {
+        "sequence": 5,
+        "title": "Refined the visual and interaction system",
+        "description": "Reviewed desktop appearance, adjusted dimensions, colors, grid lines, cells, panels, buttons, accessibility, escaping, and CSS organization.",
+        "result": "The app reached a consistent, responsive, professional visual state."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Initialization attempted to attach listeners to missing or unavailable elements.",
+        "effect": "The browser raised a null addEventListener TypeError and stopped.",
+        "resolution": "Initialization now checks all required elements, reports missing IDs, stops safely, and treats optional controls defensively.",
+        "status": "resolved"
+      },
+      {
+        "problem": "A file labeled App.html actually contained Styles.html content after copy-and-paste lag.",
+        "effect": "Filename assumptions no longer matched the supplied code.",
+        "resolution": "The actual file contents were inspected instead of trusting the pasted filename alone.",
+        "status": "resolved"
+      },
+      {
+        "problem": "The initial desktop layout used an unnecessary fixed height.",
+        "effect": "The design could feel constrained and less natural across screen sizes.",
+        "resolution": "The fixed height was removed while preserving responsive behavior.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Cancellation controls existed only as interface behavior.",
+        "effect": "The app could confirm cancellation intent but could not yet persist the override.",
+        "resolution": "The UI boundary was documented explicitly; server-side cancellation writing remains open.",
+        "status": "open"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Build the calendar directly from an informal roster or wide schedule grid.",
+        "whyItWasTried": "It would resemble the familiar visual schedule.",
+        "whyItDidNotWork": "It would be difficult to normalize, query, override, and preserve historically.",
+        "whatWasLearned": "Individual dated assignment records provide a stronger operational model."
+      },
+      {
+        "approach": "Rely on pasted filenames to identify code contents.",
+        "whyItWasTried": "The filename normally indicates the file role.",
+        "whyItDidNotWork": "Copy-and-paste lag produced a mislabeled file.",
+        "whatWasLearned": "Inspect actual contents when code provenance is uncertain."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Assignments became records rather than calendar cells",
+        "description": "The data model defined one employee, one date, one location, one shift, and one status per assignment.",
+        "effectOnDirection": "The calendar could resolve, group, and override schedule data systematically."
+      },
+      {
+        "title": "Cancellation became an override",
+        "description": "The original assignment would remain available while an event altered the resolved schedule.",
+        "effectOnDirection": "History preservation became part of the scheduling architecture."
+      },
+      {
+        "title": "Professional visual review became a distinct phase",
+        "description": "After core behavior existed, the interface was evaluated as a desktop and mobile product.",
+        "effectOnDirection": "The work expanded into detailed visual, accessibility, and CSS refinement."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Use stable employee and location IDs instead of names as keys.",
+        "reason": "Names can change and are unsuitable as durable relationships.",
+        "alternativesConsidered": [
+          "Use display names directly in assignment records"
+        ],
+        "consequences": [
+          "Assignments can resolve names at display time and remain structurally stable."
+        ]
+      },
+      {
+        "decision": "Represent each dated assignment as one record.",
+        "reason": "A record-based model supports filtering, overrides, history, and varying shifts.",
+        "alternativesConsidered": [
+          "Use a wide weekly or monthly schedule grid"
+        ],
+        "consequences": [
+          "The calendar can query date ranges and group assignments by day."
+        ]
+      },
+      {
+        "decision": "Treat cancellation as an override rather than deletion.",
+        "reason": "The original assignment should remain available for history.",
+        "alternativesConsidered": [
+          "Delete or overwrite the assignment"
+        ],
+        "consequences": [
+          "A schedule-event layer is required to resolve the final visible schedule."
+        ]
+      },
+      {
+        "decision": "Use separate server and client files.",
+        "reason": "The application should not become one large script or HTML file.",
+        "alternativesConsidered": [
+          "Single-file application"
+        ],
+        "consequences": [
+          "Responsibilities are clearer across 11 project files."
+        ]
+      }
+    ],
+    "methodEstablished": "Model the schedule as normalized records, resolve changes through dated override events, centralize configuration and data services, maintain one browser state object, render responsive views from the same data, and perform visual cleanup only after the functional structure is stable.",
+    "result": "The Meadows Housekeeping Calendar became a responsive Google Apps Script application with live schedule data, Day and Month views, desktop and mobile layouts, selected-day details, cancellation controls, defensive initialization, accessible interaction feedback, escaped rendered data, and a unified visual identity.",
+    "lessonsLearned": [
+      "A schedule interface should be built on normalized assignment records rather than a visual grid.",
+      "Schedule changes should be events that alter resolution, not destructive edits to original assignments.",
+      "Client initialization should fail clearly and safely when required elements are missing.",
+      "Responsive desktop and mobile calendar views can share data while using different compositions.",
+      "Visual refinement and CSS cleanup are separate engineering stages, not decoration."
+    ],
+    "directionChange": "The work moved from a basic schedule viewer toward a complete scheduling application with a future event-resolution model.",
+    "narrativeSummary": "The July 30 session established the full calendar data model, server architecture, client state, responsive views, navigation, cancellation interface, defensive behavior, accessibility, security-conscious rendering, and final visual system, leaving only the server-side cancellation write unfinished."
+  },
+  "projectDelta": {
+    "previousState": "Housekeeping schedule information existed, but there was no complete responsive calendar application, normalized assignment model, shared schedule service, Day and Month rendering system, or cancellation override interface.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Structured employee, assignment, and location model",
+        "description": "Defined normalized sheets and stable identifiers.",
+        "evidenceSectionAnchors": [
+          "#1-established-the-data-model",
+          "#2-defined-the-regular-employee-schedule"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Apps Script project structure",
+        "description": "Organized five server files and six client files.",
+        "evidenceSectionAnchors": [
+          "#4-created-the-apps-script-project-structure"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Schedule service and date utilities",
+        "description": "Created reusable services that return browser-friendly date-grouped assignments.",
+        "evidenceSectionAnchors": [
+          "#7-built-reusable-sheet-reading-utilities",
+          "#8-added-date-utilities",
+          "#9-built-the-schedule-service"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Responsive Day and Month views",
+        "description": "Built navigation, desktop and mobile month views, and a full Day view.",
+        "evidenceSectionAnchors": [
+          "#14-built-day-and-month-views",
+          "#16-built-the-desktop-month-view",
+          "#17-built-the-mobile-month-view",
+          "#18-built-the-full-day-view"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Cancellation interface",
+        "description": "Added override-oriented cancellation design, confirmation modal, and cancellation controls.",
+        "evidenceSectionAnchors": [
+          "#19-designed-cancellation-as-an-override-rather-than-deletion",
+          "#20-added-the-cancellation-modal",
+          "#21-added-cancellation-buttons-to-day-view",
+          "#22-added-cancellation-placement-to-the-desktop-selected-day-panel"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Visual and interaction redesign",
+        "description": "Completed desktop review, responsive refinement, color harmonization, accessibility, escaping, and stylesheet cleanup.",
+        "evidenceSectionAnchors": [
+          "#23-created-the-initial-visual-design",
+          "#24-reviewed-the-desktop-appearance-professionally",
+          "#33-improved-accessibility-and-interaction-feedback",
+          "#34-escaped-rendered-data",
+          "#35-reduced-stylesheet-redundancy",
+          "#37-final-visual-result"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Cancellation workflow",
+        "completedPortion": "Cancellation controls, modal, confirmation, and placement are complete in the client interface.",
+        "remainingPortion": "The server-side write that creates the cancellation override remains unimplemented.",
+        "evidenceSectionAnchors": [
+          "#19-designed-cancellation-as-an-override-rather-than-deletion",
+          "#20-added-the-cancellation-modal",
+          "#38-current-functional-boundary"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Full schedule-event resolution",
+        "completedPortion": "The normal schedule, event types, and intended resolution order were designed.",
+        "remainingPortion": "Employee-specific events and complete override resolution are not yet implemented.",
+        "evidenceSectionAnchors": [
+          "#3-designed-the-schedule-resolution-architecture"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Implement cancellation persistence",
+        "description": "Write the confirmed cancellation as a schedule override on the server.",
+        "reasonStillOpen": "The document explicitly identifies the server write as the current functional boundary."
+      },
+      {
+        "workItemId": "",
+        "title": "Implement full schedule-event resolution",
+        "description": "Apply time off, call-offs, reassignments, shift changes, and extra shifts to the regular schedule.",
+        "reasonStillOpen": "The architecture is designed but not fully implemented."
+      },
+      {
+        "workItemId": "",
+        "title": "Verify complete production deployment",
+        "description": "Confirm the final canonical Apps Script deployment URL and end-to-end write behavior.",
+        "reasonStillOpen": "The work update documents construction but does not provide a canonical deployment URL."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Content-verification rule for pasted files",
+        "description": "Inspect actual code contents rather than relying exclusively on pasted filenames.",
+        "source": "#12-fixed-an-initialization-failure"
+      },
+      {
+        "workItemId": "",
+        "title": "Schedule override event layer",
+        "description": "Preserve original assignment history while resolving dated changes.",
+        "source": "#3-designed-the-schedule-resolution-architecture and #19-designed-cancellation-as-an-override-rather-than-deletion"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Wide schedule-grid data model",
+        "supersededBy": "Individual dated assignment records",
+        "reason": "Normalized records are more flexible for querying, history, and overrides."
+      }
+    ],
+    "resultingState": "The calendar is a complete responsive read interface with Day and Month views and a finished cancellation interaction layer. Its remaining functional boundary is server-side cancellation persistence and broader schedule-event resolution.",
+    "roadmapChangeSummary": "The initial calendar build, responsive interface, and cancellation UI are complete. The next phase is to implement server writes and final schedule resolution rather than continue interface construction.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Implement cancellation override write",
+        "description": "Create the server function and schedule-event record used by the confirmation modal.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Apply resolved schedule logic",
+        "description": "Combine regular schedule and dated events into the final assignment result.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Run end-to-end cancellation tests",
+        "description": "Verify persistence, refresh, historical preservation, Day view, Month view, desktop, and mobile behavior.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Record canonical deployment details",
+        "description": "Document the final Apps Script /exec URL and deployment status.",
+        "priority": "medium",
+        "status": "open"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The housekeeping schedule is now displayed as a responsive calendar with Day and Month views instead of a spreadsheet-style roster.",
+      "operationalImpact": "Employees and assignments can be viewed by date on desktop or phone, using shared employee and location records. Cancellation controls are visible, but the final server-side cancellation write still needs to be connected.",
+      "currentStatus": "The viewing application and cancellation interface are complete. The remaining functional work is saving cancellations and applying schedule overrides.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Cancellation confirmation does not yet persist a server-side override.",
+        "Time off, call-offs, reassignments, shift changes, and extra shifts are designed but not fully resolved.",
+        "A final canonical deployment URL is not recorded in the source."
+      ],
+      "staffVisibleChanges": [
+        "Day and Month calendar views",
+        "Desktop and mobile layouts",
+        "Selected-day assignment details",
+        "Today, previous, next, and view-switching controls",
+        "Cancellation buttons and confirmation modal"
+      ],
+      "nextOperationalStep": "Connect the cancellation modal to a server write and verify that the resolved schedule updates everywhere.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-data-model",
+          "relatedSectionAnchor": "#1-established-the-data-model",
+          "type": "foundation",
+          "title": "The schedule now uses structured records",
+          "text": "Employees, locations, and dated assignments have stable IDs and separate records."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-views",
+          "relatedSectionAnchor": "#14-built-day-and-month-views",
+          "type": "capability",
+          "title": "Responsive Day and Month views",
+          "text": "The same live schedule data is presented appropriately on desktop and mobile."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-cancellation",
+          "relatedSectionAnchor": "#19-designed-cancellation-as-an-override-rather-than-deletion",
+          "type": "design",
+          "title": "Cancellations preserve history",
+          "text": "The original assignment remains intact while a dated override changes the resolved schedule."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-boundary",
+          "relatedSectionAnchor": "#38-current-functional-boundary",
+          "type": "status",
+          "title": "One server step remains",
+          "text": "The cancellation interface is complete, but the confirmation still needs to write the override record."
+        }
+      ]
+    },
+    "general": {
+      "summary": "The Meadows Housekeeping Calendar was built as a responsive Google Apps Script application with normalized schedule data, Day and Month views, desktop and mobile layouts, selected-day details, navigation, cancellation controls, and a unified visual system.",
+      "keyPoints": [
+        "38 development areas documented",
+        "11 organized project files",
+        "2 responsive calendar views",
+        "3 connected schedule data domains",
+        "1 unified visual and interaction system"
+      ]
+    },
+    "technical": {
+      "summary": "The app uses Config.gs, Code.gs, DateService.gs, ScheduleService.gs, SheetService.gs, Index.html, Styles.html, App.html, ClientData.html, CalendarViews.html, and DayDetails.html to read normalized employee, assignment, and location data and render responsive calendar views from central client state.",
+      "keyPoints": [
+        "Stable employee and location IDs",
+        "Date-grouped calendar response",
+        "Buffered date-range loading",
+        "Defensive DOM initialization",
+        "Responsive desktop/mobile rendering",
+        "Escaped rendered data",
+        "Cancellation override architecture",
+        "Server cancellation write still open"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "A housekeeping schedule is better represented as individual dated assignments than as a wide visual grid.",
+      "Cancellation should modify the resolved schedule without deleting the original assignment.",
+      "Desktop and mobile calendar views can share state and data while using different layouts."
+    ],
+    "generalLessons": [
+      "Use stable IDs rather than names as relational keys.",
+      "Inspect pasted code contents when filenames may be unreliable.",
+      "Defensive initialization should identify missing required elements before attaching behavior.",
+      "Escape rendered data before inserting it into HTML.",
+      "Remove fixed heights and redundant CSS only after responsive behavior is understood."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Client initialization fails on missing DOM elements.",
+        "pattern": "Event listeners are attached before required elements are verified.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Calendar"
+        ]
+      },
+      {
+        "problem": "Pasted code is mislabeled.",
+        "pattern": "Clipboard or interface lag causes a filename to disagree with file contents.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Calendar"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Model schedules as dated assignment records",
+        "description": "A normalized alternative to wide weekly or monthly grids that supports querying, history, and overrides.",
+        "suggestedDestination": "Klinswork data-modeling guide",
+        "supportingSectionAnchors": [
+          "#1-established-the-data-model",
+          "#3-designed-the-schedule-resolution-architecture"
+        ]
+      },
+      {
+        "title": "Cancellation as a schedule override",
+        "description": "Preserve the original assignment and apply a dated event when resolving the visible schedule.",
+        "suggestedDestination": "Klinswork scheduling architecture",
+        "supportingSectionAnchors": [
+          "#19-designed-cancellation-as-an-override-rather-than-deletion"
+        ]
+      },
+      {
+        "title": "Defensive Apps Script client initialization",
+        "description": "Verify required elements, report missing IDs, stop safely, and treat optional controls separately.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#12-fixed-an-initialization-failure"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Use stable internal IDs for employee, location, and assignment relationships.",
+        "changeType": "confirmed",
+        "explanation": "The calendar resolves display names from stable records rather than using names as keys."
+      },
+      {
+        "rule": "Do not delete original schedule records to represent a cancellation.",
+        "changeType": "confirmed",
+        "explanation": "A dated override preserves historical truth while changing the resolved schedule."
+      },
+      {
+        "rule": "Verify file contents when copy-and-paste provenance is uncertain.",
+        "changeType": "added",
+        "explanation": "A pasted App.html file contained Styles.html content."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "1-established-the-data-model",
+      "title": "1. Established the data model",
+      "anchor": "#1-established-the-data-model",
+      "contentSummary": "We began by separating employee information, locations, and assignments into structured sheets rather than trying to build the calendar directly from an informal roster. Employees spreadsheet Spreadsheet ID: 1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo Primary sheets: Employees Assignments The Employees sheet was designed with fields such as: Employee_ID Display_Name Email Active Assignment_Eligible Role Notification_Enabled Program_Update_Enabled Created_At Updated_At The employee records use nonpersonal internal identifiers such as: EMP-001 EMP-002 EMP-003 This lets the schedule refer to employees without using names as keys. Assignments sheet The Assignments sheet was designed around individual dated work assignments: Assignment_ID Work_Date Employee_ID Location_ID Assignment_Type Shift_Start Shift_End Status Notes Created_At Updated_At Each assignment therefore represents: one employee on one date at one location for one shift with one status This is much more flexible than…",
+      "narrativeRole": "data-model-and-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 1. Established the data model.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-1-established-the-data-model",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "2-defined-the-regular-employee-schedule",
+      "title": "2. Defined the regular employee schedule",
+      "anchor": "#2-defined-the-regular-employee-schedule",
+      "contentSummary": "We identified the active housekeeping employees, their normal locations, and their regular days off. The schedule information included employees such as: Joe — Supervisor Michael — Supervisor Gina — Floater Tanya — Mesquite South Phyllis — Sagebrush Robert Scott — Mesquite North Terry — Juniper South Jamie — Floater Pam — Floater Kevin M — Aspen North Kevin L — Floater Karina — Front Philip — Aspen South Amor — Juniper North Most employees use the standard shift: 7:00 AM–3:30 PM Karina uses: 11:30 AM–8:00 PM The schedule changes approximately every two months, so we treated it as a date-bounded schedule rather than a permanent weekly roster.",
+      "narrativeRole": "data-model-and-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 2. Defined the regular employee schedule.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "3-designed-the-schedule-resolution-architecture",
+      "title": "3. Designed the schedule-resolution architecture",
+      "anchor": "#3-designed-the-schedule-resolution-architecture",
+      "contentSummary": "We decided that the app should eventually distinguish between: the normal schedule temporary exceptions the final resolved schedule The planned resolution order is: 1. Read the employee’s regular weekly schedule 2. Read any employee-specific schedule events 3. Apply overrides for the selected date 4. Return the final resolved assignment The main schedule-event types discussed were: TIME_OFF CALL_OFF CANCEL_ASSIGNMENT REASSIGNMENT SHIFT_CHANGE EXTRA_SHIFT This allows the original assignment to remain available for history while the calendar displays the corrected result.",
+      "narrativeRole": "data-model-and-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 3. Designed the schedule-resolution architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-3-designed-the-schedule-resolution-architecture",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Layered schedule resolution with overrides"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "4-created-the-apps-script-project-structure",
+      "title": "4. Created the Apps Script project structure",
+      "anchor": "#4-created-the-apps-script-project-structure",
+      "contentSummary": "We divided the application into separate server-side and client-side files. Server-side files Config.gs Code.gs DateService.gs ScheduleService.gs SheetService.gs Client-side files Index.html Styles.html App.html ClientData.html CalendarViews.html DayDetails.html This prevented the entire application from becoming one large HTML file.",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 4. Created the Apps Script project structure.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "5-centralized-configuration",
+      "title": "5. Centralized configuration",
+      "anchor": "#5-centralized-configuration",
+      "contentSummary": "Config.gs We created a central configuration object containing: const CONFIG = Object.freeze({ APP_NAME: \"Meadows Housekeeping Schedule\", APP_VERSION: \"0.1.0\", TIME_ZONE: \"America/Denver\", EMPLOYEES_SPREADSHEET_ID: \"1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo\", LOCATIONS_SPREADSHEET_ID: \"16tLQNEfc7OEF6WCX1eYp97_4-gsyB5eUe9s39julHfc\", SHEETS: Object.freeze({ EMPLOYEES: \"Employees\", ASSIGNMENTS: \"Assignments\", LOCATIONS: \"Locations\" }) }); This gives the app one location for: spreadsheet IDs sheet names application name version timezone",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 5. Centralized configuration.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "6-built-the-apps-script-web-entry-point",
+      "title": "6. Built the Apps Script web entry point",
+      "anchor": "#6-built-the-apps-script-web-entry-point",
+      "contentSummary": "Code.gs We created doGet() to serve the application: function doGet() { return HtmlService .createTemplateFromFile(\"Index\") .evaluate() .setTitle(CONFIG.APP_NAME) .addMetaTag( \"viewport\", \"width=device-width, initial-scale=1\" ); } We also created an include helper: function include(filename) { return HtmlService .createHtmlOutputFromFile(filename) .getContent(); } The server exposes calendar data through a function such as: function getCalendarData(startDate, endDate) { return ScheduleService.getCalendarData( startDate, endDate ); }",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 6. Built the Apps Script web entry point.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "7-built-reusable-sheet-reading-utilities",
+      "title": "7. Built reusable sheet-reading utilities",
+      "anchor": "#7-built-reusable-sheet-reading-utilities",
+      "contentSummary": "SheetService.gs We created a generic utility for reading a sheet into JavaScript objects. Instead of returning raw arrays such as: [ [\"EMP-001\", \"Joe\", true] ] the service converts the rows into objects such as: { employeeId: \"EMP-001\", displayName: \"Joe\", active: true } Headers such as: Employee_ID Display_Name Shift_Start are normalized to: employeeId displayName shiftStart This made the rest of the application easier to read and maintain.",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 7. Built reusable sheet-reading utilities.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Reusable sheet-to-object conversion"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "8-added-date-utilities",
+      "title": "8. Added date utilities",
+      "anchor": "#8-added-date-utilities",
+      "contentSummary": "DateService.gs We created helpers for: parsing dates formatting date keys formatting time values generating inclusive date ranges The primary calendar date format is: YYYY-MM-DD For example: 2026-08-01 This provides a stable key for grouping assignments by day.",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 8. Added date utilities.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "9-built-the-schedule-service",
+      "title": "9. Built the schedule service",
+      "anchor": "#9-built-the-schedule-service",
+      "contentSummary": "ScheduleService.gs The schedule service: Reads active employees. Reads enabled locations. Reads assignments within the requested range. Resolves employee IDs to employee names. Resolves location IDs to display names. Groups assignments by work date. Returns a browser-friendly calendar object. A returned assignment contains values such as: { assignmentId: \"ASN-...\", employeeId: \"EMP-014\", employeeName: \"Amor\", locationId: \"JUNIPER-N\", locationName: \"Juniper North\", shiftStart: \"07:00\", shiftEnd: \"15:30\", status: \"SCHEDULED\" } The data is grouped by date so the browser can quickly retrieve: CalendarState.data.days[\"2026-08-01\"]",
+      "narrativeRole": "backend-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 9. Built the schedule service.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "10-assembled-the-html-application",
+      "title": "10. Assembled the HTML application",
+      "anchor": "#10-assembled-the-html-application",
+      "contentSummary": "Index.html The application shell includes the component files in this order: <!DOCTYPE html> <html> <head> <base target=\"_top\"> <?!= include(\"Styles\"); ?> </head> <body> <?!= include(\"App\"); ?> <?!= include(\"ClientData\"); ?> <?!= include(\"CalendarViews\"); ?> <?!= include(\"DayDetails\"); ?> </body> </html> The include order matters because: App creates the page elements ClientData creates the state and data functions CalendarViews attaches behavior and renders the interface DayDetails remains available for later expansion",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 10. Assembled the HTML application.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "11-built-the-application-shell",
+      "title": "11. Built the application shell",
+      "anchor": "#11-built-the-application-shell",
+      "contentSummary": "App.html We created the permanent interface structure with IDs used by JavaScript: todayButton dayViewButton monthViewButton refreshButton previousButton nextButton periodTitle periodSubtitle calendarContent The app header contains: Today Day Month Refresh The period header contains: current month or day title selected-date subtitle previous button next button The main calendar content is rendered dynamically inside: <div id=\"calendarContent\"></div>",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 11. Built the application shell.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "12-fixed-an-initialization-failure",
+      "title": "12. Fixed an initialization failure",
+      "anchor": "#12-fixed-an-initialization-failure",
+      "contentSummary": "At one point the browser reported: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') The cause was that initialize() attempted to attach listeners to elements that were missing or not yet available. We rewrote initialization so it: Finds all required elements. Builds a list of missing elements. Logs a clear error if anything is absent. Stops initialization instead of crashing. Treats optional controls such as Refresh safely. We also discovered that a pasted file labeled as App.html actually contained CSS from Styles.html . That was caused by copy-and-paste lag, so we began checking the actual contents rather than relying only on the pasted filename.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 12. Fixed an initialization failure.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Defensive Apps Script initialization"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "13-created-client-side-calendar-state",
+      "title": "13. Created client-side calendar state",
+      "anchor": "#13-created-client-side-calendar-state",
+      "contentSummary": "ClientData.html We introduced a central state object for the browser: const CalendarState = { view: \"month\", visibleDate: new Date(), selectedDate: new Date(), data: null }; The client-data layer handles: loading visible calendar data refreshing calendar data normalizing server responses storing assignments returning assignments for a date The app loads a buffered range rather than only the exact visible day. For month view, it can load enough data for: the previous month the visible month the following month For day view, it can load a range around the selected date. That reduces unnecessary server calls during normal navigation.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 13. Created client-side calendar state.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "14-built-day-and-month-views",
+      "title": "14. Built Day and Month views",
+      "anchor": "#14-built-day-and-month-views",
+      "contentSummary": "CalendarViews.html We created a full rendering module: const CalendarViews = (() => { // private state and functions return Object.freeze({ initialize, render, renderLoading, renderError, setView }); })(); This module handles: initialization navigation view switching period titles month-grid rendering day-agenda rendering selected-date behavior loading states error states date formatting time formatting HTML escaping",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 14. Built Day and Month views.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-14-built-day-and-month-views",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "15-added-calendar-navigation",
+      "title": "15. Added calendar navigation",
+      "anchor": "#15-added-calendar-navigation",
+      "contentSummary": "The controls behave differently depending on the active view. Month view Previous and Next move by one month: July → August → September Day view Previous and Next move by one day: August 1 → August 2 → August 3 Today The Today button resets: visible date selected date displayed period to the current date.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 15. Added calendar navigation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "16-built-the-desktop-month-view",
+      "title": "16. Built the desktop month view",
+      "anchor": "#16-built-the-desktop-month-view",
+      "contentSummary": "The desktop month view contains two areas: month grid selected-day details panel The layout uses a responsive grid similar to: grid-template-columns: minmax(720px, 1fr) minmax(300px, 360px); The calendar takes most of the available space while the selected-day panel remains wide enough to display assignment details. Each month cell can show: date number number scheduled first employee name remaining assignment count For example: 11 scheduled Terry +10 more We deliberately reduced the original cell summary because displaying several employee names made narrow cells crowded.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 16. Built the desktop month view.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "17-built-the-mobile-month-view",
+      "title": "17. Built the mobile month view",
+      "anchor": "#17-built-the-mobile-month-view",
+      "contentSummary": "The mobile view was designed to resemble the familiar mobile calendar application layout. It includes: fixed top controls Day and Month buttons previous and next controls compact seven-column month grid selected-day agenda below the grid On mobile: assignment summaries are hidden inside month cells date numbers are centered the selected day’s full assignments appear below the month the desktop side panel is removed The desktop and mobile versions use the same schedule data but different visual compositions.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 17. Built the mobile month view.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "18-built-the-full-day-view",
+      "title": "18. Built the full Day view",
+      "anchor": "#18-built-the-full-day-view",
+      "contentSummary": "The Day view displays one agenda row for every scheduled employee. Each row contains: shift start time calendar label employee name location cancel control For example: 7:00 AM Housekeeping Terry — Juniper South Juniper South Cancel The time column is visually separated from the assignment details. We considered forcing every assignment to fit into one screen by dividing the available height evenly, but decided to postpone that refinement.",
+      "narrativeRole": "client-application-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 18. Built the full Day view.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-18-built-the-full-day-view",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "19-designed-cancellation-as-an-override-rather-than-deletion",
+      "title": "19. Designed cancellation as an override rather than deletion",
+      "anchor": "#19-designed-cancellation-as-an-override-rather-than-deletion",
+      "contentSummary": "We discussed how cancellation should work at the data level. The assignment should not be deleted. Instead, a cancellation should create a schedule event that overrides it. A future event row could resemble: Event_ID Employee_ID Start_Date End_Date Event_Type Reason_Type Assignment_ID Status Notes Example: EVT-001 EMP-011 2026-08-12 2026-08-12 CANCEL_ASSIGNMENT CALL_OFF ASN-... ACTIVE Called off This preserves: the original assignment the cancellation reason the time the change occurred the ability to reverse the cancellation the assignment history",
+      "narrativeRole": "cancellation-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 19. Designed cancellation as an override rather than deletion.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-19-designed-cancellation-as-an-override-rather-than-deletion",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Cancellation as an override instead of deletion"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "20-added-the-cancellation-modal",
+      "title": "20. Added the cancellation modal",
+      "anchor": "#20-added-the-cancellation-modal",
+      "contentSummary": "We explicitly avoided browser alerts and browser confirmation boxes. Instead, we created a real modal: Cancel this event? No Yes Modal markup The modal was added to App.html with: cancelModal cancelModalTitle cancelModalDescription cancelNoButton cancelYesButton It uses: role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"cancelModalTitle\" Modal behavior The modal supports: opening from a Cancel button closing with No closing by clicking the backdrop closing with Escape confirming with Yes focusing the Yes button storing the pending assignment ID At the current stage, confirmation logs the assignment ID. The server-side cancellation write can be added later.",
+      "narrativeRole": "cancellation-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 20. Added the cancellation modal.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-20-added-the-cancellation-modal",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "21-added-cancellation-buttons-to-day-view",
+      "title": "21. Added cancellation buttons to Day view",
+      "anchor": "#21-added-cancellation-buttons-to-day-view",
+      "contentSummary": "Every Day-view assignment received a red Cancel button with assignment metadata: <button class=\"cancel-event-button\" data-assignment-id=\"...\" data-employee-name=\"...\" data-location-name=\"...\" > Cancel </button> The metadata allows the modal to display a specific confirmation such as: Cancel Terry’s assignment at Juniper South?",
+      "narrativeRole": "cancellation-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 21. Added cancellation buttons to Day view.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "22-added-cancellation-placement-to-the-desktop-selected-day-panel",
+      "title": "22. Added cancellation placement to the desktop selected-day panel",
+      "anchor": "#22-added-cancellation-placement-to-the-desktop-selected-day-panel",
+      "contentSummary": "You marked the desired button locations with red boxes in the screenshot. We agreed that the right side of each compact assignment row is the correct location. The compact row was redesigned conceptually as: Employee information Cancel The associated CSS uses: grid-template-columns: minmax(0, 1fr) auto; This keeps the assignment information aligned on the left while placing a compact Cancel button on the right. The listener logic was expanded so the same modal can respond to both: .cancel-event-button .compact-cancel-button",
+      "narrativeRole": "cancellation-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 22. Added cancellation placement to the desktop selected-day panel.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-22-added-cancellation-placement-to-the-desktop-selected-day-panel",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "23-created-the-initial-visual-design",
+      "title": "23. Created the initial visual design",
+      "anchor": "#23-created-the-initial-visual-design",
+      "contentSummary": "The first design intentionally resembled a familiar calendar application. It used: light blue header blue active view button blue weekday bar white month cells selected-date highlight right-side details panel mobile calendar-style layout This provided a recognizable starting point before introducing a distinct identity.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 23. Created the initial visual design.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "24-reviewed-the-desktop-appearance-professionally",
+      "title": "24. Reviewed the desktop appearance professionally",
+      "anchor": "#24-reviewed-the-desktop-appearance-professionally",
+      "contentSummary": "We evaluated the desktop screenshot and identified several issues: large unused white area below the calendar calendar width that was too constrained grid lines that were too dark selected-day panel that felt visually attached rather than intentional month cells that were too tall crowded summaries stray horizontal lines inconsistent padding We then refined: page width calendar height panel proportions grid-line weight month-cell height day-panel padding empty-state appearance outer shadows card borders corner radii",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 24. Reviewed the desktop appearance professionally.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "25-removed-the-unnecessary-fixed-desktop-height",
+      "title": "25. Removed the unnecessary fixed desktop height",
+      "anchor": "#25-removed-the-unnecessary-fixed-desktop-height",
+      "contentSummary": "The earlier design used values such as: min-height: 700px; and: min-height: 620px; These created a large blank white area below the calendar. We changed the relevant containers to: min-height: 0; This allowed the page to end naturally after the content.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 25. Removed the unnecessary fixed desktop height.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Avoid unnecessary fixed desktop heights"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "26-widened-the-desktop-app",
+      "title": "26. Widened the desktop app",
+      "anchor": "#26-widened-the-desktop-app",
+      "contentSummary": "The desktop application was changed to use approximately: width: min(calc(100% - 48px), 1280px); This gave the calendar more room on large screens while preserving side margins. The month grid and details panel were balanced so neither felt cramped.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 26. Widened the desktop app.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "27-softened-the-month-grid-lines",
+      "title": "27. Softened the month-grid lines",
+      "anchor": "#27-softened-the-month-grid-lines",
+      "contentSummary": "The original cell borders were dark and visually dominant. We replaced individual dark borders with a one-pixel grid-gap method: .month-grid { gap: 1px; padding: 1px; background: var(--border); } .month-day { border: 0; } The neutral background shows through the one-pixel gaps, producing cleaner grid separators.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 27. Softened the month-grid lines.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "28-improved-the-month-cells",
+      "title": "28. Improved the month cells",
+      "anchor": "#28-improved-the-month-cells",
+      "contentSummary": "Month cells were refined with: shorter height more consistent padding smaller date numbers ellipsis for overflowing text lighter outside-month backgrounds clearer selected-day outline clearer today indicator The final approximate cell height became: min-height: 92px;",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 28. Improved the month cells.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "29-improved-the-selected-day-panel",
+      "title": "29. Improved the selected-day panel",
+      "anchor": "#29-improved-the-selected-day-panel",
+      "contentSummary": "The panel received: its own border rounded corners soft background header background consistent internal padding clean row separators better empty state Assignment details are now presented in a compact hierarchy: employee name location shift time cancel action",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 29. Improved the selected-day panel.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "30-harmonized-the-color-system",
+      "title": "30. Harmonized the color system",
+      "anchor": "#30-harmonized-the-color-system",
+      "contentSummary": "The earlier interface combined: bright blue terracotta time columns strong red Cancel buttons gray borders The terracotta did not visually belong with the blue interface. We replaced it with a unified blue-and-slate palette. Primary colors --primary: #315f8f; --primary-dark: #24496f; --primary-soft: #dce8f3; --primary-faint: #edf4fa; Slate time-column colors --accent: #58758f; --accent-dark: #405b72; Neutral colors --text: #18212b; --muted-text: #667482; --border: #d4dde6; --surface: #ffffff; --surface-soft: #f6f8fb; --surface-muted: #eef3f8; Danger colors --danger: #c9363e; --danger-dark: #a62b31; --danger-soft: #f9e7e9; The result is: blue for navigation and selection slate blue for time information neutral white and gray for content red only for destructive actions",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 30. Harmonized the color system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "31-restyled-the-day-view-time-column",
+      "title": "31. Restyled the Day-view time column",
+      "anchor": "#31-restyled-the-day-view-time-column",
+      "contentSummary": "The earlier time column used terracotta with dark text. It was changed to a muted slate gradient: background: linear-gradient( 135deg, var(--accent), var(--accent-dark) ); color: #ffffff; This ties the time column to the blue header without making every part of the page the same blue.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 31. Restyled the Day-view time column.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "32-standardized-buttons",
+      "title": "32. Standardized buttons",
+      "anchor": "#32-standardized-buttons",
+      "contentSummary": "The controls now share common rules for: border radius font weight hover behavior pressed behavior focus behavior padding transitions The active Day or Month control uses a primary-blue gradient. Navigation buttons use pale blue-white surfaces. Cancel buttons remain red because they perform a destructive action.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 32. Standardized buttons.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "33-improved-accessibility-and-interaction-feedback",
+      "title": "33. Improved accessibility and interaction feedback",
+      "anchor": "#33-improved-accessibility-and-interaction-feedback",
+      "contentSummary": "The interface includes: modal dialog roles keyboard Escape support focus placement focus-visible outlines hover states active states disabled states aria-busy loading state escaped display text button labels and date labels Dates in the month grid also receive descriptive aria-label values.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 33. Improved accessibility and interaction feedback.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "34-escaped-rendered-data",
+      "title": "34. Escaped rendered data",
+      "anchor": "#34-escaped-rendered-data",
+      "contentSummary": "The calendar uses an escapeHtml_() helper before inserting values such as: employee name location name assignment ID into generated markup. This prevents names or spreadsheet values from accidentally becoming HTML.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 34. Escaped rendered data.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Escape rendered calendar data"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "35-reduced-stylesheet-redundancy",
+      "title": "35. Reduced stylesheet redundancy",
+      "anchor": "#35-reduced-stylesheet-redundancy",
+      "contentSummary": "Over several design rounds, Styles.html accumulated: the original styles desktop-refinement overrides polished-desktop overrides day-color overrides additional mobile overrides This caused the file to become difficult to predict because later rules silently overrode earlier ones. The stylesheet reached roughly: 1,100 lines The first cleanup attempt still left the original rules plus another theme block appended to the bottom. We recognized that this was not a true overhaul. We then rebuilt Styles.html as a genuine replacement with: one root color system one base layout one controls section one month-view section one desktop section one day-view section one modal section one mobile breakpoint one small-phone breakpoint The cleaned replacement was approximately: 797 lines The important improvement was not just the line count. It removed competing definitions so future style changes can be made directly rather than through additional override blocks.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 35. Reduced stylesheet redundancy.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Reduce stylesheet redundancy without breaking responsive behavior"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "36-preserved-responsive-behavior-during-the-redesign",
+      "title": "36. Preserved responsive behavior during the redesign",
+      "anchor": "#36-preserved-responsive-behavior-during-the-redesign",
+      "contentSummary": "The desktop overhaul did not discard the mobile design. At widths under approximately: 760px the app changes to: full-width layout no outer desktop margins no desktop card shadow hidden desktop details panel visible mobile month and agenda composition compact cells smaller typography two-column agenda rows 390px the time column and typography become narrower and smaller.",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 36. Preserved responsive behavior during the redesign.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "37-final-visual-result",
+      "title": "37. Final visual result",
+      "anchor": "#37-final-visual-result",
+      "contentSummary": "The finished design now has: a centered desktop application card a cohesive pale-blue header clear Day and Month controls a polished month grid a selected-date outline compact assignment summaries a separate selected-day panel slate time columns red cancellation controls consistent spacing rounded panels subtle shadows responsive mobile behavior The visual progression was essentially: spreadsheet-like schedule → calendar prototype → Google Calendar-style interface → responsive desktop/mobile calendar → integrated assignment details → cancellation workflow → polished internal application → unified custom visual identity",
+      "narrativeRole": "visual-and-interaction-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 37. Final visual result.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-37-final-visual-result",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "38-current-functional-boundary",
+      "title": "38. Current functional boundary",
+      "anchor": "#38-current-functional-boundary",
+      "contentSummary": "The application currently provides the interface and client-side behavior for cancellation, including the modal and assignment identification. The remaining cancellation step is the server-side write that would: receive the assignment ID create a cancellation event preserve the original assignment refresh the calendar data show the resolved cancellation state We also left several future capabilities intentionally open: time-off entry call-off entry reassignment shift changes extra shifts schedule editing employee-specific colors location-based colors assignment history cancelled-assignment display day-detail expansion notifications The foundation now supports those features without needing to rebuild the calendar itself.",
+      "narrativeRole": "current-boundary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents calendar-app work area: 38. Current functional boundary.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-38-current-functional-boundary",
+        "reason": "Explains the operational data model, schedule behavior, responsive views, cancellation workflow, final design, or remaining boundary."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Sites",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Meadows Housekeeping Calendar",
+      "Klinswork Employees",
+      "Klinswork Locations"
+    ],
+    "scripts": [
+      "App.html",
+      "CalendarViews.html",
+      "ClientData.html",
+      "Code.gs",
+      "Config.gs",
+      "DateService.gs",
+      "DayDetails.html",
+      "Index.html",
+      "ScheduleService.gs",
+      "SheetService.gs",
+      "Styles.html"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Employees",
+      "Assignments",
+      "Locations"
+    ],
+    "files": [
+      "App.html",
+      "CalendarViews.html",
+      "ClientData.html",
+      "Code.gs",
+      "Config.gs",
+      "DateService.gs",
+      "DayDetails.html",
+      "Index.html",
+      "ScheduleService.gs",
+      "SheetService.gs",
+      "Styles.html"
+    ],
+    "integrations": [
+      "Employees spreadsheet",
+      "Assignments sheet",
+      "Locations spreadsheet",
+      "Google Sites documentation",
+      "responsive browser interface"
+    ],
+    "apis": [
+      "google.script.run",
+      "HtmlService"
+    ],
+    "versions": [
+      "Meadows Housekeeping Schedule 0.1.0"
+    ],
+    "tests": [
+      {
+        "name": "Defensive initialization check",
+        "type": "client runtime",
+        "result": "passed",
+        "notes": "Required elements are checked before listeners are attached; missing elements are logged and initialization stops safely."
+      },
+      {
+        "name": "Responsive Day and Month rendering",
+        "type": "interface",
+        "result": "observed",
+        "notes": "The work update documents distinct desktop and mobile compositions with preserved responsive behavior."
+      },
+      {
+        "name": "Calendar navigation behavior",
+        "type": "interface",
+        "result": "implemented",
+        "notes": "Today, previous, next, Day, Month, and refresh behavior were built."
+      },
+      {
+        "name": "Cancellation interface",
+        "type": "client workflow",
+        "result": "partial",
+        "notes": "Buttons and confirmation modal are complete; server-side persistence remains."
+      },
+      {
+        "name": "Rendered-data escaping",
+        "type": "security and correctness",
+        "result": "implemented",
+        "notes": "Rendered employee, location, and assignment data are escaped before insertion into HTML."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "partial",
+      "notes": [
+        "The full read interface and responsive compositions are described as complete.",
+        "The cancellation write path is explicitly incomplete.",
+        "No canonical deployed Apps Script /exec URL is supplied in the source."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Meadows Housekeeping Calendar App Update",
+      "body": "The housekeeping schedule has been developed into a responsive calendar application with Day and Month views, desktop and mobile layouts, live assignment details, and cancellation controls. The application now reads structured employee, assignment, and location data instead of displaying a spreadsheet-style roster. The remaining functional step is connecting the cancellation confirmation to a server-side override record.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-30-2026.html",
+    "listingTitle": "Meadows Housekeeping Calendar App — Work Update — July 30, 2026",
+    "listingDescription": "Detailed July 30, 2026 work update documenting the complete design and construction of the Meadows Housekeeping Calendar App.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": true,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-07-30-2026.html",
+        "status": "published"
+      },
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Meadows Housekeeping Calendar",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "application built; canonical deployment URL not recorded",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 30, 2026 calendar work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-30-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-30-2026.html",
+      "document-sidecar-template(17).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:41:37+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The public GitHub Pages URL follows the established documentation filename convention.",
+      "Cataloged status reflects the earlier catalog workflow in this conversation.",
+      "The source does not provide a canonical Apps Script /exec URL for the calendar."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal calendar project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "What is the canonical Apps Script deployment URL?",
+      "When will cancellation persistence and full schedule-event resolution be implemented?",
+      "Has the final application been tested with live cancellation writes on both desktop and mobile?"
+    ]
+  }
+}

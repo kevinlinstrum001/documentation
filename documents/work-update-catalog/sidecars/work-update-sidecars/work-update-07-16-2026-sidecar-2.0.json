@@ -1,0 +1,785 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-16-single-page-operations-viewer",
+    "filePath": "work-update-07-16-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026.html",
+    "title": "Meadows Housekeeping Work Update — 07/16/2026",
+    "headline": "Single-Page Operations Viewer",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-16",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-16-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-16-single-page-operations-viewer"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "daily-work-update",
+    "coverageDescription": "Covers the July 16, 2026 conversion of four separate Apps Script operational pages into one persistent single-page dashboard embedded in Google Sites. The work included diagnosing iframe navigation failure, preserving the existing backend and JSON response, building unified navigation and a shared view container, integrating Intake, Work Queue, Recommendations, and Completed Work controls, adding refresh and error states, and verifying the complete request lifecycle including acknowledgement and completion emails.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Operations Viewer",
+      "projectType": "embedded operational request-management application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide one stable embedded interface for receiving, acknowledging, sorting, performing, documenting, completing, and reporting housekeeping work without losing the Google Sites viewer during navigation.",
+      "projectPhase": "single-page dashboard conversion and end-to-end verification",
+      "contributionType": "architecture correction, interface consolidation, integration, and production verification",
+      "identificationBasis": "The work update explicitly documents replacing four separate Apps Script pages with one Single-Page Operations Viewer.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Meadows Housekeeping Google Site",
+        "relationshipType": "embedded publication and access surface",
+        "relationshipDescription": "The Apps Script operations viewer runs inside the Meadows Housekeeping Google Sites page.",
+        "impact": "The redesigned single-page interface remains visible inside the site during all view changes.",
+        "evidenceSectionAnchors": [
+          "#overview",
+          "#problem",
+          "#verification"
+        ],
+        "identificationBasis": "The source explicitly describes the Google Sites embed and its navigation failure.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Request Workflow",
+        "relationshipType": "operational process implemented by the viewer",
+        "relationshipDescription": "The viewer supports request submission, acknowledgement, queue sorting, work start, notes, completion, and reporting.",
+        "impact": "The full workflow can be completed through one persistent dashboard.",
+        "evidenceSectionAnchors": [
+          "#implementation",
+          "#verification"
+        ],
+        "identificationBasis": "The six-step workflow and end-to-end test are explicitly shown in the update.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Existing Apps Script backend",
+        "foundationType": "shared operational service layer",
+        "relationshipDescription": "Existing server functions for submissions, active work, recommendations, completed work, acknowledgement, notes, completion, and email remained in place.",
+        "impact": "The interface could be redesigned without replacing functioning business logic."
+      },
+      {
+        "foundationId": "",
+        "name": "Persistent Dashboard.html shell",
+        "foundationType": "single-page application container",
+        "relationshipDescription": "One HTML document contains navigation and a shared #app-view area for all operational views.",
+        "impact": "The Apps Script frame stays loaded while only internal content changes."
+      }
+    ],
+    "relationshipSummary": "The operations viewer sits between the existing Apps Script backend and the Meadows Housekeeping Google Sites interface, presenting the entire request workflow through one persistent embedded dashboard."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Operations Viewer",
+    "primaryApp": "Single-Page Operations Viewer",
+    "mainFocus": "Replacing unstable page-to-page navigation inside a Google Sites iframe with one persistent single-page dashboard that unifies Intake, Work Queue, Recommendations, and Completed Work.",
+    "description": "Meadows Housekeeping work update for July 16, 2026, documenting the diagnosis, implementation, and end-to-end verification of a single-page embedded operations viewer.",
+    "topics": [
+      "single-page application",
+      "Google Apps Script",
+      "Google Sites embedding",
+      "iframe navigation",
+      "operations dashboard",
+      "Intake",
+      "Work Queue",
+      "Recommendations",
+      "Completed Work",
+      "request lifecycle",
+      "acknowledgement email",
+      "completion email",
+      "automatic refresh",
+      "error handling"
+    ],
+    "keywords": [
+      "Dashboard.html",
+      "doGet(e)",
+      "#app-view",
+      "target=_self",
+      "/exec?view=",
+      "single-page interface",
+      "Google Sites iframe",
+      "acknowledge",
+      "sort to queue",
+      "start work",
+      "add notes",
+      "complete and report"
+    ],
+    "appsAffected": [
+      "Single-Page Operations Viewer",
+      "Meadows Housekeeping Google Site"
+    ],
+    "systemsAffected": [
+      "housekeeping request management",
+      "embedded Apps Script navigation",
+      "automated email reporting",
+      "completed-work history"
+    ],
+    "componentsAffected": [
+      "doGet(e)",
+      "Dashboard.html",
+      "navigation bar",
+      "#app-view container",
+      "Intake cards",
+      "Work Queue controls",
+      "Recommendations controls",
+      "Completed Work cards",
+      "loading states",
+      "error handling",
+      "automatic refresh"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The operations interface used four separate Apps Script HTML pages inside a Google Sites embed. The first view change could succeed, but later navigation caused the embedded viewer to disappear.",
+    "initialUnderstanding": "Browser-console testing showed that links, destinations, and target behavior were correct, so the failure was not in queue data or action functions. The unstable element was repeated Apps Script page navigation inside a nested Google Sites iframe.",
+    "intendedOutcome": "Keep the existing backend while creating one persistent embedded dashboard capable of running the entire housekeeping request lifecycle.",
+    "approach": "Replace multi-page HTML routing with a single Dashboard.html response, retain the JSON response option, build one navigation bar and shared view container, connect each view to its existing server functions, and test a real request through every state transition and both automated emails.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Diagnosed the disappearing embed",
+        "description": "Confirmed that links and destinations were correct and isolated the failure to repeated page navigation inside the Google Sites iframe.",
+        "result": "The problem was reframed as an interface architecture failure rather than a data or action failure."
+      },
+      {
+        "sequence": 2,
+        "title": "Chose a persistent single-page architecture",
+        "description": "Preserved the existing Apps Script backend and replaced page-to-page navigation with one Dashboard.html shell.",
+        "result": "The Apps Script frame could remain loaded while internal content changed."
+      },
+      {
+        "sequence": 3,
+        "title": "Unified four operational views",
+        "description": "Integrated Intake, Work Queue, Recommendations, and Completed Work into one navigation system and shared container.",
+        "result": "All four operational areas became accessible without changing the web-app URL."
+      },
+      {
+        "sequence": 4,
+        "title": "Connected lifecycle actions and feedback",
+        "description": "Added acknowledgement, sorting, start, notes, completion, review, archive, loading, active-state, error, and refresh behavior.",
+        "result": "The viewer supported real operational work rather than static display."
+      },
+      {
+        "sequence": 5,
+        "title": "Verified the complete production workflow",
+        "description": "Processed a new request through acknowledgement, queue sorting, work start, notes, completion, and reporting.",
+        "result": "The embed remained visible, both emails sent, and the completed record moved correctly."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Repeated navigation between separate Apps Script pages caused the Google Sites embedded viewer to disappear.",
+        "effect": "The operational interface became unusable after later view changes even though individual links and functions were valid.",
+        "resolution": "Replaced page-to-page routing with a persistent single-page dashboard that swaps content inside #app-view.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Navigate among separate /exec?view=... Apps Script HTML pages inside the embed.",
+        "whyItWasTried": "Each operational area already existed as a separate page, and direct routing appeared structurally simple.",
+        "whyItDidNotWork": "Repeated nested web-app navigation inside the Google Sites iframe caused the viewer to disappear.",
+        "whatWasLearned": "Correct links and target behavior do not guarantee stability when an embedded application repeatedly rebuilds its own frame."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "The backend was cleared as the cause",
+        "description": "Console testing confirmed that the links, destinations, data, and action functions were behaving correctly.",
+        "effectOnDirection": "Work shifted from debugging queue logic to redesigning the embedded navigation architecture."
+      },
+      {
+        "title": "Dashboard.html became the persistent shell",
+        "description": "All operational views were moved into one document with internal content replacement.",
+        "effectOnDirection": "The application became a single-page operations system instead of four embedded pages."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Preserve the existing Apps Script backend.",
+        "reason": "The queue data, server actions, and email functions were already working; the failure was isolated to page navigation.",
+        "alternativesConsidered": [
+          "Rewrite backend services",
+          "Continue debugging each individual page"
+        ],
+        "consequences": [
+          "Working business logic remained intact.",
+          "The redesign stayed focused on the interface boundary."
+        ]
+      },
+      {
+        "decision": "Serve one Dashboard.html page from doGet(e).",
+        "reason": "A persistent shell avoids repeated nested Apps Script page loads inside Google Sites.",
+        "alternativesConsidered": [
+          "Keep separate /exec?view=... pages",
+          "Attempt additional target attribute changes"
+        ],
+        "consequences": [
+          "The web-app URL remains stable.",
+          "Navigation changes only the internal view."
+        ]
+      },
+      {
+        "decision": "Refresh the active view after every successful action.",
+        "reason": "Users need immediate confirmation that acknowledgement, sorting, notes, completion, review, and archive actions changed the record.",
+        "alternativesConsidered": [
+          "Require manual refresh"
+        ],
+        "consequences": [
+          "The dashboard remains synchronized with the latest server state."
+        ]
+      }
+    ],
+    "methodEstablished": "When an embedded Apps Script application fails during repeated navigation, first separate backend correctness from frame behavior; then preserve working services and replace multi-page iframe navigation with a persistent single-page shell and server-backed view rendering.",
+    "result": "The four-page operations interface became one functioning end-to-end housekeeping request-management dashboard that remains visible inside Google Sites.",
+    "lessonsLearned": [
+      "Embedded navigation failures can exist even when links, targets, data, and actions are correct.",
+      "A persistent single-page shell is safer than repeated nested web-app navigation.",
+      "Existing backend services should not be rewritten when the failure is confined to the interface boundary.",
+      "End-to-end verification must include state changes, emails, refresh behavior, and final record placement."
+    ],
+    "directionChange": "The application moved from four separately routed embedded pages to one persistent single-page operations viewer.",
+    "narrativeSummary": "The July 16 work isolated an iframe navigation failure, preserved the functioning backend, unified four operational views in Dashboard.html, and verified the complete housekeeping request lifecycle including both automated emails."
+  },
+  "projectDelta": {
+    "previousState": "Intake, Work Queue, Recommendations, and Completed Work existed as separate Apps Script HTML pages. The first embedded navigation could work, but later page changes caused the Google Sites viewer to disappear.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Single-page dashboard shell",
+        "description": "Replaced multi-page HTML routing with one persistent Dashboard.html response.",
+        "evidenceSectionAnchors": [
+          "#implementation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Unified four operational views",
+        "description": "Integrated Intake, Work Queue, Recommendations, and Completed Work into one interface.",
+        "evidenceSectionAnchors": [
+          "#implementation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Shared internal view container",
+        "description": "Added #app-view so operational content changes without changing the web-app URL.",
+        "evidenceSectionAnchors": [
+          "#overview",
+          "#implementation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Operational action integration",
+        "description": "Connected acknowledgement, queue sorting, start, notes, completion, recommendation review, archive, and completed-work presentation.",
+        "evidenceSectionAnchors": [
+          "#implementation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "End-to-end production verification",
+        "description": "Verified the full request lifecycle, persistent embed, acknowledgement email, completion email, and completed-work record.",
+        "evidenceSectionAnchors": [
+          "#verification"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [],
+    "stillOpenItems": [],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Embedded frame stability as an architectural concern",
+        "description": "Treat repeated navigation inside nested Google Sites and Apps Script frames as a separate design problem from routing and backend correctness.",
+        "source": "#problem"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Separate embedded HTML pages",
+        "supersededBy": "Persistent Dashboard.html single-page interface",
+        "reason": "Repeated Apps Script page navigation inside the Google Sites iframe caused the viewer to disappear."
+      }
+    ],
+    "resultingState": "One persistent dashboard now exposes four operational views, supports all major request actions, refreshes after successful changes, remains visible inside Google Sites, sends both workflow emails, and records completed work.",
+    "roadmapChangeSummary": "The immediate architecture problem was resolved by consolidating the operational interface into one single-page viewer.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Preserve regression testing",
+        "description": "Retest the complete request lifecycle after future interface or backend changes.",
+        "priority": "high",
+        "status": "ongoing"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Maintain single-page navigation boundary",
+        "description": "Keep future operational views inside the persistent dashboard rather than reintroducing embedded page navigation.",
+        "priority": "high",
+        "status": "ongoing"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The four housekeeping work pages were combined into one dashboard that stays visible inside the Google Site.",
+      "operationalImpact": "Requests can now be acknowledged, sorted, started, documented, completed, and reported without the embedded viewer disappearing.",
+      "currentStatus": "The single-page dashboard passed a complete production workflow test, including acknowledgement and completion emails.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Future navigation changes could reintroduce iframe instability if separate embedded pages are used again."
+      ],
+      "staffVisibleChanges": [
+        "One navigation bar for four operational views",
+        "Stable embedded viewer",
+        "Automatic refresh after successful actions",
+        "Visible loading and error states",
+        "Complete request workflow in one interface"
+      ],
+      "nextOperationalStep": "Continue using the dashboard and preserve end-to-end regression testing as changes are made.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-overview",
+          "relatedSectionAnchor": "#overview",
+          "type": "capability",
+          "title": "Four views became one dashboard",
+          "text": "Intake, Work Queue, Recommendations, and Completed Work now run inside one persistent interface."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-problem",
+          "relatedSectionAnchor": "#problem",
+          "type": "resolution",
+          "title": "The disappearing viewer was fixed",
+          "text": "The system no longer reloads separate Apps Script pages inside the Google Sites frame."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-verification",
+          "relatedSectionAnchor": "#verification",
+          "type": "verification",
+          "title": "The complete workflow passed",
+          "text": "A real request moved through every state, both emails sent, and the completed record was preserved."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Four separate embedded Apps Script pages were consolidated into one stable single-page operations viewer.",
+      "keyPoints": [
+        "4 operational views unified",
+        "1 persistent embedded dashboard",
+        "2 automated email events verified",
+        "Complete request lifecycle tested"
+      ]
+    },
+    "technical": {
+      "summary": "doGet(e) now serves Dashboard.html for the interface while preserving JSON output. Dashboard navigation loads server-backed views into #app-view without changing the URL or rebuilding the embedded frame.",
+      "keyPoints": [
+        "Single Dashboard.html shell",
+        "Shared #app-view container",
+        "Existing server functions preserved",
+        "Automatic refresh after actions",
+        "Google Sites iframe remained stable",
+        "Acknowledgement and completion emails passed"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The Meadows Housekeeping backend was sound; the failure was confined to embedded page navigation.",
+      "All four operational views can share one persistent HTML shell without losing their existing server functions."
+    ],
+    "generalLessons": [
+      "Debug embedded applications by separating routing, frame behavior, data, and action logic.",
+      "A single-page interface can preserve a stable embed while still exposing multiple operational views.",
+      "Console confirmation of valid links does not rule out nested-frame lifecycle problems.",
+      "End-to-end tests should verify both interface state and external side effects such as email."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Embedded Apps Script pages disappear during repeated navigation.",
+        "pattern": "Separate /exec page loads occur inside an existing Google Sites iframe, causing nested frame instability.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Operations Viewer"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Stable single-page Apps Script interfaces inside Google Sites",
+        "description": "Preserve one embedded Apps Script shell and replace internal content rather than navigating among separate web-app pages.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#problem",
+          "#implementation",
+          "#verification"
+        ]
+      },
+      {
+        "title": "Separating backend correctness from iframe failures",
+        "description": "Use console and action testing to determine whether a failure belongs to server logic, routing, or the embedded browser frame.",
+        "suggestedDestination": "Klinswork troubleshooting practices",
+        "supportingSectionAnchors": [
+          "#problem"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Do not replace functioning backend logic when the failure is isolated to embedded navigation.",
+        "changeType": "added",
+        "explanation": "The existing queue data, actions, and email functions were preserved while only the interface architecture changed."
+      },
+      {
+        "rule": "Use a persistent single-page shell for multi-view Apps Script applications embedded in Google Sites.",
+        "changeType": "added",
+        "explanation": "Repeated nested page navigation caused the embedded viewer to disappear."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "overview",
+      "title": "Overview",
+      "anchor": "#overview",
+      "contentSummary": "The prior interface used separate Apps Script pages for Intake, Work Queue, Recommendations, and Completed Work. Each link loaded a new /exec?view=... page inside Google Sites. The replacement uses one Dashboard.html document, and navigation changes only the content inside the dashboard while the Apps Script frame remains loaded.",
+      "narrativeRole": "problem-context-and-solution-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the architectural change from four embedded pages to one persistent operations viewer.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Improves the stability of the Meadows Housekeeping Google Sites operational interface."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-overview",
+        "reason": "Explains the visible operational change and its purpose."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Stable single-page Apps Script interfaces inside Google Sites"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "problem",
+      "title": "Problem Identified",
+      "anchor": "#problem",
+      "contentSummary": "The first queue change could load, but later navigation made the embedded viewer disappear. Console testing confirmed that links, destinations, and target=_self behavior were correct. The failure came from repeated Apps Script page navigation inside the Google Sites iframe rather than queue data or action functions. The design decision was to preserve the backend and replace page-to-page navigation with a single-page interface.",
+      "narrativeRole": "diagnosis-and-design-decision",
+      "projectRelevance": {
+        "primaryProjectContribution": "Identifies the true failure boundary and justifies the single-page redesign.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-problem",
+        "reason": "Explains why the viewer failed and how the problem was resolved."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Separating backend correctness from iframe failures"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "implementation",
+      "title": "Work Completed",
+      "anchor": "#implementation",
+      "contentSummary": "The work replaced multi-page doGet(e) routing with Dashboard.html while preserving JSON output; created navigation for four operational views; added #app-view; connected existing server functions; integrated Intake acknowledgement and sorting, Work Queue start, notes, and completion, Recommendations review and archive, and Completed Work details; and added loading, active, error, and automatic refresh behavior. The documented workflow is Submit Request, Acknowledge, Sort to Queue, Start Work, Add Notes, and Complete & Report.",
+      "narrativeRole": "implementation-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the complete interface consolidation and lifecycle-control integration.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Stable single-page Apps Script interfaces inside Google Sites"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "verification",
+      "title": "Verification",
+      "anchor": "#verification",
+      "contentSummary": "A new request was processed through acknowledgement, queue sorting, work start, note entry, and completion. The dashboard refreshed after each state change, the Google Sites embed remained visible, acknowledgement and completion emails sent successfully, and the finished item moved into Completed Work with its updated record.",
+      "narrativeRole": "end-to-end-verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Proves that the dashboard is a functioning request-management interface rather than a display prototype.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-verification",
+        "reason": "Confirms the complete operational workflow and both email events."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "End-to-end verification of embedded operational workflows"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sites",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Single-Page Operations Viewer",
+      "Meadows Housekeeping Google Site"
+    ],
+    "scripts": [
+      "doGet(e)"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Automated email service"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Housekeeping request records",
+      "Active work queue",
+      "Recommendations",
+      "Completed work history"
+    ],
+    "files": [
+      "Dashboard.html"
+    ],
+    "integrations": [
+      "Google Sites embedding",
+      "request intake",
+      "work queue",
+      "recommendations",
+      "completed work",
+      "acknowledgement email",
+      "completion email"
+    ],
+    "apis": [
+      "doGet(e)",
+      "google.script.run"
+    ],
+    "versions": [],
+    "tests": [
+      {
+        "name": "Embedded navigation stability",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The Google Sites embed remained visible through every view change."
+      },
+      {
+        "name": "Request acknowledgement",
+        "type": "workflow",
+        "result": "passed",
+        "notes": "The request was acknowledged and the acknowledgement email sent successfully."
+      },
+      {
+        "name": "Queue sorting",
+        "type": "workflow",
+        "result": "passed",
+        "notes": "The request moved into the work queue successfully."
+      },
+      {
+        "name": "Work start and note entry",
+        "type": "workflow",
+        "result": "passed",
+        "notes": "Work began and notes were added through the dashboard."
+      },
+      {
+        "name": "Task completion",
+        "type": "workflow",
+        "result": "passed",
+        "notes": "The task completed successfully and moved into Completed Work."
+      },
+      {
+        "name": "Completion email",
+        "type": "integration",
+        "result": "passed",
+        "notes": "The completion email sent successfully."
+      },
+      {
+        "name": "Automatic view refresh",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The dashboard refreshed correctly after each state transition."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "A real request was taken through the complete production workflow.",
+        "The embedded viewer remained stable throughout.",
+        "Both acknowledgement and completion emails were verified.",
+        "The final record appeared in Completed Work."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Single-Page Operations Viewer Update",
+      "body": "The four housekeeping operations pages have been combined into one dashboard that remains visible inside the Meadows Housekeeping Google Site. The complete request workflow was tested successfully from acknowledgement through completion, including both automated emails and the final Completed Work record.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "work-update-07-16-2026-cover",
+      "role": "work-update-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work_update_image.png",
+      "repositoryPath": "",
+      "altText": "Meadows Housekeeping work update cover showing cleaning tools, schedules, charts, code, clocks, and task lists.",
+      "description": "Cover image for the July 16, 2026 Single-Page Operations Viewer work update.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026.html",
+    "listingTitle": "Meadows Housekeeping Work Update — 07/16/2026",
+    "listingDescription": "The July 16, 2026 work update documents the conversion of four embedded Apps Script pages into one stable single-page operations viewer with a verified end-to-end request workflow.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026.html",
+        "status": "published"
+      },
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Meadows Housekeeping Operations Viewer",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "deployed and embedded; canonical Apps Script URL not stated in source",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 16, 2026 Single-Page Operations Viewer work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-16-2026.html",
+      "document-sidecar-template(21).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T02:40:29+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The canonical GitHub Pages URL uses the established documentation/work_updates folder.",
+      "The source states that the interface and automated emails were tested successfully but does not provide the deployed Apps Script URL.",
+      "No explicit remaining development items were stated in the source; ongoing regression protection is inferred from the completed architecture."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal project ID and project-record path?",
+      "What is the canonical deployed Apps Script /exec URL?",
+      "What spreadsheet or datastore names back the four operational views?",
+      "Should this viewer be identified as an early version of Work Queue or retained as a separate predecessor project?"
+    ]
+  }
+}

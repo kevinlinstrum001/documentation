@@ -1,0 +1,898 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "work-update",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "work-update-sidecar-template-3.0-draft.json",
+    "previewMode": "work-update"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "work-update-meadows-housekeeping-system-foundation",
+    "filePath": "meadows_housekeeping_work_completed.html",
+    "documentUrl": "",
+    "title": "Meadows Housekeeping System - Work Completed",
+    "headline": "Work completed and current capabilities for supervisor review",
+    "documentType": "work-update",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "meadows-housekeeping-work-completed-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-meadows-housekeeping-system-foundation",
+    "profileTemplatePath": "work-update-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "undated milestone summary",
+    "coverageDescription": "Summarizes the completed foundation of the Meadows Housekeeping communication system, current supervisor capabilities, remaining access and notification questions, and the next supervisor meeting agenda.",
+    "coverageConfidence": "high for reported content; dates and duration are not supplied"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping System",
+      "projectType": "housekeeping communication website and operational reference system",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "Bring the work calendar, roster information, housekeeping issue form, QR resources, and visual navigation into one system available from a phone or computer.",
+      "projectPhase": "foundation assembled; supervisor review and access decisions pending",
+      "contributionType": "milestone work update and supervisor review brief",
+      "identificationBasis": "The document title, overview, completed-work list, capabilities, and overall result explicitly describe the Meadows Housekeeping System.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Work Calendar",
+        "relationshipType": "embedded scheduling component",
+        "relationshipDescription": "The work calendar was separated from the personal calendar, populated with future events, and embedded in the website.",
+        "impact": "The supervisor can inspect future staffing and daily roster information through the central site.",
+        "evidenceSectionAnchors": [
+          "#work-completed",
+          "#current-supervisor-capabilities"
+        ],
+        "identificationBasis": "Explicit completed-work and capability statements.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Issue Form",
+        "relationshipType": "embedded request-intake component",
+        "relationshipDescription": "The Google issue form is available through the website as a consistent method for reporting housekeeping issues and requests.",
+        "impact": "Issue reporting can occur through the same central interface used for schedules and reference material.",
+        "evidenceSectionAnchors": [
+          "#work-completed",
+          "#tomorrows-meeting-focus"
+        ],
+        "identificationBasis": "Explicit completed-work and meeting-agenda statements.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "QR and Visual Resource System",
+        "relationshipType": "access and reusable-resource component",
+        "relationshipDescription": "Navigation images and QR resources provide visual shortcuts, printable access points, and reusable materials.",
+        "impact": "The site and forms can be reached quickly from printed codes while graphics remain available for reuse.",
+        "evidenceSectionAnchors": [
+          "#work-completed",
+          "#current-supervisor-capabilities"
+        ],
+        "identificationBasis": "Explicit completed-work and capability statements.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "foundation-central-interface",
+        "name": "Central interface",
+        "foundationType": "navigation and access foundation",
+        "relationshipDescription": "Calendar, roster, forms, QR resources, and navigation images are connected through one website.",
+        "impact": "The supervisor no longer needs to search across separate files and tools for basic operational information."
+      },
+      {
+        "foundationId": "foundation-mobile-desktop-access",
+        "name": "Phone and computer access",
+        "foundationType": "cross-device access foundation",
+        "relationshipDescription": "The website is designed for both mobile devices and computers.",
+        "impact": "The system can support office use and quick access away from a desktop."
+      }
+    ],
+    "relationshipSummary": "The website acts as the central access layer for the work calendar, daily roster information, issue reporting, navigation graphics, QR codes, and reusable supervisor resources."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping System",
+    "primaryApp": "Meadows Housekeeping website",
+    "mainFocus": "Reporting the completed foundation of the housekeeping communication system and identifying remaining supervisor-access, notification, and meeting decisions.",
+    "description": "A supervisor-facing milestone update covering calendar correction, website creation, embedded calendar and issue form, navigation images, QR resources, current capabilities, unresolved access questions, and the next meeting agenda.",
+    "topics": [
+      "housekeeping communication system",
+      "work calendar",
+      "employee roster",
+      "housekeeping issue form",
+      "website",
+      "navigation images",
+      "QR resources",
+      "supervisor access",
+      "notification ownership",
+      "meeting preparation"
+    ],
+    "keywords": [
+      "calendar separation",
+      "future staffing",
+      "daily roster",
+      "embedded calendar",
+      "Google form",
+      "QR code",
+      "central interface",
+      "view-only access",
+      "event editing",
+      "calendar management"
+    ],
+    "appsAffected": [
+      "Meadows Housekeeping website",
+      "work calendar",
+      "personal calendar",
+      "housekeeping issue form",
+      "roster information",
+      "Images and QR resource page"
+    ],
+    "systemsAffected": [
+      "housekeeping scheduling",
+      "staffing visibility",
+      "issue reporting",
+      "supervisor communication",
+      "visual navigation",
+      "printable access resources"
+    ],
+    "componentsAffected": [
+      "homepage",
+      "embedded calendar",
+      "embedded issue form",
+      "calendar navigation image",
+      "issue-form navigation image",
+      "roster navigation image",
+      "Images and QR page",
+      "QR codes",
+      "roster notifications"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "Housekeeping scheduling, roster information, issue reporting, navigation resources, and QR materials existed as separate tools or incomplete parts.",
+    "initialUnderstanding": "The calendar and work resources needed to be separated from personal information and brought together into a supervisor-accessible system.",
+    "intendedOutcome": "Create a functional housekeeping communication website that connects the calendar, roster, issue form, visual navigation, and QR resources.",
+    "approach": "Correct the calendar structure, create the central website, embed operational tools, add visual navigation, preserve reusable QR resources, and prepare remaining permission and notification questions for supervisor review.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Calendar structure corrected",
+        "description": "Philip was moved from the personal calendar to the work calendar; work scheduling was separated from personal events; future events were verified through Christmas.",
+        "result": "Philip was moved from the personal calendar to the work calendar; work scheduling was separated from personal events; future events were verified through Christmas."
+      },
+      {
+        "sequence": 2,
+        "title": "Meadows Housekeeping website created",
+        "description": "A central, mobile- and computer-accessible website was created for housekeeping communication and reference material.",
+        "result": "A central, mobile- and computer-accessible website was created for housekeeping communication and reference material."
+      },
+      {
+        "sequence": 3,
+        "title": "Work calendar embedded",
+        "description": "The site now exposes dates, months, event details, morning roster information, and event-copying capability.",
+        "result": "The site now exposes dates, months, event details, morning roster information, and event-copying capability."
+      },
+      {
+        "sequence": 4,
+        "title": "Housekeeping issue form embedded",
+        "description": "The Google issue form was placed on the website as a consistent route for housekeeping issues and requests.",
+        "result": "The Google issue form was placed on the website as a consistent route for housekeeping issues and requests."
+      },
+      {
+        "sequence": 5,
+        "title": "Homepage navigation images created",
+        "description": "Visual shortcuts were created for Calendar, Housekeeping Issue Form, and Roster.",
+        "result": "Visual shortcuts were created for Calendar, Housekeeping Issue Form, and Roster."
+      },
+      {
+        "sequence": 6,
+        "title": "Images and QR resource page created",
+        "description": "A separate page now preserves printable and reusable QR images and other materials.",
+        "result": "A separate page now preserves printable and reusable QR images and other materials."
+      },
+      {
+        "sequence": 7,
+        "title": "QR access established",
+        "description": "QR codes now provide quick access to the website and forms and can be printed for useful locations.",
+        "result": "QR codes now provide quick access to the website and forms and can be printed for useful locations."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Work scheduling had been mixed into the personal calendar.",
+        "effect": "Personal and work information were combined, creating clutter.",
+        "resolution": "Philip was removed from the personal calendar and placed on the work calendar.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Supervisor calendar editing permissions are not yet confirmed.",
+        "effect": "The supervisor's ability to edit events directly remains uncertain.",
+        "resolution": "Test access during the supervisor meeting and determine whether Google sign-in or additional permission is required.",
+        "status": "open"
+      },
+      {
+        "problem": "Morning roster notifications are still delivered to the personal account.",
+        "effect": "Notification ownership does not yet match the intended supervisor workflow.",
+        "resolution": "Decide who should receive roster notifications and transfer ownership or delivery later.",
+        "status": "open"
+      },
+      {
+        "problem": "The supervisor access level has not been selected.",
+        "effect": "View-only, event-editing, and full-management responsibilities remain undefined.",
+        "resolution": "Choose the appropriate calendar access level during supervisor review.",
+        "status": "open"
+      }
+    ],
+    "unsuccessfulApproaches": [],
+    "turningPoints": [
+      {
+        "title": "Separate tools became one system",
+        "description": "The calendar, roster, issue form, website, navigation images, and QR resources were connected through one interface.",
+        "effectOnDirection": "The project moved from assembling individual Google tools to reviewing and governing a functioning communication system."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Separate work scheduling from the personal calendar.",
+        "reason": "Reduce clutter and keep work events in the appropriate calendar.",
+        "alternativesConsidered": [],
+        "consequences": [
+          "Work events are easier to manage.",
+          "The personal calendar no longer carries the housekeeping schedule."
+        ]
+      },
+      {
+        "decision": "Use one website as the central access point.",
+        "reason": "Allow the supervisor to reach schedules, rosters, forms, and resources without searching through separate files.",
+        "alternativesConsidered": [],
+        "consequences": [
+          "The system is easier to navigate.",
+          "Mobile and computer access follow the same structure."
+        ]
+      },
+      {
+        "decision": "Preserve QR images and reusable materials on a dedicated page.",
+        "reason": "Allow the supervisor to retrieve, print, and reuse visual resources.",
+        "alternativesConsidered": [],
+        "consequences": [
+          "QR resources remain available after creation.",
+          "The page can later support posters and printable cards."
+        ]
+      }
+    ],
+    "methodEstablished": "Use a central, mobile-accessible website to connect scheduling, roster visibility, issue reporting, and reusable access materials.",
+    "result": "A substantial foundation is complete: the system operates as a connected housekeeping communication website and is ready for supervisor review.",
+    "lessonsLearned": [
+      "Separating personal and work calendars clarifies scheduling.",
+      "Embedding operational tools reduces the need to search across separate files.",
+      "Visual shortcuts and QR codes make the system easier to enter and reuse.",
+      "Permissions and notification ownership must be decided explicitly, even after the interface is functional."
+    ],
+    "directionChange": "The project advanced from a collection of separate Google tools to a connected communication system requiring governance and access decisions.",
+    "narrativeSummary": "The work established the Meadows Housekeeping website as a central interface for calendar, roster, issue reporting, navigation, and QR resources. The remaining work is supervisor review of permissions, notifications, form details, and QR placement."
+  },
+  "projectDelta": {
+    "previousState": "The calendar, roster, issue form, website materials, and QR resources existed as separate tools or incomplete parts, and work scheduling was mixed into the personal calendar.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "completed-calendar-structure",
+        "title": "Calendar structure corrected",
+        "description": "Philip was moved from the personal calendar to the work calendar; work scheduling was separated from personal events; future events were verified through Christmas.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-website-created",
+        "title": "Meadows Housekeeping website created",
+        "description": "A central, mobile- and computer-accessible website was created for housekeeping communication and reference material.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-calendar-embedded",
+        "title": "Work calendar embedded",
+        "description": "The site now exposes dates, months, event details, morning roster information, and event-copying capability.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-issue-form-embedded",
+        "title": "Housekeeping issue form embedded",
+        "description": "The Google issue form was placed on the website as a consistent route for housekeeping issues and requests.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-navigation-images",
+        "title": "Homepage navigation images created",
+        "description": "Visual shortcuts were created for Calendar, Housekeeping Issue Form, and Roster.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-resource-page",
+        "title": "Images and QR resource page created",
+        "description": "A separate page now preserves printable and reusable QR images and other materials.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      },
+      {
+        "workItemId": "completed-qr-access",
+        "title": "QR access established",
+        "description": "QR codes now provide quick access to the website and forms and can be printed for useful locations.",
+        "evidenceSectionAnchors": [
+          "#work-completed"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [],
+    "stillOpenItems": [
+      {
+        "workItemId": "open-calendar-editing-permissions",
+        "title": "Confirm calendar editing permissions",
+        "description": "Determine whether the supervisor can edit calendar events directly or requires Google sign-in and additional permission.",
+        "reasonStillOpen": "The access behavior has not yet been tested with the supervisor."
+      },
+      {
+        "workItemId": "open-roster-notification-ownership",
+        "title": "Transfer morning roster notification",
+        "description": "Move notification ownership or delivery from the personal account to the intended recipient.",
+        "reasonStillOpen": "The supervisor-recipient decision and transfer have not yet been completed."
+      },
+      {
+        "workItemId": "open-supervisor-access-level",
+        "title": "Choose supervisor access level",
+        "description": "Decide between view-only access, event editing access, and full calendar management.",
+        "reasonStillOpen": "The appropriate operational authority has not yet been selected."
+      }
+    ],
+    "newlyDiscoveredItems": [],
+    "deferredItems": [],
+    "supersededItems": [],
+    "resultingState": "The calendar, roster information, issue form, website, navigation images, and QR resources now operate as a connected housekeeping communication system. The foundation is complete enough for supervisor review.",
+    "roadmapChangeSummary": "The project focus shifts from basic assembly to supervisor review, permission decisions, notification transfer, form refinement, and QR placement.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "demo-website",
+        "title": "Demonstrate the website",
+        "description": "Show the website and homepage navigation.",
+        "priority": "high",
+        "status": "planned for supervisor meeting"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "review-calendar-roster",
+        "title": "Review calendar and roster",
+        "description": "Show the embedded calendar and daily employee roster information.",
+        "priority": "high",
+        "status": "planned for supervisor meeting"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "review-form",
+        "title": "Review the issue form",
+        "description": "Determine whether form questions or categories should change.",
+        "priority": "high",
+        "status": "planned for supervisor meeting"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "test-permissions",
+        "title": "Test supervisor calendar access",
+        "description": "Test calendar access and editing permissions.",
+        "priority": "high",
+        "status": "planned for supervisor meeting"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "choose-qr-placement",
+        "title": "Choose QR placement",
+        "description": "Discuss where QR codes should be printed and posted.",
+        "priority": "medium",
+        "status": "planned for supervisor meeting"
+      },
+      {
+        "sequence": 6,
+        "workItemId": "choose-notification-recipients",
+        "title": "Choose notification recipients",
+        "description": "Decide who should receive roster notifications and form responses.",
+        "priority": "high",
+        "status": "planned for supervisor meeting"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The housekeeping website is functioning as a central place for the work calendar, daily roster information, issue reporting, navigation images, and QR resources.",
+      "operationalImpact": "The supervisor can review future staffing, open daily roster events, submit issues, use QR access, retrieve reusable materials, and work from one central interface.",
+      "currentStatus": "The main foundation is complete and ready for review; calendar permissions, notification ownership, and the supervisor's final access level remain open.",
+      "actionRequired": {
+        "required": true,
+        "description": "Review the site, test calendar access, review the issue form, choose QR placement, and decide who receives notifications and form responses."
+      },
+      "risksOrLimitations": [
+        "Calendar editing capability has not been verified for the supervisor.",
+        "Morning roster notifications still go to the personal account.",
+        "The appropriate supervisor calendar access level has not been selected."
+      ],
+      "staffVisibleChanges": [
+        "Work scheduling is separated from the personal calendar.",
+        "The work calendar and daily rosters are accessible through the website.",
+        "The housekeeping issue form is available through the site.",
+        "Homepage images provide visual shortcuts.",
+        "QR codes provide fast access to the site and forms.",
+        "Reusable QR and image resources are retained on a dedicated page."
+      ],
+      "nextOperationalStep": "Conduct the supervisor review meeting and resolve the remaining access, form, QR-placement, and notification decisions.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-foundation",
+          "relatedSectionAnchor": "#overview",
+          "type": "status",
+          "title": "The central system is functioning",
+          "text": "Calendar, roster, issue form, navigation, and QR resources are connected through one website."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-capabilities",
+          "relatedSectionAnchor": "#current-supervisor-capabilities",
+          "type": "capability",
+          "title": "Current supervisor capabilities",
+          "text": "The supervisor can inspect future staffing, daily rosters, issue reporting, QR access, reference materials, and the central interface."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-decisions",
+          "relatedSectionAnchor": "#items-still-to-verify-or-transfer",
+          "type": "decision",
+          "title": "Three access decisions remain",
+          "text": "Calendar editing, roster-notification ownership, and the supervisor's access level still require confirmation."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-meeting",
+          "relatedSectionAnchor": "#tomorrows-meeting-focus",
+          "type": "next-step",
+          "title": "Use the meeting to complete governance decisions",
+          "text": "Demonstrate the system, test access, review the form, choose QR locations, and select notification recipients."
+        }
+      ]
+    },
+    "general": {
+      "summary": "The work update reports that the Meadows Housekeeping website now connects the work calendar, daily roster information, issue form, visual navigation, and QR resources.",
+      "keyPoints": [
+        "Work scheduling was separated from the personal calendar.",
+        "The central website is in place.",
+        "The work calendar and issue form are embedded.",
+        "Navigation images and a reusable QR resource page were created.",
+        "QR access to the site and forms is established.",
+        "Supervisor permissions and notification ownership remain to be decided."
+      ]
+    },
+    "technical": {
+      "summary": "The document describes a web-based interface connecting calendar events, roster information, a Google issue form, visual navigation assets, and QR resources.",
+      "keyPoints": [
+        "The page is intended for phone and computer access.",
+        "The work calendar was verified to contain events through Christmas.",
+        "Calendar event details and morning roster information are exposed through the site.",
+        "The Google issue form is embedded.",
+        "QR codes link users to the site and forms.",
+        "Editing permissions and notification delivery remain unverified."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The website can serve as the access layer for otherwise separate housekeeping tools.",
+      "Calendar cleanup should precede supervisor-facing calendar publication.",
+      "Roster visibility becomes more useful when attached to daily calendar events.",
+      "QR resources should be retained in a reusable location rather than treated as one-time outputs.",
+      "A functional interface still requires explicit access and notification governance."
+    ],
+    "generalLessons": [
+      "Centralizing access can convert separate tools into a coherent operational system.",
+      "Visual navigation reduces the effort required to understand a multi-tool website.",
+      "Permission level and notification ownership are separate implementation decisions from interface construction.",
+      "A supervisor review meeting is most useful when framed around observable capabilities and unresolved decisions."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Work information becomes mixed with personal information.",
+        "pattern": "Operational scheduling is placed in a personal calendar instead of a dedicated work calendar.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping System"
+        ]
+      },
+      {
+        "problem": "A system is usable by its creator but not governed for the intended supervisor.",
+        "pattern": "Permissions, notification ownership, and management authority remain tied to the creator after the interface is built.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping System"
+        ]
+      },
+      {
+        "problem": "Useful visual resources become difficult to find after creation.",
+        "pattern": "QR codes, posters, and shortcut images are created without a retained resource location.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping System"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Supervisor access review checklist",
+        "description": "Test sign-in requirements, calendar editing, access level, notification recipients, and form-response ownership before handoff.",
+        "suggestedDestination": "Klinswork operational handoff procedures",
+        "supportingSectionAnchors": [
+          "#items-still-to-verify-or-transfer",
+          "#tomorrows-meeting-focus"
+        ]
+      },
+      {
+        "title": "Central operational website pattern",
+        "description": "Use one web interface to connect scheduling, staffing, forms, visual navigation, and reusable access resources.",
+        "suggestedDestination": "Klinswork information architecture",
+        "supportingSectionAnchors": [
+          "#overview",
+          "#overall-result"
+        ]
+      },
+      {
+        "title": "Reusable QR resource page",
+        "description": "Retain QR codes and printable graphics in a dedicated page so they can be accessed, printed, and repurposed later.",
+        "suggestedDestination": "Klinswork visual-resource practices",
+        "supportingSectionAnchors": [
+          "#work-completed"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Separate personal and work scheduling.",
+        "changeType": "confirmed",
+        "explanation": "The update records the correction of a work event that had been placed on the personal calendar."
+      },
+      {
+        "rule": "Use the website as the central access point, not as a replacement for each underlying tool.",
+        "changeType": "confirmed",
+        "explanation": "The website connects calendar, roster, form, images, and QR resources while each component retains its function."
+      },
+      {
+        "rule": "Do not treat access as complete until permissions and notification ownership are verified.",
+        "changeType": "added",
+        "explanation": "The interface is functional, but supervisor editing, access level, and notification delivery remain open."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "overview",
+      "title": "Overview",
+      "anchor": "#overview",
+      "contentSummary": "States that a functional housekeeping communication website now connects calendar, roster information, issue reporting, QR resources, and visual navigation for phone or computer access.",
+      "narrativeRole": "executive summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the executive summary of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-foundation",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Central operational website pattern"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "work-completed",
+      "title": "Work Completed",
+      "anchor": "#work-completed",
+      "contentSummary": "Reports seven completed items: calendar correction, website creation, embedded calendar, embedded issue form, homepage navigation images, Images and QR page, and QR access.",
+      "narrativeRole": "completed-work evidence",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the completed-work evidence of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Reusable QR resource page"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "current-supervisor-capabilities",
+      "title": "Current Supervisor Capabilities",
+      "anchor": "#current-supervisor-capabilities",
+      "contentSummary": "Lists six current capabilities: future staffing review, daily roster review, issue submission, QR access, reference-material access, and use of one central interface.",
+      "narrativeRole": "operational capability summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the operational capability summary of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-capabilities",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "items-still-to-verify-or-transfer",
+      "title": "Items Still to Verify or Transfer",
+      "anchor": "#items-still-to-verify-or-transfer",
+      "contentSummary": "Keeps calendar editing permissions, morning roster notification ownership, and the supervisor's access level open.",
+      "narrativeRole": "remaining work and governance questions",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the remaining work and governance questions of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-decisions",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Supervisor access review checklist"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "tomorrows-meeting-focus",
+      "title": "Tomorrow's Meeting Focus",
+      "anchor": "#tomorrows-meeting-focus",
+      "contentSummary": "Defines six meeting actions covering demonstration, calendar and roster review, form review, permission testing, QR placement, and notification recipients.",
+      "narrativeRole": "immediate next-step agenda",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the immediate next-step agenda of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-meeting",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Supervisor access review checklist"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "overall-result",
+      "title": "Overall Result",
+      "anchor": "#overall-result",
+      "contentSummary": "Concludes that separate Google tools now operate as a connected housekeeping communication system with a substantial foundation ready for supervisor review.",
+      "narrativeRole": "resulting state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the resulting state of the Meadows Housekeeping System milestone.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The source was prepared for supervisor review and this section affects capabilities, decisions, or next actions."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Central operational website pattern"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "responsive HTML document",
+      "web browser",
+      "mobile device",
+      "computer"
+    ],
+    "apps": [
+      "Meadows Housekeeping website",
+      "work calendar",
+      "personal calendar",
+      "housekeeping issue form",
+      "roster information",
+      "Images and QR resource page"
+    ],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Calendar",
+      "Google Forms"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "calendar events",
+      "daily roster information",
+      "housekeeping issue form records",
+      "QR and visual resources"
+    ],
+    "files": [
+      "meadows_housekeeping_work_completed.html"
+    ],
+    "integrations": [
+      "work calendar embedded in the website",
+      "morning roster information included in calendar events",
+      "Google issue form embedded in the website",
+      "navigation images linking to primary functions",
+      "QR codes linking to the website and forms",
+      "resource page retaining reusable images and QR codes"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "Work calendar future-event coverage",
+        "type": "content verification",
+        "result": "passed",
+        "notes": "The work calendar was verified to contain events through Christmas.",
+        "statusBasis": "Explicitly reported in the source document."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "source-to-sidecar content and structure validation passed",
+      "notes": [
+        "The source HTML and work-update template parsed successfully.",
+        "All seven completed-work items were represented.",
+        "All six supervisor capabilities were preserved in the audience and section summaries.",
+        "All three open verification or transfer items were preserved.",
+        "All six supervisor-meeting agenda items were preserved as revised next steps.",
+        "No work dates, duration, canonical URL, repository path, or publication timestamp were supplied.",
+        "Only the calendar coverage verification is recorded as a performed test."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Meadows Housekeeping System: Work Completed and Supervisor Review",
+      "body": "The core Meadows Housekeeping communication system is now in place. The website connects the work calendar, daily roster information, housekeeping issue form, navigation images, and QR resources in one interface. The remaining meeting decisions concern calendar editing, supervisor access level, notification ownership, issue-form details, and QR placement.",
+      "audiences": [
+        "Meadows Housekeeping supervisor"
+      ],
+      "detailLevel": "supervisor milestone summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "source HTML supplied; canonical publication URL not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Meadows Housekeeping System — Work Completed",
+    "listingDescription": "A supervisor-facing milestone summary covering the completed housekeeping website foundation, current capabilities, remaining access and notification decisions, and the next meeting agenda.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "Meadows Housekeeping System - Work Completed",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; publication location not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded work-completed HTML",
+    "sourceFiles": [
+      "meadows_housekeeping_work_completed.html",
+      "work-update-sidecar-template-3.0.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T05:26:13+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source is a completed-work and current-capabilities milestone report, so the work-update profile was used.",
+      "The source provides no creation date, work period, work duration, canonical URL, or repository path.",
+      "The primary project classification is taken directly from the document title and content.",
+      "The work update describes a future supervisor meeting but does not provide its date.",
+      "No failed implementation approach is reported, so unsuccessfulApproaches remains empty.",
+      "The calendar coverage verification is the only explicit performed test preserved in technical.tests.",
+      "Derived email text and audience summaries are generated from the source content and are not quoted source communications."
+    ],
+    "unresolvedQuestions": [
+      "What date or work period does this milestone update cover?",
+      "What canonical URL and repository path should identify the HTML document?",
+      "Was the supervisor meeting completed, and what decisions resulted?",
+      "What final calendar access level was selected?",
+      "Were roster notifications and form-response ownership transferred?",
+      "Should this work update be appended to the current Klinswork document catalog?"
+    ]
+  }
+}

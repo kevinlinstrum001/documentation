@@ -1,0 +1,1131 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "lesson-reference",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+    "previewMode": "lesson-reference"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "lesson-digital-office-metaphor",
+    "filePath": "filing_cabinet_metaphor.html",
+    "documentUrl": "",
+    "title": "The Digital Office Metaphor",
+    "headline": "One office, rebuilt in digital form",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "digital-office-metaphor-lesson-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-digital-office-metaphor",
+    "profileTemplatePath": "lesson-reference-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Digital Operations",
+      "projectType": "organizational systems and digital-operations framework",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Translate familiar office responsibilities into connected digital tools that receive information, organize it, route it toward action, preserve results, reveal current conditions, and support learning from history.",
+      "projectPhase": "conceptual explanation and organizational framing",
+      "contributionType": "systems metaphor, operational explanation, and data-literacy lesson",
+      "identificationBasis": "The lesson explicitly explains how forms, queues, calendars, rosters, files, dashboards, and archives collectively rebuild the familiar functions of an office in digital form.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Work Queue",
+        "relationshipType": "modern operations-desk component",
+        "relationshipDescription": "The request queue is presented as the digital equivalent of papers spread across a desk and as the active surface for new, acknowledged, assigned, in-progress, completed, and review-pending work.",
+        "impact": "The queue makes current work, ownership, status, age, completion, and delay conditions visible.",
+        "evidenceSectionAnchors": [
+          "#digital",
+          "#operations",
+          "#conclusion"
+        ],
+        "identificationBasis": "The source repeatedly names request queues and task dashboards as the modern work surface.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Calendar and Roster Tools",
+        "relationshipType": "time-and-capacity coordination components",
+        "relationshipDescription": "The shared calendar coordinates timing, while the digital roster shows availability, assignment, and capacity.",
+        "impact": "Supervisors can relate active work to expected timing and available staff.",
+        "evidenceSectionAnchors": [
+          "#digital",
+          "#observability",
+          "#operations",
+          "#conclusion"
+        ],
+        "identificationBasis": "The source explicitly maps wall calendars and posted rosters to their digital counterparts.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Documentation and Records",
+        "relationshipType": "organizational memory and knowledge layer",
+        "relationshipDescription": "Structured records, identifiers, archives, dashboards, and reports preserve events and make relationships among events searchable.",
+        "impact": "The department can retrieve history, compare records, identify recurring conditions, and evaluate changes over time.",
+        "evidenceSectionAnchors": [
+          "#digital",
+          "#memory",
+          "#conclusion"
+        ],
+        "identificationBasis": "The lesson explicitly develops filing-cabinet, index, archive, and organizational-memory analogies.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Office functions",
+        "foundationType": "organizational responsibility model",
+        "relationshipDescription": "Receiving, interpreting, routing, acting, storing, retrieving, observing, and remembering are treated as enduring functions independent of the physical tools used.",
+        "impact": "Digital design can be explained as preservation and improvement of familiar responsibilities rather than replacement by unfamiliar technology."
+      },
+      {
+        "foundationId": "",
+        "name": "Connected operational records",
+        "foundationType": "structured information foundation",
+        "relationshipDescription": "Requests, assignments, statuses, dates, locations, supplies, completion times, and results remain linked in durable records.",
+        "impact": "Single events can be retrieved individually and compared collectively."
+      },
+      {
+        "foundationId": "",
+        "name": "Observability",
+        "foundationType": "operational visibility principle",
+        "relationshipDescription": "Connected forms, queues, calendars, rosters, records, and reports present enough of the department's activity to understand its current condition.",
+        "impact": "Judgment gains a stronger factual foundation without being replaced."
+      }
+    ],
+    "relationshipSummary": "The lesson presents Klinswork tools not as isolated applications but as connected digital replacements for the receiving, routing, working, indexing, storing, observing, and remembering functions of a traditional office."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Digital Operations",
+    "primaryApp": "",
+    "mainFocus": "Explaining connected digital tools as modern stand-ins for the telephone, employee, desk, filing cabinet, index system, operations board, and storage closet.",
+    "description": "An organizational-systems lesson showing how forms, queues, calendars, rosters, records, dashboards, and archives reproduce and improve the familiar responsibilities of a traditional office.",
+    "topics": [
+      "digital office",
+      "organizational systems",
+      "information intake",
+      "workflow routing",
+      "request queues",
+      "task dashboards",
+      "shared calendars",
+      "digital rosters",
+      "structured records",
+      "indexing",
+      "archives",
+      "observability",
+      "operations management",
+      "organizational memory",
+      "institutional learning"
+    ],
+    "keywords": [
+      "telephone",
+      "employee at the desk",
+      "desk",
+      "filing cabinet",
+      "index system",
+      "storage closet",
+      "online form",
+      "structured request",
+      "request queue",
+      "task dashboard",
+      "shared calendar",
+      "digital roster",
+      "dashboard",
+      "archive",
+      "organizational memory"
+    ],
+    "appsAffected": [
+      "online forms",
+      "Work Queue",
+      "shared calendar",
+      "digital roster",
+      "documentation viewer",
+      "dashboards",
+      "archives"
+    ],
+    "systemsAffected": [
+      "request intake",
+      "work routing",
+      "task coordination",
+      "staffing visibility",
+      "record preservation",
+      "historical analysis",
+      "departmental reporting"
+    ],
+    "componentsAffected": [
+      "forms",
+      "queues",
+      "calendars",
+      "rosters",
+      "structured records",
+      "fields and identifiers",
+      "dashboards",
+      "reports",
+      "archives"
+    ]
+  },
+  "learningContext": {
+    "audience": [
+      "supervisors",
+      "department staff",
+      "nontechnical readers",
+      "new users of digital operational tools"
+    ],
+    "prerequisites": [],
+    "learningPurpose": "Show that modern digital tools perform familiar office responsibilities and explain how connected records improve visibility, coordination, retrieval, and organizational learning.",
+    "difficulty": "introductory",
+    "estimatedStudyTime": "10–15 minutes",
+    "sourceType": "standalone organizational-systems lesson",
+    "instructionalApproach": "Uses a sustained office metaphor, responsibility mapping, comparison table, system flow, operational examples, and a concluding synthesis."
+  },
+  "learningObjectives": [
+    {
+      "objectiveId": "objective-01",
+      "description": "Identify the information-management responsibility performed by each object in a traditional office.",
+      "evidenceSectionAnchors": [
+        "#office",
+        "#functions"
+      ]
+    },
+    {
+      "objectiveId": "objective-02",
+      "description": "Map traditional office functions to modern tools such as forms, queues, calendars, rosters, structured records, dashboards, and archives.",
+      "evidenceSectionAnchors": [
+        "#digital",
+        "#conclusion"
+      ]
+    },
+    {
+      "objectiveId": "objective-03",
+      "description": "Explain observability as the ability to see enough connected activity to understand the department's current condition.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "objectiveId": "objective-04",
+      "description": "Describe how a modern operations desk supports both supervision and employee participation.",
+      "evidenceSectionAnchors": [
+        "#operations"
+      ]
+    },
+    {
+      "objectiveId": "objective-05",
+      "description": "Explain how preserved digital records become organizational memory when they can be retrieved and compared.",
+      "evidenceSectionAnchors": [
+        "#memory"
+      ]
+    },
+    {
+      "objectiveId": "objective-06",
+      "description": "Recognize that the purpose of digitization is to preserve useful office responsibilities while making them more visible, connected, searchable, and valuable over time.",
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "principleId": "principle-01",
+      "title": "The physical office is already an information system",
+      "statement": "Traditional office furniture and tools divide the work of receiving, organizing, acting, storing, retrieving, and remembering.",
+      "explanation": "The telephone, employee, desk, filing cabinet, index, and storage closet each carry a distinct informational responsibility.",
+      "importance": "This reframes digital tools as continuations of established organizational functions rather than unrelated technology.",
+      "evidenceSectionAnchors": [
+        "#office",
+        "#functions"
+      ]
+    },
+    {
+      "principleId": "principle-02",
+      "title": "Responsibilities matter more than physical objects",
+      "statement": "The essential design question is not which furniture or paper is used, but which responsibility must be performed.",
+      "explanation": "Connected digital tools can replace physical objects while preserving intake, routing, active work, indexing, storage, and history.",
+      "importance": "It provides a functional basis for designing and evaluating digital systems.",
+      "evidenceSectionAnchors": [
+        "#functions",
+        "#digital"
+      ]
+    },
+    {
+      "principleId": "principle-03",
+      "title": "Connected tools create observability",
+      "statement": "A modern system should present enough connected activity for the department to reveal its own condition.",
+      "explanation": "Forms, queues, calendars, rosters, records, and reports bring scattered observations into a coherent operational view.",
+      "importance": "Supervisors no longer have to reconstruct the department solely from conversations, papers, and memory.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "principleId": "principle-04",
+      "title": "Visibility strengthens judgment rather than replacing it",
+      "statement": "Operational visibility provides a stronger factual foundation for human judgment.",
+      "explanation": "Dashboards and records reveal conditions, but interpretation, prioritization, and decision-making remain human responsibilities.",
+      "importance": "It defines an appropriate boundary between systems and supervision.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "principleId": "principle-05",
+      "title": "The modern operations desk supports participation",
+      "statement": "A shared digital work surface helps supervisors observe conditions and helps employees understand expectations, ownership, and remaining work.",
+      "explanation": "Visible assignment and status reduce duplicate effort, forgotten messages, repeated instructions, and disputes over communication.",
+      "importance": "The system is framed as a coordination mechanism rather than only a supervisory instrument.",
+      "evidenceSectionAnchors": [
+        "#operations"
+      ]
+    },
+    {
+      "principleId": "principle-06",
+      "title": "Records become organizational memory through comparison",
+      "statement": "A collection of linked records can reveal patterns and relationships that no single event can show.",
+      "explanation": "Historical records can expose demand by location and time, response trends, supply consumption, recurring problems, staffing effects, and procedural results.",
+      "importance": "The archive becomes part of the department's ability to understand and improve itself.",
+      "evidenceSectionAnchors": [
+        "#memory"
+      ]
+    },
+    {
+      "principleId": "principle-07",
+      "title": "Digitization should preserve useful office responsibilities",
+      "statement": "The purpose is not merely to remove paper but to make office responsibilities more visible, connected, searchable, and valuable over time.",
+      "explanation": "The complete system receives information, organizes it, guides action, preserves results, reveals current conditions, and supports learning from history.",
+      "importance": "This provides the lesson's overall standard for evaluating the digital office.",
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "concept-information-system",
+      "name": "Office as information system",
+      "definition": "A view of the traditional office as a coordinated set of tools and responsibilities for receiving, organizing, acting on, storing, retrieving, and remembering information.",
+      "relationships": [
+        "Telephone receives information",
+        "Employee interprets and routes",
+        "Desk holds active work",
+        "Filing cabinet preserves records",
+        "Index organizes records",
+        "Storage closet retains older history"
+      ],
+      "examples": [
+        "A request arrives by telephone, is written down, placed on the desk, completed, filed, indexed, and later archived."
+      ],
+      "misconceptions": [
+        "An office is merely a physical room rather than an operational information structure"
+      ],
+      "evidenceSectionAnchors": [
+        "#office",
+        "#functions"
+      ]
+    },
+    {
+      "conceptId": "concept-digital-stand-in",
+      "name": "Digital stand-in",
+      "definition": "A modern tool that performs a responsibility previously carried by a physical office object or manual practice.",
+      "relationships": [
+        "Online form replaces telephone or handwritten note",
+        "Queue replaces papers on a desk",
+        "Calendar replaces wall schedule",
+        "Roster replaces posted staffing list",
+        "Structured records replace filing cabinet",
+        "Fields and identifiers replace card index",
+        "Digital archive replaces storage closet",
+        "Dashboard replaces supervisor walkthrough"
+      ],
+      "examples": [
+        "A request queue acting as the active work surface"
+      ],
+      "misconceptions": [
+        "The modern tools perform entirely unfamiliar work"
+      ],
+      "evidenceSectionAnchors": [
+        "#digital",
+        "#conclusion"
+      ]
+    },
+    {
+      "conceptId": "concept-observability",
+      "name": "Observability",
+      "definition": "The ability to see enough connected departmental activity to understand current conditions.",
+      "relationships": [
+        "Incoming demand",
+        "Active work",
+        "Staffing",
+        "Completed tasks",
+        "Unresolved requests",
+        "Repeated problems",
+        "Changing conditions"
+      ],
+      "examples": [
+        "A supervisor seeing requests, queue status, calendar timing, roster capacity, completed records, and repeated conditions together"
+      ],
+      "misconceptions": [
+        "Observability replaces human judgment"
+      ],
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "conceptId": "concept-operations-desk",
+      "name": "Modern operations desk",
+      "definition": "A connected digital work surface that shows what has entered the system, what needs attention, who owns it, how long it has remained open, what is complete, and what is causing delay.",
+      "relationships": [
+        "Request queue",
+        "Calendar",
+        "Roster",
+        "Dashboard",
+        "Assignment",
+        "Acknowledgement",
+        "Status",
+        "Completion"
+      ],
+      "examples": [
+        "A queue showing New, Acknowledged, Assigned, In Progress, Completed, and Waiting for Review"
+      ],
+      "misconceptions": [
+        "The system is useful only to supervisors rather than to participating employees"
+      ],
+      "evidenceSectionAnchors": [
+        "#operations"
+      ]
+    },
+    {
+      "conceptId": "concept-organizational-memory",
+      "name": "Organizational memory",
+      "definition": "The department's ability to preserve events, retrieve them later, compare them, and learn from relationships across records.",
+      "relationships": [
+        "Completed requests",
+        "Dates",
+        "Locations",
+        "Priorities",
+        "Assignments",
+        "Completion times",
+        "Supplies used",
+        "Final results"
+      ],
+      "examples": [
+        "Determining which locations generate the most requests or whether a procedural change improved performance"
+      ],
+      "misconceptions": [
+        "An archive is only passive storage"
+      ],
+      "evidenceSectionAnchors": [
+        "#memory"
+      ]
+    },
+    {
+      "conceptId": "concept-connected-office",
+      "name": "Connected digital office",
+      "definition": "A system in which forms, queues, calendars, rosters, records, fields, dashboards, reports, and archives operate as coordinated parts of one office.",
+      "relationships": [
+        "Receives information",
+        "Organizes information",
+        "Routes action",
+        "Shows progress",
+        "Preserves results",
+        "Reveals conditions",
+        "Supports learning"
+      ],
+      "examples": [
+        "The Meadows Housekeeping tools described collectively rather than as isolated applications"
+      ],
+      "misconceptions": [
+        "Each app should be understood as an unrelated standalone tool"
+      ],
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "exampleId": "example-traditional-request",
+      "title": "A request moving through a traditional office",
+      "scenario": "A telephone rings, an employee receives a request, writes a note, opens a folder, places current work on the desk, and later files the completed record.",
+      "walkthrough": [
+        "The telephone receives the request.",
+        "The employee interprets and routes it.",
+        "The desk keeps it visible as active work.",
+        "The filing cabinet preserves the finished record.",
+        "The index system makes it retrievable.",
+        "The storage closet retains older history."
+      ],
+      "result": "The office handles information through a chain of specialized physical responsibilities.",
+      "lesson": "The physical office already contains the functional blueprint for a digital system.",
+      "evidenceSectionAnchors": [
+        "#office",
+        "#functions"
+      ]
+    },
+    {
+      "exampleId": "example-digital-request",
+      "title": "A request moving through the modern digital office",
+      "scenario": "An online form receives a request that is routed into a queue, coordinated through calendar and roster information, completed, preserved, and later compared with historical records.",
+      "walkthrough": [
+        "The form receives structured information.",
+        "Workflow rules direct it toward the appropriate person or process.",
+        "The queue shows active status and priority.",
+        "The calendar supplies timing.",
+        "The roster supplies staffing and capacity context.",
+        "The completed record preserves the result.",
+        "Reports compare it with prior conditions."
+      ],
+      "result": "The same office responsibilities become connected, visible, searchable, and reusable.",
+      "lesson": "Digital tools improve coordination and learning when they operate as one system.",
+      "evidenceSectionAnchors": [
+        "#digital",
+        "#observability",
+        "#operations",
+        "#memory"
+      ]
+    },
+    {
+      "exampleId": "example-organizational-learning",
+      "title": "Learning from a collection of records",
+      "scenario": "Completed requests remain linked to location, timing, assignment, supplies, and outcome.",
+      "walkthrough": [
+        "Retrieve completed records.",
+        "Group or compare them by location, time, response duration, staffing, supply use, or problem type.",
+        "Identify recurring conditions or changing trends.",
+        "Compare performance before and after a procedural change."
+      ],
+      "result": "Historical storage becomes evidence for departmental understanding and improvement.",
+      "lesson": "Organizational memory depends on preserving relationships among records, not only individual events.",
+      "evidenceSectionAnchors": [
+        "#memory"
+      ]
+    }
+  ],
+  "procedures": [],
+  "warnings": [
+    {
+      "warningId": "warning-visibility-not-judgment",
+      "title": "Do not mistake observability for judgment",
+      "risk": "Treating dashboards or records as substitutes for interpretation could produce mechanically correct but operationally poor decisions.",
+      "avoid": "Assuming that visibility alone determines priorities or resolves context.",
+      "correctiveAction": "Use connected information to strengthen human judgment rather than replace it.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "warningId": "warning-isolated-tools",
+      "title": "Do not treat the tools as isolated applications",
+      "risk": "Forms, queues, calendars, rosters, records, and archives lose much of their value when they do not exchange context or support one workflow.",
+      "avoid": "Designing each tool without regard to the responsibilities performed by the others.",
+      "correctiveAction": "Treat the collection as one connected digital office.",
+      "evidenceSectionAnchors": [
+        "#digital",
+        "#conclusion"
+      ]
+    },
+    {
+      "warningId": "warning-passive-archive",
+      "title": "Do not preserve history without making it usable",
+      "risk": "Records may remain technically retained but become as difficult to search and compare as boxes stored in a distant closet.",
+      "avoid": "Archiving records without identifiers, categories, links, or retrieval paths.",
+      "correctiveAction": "Preserve structured relationships so historical records can support later comparison and learning.",
+      "evidenceSectionAnchors": [
+        "#office",
+        "#memory"
+      ]
+    }
+  ],
+  "reviewQuestions": [
+    {
+      "questionId": "review-01",
+      "question": "Why does the lesson describe the traditional office as an information system?",
+      "answerSummary": "Its tools divide the responsibilities of receiving, interpreting, routing, working, storing, retrieving, and remembering information.",
+      "evidenceSectionAnchors": [
+        "#office",
+        "#functions"
+      ]
+    },
+    {
+      "questionId": "review-02",
+      "question": "What modern tool corresponds to papers spread across a desk?",
+      "answerSummary": "A request queue or task dashboard that shows current work, priorities, status, and unfinished items.",
+      "evidenceSectionAnchors": [
+        "#digital"
+      ]
+    },
+    {
+      "questionId": "review-03",
+      "question": "What does observability mean in this lesson?",
+      "answerSummary": "Seeing enough connected departmental activity to understand its current condition.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "questionId": "review-04",
+      "question": "How does the modern operations desk help employees as well as supervisors?",
+      "answerSummary": "It shows expectations, ownership, remaining work, and whether someone else is already handling a request.",
+      "evidenceSectionAnchors": [
+        "#operations"
+      ]
+    },
+    {
+      "questionId": "review-05",
+      "question": "When does storage become organizational memory?",
+      "answerSummary": "When records can be retrieved, compared, and used to identify relationships, patterns, and the effects of change.",
+      "evidenceSectionAnchors": [
+        "#memory"
+      ]
+    },
+    {
+      "questionId": "review-06",
+      "question": "What is the lesson's stated purpose of rebuilding the office digitally?",
+      "answerSummary": "To preserve useful office responsibilities while making them more visible, connected, searchable, and capable of producing value over time.",
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "futureApplications": [
+    {
+      "applicationId": "application-supervisor-orientation",
+      "title": "Supervisor orientation to the Klinswork system",
+      "description": "Use the office metaphor to present forms, queues, calendars, rosters, records, dashboards, and archives as one operational system.",
+      "readiness": "ready",
+      "dependencies": []
+    },
+    {
+      "applicationId": "application-tool-architecture",
+      "title": "Evaluate missing office responsibilities",
+      "description": "Use the responsibility map to determine whether the digital system adequately receives, routes, displays, preserves, indexes, observes, and remembers information.",
+      "readiness": "ready",
+      "dependencies": [
+        "current tool inventory"
+      ]
+    },
+    {
+      "applicationId": "application-observability-design",
+      "title": "Design cross-tool observability",
+      "description": "Connect request demand, task status, calendar timing, roster capacity, completed records, and repeated conditions in supervisor-facing views.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "stable cross-system identifiers",
+        "shared data access",
+        "viewer design"
+      ]
+    },
+    {
+      "applicationId": "application-organizational-memory",
+      "title": "Build historical analysis from completed records",
+      "description": "Use preserved relationships to analyze recurring locations, demand times, response trends, supply consumption, staffing effects, and procedural outcomes.",
+      "readiness": "planned",
+      "dependencies": [
+        "consistent historical records",
+        "query and reporting tools"
+      ]
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains the department's digital tools as a modern office: forms receive information, queues hold active work, calendars coordinate time, rosters show capacity, records preserve results, and dashboards reveal current conditions.",
+      "operationalImpact": "It shows how connected tools can reduce reconstruction from scattered papers and memory while improving assignment clarity, status visibility, historical retrieval, and departmental learning.",
+      "currentStatus": "Complete organizational-systems lesson.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The lesson is conceptual and does not specify technical integrations or permissions.",
+        "Observability is presented as support for judgment, not a replacement for supervisory judgment.",
+        "Some described digital capabilities may remain aspirational depending on the current state of each tool."
+      ],
+      "staffVisibleChanges": [
+        "Clearer relationship among forms, queues, calendars, rosters, records, dashboards, and archives",
+        "A shared explanation of how operational information moves through the department"
+      ],
+      "nextOperationalStep": "Use the metaphor to review which office responsibilities are already covered by existing tools and which remain disconnected or missing.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-office-system",
+          "relatedSectionAnchor": "#office",
+          "type": "concept",
+          "title": "The office is already a system",
+          "text": "Physical tools divide the responsibilities of receiving, organizing, acting, storing, retrieving, and remembering."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-observability",
+          "relatedSectionAnchor": "#observability",
+          "type": "benefit",
+          "title": "The system presents its own condition",
+          "text": "Connected records reduce the need to reconstruct operations from scattered papers, conversations, and memory."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-memory",
+          "relatedSectionAnchor": "#memory",
+          "type": "knowledge",
+          "title": "History becomes usable memory",
+          "text": "Linked records reveal relationships among demand, staffing, supplies, response times, recurring problems, and procedural changes."
+        }
+      ]
+    },
+    "general": {
+      "summary": "The Digital Office Metaphor explains how connected modern tools reproduce the familiar office functions of receiving, routing, coordinating, storing, observing, and remembering information.",
+      "keyPoints": [
+        "The traditional office is already an information system.",
+        "Digital tools are modern stand-ins for familiar office responsibilities.",
+        "Connected tools improve observability.",
+        "The operations desk supports both supervision and participation.",
+        "Structured archives become organizational memory.",
+        "The goal is not merely paper removal but a more visible, connected, searchable office."
+      ]
+    },
+    "technical": {
+      "summary": "The source is a conceptual systems lesson rather than a technical specification. It names forms, workflow rules, queues, calendars, rosters, structured records, fields, identifiers, dashboards, reports, and archives as connected functional components.",
+      "keyPoints": [
+        "No software implementation or API contract is specified.",
+        "The document emphasizes responsibility mapping and system relationships.",
+        "Observability depends on connecting operational signals across tools.",
+        "Historical value depends on preserving linked structured fields.",
+        "The HTML includes direct navigation back to the Meadows documentation site."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Klinswork tools can be explained as one digital office rather than a collection of unrelated applications.",
+      "Work Queue functions as the active desk, while documentation and archives function as retrievable organizational memory.",
+      "Calendar and roster data become more valuable when presented alongside current request demand and task state."
+    ],
+    "generalLessons": [
+      "Organizational design should begin with responsibilities rather than specific tools.",
+      "Connected visibility reduces dependence on scattered conversations and individual memory.",
+      "Operational systems should support both oversight and participation.",
+      "Historical records create learning value when relationships among events remain searchable.",
+      "Digitization succeeds when it preserves useful functions and improves connection, visibility, and reuse."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Digital tools are understood as isolated applications.",
+        "pattern": "Forms, queues, calendars, rosters, records, dashboards, and archives are evaluated separately instead of as one information system.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Digital Operations"
+        ]
+      },
+      {
+        "problem": "Supervisors reconstruct current conditions from scattered signals.",
+        "pattern": "Important information remains distributed across paper notes, messages, schedules, files, storage, and individual memory.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Digital Operations"
+        ]
+      },
+      {
+        "problem": "Archives preserve records without producing organizational learning.",
+        "pattern": "Historical events remain difficult to retrieve, compare, or connect to later decisions.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Digital Operations"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "The traditional office as an information system",
+        "description": "Map the telephone, employee, desk, filing cabinet, index, and storage closet to enduring information responsibilities.",
+        "suggestedDestination": "Klinswork systems architecture",
+        "supportingSectionAnchors": [
+          "#office",
+          "#functions"
+        ]
+      },
+      {
+        "title": "Digital tools as modern office stand-ins",
+        "description": "Map forms, workflow rules, queues, calendars, rosters, structured records, fields, dashboards, and archives to familiar office functions.",
+        "suggestedDestination": "Klinswork systems architecture",
+        "supportingSectionAnchors": [
+          "#digital",
+          "#conclusion"
+        ]
+      },
+      {
+        "title": "Operational observability from connected tools",
+        "description": "Bring demand, work state, staffing, timing, completion, unresolved requests, and repeated problems into one coherent view.",
+        "suggestedDestination": "Klinswork operational design",
+        "supportingSectionAnchors": [
+          "#observability",
+          "#operations"
+        ]
+      },
+      {
+        "title": "Records as organizational memory",
+        "description": "Preserve relationships among events so history can reveal demand, delays, supply use, staffing effects, recurring problems, and procedural outcomes.",
+        "suggestedDestination": "Klinswork knowledge architecture",
+        "supportingSectionAnchors": [
+          "#memory"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Design systems around organizational responsibilities rather than around individual tools.",
+        "changeType": "added",
+        "explanation": "The essential functions of receiving, routing, acting, storing, observing, and remembering remain stable even when the tools change."
+      },
+      {
+        "rule": "Use observability to strengthen judgment, not replace it.",
+        "changeType": "added",
+        "explanation": "Connected visibility provides context for supervisory decisions but does not make those decisions automatically."
+      },
+      {
+        "rule": "Preserve relationships among completed records.",
+        "changeType": "confirmed",
+        "explanation": "Organizational memory depends on comparing dates, locations, assignments, timing, supplies, and outcomes across events."
+      },
+      {
+        "rule": "Treat forms, queues, calendars, rosters, records, dashboards, and archives as one connected office.",
+        "changeType": "added",
+        "explanation": "Their combined value exceeds the value of isolated applications."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "office",
+      "title": "The Traditional Office",
+      "anchor": "#office",
+      "contentSummary": "Introduces the office as an information system in which the telephone receives information, an employee interprets and routes it, the desk holds active work, the filing cabinet preserves records, the index organizes them, and the storage closet retains older history.",
+      "narrativeRole": "metaphor-foundation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'The Traditional Office'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-office-system",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "The traditional office as an information system"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "functions",
+      "title": "The Functions Behind the Furniture",
+      "anchor": "#functions",
+      "contentSummary": "Separates the physical objects from the responsibilities they perform and defines the roles of the telephone, employee, desk, filing cabinet, index system, and storage closet.",
+      "narrativeRole": "functional-decomposition",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'The Functions Behind the Furniture'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "The traditional office as an information system"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "digital",
+      "title": "Modern Tools as Stand-Ins",
+      "anchor": "#digital",
+      "contentSummary": "Maps traditional office functions to online forms, workflow routing, request queues, calendars, rosters, structured records, fields and identifiers, digital archives, dashboards, and reports.",
+      "narrativeRole": "cross-system-mapping",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'Modern Tools as Stand-Ins'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Digital tools as modern office stand-ins"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "observability",
+      "title": "From Storage to Observability",
+      "anchor": "#observability",
+      "contentSummary": "Defines observability and explains how connected forms, queues, calendars, rosters, records, and reports reduce the need to reconstruct current conditions from scattered papers, conversations, and memory.",
+      "narrativeRole": "operational-visibility",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'From Storage to Observability'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-observability",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Operational observability from connected tools"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "operations",
+      "title": "The Modern Operations Desk",
+      "anchor": "#operations",
+      "contentSummary": "Explains how queues, calendars, rosters, and dashboards reveal priority, assignment, acknowledgement, age, completion, delays, and capacity while supporting both supervisors and employees.",
+      "narrativeRole": "operational-application",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'The Modern Operations Desk'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Operational observability from connected tools"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "memory",
+      "title": "The Filing Cabinet Becomes Organizational Memory",
+      "anchor": "#memory",
+      "contentSummary": "Shows how completed records remain linked to contextual fields and how collections of records reveal patterns in demand, response, supplies, staffing, recurring problems, and procedural outcomes.",
+      "narrativeRole": "historical-learning",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'The Filing Cabinet Becomes Organizational Memory'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-memory",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Records as organizational memory"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "conclusion",
+      "title": "One Office, Rebuilt in Digital Form",
+      "anchor": "#conclusion",
+      "contentSummary": "Unifies forms, queues, calendars, rosters, structured records, fields, archives, dashboards, and reports as one modern office designed to preserve useful responsibilities while increasing visibility, connection, searchability, and long-term value.",
+      "narrativeRole": "synthesis",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the digital-office framework through the section 'One Office, Rebuilt in Digital Form'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains the system model, operational visibility, coordination value, organizational memory, or complete digital-office synthesis."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Digital tools as modern office stand-ins"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Sites"
+    ],
+    "apps": [
+      "online forms",
+      "Work Queue",
+      "shared calendar",
+      "digital roster",
+      "documentation and records viewer",
+      "dashboards",
+      "archives"
+    ],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [
+      "structured files",
+      "records",
+      "databases",
+      "digital archives"
+    ],
+    "files": [
+      "filing_cabinet_metaphor.html"
+    ],
+    "integrations": [
+      "forms to workflow",
+      "queues to status views",
+      "calendar and roster context",
+      "completed records to reports",
+      "archives to historical analysis"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "content and profile structure validated",
+      "notes": [
+        "The source explicitly identifies itself as an organizational systems lesson.",
+        "The lesson-reference profile was applied.",
+        "All seven source sections and their existing HTML anchors were represented.",
+        "No technical implementation tests are claimed by the source.",
+        "The document URL remains blank because the source provides only a navigation link back to the Meadows documentation site, not a verified canonical publication URL."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "The Digital Office Metaphor",
+      "body": "This lesson explains the department's digital tools through the familiar structure of an office. Forms receive information, workflow rules route it, queues hold active work, calendars coordinate time, rosters show capacity, records preserve results, and dashboards and archives make current conditions and history usable. Together, the tools form one connected operational office rather than a collection of separate applications.",
+      "audiences": [
+        "supervisors",
+        "staff",
+        "new system users"
+      ],
+      "detailLevel": "plain-language lesson introduction",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "publication URL not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "The Digital Office Metaphor",
+    "listingDescription": "An organizational-systems lesson explaining how connected digital tools reproduce and improve the familiar responsibilities of a traditional office.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked from source navigation"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "The Digital Office Metaphor",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; canonical publication URL not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded lesson HTML",
+    "sourceFiles": [
+      "filing_cabinet_metaphor.html",
+      "lesson-reference-sidecar-template-3.0-draft.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T03:37:56+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source explicitly identifies itself as an Organizational Systems Lesson.",
+      "The lesson-reference 3.0-draft profile was used.",
+      "The HTML filename emphasizes the filing-cabinet metaphor, while the document title identifies the broader Digital Office Metaphor.",
+      "Existing source section IDs were preserved as sidecar anchors.",
+      "The document links back to the Meadows documentation index but does not supply its own canonical HTTP(S) publication URL.",
+      "The project name Meadows Housekeeping Digital Operations is a descriptive classification inferred from the document's stated departmental scope."
+    ],
+    "unresolvedQuestions": [
+      "What date was the lesson created?",
+      "What canonical public filename and URL should identify this lesson?",
+      "Should this lesson and The Filing Cabinet and the Database be grouped into a formal data-and-systems literacy series?",
+      "Should the office-function comparison table later become a reusable diagram or structured manifest?"
+    ]
+  }
+}

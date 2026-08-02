@@ -1,0 +1,1257 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-26-work-queue-2-1-beta",
+    "filePath": "work-update-07-26-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-26-2026.html",
+    "title": "Work Queue 2.1 Beta — Full Development Update — July 26, 2026",
+    "headline": "Work Queue 2.1 Beta became a complete operational system.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-26",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-26-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-26-work-queue-2-1-beta"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "full-development-update",
+    "coverageDescription": "Covers the July 26, 2026 Work Queue 2.1 Beta development session, including the protected beta environment, recursive locations, location-specific templates, inventory-holder architecture, task schema expansion, server-controlled task creation, holder selection, append-only holder events, completion history, holder workspace, validation, end-to-end testing, cleanup, final audit, and a 267-holder restroom rollout.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Work Queue",
+      "projectType": "operational task-management and inventory-holder workflow application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a dependable operational work-management system connecting locations, task templates, physical inventory holders, task completion, append-only holder events, and auditable history.",
+      "projectPhase": "Work Queue 2.1 Beta production-readiness review",
+      "contributionType": "fundamental redesign, integration, validation, testing, cleanup, audit, and rollout",
+      "identificationBasis": "The work update explicitly identifies Work Queue 2.1 Beta and version 2.1.02-beta.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Inventory 3.0",
+        "relationshipType": "shared inventory-holder and product foundation",
+        "relationshipDescription": "Work Queue reads shared inventory-holder, product, and location information while keeping beta task data isolated.",
+        "impact": "Inventory-holder state and history became directly connected to task creation and completion.",
+        "evidenceSectionAnchors": [
+          "#beta",
+          "#architecture",
+          "#events",
+          "#completion"
+        ],
+        "identificationBasis": "Explicit references to the shared inventory system and holder data.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Locations",
+        "relationshipType": "shared location hierarchy",
+        "relationshipDescription": "Work Queue uses active, enabled locations and recursive parent-child relationships from the shared location directory.",
+        "impact": "Nested locations became the canonical basis for task applicability and holder resolution.",
+        "evidenceSectionAnchors": [
+          "#locations",
+          "#workflow",
+          "#templates"
+        ],
+        "identificationBasis": "Explicit location hierarchy and shared-source references.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Klinswork_Locations",
+        "foundationType": "shared reference directory",
+        "relationshipDescription": "Provides active units, rooms, restrooms, and deeper nested locations.",
+        "impact": "Supports recursive task-location selection and location-specific templates."
+      },
+      {
+        "foundationId": "",
+        "name": "Inventory_Holders",
+        "foundationType": "shared operational object registry",
+        "relationshipDescription": "Represents physical dispensers, shelves, cabinets, carts, and other holders separately from locations.",
+        "impact": "Allows tasks to identify the exact physical object affected."
+      },
+      {
+        "foundationId": "",
+        "name": "Inventory_Holder_Events",
+        "foundationType": "append-only operational history",
+        "relationshipDescription": "Stores state and condition changes linked to holders and tasks.",
+        "impact": "Provides auditable holder history and one-event-per-task completion behavior."
+      }
+    ],
+    "relationshipSummary": "Work Queue 2.1 Beta became the operational layer that connects shared locations, task templates, physical inventory holders, product context, task completion, and append-only history."
+  },
+  "subject": {
+    "projectName": "Work Queue",
+    "primaryApp": "Work Queue 2.1 Beta",
+    "mainFocus": "Transforming Work Queue into a holder-aware operational system that connects recursive locations, location-specific task templates, physical inventory holders, task completion, append-only holder events, history, diagnostics, and rollout data.",
+    "description": "Klinswork development update for July 26, 2026, documenting the creation, testing, cleanup, and final audit of Work Queue 2.1 Beta.",
+    "topics": [
+      "protected beta environment",
+      "recursive location hierarchy",
+      "location-specific task templates",
+      "inventory holders",
+      "holder events",
+      "task schema expansion",
+      "server-controlled task creation",
+      "holder compatibility",
+      "task completion history",
+      "holder workspace",
+      "validation",
+      "end-to-end testing",
+      "code cleanup",
+      "final audit",
+      "restroom holder rollout"
+    ],
+    "keywords": [
+      "Work Queue 2.1 Beta",
+      "2.1.02-beta",
+      "Inventory_Holders",
+      "Inventory_Holder_Events",
+      "LocationTaskMap",
+      "Template ID",
+      "Related Holder ID",
+      "Completion Event Type",
+      "Completion State",
+      "Related Holder Event ID",
+      "append-only history",
+      "recursive locations",
+      "server authority"
+    ],
+    "appsAffected": [
+      "Work Queue 2.1 Beta",
+      "Inventory 3.0",
+      "Klinswork Locations",
+      "Klinswork Tool Center"
+    ],
+    "systemsAffected": [
+      "task management",
+      "inventory-holder tracking",
+      "location hierarchy",
+      "documentation and diagnostics"
+    ],
+    "componentsAffected": [
+      "location service",
+      "template service",
+      "inventory-holder service",
+      "holder-event service",
+      "task service",
+      "validation",
+      "task creation interface",
+      "task detail modal",
+      "holder workspace",
+      "spreadsheet setup and rollout"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The stable Work Queue release could manage tasks, but it did not yet distinguish physical inventory holders from locations, connect task completion to holder state and history, or safely support the required schema and service redesign in production.",
+    "initialUnderstanding": "The project needed more than a routine feature update. It required a separate beta environment and a clearer data model linking locations, holders, products, templates, tasks, and append-only events.",
+    "intendedOutcome": "Create and fully verify a production-ready beta that preserves the stable release as a rollback baseline.",
+    "approach": "Isolate beta data and deployment, strengthen recursive location handling, make templates location-specific, introduce holder and event services, expand the task schema, keep the server authoritative, build holder-aware completion and workspace features, then validate, test, clean, audit, and roll out data.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Protected beta and architectural separation",
+        "description": "Created an isolated beta and distinguished locations from physical inventory holders.",
+        "result": "The stable production release remained available while the beta gained freedom for major schema and service changes."
+      },
+      {
+        "sequence": 2,
+        "title": "Recursive locations and task applicability",
+        "description": "Strengthened location validation and rebuilt the browser around recursive selection and location-specific templates.",
+        "result": "The deepest selected location became canonical and only relevant templates were shown."
+      },
+      {
+        "sequence": 3,
+        "title": "Holder and event architecture",
+        "description": "Implemented holder records, append-only events, expanded task fields, and server-controlled validation.",
+        "result": "Tasks could identify exact holders and define completion behavior safely."
+      },
+      {
+        "sequence": 4,
+        "title": "Completion, history, and workspace",
+        "description": "Connected task completion to exactly one holder event and exposed holder details and history.",
+        "result": "Holder-linked work became traceable without rewriting history."
+      },
+      {
+        "sequence": 5,
+        "title": "Validation, cleanup, audit, and rollout",
+        "description": "Ran end-to-end tests, removed obsolete code, aligned schemas, audited 17 files, and deployed 267 restroom holders.",
+        "result": "The beta reached production-readiness review with all final read-only tests passing."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "The stable application could not safely absorb major schema and service changes during active use.",
+        "effect": "Direct modification risked breaking the working production baseline.",
+        "resolution": "Created a separate beta deployment, identity, version, and task-data spreadsheet.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Locations and physical operational objects were being treated as the same kind of entity.",
+        "effect": "The system could say where work occurred but not precisely what object was affected.",
+        "resolution": "Introduced Inventory_Holders and attached them to locations.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Old setup code still knew only the original 18 task columns.",
+        "effect": "Future setup or repair operations could reintroduce schema drift.",
+        "resolution": "Changed setup to use the same required-header functions as services and validation.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Repeated completion or re-completion could create duplicate holder events.",
+        "effect": "Append-only history could become inaccurate.",
+        "resolution": "The holder-event service resolves an existing event by task and reuses it.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Continue modifying the stable Work Queue application directly.",
+        "whyItWasTried": "It would avoid maintaining a separate beta environment.",
+        "whyItDidNotWork": "The redesign required substantial schema, service, and workflow changes that could endanger production.",
+        "whatWasLearned": "Major architectural work should be isolated behind a protected beta and rollback baseline."
+      },
+      {
+        "approach": "Represent dispensers and other physical objects as locations.",
+        "whyItWasTried": "Locations already existed and could identify where work occurred.",
+        "whyItDidNotWork": "A location does not uniquely describe the physical object whose state changes.",
+        "whatWasLearned": "Place and object identity must remain separate in the data model."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "The beta became a redesign rather than a branch update",
+        "description": "Separating production allowed the system to adopt a different operational model.",
+        "effectOnDirection": "The work expanded from task management into holder-aware operational history."
+      },
+      {
+        "title": "One event per task became the preservation rule",
+        "description": "Completion, reopening, and re-completion were defined around immutable event history.",
+        "effectOnDirection": "The system favored auditability over automatic reversal or event rewriting."
+      },
+      {
+        "title": "Final audit exposed schema drift risk",
+        "description": "Old setup code still used the 18-column task model.",
+        "effectOnDirection": "Required-header definitions became the common schema source for setup, services, and validation."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Keep beta task data isolated from production.",
+        "reason": "Major schema and service changes needed a safe environment and immediate rollback baseline.",
+        "alternativesConsidered": [
+          "Modify the stable release directly"
+        ],
+        "consequences": [
+          "Production remained unchanged.",
+          "Beta required its own deployment, identity, version, and spreadsheet."
+        ]
+      },
+      {
+        "decision": "Model holders separately from locations.",
+        "reason": "The system needs to know both where work occurs and which physical object is affected.",
+        "alternativesConsidered": [
+          "Treat each fixture as a location"
+        ],
+        "consequences": [
+          "Holder state, capacity, product, condition, and history became explicit."
+        ]
+      },
+      {
+        "decision": "Make the server authoritative for template and holder compatibility.",
+        "reason": "Client-side values cannot be trusted to define operational relationships.",
+        "alternativesConsidered": [
+          "Accept browser-submitted completion behavior"
+        ],
+        "consequences": [
+          "Invalid combinations are rejected before persistence."
+        ]
+      },
+      {
+        "decision": "Preserve one automatic holder event per task.",
+        "reason": "Append-only history should remain stable through reopening and re-completion.",
+        "alternativesConsidered": [
+          "Create a new event on every completion",
+          "Reverse the event on reopen"
+        ],
+        "consequences": [
+          "History remains immutable and duplicate automatic events are prevented."
+        ]
+      }
+    ],
+    "methodEstablished": "Protect production, establish the data model, centralize schema definitions, keep the server authoritative, test each relationship end to end, remove obsolete compatibility code, run a read-only audit, and only then prepare rollout data.",
+    "result": "Work Queue 2.1 Beta became a complete holder-aware operational system in production-readiness review, with a cleaned 17-file codebase, aligned 23-column task schema, 267 deployed restroom holders, and all final read-only tests passing.",
+    "lessonsLearned": [
+      "Stable production and experimental architecture should be separated during major redesigns.",
+      "Locations, holders, products, tasks, and events represent different operational facts and should not be collapsed.",
+      "Append-only history requires deliberate duplicate prevention and reopening rules.",
+      "Setup, services, and validation must share one source of truth for required schema.",
+      "A final read-only audit can uncover drift that feature tests miss."
+    ],
+    "directionChange": "Work Queue moved from a task-list application toward an operational platform connecting requested work to exact physical assets and auditable state history.",
+    "narrativeSummary": "The July 26 session transformed Work Queue 2.1 Beta through protected isolation, recursive location and template logic, inventory-holder and event architecture, holder-aware completion, workspace and diagnostics, comprehensive testing, code cleanup, final audit, and large-scale restroom-holder rollout."
+  },
+  "projectDelta": {
+    "previousState": "Work Queue 2.0 had a stable template-assisted task lifecycle, but it lacked a separate holder model, append-only holder events, holder-aware completion, recursive location depth, a holder workspace, and the expanded 23-column task schema.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Protected beta environment",
+        "description": "Created separate deployment, task data, identity, and version.",
+        "evidenceSectionAnchors": [
+          "#beta"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Recursive location workflow",
+        "description": "Added nested selection, path reconstruction, validation, and stale-response protection.",
+        "evidenceSectionAnchors": [
+          "#locations",
+          "#workflow"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Location-specific templates",
+        "description": "Restricted template recommendations to the selected canonical location.",
+        "evidenceSectionAnchors": [
+          "#templates"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory-holder architecture",
+        "description": "Implemented holder registry and service behavior.",
+        "evidenceSectionAnchors": [
+          "#architecture"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Task schema expansion",
+        "description": "Expanded Tasks from 18 to 23 columns and aligned setup with validation.",
+        "evidenceSectionAnchors": [
+          "#schema"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Append-only holder events",
+        "description": "Created event service with duplicate prevention, state synchronization, and task linkage.",
+        "evidenceSectionAnchors": [
+          "#events"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Holder-aware completion and workspace",
+        "description": "Connected completion to holder history and exposed holder details and event history.",
+        "evidenceSectionAnchors": [
+          "#completion",
+          "#workspace"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Final cleanup and audit",
+        "description": "Cleaned and audited the full 17-file beta codebase.",
+        "evidenceSectionAnchors": [
+          "#cleanup",
+          "#audit"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Restroom holder rollout",
+        "description": "Prepared 267 holders across 89 restroom locations and seven units.",
+        "evidenceSectionAnchors": [
+          "#rollout"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Production-readiness decision",
+        "description": "Review the beta under real use and decide whether and how to promote it.",
+        "reasonStillOpen": "The document places the beta in production-readiness review rather than declaring production replacement."
+      },
+      {
+        "workItemId": "",
+        "title": "Operational observation after rollout",
+        "description": "Collect field observations from the 267-holder restroom rollout.",
+        "reasonStillOpen": "Rollout data exists, but continued real-world verification is still needed."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Shared schema-definition rule",
+        "description": "Setup, services, validation, and tests should use the same required-header definitions.",
+        "source": "#schema and #cleanup"
+      },
+      {
+        "workItemId": "",
+        "title": "Protected beta as architectural method",
+        "description": "Use isolated data and deployment when a redesign changes operational meaning and schema.",
+        "source": "#overview and #beta"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Modify stable Work Queue directly",
+        "supersededBy": "Protected Work Queue 2.1 Beta environment",
+        "reason": "The redesign required isolation and rollback protection."
+      },
+      {
+        "workItemId": "",
+        "title": "Treat holders as locations",
+        "supersededBy": "Separate inventory-holder model",
+        "reason": "Location and physical-object identity represent different facts."
+      }
+    ],
+    "resultingState": "Work Queue 2.1 Beta is a complete holder-aware operational system in production-readiness review. It connects nested locations, location-specific templates, exact physical holders, task creation, completion, append-only events, holder history, diagnostics, and rollout data.",
+    "roadmapChangeSummary": "The architectural redesign, holder integration, validation, testing, cleanup, audit, and initial rollout were completed. The next phase is controlled operational observation and a production-promotion decision.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Use beta in controlled operations",
+        "description": "Observe the holder-aware workflow under realistic use.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Review rollout data",
+        "description": "Verify the 267-holder restroom deployment against field conditions.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Resolve production readiness",
+        "description": "Decide whether the beta should replace or merge into the stable release.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Preserve final audit discipline",
+        "description": "Repeat read-only audit and regression testing before any production promotion.",
+        "priority": "high",
+        "status": "ongoing"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Work Queue 2.1 Beta now connects a task to the exact room, fixture or supply holder involved, and records what happened when the task is completed.",
+      "operationalImpact": "The system can distinguish a location from a physical dispenser or holder, recommend only relevant tasks, track completion history, and show the condition and state of the affected object.",
+      "currentStatus": "The beta passed its final tests and audit, and restroom-holder records were prepared for seven units. It remains in production-readiness review rather than replacing the stable release.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The beta still requires controlled operational observation before production promotion.",
+        "The stable release remains the rollback baseline.",
+        "The rollout data should be checked against field conditions."
+      ],
+      "staffVisibleChanges": [
+        "Nested location selection",
+        "Only location-relevant task choices",
+        "Automatic or required holder selection",
+        "Holder details and event history in task views",
+        "Holder workspace",
+        "More precise completion records"
+      ],
+      "nextOperationalStep": "Use the beta in controlled work, verify the restroom-holder rollout, and then decide on production promotion.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-overview",
+          "relatedSectionAnchor": "#overview",
+          "type": "architecture",
+          "title": "Places and objects are now separate",
+          "text": "Rooms remain locations, while dispensers, shelves, cabinets, and carts are tracked as physical holders."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-completion",
+          "relatedSectionAnchor": "#completion",
+          "type": "auditability",
+          "title": "Completion creates permanent history",
+          "text": "A holder-linked task creates one preserved event that remains linked through reopening and re-completion."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-rollout",
+          "relatedSectionAnchor": "#rollout",
+          "type": "rollout",
+          "title": "Restroom holder data prepared",
+          "text": "The beta rollout includes 267 holders across 89 restroom locations in seven Meadows units."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-status",
+          "relatedSectionAnchor": "#status",
+          "type": "status",
+          "title": "Ready for controlled review",
+          "text": "The final tests passed, but the beta remains under production-readiness review."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Work Queue 2.1 Beta became a complete operational system linking recursive locations, task templates, physical inventory holders, completion events, holder history, diagnostics, and rollout data.",
+      "keyPoints": [
+        "17-file codebase audited",
+        "23 task-schema columns aligned",
+        "267 restroom holders deployed",
+        "89 restroom locations configured",
+        "100 percent of final read-only tests passed"
+      ]
+    },
+    "technical": {
+      "summary": "The beta introduced recursive location selection, location-task mapping, InventoryHolderService.gs, InventoryHolderEventService.gs, server-authoritative task creation, holder-aware completion, schema alignment, duplicate-event prevention, holder workspace, diagnostics, cleanup, and final audit.",
+      "keyPoints": [
+        "Protected beta with isolated task data",
+        "Recursive location hierarchy",
+        "Location-specific templates",
+        "18-to-23-column task schema expansion",
+        "One automatic holder event per task",
+        "Shared required-header functions",
+        "Read-only final audit"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "A holder-aware task system must preserve separate identities for location, holder, product, template, task, and event.",
+      "Reopening a task should not rewrite or reverse append-only holder history.",
+      "The stable release is a useful rollback baseline during architectural redesign."
+    ],
+    "generalLessons": [
+      "Major schema changes should be isolated in a protected beta.",
+      "The server should remain authoritative for operational compatibility and completion behavior.",
+      "All schema consumers should share one required-header definition.",
+      "Final audits should include read-only tests that do not mutate operational data."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Schema drift between setup code and runtime services.",
+        "pattern": "Legacy setup logic retains older hard-coded columns after the service schema expands.",
+        "projectsObservedIn": [
+          "Work Queue 2.1 Beta"
+        ]
+      },
+      {
+        "problem": "Duplicate history records during retries or re-completion.",
+        "pattern": "Event creation is repeated without task-based idempotency.",
+        "projectsObservedIn": [
+          "Work Queue 2.1 Beta"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Separate places, physical holders, and events in operational systems",
+        "description": "A modeling guide for distinguishing where work occurs, what object is affected, and what happened to it.",
+        "suggestedDestination": "Klinswork architecture guide",
+        "supportingSectionAnchors": [
+          "#overview",
+          "#architecture",
+          "#events"
+        ]
+      },
+      {
+        "title": "One automatic holder event per task",
+        "description": "An idempotent append-only history pattern that survives task reopening and re-completion.",
+        "suggestedDestination": "Klinswork event-modeling guide",
+        "supportingSectionAnchors": [
+          "#events",
+          "#completion"
+        ]
+      },
+      {
+        "title": "Prevent spreadsheet schema drift with shared required headers",
+        "description": "Use one required-header definition across setup, services, validation, tests, and repair utilities.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#schema",
+          "#cleanup",
+          "#audit"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Major redesigns must not be performed directly against the only stable operational release.",
+        "changeType": "confirmed",
+        "explanation": "The protected beta enabled deep changes while preserving rollback."
+      },
+      {
+        "rule": "Operational event history is append-only and must be idempotent by related task.",
+        "changeType": "confirmed",
+        "explanation": "Repeated completion requests resolve to the existing event rather than creating duplicates."
+      },
+      {
+        "rule": "Setup code must use the same schema definitions as services and validation.",
+        "changeType": "revised",
+        "explanation": "The final audit found obsolete 18-column setup logic after the task schema had expanded to 23 columns."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "overview",
+      "title": "A fundamental redesign, not a routine update",
+      "anchor": "#overview",
+      "contentSummary": "The day began with a strategic decision: stop modifying the working application directly and create a fully separate Work Queue 2.1 Beta. That decision protected the stable release while giving the beta enough freedom to become something substantially more capable. This distinction resolved a central data-modeling problem. Rooms, restrooms, hallways, closets, and units remain locations. Soap dispensers, toilet-paper dispensers, towel dispensers, shelves, cabinets, carts, and other physical containers are represented as inventory holders attached to those locations.",
+      "narrativeRole": "architecture-reframing",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: A fundamental redesign, not a routine update.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-overview",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Separate locations, holders, products, events, and tasks"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "beta",
+      "title": "Established a protected beta environment",
+      "anchor": "#beta",
+      "contentSummary": "The beta received its own Apps Script deployment, its own task-data spreadsheet, its own application identity, and its own version number. It continued to read shared reference information from the location and inventory system without writing into the working production task data. Identity Work Queue 2.1 Beta 2.1.02-beta Isolation Beta task records were separated from production so major schema and service changes could be tested safely. Rollback protection The existing release remained unchanged and available as the immediate fallback baseline.",
+      "narrativeRole": "risk-control",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Established a protected beta environment.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "locations",
+      "title": "Strengthened the shared location hierarchy",
+      "anchor": "#locations",
+      "contentSummary": "Work Queue now reads only locations that are active and enabled for the application. The location service normalizes records, resolves units, builds parent-child relationships, supports nested locations, and caches the directory briefly to reduce repeated spreadsheet reads. Reliability improvements Duplicate active Location IDs now fail validation. Missing and inactive parent locations are detected. Self-parenting and circular chains are rejected. Only Work Queue-enabled locations are exposed. Nested hierarchy proven The hierarchy is no longer constrained to one unit and one child level. Future room sections, fixtures, assets, or other additional levels can be added without redesigning the application.",
+      "narrativeRole": "shared-foundation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Strengthened the shared location hierarchy.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Recursive location hierarchy validation"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "workflow",
+      "title": "Rebuilt task creation around recursive location selection",
+      "anchor": "#workflow",
+      "contentSummary": "The browser dynamically creates additional selectors whenever the selected location has children. The deepest selected location becomes the canonical Location ID saved with the task. Browser capabilities Unlimited practical hierarchy depth Automatic removal of obsolete deeper selectors Root-to-location path reconstruction Room-number disambiguation Responsive mobile path display Stale-response protection Browser request IDs prevent an older server response from replacing a more recent location or template selection when the user moves quickly through the form.",
+      "narrativeRole": "workflow-redesign",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Rebuilt task creation around recursive location selection.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "templates",
+      "title": "Made task recommendations location-specific",
+      "anchor": "#templates",
+      "contentSummary": "Work Queue now loads only task templates mapped to the selected location. The location-task map remains the applicability source, while the template service filters, normalizes, and sorts the result. The browser distinguishes between no location, loading, mapped templates, no mapped templates, and lookup failure. It also caches results by location ID, rebuilds categories after location changes, and clears only values previously generated by a template.",
+      "narrativeRole": "application-logic",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Made task recommendations location-specific.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "architecture",
+      "title": "Implemented the inventory-holder architecture",
+      "anchor": "#architecture",
+      "contentSummary": "The new holder model represents physical operational objects separately from locations. This gives Work Queue a precise answer to both where the work occurs and what object is affected. Inventory_Holders Stores holder identity, type, location, position, service area, product assignment, capacity, tracking method, current state, condition, active status, and notes. Inventory_Holder_Events Stores append-only history including event type, previous and new state, condition, product, quantity, related task, timestamp, recorder, and notes. InventoryHolderService.gs now provides",
+      "narrativeRole": "core-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Implemented the inventory-holder architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-architecture",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "schema",
+      "title": "Expanded the Tasks schema from 18 to 23 columns",
+      "anchor": "#schema",
+      "contentSummary": "Five new fields completed the task-template-holder-event chain: Template ID Records which task template defined the work. Related Holder ID Identifies the physical holder affected by the task. Completion Event Type Defines the holder event that completion should record. Completion State Defines the holder state expected after completion. Related Holder Event ID Links the completed task to its append-only holder event.",
+      "narrativeRole": "data-model-change",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Expanded the Tasks schema from 18 to 23 columns.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Single source of truth for required spreadsheet headers"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "creation",
+      "title": "Made task creation server-controlled",
+      "anchor": "#creation",
+      "contentSummary": "Manual task May be created without a template, holder, completion event, or holder-event linkage. Holder-free template task Saves its Template ID while remaining free of holder and holder-event fields. Holder-required task Requires a valid, active, compatible holder at the selected location. Server validation now confirms The template exists, is active, and applies to the selected location. The holder exists, is active, and belongs to the selected location. The holder type and product category match template requirements. Completion Event Type and Completion State come from server-side template data. Invalid combinations are rejected rather than saved incompletely.",
+      "narrativeRole": "server-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Made task creation server-controlled.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "selection",
+      "title": "Added intelligent holder selection in the browser",
+      "anchor": "#selection",
+      "contentSummary": "No compatible holder The interface explains that no valid holder is registered and blocks submission. One compatible holder The holder is selected automatically and its operational details are displayed. Multiple compatible holders The user receives a required selector to identify the exact physical holder. Holder-free and custom tasks keep the holder interface hidden. The browser submits both templateId and relatedHolderId , while the server remains authoritative.",
+      "narrativeRole": "interface-logic",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Added intelligent holder selection in the browser.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "events",
+      "title": "Created an append-only holder event service",
+      "anchor": "#events",
+      "contentSummary": "InventoryHolderEventService.gs now owns holder-event creation, retrieval, sorting, task linkage, duplicate prevention, holder-state synchronization, and script-lock protection. Duplicate prevention Repeated automatic event requests for the same task resolve to the existing event rather than creating another row. Shared responsibilities Task completion calls the event service, while holder-state updates remain delegated to InventoryHolderService.gs .",
+      "narrativeRole": "event-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Created an append-only holder event service.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only holder events with duplicate prevention"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "completion",
+      "title": "Connected task completion to holder history",
+      "anchor": "#completion",
+      "contentSummary": "Holder-linked completion creates or reuses exactly one event, updates the holder to the template-defined completion state, saves the event ID to the task, and writes normal task activity. Holder-free and manual tasks complete without creating holder events. History-preservation rule Reopening preserves Related Holder ID and Related Holder Event ID. The original holder event is never deleted or modified. Holder state is not automatically reversed. Re-completion reuses the original event. A second automatic holder event is not created.",
+      "narrativeRole": "workflow-integration",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Connected task completion to holder history.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-completion",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "One automatic holder event per task"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "workspace",
+      "title": "Added complete holder details and a holder workspace",
+      "anchor": "#workspace",
+      "contentSummary": "Holder-linked tasks now display holder identity, type, position, service area, state, condition, completion behavior, and related event directly in the task-detail modal. Task-detail holder panel Loading and error states Event pending or recorded status Preserved linkage if detail lookup fails Open Holder Workspace action Holder workspace Full location path Current configuration and condition Open and completed linked tasks Append-only event history Clickable related task references The browser-facing getHolderWorkspace(holderId) endpoint consolidates holder details, location path, open tasks, completed tasks, events, and summary counts into one response.",
+      "narrativeRole": "operational-interface",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Added complete holder details and a holder workspace.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-workspace",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "validation",
+      "title": "Expanded validation into a complete integration audit",
+      "anchor": "#validation",
+      "contentSummary": "Validation now reaches far beyond basic configuration. It checks spreadsheet access, required headers, location hierarchy, duplicate identifiers, template relationships, holder compatibility, task-event consistency, and holder-state alignment. Hierarchy checks Missing or inactive parents Self-parenting locations Circular parent chains Duplicate active IDs Linkage checks Missing templates or holders Wrong-location or wrong-type holders Missing or orphaned event references Duplicate automatic events Invalid completion-state fields",
+      "narrativeRole": "validation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Expanded validation into a complete integration audit.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "testing",
+      "title": "Completed a full end-to-end beta scenario",
+      "anchor": "#testing",
+      "contentSummary": "Phase 13 tested the entire workflow rather than isolated functions: location selection, mapped task lookup, holder resolution, task creation, task details, start, completion, holder event creation, holder state change, reopen, re-completion, event reuse, holder workspace, and consolidated validation.",
+      "narrativeRole": "verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Completed a full end-to-end beta scenario.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "cleanup",
+      "title": "Completed a 17-file Phase 14 cleanup",
+      "anchor": "#cleanup",
+      "contentSummary": "After the functional work passed, the entire project was reviewed file-by-file. Every source file now begins with its exact filename and project identity, making incorrect pastes or uploads immediately visible. Final source structure Test separation Application code and test code were separated into CodeTests.gs , WebAppTests.gs , ValidationTests.gs , and Tests.gs . Stale assumptions removed Old Work Queue 2.0 wording, obsolete phase comments, fixed counts, stale browser expectations, brittle IDs, and old schema assumptions were removed or corrected. Interface and code quality improvements",
+      "narrativeRole": "technical-cleanup",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Completed a 17-file Phase 14 cleanup.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Remove obsolete compatibility code before production review"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "audit",
+      "title": "Ran the final cross-file audit",
+      "anchor": "#audit",
+      "contentSummary": "The audit checked file presence, exact headers, schema consistency, browser/server integration, interface IDs, event linkage, test separation, accessibility structure, obsolete wording, private data, production references, and syntax.",
+      "narrativeRole": "final-audit",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Ran the final cross-file audit.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Read-only final audit for Apps Script systems"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "rollout",
+      "title": "Completed beta testing and the restroom-holder sheet rollout",
+      "anchor": "#rollout",
+      "contentSummary": "After the code audit was complete, the beta moved into live workflow testing. The test confirmed that Work Queue could create a location-specific supply task, attach it to a physical inventory holder, complete the work, update the holder state, and write a permanent event to Inventory_Holder_Events . Verified end-to-end workflow Three holder-linked completion events were created successfully: IHE-5F00BB315F95 , IHE-FEC62F9216B0 , and IHE-905DC7B81B2F . Activation problem corrected The first Juniper North pilot holders were present but did not appear because capacity, tracking, state, condition, and active values were incomplete. The rows were repaired and the cache was cleared. Exact room-name mapping corrected Task availability required exact Room / Area Name matches. Mappings were added for Staff Restroom and Resident Restroom in addition to Restroom . Standard restroom-holder set…",
+      "narrativeRole": "data-rollout",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Completed beta testing and the restroom-holder sheet rollout.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-rollout",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "status",
+      "title": "Current project status",
+      "anchor": "#status",
+      "contentSummary": "Work Queue 2.1 Beta is no longer simply a renamed task list. It is now a structured operational system capable of representing where work is needed, what work applies, which physical object is affected, what state change should result, what event occurred, and how that history relates back to the task. Final Status Next roadmap position Today completed the functional build, end-to-end scenario, source cleanup, schema audit, interface audit, validation, final read-only regression test pass, beta workflow verification, and a 267-holder restroom rollout across seven units.",
+      "narrativeRole": "resulting-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.1 Beta contribution: Current project status.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-status",
+        "reason": "Explains operational architecture, task completion behavior, rollout, or current beta status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Work Queue 2.1 Beta",
+      "Inventory 3.0",
+      "Klinswork Locations"
+    ],
+    "scripts": [
+      "Code.gs",
+      "CodeTests.gs",
+      "Config.gs",
+      "Dashboard.html",
+      "InventoryHolderEventService.gs",
+      "InventoryHolderService.gs",
+      "LocationService.gs",
+      "Scripts.html",
+      "Styles.html",
+      "TaskService.gs",
+      "TemplateService.gs",
+      "Tests.gs",
+      "Utilities.gs",
+      "Validation.gs",
+      "ValidationTests.gs",
+      "WebApp.gs",
+      "WebAppTests.gs"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Tasks",
+      "Task_Activity",
+      "Task_Templates",
+      "LocationTaskMap",
+      "Klinswork_Locations",
+      "Inventory_Holders",
+      "Inventory_Holder_Events"
+    ],
+    "files": [
+      "Code.gs",
+      "CodeTests.gs",
+      "Config.gs",
+      "Dashboard.html",
+      "InventoryHolderEventService.gs",
+      "InventoryHolderService.gs",
+      "LocationService.gs",
+      "Scripts.html",
+      "Styles.html",
+      "TaskService.gs",
+      "TemplateService.gs",
+      "Tests.gs",
+      "Utilities.gs",
+      "Validation.gs",
+      "ValidationTests.gs",
+      "WebApp.gs",
+      "WebAppTests.gs"
+    ],
+    "integrations": [
+      "shared locations",
+      "location-task mapping",
+      "inventory holders",
+      "holder events",
+      "task completion",
+      "holder workspace",
+      "diagnostics",
+      "restroom holder rollout"
+    ],
+    "apis": [
+      "google.script.run",
+      "LockService"
+    ],
+    "versions": [
+      "Work Queue 2.1 Beta",
+      "2.1.02-beta"
+    ],
+    "tests": [
+      {
+        "name": "Recursive location hierarchy validation",
+        "type": "validation",
+        "result": "passed",
+        "notes": "Duplicate IDs, missing parents, inactive parents, self-parenting, and circular chains were checked."
+      },
+      {
+        "name": "Location-specific template test",
+        "type": "integration",
+        "result": "passed",
+        "notes": "Eight restroom-relevant templates were verified with no unrelated fallback."
+      },
+      {
+        "name": "Holder-aware task creation",
+        "type": "end-to-end",
+        "result": "passed",
+        "notes": "Template applicability, holder activity, location, type, product category, and completion behavior were server-validated."
+      },
+      {
+        "name": "Holder event duplicate prevention",
+        "type": "idempotency",
+        "result": "passed",
+        "notes": "Repeated automatic event requests for the same task resolved to one existing event."
+      },
+      {
+        "name": "Reopen and re-complete history preservation",
+        "type": "end-to-end",
+        "result": "passed",
+        "notes": "Holder and event linkage were preserved; no second automatic event was created."
+      },
+      {
+        "name": "Final read-only audit",
+        "type": "audit",
+        "result": "passed",
+        "notes": "The document reports 100 percent of final read-only tests passed across the audited 17-file codebase."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "Task schema aligned to 23 required columns.",
+        "Configuration audit found no production spreadsheet references, production deployment URLs, private email addresses, API keys, or secrets.",
+        "Final result reported all tests passed."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Work Queue 2.1 Beta Full Development Update",
+      "body": "Work Queue 2.1 Beta now connects tasks to the exact location and physical holder involved, records a permanent holder event when work is completed, and preserves that history through reopening. The beta was isolated from the stable release, tested across the full workflow, cleaned and audited, and prepared with 267 restroom-holder records across seven units. It is now ready for controlled production-readiness review.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-26-2026.html",
+    "listingTitle": "Work Queue 2.1 Beta — Full Development Update — July 26, 2026",
+    "listingDescription": "Klinswork development update for July 26, 2026, documenting the creation, testing, cleanup, and final audit of Work Queue 2.1 Beta.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": true,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-07-26-2026.html",
+        "status": "published"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Work Queue 2.1 Beta",
+        "canonicalExecUrl": "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "beta deployed and tested",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 26, 2026 full development update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-26-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-26-2026.html",
+      "document-sidecar-template(16).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:38:59+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The public GitHub Pages URL follows the established filename and catalog convention.",
+      "Cataloged status reflects the earlier catalog workflow in this conversation.",
+      "The Apps Script URL is taken from the work-update navigation link."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal Work Queue project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "What observations emerged from real use of the 267-holder rollout?",
+      "Was Work Queue 2.1 Beta later promoted to production?"
+    ]
+  }
+}

@@ -1,0 +1,955 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "lesson-reference",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+    "previewMode": "lesson-reference"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "lesson-filing-cabinet-and-database",
+    "filePath": "filing_cabinet_and_database_lesson.html",
+    "documentUrl": "",
+    "title": "The Filing Cabinet and the Database",
+    "headline": "Digital storage makes the filing cabinet computationally legible",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "filing-cabinet-and-database-lesson-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-filing-cabinet-and-database",
+    "profileTemplatePath": "lesson-reference-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Data Literacy",
+      "projectType": "introductory training and reference material",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Help nontechnical readers understand databases, queries, reports, access levels, and the relationship between paper records and digital information systems.",
+      "projectPhase": "introductory concept instruction",
+      "contributionType": "analogy-based lesson and access-control explanation",
+      "identificationBasis": "The document identifies itself as an introductory data lesson for Meadows Housekeeping and explains paper records, databases, and queries.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Klinswork Documentation",
+        "relationshipType": "knowledge and training content",
+        "relationshipDescription": "The lesson provides foundational vocabulary for understanding structured records, queries, summaries, and restricted access across Klinswork systems.",
+        "impact": "Readers can better understand why structured data enables faster answers and why access should be limited to appropriate records and questions.",
+        "evidenceSectionAnchors": [
+          "#paper-query",
+          "#paper-digital-comparison",
+          "#access-matters",
+          "#core-lesson"
+        ],
+        "identificationBasis": "The lesson teaches concepts directly applicable to the documentation and data systems.",
+        "identificationConfidence": "strong inference"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Source records",
+        "foundationType": "evidence and historical record",
+        "relationshipDescription": "Individual forms, schedules, attendance sheets, work requests, inspections, and digital entries hold the underlying facts.",
+        "impact": "Queries and reports depend on preserving and organizing these records."
+      },
+      {
+        "foundationId": "",
+        "name": "Queries",
+        "foundationType": "retrieval and analysis operation",
+        "relationshipDescription": "A query retrieves, compares, filters, and summarizes records to answer a question.",
+        "impact": "Digital systems can perform the same logical work as a clerk but at much greater speed and scale."
+      },
+      {
+        "foundationId": "",
+        "name": "Access boundaries",
+        "foundationType": "information-governance control",
+        "relationshipDescription": "Reports, folder-level access, and full database access expose progressively broader abilities to search and derive information.",
+        "impact": "Access should match the records and questions needed for each role."
+      }
+    ],
+    "relationshipSummary": "The lesson provides a conceptual bridge from familiar paper filing practices to digital databases, queries, reports, and role-limited access."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Data Literacy",
+    "primaryApp": "",
+    "mainFocus": "Explaining databases and queries through the analogy of a filing cabinet, folders, paper forms, clerks, and prepared summary sheets.",
+    "description": "An introductory lesson comparing paper filing systems with digital databases and showing how queries retrieve, compare, filter, and summarize records.",
+    "topics": [
+      "databases",
+      "queries",
+      "paper records",
+      "filing cabinets",
+      "tables",
+      "forms",
+      "reports",
+      "summary sheets",
+      "record retrieval",
+      "cross-referencing",
+      "filtering",
+      "data access",
+      "role-based access",
+      "information governance",
+      "computational legibility"
+    ],
+    "keywords": [
+      "filing cabinet",
+      "database",
+      "query",
+      "paper system",
+      "digital system",
+      "tables",
+      "records",
+      "prepared report",
+      "folder access",
+      "full database access",
+      "retrieve",
+      "compare",
+      "filter",
+      "summarize"
+    ],
+    "appsAffected": [],
+    "systemsAffected": [
+      "paper record systems",
+      "digital databases",
+      "reporting systems",
+      "access-control systems"
+    ],
+    "componentsAffected": [
+      "records",
+      "folders",
+      "tables",
+      "queries",
+      "reports",
+      "access permissions"
+    ]
+  },
+  "learningContext": {
+    "audience": [
+      "nontechnical staff",
+      "supervisors",
+      "people new to databases and queries"
+    ],
+    "prerequisites": [],
+    "learningPurpose": "Build an intuitive understanding of databases, queries, reports, and access levels by comparing them with familiar paper-office practices.",
+    "difficulty": "introductory",
+    "estimatedStudyTime": "5–10 minutes",
+    "sourceType": "standalone explanatory lesson",
+    "instructionalApproach": "Uses one sustained filing-cabinet analogy, a workplace example, a comparison table, and an access-level analogy."
+  },
+  "learningObjectives": [
+    {
+      "objectiveId": "objective-01",
+      "description": "Explain how a database corresponds to a filing cabinet and how tables correspond to drawers or folders.",
+      "evidenceSectionAnchors": [
+        "#filing-cabinet-analogy",
+        "#paper-digital-comparison"
+      ]
+    },
+    {
+      "objectiveId": "objective-02",
+      "description": "Describe a query as the process of retrieving, comparing, filtering, and summarizing records.",
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    },
+    {
+      "objectiveId": "objective-03",
+      "description": "Explain how forms and summary sheets acted as prepared queries in paper systems.",
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools"
+      ]
+    },
+    {
+      "objectiveId": "objective-04",
+      "description": "Distinguish between prepared reports, limited category access, and full database access.",
+      "evidenceSectionAnchors": [
+        "#access-matters"
+      ]
+    },
+    {
+      "objectiveId": "objective-05",
+      "description": "Recognize that digital systems often change the speed, scale, and ease of analysis more than the underlying facts.",
+      "evidenceSectionAnchors": [
+        "#main-difference-speed",
+        "#core-lesson"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "principleId": "principle-01",
+      "title": "The filing cabinet is the database analogy",
+      "statement": "A database stores organized records in the same broad way that a filing cabinet stores papers in drawers and folders.",
+      "explanation": "The analogy maps filing cabinets to databases, drawers and folders to tables, and individual forms to digital records.",
+      "importance": "It gives nontechnical readers a familiar mental model for understanding digital data storage.",
+      "evidenceSectionAnchors": [
+        "#filing-cabinet-analogy",
+        "#paper-digital-comparison"
+      ]
+    },
+    {
+      "principleId": "principle-02",
+      "title": "A query is organized retrieval work",
+      "statement": "A query retrieves, compares, filters, and summarizes records to answer a question.",
+      "explanation": "In a paper office, a person performed those steps manually; in a digital system, software performs them automatically.",
+      "importance": "It clarifies that queries are not mysterious operations but familiar clerical reasoning performed faster.",
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    },
+    {
+      "principleId": "principle-03",
+      "title": "Prepared summaries do not replace source records",
+      "statement": "Reports and summary sheets organize selected facts for a purpose while the original records remain underneath.",
+      "explanation": "A monthly attendance summary can answer common questions quickly without replacing the original attendance papers.",
+      "importance": "It establishes the difference between evidence and derived views.",
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools"
+      ]
+    },
+    {
+      "principleId": "principle-04",
+      "title": "Digital systems increase speed and scale",
+      "statement": "Digital storage often makes existing information faster to retrieve, easier to compare, and easier to summarize.",
+      "explanation": "A paper query may take hours or days, while a digital query can return an equivalent answer in seconds.",
+      "importance": "It identifies the operational value of structured digital data without claiming that the underlying facts are new.",
+      "evidenceSectionAnchors": [
+        "#main-difference-speed",
+        "#core-lesson"
+      ]
+    },
+    {
+      "principleId": "principle-05",
+      "title": "Broader access enables broader inference",
+      "statement": "Giving someone full database access grants more power than giving them a prepared report.",
+      "explanation": "A prepared report answers one defined question, while full access allows new searches, comparisons, and derived conclusions.",
+      "importance": "It connects data access to privacy, role boundaries, and information governance.",
+      "evidenceSectionAnchors": [
+        "#access-matters",
+        "#core-lesson"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "concept-database",
+      "name": "Database",
+      "definition": "A digital system that stores organized records, analogous to a filing cabinet.",
+      "relationships": [
+        "Contains tables",
+        "Stores digital records",
+        "Supports queries",
+        "Can expose different levels of access"
+      ],
+      "examples": [
+        "A collection of attendance, schedule, inspection, and work-request records"
+      ],
+      "misconceptions": [
+        "A database necessarily creates new information rather than organizing existing records"
+      ],
+      "evidenceSectionAnchors": [
+        "#filing-cabinet-analogy",
+        "#paper-digital-comparison"
+      ]
+    },
+    {
+      "conceptId": "concept-query",
+      "name": "Query",
+      "definition": "An instruction or process that retrieves, compares, filters, and summarizes stored records to answer a question.",
+      "relationships": [
+        "Uses records stored in a database",
+        "Can reproduce manual filing-cabinet work",
+        "May generate reports or summaries"
+      ],
+      "examples": [
+        "Counting how many Mondays were short-staffed during the last six months"
+      ],
+      "misconceptions": [
+        "A query is only a technical command rather than a familiar question-answering process"
+      ],
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    },
+    {
+      "conceptId": "concept-prepared-query",
+      "name": "Prepared query",
+      "definition": "A recurring summary form or report designed in advance to answer a common question quickly.",
+      "relationships": [
+        "Derived from source records",
+        "Does not replace the source records",
+        "Limits the answer to selected facts"
+      ],
+      "examples": [
+        "A monthly attendance summary"
+      ],
+      "misconceptions": [
+        "A prepared report provides the same analytical freedom as full database access"
+      ],
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools",
+        "#access-matters"
+      ]
+    },
+    {
+      "conceptId": "concept-source-record",
+      "name": "Source record",
+      "definition": "The original document or entry that records an event, observation, schedule, attendance status, or request.",
+      "relationships": [
+        "Stored in folders or tables",
+        "Used by queries",
+        "Can support multiple reports"
+      ],
+      "examples": [
+        "Attendance sheet",
+        "Work request",
+        "Inspection sheet",
+        "Daily assignment"
+      ],
+      "misconceptions": [
+        "A report or summary should replace the original source evidence"
+      ],
+      "evidenceSectionAnchors": [
+        "#filing-cabinet-analogy",
+        "#forms-as-query-tools"
+      ]
+    },
+    {
+      "conceptId": "concept-access-level",
+      "name": "Access level",
+      "definition": "The degree to which a person can view records, categories, or the full database and perform new searches.",
+      "relationships": [
+        "Prepared report access is narrow",
+        "Folder access is category-limited",
+        "Full database access permits broad search and inference"
+      ],
+      "examples": [
+        "Prepared report",
+        "Selected folder access",
+        "Full database access"
+      ],
+      "misconceptions": [
+        "All forms of access expose the same amount of information or analytical capability"
+      ],
+      "evidenceSectionAnchors": [
+        "#access-matters"
+      ]
+    },
+    {
+      "conceptId": "concept-computational-legibility",
+      "name": "Computational legibility",
+      "definition": "The condition in which organized digital records can be searched, compared, filtered, and summarized by software.",
+      "relationships": [
+        "Depends on structured digital storage",
+        "Increases speed and scale",
+        "Raises access-control concerns"
+      ],
+      "examples": [
+        "Instantly counting short-staffed Mondays across six months of records"
+      ],
+      "misconceptions": [],
+      "evidenceSectionAnchors": [
+        "#core-lesson"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "exampleId": "example-short-staffed-mondays",
+      "title": "How many Mondays were short-staffed?",
+      "scenario": "A supervisor asks how many Mondays were short-staffed during the previous six months.",
+      "walkthrough": [
+        "Retrieve six months of schedules and attendance sheets.",
+        "Compare the schedules with attendance records.",
+        "Filter the records to Mondays.",
+        "Identify and count the Mondays with missing staff.",
+        "Summarize and report the result."
+      ],
+      "result": "The manual filing-cabinet process produces the answer, but a digital query can perform the same logical steps automatically.",
+      "lesson": "A query is the formalized version of ordinary retrieval, comparison, filtering, and summarization.",
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    },
+    {
+      "exampleId": "example-attendance-summary",
+      "title": "Monthly attendance summary",
+      "scenario": "Management repeatedly asks questions about absences.",
+      "walkthrough": [
+        "Keep the original attendance papers.",
+        "Extract the selected facts needed for recurring questions.",
+        "Place those facts into a monthly summary form.",
+        "Use the summary to answer the common question more quickly."
+      ],
+      "result": "The summary becomes a prepared query while the original attendance records remain available.",
+      "lesson": "Derived summaries improve speed without replacing source evidence.",
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "procedureId": "procedure-paper-query",
+      "title": "Perform a paper-based query",
+      "purpose": "Show the manual steps that a digital query later automates.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Retrieve the correct folders and source records.",
+          "expectedResult": "The relevant schedules, attendance sheets, or other records are assembled."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Compare related records.",
+          "expectedResult": "Differences or matching facts become visible."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Filter the records to the condition being asked about.",
+          "expectedResult": "Only the relevant subset remains."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Summarize the filtered results.",
+          "expectedResult": "A count or report answers the original question."
+        }
+      ],
+      "verification": [
+        "The answer can be traced back to the original records.",
+        "The source records remain unchanged."
+      ],
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "warningId": "warning-full-access",
+      "title": "Do not confuse a report with full database access",
+      "risk": "Full access permits broader searches, comparisons, and new derived information beyond one prepared answer.",
+      "avoid": "Granting unrestricted access when a prepared report or limited category view would satisfy the role.",
+      "correctiveAction": "Limit access to the questions and records required for each position.",
+      "evidenceSectionAnchors": [
+        "#access-matters",
+        "#core-lesson"
+      ]
+    },
+    {
+      "warningId": "warning-summary-replacement",
+      "title": "Do not replace source records with summaries",
+      "risk": "A summary may omit detail needed for later verification or different questions.",
+      "avoid": "Treating the prepared form or report as the only remaining record.",
+      "correctiveAction": "Preserve source records and treat summaries as derived views.",
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools"
+      ]
+    }
+  ],
+  "reviewQuestions": [
+    {
+      "questionId": "review-01",
+      "question": "In the lesson's analogy, what corresponds to a database table?",
+      "answerSummary": "A drawer or folder that separates one category of information.",
+      "evidenceSectionAnchors": [
+        "#paper-digital-comparison"
+      ]
+    },
+    {
+      "questionId": "review-02",
+      "question": "What four actions make up the paper query example?",
+      "answerSummary": "Retrieve, compare, filter, and summarize.",
+      "evidenceSectionAnchors": [
+        "#paper-query"
+      ]
+    },
+    {
+      "questionId": "review-03",
+      "question": "Why is a monthly summary form similar to a prepared query?",
+      "answerSummary": "It extracts and arranges selected facts so a recurring question can be answered more quickly without replacing the source records.",
+      "evidenceSectionAnchors": [
+        "#forms-as-query-tools"
+      ]
+    },
+    {
+      "questionId": "review-04",
+      "question": "What is the main difference between the paper and digital processes described?",
+      "answerSummary": "Speed, scale, and ease of retrieval, comparison, and summarization.",
+      "evidenceSectionAnchors": [
+        "#main-difference-speed",
+        "#core-lesson"
+      ]
+    },
+    {
+      "questionId": "review-05",
+      "question": "Why is full database access different from receiving a prepared report?",
+      "answerSummary": "Full access allows broad searching and new derived conclusions, while a report provides a limited answer to a defined question.",
+      "evidenceSectionAnchors": [
+        "#access-matters"
+      ]
+    }
+  ],
+  "futureApplications": [
+    {
+      "applicationId": "application-klinswork-viewers",
+      "title": "Explain Klinswork viewers and reports",
+      "description": "Use the filing-cabinet analogy to explain how application views retrieve selected records without exposing every underlying table.",
+      "readiness": "ready",
+      "dependencies": []
+    },
+    {
+      "applicationId": "application-role-access",
+      "title": "Design role-limited access",
+      "description": "Use the report, folder, and full-cabinet analogy when deciding which records and queries each role should receive.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "defined user roles",
+        "record categories",
+        "viewer permissions"
+      ]
+    },
+    {
+      "applicationId": "application-data-literacy-series",
+      "title": "Expand the introductory data lesson series",
+      "description": "Build later lessons on tables, IDs, linked records, source versus derived data, filters, and reports.",
+      "readiness": "planned",
+      "dependencies": [
+        "lesson sequence design"
+      ]
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains databases by comparing them with filing cabinets and explains queries as the work of finding, comparing, filtering, and summarizing records.",
+      "operationalImpact": "It provides a simple way to explain why structured records make reporting faster and why different roles should receive different levels of access.",
+      "currentStatus": "Complete introductory lesson.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The analogy simplifies technical database details.",
+        "The lesson does not define a specific access-control policy or implementation."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Use the lesson as introductory training before explaining specific Klinswork tables, viewers, and permissions.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-query",
+          "relatedSectionAnchor": "#paper-query",
+          "type": "concept",
+          "title": "A query is familiar clerical work",
+          "text": "Retrieve, compare, filter, and summarize are the same steps a person once performed with paper records."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-speed",
+          "relatedSectionAnchor": "#main-difference-speed",
+          "type": "benefit",
+          "title": "The difference is speed and scale",
+          "text": "Digital systems often answer the same questions much faster rather than creating fundamentally different facts."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-access",
+          "relatedSectionAnchor": "#access-matters",
+          "type": "governance",
+          "title": "Access determines analytical power",
+          "text": "A prepared report gives one answer; full database access allows many new questions and comparisons."
+        }
+      ]
+    },
+    "general": {
+      "summary": "A database can be understood as a filing cabinet, and a query as the work of retrieving, comparing, filtering, and summarizing the records inside it.",
+      "keyPoints": [
+        "Databases store organized records.",
+        "Tables separate categories of records.",
+        "Queries automate familiar clerical work.",
+        "Summary forms are prepared queries.",
+        "Digital systems increase speed and scale.",
+        "Access should match the role's actual questions and records."
+      ]
+    },
+    "technical": {
+      "summary": "The lesson presents a conceptual mapping rather than a technical database specification: filing cabinet to database, drawers and folders to tables, paper forms to records, and clerk activity to queries.",
+      "keyPoints": [
+        "Source records remain underneath reports.",
+        "Queries perform retrieval, comparison, filtering, and summarization.",
+        "Prepared reports expose less analytical freedom than full database access.",
+        "The source does not define database software, schemas, SQL, or permission implementation."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The filing-cabinet analogy can introduce Klinswork data concepts without requiring technical vocabulary.",
+      "The report-versus-cabinet-key analogy is useful for explaining role-limited access."
+    ],
+    "generalLessons": [
+      "Digital databases often organize the same facts that paper offices already maintained.",
+      "Queries formalize and automate familiar clerical reasoning.",
+      "Derived summaries should remain traceable to preserved source records.",
+      "Structured data increases speed, scale, and ease of cross-reference.",
+      "Broader access creates broader ability to derive new information."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Databases are treated as mysterious or fundamentally unlike paper record systems.",
+        "pattern": "Nontechnical readers understand filing, forms, and reports but lack a bridge to digital terminology.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Data Literacy"
+        ]
+      },
+      {
+        "problem": "Prepared reports and unrestricted data access are treated as equivalent.",
+        "pattern": "The difference between receiving one answer and gaining the ability to ask many new questions is overlooked.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Data Literacy"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "The filing cabinet as a database analogy",
+        "description": "Map cabinets to databases, folders to tables, paper forms to records, and clerks to queries.",
+        "suggestedDestination": "Klinswork data literacy",
+        "supportingSectionAnchors": [
+          "#filing-cabinet-analogy",
+          "#paper-digital-comparison"
+        ]
+      },
+      {
+        "title": "A query as retrieve, compare, filter, and summarize",
+        "description": "Explain database queries through the manual work once performed with schedules, attendance sheets, and reports.",
+        "suggestedDestination": "Klinswork data literacy",
+        "supportingSectionAnchors": [
+          "#paper-query"
+        ]
+      },
+      {
+        "title": "Reports versus full database access",
+        "description": "Use the summary-sheet, selected-folder, and cabinet-key analogy to explain information-access levels.",
+        "suggestedDestination": "Klinswork information governance",
+        "supportingSectionAnchors": [
+          "#access-matters"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Preserve source records beneath reports and summaries.",
+        "changeType": "confirmed",
+        "explanation": "Prepared views organize selected facts but do not replace the underlying evidence."
+      },
+      {
+        "rule": "Limit access to the questions and records required by each role.",
+        "changeType": "added",
+        "explanation": "Full database access enables broad new searches and derived information beyond one prepared report."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "filing-cabinet-analogy",
+      "title": "The Filing Cabinet Is the Key Analogy",
+      "anchor": "#filing-cabinet-analogy",
+      "contentSummary": "Introduces the database as a large office filing cabinet in which attendance records, work requests, inspections, room lists, schedules, and assignments are organized into different folders or drawers. The challenge is not merely storing the information but locating, comparing, and organizing it when a question is asked.",
+      "narrativeRole": "core-analogy",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'The Filing Cabinet Is the Key Analogy'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core data concept, operational benefit, or access-governance principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "The filing cabinet as a database analogy"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "paper-query",
+      "title": "How a Paper Query Worked",
+      "anchor": "#paper-query",
+      "contentSummary": "Uses the question of how many Mondays were short-staffed during six months to show that a paper query consists of retrieving folders, comparing schedules and attendance, filtering to Mondays, and summarizing shortages.",
+      "narrativeRole": "worked-example",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'How a Paper Query Worked'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-query",
+        "reason": "Explains a core data concept, operational benefit, or access-governance principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "A query as retrieve, compare, filter, and summarize"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "forms-as-query-tools",
+      "title": "Forms Were Early Query Tools",
+      "anchor": "#forms-as-query-tools",
+      "contentSummary": "Explains how summary sheets, index cards, logs, and companion forms acted as prepared queries by arranging selected facts for frequently asked questions without replacing the source records.",
+      "narrativeRole": "historical-bridge",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'Forms Were Early Query Tools'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "paper-digital-comparison",
+      "title": "Paper System and Digital System",
+      "anchor": "#paper-digital-comparison",
+      "contentSummary": "Maps filing cabinet to database, folders to tables, paper forms to digital entries, and the clerk or supervisor to the automated query.",
+      "narrativeRole": "comparison",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'Paper System and Digital System'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "The filing cabinet as a database analogy"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "main-difference-speed",
+      "title": "The Main Difference Is Speed",
+      "anchor": "#main-difference-speed",
+      "contentSummary": "States that digital storage often preserves the same underlying information while making retrieval, cross-reference, and summarization dramatically faster.",
+      "narrativeRole": "benefit-explanation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'The Main Difference Is Speed'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-speed",
+        "reason": "Explains a core data concept, operational benefit, or access-governance principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "access-matters",
+      "title": "Why Access Still Matters",
+      "anchor": "#access-matters",
+      "contentSummary": "Compares a prepared report to a completed summary form, category-limited access to one folder or drawer, and full database access to the key for the entire filing cabinet.",
+      "narrativeRole": "governance-comparison",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'Why Access Still Matters'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-access",
+        "reason": "Explains a core data concept, operational benefit, or access-governance principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Reports versus full database access"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "core-lesson",
+      "title": "Core Lesson",
+      "anchor": "#core-lesson",
+      "contentSummary": "Concludes that digital records make the filing cabinet computationally legible and therefore require careful organization and role-appropriate access.",
+      "narrativeRole": "conclusion",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the introductory data-literacy lesson through the section 'Core Lesson'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core data concept, operational benefit, or access-governance principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [
+      "paper filing systems",
+      "digital databases"
+    ],
+    "files": [
+      "filing_cabinet_and_database_lesson.html"
+    ],
+    "integrations": [],
+    "apis": [],
+    "versions": [],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "content and template structure validated",
+      "notes": [
+        "The source is explicitly an introductory lesson.",
+        "The lesson-reference profile was used.",
+        "Seven source sections were represented.",
+        "No technical implementation tests are claimed by the source.",
+        "Generated section anchors are normalized metadata anchors because the source sections do not contain IDs."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Introductory Data Lesson: The Filing Cabinet and the Database",
+      "body": "This lesson explains databases through the familiar example of an office filing cabinet. It shows that queries perform the same basic work as retrieving, comparing, filtering, and summarizing paper records, but at much greater speed. It also explains why a prepared report, limited folder access, and full database access represent very different levels of information access.",
+      "audiences": [
+        "supervisors",
+        "staff",
+        "new system users"
+      ],
+      "detailLevel": "plain-language lesson introduction",
+      "sourceAudienceView": "general"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "local lesson; publication location not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "The Filing Cabinet and the Database",
+    "listingDescription": "An introductory comparison of paper filing systems, digital databases, queries, reports, and access levels.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "The Filing Cabinet and the Database",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "local source document",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded lesson HTML",
+    "sourceFiles": [
+      "filing_cabinet_and_database_lesson.html",
+      "lesson-reference-sidecar-template-3.0-draft.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T03:03:27+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source explicitly identifies itself as an introductory data lesson.",
+      "The lesson-reference 3.0-draft profile was used without converting the document into a work update.",
+      "The source contains no creation date, canonical URL, repository path, or publication record.",
+      "Normalized section anchors were generated for sidecar navigation because the HTML sections do not include IDs.",
+      "The project relationship to broader Klinswork documentation is inferred from the Meadows Housekeeping context and the subject matter."
+    ],
+    "unresolvedQuestions": [
+      "What date was the lesson created?",
+      "What canonical filename and public URL should be assigned?",
+      "Should this lesson belong to a formal Klinswork data-literacy series?",
+      "Should a graphic comparing filing-cabinet parts to database components be added later?"
+    ]
+  }
+}

@@ -1,0 +1,1334 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "implementation-plan-meadows-housekeeping-work-queue-recommendation-queue",
+    "filePath": "wu001.html",
+    "documentUrl": "",
+    "title": "Meadows Housekeeping Work Queue Implementation Plan",
+    "headline": "Build the operational workflow in small, independently testable stages",
+    "documentType": "implementation-plan",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "wu001-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "implementation-plan-meadows-housekeeping-work-queue-recommendation-queue"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "implementation-plan",
+    "coverageDescription": "Defines a twelve-stage development and testing plan for extending the existing Meadows Housekeeping intake and normalized-record viewer into a complete Work Queue and Recommendations Queue workflow. The plan covers queue-sheet schemas, intake routing controls, duplicate-safe queue writers, persistent sorting state, queue viewers, task status transitions, JSON note history, active and completed filtering, completion email idempotency, completed-work history, later archiving, a final end-to-end test, and a strict stage-by-stage implementation order.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Work Queue",
+      "projectType": "operational work-management application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Transform normalized intake records into traceable working records that can be sorted, started, annotated, completed, reported, reviewed historically, and later archived without changing the source record.",
+      "projectPhase": "pre-implementation architecture and staged test planning",
+      "contributionType": "workflow design, schema definition, implementation sequencing, test planning, and risk control",
+      "identificationBasis": "The document explicitly presents a Work Queue and Recommendation Queue implementation plan with twelve development stages.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Submission Viewer",
+        "relationshipType": "source intake interface",
+        "relationshipDescription": "The existing intake viewer displays normalized source records and will receive routing buttons and persistent sorted-state labels.",
+        "impact": "The viewer becomes the entry point for creating Work Queue and Recommendations Queue records.",
+        "evidenceSectionAnchors": [
+          "#target",
+          "#stage-2",
+          "#stage-4"
+        ],
+        "identificationBasis": "The plan explicitly begins from the current intake log viewer.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Recommendations Queue",
+        "relationshipType": "parallel derived-record workflow",
+        "relationshipDescription": "Recommendations receive their own linked records, statuses, notes, viewer, and archive behavior without using task-completion email logic.",
+        "impact": "Suggestions and recommendations can be reviewed separately from operational work.",
+        "evidenceSectionAnchors": [
+          "#stage-1",
+          "#stage-3",
+          "#stage-6"
+        ],
+        "identificationBasis": "The plan defines a separate Recommendations Queue schema and viewer.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Completion Notification Workflow",
+        "relationshipType": "downstream communication process",
+        "relationshipDescription": "Completion email is sent only after the working record is successfully completed and is protected by a persistent sent flag.",
+        "impact": "The system can notify the original requester exactly once while preserving retry capability after delivery failure.",
+        "evidenceSectionAnchors": [
+          "#stage-10",
+          "#final-test"
+        ],
+        "identificationBasis": "The completion email sequence and tests are explicitly specified.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Normalized source records",
+        "foundationType": "immutable source layer",
+        "relationshipDescription": "Every working or recommendation record retains a Source ID pointing to the original normalized request.",
+        "impact": "Source history remains unchanged while operational state evolves separately."
+      },
+      {
+        "foundationId": "",
+        "name": "Derived working records",
+        "foundationType": "mutable operational layer",
+        "relationshipDescription": "Queue sheets hold status, timestamps, notes, and email state associated with a source record.",
+        "impact": "Operational changes can occur without rewriting intake history."
+      },
+      {
+        "foundationId": "",
+        "name": "Visible staged testing",
+        "foundationType": "development-control method",
+        "relationshipDescription": "Each stage must produce a visible, reliable result before the next feature is added.",
+        "impact": "Prevents routing, status, notes, email, and archive failures from being debugged simultaneously."
+      }
+    ],
+    "relationshipSummary": "The plan connects the existing normalized intake viewer to two derived queue systems, then extends the Work Queue through status, notes, completion, email, history, and archive stages while preserving source-record integrity."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Work Queue",
+    "primaryApp": "Work Queue",
+    "mainFocus": "Designing a staged, testable path from normalized intake records to persistent Work Queue and Recommendations Queue workflows.",
+    "description": "Implementation plan for queue schemas, routing, viewers, state changes, JSON notes, completion handling, notifications, history, and archiving.",
+    "topics": [
+      "Work Queue",
+      "Recommendations Queue",
+      "source record linkage",
+      "queue sheet schema",
+      "routing buttons",
+      "duplicate prevention",
+      "persistent sorting state",
+      "queue viewers",
+      "task status transitions",
+      "JSON notes",
+      "completed filtering",
+      "completion email",
+      "idempotency",
+      "completed history",
+      "archiving",
+      "end-to-end testing",
+      "incremental implementation"
+    ],
+    "keywords": [
+      "Source ID",
+      "Pending",
+      "In Progress",
+      "Completed",
+      "Archived",
+      "Sorted At",
+      "Started At",
+      "Completed At",
+      "Updated At",
+      "Notes JSON",
+      "Completion Email Sent",
+      "already-sorted",
+      "Work Queue",
+      "Recommendations Queue"
+    ],
+    "appsAffected": [
+      "Submission Viewer",
+      "Work Queue Viewer",
+      "Recommendations Viewer",
+      "Completed Work Viewer",
+      "Archive Viewer"
+    ],
+    "systemsAffected": [
+      "request intake",
+      "work routing",
+      "recommendation review",
+      "task execution",
+      "completion reporting",
+      "historical records",
+      "archive retrieval"
+    ],
+    "componentsAffected": [
+      "queue sheets",
+      "intake-card buttons",
+      "queue-writing functions",
+      "source-record lookup",
+      "status transition functions",
+      "notes parser and writer",
+      "active queue filter",
+      "completion email sender",
+      "completed-work renderer",
+      "archive filter"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The current system could capture and normalize source records and display them in an intake viewer, but it did not yet provide a complete operational lifecycle for sorting, working, annotating, completing, notifying, and retaining records.",
+    "initialUnderstanding": "The queue should not mutate the original source record. A separate working record must carry operational state while remaining linked by Source ID.",
+    "intendedOutcome": "Create a dependable workflow from supervisor submission through queue assignment, task execution, notes, completion, email notification, completed history, and later archive.",
+    "approach": "Divide the system into twelve stages, define the data model and allowed transitions, specify visible browser behavior, provide test cases for each stage, and require successful verification before proceeding.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Define queue storage",
+        "description": "Add Work Queue and Recommendations Queue tabs with consistent columns for source linkage, status, timestamps, notes, and email state.",
+        "result": "The operational data layer is specified before interface behavior is added."
+      },
+      {
+        "sequence": 2,
+        "title": "Add intake routing controls",
+        "description": "Place Work Queue and Recommendations Queue buttons on unsorted cards and first verify only that the correct Source ID is emitted.",
+        "result": "Browser interactions can be tested without risking sheet changes."
+      },
+      {
+        "sequence": 3,
+        "title": "Create duplicate-safe queue writers",
+        "description": "Append linked working records while rejecting duplicate or cross-queue sorting.",
+        "result": "A source record can enter one intended workflow exactly once."
+      },
+      {
+        "sequence": 4,
+        "title": "Persist sorting state",
+        "description": "Combine source records with queue Source ID lists so handled cards remain visibly sorted after refresh.",
+        "result": "The intake viewer reflects durable server state rather than temporary browser state."
+      },
+      {
+        "sequence": 5,
+        "title": "Build dedicated queue viewers",
+        "description": "Join working records to their original normalized source content and render Work Queue and Recommendations cards.",
+        "result": "Operational users can work from derived records without losing source context."
+      },
+      {
+        "sequence": 6,
+        "title": "Add mutable task behavior",
+        "description": "Introduce validated status transitions and append-only JSON notes with timestamps.",
+        "result": "Tasks gain a controlled operational history."
+      },
+      {
+        "sequence": 7,
+        "title": "Separate active and completed work",
+        "description": "Filter completed tasks out of the active viewer while retaining both source and working records.",
+        "result": "Active work remains focused while completed history persists."
+      },
+      {
+        "sequence": 8,
+        "title": "Add exactly-once completion notification",
+        "description": "Send email only after successful completion and persist a Completion Email Sent flag for duplicate prevention and safe retry.",
+        "result": "Completion communication becomes reliable and idempotent."
+      },
+      {
+        "sequence": 9,
+        "title": "Add completed history and later archiving",
+        "description": "Display duration, notes, and email state for completed tasks, then later move records into an archive view by status rather than deletion.",
+        "result": "The full lifecycle remains queryable without destroying records."
+      },
+      {
+        "sequence": 10,
+        "title": "Prove the whole system",
+        "description": "Run a complete request through submission, normalization, routing, work, notes, completion, email, refresh, and source-integrity checks.",
+        "result": "The architecture is accepted only when all state survives refresh and the source remains unchanged."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Multiple interdependent workflow systems could be built and debugged at the same time.",
+        "effect": "Failures in routing, state, notes, email, and archive behavior would become difficult to isolate.",
+        "resolution": "Use a strict staged implementation in which each visible result is proven before the next function is added.",
+        "status": "addressed in plan"
+      },
+      {
+        "problem": "The same source could be placed in both queues or duplicated.",
+        "effect": "One request could generate conflicting or repeated working records.",
+        "resolution": "Check both queue tabs before append and return an already-sorted failure result when necessary.",
+        "status": "addressed in design"
+      },
+      {
+        "problem": "Completion actions and email sending could be repeated.",
+        "effect": "Timestamps could be overwritten and requesters could receive duplicate completion messages.",
+        "resolution": "Write timestamps only when blank, reject invalid transitions, and use Completion Email Sent as an idempotency flag.",
+        "status": "addressed in design"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Implement the entire queue lifecycle in one development pass.",
+        "whyItWasTried": "The components form one obvious end-to-end workflow.",
+        "whyItDidNotWork": "The plan explicitly rejects debugging queue, status, notes, email, and archive systems simultaneously.",
+        "whatWasLearned": "Complex operational workflows should be decomposed into independently visible and testable increments."
+      },
+      {
+        "approach": "Delete or move completed and archived records.",
+        "whyItWasTried": "Removing inactive records could appear to simplify active views.",
+        "whyItDidNotWork": "The design requires history, notes, timestamps, source linkage, and later archive retrieval to remain intact.",
+        "whatWasLearned": "Lifecycle views should be filters over persistent records, not destructive movement."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "The queue became a linked working layer",
+        "description": "Source ID was established as the bridge between immutable normalized submissions and mutable operational records.",
+        "effectOnDirection": "The system became a joined-record architecture rather than a single row changing purpose."
+      },
+      {
+        "title": "Visible testing became part of the architecture",
+        "description": "Each stage received explicit success, failure, persistence, and edge-case tests.",
+        "effectOnDirection": "Verification became a development gate rather than a final afterthought."
+      },
+      {
+        "title": "Completion email was made idempotent",
+        "description": "The sequence stores completion before sending and separately marks successful delivery.",
+        "effectOnDirection": "The notification system gained retry safety and duplicate prevention."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Keep source records unchanged.",
+        "reason": "The source must remain the permanent evidence of what was submitted.",
+        "alternativesConsidered": [
+          "Store task state directly on the source row",
+          "Move source records between sheets"
+        ],
+        "consequences": [
+          "Every queue record requires Source ID linkage.",
+          "Viewers must join source and working data."
+        ]
+      },
+      {
+        "decision": "Prevent one Source ID from entering both queues.",
+        "reason": "A request should not accidentally create conflicting operational interpretations.",
+        "alternativesConsidered": [
+          "Allow duplicate queue records and reconcile later"
+        ],
+        "consequences": [
+          "Queue-writing functions must check both destination sheets before append."
+        ]
+      },
+      {
+        "decision": "Use JSON arrays for note history.",
+        "reason": "Multiple timestamped notes must remain in one working record without losing earlier entries.",
+        "alternativesConsidered": [
+          "Use one replaceable note field",
+          "Create a new sheet row per note"
+        ],
+        "consequences": [
+          "The script must parse, validate, append, serialize, and safely handle malformed JSON."
+        ]
+      },
+      {
+        "decision": "Filter completed and archived work rather than delete it.",
+        "reason": "History, source linkage, timestamps, and notes must remain available.",
+        "alternativesConsidered": [
+          "Delete completed rows",
+          "Move rows to separate sheets"
+        ],
+        "consequences": [
+          "Viewer behavior depends on status filters.",
+          "The working record remains the lifecycle history."
+        ]
+      },
+      {
+        "decision": "Add archiving only after the active lifecycle is reliable.",
+        "reason": "Archiving adds another state and view before core work behavior is proven.",
+        "alternativesConsidered": [
+          "Build archive behavior alongside initial queues"
+        ],
+        "consequences": [
+          "Archive is explicitly deferred to stage 12."
+        ]
+      }
+    ],
+    "methodEstablished": "Build one visible behavior at a time, preserve source records, store mutable workflow state in linked records, verify persistence after refresh, reject duplicates and invalid transitions, and add communication only after state is safely committed.",
+    "result": "The document establishes a complete implementation blueprint and acceptance-test structure for the Work Queue and Recommendations Queue lifecycle.",
+    "lessonsLearned": [
+      "Derived workflow records need explicit source lineage.",
+      "Browser state is not enough; sorting must be persisted and reconstructed from stored records.",
+      "Duplicate prevention must check all mutually exclusive destinations.",
+      "Status transitions should be explicit and irreversible by default.",
+      "Structured note history requires defensive JSON handling.",
+      "Completed and archived views should filter persistent records rather than move or delete them.",
+      "Email should occur after successful state persistence.",
+      "A sent flag is necessary for exactly-once communication and safe retry.",
+      "Complex systems are easier to verify when every stage produces visible evidence."
+    ],
+    "directionChange": "The project moved from a conceptual intake-and-routing idea to a precise staged implementation plan with schemas, transitions, tests, and final acceptance criteria.",
+    "narrativeSummary": "The plan defines how normalized submissions become durable Work Queue or Recommendations records, how those records evolve through status and notes, and how completion, notification, history, and archive behavior will be built and proven incrementally."
+  },
+  "projectDelta": {
+    "previousState": "The current spreadsheet contained Form Responses and Normalized records, and the intake viewer could display source records, but no complete queue sheets, persistent sorting state, queue viewers, task lifecycle, completion email, completed view, or archive workflow were yet defined.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Target workflow defined",
+        "description": "Mapped the lifecycle from form submission through source normalization, sorting, working state, completion, email, history, and archive.",
+        "evidenceSectionAnchors": [
+          "#target"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Queue schemas specified",
+        "description": "Defined Work Queue and Recommendations Queue columns and allowed initial statuses.",
+        "evidenceSectionAnchors": [
+          "#stage-1"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Routing and duplicate-control design specified",
+        "description": "Defined intake buttons, Source ID passing, queue writers, and cross-queue duplicate rejection.",
+        "evidenceSectionAnchors": [
+          "#stage-2",
+          "#stage-3",
+          "#stage-4"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Viewer behavior specified",
+        "description": "Defined how Work Queue and Recommendations viewers join working records to normalized sources.",
+        "evidenceSectionAnchors": [
+          "#stage-5",
+          "#stage-6"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Task lifecycle specified",
+        "description": "Defined statuses, allowed transitions, timestamps, notes, active filtering, and completed history.",
+        "evidenceSectionAnchors": [
+          "#stage-7",
+          "#stage-8",
+          "#stage-9",
+          "#stage-11"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Completion notification design specified",
+        "description": "Defined commit-before-send behavior, sent-flag idempotency, retry conditions, and email content.",
+        "evidenceSectionAnchors": [
+          "#stage-10"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "End-to-end acceptance test specified",
+        "description": "Provided a twenty-one-step test that validates the entire workflow and source immutability.",
+        "evidenceSectionAnchors": [
+          "#final-test"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Implement all twelve stages",
+        "description": "Build the queue system according to the documented order and tests.",
+        "reasonStillOpen": "The source is an implementation plan, not a completion report."
+      },
+      {
+        "workItemId": "",
+        "title": "Add validation and backups",
+        "description": "Complete the final recommended implementation step after the primary lifecycle is working.",
+        "reasonStillOpen": "Listed after Archive in the recommended order without detailed implementation."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Cross-tab duplicate protection",
+        "description": "Queue assignment must treat Work Queue and Recommendations Queue as mutually exclusive destinations.",
+        "source": "#stage-3"
+      },
+      {
+        "workItemId": "",
+        "title": "Retryable completion email",
+        "description": "A completed task may retain a false sent flag after delivery failure so email can be retried safely.",
+        "source": "#stage-10"
+      },
+      {
+        "workItemId": "",
+        "title": "Warning cards for missing source records",
+        "description": "A broken source link should degrade to a warning card rather than fail the whole viewer.",
+        "source": "#stage-5"
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "Archive workflow",
+        "reasonDeferred": "The active lifecycle should be reliable before another status and view are added.",
+        "reconsiderAfter": "Completed filtering, completion email, and completed-work history are verified."
+      }
+    ],
+    "supersededItems": [],
+    "resultingState": "The project now has a detailed, ordered implementation specification for storage, routing, viewers, status, notes, completion, email, history, and archive behavior, with tests defined at every stage.",
+    "roadmapChangeSummary": "The roadmap is no longer a general intention to add a queue; it is a twelve-stage implementation program with explicit schemas, state rules, failure handling, and acceptance tests.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Create queue tabs",
+        "description": "Add and verify Work Queue and Recommendations Queue structures.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Add intake-viewer buttons",
+        "description": "Verify card-specific Source ID behavior before writing data.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Implement queue writers",
+        "description": "Append linked records and prevent duplicates or cross-queue sorting.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Persist sorting state",
+        "description": "Reconstruct sorted labels from queue Source IDs after refresh.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "",
+        "title": "Build queue viewers and lifecycle",
+        "description": "Add joined cards, status transitions, JSON notes, filtering, and completed history.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 6,
+        "workItemId": "",
+        "title": "Add completion email",
+        "description": "Implement exactly-once delivery after successful state persistence.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 7,
+        "workItemId": "",
+        "title": "Add archive, validation, and backups",
+        "description": "Extend the proven lifecycle without deleting records.",
+        "priority": "medium",
+        "status": "deferred"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The plan explains how requests will move from the current intake viewer into separate Work and Recommendations queues, then through notes, status changes, completion, notification, and history.",
+      "operationalImpact": "Each request will remain tied to its original submission while staff work from a separate record that can safely change over time.",
+      "currentStatus": "The workflow, record structures, implementation order, and test requirements are fully planned; the document does not claim the twelve stages are implemented.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The plan requires disciplined stage-by-stage implementation.",
+        "Duplicate and cross-queue sorting must be blocked.",
+        "Malformed Notes JSON must not destroy existing history.",
+        "Completion emails must not be sent twice.",
+        "Archive behavior is intentionally deferred."
+      ],
+      "staffVisibleChanges": [
+        "Sort-to-queue buttons",
+        "Persistent queue labels",
+        "Dedicated Work and Recommendations views",
+        "Start, note, and complete controls",
+        "Completed-work history",
+        "Completion notification"
+      ],
+      "nextOperationalStep": "Create and test the two queue tabs before adding browser controls.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-target",
+          "relatedSectionAnchor": "#target",
+          "type": "workflow",
+          "title": "A complete traceable lifecycle",
+          "text": "The target flow connects intake, source history, routing, active work, completion, email, and retained history."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-source-rule",
+          "relatedSectionAnchor": "#stage-3",
+          "type": "rule",
+          "title": "The source record remains unchanged",
+          "text": "Queue records are linked by Source ID rather than replacing the original request."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-method",
+          "relatedSectionAnchor": "#order",
+          "type": "method",
+          "title": "Prove each stage before adding the next",
+          "text": "Visible tests are required so several workflow systems are never debugged at once."
+        }
+      ]
+    },
+    "general": {
+      "summary": "A twelve-stage implementation and testing blueprint for building linked Work Queue and Recommendations workflows from normalized source records.",
+      "keyPoints": [
+        "2 queue sheets",
+        "12 implementation stages",
+        "Persistent Source ID linkage",
+        "Explicit task-state rules",
+        "JSON note history",
+        "Exactly-once completion email",
+        "Completed and archive views",
+        "Final end-to-end source-integrity test"
+      ]
+    },
+    "technical": {
+      "summary": "The plan defines queue schemas, browser Source ID commands, Apps Script queue writers, cross-queue duplicate validation, source joins, finite task-state transitions, defensive JSON-note updates, status-filtered views, and an idempotent completion-email sequence.",
+      "keyPoints": [
+        "Source and working records remain separate",
+        "Queue assignment is mutually exclusive",
+        "Sorting state is reconstructed after refresh",
+        "Started and Completed timestamps are write-once",
+        "Backward transitions are initially rejected",
+        "Notes are JSON arrays",
+        "Completed rows remain stored",
+        "Completion email uses a persistent sent flag",
+        "Missing source records render warnings",
+        "Recommendations never trigger completion email"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The current intake viewer can be extended safely by routing only Source IDs and preserving normalized source records.",
+      "Work Queue and Recommendations Queue need distinct schemas and lifecycle rules.",
+      "The Work Queue working row can serve as the durable lifecycle history rather than creating separate sheets for every state."
+    ],
+    "generalLessons": [
+      "Design the data model before adding interface controls.",
+      "Mutually exclusive destinations require shared duplicate validation.",
+      "Persistent server state must drive labels after browser refresh.",
+      "Join failures should degrade locally rather than collapse an entire page.",
+      "Write-once timestamps protect lifecycle evidence.",
+      "Append-only note arrays preserve chronological work context.",
+      "State changes and notification delivery should be committed separately.",
+      "A retryable sent flag is safer than assuming email delivery succeeds.",
+      "Filtering is often preferable to moving or deleting records.",
+      "Incremental visible tests reduce compound debugging."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Several dependent workflow features are implemented before any one is verified.",
+        "pattern": "Routing, status, notes, email, and archive logic fail together and obscure the original defect.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Work Queue"
+        ]
+      },
+      {
+        "problem": "Browser labels are treated as persistent state.",
+        "pattern": "A card appears sorted until refresh because queue membership was not read from storage.",
+        "projectsObservedIn": [
+          "Submission Viewer",
+          "Meadows Housekeeping Work Queue"
+        ]
+      },
+      {
+        "problem": "External notification is coupled too tightly to state change.",
+        "pattern": "A failed or repeated email can corrupt completion behavior or produce duplicates.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Work Queue"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Linked source and working record architecture",
+        "description": "Preserve immutable intake records while keeping status, notes, timestamps, and delivery state in a Source-ID-linked working record.",
+        "suggestedDestination": "Klinswork data architecture",
+        "supportingSectionAnchors": [
+          "#target",
+          "#stage-1",
+          "#stage-5"
+        ]
+      },
+      {
+        "title": "Cross-queue duplicate prevention",
+        "description": "Check all mutually exclusive destination stores before appending a routed record.",
+        "suggestedDestination": "Klinswork validation practices",
+        "supportingSectionAnchors": [
+          "#stage-3"
+        ]
+      },
+      {
+        "title": "Write-once task lifecycle timestamps",
+        "description": "Set Started At and Completed At only when blank and reject backward transitions by default.",
+        "suggestedDestination": "Klinswork workflow architecture",
+        "supportingSectionAnchors": [
+          "#stage-7"
+        ]
+      },
+      {
+        "title": "Defensive JSON note history",
+        "description": "Parse, validate, append, and serialize note arrays without losing existing data when malformed input is encountered.",
+        "suggestedDestination": "Klinswork data-handling practices",
+        "supportingSectionAnchors": [
+          "#stage-8"
+        ]
+      },
+      {
+        "title": "Exactly-once completion email with retry",
+        "description": "Commit completion first, send afterward, and persist a sent flag only after successful delivery.",
+        "suggestedDestination": "Klinswork communication architecture",
+        "supportingSectionAnchors": [
+          "#stage-10"
+        ]
+      },
+      {
+        "title": "Stage-gated implementation testing",
+        "description": "Require one visible reliable result before adding the next dependent subsystem.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#order"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Never change the normalized source record to represent operational state.",
+        "changeType": "confirmed",
+        "explanation": "Work Queue and Recommendations records remain linked derivatives."
+      },
+      {
+        "rule": "Do not allow one Source ID to enter both routing destinations.",
+        "changeType": "added",
+        "explanation": "Queue writers must validate across both queue tabs."
+      },
+      {
+        "rule": "Do not overwrite existing Started At or Completed At values.",
+        "changeType": "added",
+        "explanation": "Lifecycle timestamps are evidence and should be write-once."
+      },
+      {
+        "rule": "Do not delete completed or archived records.",
+        "changeType": "added",
+        "explanation": "Views should filter persistent lifecycle records by status."
+      },
+      {
+        "rule": "Do not send completion email until the completed working record has been saved.",
+        "changeType": "added",
+        "explanation": "State persistence must precede external communication."
+      },
+      {
+        "rule": "Do not add the next implementation stage until the current stage has visible test evidence.",
+        "changeType": "added",
+        "explanation": "This isolates defects and prevents compound debugging."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "target",
+      "title": "Target Workflow",
+      "anchor": "#target",
+      "contentSummary": "Maps the complete path from supervisor submission through normalized source creation, queue sorting, joined queue display, task status and notes, completion, email, completed history, and later archive.",
+      "narrativeRole": "workflow-target",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Target Workflow.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-target",
+        "reason": "Explains the target operational flow, source-record protection, completion communication, acceptance criteria, or implementation discipline."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-1",
+      "title": "Stage 1 — Define the Sheet Structure",
+      "anchor": "#stage-1",
+      "contentSummary": "Defines Work Queue and Recommendations Queue tabs, columns, statuses, timestamps, Notes JSON, and the completion-email flag, plus manual schema tests.",
+      "narrativeRole": "data-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 1 — Define the Sheet Structure.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Linked source and working record architecture"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-2",
+      "title": "Stage 2 — Add Sorting Controls to the Intake Viewer",
+      "anchor": "#stage-2",
+      "contentSummary": "Adds two Source-ID-aware routing buttons to unsorted cards and tests them without changing sheet data.",
+      "narrativeRole": "interface-increment",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 2 — Add Sorting Controls to the Intake Viewer.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-3",
+      "title": "Stage 3 — Create Queue-Writing Functions",
+      "anchor": "#stage-3",
+      "contentSummary": "Defines default queue records, append behavior, duplicate checking across both queues, and success or already-sorted responses.",
+      "narrativeRole": "server-write-logic",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 3 — Create Queue-Writing Functions.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-source-rule",
+        "reason": "Explains the target operational flow, source-record protection, completion communication, acceptance criteria, or implementation discipline."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Cross-queue duplicate prevention"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-4",
+      "title": "Stage 4 — Make Sorting State Persistent",
+      "anchor": "#stage-4",
+      "contentSummary": "Loads source records and queue Source ID lists together so sorted labels survive refresh and buttons do not reappear.",
+      "narrativeRole": "state-reconstruction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 4 — Make Sorting State Persistent.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-5",
+      "title": "Stage 5 — Build the Work Queue Viewer",
+      "anchor": "#stage-5",
+      "contentSummary": "Joins Work Queue rows to normalized source records, displays active task controls, and handles empty or missing-source conditions.",
+      "narrativeRole": "joined-view",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 5 — Build the Work Queue Viewer.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-6",
+      "title": "Stage 6 — Build the Recommendations Queue Viewer",
+      "anchor": "#stage-6",
+      "contentSummary": "Displays recommendation content, status, notes, and sorting time while excluding work-completion email behavior.",
+      "narrativeRole": "parallel-joined-view",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 6 — Build the Recommendations Queue Viewer.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-7",
+      "title": "Stage 7 — Add Task Status Changes",
+      "anchor": "#stage-7",
+      "contentSummary": "Defines Pending, In Progress, and Completed transitions, write-once timestamps, direct completion handling, and rejection of backward transitions.",
+      "narrativeRole": "state-machine",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 7 — Add Task Status Changes.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Write-once task lifecycle timestamps"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-8",
+      "title": "Stage 8 — Add Task Notes Using JSON",
+      "anchor": "#stage-8",
+      "contentSummary": "Defines timestamped JSON note arrays and a defensive parse, validate, append, serialize, and write workflow.",
+      "narrativeRole": "history-data",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 8 — Add Task Notes Using JSON.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Defensive JSON note history"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-9",
+      "title": "Stage 9 — Remove Completed Work from the Active Queue",
+      "anchor": "#stage-9",
+      "contentSummary": "Filters completed tasks from the active viewer without deleting either source or working records.",
+      "narrativeRole": "filtered-lifecycle-view",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 9 — Remove Completed Work from the Active Queue.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-10",
+      "title": "Stage 10 — Send the Completion Email",
+      "anchor": "#stage-10",
+      "contentSummary": "Defines commit-before-send ordering, recipient lookup, duplicate prevention, delivery-failure behavior, and retry safety.",
+      "narrativeRole": "notification-transaction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 10 — Send the Completion Email.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains the target operational flow, source-record protection, completion communication, acceptance criteria, or implementation discipline."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Exactly-once completion email with retry"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-11",
+      "title": "Stage 11 — Add a Completed-Work View",
+      "anchor": "#stage-11",
+      "contentSummary": "Displays original request, timestamps, duration, notes, and email-delivery state for completed records.",
+      "narrativeRole": "historical-view",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 11 — Add a Completed-Work View.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "stage-12",
+      "title": "Stage 12 — Add Archiving Later",
+      "anchor": "#stage-12",
+      "contentSummary": "Adds Archived status and timestamp only after the active lifecycle is reliable, retaining all source and working history.",
+      "narrativeRole": "deferred-lifecycle-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Stage 12 — Add Archiving Later.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "final-test",
+      "title": "Final End-to-End System Test",
+      "anchor": "#final-test",
+      "contentSummary": "Runs a sample request through twenty-one checks from form submission to source immutability after completion and refresh.",
+      "narrativeRole": "acceptance-test",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Final End-to-End System Test.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains the target operational flow, source-record protection, completion communication, acceptance criteria, or implementation discipline."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "order",
+      "title": "Recommended Implementation Order",
+      "anchor": "#order",
+      "contentSummary": "Restates the build order and requires visible proof at every stage before another subsystem is introduced.",
+      "narrativeRole": "development-doctrine",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the Work Queue implementation contribution: Recommended Implementation Order.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-method",
+        "reason": "Explains the target operational flow, source-record protection, completion communication, acceptance criteria, or implementation discipline."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Stage-gated implementation testing"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Forms",
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Sites",
+      "Gmail"
+    ],
+    "apps": [
+      "Submission Viewer",
+      "Work Queue Viewer",
+      "Recommendations Queue Viewer",
+      "Completed Work Viewer",
+      "Archive Viewer"
+    ],
+    "scripts": [
+      "sendToWorkQueue(sourceId)",
+      "sendToRecommendationsQueue(sourceId)",
+      "queue-writing functions",
+      "status-update functions",
+      "add-note function",
+      "completion-email function",
+      "email retry function"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "JSON"
+    ],
+    "services": [
+      "Google Apps Script",
+      "Google Sheets",
+      "Gmail delivery"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Form Responses",
+      "Normalized",
+      "Work Queue",
+      "Recommendations Queue"
+    ],
+    "files": [
+      "wu001.html"
+    ],
+    "integrations": [
+      "intake viewer to queue writer",
+      "working records to normalized source records",
+      "task completion to Gmail",
+      "status-filtered active and completed views",
+      "archive retrieval"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [
+      "planned first implementation"
+    ],
+    "tests": [
+      {
+        "name": "Stage 1 — queue sheet structure",
+        "type": "schema",
+        "result": "planned",
+        "notes": "Verify headers, text Source IDs, timestamps, valid [] note text, and Apps Script tab lookup."
+      },
+      {
+        "name": "Stage 2 — card routing controls",
+        "type": "interface",
+        "result": "planned",
+        "notes": "Verify two buttons per card, correct Source IDs, card isolation, mobile behavior, and no writes."
+      },
+      {
+        "name": "Stage 3 — queue writes and duplicate rejection",
+        "type": "integration",
+        "result": "planned",
+        "notes": "Verify correct append, unchanged source, same-queue duplicate rejection, and cross-queue rejection."
+      },
+      {
+        "name": "Stage 4 — persistent sorting state",
+        "type": "persistence",
+        "result": "planned",
+        "notes": "Verify labels and hidden buttons survive refresh and duplicate attempts from multiple tabs are blocked."
+      },
+      {
+        "name": "Stage 5 — Work Queue viewer",
+        "type": "joined-view",
+        "result": "planned",
+        "notes": "Verify one card per working row, correct source join, empty state, warning card, and refresh stability."
+      },
+      {
+        "name": "Stage 6 — Recommendations viewer",
+        "type": "joined-view",
+        "result": "planned",
+        "notes": "Verify only recommendations appear, notes do not change source, malformed records are safe, and no completion email fires."
+      },
+      {
+        "name": "Stage 7 — status transitions",
+        "type": "state-machine",
+        "result": "planned",
+        "notes": "Verify allowed transitions, direct completion, write-once timestamps, backward rejection, and source integrity."
+      },
+      {
+        "name": "Stage 8 — JSON note history",
+        "type": "data-integrity",
+        "result": "planned",
+        "notes": "Verify multiple notes, special characters, blank rejection, malformed JSON protection, order, and refresh persistence."
+      },
+      {
+        "name": "Stage 9 — active/completed filtering",
+        "type": "lifecycle-view",
+        "result": "planned",
+        "notes": "Verify completed work leaves active view, appears in Completed, and retains all records and timestamps."
+      },
+      {
+        "name": "Stage 10 — completion email",
+        "type": "notification",
+        "result": "planned",
+        "notes": "Verify exactly one email, correct recipient and content, invalid-address safety, false flag on failure, retry, and recommendation exclusion."
+      },
+      {
+        "name": "Stage 11 — completed-work history",
+        "type": "historical-view",
+        "result": "planned",
+        "notes": "Verify one completed card, no active tasks, safe missing timestamps, readable notes, visible email state, and persistence."
+      },
+      {
+        "name": "Stage 12 — archive",
+        "type": "lifecycle-view",
+        "result": "planned",
+        "notes": "Verify archive filtering, source retrieval, preserved notes and timestamps, and no deletion."
+      },
+      {
+        "name": "Final end-to-end system test",
+        "type": "acceptance",
+        "result": "planned",
+        "notes": "Verify the entire twenty-one-step workflow and confirm the original source record was never changed."
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "implementation not yet verified",
+      "notes": [
+        "The source defines extensive stage tests but does not report those stages as completed.",
+        "Each implementation stage is expected to be validated independently before proceeding.",
+        "The final acceptance test requires persistence after refreshing every viewer.",
+        "Source-record immutability is a non-negotiable final condition."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Work Queue and Recommendations Implementation Plan",
+      "body": "The implementation plan defines a staged path from the current intake viewer to separate Work and Recommendations queues. Each queue record will remain linked to the original source request, while task status, notes, timestamps, completion history, and email state are stored separately. Every stage must pass visible tests before the next is added.",
+      "audiences": [
+        "project collaborator",
+        "supervisor"
+      ],
+      "detailLevel": "plain-language plan summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "meadows-work-queue-plan-cover",
+      "role": "document-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work_update_image.png",
+      "repositoryPath": "",
+      "altText": "Meadows Housekeeping work update cover showing cleaning tools, schedules, charts, code, clocks, and task lists.",
+      "description": "Hero image used by the Work Queue and Recommendation Queue implementation plan.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "publication location not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Work Queue and Recommendation Queue Implementation Plan",
+    "listingDescription": "A twelve-stage development and testing plan for building a complete operational queue workflow from normalized intake records.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked from document navigation"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "Meadows Housekeeping Work Queue Implementation Plan",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; canonical publication location not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML implementation plan",
+    "sourceFiles": [
+      "wu001.html",
+      "document-sidecar-template(22).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T02:53:09+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source is an implementation plan rather than a dated work update or completion report.",
+      "No creation date, canonical publication URL, repository path, or formal project record was supplied.",
+      "Planned test cases are represented as planned rather than passed.",
+      "The source uses both Work Queue and Recommendation Queue in the page title and Work Queue and Recommendations Queue in the document heading; the latter is retained in descriptive fields.",
+      "Section anchors are taken directly from the source HTML."
+    ],
+    "unresolvedQuestions": [
+      "What date was this implementation plan created?",
+      "What canonical filename and public URL should identify the document?",
+      "Was this plan later superseded by a Work Queue milestone or roadmap document?",
+      "What spreadsheet ID and Apps Script project implement the planned queues?",
+      "Should the recommendations destination be named Recommendation Queue or Recommendations Queue consistently?",
+      "Which later Work Queue version completed each of the twelve planned stages?"
+    ]
+  }
+}

@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-16-meadows-hk-v1-communication-pipeline",
+    "filePath": "work-update-07-16-2026-02.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026-02.html",
+    "title": "Meadows HK V1 Build Report — July 16, 2026",
+    "headline": "A working intake, notification, viewer, and acknowledgement loop",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-16",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-16-2026-02-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-16-meadows-hk-v1-communication-pipeline"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "daily-work-update",
+    "coverageDescription": "Covers the July 16, 2026 construction and verification of Meadows HK V1 as a working communication pipeline. The session refined Google Form intake, normalized submissions into JSON, established Submission_Log as append-only history, delivered alerts through a dedicated Gmail account and phone notifications, embedded a card-based response viewer in Google Sites, exposed raw JSON for inspection, implemented server-side acknowledgement, logged acknowledgement actions separately, and identified routing and task buffers as the next development phase.",
+    "coverageConfidence": "explicit-with-user-supplied-date"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows HK Request System",
+      "projectType": "operational request intake and communication application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a dependable communication loop in which housekeeping requests can be submitted, preserved as structured records, surfaced through alerts and readable cards, acknowledged, and later routed into operational work.",
+      "projectPhase": "V1 working intake, notification, review, and acknowledgement loop",
+      "contributionType": "form refinement, data normalization, append-only logging, notification integration, viewer construction, acknowledgement workflow, testing, and V2 planning",
+      "identificationBasis": "The document explicitly identifies itself as the Meadows HK V1 Build Report and describes the completed working loop.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Submission Viewer",
+        "relationshipType": "human-readable review interface",
+        "relationshipDescription": "The embedded Responses page reads normalized JSON from Submission_Log and presents each submission as a readable card with raw JSON and acknowledgement controls.",
+        "impact": "Structured records became usable without requiring staff to inspect spreadsheet rows.",
+        "evidenceSectionAnchors": [
+          "#website-response-viewer",
+          "#what-we-proved"
+        ],
+        "identificationBasis": "The card viewer is explicitly described as a completed V1 component.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Submission Viewer Routing",
+        "relationshipType": "planned next phase",
+        "relationshipDescription": "The V1 findings identify route-to-task, meeting notes, suggestions, and archive controls as the next extension of the viewer.",
+        "impact": "The working communication loop supplies the source records and interaction pattern for future derived work buffers.",
+        "evidenceSectionAnchors": [
+          "#design-pressures",
+          "#next-logical-steps"
+        ],
+        "identificationBasis": "Routing and destination buffers are explicitly listed as future work.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Submission_Log",
+        "foundationType": "append-only historical record",
+        "relationshipDescription": "Stores normalized JSON representing exactly what entered through the form.",
+        "impact": "Preserves permanent evidence while allowing viewers and action logs to remain derived."
+      },
+      {
+        "foundationId": "",
+        "name": "Normalized JSON record",
+        "foundationType": "flexible structured record",
+        "relationshipDescription": "Removes blank form branches and stores the useful submission as one structured object.",
+        "impact": "Supports readable cards, raw inspection, debugging, and future routing."
+      },
+      {
+        "foundationId": "",
+        "name": "Acknowledgement_Log",
+        "foundationType": "derived action history",
+        "relationshipDescription": "Records acknowledgement activity separately from the original submission.",
+        "impact": "Proves that actions can be layered onto immutable source records."
+      }
+    ],
+    "relationshipSummary": "Meadows HK V1 established the shared source-record, notification, viewer, and action-log foundations that later routing and task-management work can build upon."
+  },
+  "subject": {
+    "projectName": "Meadows HK Request System",
+    "primaryApp": "Meadows HK V1",
+    "mainFocus": "Transforming a rough Google Form experiment into a working request communication loop with structured JSON history, phone alerts, a card viewer, raw-record inspection, and acknowledgement.",
+    "description": "July 16, 2026 work update documenting the first working version of the Meadows HK request, notification, review, and acknowledgement system.",
+    "topics": [
+      "Google Form intake",
+      "Apps Script trigger",
+      "normalized JSON",
+      "Submission_Log",
+      "append-only history",
+      "Gmail alerts",
+      "phone notifications",
+      "Google Sites embed",
+      "card viewer",
+      "raw JSON inspection",
+      "acknowledgement button",
+      "Acknowledgement_Log",
+      "safe testing",
+      "routing roadmap",
+      "V1 development doctrine"
+    ],
+    "keywords": [
+      "Meadows HK V1",
+      "Form Responses",
+      "Submission_Log",
+      "Acknowledgement_Log",
+      "Task_Buffer",
+      "normalized JSON",
+      "Show raw JSON",
+      "Acknowledge",
+      "Apps Script",
+      "Google Site",
+      "dedicated Gmail",
+      "Working V1"
+    ],
+    "appsAffected": [
+      "Meadows HK V1",
+      "Submission Viewer",
+      "Google Form",
+      "Google Site"
+    ],
+    "systemsAffected": [
+      "request intake",
+      "submission history",
+      "work notifications",
+      "response review",
+      "acknowledgement tracking",
+      "future routing"
+    ],
+    "componentsAffected": [
+      "Google Form routes",
+      "Apps Script form trigger",
+      "JSON normalizer",
+      "Submission_Log",
+      "Gmail notification",
+      "Responses page",
+      "card renderer",
+      "raw JSON toggle",
+      "Acknowledge button",
+      "Acknowledgement_Log"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The Meadows HK request system was still a rough Google Form experiment. Form branching created messy response columns, work notifications competed with personal email, and submissions lacked a dependable human-readable review and response loop.",
+    "initialUnderstanding": "The raw response sheet did not need to become the operational interface. Apps Script could normalize each submission into JSON, preserve it in an append-only log, and derive alerts, cards, and acknowledgement actions without rewriting the source.",
+    "intendedOutcome": "Create a usable V1 communication pipeline that captures unexpected requests, preserves structured evidence, alerts the phone, displays readable records, allows raw inspection, and records acknowledgement.",
+    "approach": "Simplify the form while retaining flexible Other options; normalize nonblank submitted fields; write one JSON record to Submission_Log; send alerts to a dedicated Gmail account; embed a card viewer in Google Sites; add raw JSON inspection; implement acknowledgement as a server-side action; log that action separately; and test every layer.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Refined the intake form",
+        "description": "Reduced top-level routes, preserved location detail, and retained Other options for edge cases.",
+        "result": "Unexpected requests could still be captured coherently without perfect advance categorization."
+      },
+      {
+        "sequence": 2,
+        "title": "Created normalized permanent records",
+        "description": "Apps Script ignored blank branch fields and stored the useful submission as JSON in Submission_Log.",
+        "result": "Messy form responses were converted into flexible, inspectable, append-only history."
+      },
+      {
+        "sequence": 3,
+        "title": "Established a dedicated alert channel",
+        "description": "Notifications were sent to an alternate Gmail account configured to alert the phone for every message.",
+        "result": "The email became an alarm signal while the Responses page remained the actual work surface."
+      },
+      {
+        "sequence": 4,
+        "title": "Built the response card viewer",
+        "description": "An Apps Script web app embedded in Google Sites displayed recent submissions as cards with metadata, answered fields, raw JSON, and an acknowledgement control.",
+        "result": "Structured records became readable while retaining direct access to their exact JSON."
+      },
+      {
+        "sequence": 5,
+        "title": "Implemented acknowledgement",
+        "description": "The browser sent submission_id to Apps Script, which resolved the source record, sent a test email, appended Acknowledgement_Log, and changed the card state.",
+        "result": "The system proved that actions could be performed and logged without disturbing Submission_Log."
+      },
+      {
+        "sequence": 6,
+        "title": "Extracted V2 design pressures",
+        "description": "Observed form branching, edge cases, card readability, raw JSON value, dedicated alerts, and manual routing.",
+        "result": "Future work was grounded in real V1 behavior rather than speculative redesign."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Google Form branching produced a wide, messy response sheet.",
+        "effect": "The raw sheet was difficult to treat as a stable operational record or readable work surface.",
+        "resolution": "Apps Script ignored blank branch fields and created a normalized JSON record in Submission_Log.",
+        "status": "resolved for V1"
+      },
+      {
+        "problem": "Work alerts were mixed with personal email.",
+        "effect": "New submissions could be overlooked and the personal inbox became part of the operational workflow.",
+        "resolution": "A separate Gmail account became the Meadows alert inbox and the phone was configured for every-message notification.",
+        "status": "resolved"
+      },
+      {
+        "problem": "The system had no response action beyond viewing a submission.",
+        "effect": "A reviewer could inspect a request but could not record that it had been received.",
+        "resolution": "Added a server-connected Acknowledge button and separate Acknowledgement_Log.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Attempt to enumerate every possible request category in advance.",
+        "whyItWasTried": "Detailed categories appeared likely to improve organization.",
+        "whyItDidNotWork": "Real requests include edge cases that do not fit a complete predefined list.",
+        "whatWasLearned": "Reliable location, description, original evidence, and flexible Other routes matter more than perfect taxonomy."
+      },
+      {
+        "approach": "Treat the Form Responses sheet as the useful operational record.",
+        "whyItWasTried": "It already contained all submitted values.",
+        "whyItDidNotWork": "Branch-generated blank columns made the sheet structurally noisy and difficult to read.",
+        "whatWasLearned": "Raw intake can remain messy when a normalized record layer is created afterward."
+      },
+      {
+        "approach": "Use email as the primary work surface.",
+        "whyItWasTried": "Email is an immediate notification and communication channel.",
+        "whyItDidNotWork": "Email is less suitable than a card viewer for reviewing structured records and source JSON.",
+        "whatWasLearned": "The email only needs to signal that work exists; the viewer should remain the work surface."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Submission_Log became the permanent record",
+        "description": "The system separated raw form intake from normalized, append-only submission history.",
+        "effectOnDirection": "Every later view and action could be derived without rewriting the source."
+      },
+      {
+        "title": "The alert and work surface were separated",
+        "description": "Dedicated Gmail and phone notifications were assigned the alert role, while the Responses page handled review.",
+        "effectOnDirection": "The communication system became clearer and less dependent on inbox management."
+      },
+      {
+        "title": "Acknowledgement proved the action pattern",
+        "description": "A card button successfully called server-side Apps Script and created a separate action record.",
+        "effectOnDirection": "The viewer became a foundation for later routing and task controls rather than a passive display."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Keep Submission_Log append-only.",
+        "reason": "It must remain the permanent receipt of what entered the system.",
+        "alternativesConsidered": [
+          "Update the submission row when acknowledged",
+          "Move records into action sheets"
+        ],
+        "consequences": [
+          "Original history remains intact.",
+          "Actions require separate linked records."
+        ]
+      },
+      {
+        "decision": "Store normalized JSON in one log cell.",
+        "reason": "JSON can preserve varied form responses without forcing every branch into a fixed wide table.",
+        "alternativesConsidered": [
+          "Use only the raw Form Responses row",
+          "Create fixed columns for every possible branch"
+        ],
+        "consequences": [
+          "The record remains flexible and inspectable.",
+          "Cards and future routing can use the same source object."
+        ]
+      },
+      {
+        "decision": "Use a dedicated Gmail account only as an alert channel.",
+        "reason": "Operational notifications should remain separate from personal email, and the viewer is a better review surface.",
+        "alternativesConsidered": [
+          "Continue sending alerts to personal Gmail",
+          "Perform all review inside email"
+        ],
+        "consequences": [
+          "Phone alerts became reliable.",
+          "The Responses page retained the full operational context."
+        ]
+      },
+      {
+        "decision": "Send acknowledgements to a safe test address.",
+        "reason": "The server action and email loop needed verification before contacting a supervisor.",
+        "alternativesConsidered": [
+          "Send immediately to the supervisor"
+        ],
+        "consequences": [
+          "Testing could proceed without accidental external communication."
+        ]
+      },
+      {
+        "decision": "Keep V1 in use while V2 is learned from it.",
+        "reason": "Observed use provides better requirements than redesigning from imagination.",
+        "alternativesConsidered": [
+          "Replace V1 immediately because it is imperfect"
+        ],
+        "consequences": [
+          "The working system remains available.",
+          "Future architecture can be based on actual pressures and edge cases."
+        ]
+      }
+    ],
+    "methodEstablished": "Capture broadly, normalize after intake, preserve immutable JSON history, derive human-readable views and action logs, separate alerts from work surfaces, test with safe targets, and let working V1 usage determine V2.",
+    "result": "Meadows HK V1 became a usable intake, notification, review, raw-record inspection, and acknowledgement system.",
+    "lessonsLearned": [
+      "Form categories can remain imperfect when the original submission and flexible description are preserved.",
+      "Messy intake does not require a messy permanent record.",
+      "JSON provides a durable bridge between variable form input and readable interfaces.",
+      "Cards are better for human review than raw spreadsheet rows.",
+      "Raw JSON should remain available for confidence and debugging.",
+      "Email can function as an alert without becoming the work surface.",
+      "A simple action button can establish the pattern for future routing.",
+      "Working systems reveal better next-version requirements than speculative redesign."
+    ],
+    "directionChange": "The project moved from a form experiment to a working communication system and established routing buffers as the next phase.",
+    "narrativeSummary": "The July 16 V1 session connected form intake, normalized JSON, append-only history, dedicated alerts, a Google Sites card viewer, raw-record inspection, and a separately logged acknowledgement action into one complete communication loop."
+  },
+  "projectDelta": {
+    "previousState": "The project consisted primarily of a rough Google Form experiment without a normalized permanent record, dedicated alert channel, embedded review interface, raw JSON inspection, or logged acknowledgement action.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Simplified Google Form intake",
+        "description": "Reduced route complexity, retained Other options, and preserved operational location and description details.",
+        "evidenceSectionAnchors": [
+          "#google-form-changes"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Normalized JSON logging",
+        "description": "Converted submitted form rows into structured JSON stored in append-only Submission_Log.",
+        "evidenceSectionAnchors": [
+          "#json-permanent-log"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Dedicated notification channel",
+        "description": "Sent Meadows alerts to an alternate Gmail account configured for phone notification.",
+        "evidenceSectionAnchors": [
+          "#dedicated-notification-channel"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Embedded card viewer",
+        "description": "Displayed Submission_Log records as readable cards on the Google Sites Responses page.",
+        "evidenceSectionAnchors": [
+          "#website-response-viewer"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Raw JSON inspection",
+        "description": "Added a collapsible source-record view to each submission card.",
+        "evidenceSectionAnchors": [
+          "#website-response-viewer"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Acknowledgement workflow",
+        "description": "Connected a card button to server-side email and Acknowledgement_Log creation.",
+        "evidenceSectionAnchors": [
+          "#acknowledge-button"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "V1 end-to-end proof",
+        "description": "Verified form trigger, JSON creation, historical preservation, phone alerts, embedded cards, server actions, and separate action logging.",
+        "evidenceSectionAnchors": [
+          "#what-we-proved"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Routing controls",
+        "description": "Add route-to-task, meeting-notes, suggestions, and archive actions to submission cards.",
+        "reasonStillOpen": "The V1 report explicitly states that routing is not yet built."
+      },
+      {
+        "workItemId": "",
+        "title": "Derived work buffers",
+        "description": "Create Task_Buffer, Meeting_Notes, Suggestions, and related destination records.",
+        "reasonStillOpen": "The report identifies task and routing buffers as the next logical phase."
+      },
+      {
+        "workItemId": "",
+        "title": "Production acknowledgement recipient",
+        "description": "Replace the safe test email destination with the appropriate real recipient after verification.",
+        "reasonStillOpen": "Acknowledgements currently go to the alternate test account rather than the supervisor."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Fixed JSON objects for V2",
+        "description": "Use structured JSON as the primary record model from the beginning rather than treating branch-heavy spreadsheet columns as canonical.",
+        "source": "#design-pressures"
+      },
+      {
+        "workItemId": "",
+        "title": "Human-readable cards as default interface",
+        "description": "Build later versions around cards while retaining raw JSON inspection.",
+        "source": "#design-pressures"
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "Parallel V2 build",
+        "reasonDeferred": "V1 should first collect real submissions and reveal actual workflow requirements.",
+        "reconsiderAfter": "V1 has accumulated enough real-use evidence."
+      }
+    ],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Raw Form Responses as the main operational record",
+        "supersededBy": "Normalized JSON in Submission_Log",
+        "reason": "Branch-generated columns were too noisy for reliable history and readable use."
+      },
+      {
+        "workItemId": "",
+        "title": "Personal Gmail as the Meadows alert channel",
+        "supersededBy": "Dedicated alternate Gmail inbox",
+        "reason": "Work notifications needed separation from personal email."
+      }
+    ],
+    "resultingState": "V1 now captures requests, creates normalized JSON, preserves append-only history, sends dedicated phone alerts, displays readable cards, shows raw JSON, performs acknowledgement, sends a safe test email, and logs the action separately.",
+    "roadmapChangeSummary": "The project advanced from intake experimentation to a working communication loop. The next phase is derived routing and work buffers, while V2 remains intentionally deferred until V1 supplies enough real-use evidence.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Continue operating V1",
+        "description": "Collect real submissions and observe actual request patterns.",
+        "priority": "high",
+        "status": "ongoing"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Test form edge cases",
+        "description": "Confirm that unusual submissions continue to normalize and display clearly.",
+        "priority": "high",
+        "status": "ongoing"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Add routing buttons",
+        "description": "Introduce Task, Meeting Notes, Suggestions, and Archive destinations.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Create derived buffers",
+        "description": "Implement Task_Buffer, Meeting_Notes, Suggestions, and related append-only or mutable records.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "",
+        "title": "Plan V2 from observed pressures",
+        "description": "Use accumulated V1 evidence to define fixed JSON objects, card-first views, raw inspection, alerts, and communication actions.",
+        "priority": "medium",
+        "status": "deferred"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The Meadows request form now feeds a working system that preserves each submission, alerts a phone, displays a readable card, and records acknowledgement without changing the original history.",
+      "operationalImpact": "New requests are easier to notice, review, inspect, and acknowledge, while the original submission remains available as evidence.",
+      "currentStatus": "V1 is usable for intake, notification, review, raw JSON inspection, and acknowledgement. Routing and task buffers are not yet built.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Acknowledgement email still uses a safe test recipient.",
+        "Routing and task buffers remain unimplemented.",
+        "Google Form branching still produces a messy raw response sheet.",
+        "V1 is not yet a complete task-management system."
+      ],
+      "staffVisibleChanges": [
+        "Simpler request form",
+        "Phone notification for new submissions",
+        "Readable response cards",
+        "Raw JSON inspection",
+        "Acknowledge button",
+        "Visible acknowledged state"
+      ],
+      "nextOperationalStep": "Continue using V1, test edge cases, and add linked routing records without changing Submission_Log.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-milestone",
+          "relatedSectionAnchor": "#executive-summary",
+          "type": "milestone",
+          "title": "A complete communication loop",
+          "text": "Requests can now be submitted, logged, alerted, reviewed, inspected, acknowledged, and recorded."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-history",
+          "relatedSectionAnchor": "#json-permanent-log",
+          "type": "rule",
+          "title": "Original history remains intact",
+          "text": "Submission_Log records what came in; acknowledgement and future tasks are stored separately."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-status",
+          "relatedSectionAnchor": "#current-v1-status",
+          "type": "status",
+          "title": "V1 works; routing is next",
+          "text": "The intake and acknowledgement system is usable, but routing and task buffers remain future work."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Meadows HK V1 became a working communication pipeline from form submission through notification, card review, raw JSON inspection, and acknowledgement.",
+      "keyPoints": [
+        "Google Form intake works",
+        "Normalized JSON logging works",
+        "Phone alerts work",
+        "Card viewer works",
+        "Raw JSON toggle works",
+        "Acknowledgement works",
+        "Routing is not yet built"
+      ]
+    },
+    "technical": {
+      "summary": "A Google Form trigger normalizes submitted data into JSON, appends it to Submission_Log, sends Gmail alerts, serves a Google Sites card viewer, and handles acknowledgement through submission_id lookup, email delivery, and Acknowledgement_Log append.",
+      "keyPoints": [
+        "Branch-heavy form intake normalized after submission",
+        "Submission_Log remains append-only",
+        "JSON stored as the flexible canonical record",
+        "Cards derive from the source record",
+        "Browser sends submission_id for acknowledgement",
+        "Server resolves the original record",
+        "Actions are logged separately",
+        "Safe recipient used during testing"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Meadows HK requests can be reliably captured even when real cases exceed the current category list.",
+      "The Responses page is a better operational surface than either Form Responses or email.",
+      "Acknowledgement provides the first reusable pattern for future route buttons."
+    ],
+    "generalLessons": [
+      "Raw intake and canonical records can be separate layers.",
+      "Append-only history should be protected from operational actions.",
+      "JSON can compress irregular form submissions into one flexible record.",
+      "A readable card and raw JSON view serve different but complementary needs.",
+      "Alerts and work surfaces should be assigned separate responsibilities.",
+      "Safe test recipients reduce risk during communication automation.",
+      "A working imperfect V1 is a requirements-discovery instrument."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Branching forms produce sparse, wide response sheets.",
+        "pattern": "Each conditional path creates columns that are blank for most submissions.",
+        "projectsObservedIn": [
+          "Meadows HK Request System"
+        ]
+      },
+      {
+        "problem": "Source records are tempted to become mutable workflow records.",
+        "pattern": "Acknowledgement, routing, and task state are added directly to the original submission instead of separate linked logs.",
+        "projectsObservedIn": [
+          "Meadows HK Request System"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Normalize branching Google Form responses into JSON",
+        "description": "Ignore blank branch fields and store a compact structured record in an append-only log.",
+        "suggestedDestination": "Klinswork data architecture",
+        "supportingSectionAnchors": [
+          "#json-permanent-log"
+        ]
+      },
+      {
+        "title": "Separate notification channels from operational work surfaces",
+        "description": "Use email and phone notifications as alerts while reviewing complete records in a dedicated viewer.",
+        "suggestedDestination": "Klinswork communication architecture",
+        "supportingSectionAnchors": [
+          "#dedicated-notification-channel"
+        ]
+      },
+      {
+        "title": "Add actions without rewriting source history",
+        "description": "Resolve the source by ID and append acknowledgement or routing events to separate logs.",
+        "suggestedDestination": "Klinswork event architecture",
+        "supportingSectionAnchors": [
+          "#acknowledge-button",
+          "#json-permanent-log"
+        ]
+      },
+      {
+        "title": "Use a working V1 to discover V2 requirements",
+        "description": "Preserve an imperfect but functional system long enough to observe real design pressures.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#design-pressures",
+          "#next-logical-steps"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Submission_Log must remain append-only.",
+        "changeType": "confirmed",
+        "explanation": "It records what entered the system; acknowledgements and future tasks belong in derived logs."
+      },
+      {
+        "rule": "Preserve raw JSON beneath human-readable cards.",
+        "changeType": "added",
+        "explanation": "Cards improve readability while raw JSON supports inspection, confidence, and debugging."
+      },
+      {
+        "rule": "Use email as an alert, not as the primary workspace.",
+        "changeType": "added",
+        "explanation": "The Responses page presents fuller structured context."
+      },
+      {
+        "rule": "Test automated communication with safe recipients first.",
+        "changeType": "added",
+        "explanation": "The acknowledgement loop was proven without contacting the supervisor."
+      },
+      {
+        "rule": "Do not replace a working V1 solely because it is imperfect.",
+        "changeType": "added",
+        "explanation": "Operational use supplies evidence for a better V2."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "executive-summary",
+      "title": "Executive Summary",
+      "anchor": "#executive-summary",
+      "contentSummary": "The system moved from a rough Google Form experiment to a working communication pipeline. A submission is captured, normalized into JSON, stored, alerted through Gmail and phone notification, displayed as a card, inspected in raw form, acknowledged, and logged.",
+      "narrativeRole": "milestone-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Executive Summary.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-milestone",
+        "reason": "Explains the primary operational milestone, evidence-preservation rule, or current system status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "current-working-pipeline",
+      "title": "Current Working Pipeline",
+      "anchor": "#current-working-pipeline",
+      "contentSummary": "The working flow is Google Form to Apps Script to Submission_Log to Gmail Alert to Responses Page to Acknowledge. Submission_Log remains historical while all other views and actions are derived.",
+      "narrativeRole": "system-flow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Current Working Pipeline.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "google-form-changes",
+      "title": "What We Changed in the Google Form",
+      "anchor": "#google-form-changes",
+      "contentSummary": "The form was simplified through fewer top-level routes, Other categories, preserved location fields, and flexible descriptions so unexpected cases can still be captured.",
+      "narrativeRole": "intake-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: What We Changed in the Google Form.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Normalize branching Google Form responses into JSON"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "json-permanent-log",
+      "title": "JSON and the Permanent Log",
+      "anchor": "#json-permanent-log",
+      "contentSummary": "Form Responses remain raw intake; Apps Script creates normalized JSON in append-only Submission_Log; Acknowledgement_Log records response actions; future Task_Buffer will hold actionable derivatives.",
+      "narrativeRole": "data-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: JSON and the Permanent Log.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-history",
+        "reason": "Explains the primary operational milestone, evidence-preservation rule, or current system status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Normalize branching Google Form responses into JSON",
+          "Add actions without rewriting source history"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "website-response-viewer",
+      "title": "Website Response Viewer",
+      "anchor": "#website-response-viewer",
+      "contentSummary": "An Apps Script web app embedded in Google Sites reads Submission_Log and displays cards containing summaries, categories, timestamps, submission IDs, answered fields, raw JSON, and acknowledgement controls.",
+      "narrativeRole": "interface-implementation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Website Response Viewer.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Preserve raw JSON beneath human-readable cards"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "dedicated-notification-channel",
+      "title": "Dedicated Notification Channel",
+      "anchor": "#dedicated-notification-channel",
+      "contentSummary": "An alternate Gmail account became the Meadows alert inbox and the phone signals every new message. Email serves as the alarm while the Responses page remains the work surface.",
+      "narrativeRole": "communication-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Dedicated Notification Channel.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Separate notification channels from operational work surfaces"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "acknowledge-button",
+      "title": "Acknowledge Button",
+      "anchor": "#acknowledge-button",
+      "contentSummary": "The button sends submission_id to Apps Script, which retrieves the source record, sends a test acknowledgement email, appends Acknowledgement_Log, and changes the card to Acknowledged.",
+      "narrativeRole": "action-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Acknowledge Button.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Add actions without rewriting source history"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "what-we-proved",
+      "title": "What We Proved Today",
+      "anchor": "#what-we-proved",
+      "contentSummary": "The session proved form triggers, JSON creation, immutable history, phone alerts, a live embedded card viewer, browser-to-server actions, and separate acknowledgement logging, along with the principles behind those choices.",
+      "narrativeRole": "verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: What We Proved Today.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "design-pressures",
+      "title": "Design Pressures Learned from V1",
+      "anchor": "#design-pressures",
+      "contentSummary": "Observed V1 pressures imply that V2 should use fixed JSON objects, preserve free-text edge cases, begin with card views, retain raw JSON, keep dedicated alerts, support communication actions early, and later add routing.",
+      "narrativeRole": "lessons-and-v2-input",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Design Pressures Learned from V1.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Use a working V1 to discover V2 requirements"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "current-v1-status",
+      "title": "Current V1 Status",
+      "anchor": "#current-v1-status",
+      "contentSummary": "Form intake, JSON logging, phone alerts, card viewing, raw JSON inspection, and acknowledgement work. Routing and Task_Buffer do not yet exist, so V1 is usable but not a full task-management system.",
+      "narrativeRole": "status",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Current V1 Status.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-status",
+        "reason": "Explains the primary operational milestone, evidence-preservation rule, or current system status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "next-logical-steps",
+      "title": "Next Logical Steps",
+      "anchor": "#next-logical-steps",
+      "contentSummary": "Continue using V1, test edge cases, later add routing buttons and derived buffers, and build V2 in parallel only after real V1 use has provided enough evidence.",
+      "narrativeRole": "roadmap",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: Next Logical Steps.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Use a working V1 to discover V2 requirements"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "one-sentence-summary",
+      "title": "One-Sentence Summary",
+      "anchor": "#one-sentence-summary",
+      "contentSummary": "The session created a complete Meadows HK communication loop without disturbing the original history log.",
+      "narrativeRole": "closing-summary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Meadows HK V1 contribution: One-Sentence Summary.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Forms",
+      "Google Apps Script",
+      "Google Sheets",
+      "Gmail",
+      "Google Sites",
+      "mobile phone notifications"
+    ],
+    "apps": [
+      "Meadows HK V1",
+      "Submission Viewer"
+    ],
+    "scripts": [
+      "form-submit trigger",
+      "submission normalizer",
+      "acknowledgement handler"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "JSON"
+    ],
+    "services": [
+      "Google Apps Script",
+      "Gmail delivery",
+      "Google Sites embedding"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Form Responses",
+      "Submission_Log",
+      "Acknowledgement_Log",
+      "Future Task_Buffer"
+    ],
+    "files": [
+      "preview.html"
+    ],
+    "integrations": [
+      "Google Form to Apps Script",
+      "Apps Script to Google Sheets",
+      "Apps Script to Gmail",
+      "Apps Script web app to Google Sites",
+      "card button to server-side acknowledgement"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [
+      "Meadows HK V1"
+    ],
+    "tests": [
+      {
+        "name": "Form submission trigger",
+        "type": "integration",
+        "result": "passed",
+        "notes": "A Google Form submission successfully triggered Apps Script."
+      },
+      {
+        "name": "Normalized JSON creation",
+        "type": "data-processing",
+        "result": "passed",
+        "notes": "Apps Script created structured JSON while ignoring blank branch fields."
+      },
+      {
+        "name": "Submission history preservation",
+        "type": "data-integrity",
+        "result": "passed",
+        "notes": "Submission_Log preserved the original normalized record."
+      },
+      {
+        "name": "Dedicated Gmail phone alert",
+        "type": "notification",
+        "result": "passed",
+        "notes": "The alternate Gmail account received the alert and the phone notified."
+      },
+      {
+        "name": "Embedded response viewer",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The Google Site displayed live submission cards from Submission_Log."
+      },
+      {
+        "name": "Raw JSON inspection",
+        "type": "interface",
+        "result": "passed",
+        "notes": "Each card exposed a collapsible raw JSON section."
+      },
+      {
+        "name": "Acknowledgement browser state",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The button changed to Acknowledged after the action."
+      },
+      {
+        "name": "Acknowledgement server action",
+        "type": "integration",
+        "result": "passed",
+        "notes": "Apps Script resolved submission_id, sent the test email, and appended Acknowledgement_Log."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "The complete Submit → Notify → View → Inspect JSON → Acknowledge → Log acknowledgement loop was demonstrated.",
+        "The original submission history remained separate from acknowledgement activity.",
+        "Safe test email targets were used instead of contacting the supervisor.",
+        "Routing and Task_Buffer were correctly reported as not yet implemented."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Meadows HK V1 Communication Pipeline Update",
+      "body": "The Meadows HK request system now supports a complete working loop. Requests can be submitted through the form, stored as normalized JSON, alerted to the phone, reviewed as readable cards on the Responses page, inspected in raw form, and acknowledged through a logged server-side action. Routing and task buffers remain the next development phase.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "local reconstruction; publication URL inferred",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026-02.html",
+    "listingTitle": "Meadows HK V1 Build Report — July 16, 2026",
+    "listingDescription": "Work update documenting the first working Meadows HK intake, JSON logging, notification, card-viewing, and acknowledgement loop.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-07-16-2026-02.html",
+        "status": "inferred; not verified from source"
+      },
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "intended documentation destination"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Meadows HK V1",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "working V1 web app; canonical deployment URL not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "Local HTML",
+        "resourceName": "Meadows HK V1 Build Report",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "local reconstruction document",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML reconstruction document",
+    "sourceFiles": [
+      "preview.html",
+      "document-sidecar-template(22).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T02:50:34+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source is titled as a V1 Build Report rather than a Work Update, but its content is a dated account of work completed during one session.",
+      "The user identified the document as a July 16 work update and requested the 02 filename to distinguish it from another update on that date.",
+      "The source calls itself a local HTML reconstruction document and does not provide a canonical publication filename or URL.",
+      "The canonical work-update URL is inferred from the user's established work_updates directory and requested 02 naming convention.",
+      "Section anchors are normalized descriptive anchors for the sidecar because the source HTML sections do not carry IDs."
+    ],
+    "unresolvedQuestions": [
+      "Was this document ever published under a different historical filename?",
+      "What is the canonical Apps Script deployment URL for Meadows HK V1?",
+      "What formal project ID and project-record path should own the V1 request system?",
+      "Should Meadows HK V1 be modeled as a predecessor of Work Queue or as a separate communications project?"
+    ]
+  }
+}

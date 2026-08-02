@@ -1,0 +1,889 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-21-inventory-3-tool-center",
+    "filePath": "work-update-07-21-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-21-2026.html",
+    "title": "Work Update — July 21, 2026",
+    "headline": "Inventory 3.0 was conceived and created today.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-21",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-21-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-21-inventory-3-tool-center"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "daily-work-update",
+    "coverageDescription": "Covers the July 21, 2026 work session in which Inventory 3.0 was conceived and created, the Klinswork Tool Center was refined, mobile layout and image behavior were corrected, favicon and home-screen installation issues were investigated, product images were repaired, and Email Composer was further integrated into the shared tool environment.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory 3.0",
+      "projectType": "personal operational inventory application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a stable personal system for tracking cart inventory, recording quantity changes and reasons, and preserving reliable operational history.",
+      "projectPhase": "initial architecture and creation",
+      "contributionType": "project conception, architecture, interface support, and ecosystem integration",
+      "identificationBasis": "The work update explicitly states that Inventory 3.0 was conceived, designed, and created during the session.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Klinswork Tool Center",
+        "relationshipType": "shared application hub",
+        "relationshipDescription": "The Tool Center was refined to present Inventory 3.0, Tasker, and Email Composer as one coherent system.",
+        "impact": "Inventory 3.0 gained a common entrance, stronger branding, and corrected mobile access.",
+        "evidenceSectionAnchors": [
+          "#tool-center",
+          "#achievement"
+        ],
+        "identificationBasis": "Explicitly described in the work update.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Email Composer",
+        "relationshipType": "related application integration",
+        "relationshipDescription": "Email Composer presentation and identity were refined inside the Tool Center.",
+        "impact": "It became a more visible component of the broader Klinswork system.",
+        "evidenceSectionAnchors": [
+          "#email"
+        ],
+        "identificationBasis": "Explicitly described in the work update.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Tasker",
+        "relationshipType": "related application listed in shared hub",
+        "relationshipDescription": "Tasker was presented alongside Inventory 3.0 and Email Composer in the Tool Center.",
+        "impact": "The applications were framed as parts of one personal work-software system.",
+        "evidenceSectionAnchors": [
+          "#tool-center",
+          "#achievement"
+        ],
+        "identificationBasis": "Explicit mention in the Tool Center section.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Klinswork visual identity",
+        "foundationType": "shared branding and interface foundation",
+        "relationshipDescription": "Yellow-and-blue styling, monkey branding, and shared presentation were refined across the tool environment.",
+        "impact": "Improved consistency, recognition, and mobile usability."
+      },
+      {
+        "foundationId": "",
+        "name": "GitHub-hosted images",
+        "foundationType": "shared publication asset foundation",
+        "relationshipDescription": "Work-update and product images were prepared for use across Inventory 3.0 and the Tool Center.",
+        "impact": "Improved product presentation and documentation consistency."
+      }
+    ],
+    "relationshipSummary": "The session created Inventory 3.0 while also strengthening the shared Tool Center, visual identity, mobile behavior, and image workflow used across the broader Klinswork system."
+  },
+  "subject": {
+    "projectName": "Inventory 3.0",
+    "primaryApp": "Inventory 3.0",
+    "mainFocus": "Creating Inventory 3.0 as a new personal inventory system while unifying the Klinswork tools, correcting mobile behavior, and establishing more reliable image and branding workflows.",
+    "description": "Klinswork work update for July 21, 2026, covering Inventory 3.0, Tool Center improvements, mobile fixes, image troubleshooting, and next steps.",
+    "topics": [
+      "Inventory 3.0 creation",
+      "inventory architecture",
+      "cart inventory",
+      "inventory adjustments",
+      "inventory history",
+      "Klinswork Tool Center",
+      "mobile viewport repair",
+      "responsive images",
+      "favicon troubleshooting",
+      "web-app manifest",
+      "home-screen icons",
+      "image transparency",
+      "product-image repair",
+      "image batch processing",
+      "Email Composer integration"
+    ],
+    "keywords": [
+      "Inventory 3.0",
+      "Config.gs",
+      "DataService.gs",
+      "InventoryService.gs",
+      "Validation.gs",
+      "Klinswork Tool Center",
+      "Tasker",
+      "Email Composer",
+      "viewport meta tag",
+      "object-fit contain",
+      "favicon",
+      "web-app manifest",
+      "PNG transparency",
+      "GIMP",
+      "Pillow"
+    ],
+    "appsAffected": [
+      "Inventory 3.0",
+      "Klinswork Tool Center",
+      "Tasker",
+      "Email Composer"
+    ],
+    "systemsAffected": [
+      "Klinswork documentation",
+      "Klinswork visual identity",
+      "mobile installation workflow"
+    ],
+    "componentsAffected": [
+      "inventory backend architecture",
+      "Tool Center cards and navigation",
+      "viewport metadata",
+      "responsive image styles",
+      "favicon and manifest",
+      "product-image assets"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "Earlier inventory versions had become patchwork, while the growing Klinswork tool set still behaved like separate experiments. Mobile scaling, cropped images, inconsistent icons, and product-image problems also limited practical use.",
+    "initialUnderstanding": "A new inventory system should begin as a fresh architecture rather than another repair, and the surrounding tool environment needed coordinated mobile, branding, and image improvements.",
+    "intendedOutcome": "Create a stable personal inventory foundation, make the Tool Center a coherent entrance to the applications, and correct the most important mobile and visual problems.",
+    "approach": "Separate configuration, data access, business rules, and validation into focused backend files; refine the Tool Center; diagnose viewport and image behavior; repair branding assets; and document a future batch-image workflow.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Defined Inventory 3.0 as a fresh system",
+        "description": "Rejected another patch to prior inventory versions and established a new architecture.",
+        "result": "Four focused backend service files and a clear personal inventory purpose were established."
+      },
+      {
+        "sequence": 2,
+        "title": "Unified the Klinswork entry point",
+        "description": "Refined the Tool Center to present Inventory 3.0, Tasker, and Email Composer as one system.",
+        "result": "The tools gained a common entrance, clearer identity, and improved mobile access."
+      },
+      {
+        "sequence": 3,
+        "title": "Diagnosed mobile and image failures",
+        "description": "Corrected missing viewport metadata and replaced cropping behavior with proportional responsive image rules.",
+        "result": "Pages rendered at readable mobile scale and complete images remained visible."
+      },
+      {
+        "sequence": 4,
+        "title": "Resolved branding and product-image issues",
+        "description": "Worked through favicon formats, home-screen icons, manifests, transparency, halos, and product-image artifacts.",
+        "result": "Branding behavior was clarified and product imagery was repaired for practical interface use."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "The Apps Script page appeared as a tiny desktop page on a phone.",
+        "effect": "Text and cards were difficult to use on mobile.",
+        "resolution": "Added the viewport meta tag through doGet() and redeployed.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Images became cropped after mobile scaling was corrected.",
+        "effect": "Important portions of product and interface images were cut away.",
+        "resolution": "Removed fixed-height cropping behavior and used height:auto with object-fit:contain.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Favicon and home-screen icon behavior was inconsistent.",
+        "effect": "Branding updates did not appear reliably across browsers and phones.",
+        "resolution": "Separated favicon, manifest, and home-screen icon responsibilities, corrected formats and dimensions, redeployed, and accounted for caching.",
+        "status": "resolved"
+      },
+      {
+        "problem": "The Prominence product image contained a gray background and right-edge artifact.",
+        "effect": "The image looked poor inside Inventory 3.0.",
+        "resolution": "Recreated the edge and produced both clean and white-background versions.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Continuing to patch earlier inventory versions.",
+        "whyItWasTried": "It would have reused existing work.",
+        "whyItDidNotWork": "The update explicitly concluded that Inventory 3.0 needed a fresh start and stable architecture.",
+        "whatWasLearned": "A clean boundary is preferable when accumulated patches obscure responsibilities."
+      },
+      {
+        "approach": "Using fixed image heights with object-fit:cover.",
+        "whyItWasTried": "It filled card areas consistently.",
+        "whyItDidNotWork": "It cropped image content after the mobile layout was corrected.",
+        "whatWasLearned": "Product and documentation images should preserve their full proportions."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Inventory 3.0 became a new system rather than an update",
+        "description": "The work explicitly reframed the inventory effort as a clean architecture.",
+        "effectOnDirection": "Development moved toward separated services and a durable personal system."
+      },
+      {
+        "title": "Viewport repair exposed the image problem",
+        "description": "Correct mobile scaling made previously hidden cropping behavior visible.",
+        "effectOnDirection": "Responsive image rules were revised rather than treating the viewport fix as complete."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Separate configuration, data access, business logic, and validation.",
+        "reason": "The new system should avoid becoming one large script file.",
+        "alternativesConsidered": [
+          "Place all logic in a single script"
+        ],
+        "consequences": [
+          "Responsibilities became clearer.",
+          "Future testing and maintenance became easier."
+        ]
+      },
+      {
+        "decision": "Use the Tool Center as the common entrance to the apps.",
+        "reason": "The applications should operate as one coherent personal system instead of isolated experiments.",
+        "alternativesConsidered": [
+          "Keep separate entry points without shared presentation"
+        ],
+        "consequences": [
+          "Shared branding and navigation became more important.",
+          "Inventory 3.0, Tasker, and Email Composer gained a visible relationship."
+        ]
+      },
+      {
+        "decision": "Preserve complete images rather than crop them into fixed boxes.",
+        "reason": "Product and documentation images need to remain fully legible.",
+        "alternativesConsidered": [
+          "Continue using object-fit:cover"
+        ],
+        "consequences": [
+          "Images scale proportionally.",
+          "Card layouts may need to accommodate natural image height."
+        ]
+      }
+    ],
+    "methodEstablished": "Treat mobile layout, responsive images, browser favicons, mobile home-screen icons, manifests, and image transparency as separate technical concerns and test each one directly.",
+    "result": "Inventory 3.0 was established as a new structured application, while the broader Klinswork environment became more unified, mobile-friendly, recognizable, and practical.",
+    "lessonsLearned": [
+      "A viewport fix can reveal separate responsive-image problems.",
+      "Browser favicons and mobile home-screen icons are different delivery mechanisms.",
+      "Checkerboard appearance must be tested to determine whether transparency is real or baked into the image.",
+      "Repeated manual image cleanup justifies an automated batch-processing workflow."
+    ],
+    "directionChange": "The work shifted from patching an inventory tool toward building a coherent personal software system with shared access, branding, mobile behavior, and future automation.",
+    "narrativeSummary": "The July 21 session combined the creation of Inventory 3.0 with Tool Center integration, mobile and image troubleshooting, branding repair, and planning for repeatable image automation."
+  },
+  "projectDelta": {
+    "previousState": "Earlier inventory versions existed, but Inventory 3.0 had not yet been defined as a fresh architecture. The Tool Center and related applications were less unified, and mobile, image, favicon, and product-asset issues remained.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Inventory 3.0 architecture",
+        "description": "Created the initial four-file backend architecture and defined the system's purpose.",
+        "evidenceSectionAnchors": [
+          "#inventory"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Tool Center unification",
+        "description": "Refined the shared entrance, identity, descriptions, and mobile access.",
+        "evidenceSectionAnchors": [
+          "#tool-center"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Mobile viewport repair",
+        "description": "Corrected Apps Script mobile scaling through viewport metadata.",
+        "evidenceSectionAnchors": [
+          "#troubleshooting"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Responsive image repair",
+        "description": "Replaced cropping behavior with proportional image scaling.",
+        "evidenceSectionAnchors": [
+          "#troubleshooting"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Product-image repair",
+        "description": "Repaired the Prominence image and produced a white-background version.",
+        "evidenceSectionAnchors": [
+          "#images"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Image automation workflow",
+        "completedPortion": "The need, candidate tools, and desired operations were identified.",
+        "remainingPortion": "The Python or GIMP automation script was not yet built.",
+        "evidenceSectionAnchors": [
+          "#images"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Build batch image-processing utility",
+        "description": "Automate resizing, centering, transparency preservation, white-background copies, thumbnails, icons, format conversion, and filename standardization.",
+        "reasonStillOpen": "Only the future workflow was identified."
+      },
+      {
+        "workItemId": "",
+        "title": "Continue Inventory 3.0 implementation",
+        "description": "Build the application beyond the initial architecture and purpose definition.",
+        "reasonStillOpen": "The update documents conception and initial creation, not full project completion."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Separate mobile installation concerns",
+        "description": "Document and standardize the distinct roles of viewport metadata, favicon, manifest, and home-screen icons.",
+        "source": "#troubleshooting"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Continue patching earlier inventory versions",
+        "supersededBy": "Inventory 3.0 fresh architecture",
+        "reason": "The new system was intentionally defined as a clean start."
+      }
+    ],
+    "resultingState": "Inventory 3.0 has an initial modular architecture and clear operational purpose. The Tool Center is a stronger shared entrance, mobile scaling and image behavior are corrected, branding responsibilities are clearer, and product-image preparation is more reliable.",
+    "roadmapChangeSummary": "The work established Inventory 3.0 as a new project and added future image automation and continued ecosystem integration to the roadmap.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Continue Inventory 3.0 development",
+        "description": "Build functional inventory workflows on the new modular architecture.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Standardize product-image assets",
+        "description": "Apply the clarified transparency, sizing, and background rules to remaining images.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Build batch image automation",
+        "description": "Create a repeatable Pillow or GIMP-based processing utility.",
+        "priority": "medium",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Continue Tool Center integration",
+        "description": "Maintain consistent identity and presentation across Inventory 3.0, Tasker, and Email Composer.",
+        "priority": "medium",
+        "status": "open"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "A new personal inventory system was started, and the shared Klinswork entry page was improved so the main work tools are easier to access and use on a phone.",
+      "operationalImpact": "The inventory work now has a cleaner technical foundation, while mobile access, image presentation, and the common tool entrance are more practical.",
+      "currentStatus": "Inventory 3.0 has been conceived and its initial architecture created. The surrounding Tool Center and mobile presentation were improved, but the inventory project is not yet complete.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Inventory 3.0 is still at an early development stage.",
+        "Image preparation remains partly manual.",
+        "Browser and phone caching may delay visible icon updates."
+      ],
+      "staffVisibleChanges": [
+        "Improved mobile sizing",
+        "Images display without cropping",
+        "More consistent Tool Center branding and presentation"
+      ],
+      "nextOperationalStep": "Continue building Inventory 3.0 on the new architecture and standardize the remaining product images.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-inventory",
+          "relatedSectionAnchor": "#inventory",
+          "type": "status",
+          "title": "A new inventory system began",
+          "text": "Inventory 3.0 was defined as a fresh system with separate configuration, data, business-rule, and validation files."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-tool-center",
+          "relatedSectionAnchor": "#tool-center",
+          "type": "benefit",
+          "title": "The tools now share one entrance",
+          "text": "Inventory 3.0, Tasker, and Email Composer are presented together in the Tool Center."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-achievement",
+          "relatedSectionAnchor": "#achievement",
+          "type": "result",
+          "title": "The system became more practical",
+          "text": "Mobile scaling, image display, branding, and product assets were improved alongside the new inventory architecture."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Inventory 3.0 was created as a fresh modular system while the broader Klinswork environment became more unified, mobile-friendly, and visually reliable.",
+      "keyPoints": [
+        "Four backend service files established",
+        "Tool Center unified three main work tools",
+        "Mobile viewport and image behavior corrected",
+        "Favicon and home-screen icon roles clarified",
+        "Product-image repair and future automation workflow identified"
+      ]
+    },
+    "technical": {
+      "summary": "The session established Config.gs, DataService.gs, InventoryService.gs, and Validation.gs; corrected Apps Script viewport metadata; revised responsive image CSS; and clarified favicon, manifest, transparency, and batch-image workflows.",
+      "keyPoints": [
+        "Modular backend separation",
+        "Viewport metadata added through doGet()",
+        "object-fit:contain and height:auto used for full-image preservation",
+        "Manifest and icon responsibilities separated",
+        "Pillow or GIMP automation proposed"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Inventory 3.0 benefits from a clean architectural boundary rather than further patching.",
+      "The Tool Center is an important dependency because it shapes access and identity for the application."
+    ],
+    "generalLessons": [
+      "Viewport metadata and responsive image behavior must be tested separately.",
+      "Browser favicons, web-app manifests, and mobile home-screen icons serve different roles.",
+      "A visible checkerboard is not proof of true transparency.",
+      "Repeated manual asset cleanup is a signal to automate."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Mobile pages render at desktop width.",
+        "pattern": "Apps Script pages without explicit viewport metadata are shrunk by the phone browser.",
+        "projectsObservedIn": [
+          "Klinswork Tool Center"
+        ]
+      },
+      {
+        "problem": "Images crop after responsive layout changes.",
+        "pattern": "Fixed heights and object-fit:cover hide content when page scale changes.",
+        "projectsObservedIn": [
+          "Inventory 3.0",
+          "Klinswork Tool Center"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Apps Script mobile viewport troubleshooting",
+        "description": "How missing viewport metadata causes desktop-width rendering on phones and how to correct it through doGet().",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#troubleshooting"
+        ]
+      },
+      {
+        "title": "Responsive product images without cropping",
+        "description": "Use proportional sizing and object-fit:contain when complete image visibility matters.",
+        "suggestedDestination": "Klinswork visual standards",
+        "supportingSectionAnchors": [
+          "#troubleshooting",
+          "#images"
+        ]
+      },
+      {
+        "title": "Testing real transparency in GIMP",
+        "description": "Place a bright layer beneath the image to determine whether transparency is real or baked into the pixels.",
+        "suggestedDestination": "Klinswork image-processing guide",
+        "supportingSectionAnchors": [
+          "#images"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Use viewport metadata for every Apps Script web interface intended for phones.",
+        "changeType": "confirmed",
+        "explanation": "The mobile layout immediately rendered correctly after the viewport setting was added and redeployed."
+      },
+      {
+        "rule": "Do not use object-fit:cover for product images that must remain fully visible.",
+        "changeType": "revised",
+        "explanation": "The earlier approach cropped images after the mobile layout was corrected."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "inventory",
+      "title": "Inventory 3.0",
+      "anchor": "#inventory",
+      "contentSummary": "Inventory 3.0 was defined as a fresh start rather than another patch to the earlier inventory versions. The goal is a stable personal system for tracking cart inventory, recording quantity changes, documenting reasons, and preserving a reliable history. Architecture established Config.gs for configuration and shared constants. DataService.gs for spreadsheet and data-access operations. InventoryService.gs for inventory rules and business logic. Validation.gs for checking inputs and preventing invalid operations. This separated configuration, data access, inventory behavior, and validation instead of placing all responsibilities into one large script file. Purpose of the system Track current cart quantities. Record inventory adjustments. Document why an adjustment was necessary. Preserve history for accountability and reporting. Support dependable personal use even without broader…",
+      "narrativeRole": "primary-build",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-inventory",
+        "reason": "Explains the primary operational result, shared access point, or overall state."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "tool-center",
+      "title": "Klinswork Tool Center",
+      "anchor": "#tool-center",
+      "contentSummary": "The Tool Center was refined as the main entrance to the growing set of work apps. It now presents the tools as parts of one system instead of isolated experiments. Connected tools Inventory 3.0 Tasker Email Composer Identity and usability Monkey favicon added and improved. Yellow-and-blue visual identity strengthened. Mobile access corrected. Tool descriptions and card presentation refined.",
+      "narrativeRole": "system-integration",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: Klinswork Tool Center.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Refined the Klinswork Tool Center as the shared entry point."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-tool-center",
+        "reason": "Explains the primary operational result, shared access point, or overall state."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "troubleshooting",
+      "title": "Issues diagnosed and troubleshooting fixes",
+      "anchor": "#troubleshooting",
+      "contentSummary": "Phone layout appeared tiny The Apps Script page was initially being rendered at desktop width and then shrunk to fit the phone. The cause was a missing viewport setting in doGet() . After saving and redeploying, the page rendered at the correct mobile scale. Text became readable, cards became usable, and the interface stopped behaving like a miniature desktop page. Images cropped after the mobile fix Once the page scaled correctly, some images were cropped because fixed heights and object-fit: cover were forcing them to fill boxes by cutting away part of the image. The corrected approach preserves the complete image, maintains its proportions, and allows it to flex naturally with the page. Favicon and home-screen icon troubleshooting Resolved unsupported favicon-format issues. Worked through incorrect generated image dimensions. Improved contrast so the icon remains recognizable at…",
+      "narrativeRole": "problem-resolution",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: Issues diagnosed and troubleshooting fixes.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Apps Script mobile viewport troubleshooting",
+          "Responsive image scaling without cropping",
+          "Favicon, manifest, and home-screen icon separation"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "images",
+      "title": "Image preparation and transparency work",
+      "anchor": "#images",
+      "contentSummary": "Product and interface images were reviewed and adjusted so they work more reliably inside Inventory 3.0 and the Tool Center. Topics worked through Exact pixel dimensions PNG versus JPEG White and transparent backgrounds Alpha channels Checkerboard transparency Flattening and merged layers Gray halos and edge artifacts Scaling without cropping Reliable transparency test Place a bright-colored layer underneath the image in GIMP: If the color shows through, the pixels are transparent. If the checkerboard remains, it is baked into the image. Prominence product-image repair The Prominence floor-cleaner image had a gray background and a strange vertical artifact on the right. The product image was recreated with a clean edge, and a second version was produced with a solid white background for simple use in the inventory interface. Future batch-processing workflow The amount of manual image…",
+      "narrativeRole": "supporting-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: Image preparation and transparency work.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Reliable transparency testing in GIMP",
+          "Batch product-image preparation workflow"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "email",
+      "title": "Email Composer",
+      "anchor": "#email",
+      "contentSummary": "Email Composer continued to be integrated into the Tool Center. Its cover art, presentation, and identity were refined so it functions as a visible part of the larger Klinswork system alongside Inventory 3.0 and Tasker.",
+      "narrativeRole": "related-application",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: Email Composer.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Improved Email Composer presentation inside the shared Tool Center."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "achievement",
+      "title": "The larger achievement",
+      "anchor": "#achievement",
+      "contentSummary": "Today combined creation and troubleshooting. Inventory 3.0 was conceived and created, while the surrounding Klinswork environment became more unified, mobile-friendly, recognizable, and practical. A new inventory architecture was established. The Tool Center became the common entrance to the work apps. Mobile scaling was corrected. Responsive image behavior was improved. Browser branding and mobile installation requirements were clarified. Product images were repaired and standardized. A future image-automation workflow was identified. By the end of the day, the separate projects were becoming a coherent personal work-software system with one entrance, consistent branding, mobile access, structured inventory services, communication tools, and a foundation for continued automation.",
+      "narrativeRole": "resulting-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 21 contribution: The larger achievement.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-achievement",
+        "reason": "Explains the primary operational result, shared access point, or overall state."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub Pages",
+      "GIMP"
+    ],
+    "apps": [
+      "Inventory 3.0",
+      "Klinswork Tool Center",
+      "Tasker",
+      "Email Composer"
+    ],
+    "scripts": [
+      "Config.gs",
+      "DataService.gs",
+      "InventoryService.gs",
+      "Validation.gs"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Python"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets",
+      "GitHub Pages"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Inventory records",
+      "Inventory history",
+      "Product images"
+    ],
+    "files": [
+      "Config.gs",
+      "DataService.gs",
+      "InventoryService.gs",
+      "Validation.gs"
+    ],
+    "integrations": [
+      "Tool Center navigation",
+      "Inventory application",
+      "Tasker",
+      "Email Composer",
+      "Mobile home-screen installation",
+      "GitHub-hosted images"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [
+      "Inventory 3.0"
+    ],
+    "tests": [
+      {
+        "name": "Mobile viewport verification",
+        "type": "interface",
+        "result": "passed",
+        "notes": "After adding viewport metadata and redeploying, text and cards rendered at the correct phone scale."
+      },
+      {
+        "name": "Responsive image verification",
+        "type": "interface",
+        "result": "passed",
+        "notes": "Images preserved complete content and proportions using height:auto and object-fit:contain."
+      },
+      {
+        "name": "Transparency verification method",
+        "type": "asset inspection",
+        "result": "observed",
+        "notes": "A bright layer beneath the image distinguishes true transparency from a baked-in checkerboard."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "partial",
+      "notes": [
+        "The work update reports successful mobile and image behavior after redeployment.",
+        "No complete automated test suite is described for the new Inventory 3.0 architecture."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Inventory 3.0 and Klinswork Tool Center Update",
+      "body": "Inventory 3.0 was started as a new personal inventory system with a cleaner modular foundation. The Klinswork Tool Center was also improved so the main work tools are presented together, and several mobile, image, and branding problems were corrected. The inventory application remains in early development, with continued implementation and image standardization as the next steps.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "work-update-07-21-2026-cover",
+      "role": "work-update-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work-update-07-21-2026.png",
+      "repositoryPath": "",
+      "altText": "Work Update for July 21, 2026",
+      "description": "Cover image for the July 21, 2026 Klinswork work update.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-21-2026.html",
+    "listingTitle": "Work Update — July 21, 2026",
+    "listingDescription": "Klinswork work update for July 21, 2026, covering Inventory 3.0, Tool Center improvements, mobile fixes, image troubleshooting, and next steps.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": true,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-07-21-2026.html",
+        "status": "published"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Klinswork Tool Center",
+        "canonicalExecUrl": "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "redeployed after mobile and icon changes",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 21, 2026 work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-21-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-21-2026.html",
+      "document-sidecar-template(14).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:33:18+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is based on the explicit contents of the work update.",
+      "The canonical GitHub Pages URL follows the document URL already used in the earlier catalog workflow.",
+      "The Apps Script URL is taken from the work-update navigation link."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal Inventory 3.0 project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "Which remaining Inventory 3.0 features were implemented after the initial architecture?",
+      "When should the proposed image batch-processing utility be built?"
+    ]
+  }
+}

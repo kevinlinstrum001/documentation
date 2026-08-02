@@ -1,0 +1,1108 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-25-work-queue-2-functional-beta",
+    "filePath": "work-update-07-25-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026.html",
+    "title": "Work Update — July 25, 2026",
+    "headline": "Work Queue 2.0 moved from concept to a working functional beta.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-25",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-25-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-25-work-queue-2-functional-beta"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "complete-build-update",
+    "coverageDescription": "Covers the July 25, 2026 design, construction, testing, and launch of Work Queue 2.0 as a functional beta, including shared location architecture, operational data structures, modular Apps Script services, backend-first testing, interface construction, end-to-end lifecycle verification, creation of a real task, retry-safe error handling, deferred photo support, and preparation of ten starter task templates.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Work Queue",
+      "projectType": "operational task-management application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a reliable task system with creation, status transitions, notes, completion, reopening, permanent activity history, shared location data, and a practical browser interface.",
+      "projectPhase": "Work Queue 2.0 functional beta",
+      "contributionType": "application replacement, architecture, full-stack build, testing, launch, and next-feature preparation",
+      "identificationBasis": "The work update explicitly states that Work Queue 2.0 moved from concept to a working functional beta.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Tasker",
+        "relationshipType": "superseded predecessor",
+        "relationshipDescription": "Work Queue 2.0 was created as a replacement rather than another incremental repair of Tasker.",
+        "impact": "The older Tasker deployment remained online while the new application was developed separately.",
+        "evidenceSectionAnchors": [
+          "#scope"
+        ],
+        "identificationBasis": "Explicitly described in the application-scope section.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory 3.0",
+        "relationshipType": "shared location dependency",
+        "relationshipDescription": "Inventory 3.0 and Work Queue use the same Klinswork_Locations reference source.",
+        "impact": "The applications avoid maintaining duplicate copies of facility location data.",
+        "evidenceSectionAnchors": [
+          "#locations"
+        ],
+        "identificationBasis": "Explicitly described in the shared-location section.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Locations",
+        "relationshipType": "shared reference system",
+        "relationshipDescription": "Provides units, rooms, offices, restrooms, common areas, and application-specific enablement.",
+        "impact": "Work Queue launched with eight units and 163 active locations.",
+        "evidenceSectionAnchors": [
+          "#locations",
+          "#testing"
+        ],
+        "identificationBasis": "Explicit shared-directory references.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Klinswork_Locations",
+        "foundationType": "shared location directory",
+        "relationshipDescription": "Common reference source for units and operational locations.",
+        "impact": "Enabled eight units and 163 active Work Queue locations without duplicate location maintenance."
+      },
+      {
+        "foundationId": "",
+        "name": "Task_Activity",
+        "foundationType": "append-only activity history",
+        "relationshipDescription": "Stores task creation, starts, notes, completions, reopenings, and later changes.",
+        "impact": "Preserves a true chronological audit trail rather than overwriting task history."
+      }
+    ],
+    "relationshipSummary": "Work Queue 2.0 replaced Tasker while reusing shared Klinswork location data and establishing an append-only operational task history."
+  },
+  "subject": {
+    "projectName": "Work Queue",
+    "primaryApp": "Work Queue 2.0",
+    "mainFocus": "Designing, building, testing, and launching Work Queue 2.0 as a functional beta with a complete task lifecycle, shared location architecture, modular backend, polished interface, visible user feedback, and starter task templates.",
+    "description": "Klinswork work update for July 25, 2026, covering the design, construction, testing, launch, and next development phase of Work Queue 2.0.",
+    "topics": [
+      "Work Queue 2.0",
+      "functional beta",
+      "task lifecycle",
+      "shared locations",
+      "task activity history",
+      "modular Apps Script backend",
+      "backend-first testing",
+      "interface lifecycle testing",
+      "task creation",
+      "error recovery",
+      "task templates",
+      "future photo support"
+    ],
+    "keywords": [
+      "Pending",
+      "In Progress",
+      "Completed",
+      "Task_Activity",
+      "Task_Templates",
+      "Klinswork_Locations",
+      "TaskService.gs",
+      "LocationService.gs",
+      "Dashboard.html",
+      "Scripts.html",
+      "functional beta"
+    ],
+    "appsAffected": [
+      "Work Queue 2.0",
+      "Tasker",
+      "Inventory 3.0",
+      "Klinswork Locations"
+    ],
+    "systemsAffected": [
+      "task management",
+      "shared location directory",
+      "task history",
+      "Klinswork documentation"
+    ],
+    "componentsAffected": [
+      "Tasks",
+      "Task_Activity",
+      "Settings",
+      "Task_Templates",
+      "backend services",
+      "task dashboard",
+      "task detail modal",
+      "activity timeline",
+      "error handling"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The older Tasker application was not a suitable base for continued incremental repair, and the new system needed a clearer scope, shared data ownership, reliable lifecycle rules, permanent history, and a practical interface.",
+    "initialUnderstanding": "The strongest path was to define Work Queue 2.0 as a separate project, establish shared location and operational data structures first, then prove the backend before introducing browser complexity.",
+    "intendedOutcome": "Launch a functional beta capable of creating, starting, annotating, completing, reopening, and re-completing tasks while preserving all activity.",
+    "approach": "Define scope and data ownership, create shared location and operational sheets, divide the backend into focused services, test the lifecycle directly in Apps Script, build the browser interface, repeat the lifecycle through the interface, create a realistic task, verify recovery from a real connection error, and prepare the next template-assisted phase.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Defined a replacement application",
+        "description": "Established Work Queue 2.0 purpose, boundaries, workflow, ownership, and compatibility.",
+        "result": "The older Tasker deployment could remain available while the new system was built separately."
+      },
+      {
+        "sequence": 2,
+        "title": "Built shared data and modular services",
+        "description": "Created the location directory, operational sheets, and seven focused backend files.",
+        "result": "The application gained a stable structural foundation and append-only activity history."
+      },
+      {
+        "sequence": 3,
+        "title": "Proved the backend lifecycle",
+        "description": "Tested create, start, note, complete, reopen, and complete-again directly through Apps Script.",
+        "result": "Core service behavior was isolated and verified before interface work."
+      },
+      {
+        "sequence": 4,
+        "title": "Built and verified the interface",
+        "description": "Created the dashboard, user feedback, modal, forms, and full interface lifecycle.",
+        "result": "A realistic task was created and completed entirely through the browser."
+      },
+      {
+        "sequence": 5,
+        "title": "Prepared the next development phase",
+        "description": "Populated ten reusable task templates and deferred photo support.",
+        "result": "The beta was ready for real use while the next immediate enhancement was clearly defined."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Scripts.html initially contained CSS rather than JavaScript.",
+        "effect": "The page rendered visually but remained stuck on Loading Work Queue.",
+        "resolution": "Corrected the file contents and updated the deployment.",
+        "status": "resolved"
+      },
+      {
+        "problem": "A completion request encountered an HTTP 0 connection failure.",
+        "effect": "The task could not complete on the first attempt.",
+        "resolution": "The interface displayed the failure, preserved the note, allowed retry, and completed successfully afterward.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Continue incrementally repairing the existing Tasker application.",
+        "whyItWasTried": "It would have reused the existing deployment and code.",
+        "whyItDidNotWork": "The desired workflow, data ownership, and architecture required a cleaner boundary.",
+        "whatWasLearned": "A replacement project is preferable when accumulated assumptions obstruct the intended system."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Backend testing preceded interface construction",
+        "description": "The complete lifecycle was proven through compact Apps Script test functions.",
+        "effectOnDirection": "Browser debugging could focus on integration rather than unresolved service behavior."
+      },
+      {
+        "title": "A real task proved the application",
+        "description": "A task was created, opened, annotated, completed, and moved through the interface.",
+        "effectOnDirection": "The project crossed from demonstration into functional beta status."
+      },
+      {
+        "title": "The HTTP 0 failure became a recovery test",
+        "description": "A real network failure tested whether the interface preserved user work and avoided false success.",
+        "effectOnDirection": "Retry safety and visible feedback were confirmed as core functionality."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Replace Tasker rather than repair it incrementally.",
+        "reason": "Work Queue required a different scope, architecture, data model, and workflow.",
+        "alternativesConsidered": [
+          "Continue patching Tasker"
+        ],
+        "consequences": [
+          "The older deployment remained as a fallback while Work Queue developed separately."
+        ]
+      },
+      {
+        "decision": "Keep every task action as a new activity record.",
+        "reason": "Operational history should remain complete and auditable.",
+        "alternativesConsidered": [
+          "Overwrite task history"
+        ],
+        "consequences": [
+          "Creation, notes, transitions, completion, and reopening remain chronologically visible."
+        ]
+      },
+      {
+        "decision": "Test the backend before launching the interface.",
+        "reason": "This isolates service and data problems from browser and deployment complexity.",
+        "alternativesConsidered": [
+          "Debug all layers simultaneously"
+        ],
+        "consequences": [
+          "Failures became easier to localize and interface work began on a proven service layer."
+        ]
+      },
+      {
+        "decision": "Defer photo support.",
+        "reason": "The core workflow should remain stable and focused before adding upload complexity.",
+        "alternativesConsidered": [
+          "Add image capture in the first beta"
+        ],
+        "consequences": [
+          "Photo support remained a future feature rather than a risk to the initial launch."
+        ]
+      }
+    ],
+    "methodEstablished": "Define data and ownership first, build focused services, test the backend lifecycle directly, expose startup data, construct the interface, repeat the lifecycle through the browser, and prove the system with a realistic task.",
+    "result": "Work Queue 2.0 became a functional beta with eight shared units, 163 active locations, a complete task lifecycle, permanent activity history, a polished interface, retry-safe feedback, and ten prepared task templates.",
+    "lessonsLearned": [
+      "Backend-first testing reduces uncertainty before browser integration.",
+      "Visible feedback is part of application functionality.",
+      "Retry-safe forms should preserve user-entered content after connection failures.",
+      "Shared reference data prevents multiple applications from maintaining conflicting copies.",
+      "A realistic end-to-end task is stronger evidence than isolated function tests alone."
+    ],
+    "directionChange": "The project moved from replacing an older task utility to operating a verified beta ready for real use, observation, and template-assisted refinement.",
+    "narrativeSummary": "The July 25 work defined, built, tested, launched, and realistically verified Work Queue 2.0, while establishing a backend-first method and preparing task templates as the next phase."
+  },
+  "projectDelta": {
+    "previousState": "Tasker remained online, but Work Queue 2.0 had not yet been defined, built, tested, or launched as a separate operational application.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Application scope and replacement boundary",
+        "description": "Defined Work Queue 2.0 and separated it from the older Tasker deployment.",
+        "evidenceSectionAnchors": [
+          "#scope"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Shared location architecture",
+        "description": "Connected eight units and 163 active locations through Klinswork_Locations.",
+        "evidenceSectionAnchors": [
+          "#locations"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Operational task data model",
+        "description": "Created Tasks, Task_Activity, Settings, and Task_Templates structures.",
+        "evidenceSectionAnchors": [
+          "#data"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Modular backend and lifecycle testing",
+        "description": "Built seven focused backend files and proved the full lifecycle directly.",
+        "evidenceSectionAnchors": [
+          "#backend",
+          "#testing"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Browser interface and real-task verification",
+        "description": "Built the interface and created and completed a real task through it.",
+        "evidenceSectionAnchors": [
+          "#interface",
+          "#interface-testing",
+          "#real-task"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Starter task-template library",
+        "description": "Prepared and formatted ten starter templates.",
+        "evidenceSectionAnchors": [
+          "#templates"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Template-assisted task creation",
+        "completedPortion": "The Task_Templates sheet contains ten formatted starter templates.",
+        "remainingPortion": "The templates are not yet connected to the New Task interface.",
+        "evidenceSectionAnchors": [
+          "#templates",
+          "#status"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Connect task templates to the interface",
+        "description": "Allow users to select common tasks and prefill category, description, and priority.",
+        "reasonStillOpen": "The update identifies this as the next immediate feature."
+      },
+      {
+        "workItemId": "",
+        "title": "Add future photo support",
+        "description": "Capture or select images, compress them, store them in Drive, and attach them to activity records.",
+        "reasonStillOpen": "Intentionally deferred to protect the stability of the current workflow."
+      },
+      {
+        "workItemId": "",
+        "title": "Observe real beta use",
+        "description": "Use the functional beta operationally and collect refinements.",
+        "reasonStillOpen": "The current status is ready for real use, observation, and refinement."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Retry-safe user feedback",
+        "description": "Preserve user content and avoid false success when a server call fails.",
+        "source": "#error"
+      },
+      {
+        "workItemId": "",
+        "title": "Direct spreadsheet setup assistance",
+        "description": "Use direct sheet editing to accelerate structured reference data, formatting, validation, and setup.",
+        "source": "#locations and #lessons"
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "Photo attachments",
+        "reasonDeferred": "The current workflow needed to remain stable and focused.",
+        "reconsiderAfter": "Template-assisted task creation and beta stabilization"
+      }
+    ],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Incremental Tasker repair",
+        "supersededBy": "Separate Work Queue 2.0 application",
+        "reason": "The new task system required clearer boundaries and architecture."
+      },
+      {
+        "workItemId": "",
+        "title": "Google Form intake",
+        "supersededBy": "Direct task creation inside Work Queue",
+        "reason": "The new application owns its own task-creation workflow."
+      }
+    ],
+    "resultingState": "Work Queue 2.0 is a functional beta with a proven lifecycle, shared location coverage, modular backend, append-only history, polished interface, realistic task verification, and prepared template data.",
+    "roadmapChangeSummary": "The initial functional beta is complete. The next active phase is connecting task templates to the New Task interface, followed by observation, refinement, and later photo support.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Connect task templates",
+        "description": "Load the ten starter templates into the New Task workflow with prefilling.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Use and observe the beta",
+        "description": "Run realistic operational work and collect interface and workflow refinements.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Preserve backend-first regression testing",
+        "description": "Repeat compact service tests before each interface expansion.",
+        "priority": "high",
+        "status": "ongoing"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Revisit photo support",
+        "description": "Design image capture and activity attachments after the current workflow stabilizes.",
+        "priority": "medium",
+        "status": "deferred"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Work Queue 2.0 was built as a separate task system with a complete working lifecycle, shared location records, and permanent activity history.",
+      "operationalImpact": "Tasks can be created, started, updated with notes, completed, reopened, and reviewed through one application across eight units and 163 active locations.",
+      "currentStatus": "The application is a functional beta ready for real use and refinement. Ten task templates are prepared but not yet connected to the New Task form.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Template-assisted task creation is not yet connected.",
+        "Photo support remains deferred.",
+        "The beta still requires operational observation and refinement."
+      ],
+      "staffVisibleChanges": [
+        "Direct task creation",
+        "Active and Completed Work views",
+        "Task details and activity timeline",
+        "Visible success and error feedback",
+        "Complete reopenable task lifecycle"
+      ],
+      "nextOperationalStep": "Connect the prepared task templates to the New Task interface and continue realistic beta use.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-scope",
+          "relatedSectionAnchor": "#scope",
+          "type": "scope",
+          "title": "A replacement task system",
+          "text": "Work Queue 2.0 was defined as a separate application rather than another repair to Tasker."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-locations",
+          "relatedSectionAnchor": "#locations",
+          "type": "coverage",
+          "title": "Shared facility coverage",
+          "text": "The beta uses eight units and 163 active locations from the shared Klinswork directory."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-real-task",
+          "relatedSectionAnchor": "#real-task",
+          "type": "verification",
+          "title": "A real task was completed",
+          "text": "The browser successfully created, opened, recorded, and completed a realistic task."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-status",
+          "relatedSectionAnchor": "#status",
+          "type": "status",
+          "title": "Functional beta",
+          "text": "The lifecycle works end to end and the next immediate step is task-template integration."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Work Queue 2.0 moved from concept to functional beta through shared data design, modular backend construction, backend-first testing, interface development, and realistic lifecycle verification.",
+      "keyPoints": [
+        "8 shared units",
+        "163 active locations",
+        "1 complete lifecycle proven",
+        "10 starter templates prepared",
+        "13 documented work sections"
+      ]
+    },
+    "technical": {
+      "summary": "The application uses seven focused Apps Script backend files, three interface files, four operational sheets, append-only activity history, direct lifecycle tests, and browser integration through Apps Script server calls.",
+      "keyPoints": [
+        "TaskService owns lifecycle and persistence",
+        "LocationService reads shared locations",
+        "Validation protects transitions and inputs",
+        "Backend lifecycle tested before interface",
+        "Interface feedback is explicit and retry-safe",
+        "Task templates prepared for next phase"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Work Queue should own direct task creation rather than depend on a Google Form.",
+      "The activity table should remain append-only through reopen and re-completion.",
+      "Template data can be prepared independently before connecting the user interface."
+    ],
+    "generalLessons": [
+      "Test service and data behavior before browser integration.",
+      "Visible loading, success, and failure states are functional requirements.",
+      "Preserve entered content when a retryable server error occurs.",
+      "Shared reference directories reduce duplicate maintenance across applications."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "A file contains content intended for another file type.",
+        "pattern": "Scripts.html contained CSS, allowing the page to render while preventing JavaScript initialization.",
+        "projectsObservedIn": [
+          "Work Queue 2.0"
+        ]
+      },
+      {
+        "problem": "Transient server or network failure during a state change.",
+        "pattern": "The browser receives HTTP 0 and must preserve user work without reporting false success.",
+        "projectsObservedIn": [
+          "Work Queue 2.0"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Backend-first Apps Script application testing",
+        "description": "Prove data structure, services, compact tests, and startup response before building the interface.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#testing",
+          "#lessons"
+        ]
+      },
+      {
+        "title": "Visible feedback as application functionality",
+        "description": "Use busy states, success messages, inline errors, empty guidance, and retry-safe forms so users always understand application state.",
+        "suggestedDestination": "Klinswork interface standards",
+        "supportingSectionAnchors": [
+          "#interface",
+          "#error",
+          "#lessons"
+        ]
+      },
+      {
+        "title": "Append-only task activity history",
+        "description": "Record every lifecycle action as a new activity rather than overwriting historical task state.",
+        "suggestedDestination": "Klinswork operational data architecture",
+        "supportingSectionAnchors": [
+          "#data",
+          "#interface-testing"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Test backend lifecycle behavior before interface deployment.",
+        "changeType": "confirmed",
+        "explanation": "The method isolated service problems before introducing browser and deployment complexity."
+      },
+      {
+        "rule": "Do not report success when a server request fails.",
+        "changeType": "confirmed",
+        "explanation": "The HTTP 0 case displayed failure, preserved the note, and allowed retry."
+      },
+      {
+        "rule": "Preserve every task action as append-only history.",
+        "changeType": "confirmed",
+        "explanation": "Earlier activity remained intact through reopening and re-completion."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "scope",
+      "title": "Application scope and architecture",
+      "anchor": "#scope",
+      "contentSummary": "We began by deciding that the existing Tasker app should be replaced rather than incrementally repaired. Before writing code, we defined Work Queue 2.0's purpose, boundaries, workflow, data ownership, and relationship to the wider Klinswork tool system. Create tasks directly inside the application. Remove the old Google Form intake. Eliminate the Recommendations feature. Separate active work from completed work. Keep Work Queue compatible with other Klinswork tools. Build it as a separate project so the older Tasker deployment could remain online during development.",
+      "narrativeRole": "architecture-and-scope",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Application scope and architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-scope",
+        "reason": "Explains scope, shared coverage, proven workflow, recovery behavior, or current status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "locations",
+      "title": "Shared location architecture",
+      "anchor": "#locations",
+      "contentSummary": "A centralized location directory was designed before the task system itself. This prevents Inventory 3.0, Work Queue, and future scheduling tools from maintaining separate copies of the same location data. Shared directory Klinswork_Locations became the common reference source for units, rooms, offices, restrooms, common areas, and other work locations. Completed coverage 8 units 163 active Work Queue locations Application-specific enablement Reusable parent-and-child relationships This was also one of the first major uses of direct spreadsheet generation and editing, substantially reducing repetitive setup work.",
+      "narrativeRole": "shared-foundation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Shared location architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-locations",
+        "reason": "Explains scope, shared coverage, proven workflow, recovery behavior, or current status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "data",
+      "title": "Operational data structure",
+      "anchor": "#data",
+      "contentSummary": "A separate spreadsheet was created for Work Queue 2.0 operational data. Tasks Stores each task's current state, including ID, status, priority, category, location, description, assignee, timestamps, completion note, and archived state. Task_Activity Stores the full chronological history of task creation, starts, notes, completions, reopenings, and later changes. Settings Stores app version, default priority, completion-note requirements, notification settings, and location cache duration. Task_Templates Provides the foundation for reusable task choices that reduce typing during task creation.",
+      "narrativeRole": "data-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Operational data structure.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Append-only task activity history"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "backend",
+      "title": "Modular Apps Script backend",
+      "anchor": "#backend",
+      "contentSummary": "The backend was divided into focused files rather than written as one large script. Config.gs Spreadsheet IDs, sheet names, app name, version, and configuration. Code.gs Setup, diagnostics, and backend test functions. WebApp.gs Web app entry point and startup data. Validation.gs Configuration, schema, input, status, and transition validation. Utilities.gs IDs, dates, formatting, normalization, sorting, and user attribution. LocationService.gs Shared location retrieval and unit/location resolution. TaskService.gs Complete task lifecycle, spreadsheet persistence, and activity logging.",
+      "narrativeRole": "backend-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Modular Apps Script backend.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "testing",
+      "title": "Backend-first testing",
+      "anchor": "#testing",
+      "contentSummary": "One of the most valuable process improvements of the day was testing the backend directly through Apps Script → Run → test function before launching the interface. Tests covered spreadsheet setup, schema validation, location retrieval, task creation, notes, status transitions, activity history, and startup data. Startup summary App: Work Queue 2.0 8 units 163 locations Default priority: Normal Why this mattered It isolated backend problems before introducing browser JavaScript, interface rendering, deployment versions, filters, and modals.",
+      "narrativeRole": "verification-method",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Backend-first testing.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Backend-first Apps Script testing"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "interface",
+      "title": "Interface and user feedback",
+      "anchor": "#interface",
+      "contentSummary": "The application interface was created in Dashboard.html , Styles.html , and Scripts.html . Interface structure Branded header and summary cards Active Work and Completed Work tabs Filters, task cards, and detail modals Activity timeline and action forms Confirmation dialog and toast notifications Visible feedback Loading spinners Busy button labels such as “Saving...” Green success messages Inline error messages Empty-state guidance Retry-safe forms",
+      "narrativeRole": "interface-construction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Interface and user feedback.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Visible feedback as functionality"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "interface-testing",
+      "title": "Lifecycle testing through the interface",
+      "anchor": "#interface-testing",
+      "contentSummary": "After the backend passed independently, the same task lifecycle was repeated through the actual web interface. Opened Completed Work. Displayed the backend test task. Opened the task-detail modal. Displayed the entire activity history. Reopened the task. Added notes. Completed it again. Confirmed that earlier events remained intact.",
+      "narrativeRole": "end-to-end-verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Lifecycle testing through the interface.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "real-task",
+      "title": "Created and completed a real task",
+      "anchor": "#real-task",
+      "contentSummary": "A new task was created entirely through the interface using a selected unit, selected location, free-text category, free-text assignee, description, initial note, and normal priority. The interface correctly: Changed the button label while saving. Saved the task to the spreadsheet. Displayed a green success notification. Refreshed the task collections. Opened the new task automatically. Displayed its task ID and metadata. Recorded creation and the initial note as separate activities. Moved the task into Completed Work after completion.",
+      "narrativeRole": "real-workflow-proof",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Created and completed a real task.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-real-task",
+        "reason": "Explains scope, shared coverage, proven workflow, recovery behavior, or current status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "error",
+      "title": "Real error handling",
+      "anchor": "#error",
+      "contentSummary": "During one completion attempt, the browser experienced an HTTP 0 connection failure. This became a useful real-world test of the app's recovery behavior. The app did correctly Displayed the failure visibly. Did not falsely report success. Preserved the completion note. Allowed the user to retry. After retry The task completed successfully. The task moved into Completed Work. The task history remained intact.",
+      "narrativeRole": "error-recovery",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Real error handling.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-error",
+        "reason": "Explains scope, shared coverage, proven workflow, recovery behavior, or current status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Retry-safe task completion after connection failure"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "future",
+      "title": "Future photo support",
+      "anchor": "#future",
+      "contentSummary": "A later version may allow users to photograph either the condition being reported or the work after completion. Snap a photo directly from a phone. Choose an existing image. Compress the image before upload. Store the image in Google Drive. Attach the image to the relevant activity entry. This feature was intentionally deferred so the current workflow could remain stable and focused.",
+      "narrativeRole": "deferred-feature",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Future photo support.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "templates",
+      "title": "Task templates: the next immediate feature",
+      "anchor": "#templates",
+      "contentSummary": "Repeated housekeeping tasks should require minimal typing. The next feature will allow users to choose common task templates and automatically prefill category, description, and priority. Starter templates Spot-shampoo carpet Restock supplies Vacuum Mop Spot-mop Additional templates Sweep Clean Clean windows Other request General The new Task_Templates tab was populated and formatted directly, including template IDs, categories, descriptions, priorities, active flags, sort order, frozen headers, column sizing, and validation.",
+      "narrativeRole": "next-feature-preparation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Task templates: the next immediate feature.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "lessons",
+      "title": "Development lessons",
+      "anchor": "#lessons",
+      "contentSummary": "Test the backend first Use direct spreadsheet assistance Direct Google Sheets editing can now accelerate table creation, reference data, formatting, validation, frozen headers, settings, and column sizing.",
+      "narrativeRole": "knowledge-capture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Development lessons.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Backend-first development sequence",
+          "Direct spreadsheet assistance for setup"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "status",
+      "title": "Current status and next step",
+      "anchor": "#status",
+      "contentSummary": "Working lifecycle Next active development step Connect the new Task_Templates tab to the New Task interface so users can select common housekeeping tasks with minimal typing.",
+      "narrativeRole": "resulting-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the Work Queue 2.0 contribution: Current status and next step.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-status",
+        "reason": "Explains scope, shared coverage, proven workflow, recovery behavior, or current status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub Pages"
+    ],
+    "apps": [
+      "Work Queue 2.0",
+      "Tasker",
+      "Inventory 3.0"
+    ],
+    "scripts": [
+      "Code.gs",
+      "Config.gs",
+      "Dashboard.html",
+      "LocationService.gs",
+      "Scripts.html",
+      "Styles.html",
+      "TaskService.gs",
+      "Utilities.gs",
+      "Validation.gs",
+      "WebApp.gs"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Tasks",
+      "Task_Activity",
+      "Settings",
+      "Task_Templates",
+      "Klinswork_Locations"
+    ],
+    "files": [
+      "Code.gs",
+      "Config.gs",
+      "Dashboard.html",
+      "LocationService.gs",
+      "Scripts.html",
+      "Styles.html",
+      "TaskService.gs",
+      "Utilities.gs",
+      "Validation.gs",
+      "WebApp.gs"
+    ],
+    "integrations": [
+      "shared location directory",
+      "task persistence",
+      "activity logging",
+      "startup data",
+      "browser task interface",
+      "Klinswork Tool Center"
+    ],
+    "apis": [
+      "google.script.run"
+    ],
+    "versions": [
+      "Work Queue 2.0",
+      "functional beta"
+    ],
+    "tests": [
+      {
+        "name": "Backend lifecycle test",
+        "type": "backend end-to-end",
+        "result": "passed",
+        "notes": "Created, started, annotated, completed, reopened, and completed a task again."
+      },
+      {
+        "name": "Shared location retrieval",
+        "type": "integration",
+        "result": "passed",
+        "notes": "Eight units and 163 active locations were returned."
+      },
+      {
+        "name": "Interface lifecycle test",
+        "type": "browser end-to-end",
+        "result": "passed",
+        "notes": "The lifecycle was repeated through the actual web interface and prior activity remained intact."
+      },
+      {
+        "name": "Real task creation and completion",
+        "type": "realistic workflow",
+        "result": "passed",
+        "notes": "A real task was created, opened, logged, and moved to Completed Work."
+      },
+      {
+        "name": "HTTP 0 recovery behavior",
+        "type": "failure recovery",
+        "result": "passed",
+        "notes": "The app displayed failure, preserved the note, allowed retry, and did not falsely report success."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "Spreadsheet setup, schema, location retrieval, task creation, notes, transitions, activity history, and startup data were tested.",
+        "The complete browser lifecycle was verified after backend tests passed."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Work Queue 2.0 Functional Beta Update",
+      "body": "Work Queue 2.0 has moved from concept to a functioning beta. It now supports task creation, starting, notes, completion, reopening, and permanent activity history across eight units and 163 active locations. The complete lifecycle was tested through both the backend and the web interface, including a real task and recovery from a connection failure. The next immediate step is connecting the prepared task templates to the New Task form.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "work-update-07-25-2026-cover",
+      "role": "work-update-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work-update-07-25-2026.png",
+      "repositoryPath": "",
+      "altText": "Work Update for July 25, 2026",
+      "description": "Cover image for the July 25, 2026 Work Queue 2.0 work update.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026.html",
+    "listingTitle": "Work Update — July 25, 2026",
+    "listingDescription": "Klinswork work update for July 25, 2026, covering the design, construction, testing, launch, and next development phase of Work Queue 2.0.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026.html",
+        "status": "published"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Work Queue 2.0",
+        "canonicalExecUrl": "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "functional beta deployed and tested",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 25, 2026 Work Queue 2.0 work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-25-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-25-2026.html",
+      "document-sidecar-template(20).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:52:48+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The canonical GitHub Pages URL follows the established documentation filename convention.",
+      "The Apps Script canonical URL is taken from the work-update navigation link.",
+      "Cataloged remains false because this new sidecar has not yet been appended to the active catalog."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal Work Queue project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "What task was used for the realistic workflow test?",
+      "When was template-assisted task creation connected after this update?",
+      "When should photo support be reconsidered?"
+    ]
+  }
+}

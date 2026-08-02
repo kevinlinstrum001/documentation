@@ -1,0 +1,1442 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "lesson-reference",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+    "previewMode": "lesson-reference"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "lesson-the-ship-that-remembers",
+    "filePath": "the_ship_that_remembers_lesson.html",
+    "documentUrl": "",
+    "title": "The Ship That Remembers",
+    "headline": "How structured communication, digital tools, inspections, and connected records turn everyday work into visible evidence, organizational memory, and a reliable account of operations",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "the-ship-that-remembers-lesson-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-the-ship-that-remembers",
+    "profileTemplatePath": "lesson-reference-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Documentation",
+      "projectType": "operational learning and documentation system",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Explain how structured records, connected tools, inspections, and accumulated evidence help a housekeeping department observe, remember, explain, and improve its work.",
+      "projectPhase": "operational learning and conceptual documentation",
+      "contributionType": "lesson and reusable conceptual framework",
+      "identificationBasis": "The footer identifies Meadows Housekeeping Documentation, while the lesson consistently explains the department's use of forms, sheets, calendar, Gmail, Sites, GitHub, mobile phones, and QR codes.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Issue and Request Forms",
+        "relationshipType": "structured intake",
+        "relationshipDescription": "Google Forms is presented as the intake desk that preserves request source, details, priority, and time.",
+        "impact": "Messages become durable source records that can be routed, acted upon, and compared later.",
+        "evidenceSectionAnchors": [
+          "#communication",
+          "#provenance",
+          "#corroboration",
+          "#tools"
+        ],
+        "identificationBasis": "Explicit tool and workflow descriptions in the lesson.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Calendar and Roster",
+        "relationshipType": "time, assignment, and staffing context",
+        "relationshipDescription": "Google Calendar is presented as the navigation chart showing schedules, staffing, assignments, meetings, and future conditions.",
+        "impact": "Roster and assignment records can corroborate why work occurred and what coverage was available.",
+        "evidenceSectionAnchors": [
+          "#corroboration",
+          "#tools",
+          "#narrative"
+        ],
+        "identificationBasis": "Explicit Google Calendar and roster examples.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Housekeeping Documentation and Technical Archive",
+        "relationshipType": "historical and technical memory",
+        "relationshipDescription": "Google Sites gathers operational tools while GitHub preserves documents, code, versions, and system-development history.",
+        "impact": "Operational work and system development become easier to trace and explain over time.",
+        "evidenceSectionAnchors": [
+          "#tools",
+          "#narrative"
+        ],
+        "identificationBasis": "Explicit descriptions of Google Sites and GitHub.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "foundation-structured-record",
+        "name": "Structured record",
+        "foundationType": "information foundation",
+        "relationshipDescription": "Important facts are preserved in known fields and connected to the request, action, result, and later evidence.",
+        "impact": "Communication can perform its immediate purpose while also contributing to organizational memory."
+      },
+      {
+        "foundationId": "foundation-provenance",
+        "name": "Provenance",
+        "foundationType": "record-traceability foundation",
+        "relationshipDescription": "Records retain their source, time, sequence, changes, and outcomes.",
+        "impact": "Records do not become isolated or orphaned from the events that produced them."
+      },
+      {
+        "foundationId": "foundation-corroboration",
+        "name": "Corroboration",
+        "foundationType": "evidence foundation",
+        "relationshipDescription": "Independent records provide different views of the same event.",
+        "impact": "No single record must carry the entire burden of proof."
+      },
+      {
+        "foundationId": "foundation-cumulative-memory",
+        "name": "Cumulative organizational memory",
+        "foundationType": "knowledge foundation",
+        "relationshipDescription": "Repeated operational records accumulate into a grounded narrative of workload, quality, staffing effects, consumption, and improvement.",
+        "impact": "The department can explain what happened and why without relying only on memory or impressions."
+      }
+    ],
+    "relationshipSummary": "The lesson connects housekeeping forms, sheets, calendar, Gmail, Sites, GitHub, mobile devices, QR codes, inspections, and automation into one operating environment that receives signals, organizes them, supports action, preserves evidence, and builds an explainable history."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Documentation",
+    "primaryApp": "",
+    "mainFocus": "Explaining how structured communication and connected digital records create observability, provenance, corroboration, organizational memory, and a reliable narrative of department performance.",
+    "description": "A digital-operations lesson using a ship metaphor to explain the relationship among supervision, employees, operational tools, records, inspections, automation, and accumulated evidence.",
+    "topics": [
+      "structured communication",
+      "organizational memory",
+      "provenance",
+      "corroboration",
+      "observability",
+      "digital operations",
+      "inspections",
+      "automation",
+      "cumulative evidence",
+      "narrative-building",
+      "housekeeping information systems"
+    ],
+    "keywords": [
+      "ship metaphor",
+      "captain",
+      "crew",
+      "instruments",
+      "logbook",
+      "source record",
+      "message trail",
+      "evidence chain",
+      "ledger",
+      "automation multiplier",
+      "field terminal",
+      "technical archive"
+    ],
+    "appsAffected": [
+      "Google Forms",
+      "Google Sheets",
+      "Apps Script",
+      "Google Calendar",
+      "Gmail",
+      "Google Sites",
+      "GitHub",
+      "mobile phones",
+      "QR codes"
+    ],
+    "systemsAffected": [
+      "request intake",
+      "staffing and assignments",
+      "communication history",
+      "inspection evidence",
+      "work completion records",
+      "notifications",
+      "operational reporting",
+      "documentation history"
+    ],
+    "componentsAffected": [
+      "forms",
+      "ledgers",
+      "automations",
+      "calendars",
+      "emails",
+      "sites",
+      "repositories",
+      "mobile access",
+      "QR access",
+      "inspections"
+    ]
+  },
+  "learningContext": {
+    "audience": [
+      "housekeeping employees",
+      "housekeeping supervisors",
+      "operations staff",
+      "people learning structured digital work",
+      "people designing small operational information systems"
+    ],
+    "prerequisites": [
+      "Basic familiarity with everyday workplace communication",
+      "Basic awareness of forms, spreadsheets, calendars, email, and websites",
+      "No programming knowledge required"
+    ],
+    "learningPurpose": "Help readers understand why digital tools matter as a connected system for preserving evidence, improving visibility, and building organizational memory rather than merely replacing paper or sending messages faster.",
+    "difficulty": "introductory to intermediate conceptual lesson",
+    "estimatedStudyTime": "20–30 minutes",
+    "sourceType": "digital operations lesson",
+    "instructionalApproach": "Extended ship metaphor, operational examples, tool-role mapping, an evidence chain, process flows, and a concluding synthesis."
+  },
+  "learningObjectives": [
+    {
+      "objectiveId": "objective-01",
+      "description": "Explain the captain, crew, instruments, and logbook metaphor for a functioning department.",
+      "evidenceSectionAnchors": [
+        "#ship"
+      ]
+    },
+    {
+      "objectiveId": "objective-02",
+      "description": "Distinguish temporary communication from structured communication that leaves a durable trail.",
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "objectiveId": "objective-03",
+      "description": "Define provenance and identify the source, time, sequence, changes, and outcome carried by a record.",
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "objectiveId": "objective-04",
+      "description": "Explain how several independent records can corroborate one operational event.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "objectiveId": "objective-05",
+      "description": "Describe the operational role of Forms, Sheets, Apps Script, Calendar, Gmail, Sites, GitHub, mobile phones, and QR codes.",
+      "evidenceSectionAnchors": [
+        "#tools"
+      ]
+    },
+    {
+      "objectiveId": "objective-06",
+      "description": "Explain how automation multiplies value by repeating reliable information movement across many events and people.",
+      "evidenceSectionAnchors": [
+        "#multipliers"
+      ]
+    },
+    {
+      "objectiveId": "objective-07",
+      "description": "Show how accumulated records become a grounded narrative of workload, quality, staffing, consumption, and improvement.",
+      "evidenceSectionAnchors": [
+        "#narrative"
+      ]
+    },
+    {
+      "objectiveId": "objective-08",
+      "description": "Explain how a structured digital environment helps a department act, remember, observe, and explain.",
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "principleId": "principle-01",
+      "title": "Communication should leave a trail",
+      "statement": "Useful communication should preserve who sent it, when it arrived, what location or condition was involved, what was requested, who received it, and what result followed.",
+      "explanation": "The communication still solves the immediate problem, but it also becomes a record that can support later review and explanation.",
+      "importance": "Prevents important workplace information from disappearing into message history or memory.",
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "principleId": "principle-02",
+      "title": "Preserve provenance",
+      "statement": "A record should remain connected to its source, time, sequence, changes, actions, and outcome.",
+      "explanation": "Provenance prevents a record from becoming an orphan and makes the department's response traceable.",
+      "importance": "Supports accountability, fair interpretation, and reliable historical reconstruction.",
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "principleId": "principle-03",
+      "title": "Use corroborating records",
+      "statement": "Several independent records should support important operational claims whenever possible.",
+      "explanation": "Request records, assignments, message trails, inspections, and stored histories provide different windows on the same event.",
+      "importance": "Creates a fairer and more convincing account than relying on a single report.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "principleId": "principle-04",
+      "title": "Connect reported activity to observed outcomes",
+      "statement": "Inspections should connect what employees report doing with the condition actually produced.",
+      "explanation": "The daily record describes the activity, while the inspection confirms the result.",
+      "importance": "Supports quality, recognition, coaching, training, and improvement.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "principleId": "principle-05",
+      "title": "Treat tools as one operating environment",
+      "statement": "Forms, Sheets, automation, calendars, email, sites, repositories, mobile devices, and QR codes should be understood as connected systems.",
+      "explanation": "Each tool performs a different function, but together they receive, organize, route, preserve, and expose operational information.",
+      "importance": "Prevents isolated tools from becoming disconnected information silos.",
+      "evidenceSectionAnchors": [
+        "#tools"
+      ]
+    },
+    {
+      "principleId": "principle-06",
+      "title": "Automate predictable movement, not human judgment",
+      "statement": "Automation should handle repeated information movement and organization so people can spend more time on judgment and useful work.",
+      "explanation": "Forms can create rows, scripts can move information, Gmail can send notifications, and Sites can display results.",
+      "importance": "Multiplies small savings without pretending that automation replaces supervision or skilled work.",
+      "evidenceSectionAnchors": [
+        "#multipliers"
+      ]
+    },
+    {
+      "principleId": "principle-07",
+      "title": "Build narrative from records created during work",
+      "statement": "The operational narrative should emerge gradually from records created while work is happening.",
+      "explanation": "Requests, inspections, rosters, response times, supply records, and documentation history combine into cumulative evidence.",
+      "importance": "Reduces dependence on memory, impressions, and retrospective invention.",
+      "evidenceSectionAnchors": [
+        "#narrative"
+      ]
+    },
+    {
+      "principleId": "principle-08",
+      "title": "Digital tools support people rather than replace them",
+      "statement": "The purpose of digital tools is to give the department instruments, a logbook, and a clearer view of its voyage.",
+      "explanation": "The captain still interprets conditions and the crew still performs the work; tools increase visibility and memory.",
+      "importance": "Keeps responsibility, interpretation, and action with people while improving the information environment.",
+      "evidenceSectionAnchors": [
+        "#ship"
+      ]
+    },
+    {
+      "principleId": "principle-09",
+      "title": "Accumulated records create observability",
+      "statement": "Repeated structured records allow the supervisor and employees to see workload, quality, delays, staffing effects, and contributions.",
+      "explanation": "Observability is created when operational signals remain available for comparison across time.",
+      "importance": "Makes the department's actual operation visible rather than merely busy.",
+      "evidenceSectionAnchors": [
+        "#ship",
+        "#narrative",
+        "#conclusion"
+      ]
+    },
+    {
+      "principleId": "principle-10",
+      "title": "A reliable system should act, remember, and explain",
+      "statement": "A mature operational system should support action, preserve records, corroborate outcomes, accumulate history, and explain results.",
+      "explanation": "The lesson's closing sequence joins signals, tools, crew action, instruments, and the log into one complete system.",
+      "importance": "Defines the desired end state for a department-wide information system.",
+      "evidenceSectionAnchors": [
+        "#conclusion"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "concept-ship-metaphor",
+      "name": "Ship metaphor",
+      "definition": "A model in which the supervisor is the captain, employees are the crew, digital systems are instruments, and accumulated records are the logbook.",
+      "relationships": [
+        "Captain interprets and directs",
+        "Crew performs work",
+        "Instruments reveal conditions",
+        "Logbook preserves the voyage"
+      ],
+      "examples": [
+        "Calendar as navigation chart",
+        "Forms as intake desk",
+        "Sheets as ledger",
+        "GitHub as technical archive"
+      ],
+      "misconceptions": [
+        "Digital tools replace the captain or crew"
+      ],
+      "evidenceSectionAnchors": [
+        "#ship",
+        "#tools"
+      ]
+    },
+    {
+      "conceptId": "concept-structured-communication",
+      "name": "Structured communication",
+      "definition": "Communication that preserves important facts in known fields and connects the message to action, result, evidence, and later memory.",
+      "relationships": [
+        "Begins with a message or request",
+        "Becomes a structured record",
+        "Supports action",
+        "Produces evidence and memory"
+      ],
+      "examples": [
+        "A Google Form submission containing location, request, sender, and time",
+        "A message acknowledged and connected to a completed task"
+      ],
+      "misconceptions": [
+        "Any text message automatically becomes an organized operational record"
+      ],
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "conceptId": "concept-provenance",
+      "name": "Provenance",
+      "definition": "The history carried by information: who created it, when it entered the system, what produced it, who changed it, and what followed.",
+      "relationships": [
+        "Connects source to sequence",
+        "Connects sequence to action",
+        "Connects action to outcome"
+      ],
+      "examples": [
+        "A form submission flowing into a spreadsheet with time, fields, and later status changes"
+      ],
+      "misconceptions": [
+        "A record is complete even when its source and history are unknown"
+      ],
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "conceptId": "concept-corroboration",
+      "name": "Corroboration",
+      "definition": "Support for one account from several independent records or observations.",
+      "relationships": [
+        "Request explains why",
+        "Roster explains staffing context",
+        "Message trail shows receipt",
+        "Inspection confirms outcome",
+        "Stored record connects the sequence"
+      ],
+      "examples": [
+        "An urgent cleanup supported by a request, assignment record, message trail, inspection, and stored history"
+      ],
+      "misconceptions": [
+        "One record must carry the entire burden of proof"
+      ],
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "conceptId": "concept-observability",
+      "name": "Observability",
+      "definition": "The ability to see operational conditions such as staffing, requests, assignments, delays, inspections, supplies, and completed work.",
+      "relationships": [
+        "Depends on structured records",
+        "Improves supervisory interpretation",
+        "Supports comparison across time"
+      ],
+      "examples": [
+        "Comparing rosters with response times",
+        "Comparing inspections with reported completion"
+      ],
+      "misconceptions": [
+        "Being busy automatically makes performance visible"
+      ],
+      "evidenceSectionAnchors": [
+        "#ship",
+        "#narrative",
+        "#conclusion"
+      ]
+    },
+    {
+      "conceptId": "concept-cumulative-evidence",
+      "name": "Cumulative evidence",
+      "definition": "Evidence produced when individual operational records accumulate and can be compared across time.",
+      "relationships": [
+        "Requests show demand",
+        "Inspections show quality",
+        "Rosters and response times show staffing effects",
+        "Supply records and activity explain consumption",
+        "Documentation shows system evolution"
+      ],
+      "examples": [
+        "A month of requests",
+        "A series of inspections",
+        "Repeated staffing and response-time comparisons"
+      ],
+      "misconceptions": [
+        "An ordinary task has no value beyond the moment it is completed"
+      ],
+      "evidenceSectionAnchors": [
+        "#narrative"
+      ]
+    },
+    {
+      "conceptId": "concept-automation-multiplier",
+      "name": "Automation multiplier",
+      "definition": "The compounded value created when one reliable process repeats a small useful action across many events, days, and people.",
+      "relationships": [
+        "Forms capture",
+        "Sheets store",
+        "Apps Script moves or updates",
+        "Gmail notifies",
+        "Sites displays"
+      ],
+      "examples": [
+        "A form automatically creating a row, sending a notification, and exposing the result on a site"
+      ],
+      "misconceptions": [
+        "Automation is simply one machine replacing one person"
+      ],
+      "evidenceSectionAnchors": [
+        "#multipliers"
+      ]
+    },
+    {
+      "conceptId": "concept-narrative-builder",
+      "name": "Narrative-builder",
+      "definition": "A record or tool that contributes evidence to an increasingly complete account of how the department operates.",
+      "relationships": [
+        "Built from work records",
+        "Strengthened by corroboration",
+        "Expanded by repeated events",
+        "Used to explain change and outcomes"
+      ],
+      "examples": [
+        "Requests plus inspections showing demand and quality",
+        "GitHub history showing how a system evolved"
+      ],
+      "misconceptions": [
+        "The narrative is invented after the fact"
+      ],
+      "evidenceSectionAnchors": [
+        "#narrative"
+      ]
+    },
+    {
+      "conceptId": "concept-organizational-memory",
+      "name": "Organizational memory",
+      "definition": "The preserved, connected history that allows a department to remember, compare, explain, and improve beyond individual recollection.",
+      "relationships": [
+        "Created by accumulated structured records",
+        "Supported by provenance",
+        "Strengthened by corroboration",
+        "Used for future decisions"
+      ],
+      "examples": [
+        "A continuing ledger of requests, assignments, inspections, and outcomes",
+        "A repository showing document and code history"
+      ],
+      "misconceptions": [
+        "Individual memory is an adequate substitute for a durable operational record"
+      ],
+      "evidenceSectionAnchors": [
+        "#ship",
+        "#communication",
+        "#narrative",
+        "#conclusion"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "exampleId": "example-01",
+      "title": "A message becomes organizational memory",
+      "scenario": "A housekeeping request arrives and must be acted upon.",
+      "walkthrough": [
+        "The message is entered through a structured form.",
+        "The form preserves source, time, location, and request details.",
+        "The request is acted upon.",
+        "The result is recorded.",
+        "The record becomes evidence and later contributes to organizational memory."
+      ],
+      "result": "The communication solves the immediate problem and remains available for later review.",
+      "lesson": "Useful communication should leave a durable, structured trail.",
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "exampleId": "example-02",
+      "title": "Provenance from Forms to Sheets",
+      "scenario": "A request collected by Google Forms flows into Google Sheets.",
+      "walkthrough": [
+        "The form preserves the original submission.",
+        "The spreadsheet receives the record as an organized ledger entry.",
+        "The date and time show when the event entered the system.",
+        "The fields show what was reported.",
+        "A later status change shows what happened next."
+      ],
+      "result": "The record remains connected to source, sequence, and outcome.",
+      "lesson": "Provenance prevents operational records from becoming orphans.",
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "exampleId": "example-03",
+      "title": "Urgent cleanup corroborated by five records",
+      "scenario": "An employee reports completing an urgent cleanup in another unit.",
+      "walkthrough": [
+        "The original request shows why the work was needed.",
+        "The assignment or roster shows the employee's duties and available coverage.",
+        "The message trail shows the assignment was received.",
+        "The supervisor's inspection confirms the resulting condition.",
+        "The stored record connects request, response, completion, and outcome."
+      ],
+      "result": "Several records support one fairer and more convincing account.",
+      "lesson": "No single record must carry the entire burden of proof.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "exampleId": "example-04",
+      "title": "One automation assists many people",
+      "scenario": "A recurring request workflow is automated.",
+      "walkthrough": [
+        "A form captures the request.",
+        "A spreadsheet receives the new row.",
+        "Apps Script performs the routine movement or status update.",
+        "Gmail sends a notification.",
+        "Google Sites presents the current result."
+      ],
+      "result": "Small savings repeat across many events, reducing searching, typing, forgotten messages, and duplicate work.",
+      "lesson": "Automation multiplies the value of reliable routine actions without replacing human judgment.",
+      "evidenceSectionAnchors": [
+        "#multipliers"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "procedureId": "procedure-01",
+      "title": "Turn a workplace message into a durable operational record",
+      "purpose": "Preserve immediate communication so it can support action, evidence, and later memory.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Capture the message in a structured form with source, time, location, request, and relevant details.",
+          "expectedResult": "The original signal becomes a consistent source record."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Store the record in an organized ledger where it can be sorted, filtered, compared, and updated.",
+          "expectedResult": "The record remains available and can be connected to later events."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Route or acknowledge the request and record who received it.",
+          "expectedResult": "The record shows that the communication entered an operational workflow."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Record the action, result, and any status change.",
+          "expectedResult": "The record connects the source request to the work performed."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Preserve the completed record for later comparison and reporting.",
+          "expectedResult": "The event contributes to organizational memory."
+        }
+      ],
+      "verification": [
+        "The source, timestamp, location, request, receiver, action, and result can be identified.",
+        "The record remains connected to the original event."
+      ],
+      "evidenceSectionAnchors": [
+        "#communication",
+        "#provenance"
+      ]
+    },
+    {
+      "procedureId": "procedure-02",
+      "title": "Build a corroborated account of completed work",
+      "purpose": "Use several independent records to support an operational claim.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Locate the original request or source event.",
+          "expectedResult": "The reason for the work is documented."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Review the assignment, roster, or staffing context.",
+          "expectedResult": "The employee's duties and available coverage are visible."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Review the acknowledgment or message trail.",
+          "expectedResult": "Receipt and follow-through are documented."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Use an inspection or other observation to confirm the resulting condition.",
+          "expectedResult": "Reported activity is connected to an observed outcome."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Store or link the records as one evidence chain.",
+          "expectedResult": "The request, response, completion, and result can be reviewed together."
+        }
+      ],
+      "verification": [
+        "At least two independent records support the account.",
+        "The observed result is distinguishable from the employee's reported activity.",
+        "The evidence chain can be followed from source to outcome."
+      ],
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "warningId": "warning-01",
+      "title": "Do not rely on messages that disappear into a thread",
+      "risk": "Important requests become buried, separated from the work they caused, or forgotten.",
+      "avoid": "Treating an unstructured text message as the complete operational record.",
+      "correctiveAction": "Capture important facts in a structured record connected to action and outcome.",
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "warningId": "warning-02",
+      "title": "Do not create orphan records",
+      "risk": "A record without source or history cannot reliably explain what happened.",
+      "avoid": "Storing a result without who, when, why, sequence, or change history.",
+      "correctiveAction": "Preserve provenance from the original event through the final outcome.",
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "warningId": "warning-03",
+      "title": "Do not force one record to prove everything",
+      "risk": "A single report can be incomplete, unfair, or easy to dispute.",
+      "avoid": "Using only the employee's report, only the request, or only an inspection.",
+      "correctiveAction": "Use several independent records that support the same account.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "warningId": "warning-04",
+      "title": "Do not confuse automation with replacement",
+      "risk": "Human judgment, supervision, and useful work may be undervalued or misrepresented.",
+      "avoid": "Describing automation as one machine replacing one person.",
+      "correctiveAction": "Automate predictable information movement while preserving human interpretation and responsibility.",
+      "evidenceSectionAnchors": [
+        "#ship",
+        "#multipliers"
+      ]
+    },
+    {
+      "warningId": "warning-05",
+      "title": "Do not invent the narrative after the fact",
+      "risk": "The department's history becomes based on memory, impressions, or the loudest complaint.",
+      "avoid": "Reconstructing performance without records created during the work.",
+      "correctiveAction": "Build the narrative gradually from requests, assignments, messages, inspections, supplies, and documentation.",
+      "evidenceSectionAnchors": [
+        "#narrative",
+        "#conclusion"
+      ]
+    }
+  ],
+  "reviewQuestions": [
+    {
+      "questionId": "question-01",
+      "question": "In the ship metaphor, what do the captain, crew, instruments, and logbook represent?",
+      "answerSummary": "The supervisor directs and interprets; employees perform the work; digital tools reveal operating conditions; and accumulated records preserve the department's history.",
+      "evidenceSectionAnchors": [
+        "#ship"
+      ]
+    },
+    {
+      "questionId": "question-02",
+      "question": "What makes structured communication different from a temporary message?",
+      "answerSummary": "Structured communication preserves source, time, location, request, receiver, action, and result in known places.",
+      "evidenceSectionAnchors": [
+        "#communication"
+      ]
+    },
+    {
+      "questionId": "question-03",
+      "question": "What questions does provenance answer?",
+      "answerSummary": "Who created the record, when it entered the system, what event produced it, who received or changed it, and what action followed.",
+      "evidenceSectionAnchors": [
+        "#provenance"
+      ]
+    },
+    {
+      "questionId": "question-04",
+      "question": "Why is corroboration fairer than relying on one record?",
+      "answerSummary": "Several independent records provide different views of the same event, so no single report carries the entire burden of proof.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "questionId": "question-05",
+      "question": "Why are inspections especially valuable?",
+      "answerSummary": "They connect reported activity with an observed outcome and support quality, recognition, coaching, training, and improvement.",
+      "evidenceSectionAnchors": [
+        "#corroboration"
+      ]
+    },
+    {
+      "questionId": "question-06",
+      "question": "How do the nine tools described in the lesson function as one environment?",
+      "answerSummary": "They capture, store, automate, schedule, communicate, present, archive, provide field access, and connect physical places to digital tools.",
+      "evidenceSectionAnchors": [
+        "#tools"
+      ]
+    },
+    {
+      "questionId": "question-07",
+      "question": "Why is automation described as a multiplier?",
+      "answerSummary": "A small reliable action creates greater value when repeated daily, across many requests and many people.",
+      "evidenceSectionAnchors": [
+        "#multipliers"
+      ]
+    },
+    {
+      "questionId": "question-08",
+      "question": "How do records become narrative-builders?",
+      "answerSummary": "Repeated requests, inspections, rosters, response times, supply records, and documentation accumulate into evidence of patterns and change.",
+      "evidenceSectionAnchors": [
+        "#narrative"
+      ]
+    }
+  ],
+  "futureApplications": [
+    {
+      "applicationId": "application-01",
+      "title": "End-to-end housekeeping request history",
+      "description": "Connect the original request, assignment, acknowledgment, work record, inspection, and completion outcome.",
+      "readiness": "conceptually ready",
+      "dependencies": [
+        "Stable identifiers",
+        "Structured request and work records",
+        "Inspection records"
+      ]
+    },
+    {
+      "applicationId": "application-02",
+      "title": "Staffing and response-time analysis",
+      "description": "Compare rosters and assignments with request volume, response times, and completion patterns.",
+      "readiness": "requires accumulated data",
+      "dependencies": [
+        "Reliable roster history",
+        "Request timestamps",
+        "Completion timestamps"
+      ]
+    },
+    {
+      "applicationId": "application-03",
+      "title": "Quality and inspection history",
+      "description": "Use repeated inspections to compare reported work with observed outcomes across employees, units, and time.",
+      "readiness": "requires standardized inspections",
+      "dependencies": [
+        "Inspection form",
+        "Location identifiers",
+        "Work-record linkage"
+      ]
+    },
+    {
+      "applicationId": "application-04",
+      "title": "Automated notification and status movement",
+      "description": "Use Apps Script to move routine information, update status, and notify the appropriate people.",
+      "readiness": "partially ready",
+      "dependencies": [
+        "Defined workflow states",
+        "Notification rules",
+        "Authoritative data source"
+      ]
+    },
+    {
+      "applicationId": "application-05",
+      "title": "Supply-consumption explanation",
+      "description": "Compare supply records with work activity to explain usage and changing demand.",
+      "readiness": "requires connected inventory and work records",
+      "dependencies": [
+        "Inventory events",
+        "Work activity records",
+        "Shared item and location identifiers"
+      ]
+    },
+    {
+      "applicationId": "application-06",
+      "title": "Department performance narrative",
+      "description": "Generate evidence-based summaries of workload, quality, response, staffing, improvements, and system evolution.",
+      "readiness": "requires sustained record accumulation",
+      "dependencies": [
+        "Consistent structured records",
+        "Corroborating sources",
+        "Cataloged documentation history"
+      ]
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains that digital tools are valuable because they help the department see what is happening, preserve the source and result of work, compare independent records, and build a reliable history.",
+      "operationalImpact": "A connected information system can improve workload visibility, quality review, employee recognition, coaching, staffing analysis, supply explanation, and communication follow-through.",
+      "currentStatus": "Conceptual lesson complete; it describes the operating model but does not claim that every tool or connection is fully implemented.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The lesson is conceptual and does not verify deployment status.",
+        "The ship metaphor simplifies some operational and authority distinctions.",
+        "Corroboration depends on independent records being captured consistently.",
+        "Automation depends on defined workflows and authoritative data sources."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Use the lesson as a framework when deciding which communications should become records and which records should be connected.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-observability",
+          "relatedSectionAnchor": "#ship",
+          "type": "concept",
+          "title": "Give the department instruments and a logbook",
+          "text": "The purpose of the tools is to make staffing, requests, assignments, delays, inspections, supplies, and completed work visible and memorable."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-provenance",
+          "relatedSectionAnchor": "#provenance",
+          "type": "control",
+          "title": "Preserve where records came from",
+          "text": "Source, time, sequence, changes, and outcome should remain connected."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-corroboration",
+          "relatedSectionAnchor": "#corroboration",
+          "type": "evidence",
+          "title": "Use several windows on important events",
+          "text": "Requests, rosters, messages, inspections, and stored histories can support one fairer account."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-narrative",
+          "relatedSectionAnchor": "#narrative",
+          "type": "outcome",
+          "title": "Let the narrative emerge from the work",
+          "text": "Accumulated records can explain workload, quality, staffing effects, supply use, and improvement without retrospective invention."
+        }
+      ]
+    },
+    "general": {
+      "summary": "The lesson uses a ship metaphor to show how structured communication, connected tools, inspections, provenance, corroboration, automation, and accumulated records create organizational memory.",
+      "keyPoints": [
+        "A department needs instruments and a logbook, not only verbal signals.",
+        "Important communication should become a structured record.",
+        "Provenance connects records to source, sequence, and outcome.",
+        "Corroboration uses several independent records.",
+        "Inspections connect reported activity to observed results.",
+        "Digital tools form one operating environment.",
+        "Automation multiplies small reliable actions.",
+        "Records created during work gradually become the department's narrative."
+      ]
+    },
+    "technical": {
+      "summary": "The source is a responsive HTML and CSS lesson with sticky navigation, eight anchored sections, inline tooltips, tool-role cards, one process flow, a five-step evidence chain, and no JavaScript.",
+      "keyPoints": [
+        "The lesson links back to the Meadows documentation page.",
+        "Eight section anchors support direct navigation.",
+        "Nine operational tools are represented with icons and explanatory text.",
+        "Tooltips are implemented with CSS hover and focus states.",
+        "The layout adapts to smaller screens and print.",
+        "No software tests or live integrations are reported."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The Meadows tool suite is most useful when understood as one operating environment rather than separate applications.",
+      "Forms and Sheets establish the source record and working ledger.",
+      "Calendar and roster information provide time, assignment, and staffing context.",
+      "Gmail preserves the signal trail, Sites provides the shared front door, and GitHub preserves technical history.",
+      "Inspections are the bridge between reported activity and observed result.",
+      "QR codes connect physical locations and printed materials to the correct digital tool."
+    ],
+    "generalLessons": [
+      "Communication becomes organizational memory only when it leaves a durable structured trail.",
+      "Provenance and corroboration solve different evidence problems and work best together.",
+      "Automation produces large value through repetition rather than dramatic one-time replacement.",
+      "Operational narratives should be assembled from contemporaneous records, not invented after the fact.",
+      "A functioning information system supports action, observability, memory, and explanation."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Important communication disappears after immediate use.",
+        "pattern": "Requests and decisions remain only in text threads, verbal exchanges, or individual memory.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Documentation"
+        ]
+      },
+      {
+        "problem": "Records become disconnected from their source and outcome.",
+        "pattern": "A result exists without a clear request, timestamp, sequence, receiver, or later status.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Documentation"
+        ]
+      },
+      {
+        "problem": "The department cannot explain workload or performance despite completing work.",
+        "pattern": "Individual events are not retained or compared, so no cumulative evidence develops.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Documentation"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Message-to-memory operational chain",
+        "description": "Message → Structured record → Action → Result → Evidence → Memory.",
+        "suggestedDestination": "Klinswork information architecture",
+        "supportingSectionAnchors": [
+          "#communication"
+        ]
+      },
+      {
+        "title": "Operational provenance checklist",
+        "description": "Who created the record, when it entered, what produced it, who changed it, and what action followed.",
+        "suggestedDestination": "Klinswork recordkeeping standards",
+        "supportingSectionAnchors": [
+          "#provenance"
+        ]
+      },
+      {
+        "title": "Five-part corroboration chain",
+        "description": "Original request, assignment or roster, message trail, inspection, and stored linked record.",
+        "suggestedDestination": "Klinswork evidence practices",
+        "supportingSectionAnchors": [
+          "#corroboration"
+        ]
+      },
+      {
+        "title": "Digital tool role map",
+        "description": "Forms intake; Sheets ledger; Apps Script machinery; Calendar chart; Gmail archive; Sites front office; GitHub technical archive; mobile field terminal; QR doorway.",
+        "suggestedDestination": "Klinswork system architecture",
+        "supportingSectionAnchors": [
+          "#tools"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Important operational communication should leave a structured trail.",
+        "changeType": "confirmed",
+        "explanation": "The lesson repeatedly distinguishes temporary messages from durable records."
+      },
+      {
+        "rule": "Preserve source, sequence, and outcome together.",
+        "changeType": "confirmed",
+        "explanation": "The provenance section defines these relationships as necessary to prevent orphan records."
+      },
+      {
+        "rule": "Use multiple independent records for important claims.",
+        "changeType": "confirmed",
+        "explanation": "The corroboration section explicitly distributes evidence across request, roster, message, inspection, and stored record."
+      },
+      {
+        "rule": "Automate predictable information movement while retaining human judgment.",
+        "changeType": "confirmed",
+        "explanation": "Automation is framed as repeated assistance, not replacement."
+      },
+      {
+        "rule": "Build the operational narrative from records created during work.",
+        "changeType": "added",
+        "explanation": "The lesson explicitly rejects inventing the narrative after the fact."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "ship",
+      "title": "A Ship Cannot Be Guided by Shouts Alone",
+      "anchor": "#ship",
+      "contentSummary": "Introduces the supervisor as captain, employees as crew, digital tools as instruments, and accumulated records as the logbook. Explains that a department needs more than temporary signals if it is to observe and explain its voyage.",
+      "narrativeRole": "system metaphor and problem framing",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's system metaphor and problem framing to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-observability",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Digital tool role map"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "communication",
+      "title": "Communication That Leaves a Trail",
+      "anchor": "#communication",
+      "contentSummary": "Contrasts temporary messages with structured records and presents the chain from message to memory.",
+      "narrativeRole": "structured communication model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's structured communication model to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Message-to-memory operational chain"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "provenance",
+      "title": "Provenance: Knowing Where the Record Came From",
+      "anchor": "#provenance",
+      "contentSummary": "Defines provenance through source, time, originating event, recipient or changes, and resulting action.",
+      "narrativeRole": "record-traceability model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's record-traceability model to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-provenance",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Operational provenance checklist"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "corroboration",
+      "title": "Corroboration: Different Windows on the Same Event",
+      "anchor": "#corroboration",
+      "contentSummary": "Shows how a request, roster, message trail, inspection, and stored record can support one account of completed work.",
+      "narrativeRole": "multi-record evidence model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's multi-record evidence model to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-corroboration",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Five-part corroboration chain"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "tools",
+      "title": "Our Tools as the Ship's Working Systems",
+      "anchor": "#tools",
+      "contentSummary": "Maps nine digital tools to operational roles including intake, ledger, machinery, navigation chart, signal archive, front office, technical archive, field terminal, and doorway.",
+      "narrativeRole": "tool-role mapping",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's tool-role mapping to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Digital tool role map"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "multipliers",
+      "title": "Automation as a Productivity Multiplier",
+      "anchor": "#multipliers",
+      "contentSummary": "Explains how one reliable process creates multiplied value by repeating small actions across many events and people.",
+      "narrativeRole": "automation principle",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's automation principle to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "narrative",
+      "title": "Records Become Narrative-Builders",
+      "anchor": "#narrative",
+      "contentSummary": "Shows how requests, inspections, rosters, response times, supplies, and documentation history combine into an evidence-based account of department operations.",
+      "narrativeRole": "cumulative evidence and explanation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's cumulative evidence and explanation to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-narrative",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "conclusion",
+      "title": "A System That Can Act, Remember, and Explain",
+      "anchor": "#conclusion",
+      "contentSummary": "Contrasts unstructured and structured environments and concludes with the sequence of signals, tools, crew action, instruments, logbook, and confident steering.",
+      "narrativeRole": "synthesis and desired operating state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes the lesson's synthesis and desired operating state to the Meadows Housekeeping documentation system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "The section explains operational visibility, record authority, evidence quality, automation, or organizational memory."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "responsive HTML document",
+      "web browser",
+      "print layout"
+    ],
+    "apps": [
+      "Google Forms",
+      "Google Sheets",
+      "Apps Script",
+      "Google Calendar",
+      "Gmail",
+      "Google Sites",
+      "GitHub",
+      "mobile phones",
+      "QR codes"
+    ],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Forms",
+      "Google Sheets",
+      "Google Apps Script",
+      "Google Calendar",
+      "Gmail",
+      "Google Sites",
+      "GitHub"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "form submissions",
+      "spreadsheet ledgers",
+      "calendar and roster records",
+      "email threads",
+      "documentation repositories",
+      "inspection records",
+      "work-completion records"
+    ],
+    "files": [
+      "the_ship_that_remembers_lesson.html"
+    ],
+    "integrations": [
+      "Forms to Sheets",
+      "Forms or Sheets to Apps Script",
+      "Apps Script to Gmail notifications",
+      "Calendar and roster context linked to work records",
+      "Google Sites as a shared access layer",
+      "GitHub as documentation and version history",
+      "QR codes linking physical spaces to digital tools",
+      "Inspections linked to reported work and results"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "source-to-sidecar content and profile validation passed",
+      "notes": [
+        "The source HTML and lesson-reference template parsed successfully.",
+        "All eight anchored lesson sections were represented.",
+        "Nine operational tools were preserved in the subject, concepts, and technical metadata.",
+        "The message-to-memory flow and five-part corroboration chain were preserved.",
+        "No software tests or live integration checks are claimed.",
+        "The canonical document URL remains blank because the source provides only the Meadows documentation index link."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "New Lesson: The Ship That Remembers",
+      "body": "This lesson explains how structured communication, provenance, corroboration, inspections, automation, and connected digital tools turn everyday housekeeping work into visible evidence and organizational memory.",
+      "audiences": [
+        "housekeeping employees",
+        "housekeeping supervisors",
+        "operations staff"
+      ],
+      "detailLevel": "lesson announcement",
+      "sourceAudienceView": "general"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "source HTML supplied; canonical lesson URL not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "The Ship That Remembers",
+    "listingDescription": "A digital-operations lesson showing how structured communication, provenance, corroboration, inspections, automation, and connected records create observability and organizational memory.",
+    "indexPageUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "googleSitesUrl": "https://sites.google.com/view/meadows-hk/home/documentation",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "Google Sites",
+        "destinationType": "documentation index",
+        "url": "https://sites.google.com/view/meadows-hk/home/documentation",
+        "status": "linked from source navigation"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "The Ship That Remembers",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; canonical publication location not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://sites.google.com/view/meadows-hk/home/documentation"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded lesson HTML",
+    "sourceFiles": [
+      "the_ship_that_remembers_lesson.html",
+      "lesson-reference-sidecar-template-3.0.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T05:30:21+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source explicitly identifies itself as a Digital Operations Lesson, so the lesson-reference profile was used.",
+      "The source contains eight explicit section IDs, which were retained as sidecar section anchors.",
+      "The estimated study time is an editorial estimate based on document length and complexity; it is not stated by the source.",
+      "The lesson is conceptual and does not claim that every described tool, integration, inspection practice, or automation is deployed.",
+      "No creation date, canonical lesson URL, repository path, or publication timestamp is provided.",
+      "The source contains icon-based illustrations and CSS tooltips but no separate image files."
+    ],
+    "unresolvedQuestions": [
+      "What date was the lesson created or last revised?",
+      "What canonical public URL should identify the lesson?",
+      "What repository path should identify the source HTML?",
+      "Which described integrations are currently active rather than conceptual?",
+      "Should this lesson be added to the current Klinswork document catalog?"
+    ]
+  }
+}

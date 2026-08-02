@@ -1,0 +1,588 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "workflow-specification",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "workflow-specification-sidecar-template-3.0-draft.json",
+    "previewMode": "workflow-specification"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [
+          "workflow transition validation rules",
+          "authority-map validation",
+          "workflow preview field-priority map",
+          "workflow-to-run-record linkage rules"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should transition records be mandatory when transitions can be derived from ordered steps?",
+          "Should workflow specifications declare a formal execution-role model?",
+          "Should reusable workflow specifications and individual workflow-run records use separate catalog families?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "workflow-specification",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "workflow-specification-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "",
+      "projectType": "",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "",
+      "projectPhase": "",
+      "contributionType": "",
+      "identificationBasis": "",
+      "identificationConfidence": ""
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "relationshipType": "",
+        "relationshipDescription": "",
+        "impact": "",
+        "evidenceSectionAnchors": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "",
+        "foundationType": "",
+        "relationshipDescription": "",
+        "impact": ""
+      }
+    ],
+    "relationshipSummary": ""
+  },
+  "subject": {
+    "projectName": "",
+    "primaryApp": "",
+    "mainFocus": "",
+    "description": "",
+    "topics": [],
+    "keywords": [],
+    "appsAffected": [],
+    "systemsAffected": [],
+    "componentsAffected": []
+  },
+  "workflowIdentity": {
+    "workflowId": "",
+    "workflowTitle": "",
+    "workflowPurpose": "",
+    "workflowType": "",
+    "currentStatus": "",
+    "workflowVersion": "",
+    "previousWorkflowId": "",
+    "previousSchemaVersion": "",
+    "initialState": "",
+    "finalState": "",
+    "declaredStateCount": null,
+    "declaredPhaseCount": null,
+    "declaredStepCount": null,
+    "intendedUsers": [],
+    "executionScope": "",
+    "authorityStatement": ""
+  },
+  "workflowRevision": {
+    "revisionType": "",
+    "revisionSummary": [],
+    "predecessorRelationship": "",
+    "compatibilityNotes": [],
+    "migrationNotes": [],
+    "changeHistory": [
+      {
+        "changeId": "",
+        "version": "",
+        "timestamp": "",
+        "description": "",
+        "rationale": "",
+        "status": "",
+        "evidenceSectionAnchors": []
+      }
+    ]
+  },
+  "designPrinciples": [
+    {
+      "principleId": "",
+      "statement": "",
+      "explanation": "",
+      "enforcementMethod": "",
+      "appliesTo": [],
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "artifactModel": {
+    "authoritativeArtifacts": [
+      {
+        "artifactKey": "",
+        "fileName": "",
+        "artifactType": "",
+        "purpose": "",
+        "lifecycleStage": "",
+        "required": false,
+        "retainedIndividually": false
+      }
+    ],
+    "artifactAuthority": [
+      {
+        "factType": "",
+        "authoritativeArtifact": "",
+        "authorityScope": "",
+        "limitations": "",
+        "evidenceSectionAnchors": []
+      }
+    ],
+    "retentionRules": [],
+    "provenanceRules": [],
+    "namingRules": [],
+    "linkageRules": []
+  },
+  "stateModel": {
+    "initialState": "",
+    "finalState": "",
+    "states": [
+      {
+        "stateId": "",
+        "title": "",
+        "description": "",
+        "isInitial": false,
+        "isFinal": false,
+        "entryConditions": [],
+        "exitConditions": []
+      }
+    ],
+    "transitions": [
+      {
+        "transitionId": "",
+        "fromState": "",
+        "toState": "",
+        "triggeringStepIds": [],
+        "conditions": [],
+        "description": ""
+      }
+    ],
+    "stateInvariants": [],
+    "terminalConditions": []
+  },
+  "globalInputs": [
+    {
+      "inputId": "",
+      "name": "",
+      "inputType": "",
+      "description": "",
+      "authoritySource": "",
+      "required": false
+    }
+  ],
+  "globalOutputs": [
+    {
+      "outputId": "",
+      "name": "",
+      "outputType": "",
+      "description": "",
+      "authorityRole": "",
+      "required": false
+    }
+  ],
+  "instructionSets": [
+    {
+      "instructionSetId": "",
+      "suggestedFileName": "",
+      "loadedAtStep": null,
+      "loadedAtPhase": "",
+      "purpose": "",
+      "required": false,
+      "status": "",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "phases": [
+    {
+      "sequence": 1,
+      "phaseId": "",
+      "title": "",
+      "purpose": "",
+      "stepRange": {
+        "firstStep": null,
+        "lastStep": null
+      },
+      "entryState": "",
+      "exitState": "",
+      "inputs": [],
+      "outputs": [],
+      "validation": [],
+      "humanReviewRequired": false,
+      "automationPotential": "",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "stepId": "",
+      "phaseId": "",
+      "title": "",
+      "stateBefore": "",
+      "stateAfter": "",
+      "purpose": "",
+      "inputs": [],
+      "actions": [],
+      "outputs": [],
+      "validation": [],
+      "blockingConditions": [],
+      "exceptionRules": [],
+      "automationPotential": "",
+      "humanReviewRequired": false,
+      "approvalAuthority": "",
+      "nextStep": null,
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "automationModel": {
+    "overallAutomationPotential": "",
+    "automatableStepIds": [],
+    "humanRequiredStepIds": [],
+    "automationBoundaries": [
+      {
+        "boundaryId": "",
+        "description": "",
+        "reason": "",
+        "affectedStepIds": []
+      }
+    ],
+    "automationRules": [],
+    "unsupportedAutomation": []
+  },
+  "humanReviewModel": {
+    "reviewPoints": [
+      {
+        "reviewId": "",
+        "stepId": "",
+        "phaseId": "",
+        "reviewPurpose": "",
+        "approvalAuthority": "",
+        "decisionRequired": "",
+        "requiredEvidence": [],
+        "outcomes": []
+      }
+    ],
+    "approvalRules": [],
+    "overrideRules": [],
+    "separationOfDutiesRules": []
+  },
+  "validationModel": {
+    "workflowValidationRules": [
+      {
+        "ruleId": "",
+        "ruleType": "",
+        "description": "",
+        "severity": "",
+        "appliesTo": [],
+        "verificationMethod": ""
+      }
+    ],
+    "blockingConditions": [],
+    "nonBlockingConditions": [],
+    "completenessChecks": [],
+    "transitionChecks": [],
+    "authorityChecks": [],
+    "catalogChecks": [],
+    "publicationChecks": []
+  },
+  "closureModel": {
+    "finalState": "",
+    "completionCriteria": [],
+    "closureOutputs": [],
+    "stoppingRules": [],
+    "recursionPreventionRules": [],
+    "exceptionHandling": [],
+    "reopenConditions": []
+  },
+  "designDecisions": {
+    "resolved": [
+      {
+        "decisionId": "",
+        "decision": "",
+        "rationale": "",
+        "status": "",
+        "evidenceSectionAnchors": []
+      }
+    ],
+    "open": [
+      {
+        "decisionId": "",
+        "question": "",
+        "reasonOpen": "",
+        "impact": "",
+        "nextDecisionPoint": "",
+        "status": ""
+      }
+    ]
+  },
+  "workflowMetrics": {
+    "stateCount": null,
+    "phaseCount": null,
+    "stepCount": null,
+    "instructionSetCount": null,
+    "humanReviewStepCount": null,
+    "automatableStepCount": null,
+    "validationRuleCount": null,
+    "authoritativeArtifactCount": null
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "",
+      "operationalImpact": "",
+      "currentStatus": "",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "",
+          "relatedSectionAnchor": "",
+          "type": "",
+          "title": "",
+          "text": ""
+        }
+      ]
+    },
+    "general": {
+      "summary": "",
+      "keyPoints": []
+    },
+    "technical": {
+      "summary": "",
+      "keyPoints": []
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "projectsObservedIn": []
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "description": "",
+        "suggestedDestination": "",
+        "supportingSectionAnchors": []
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "",
+        "changeType": "",
+        "explanation": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "",
+      "title": "",
+      "anchor": "",
+      "contentSummary": "",
+      "narrativeRole": "",
+      "projectRelevance": {
+        "primaryProjectContribution": "",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": [
+        {
+          "graphicId": "",
+          "role": "",
+          "url": "",
+          "repositoryPath": "",
+          "altText": "",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [],
+    "integrations": [],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "",
+        "type": "",
+        "result": "",
+        "notes": "",
+        "statusBasis": ""
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "",
+      "notes": []
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": [
+      {
+        "communicationType": "",
+        "audience": "",
+        "subject": "",
+        "body": ""
+      }
+    ]
+  },
+  "graphics": [
+    {
+      "graphicId": "",
+      "role": "",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "",
+    "listingDescription": "",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "",
+        "destinationType": "",
+        "url": "",
+        "status": ""
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "",
+        "resourceName": "",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "",
+    "interpretationNotes": [],
+    "unresolvedQuestions": []
+  }
+}

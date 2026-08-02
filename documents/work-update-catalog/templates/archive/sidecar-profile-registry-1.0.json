@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "registry": {
+    "registryId": "klinswork-sidecar-profile-registry",
+    "title": "Klinswork Sidecar Profile Registry",
+    "description": "Maps document purposes to standalone sidecar templates while preserving one shared catalog.",
+    "baseTemplate": "document-sidecar-base-template-3.0-draft.json",
+    "fallbackProfile": "generic-document"
+  },
+  "profiles": [
+    {
+      "profileType": "work-update",
+      "templateFile": "work-update-sidecar-template-3.0-draft.json",
+      "previewMode": "work-update",
+      "documentTypes": [
+        "work-update",
+        "milestone-work-update",
+        "daily-work-update"
+      ],
+      "requiredProfileBlocks": [
+        "workCoverage",
+        "narrative",
+        "projectDelta"
+      ],
+      "selectionRule": "Use when the document primarily records work performed, progress, decisions, results, and project change over a period."
+    },
+    {
+      "profileType": "implementation-plan",
+      "templateFile": "implementation-plan-sidecar-template-3.0-draft.json",
+      "previewMode": "implementation-plan",
+      "documentTypes": [
+        "implementation-plan",
+        "roadmap",
+        "migration-plan",
+        "test-plan"
+      ],
+      "requiredProfileBlocks": [
+        "planContext",
+        "targetState",
+        "implementationStages",
+        "acceptanceCriteria",
+        "plannedTests",
+        "implementationOrder"
+      ],
+      "selectionRule": "Use when the document primarily defines intended stages, dependencies, risks, tests, gates, and acceptance criteria."
+    },
+    {
+      "profileType": "lesson-reference",
+      "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+      "previewMode": "lesson-reference",
+      "documentTypes": [
+        "lesson",
+        "reference",
+        "guide",
+        "procedure",
+        "training-document"
+      ],
+      "requiredProfileBlocks": [
+        "learningContext",
+        "learningObjectives",
+        "principles",
+        "concepts"
+      ],
+      "selectionRule": "Use when the document primarily teaches, explains, demonstrates, or preserves reusable guidance."
+    },
+    {
+      "profileType": "generic-document",
+      "templateFile": "generic-document-sidecar-template-3.0-draft.json",
+      "previewMode": "generic-document",
+      "documentTypes": [
+        "generic-document",
+        "report",
+        "specification",
+        "policy",
+        "memo",
+        "overview"
+      ],
+      "requiredProfileBlocks": [
+        "documentSummary",
+        "keyPoints"
+      ],
+      "selectionRule": "Use when no specialized profile describes the document's main purpose."
+    }
+  ],
+  "selectionPrinciples": [
+    "Choose the profile from the document's purpose, not its filename or visual design.",
+    "Keep document.documentType specific to the source document.",
+    "Use profile.profileType to select the sidecar structure and viewer preview.",
+    "Use plannedTests for tests described but not performed.",
+    "Use technical.tests only for tests actually reported or executed.",
+    "Keep every profile in the same Klinswork document catalog."
+  ],
+  "schemaRoadmap": {
+    "currentVersion": "1.0",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "profile validation rules",
+          "viewer field-priority maps",
+          "migration mappings from 2.0-draft sidecars"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  }
+}

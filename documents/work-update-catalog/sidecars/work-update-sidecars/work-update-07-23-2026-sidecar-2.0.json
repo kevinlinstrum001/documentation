@@ -1,0 +1,874 @@
+{
+  "schemaVersion": "2.0-draft",
+  "document": {
+    "documentId": "work-update-2026-07-23-inventory-3-product-pages-routing",
+    "filePath": "work-update-07-23-2026.html",
+    "documentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-23-2026.html",
+    "title": "Work Update — July 23, 2026",
+    "headline": "Inventory 3.0 gained complete product pages and stable internal routing.",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-07-23",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "work-update-07-23-2026-sidecar-2.0.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "work-update-2026-07-23-inventory-3-product-pages-routing"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "daily-work-update",
+    "coverageDescription": "Covers the July 23, 2026 Inventory 3.0 work session, including complete product pages, inventory-browser filtering, documentation of two trash-liner products, diagnosis and repair of Apps Script routing, clarification of stable deployment practice, and longer-term URL architecture.",
+    "coverageConfidence": "explicit"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory 3.0",
+      "projectType": "personal operational inventory and product-information application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Provide a dependable inventory system that combines quantity tracking, product information, SDS access, product research, and stable mobile-friendly navigation.",
+      "projectPhase": "product-information expansion and routing stabilization",
+      "contributionType": "feature expansion, routing repair, deployment stabilization, and product documentation",
+      "identificationBasis": "The work update explicitly identifies Inventory 3.0 as the primary application.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "SDS Directory",
+        "relationshipType": "safety-information integration",
+        "relationshipDescription": "Product pages expose SDS revision, source, verification information, and direct SDS links when available.",
+        "impact": "Inventory 3.0 became a combined product, inventory, and safety-information system.",
+        "evidenceSectionAnchors": [
+          "#product-pages",
+          "#achievement"
+        ],
+        "identificationBasis": "Explicit references to SDS information and access.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Tool Center",
+        "relationshipType": "application access and URL architecture",
+        "relationshipDescription": "The Tool Center is one of the Klinswork applications considered in the longer-term central URL-registry discussion.",
+        "impact": "The routing work reduced future manual link maintenance across the tool suite.",
+        "evidenceSectionAnchors": [
+          "#architecture"
+        ],
+        "identificationBasis": "Explicitly named in the central URL-registry discussion.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Tasker",
+        "relationshipType": "related application in shared URL architecture",
+        "relationshipDescription": "Tasker was included in the discussion of a central Klinswork URL registry.",
+        "impact": "The lesson about stable deployment URLs may guide future internal navigation.",
+        "evidenceSectionAnchors": [
+          "#architecture"
+        ],
+        "identificationBasis": "Explicitly named in the architecture section.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Email Composer",
+        "relationshipType": "related application in shared URL architecture",
+        "relationshipDescription": "Email Composer was included in the discussion of a central Klinswork URL registry.",
+        "impact": "The canonical-base-URL rule may be reusable in future internal navigation.",
+        "evidenceSectionAnchors": [
+          "#architecture"
+        ],
+        "identificationBasis": "Explicitly named in the architecture section.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Google Apps Script deployment URL",
+        "foundationType": "shared application routing foundation",
+        "relationshipDescription": "The server-provided stable /exec URL is used as the canonical base for all internal routes.",
+        "impact": "Preserves bookmarks, Google Sites links, QR codes, and internal navigation across deployment versions."
+      },
+      {
+        "foundationId": "",
+        "name": "Product catalog",
+        "foundationType": "shared product-information data",
+        "relationshipDescription": "Supplies product identity, category, manufacturer, SDS, and inventory-unit information.",
+        "impact": "Enabled complete product pages and improved browser filtering."
+      }
+    ],
+    "relationshipSummary": "Inventory 3.0 expanded into a broader product and safety-information system while establishing routing rules that may also benefit other Klinswork applications."
+  },
+  "subject": {
+    "projectName": "Inventory 3.0",
+    "primaryApp": "Inventory 3.0",
+    "mainFocus": "Expanding Inventory 3.0 into a complete product-information system while repairing internal routing and establishing a stable Apps Script deployment method.",
+    "description": "Klinswork work update for July 23, 2026, covering Inventory 3.0 product pages, routing repairs, stable Apps Script deployment links, filtering improvements, product research, and deployment safeguards.",
+    "topics": [
+      "full product pages",
+      "inventory filtering",
+      "product catalog",
+      "SDS access",
+      "trash-can liners",
+      "Apps Script routing",
+      "stable deployment URLs",
+      "deployment safeguards",
+      "mobile-friendly interface",
+      "product research",
+      "application architecture"
+    ],
+    "keywords": [
+      "Inventory 3.0",
+      "product detail page",
+      "full product page",
+      "inventory browser",
+      "SDS",
+      "trash liner",
+      "window.APP_URL",
+      "getAppBaseUrl",
+      "ScriptApp.getService().getUrl",
+      "Google Apps Script deployment",
+      "stable exec URL"
+    ],
+    "appsAffected": [
+      "Inventory 3.0",
+      "SDS Directory",
+      "Tool Center",
+      "Email Composer",
+      "Tasker"
+    ],
+    "systemsAffected": [
+      "Klinswork documentation",
+      "Google Apps Script deployment workflow",
+      "product catalog"
+    ],
+    "componentsAffected": [
+      "product pages",
+      "inventory browser",
+      "Scripts.html routing",
+      "deployment process",
+      "product records"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "Inventory 3.0 had a working inventory browser, but product information remained limited to compact details, products without balances were harder to reach, and internal routing could lead from the correct app into a blank or older-looking page.",
+    "initialUnderstanding": "The visible failure looked like a changing deployment URL, while the broader product experience needed full pages, better filtering, and stronger safety-information access.",
+    "intendedOutcome": "Create complete standalone product pages, improve inventory browsing, document new products, repair all internal navigation, and preserve one stable deployment address.",
+    "approach": "Add direct product routes, retain the quick details popup, refine filtering, document the liner products, trace routing to the exact client-side helper, replace temporary runtime-derived URLs with the server-provided APP_URL, and define a safer deployment workflow.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Built complete product pages",
+        "description": "Added direct product routes and full product-information views with SDS access and return navigation.",
+        "result": "Inventory 3.0 gained standalone product pages while retaining quick details."
+      },
+      {
+        "sequence": 2,
+        "title": "Refined browsing and product records",
+        "description": "Made in-stock products the default view and documented two trash-liner products.",
+        "result": "Daily browsing became less cluttered while the full active catalog remained accessible."
+      },
+      {
+        "sequence": 3,
+        "title": "Diagnosed the routing failure",
+        "description": "Traced incorrect links to getAppBaseUrl() rebuilding routes from window.location inside the Apps Script iframe.",
+        "result": "The apparent deployment problem was reclassified as an internal base-URL problem."
+      },
+      {
+        "sequence": 4,
+        "title": "Established stable routing and deployment rules",
+        "description": "Changed internal routing to use window.APP_URL provided by ScriptApp.getService().getUrl().",
+        "result": "Product and return links worked without changing the public deployment URL."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Full product-page links could open a blank or older-looking page.",
+        "effect": "Users appeared to leave the correct deployment even though the public /exec URL had not changed.",
+        "resolution": "Rewrote getAppBaseUrl() to use the server-provided window.APP_URL.",
+        "status": "resolved"
+      },
+      {
+        "problem": "The deployment workflow was being confused with ordinary deployment-version updates.",
+        "effect": "New deployments could produce unnecessary new URLs and leave older versions active.",
+        "resolution": "Established the rule to update an existing deployment with a new version for normal code changes.",
+        "status": "resolved"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Build internal links from window.location.origin and window.location.pathname.",
+        "whyItWasTried": "It appeared to provide the current application's base address.",
+        "whyItDidNotWork": "Inside Apps Script it resolved to a temporary googleusercontent iframe address rather than the canonical /exec URL.",
+        "whatWasLearned": "Internal routes must use the server-provided canonical deployment URL."
+      },
+      {
+        "approach": "Treat the routing failure as evidence that the deployment URL had changed.",
+        "whyItWasTried": "The destination looked like a different or stale application version.",
+        "whyItDidNotWork": "The outside deployment remained stable; only client-generated internal links were wrong.",
+        "whatWasLearned": "Separate public deployment identity from temporary runtime iframe location."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "The deployment URL was proven stable",
+        "description": "The investigation showed that the external /exec address was not changing.",
+        "effectOnDirection": "Debugging shifted from deployment management to client-side routing."
+      },
+      {
+        "title": "window.APP_URL became the canonical source",
+        "description": "The app was already receiving the correct URL from ScriptApp.getService().getUrl().",
+        "effectOnDirection": "One base URL could now drive every internal route."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Retain the compact Details popup while adding full product pages.",
+        "reason": "Quick reference and complete product information serve different usage needs.",
+        "alternativesConsidered": [
+          "Replace the popup entirely with full-page navigation"
+        ],
+        "consequences": [
+          "Users can choose quick inspection or detailed product review."
+        ]
+      },
+      {
+        "decision": "Make In stock only the default browser view.",
+        "reason": "Routine inventory work should remain focused on products actually present at the selected location.",
+        "alternativesConsidered": [
+          "Show the full active catalog by default"
+        ],
+        "consequences": [
+          "Daily clutter is reduced while All products remains available for new opening balances."
+        ]
+      },
+      {
+        "decision": "Use one canonical server-provided base URL for all routes.",
+        "reason": "Runtime iframe addresses are temporary and unsuitable for stable navigation.",
+        "alternativesConsidered": [
+          "Use window.location",
+          "Use document.location",
+          "Hard-code the deployment URL"
+        ],
+        "consequences": [
+          "Internal links remain stable across ordinary deployment-version updates."
+        ]
+      }
+    ],
+    "methodEstablished": "For Apps Script applications, obtain the canonical /exec URL on the server, expose it to the browser as window.APP_URL, and build every internal route from that single source.",
+    "result": "Inventory 3.0 became a more complete product, inventory, and safety-information system with stable product routing and a clearer deployment process.",
+    "lessonsLearned": [
+      "A temporary Apps Script iframe URL must never be treated as the application's canonical base.",
+      "Ordinary code updates should create a new deployment version, not a new deployment.",
+      "Product browsing can serve both daily inventory and catalog-management needs through separate default and full views.",
+      "Manufactured articles such as trash liners belong in product inventory rather than the SDS directory."
+    ],
+    "directionChange": "The project moved from a quantity-focused inventory browser toward a richer product-information and safety-reference system.",
+    "narrativeSummary": "The July 23 work expanded product capabilities, improved filtering, documented new supplies, and resolved a misleading Apps Script routing problem by separating stable deployment identity from temporary runtime location."
+  },
+  "projectDelta": {
+    "previousState": "Inventory 3.0 could browse inventory and show compact product details, but it lacked complete standalone product pages, the default browser view was less focused, and internal links could be built from temporary Apps Script iframe addresses.",
+    "priorOutstandingWork": [],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Full product-page system",
+        "description": "Created direct product routes with detailed product, manufacturer, SDS, and inventory information.",
+        "evidenceSectionAnchors": [
+          "#product-pages"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory-browser filtering",
+        "description": "Made In stock only the default while preserving access to All products.",
+        "evidenceSectionAnchors": [
+          "#inventory-browser"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Trash-liner documentation",
+        "description": "Documented medium and large clear liner products for addition to Inventory 3.0.",
+        "evidenceSectionAnchors": [
+          "#products"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Stable internal routing",
+        "description": "Replaced runtime-derived routing with window.APP_URL.",
+        "evidenceSectionAnchors": [
+          "#routing"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Deployment safeguard workflow",
+        "description": "Clarified deployment-version updates and post-deployment navigation checks.",
+        "evidenceSectionAnchors": [
+          "#deployment"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Central Klinswork URL registry",
+        "completedPortion": "The purpose and possible role of a registry were considered.",
+        "remainingPortion": "No registry was implemented.",
+        "evidenceSectionAnchors": [
+          "#architecture"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Trash-liner catalog addition",
+        "completedPortion": "Two products were identified and documented.",
+        "remainingPortion": "The update does not explicitly confirm final insertion into the product catalog.",
+        "evidenceSectionAnchors": [
+          "#products"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Add documented liners to the product catalog",
+        "description": "Create or verify product records for the medium and large clear liners.",
+        "reasonStillOpen": "The source says they were prepared for addition."
+      },
+      {
+        "workItemId": "",
+        "title": "Evaluate central URL registry",
+        "description": "Decide whether shared app-address management is needed for replacement deployments and cross-app navigation.",
+        "reasonStillOpen": "The registry was discussed but not implemented."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Canonical internal base-URL rule",
+        "description": "All internal routes should derive from one stable server-provided deployment URL.",
+        "source": "#routing and #architecture"
+      }
+    ],
+    "deferredItems": [],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Build routes from window.location",
+        "supersededBy": "Server-provided window.APP_URL",
+        "reason": "window.location resolves to temporary Apps Script runtime addresses."
+      }
+    ],
+    "resultingState": "Inventory 3.0 now has full product pages, improved inventory filtering, documented new supply products, stable internal routing, preserved deployment URLs, and a repeatable post-deployment navigation test.",
+    "roadmapChangeSummary": "The product-information and routing work was completed; remaining work centers on catalog insertion for the new liner products and deciding whether a shared URL registry adds value beyond canonical per-app base URLs.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Add and verify liner product records",
+        "description": "Insert the documented medium and large liners into Inventory 3.0 and verify names, categories, and quantities.",
+        "priority": "high",
+        "status": "open"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Run regression navigation checks",
+        "description": "Verify homepage, details, full product page, and both return routes after future deployments.",
+        "priority": "high",
+        "status": "ongoing"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Evaluate shared URL registry",
+        "description": "Determine whether cross-app navigation or replacement deployments justify a central registry.",
+        "priority": "medium",
+        "status": "planned"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Inventory 3.0 now has complete product pages, better daily filtering, direct safety-sheet access, and repaired navigation that keeps users inside the correct application.",
+      "operationalImpact": "Products are easier to review, in-stock items are easier to find during routine work, and navigation no longer depends on temporary Google runtime addresses.",
+      "currentStatus": "The product-page and routing work was deployed and verified. Two trash-liner products were documented for catalog addition.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The update does not confirm that the two liner records were finally added to the catalog.",
+        "A central Klinswork URL registry was considered but not implemented."
+      ],
+      "staffVisibleChanges": [
+        "Open full product page button",
+        "In stock only default view",
+        "All products option",
+        "Direct SDS and manufacturer links",
+        "Reliable Back to Inventory navigation"
+      ],
+      "nextOperationalStep": "Add or verify the two liner products and continue using the stable deployment-version workflow.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-product-pages",
+          "relatedSectionAnchor": "#product-pages",
+          "type": "capability",
+          "title": "Complete product pages",
+          "text": "Each product can now open as a full page with image, manufacturer, inventory, and safety information."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-routing",
+          "relatedSectionAnchor": "#routing",
+          "type": "resolution",
+          "title": "Navigation was repaired",
+          "text": "The app now builds links from its stable deployment address instead of a temporary Google iframe address."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-achievement",
+          "relatedSectionAnchor": "#achievement",
+          "type": "status",
+          "title": "A broader product system",
+          "text": "Inventory 3.0 now combines inventory, product, and safety information in one mobile-friendly application."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Inventory 3.0 gained complete product pages, improved filtering, new product documentation, and stable internal navigation based on one canonical Apps Script deployment URL.",
+      "keyPoints": [
+        "Standalone product pages",
+        "In-stock default filtering",
+        "Two liner products documented",
+        "Routing failure traced and repaired",
+        "Stable deployment workflow confirmed"
+      ]
+    },
+    "technical": {
+      "summary": "The update replaced temporary window.location-derived routing in Scripts.html with a server-provided window.APP_URL from ScriptApp.getService().getUrl(), preserving stable internal routes across deployment versions.",
+      "keyPoints": [
+        "Direct ?view=product&id=PRODUCT-ID routes",
+        "getAppBaseUrl() uses window.APP_URL",
+        "No client-side hard-coded deployment URLs",
+        "Existing deployment updated through New version",
+        "Post-deployment route regression test defined"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Full product pages and compact details can coexist because they serve different operational needs.",
+      "Inventory filtering should default to the most common daily-use view while preserving catalog access."
+    ],
+    "generalLessons": [
+      "Temporary iframe URLs are runtime implementation details, not application identities.",
+      "Ordinary Apps Script code updates should preserve the deployment ID and /exec URL.",
+      "One canonical base URL should generate every internal route."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Internal links open stale, blank, or apparently different Apps Script pages.",
+        "pattern": "Client code derives routes from window.location inside the googleusercontent iframe.",
+        "projectsObservedIn": [
+          "Inventory 3.0"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Stable internal routing in Apps Script",
+        "description": "Use ScriptApp.getService().getUrl() on the server, expose it to the browser, and build all internal links from that value.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#routing",
+          "#architecture"
+        ]
+      },
+      {
+        "title": "Apps Script deployment versus deployment version",
+        "description": "Use a new version of an existing deployment for routine updates so the deployment ID and /exec URL remain stable.",
+        "suggestedDestination": "Klinswork deployment guide",
+        "supportingSectionAnchors": [
+          "#deployment"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Do not use window.location or document.location as the canonical base for Apps Script routing.",
+        "changeType": "confirmed",
+        "explanation": "Those values can point to temporary googleusercontent runtime addresses."
+      },
+      {
+        "rule": "Do not create a new deployment for ordinary code changes.",
+        "changeType": "confirmed",
+        "explanation": "Updating the existing deployment with a new version preserves bookmarks, Google Sites buttons, and QR codes."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "product-pages",
+      "title": "Full product pages",
+      "anchor": "#product-pages",
+      "contentSummary": "Direct product routes were established with a product identifier in the web-app address. The application can now open directly to a specific product while preserving access to the main inventory screen. Information shown on each page Product image and category Product name and manufacturer Manufacturer product code Container size and inventory unit Inventory product ID SDS revision, source, and verification information Direct SDS and manufacturer-information buttons when available Navigation and presentation The original Details popup was retained for quick reference. An Open full product page button was added. Back-to-Inventory links were provided at both the top and bottom. Broken images now fall back to a clean placeholder. Temporary route-testing alerts and debug material were removed. The final detail page was tested and confirmed to look excellent.",
+      "narrativeRole": "feature-expansion",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Full product pages.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-product-pages",
+        "reason": "Explains user-facing capability, operational usability, routing reliability, deployment stability, or resulting status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "inventory-browser",
+      "title": "Inventory browsing and filtering",
+      "anchor": "#inventory-browser",
+      "contentSummary": "The product browser was refined so daily use remains focused while products without an opening inventory balance remain accessible when needed. In stock only Made the default product view. Shows products currently present at the selected location. Reduces clutter during routine inventory work. All products Displays the entire active product catalog. Allows products without inventory records to be found. Supports creating a new opening balance. Product filtering continues to respect the selected inventory location, category, search text, and active product status.",
+      "narrativeRole": "usability-improvement",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Inventory browsing and filtering.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-inventory-browser",
+        "reason": "Explains user-facing capability, operational usability, routing reliability, deployment stability, or resulting status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "products",
+      "title": "Trash-can liner product documentation",
+      "anchor": "#products",
+      "contentSummary": "Two clear trash-can liner products were photographed, identified, and prepared for addition to Inventory 3.0. Medium clear liner Brand: Highmark Item number: 792083 Size: 33 × 39 inches Capacity: up to 33 gallons Thickness: 0.60 mil Case quantity: 250 liners Packaging: 25 bags per roll, 10 rolls per case Large clear liner Product code: L38582C Size: 38 × 58 inches Capacity: 55–60 gallons Thickness: 2 mil Case quantity: 100 liners Consistent product names and Medium/Large classifications were recommended. These liners belong under consumable supplies rather than the SDS directory because they are manufactured articles rather than chemical products.",
+      "narrativeRole": "product-documentation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Trash-can liner product documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "routing",
+      "title": "Apps Script routing failure diagnosed and repaired",
+      "anchor": "#routing",
+      "contentSummary": "Inventory 3.0 could open correctly from Google Sites, but the Open full product page button could then lead to a blank or older-looking page. The failure appeared to be a deployment problem, but the actual cause was inside Scripts.html . Incorrect routing source Inside an Apps Script application, this can resolve to a temporary address containing: Correct routing source The application was already receiving the stable deployment address from Apps Script: The getAppBaseUrl() helper was rewritten to use window.APP_URL . This repaired the full-product-page link and both Back-to-Inventory links without changing the outside deployment URL.",
+      "narrativeRole": "problem-resolution",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Apps Script routing failure diagnosed and repaired.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-routing",
+        "reason": "Explains user-facing capability, operational usability, routing reliability, deployment stability, or resulting status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Stable internal routing in Apps Script"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "deployment",
+      "title": "Stable deployment workflow established",
+      "anchor": "#deployment",
+      "contentSummary": "The difference between an Apps Script deployment and a deployment version was clarified. Existing deployment Edit through Manage deployments . Select New version . Keep the same deployment ID and /exec URL. Preserve bookmarks, Google Sites buttons, and QR codes. New deployment Creates another deployment ID. Produces another /exec URL. Can leave older versions active and accessible. Should not be used for ordinary code updates. Protected navigation rules Do not build internal app links from window.location . Do not use document.location for application routing. Do not store temporary googleusercontent.com addresses. Do not hard-code deployment URLs inside client-side scripts. Use the server-provided window.APP_URL consistently. Short post-deployment test Open the Inventory 3.0 homepage. Select a location. Open a product’s Details panel. Open the full product page. Test Back to Inventory.",
+      "narrativeRole": "deployment-method",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Stable deployment workflow established.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-deployment",
+        "reason": "Explains user-facing capability, operational usability, routing reliability, deployment stability, or resulting status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Apps Script deployment versus deployment version"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "architecture",
+      "title": "Longer-term application architecture",
+      "anchor": "#architecture",
+      "contentSummary": "A central Klinswork URL registry was considered as a way to manage the addresses of Inventory 3.0, Tasker, Email Composer, and the Tool Center. Such a registry may still be useful for internal navigation and future replacement deployments. The more important discovery, however, is that normal code updates should not require any link changes at all. Stable deployment URLs combined with a single canonical internal base URL remove most of the need for manual link maintenance.",
+      "narrativeRole": "architecture-decision",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: Longer-term application architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Use one canonical base URL for all internal routes"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "achievement",
+      "title": "The larger achievement",
+      "anchor": "#achievement",
+      "contentSummary": "Today’s work substantially expanded Inventory 3.0 while also resolving one of the most confusing problems in Apps Script development: apparently changing links that were actually temporary runtime addresses. A complete product-information page system was established. Product filtering became more practical for daily inventory work. SDS access was integrated into product pages. Two trash-liner products were documented for the catalog. The full-page routing failure was traced to its exact function. The entire corrected Scripts.html file was produced and deployed. The stable deployment URL was preserved and verified. The final product detail page was confirmed to work and look excellent. By the end of the session, Inventory 3.0 was no longer only a quantity tracker. It had become a more complete product, inventory, and safety information system with dependable routing and a clearer…",
+      "narrativeRole": "resulting-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the July 23 Inventory 3.0 contribution: The larger achievement.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-achievement",
+        "reason": "Explains user-facing capability, operational usability, routing reliability, deployment stability, or resulting status."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub Pages",
+      "Google Sites"
+    ],
+    "apps": [
+      "Inventory 3.0",
+      "SDS Directory"
+    ],
+    "scripts": [
+      "Scripts.html"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Product catalog",
+      "Inventory balances",
+      "SDS records"
+    ],
+    "files": [
+      "Scripts.html"
+    ],
+    "integrations": [
+      "Product pages",
+      "Inventory browser",
+      "SDS links",
+      "Google Sites launch links",
+      "QR codes"
+    ],
+    "apis": [
+      "ScriptApp.getService().getUrl",
+      "window.APP_URL",
+      "window.location",
+      "document.location"
+    ],
+    "versions": [
+      "Inventory 3.0"
+    ],
+    "tests": [
+      {
+        "name": "Full product-page navigation test",
+        "type": "interface regression",
+        "result": "passed",
+        "notes": "The full product page and both Back to Inventory links were verified after the routing repair."
+      },
+      {
+        "name": "Product-page presentation test",
+        "type": "interface",
+        "result": "passed",
+        "notes": "The final product detail page was confirmed to work and look excellent."
+      },
+      {
+        "name": "Stable deployment URL verification",
+        "type": "deployment",
+        "result": "passed",
+        "notes": "The outside /exec URL remained unchanged while corrected internal routes were deployed."
+      },
+      {
+        "name": "Post-deployment route sequence",
+        "type": "regression procedure",
+        "result": "defined",
+        "notes": "Homepage → location → Details → full product page → Back to Inventory."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "Major navigation paths were repaired and verified.",
+        "Temporary route-testing alerts and debug material were removed.",
+        "The stable deployment URL was preserved."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Inventory 3.0 Product Pages and Routing Update",
+      "body": "Inventory 3.0 now includes complete product pages with inventory, manufacturer, and safety information, along with improved in-stock filtering for daily use. A difficult navigation problem was also repaired by making the app use its stable deployment address for every internal link. The updated product and return routes were deployed and verified.",
+      "audiences": [
+        "supervisor"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "work-update-07-23-2026-cover",
+      "role": "work-update-cover",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/work-update-07-23-2026.png",
+      "repositoryPath": "",
+      "altText": "Work Update for July 23, 2026",
+      "description": "Cover image for the July 23, 2026 Inventory 3.0 work update.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalDocumentUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-23-2026.html",
+    "listingTitle": "Work Update — July 23, 2026",
+    "listingDescription": "Klinswork work update for July 23, 2026, covering Inventory 3.0 product pages, routing repairs, stable Apps Script deployment links, filtering improvements, product research, and deployment safeguards.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": true,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "GitHub Pages",
+        "destinationType": "public work update",
+        "url": "https://kevinlinstrum001.github.io/documentation/work-update-07-23-2026.html",
+        "status": "published"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Inventory 3.0",
+        "canonicalExecUrl": "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "existing deployment updated and verified",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "GitHub Pages",
+        "resourceName": "July 23, 2026 work update",
+        "canonicalUrl": "https://kevinlinstrum001.github.io/documentation/work-update-07-23-2026.html",
+        "resourceId": "",
+        "status": "published",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://script.google.com/macros/s/AKfycbzXLGIcxDXfwIkbNFjWOIhy-lMfZ5vQTIsAmo1Yyo1AljICWWS9vU1rf75lCv1lcC0RjQ/exec"
+    ],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded HTML work update",
+    "sourceFiles": [
+      "work-update-07-23-2026.html",
+      "document-sidecar-template(15).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T01:36:37+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "No formal project record or roadmap was supplied; project context is derived from the explicit work-update content.",
+      "The public GitHub Pages URL follows the established filename and catalog convention.",
+      "The Apps Script canonical /exec URL is taken from the work-update navigation link.",
+      "Cataloged status reflects the earlier catalog workflow in this conversation."
+    ],
+    "unresolvedQuestions": [
+      "What is the formal Inventory 3.0 project ID and project-record path?",
+      "What is the sidecar repository path and public URL?",
+      "Were the two documented liner products subsequently added to the live product catalog?",
+      "Will a central Klinswork URL registry be implemented?"
+    ]
+  }
+}

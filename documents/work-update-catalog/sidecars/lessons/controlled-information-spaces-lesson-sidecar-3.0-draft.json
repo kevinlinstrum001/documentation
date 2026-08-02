@@ -1,0 +1,1565 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "lesson-reference",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+    "previewMode": "lesson-reference"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "lesson-controlled-information-spaces",
+    "filePath": "meadows_controlled_information_spaces_lesson.html",
+    "documentUrl": "",
+    "title": "Controlled Information Spaces",
+    "headline": "Privacy, data collection, query responsibility, and role-appropriate answers",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "controlled-information-spaces-lesson-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-controlled-information-spaces",
+    "profileTemplatePath": "lesson-reference-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Information Governance",
+      "projectType": "privacy, access-control, and query-governance framework",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Preserve useful operational records while controlling which questions may be asked, which answers may be returned, and which positions are authorized to receive them.",
+      "projectPhase": "conceptual governance lesson and role-access design",
+      "contributionType": "privacy framework, source-versus-derived distinction, query catalog design, role-based information-space model, provenance rules, and compartmentalization guidance",
+      "identificationBasis": "The lesson explicitly defines controlled information spaces for housekeeping operations and centers responsibility on permitted questions, returned answers, and authorized recipients.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Documentation Explorer",
+        "relationshipType": "controlled query and preview interface",
+        "relationshipDescription": "A documentation or data explorer can expose role-appropriate summaries and named queries without automatically exposing all underlying records.",
+        "impact": "Users can receive useful answers while source records remain inside an authorized information space.",
+        "evidenceSectionAnchors": [
+          "#raw-data-versus-controlled-query",
+          "#named-queries",
+          "#core-principle"
+        ],
+        "identificationBasis": "The lesson explicitly contrasts raw-record exposure with defined operational answers.",
+        "identificationConfidence": "strong inference"
+      },
+      {
+        "projectId": "",
+        "projectName": "Work Queue",
+        "relationshipType": "role-limited operational view",
+        "relationshipDescription": "Employees, supervisors, management, and requesting departments require different answers from the same request and completion records.",
+        "impact": "The queue can return assignments, open requests, completion status, aggregate trends, or corroborating records according to operational role.",
+        "evidenceSectionAnchors": [
+          "#housekeeping-information-spaces",
+          "#named-queries"
+        ],
+        "identificationBasis": "The source names open-request, response-time, recurring-area, and completion-evidence queries.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Roster and Attendance Records",
+        "relationshipType": "sensitive source-data and aggregate-planning example",
+        "relationshipDescription": "Attendance records support daily supervision and aggregate staffing forecasts, but the appropriate answer changes by position.",
+        "impact": "Employees receive current schedule information, supervisors receive necessary individual records, and management receives aggregate reserve-capacity conclusions.",
+        "evidenceSectionAnchors": [
+          "#source-and-derived-information",
+          "#raw-access-risk",
+          "#attendance-and-staffing"
+        ],
+        "identificationBasis": "The lesson uses attendance and staffing as its primary compartmentalization example.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Klinswork Query Catalog",
+        "relationshipType": "future governance artifact",
+        "relationshipDescription": "Frequently asked operational questions can become named, repeatable queries with defined purpose, audience, sensitivity, and returned fields.",
+        "impact": "The system can standardize answers and review new queries before routine use.",
+        "evidenceSectionAnchors": [
+          "#named-queries",
+          "#data-collection-responsibilities"
+        ],
+        "identificationBasis": "The lesson explicitly calls for named queries and review of the query catalog.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Source records",
+        "foundationType": "direct operational evidence layer",
+        "relationshipDescription": "Work requests, assignment sheets, attendance entries, inspections, and completion records preserve individual operational events.",
+        "impact": "Derived answers remain traceable to the records that support them."
+      },
+      {
+        "foundationId": "",
+        "name": "Defined queries",
+        "foundationType": "authorized question layer",
+        "relationshipDescription": "Queries specify the permitted operational question, source data used, calculation, and intended recipient.",
+        "impact": "Broad data capability is reduced to repeatable, role-appropriate answers."
+      },
+      {
+        "foundationId": "",
+        "name": "Authorized views",
+        "foundationType": "role-appropriate output layer",
+        "relationshipDescription": "Each position receives only the information necessary to perform its assigned function.",
+        "impact": "Operational usefulness is preserved while unnecessary exposure and unsupported interpretation are limited."
+      }
+    ],
+    "relationshipSummary": "The lesson places source records, structured storage, named queries, derived results, and authorized views into one governance chain designed to preserve utility, traceability, privacy, and role responsibility."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Information Governance",
+    "primaryApp": "",
+    "mainFocus": "Explaining how ordinary operational records become more sensitive through aggregation and querying, and how controlled information spaces can return role-appropriate answers without exposing unnecessary raw data.",
+    "description": "A privacy and data-governance lesson distinguishing source records from derived results, raw access from controlled queries, and technical capability from operational authorization.",
+    "topics": [
+      "controlled information spaces",
+      "privacy",
+      "data governance",
+      "source records",
+      "derived results",
+      "raw data access",
+      "controlled query access",
+      "role-based access",
+      "compartmentalization",
+      "query catalogs",
+      "provenance",
+      "minimum necessary information",
+      "aggregate staffing data",
+      "attendance sensitivity",
+      "unsupported narratives",
+      "authorized views"
+    ],
+    "keywords": [
+      "source record",
+      "derived result",
+      "raw data",
+      "controlled query",
+      "authorized view",
+      "query responsibility",
+      "information space",
+      "named query",
+      "operational purpose",
+      "minimum necessary",
+      "provenance",
+      "aggregate result",
+      "query sensitivity",
+      "position-based access"
+    ],
+    "appsAffected": [
+      "Documentation Explorer",
+      "Work Queue",
+      "Roster",
+      "Attendance",
+      "reports and dashboards",
+      "query interfaces"
+    ],
+    "systemsAffected": [
+      "request management",
+      "staffing",
+      "attendance",
+      "inspection reporting",
+      "completion evidence",
+      "management reporting",
+      "privacy and access control"
+    ],
+    "componentsAffected": [
+      "source records",
+      "query definitions",
+      "role permissions",
+      "derived measures",
+      "authorized views",
+      "query catalog",
+      "provenance references",
+      "aggregate reports"
+    ]
+  },
+  "learningContext": {
+    "audience": [
+      "housekeeping employees",
+      "housekeeping supervisors",
+      "housekeeping management",
+      "nursing administration",
+      "people designing data access and reporting tools"
+    ],
+    "prerequisites": [
+      "basic familiarity with operational records, reports, and database-style queries"
+    ],
+    "learningPurpose": "Teach how to preserve operational value while limiting unnecessary exposure by separating source records, derived results, permitted questions, and role-authorized answers.",
+    "difficulty": "introductory to intermediate",
+    "estimatedStudyTime": "10–15 minutes",
+    "sourceType": "standalone privacy and query-governance lesson",
+    "instructionalApproach": "Uses conceptual definitions, a five-stage information flow, raw-versus-controlled comparison, role tables, named-query examples, governance principles, an attendance case, and a lesson check."
+  },
+  "learningObjectives": [
+    {
+      "objectiveId": "objective-01",
+      "description": "Distinguish a source record from a derived result.",
+      "evidenceSectionAnchors": [
+        "#learning-objectives",
+        "#source-and-derived-information"
+      ]
+    },
+    {
+      "objectiveId": "objective-02",
+      "description": "Explain the difference between raw-data access and controlled query access.",
+      "evidenceSectionAnchors": [
+        "#learning-objectives",
+        "#raw-data-versus-controlled-query"
+      ]
+    },
+    {
+      "objectiveId": "objective-03",
+      "description": "Describe why the same dataset can produce different levels of sensitivity.",
+      "evidenceSectionAnchors": [
+        "#learning-objectives",
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "objectiveId": "objective-04",
+      "description": "Assign information access according to operational position and responsibility.",
+      "evidenceSectionAnchors": [
+        "#learning-objectives",
+        "#housekeeping-information-spaces"
+      ]
+    },
+    {
+      "objectiveId": "objective-05",
+      "description": "Recognize how compartmentalization protects employees, supervisors, management, and the department.",
+      "evidenceSectionAnchors": [
+        "#learning-objectives",
+        "#core-principle"
+      ]
+    },
+    {
+      "objectiveId": "objective-06",
+      "description": "Explain why sensitivity may arise from the question or aggregation rather than from any one ordinary source record.",
+      "evidenceSectionAnchors": [
+        "#raw-access-risk",
+        "#attendance-and-staffing"
+      ]
+    },
+    {
+      "objectiveId": "objective-07",
+      "description": "Describe how recurring operational questions can become named, repeatable, governed queries.",
+      "evidenceSectionAnchors": [
+        "#named-queries",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "objectiveId": "objective-08",
+      "description": "Separate numerical results from unsupported narratives about motive, character, intent, or cause.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities",
+        "#lesson-check"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "principleId": "principle-01",
+      "title": "Control questions, answers, and recipients",
+      "statement": "The central responsibility is not merely to collect data but to govern which questions may be asked, which answers may be returned, and who is authorized to receive them.",
+      "explanation": "Operational usefulness and privacy depend on query design and role authorization, not only on database security.",
+      "importance": "It defines the governing purpose of a controlled information space.",
+      "evidenceSectionAnchors": [
+        "#lesson-purpose",
+        "#core-principle"
+      ]
+    },
+    {
+      "principleId": "principle-02",
+      "title": "Separate source records from derived results",
+      "statement": "Direct operational evidence and the conclusions calculated from it should remain distinguishable.",
+      "explanation": "A source record documents an event; a derived result emerges through comparison, filtering, grouping, counting, or relating records.",
+      "importance": "The distinction supports provenance, review, and responsible interpretation.",
+      "evidenceSectionAnchors": [
+        "#source-and-derived-information",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "principleId": "principle-03",
+      "title": "Raw access creates new capabilities",
+      "statement": "Broad access permits unplanned comparisons and new conclusions beyond the original reason for collection.",
+      "explanation": "Ordinary attendance or request records can be regrouped by person, time, location, frequency, or performance category.",
+      "importance": "The risk lies not only in individual fields but in the analytical freedom created by access.",
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "principleId": "principle-04",
+      "title": "Controlled queries return the minimum necessary answer",
+      "statement": "A role should receive a defined answer to a defined operational question rather than unrestricted underlying records.",
+      "explanation": "The source data can remain inside the authorized information space while the interface exposes only the result needed for the task.",
+      "importance": "This preserves usefulness while reducing unnecessary exposure and interpretive burden.",
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#core-principle"
+      ]
+    },
+    {
+      "principleId": "principle-05",
+      "title": "Sensitivity may emerge from the query",
+      "statement": "An ordinary dataset can produce sensitive results when aggregated, ranked, or related in new ways.",
+      "explanation": "Attendance data collected for coverage can later be used to create named employee rankings or evaluative narratives.",
+      "importance": "Query review must consider consequences beyond the apparent harmlessness of source records.",
+      "evidenceSectionAnchors": [
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "principleId": "principle-06",
+      "title": "Access follows operational responsibility",
+      "statement": "Information access should be assigned according to the position's authorized function, not curiosity or technical capability.",
+      "explanation": "Employees, supervisors, management, and nursing administration require different views of the same operational system.",
+      "importance": "Role boundaries clarify accountability and reduce overexposure.",
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-spaces",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "principleId": "principle-07",
+      "title": "Preserve provenance",
+      "statement": "A derived result should identify the source records that support it.",
+      "explanation": "The system should show whether a conclusion depends on requests, attendance, rosters, inspections, or completion entries.",
+      "importance": "Provenance allows results to be verified and prevents unsupported claims from appearing authoritative.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "principleId": "principle-08",
+      "title": "Standardize recurring questions",
+      "statement": "Frequently asked operational questions should become named, repeatable queries with consistent definitions.",
+      "explanation": "Defined queries clarify purpose, required sources, calculation, audience, and expected answer.",
+      "importance": "Consistency reduces ad hoc interpretation and supports review of the query catalog.",
+      "evidenceSectionAnchors": [
+        "#named-queries",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "principleId": "principle-09",
+      "title": "Do not convert numbers into unsupported narratives",
+      "statement": "A numerical result should not be presented as evidence of motive, character, intent, or cause without supporting evidence.",
+      "explanation": "Counts and averages describe observed patterns; they do not by themselves explain why people acted or what those actions mean.",
+      "importance": "This protects employees and management from overextended or unfair conclusions.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities",
+        "#lesson-check"
+      ]
+    },
+    {
+      "principleId": "principle-10",
+      "title": "Compartmentalization increases usability",
+      "statement": "Limiting access does not reduce the usefulness of data when each position receives the answer required for effective operations.",
+      "explanation": "Controlled spaces preserve trust, clarify responsibility, and allow information to be shared safely.",
+      "importance": "It reframes privacy controls as part of effective system design rather than an obstacle to use.",
+      "evidenceSectionAnchors": [
+        "#core-principle"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "concept-source-record",
+      "name": "Source record",
+      "definition": "A direct operational record such as a work request, assignment sheet, attendance entry, inspection, or completion record.",
+      "relationships": [
+        "Supports derived results",
+        "Provides provenance",
+        "May contain individual-level information"
+      ],
+      "examples": [
+        "Daily attendance sheet",
+        "Time-stamped completion record"
+      ],
+      "misconceptions": [
+        "A source record already contains every conclusion that can later be derived from it"
+      ],
+      "evidenceSectionAnchors": [
+        "#source-and-derived-information"
+      ]
+    },
+    {
+      "conceptId": "concept-derived-result",
+      "name": "Derived result",
+      "definition": "An answer produced by comparing, filtering, grouping, counting, or relating one or more source records.",
+      "relationships": [
+        "Depends on source records",
+        "May be more sensitive than individual records",
+        "Should be tied to a defined query"
+      ],
+      "examples": [
+        "Average number of scheduled employees unavailable per day",
+        "Recommended number of float positions"
+      ],
+      "misconceptions": [
+        "A derived result is equivalent to the underlying source data"
+      ],
+      "evidenceSectionAnchors": [
+        "#source-and-derived-information"
+      ]
+    },
+    {
+      "conceptId": "concept-raw-data-access",
+      "name": "Raw data access",
+      "definition": "Access that exposes underlying individual records and permits broad, unplanned exploration.",
+      "relationships": [
+        "Enables new comparisons",
+        "Moves interpretation responsibility to the viewer",
+        "May separate records from context"
+      ],
+      "examples": [
+        "Viewing all attendance entries and regrouping them by named employee"
+      ],
+      "misconceptions": [
+        "Raw access is merely a more detailed version of a prepared report"
+      ],
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "conceptId": "concept-controlled-query-access",
+      "name": "Controlled query access",
+      "definition": "Access that returns a defined answer to a defined operational question while underlying records remain protected.",
+      "relationships": [
+        "Uses named queries",
+        "Can be assigned by position",
+        "Returns minimum necessary information",
+        "Supports standardized interpretation"
+      ],
+      "examples": [
+        "Returning the number of available employees without exposing every attendance record"
+      ],
+      "misconceptions": [
+        "Controlled access prevents useful operational analysis"
+      ],
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#core-principle"
+      ]
+    },
+    {
+      "conceptId": "concept-information-space",
+      "name": "Information space",
+      "definition": "A governed set of records, queries, and views authorized for a particular operational position or responsibility.",
+      "relationships": [
+        "Employee information space",
+        "Supervisor information space",
+        "Management information space",
+        "Nursing administration information space"
+      ],
+      "examples": [
+        "A supervisor view containing necessary individual attendance records and open requests"
+      ],
+      "misconceptions": [
+        "Every authorized user should receive the same database interface"
+      ],
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-spaces",
+        "#core-principle"
+      ]
+    },
+    {
+      "conceptId": "concept-named-query",
+      "name": "Named query",
+      "definition": "A recurring operational question with a stable purpose, definition, source set, calculation, and authorized audience.",
+      "relationships": [
+        "Belongs in a query catalog",
+        "Returns a standardized answer",
+        "Can combine several source records internally"
+      ],
+      "examples": [
+        "Daily Coverage Query",
+        "Open Request Query",
+        "Floater Requirement Query"
+      ],
+      "misconceptions": [
+        "A named query is only a saved technical search rather than a governed operational product"
+      ],
+      "evidenceSectionAnchors": [
+        "#named-queries"
+      ]
+    },
+    {
+      "conceptId": "concept-query-sensitivity",
+      "name": "Query sensitivity",
+      "definition": "The degree of privacy, evaluative, or organizational risk created by the question, aggregation, grouping, or conclusion.",
+      "relationships": [
+        "May exceed the apparent sensitivity of source records",
+        "Depends on audience and purpose",
+        "Should be reviewed before routine use"
+      ],
+      "examples": [
+        "Turning attendance data into named employee rankings"
+      ],
+      "misconceptions": [
+        "Sensitivity exists only in explicitly private source fields"
+      ],
+      "evidenceSectionAnchors": [
+        "#raw-access-risk",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "conceptId": "concept-provenance",
+      "name": "Provenance",
+      "definition": "The documented relationship between a result and the source records used to produce it.",
+      "relationships": [
+        "Supports verification",
+        "Separates evidence from interpretation",
+        "Can identify work requests, attendance, rosters, inspections, and completion records"
+      ],
+      "examples": [
+        "A staffing conclusion linked to the attendance and schedule records that support it"
+      ],
+      "misconceptions": [
+        "A polished aggregate result does not need to reveal its evidentiary basis"
+      ],
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "conceptId": "concept-compartmentalization",
+      "name": "Compartmentalization",
+      "definition": "The separation of records, queries, and answers according to operational authority and need.",
+      "relationships": [
+        "Protects privacy",
+        "Clarifies responsibility",
+        "Preserves trust",
+        "Supports minimum-necessary access"
+      ],
+      "examples": [
+        "Management receiving aggregate staffing demand while supervisors retain necessary individual records"
+      ],
+      "misconceptions": [
+        "Compartmentalization makes data less useful"
+      ],
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-spaces",
+        "#attendance-and-staffing",
+        "#core-principle"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "exampleId": "example-attendance-derived-result",
+      "title": "From attendance sheet to staffing recommendation",
+      "scenario": "Daily attendance sheets are collected to understand coverage.",
+      "walkthrough": [
+        "Preserve the daily attendance sheet as a source record.",
+        "Store dates, schedules, absences, positions, and coverage status.",
+        "Calculate the average number of unavailable scheduled employees per day.",
+        "Use the aggregate result to estimate reserve capacity.",
+        "Present the staffing recommendation to the authorized management audience."
+      ],
+      "result": "The same records support daily supervision and aggregate planning without giving every audience the same access.",
+      "lesson": "Source data, derived measures, planning conclusions, and authorized recipients are different layers.",
+      "evidenceSectionAnchors": [
+        "#source-and-derived-information",
+        "#attendance-and-staffing"
+      ]
+    },
+    {
+      "exampleId": "example-raw-attendance-risk",
+      "title": "Attendance data used beyond its original purpose",
+      "scenario": "Attendance records collected for daily coverage become available for unrestricted exploration.",
+      "walkthrough": [
+        "Group the records by employee, weekday, unit, month, or frequency.",
+        "Create comparisons that were not part of the original operational need.",
+        "Separate the figures from staffing or leave context.",
+        "Present a ranking or evaluative narrative."
+      ],
+      "result": "An ordinary source dataset produces a more sensitive and potentially misleading result.",
+      "lesson": "Sensitivity can emerge from the query rather than the individual record.",
+      "evidenceSectionAnchors": [
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "exampleId": "example-role-specific-attendance",
+      "title": "Three answers from the same attendance records",
+      "scenario": "Employees, supervisors, and management need different information from the same attendance system.",
+      "walkthrough": [
+        "Return the current schedule and assignment to the employee.",
+        "Return individual records necessary to manage today's coverage to the supervisor.",
+        "Return aggregate attendance-loss and reserve-capacity measures to management."
+      ],
+      "result": "One source dataset supports several legitimate operational answers without exposing every record to every role.",
+      "lesson": "The query, purpose, and recipient determine the appropriate answer.",
+      "evidenceSectionAnchors": [
+        "#attendance-and-staffing"
+      ]
+    },
+    {
+      "exampleId": "example-query-catalog",
+      "title": "Frequently asked questions as a query catalog",
+      "scenario": "The department repeatedly asks about coverage, open requests, response time, reserve staffing, recurring areas, and completion evidence.",
+      "walkthrough": [
+        "Give each recurring question a stable name.",
+        "Define its operational purpose.",
+        "Identify required source records.",
+        "Specify the calculation or filtering rule.",
+        "Assign the authorized audience.",
+        "Return only the required answer."
+      ],
+      "result": "Ad hoc database exploration becomes a governed set of repeatable operational products.",
+      "lesson": "A query catalog can provide broad operational usefulness without broad raw-data access.",
+      "evidenceSectionAnchors": [
+        "#named-queries",
+        "#data-collection-responsibilities"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "procedureId": "procedure-design-controlled-query",
+      "title": "Design a controlled operational query",
+      "purpose": "Provide a useful answer while limiting access to the minimum information required for the authorized function.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "State the operational question.",
+          "expectedResult": "The purpose is clear and narrower than unrestricted exploration."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Identify the authorized requesting position.",
+          "expectedResult": "The audience and responsibility are explicit."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Identify the necessary source records.",
+          "expectedResult": "The evidentiary basis and provenance are defined."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Define filtering, grouping, calculation, and interpretation rules.",
+          "expectedResult": "The query produces a repeatable result."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Return only the fields or aggregate answer needed.",
+          "expectedResult": "Unnecessary underlying detail remains protected."
+        },
+        {
+          "sequence": 6,
+          "instruction": "Review sensitivity and likely consequences.",
+          "expectedResult": "The query is approved, revised, restricted, or rejected before routine use."
+        },
+        {
+          "sequence": 7,
+          "instruction": "Add the approved query to the query catalog.",
+          "expectedResult": "The definition, purpose, audience, and result remain consistent over time."
+        }
+      ],
+      "verification": [
+        "The question has a defined operational purpose.",
+        "The recipient has authority to receive the answer.",
+        "The result is traceable to source records.",
+        "The output excludes unnecessary detail.",
+        "The interpretation does not exceed the supporting evidence."
+      ],
+      "evidenceSectionAnchors": [
+        "#named-queries",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "procedureId": "procedure-assign-information-space",
+      "title": "Assign information to a role-appropriate space",
+      "purpose": "Determine which records and answers belong to an employee, supervisor, management, or requesting-department view.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Define the position's operational responsibilities.",
+          "expectedResult": "The actual work requiring information is identified."
+        },
+        {
+          "sequence": 2,
+          "instruction": "List the questions the position must answer.",
+          "expectedResult": "Access is framed around responsibilities rather than curiosity."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Determine whether the answer requires individual records, aggregates, status, or confirmation.",
+          "expectedResult": "The required level of detail is explicit."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Create or select the controlled view.",
+          "expectedResult": "The position receives only the necessary information."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Document provenance and restrictions.",
+          "expectedResult": "The view remains auditable and governable."
+        }
+      ],
+      "verification": [
+        "The view supports the position's assigned function.",
+        "No unnecessary personal or evaluative detail is exposed.",
+        "The answer is consistent with other approved views.",
+        "The source records remain in the authorized information space."
+      ],
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-spaces",
+        "#attendance-and-staffing"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "warningId": "warning-ordinary-records",
+      "title": "Do not assume ordinary records remain ordinary after aggregation",
+      "risk": "Grouping, ranking, or relating routine records can create sensitive personal or evaluative conclusions.",
+      "avoid": "Approving broad access based only on the apparent harmlessness of individual forms.",
+      "correctiveAction": "Review the questions, aggregations, audience, and likely consequences.",
+      "evidenceSectionAnchors": [
+        "#raw-access-risk"
+      ]
+    },
+    {
+      "warningId": "warning-technical-capability",
+      "title": "Do not equate technical capability with authorization",
+      "risk": "A user who can run a query may produce answers outside the responsibilities of the position.",
+      "avoid": "Granting access because a person knows how to use the tool.",
+      "correctiveAction": "Control queries by operational position and documented purpose.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "warningId": "warning-context-loss",
+      "title": "Do not separate records from their operational context",
+      "risk": "Individual or aggregate results may be misread when schedules, assignments, leave, standards, or operating conditions are omitted.",
+      "avoid": "Presenting isolated figures as complete explanations.",
+      "correctiveAction": "Preserve provenance and define standardized interpretation.",
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#data-collection-responsibilities"
+      ]
+    },
+    {
+      "warningId": "warning-unsupported-narrative",
+      "title": "Do not turn a numerical result into a claim about character or motive",
+      "risk": "The system may present an unfair or unsupported evaluative narrative as if it were a fact.",
+      "avoid": "Using counts, averages, or rankings as proof of intent, character, motive, or cause.",
+      "correctiveAction": "Keep observed results, interpretations, and supported causes clearly separated.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities",
+        "#lesson-check"
+      ]
+    },
+    {
+      "warningId": "warning-unrestricted-explorer",
+      "title": "Do not make unrestricted database exploration the default interface",
+      "risk": "Every viewer gains the ability and responsibility to create unplanned comparisons and sensitive conclusions.",
+      "avoid": "Providing broad raw-record access when named operational queries would meet the need.",
+      "correctiveAction": "Build controlled query views and retain source records in restricted spaces.",
+      "evidenceSectionAnchors": [
+        "#raw-data-versus-controlled-query",
+        "#core-principle"
+      ]
+    },
+    {
+      "warningId": "warning-query-drift",
+      "title": "Do not allow named queries to drift without review",
+      "risk": "A query may gradually change purpose, audience, fields, or interpretation and produce different consequences.",
+      "avoid": "Treating saved queries as permanently safe without catalog review.",
+      "correctiveAction": "Review purpose, audience, sensitivity, definition, and consequences when queries change.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities"
+      ]
+    }
+  ],
+  "reviewQuestions": [
+    {
+      "questionId": "review-01",
+      "question": "What is the difference between a source record and a derived result?",
+      "answerSummary": "A source record directly documents an event; a derived result is produced by comparing, filtering, grouping, counting, or relating source records.",
+      "evidenceSectionAnchors": [
+        "#source-and-derived-information",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-02",
+      "question": "Why can an ordinary source record become sensitive after aggregation?",
+      "answerSummary": "Aggregation can reveal patterns, rankings, or evaluative conclusions not visible in any individual record.",
+      "evidenceSectionAnchors": [
+        "#raw-access-risk",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-03",
+      "question": "Why is a named query safer than unrestricted raw-data access?",
+      "answerSummary": "It limits the purpose, audience, source use, calculation, and returned answer while underlying records remain protected.",
+      "evidenceSectionAnchors": [
+        "#named-queries",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-04",
+      "question": "Which attendance information belongs in the supervisor information space?",
+      "answerSummary": "Individual attendance records necessary for daily staffing, coverage, exceptions, and supervisory decisions.",
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-spaces",
+        "#attendance-and-staffing",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-05",
+      "question": "Which staffing information can be presented to management as an aggregate?",
+      "answerSummary": "Department-level attendance-loss measures, staffing demand, service trends, and reserve-capacity recommendations.",
+      "evidenceSectionAnchors": [
+        "#attendance-and-staffing",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-06",
+      "question": "Why should a numerical result remain separate from a narrative about motive or character?",
+      "answerSummary": "The number describes an observed result but does not by itself provide evidence of intent, character, motive, or cause.",
+      "evidenceSectionAnchors": [
+        "#data-collection-responsibilities",
+        "#lesson-check"
+      ]
+    },
+    {
+      "questionId": "review-07",
+      "question": "What determines the appropriate answer returned from the same source dataset?",
+      "answerSummary": "The permitted query, operational purpose, required detail, and authorized recipient.",
+      "evidenceSectionAnchors": [
+        "#attendance-and-staffing",
+        "#core-principle"
+      ]
+    },
+    {
+      "questionId": "review-08",
+      "question": "How does compartmentalization make data more usable?",
+      "answerSummary": "It preserves trust, limits unnecessary exposure, clarifies responsibility, and gives each position the information required for its work.",
+      "evidenceSectionAnchors": [
+        "#core-principle"
+      ]
+    }
+  ],
+  "futureApplications": [
+    {
+      "applicationId": "application-query-catalog",
+      "title": "Klinswork query catalog",
+      "description": "Define recurring operational questions with stable names, source requirements, calculation rules, audiences, sensitivity levels, and returned fields.",
+      "readiness": "ready for schema design",
+      "dependencies": [
+        "role definitions",
+        "source-record inventory",
+        "query approval process"
+      ]
+    },
+    {
+      "applicationId": "application-role-previews",
+      "title": "Role-aware explorer previews",
+      "description": "Show employees, supervisors, management, and requesting departments different previews from the same catalog or source records.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "authenticated roles",
+        "field-level view rules",
+        "named preview queries"
+      ]
+    },
+    {
+      "applicationId": "application-attendance-views",
+      "title": "Layered attendance information spaces",
+      "description": "Provide employee schedule views, supervisor coverage views, and management aggregate planning views from the same source system.",
+      "readiness": "ready for requirements design",
+      "dependencies": [
+        "attendance schema",
+        "authorization model",
+        "aggregate query definitions"
+      ]
+    },
+    {
+      "applicationId": "application-completion-evidence",
+      "title": "Completion evidence query",
+      "description": "Return the records corroborating that requested work was received, assigned, completed, and verified without exposing unrelated records.",
+      "readiness": "ready for query design",
+      "dependencies": [
+        "request lifecycle records",
+        "source linkage",
+        "authorized requester roles"
+      ]
+    },
+    {
+      "applicationId": "application-query-review",
+      "title": "Query review workflow",
+      "description": "Evaluate new or modified queries for operational purpose, audience, sensitivity, provenance, minimum necessary detail, and likely consequences.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "query catalog",
+        "review authority",
+        "change history"
+      ]
+    },
+    {
+      "applicationId": "application-aggregate-reporting",
+      "title": "Management aggregate reporting",
+      "description": "Provide staffing demand, service-level, response-time, and recurring-area trends without exposing unnecessary individual records.",
+      "readiness": "planned",
+      "dependencies": [
+        "validated source data",
+        "aggregate definitions",
+        "management reporting requirements"
+      ]
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains that the same housekeeping records should not be exposed identically to everyone. Employees, supervisors, management, and requesting departments need different answers based on their responsibilities.",
+      "operationalImpact": "Named queries and controlled views can preserve useful staffing, request, inspection, and completion information while limiting unnecessary personal detail and unsupported conclusions.",
+      "currentStatus": "Complete privacy, compartmentalization, and query-responsibility lesson.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The lesson defines governance principles but not a deployed authorization system.",
+        "Role boundaries and query approvals still require formal ownership.",
+        "Aggregate results can still be sensitive when groups are small or conclusions are overextended.",
+        "A canonical public URL for the lesson has not been established."
+      ],
+      "staffVisibleChanges": [
+        "Employees receive current assignments and their own relevant information.",
+        "Supervisors receive the individual records required for daily operations.",
+        "Management receives aggregate trends and planning results.",
+        "Requesting departments receive status and completion answers rather than unrelated housekeeping records."
+      ],
+      "nextOperationalStep": "Create a first query catalog listing each recurring question, authorized audience, source records, calculation, returned fields, and sensitivity.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-central-responsibility",
+          "relatedSectionAnchor": "#lesson-purpose",
+          "type": "governance",
+          "title": "Control the question, answer, and recipient",
+          "text": "Responsible data collection includes deciding which questions may be asked and which positions may receive the answer."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-query-risk",
+          "relatedSectionAnchor": "#raw-access-risk",
+          "type": "risk",
+          "title": "Sensitivity can emerge from the query",
+          "text": "Routine attendance or request records can produce new personal or evaluative conclusions when broadly regrouped."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-role-spaces",
+          "relatedSectionAnchor": "#housekeeping-information-spaces",
+          "type": "access",
+          "title": "Each position receives a different operational answer",
+          "text": "Employees, supervisors, management, and nursing administration need different levels of detail from the same system."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-core",
+          "relatedSectionAnchor": "#core-principle",
+          "type": "principle",
+          "title": "Data is not a shared pile of records",
+          "text": "The system should return authorized answers to defined operational questions."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Controlled Information Spaces explains how source records, defined queries, derived results, and authorized views can provide useful operational answers without exposing unnecessary raw data.",
+      "keyPoints": [
+        "Source records and derived results are different layers.",
+        "Raw access creates broad analytical capability.",
+        "Sensitivity can emerge from a query or aggregation.",
+        "Access should follow operational responsibility.",
+        "Named queries standardize recurring answers.",
+        "Results should preserve provenance.",
+        "Numerical results should not become unsupported narratives.",
+        "Compartmentalization increases trust and usability."
+      ]
+    },
+    "technical": {
+      "summary": "The source is a governance and conceptual-design lesson rather than an authorization specification. It identifies role spaces, named query examples, data-flow stages, and query-review principles but does not define authentication, row-level security, APIs, or implementation code.",
+      "keyPoints": [
+        "The conceptual flow is source records → structured storage → defined query → derived result → authorized view.",
+        "Four role spaces are described: employee, supervisor, management, and nursing administration.",
+        "Six named query examples are supplied.",
+        "Eight data-collection responsibilities are listed.",
+        "No software tests, security controls, or deployed access rules are claimed."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Klinswork should expose role-appropriate answers rather than defaulting to unrestricted JSON or spreadsheet access.",
+      "The Documentation Explorer can remain useful as a controlled preview surface even when source links or raw records are unavailable.",
+      "Attendance, Work Queue, roster, inspection, and completion data require different views for employees, supervisors, management, and requesting departments.",
+      "A formal query catalog could become the governance layer joining data sources to permitted operational answers."
+    ],
+    "generalLessons": [
+      "Privacy risk depends on analytical capability as well as stored fields.",
+      "Source records, derived measures, and interpretations should remain distinct.",
+      "A database contains possible answers; an interface governs which answers become available.",
+      "Named queries reduce ad hoc interpretation and support accountability.",
+      "Minimum-necessary access can increase rather than reduce operational usefulness.",
+      "Provenance protects both the subject of the data and the person using the result.",
+      "Technical access should never substitute for operational authorization."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Users receive broad raw access when they need only one operational answer.",
+        "pattern": "A spreadsheet, JSON file, or database explorer exposes every underlying record because no controlled query view exists.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Governance"
+        ]
+      },
+      {
+        "problem": "Ordinary operational records are repurposed for evaluative conclusions.",
+        "pattern": "Attendance, requests, or completion records are regrouped by person or frequency without reviewing purpose, context, or consequences.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Governance"
+        ]
+      },
+      {
+        "problem": "Derived results lose provenance.",
+        "pattern": "Aggregates and recommendations circulate without identifying the records, definitions, or calculations supporting them.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Governance"
+        ]
+      },
+      {
+        "problem": "Access is granted from curiosity or technical ability.",
+        "pattern": "A person receives records or query capabilities unrelated to the responsibilities of the position.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Governance"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Controlled information spaces",
+        "description": "Organize source records, defined queries, derived results, and authorized views according to operational responsibility.",
+        "suggestedDestination": "Klinswork information governance",
+        "supportingSectionAnchors": [
+          "#lesson-purpose",
+          "#core-principle"
+        ]
+      },
+      {
+        "title": "Source records versus derived results",
+        "description": "Keep direct operational evidence distinct from calculations, trends, forecasts, and planning conclusions.",
+        "suggestedDestination": "Klinswork data architecture",
+        "supportingSectionAnchors": [
+          "#source-and-derived-information"
+        ]
+      },
+      {
+        "title": "Raw access versus controlled query access",
+        "description": "Limit users to defined operational answers when unrestricted exploration is unnecessary.",
+        "suggestedDestination": "Klinswork access-control practices",
+        "supportingSectionAnchors": [
+          "#raw-data-versus-controlled-query",
+          "#raw-access-risk"
+        ]
+      },
+      {
+        "title": "Role-based housekeeping information spaces",
+        "description": "Define employee, supervisor, management, and requesting-department views from the same source systems.",
+        "suggestedDestination": "Klinswork role architecture",
+        "supportingSectionAnchors": [
+          "#housekeeping-information-spaces",
+          "#attendance-and-staffing"
+        ]
+      },
+      {
+        "title": "Named operational query catalog",
+        "description": "Standardize recurring questions with explicit purpose, sources, definitions, audiences, and returned fields.",
+        "suggestedDestination": "Klinswork query architecture",
+        "supportingSectionAnchors": [
+          "#named-queries",
+          "#data-collection-responsibilities"
+        ]
+      },
+      {
+        "title": "Avoiding unsupported narratives from numerical results",
+        "description": "Keep observations, measures, interpretations, motive, character, and cause separate unless evidence supports the connection.",
+        "suggestedDestination": "Klinswork reporting standards",
+        "supportingSectionAnchors": [
+          "#data-collection-responsibilities"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Return role-appropriate answers instead of unrestricted raw records whenever possible.",
+        "changeType": "added",
+        "explanation": "Controlled query access meets operational needs while limiting unnecessary exposure and interpretation."
+      },
+      {
+        "rule": "Every recurring query should have a defined purpose, audience, source basis, and returned result.",
+        "changeType": "added",
+        "explanation": "Named queries support consistency, review, and accountability."
+      },
+      {
+        "rule": "Preserve a visible distinction among source records, derived measures, and interpretations.",
+        "changeType": "confirmed",
+        "explanation": "Evidence should not be confused with calculations or narrative conclusions."
+      },
+      {
+        "rule": "Access follows operational authority rather than technical capability.",
+        "changeType": "added",
+        "explanation": "The ability to retrieve or calculate information does not establish a legitimate need to receive it."
+      },
+      {
+        "rule": "Do not present numerical results as motive, character, intent, or cause without supporting evidence.",
+        "changeType": "added",
+        "explanation": "Operational measurements do not automatically support personal or causal narratives."
+      },
+      {
+        "rule": "Review new queries for purpose, audience, sensitivity, and likely consequences.",
+        "changeType": "added",
+        "explanation": "The sensitivity may arise from the query even when individual source records appear ordinary."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "lesson-purpose",
+      "title": "Lesson Purpose",
+      "anchor": "#lesson-purpose",
+      "contentSummary": "Explains that housekeeping records become more valuable as they accumulate but can also be misread or overextended, and defines the central responsibility as controlling questions, answers, and authorized recipients.",
+      "narrativeRole": "governance-purpose",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Lesson Purpose'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-central-responsibility",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Controlled information spaces"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "learning-objectives",
+      "title": "Learning Objectives",
+      "anchor": "#learning-objectives",
+      "contentSummary": "Lists five objectives covering source and derived records, raw and controlled access, query sensitivity, role-based authorization, and compartmentalization.",
+      "narrativeRole": "instructional-objectives",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Learning Objectives'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "source-and-derived-information",
+      "title": "Source Records and Derived Information",
+      "anchor": "#source-and-derived-information",
+      "contentSummary": "Defines source records and derived results, presents the flow from source records through structured storage and queries to authorized views, and uses attendance-to-floater planning as an example.",
+      "narrativeRole": "data-layer-distinction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Source Records and Derived Information'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Source records versus derived results"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "raw-data-versus-controlled-query",
+      "title": "Raw Data Access Versus Controlled Query Access",
+      "anchor": "#raw-data-versus-controlled-query",
+      "contentSummary": "Contrasts unrestricted exposure and exploratory capability with defined operational questions, limited answers, standardized interpretation, and position-based access.",
+      "narrativeRole": "access-model-comparison",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Raw Data Access Versus Controlled Query Access'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Raw access versus controlled query access"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "raw-access-risk",
+      "title": "Why Raw Access Creates Additional Risk",
+      "anchor": "#raw-access-risk",
+      "contentSummary": "Explains that broad access permits records to be regrouped and interpreted beyond their original purpose, so sensitivity may emerge from the query even when the source records appear ordinary.",
+      "narrativeRole": "query-sensitivity",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Why Raw Access Creates Additional Risk'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-query-risk",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Raw access versus controlled query access"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "housekeeping-information-spaces",
+      "title": "Housekeeping Information Spaces",
+      "anchor": "#housekeeping-information-spaces",
+      "contentSummary": "Defines authorized content and appropriate questions for housekeeping employees, supervisors, housekeeping management, and nursing administration.",
+      "narrativeRole": "role-access-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Housekeeping Information Spaces'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-role-spaces",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Role-based housekeeping information spaces"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "named-queries",
+      "title": "Frequently Asked Questions Become Named Queries",
+      "anchor": "#named-queries",
+      "contentSummary": "Defines six recurring operational questions that can become named queries and states that the requesting position should receive only the required answer.",
+      "narrativeRole": "query-catalog",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Frequently Asked Questions Become Named Queries'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Named operational query catalog"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "data-collection-responsibilities",
+      "title": "Responsibilities of Data Collection",
+      "anchor": "#data-collection-responsibilities",
+      "contentSummary": "Lists eight responsibilities: operational purpose, separation of records and conclusions, provenance, minimum necessary detail, position-based query control, standardized recurring answers, avoidance of unsupported narratives, and query-catalog review.",
+      "narrativeRole": "governance-principles",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Responsibilities of Data Collection'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Named operational query catalog",
+          "Avoiding unsupported narratives from numerical results"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "attendance-and-staffing",
+      "title": "Practical Example: Attendance and Staffing",
+      "anchor": "#attendance-and-staffing",
+      "contentSummary": "Shows how identical attendance records can support employee schedule views, supervisor coverage decisions, and management aggregate reserve-capacity planning.",
+      "narrativeRole": "role-layered-example",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Practical Example: Attendance and Staffing'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Role-based housekeeping information spaces"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "lesson-check",
+      "title": "Lesson Check",
+      "anchor": "#lesson-check",
+      "contentSummary": "Provides six review questions concerning source and derived information, aggregation sensitivity, named queries, supervisor access, management aggregates, and unsupported narratives.",
+      "narrativeRole": "instructional-review",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Lesson Check'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "core-principle",
+      "title": "Core Principle",
+      "anchor": "#core-principle",
+      "contentSummary": "Concludes that housekeeping data should be treated as a controlled information space returning authorized answers to defined operational questions, and that compartmentalization increases trust, clarity, and usefulness.",
+      "narrativeRole": "conclusion",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the controlled-information-space framework through the section 'Core Principle'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-core",
+        "reason": "Explains governance purpose, source and query distinctions, role access, query responsibility, or the core compartmentalization rule."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Controlled information spaces"
+        ]
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [
+      "Documentation Explorer",
+      "Work Queue",
+      "Roster",
+      "Attendance",
+      "reports and dashboards",
+      "query interfaces"
+    ],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [
+      "schedules",
+      "attendance records",
+      "work requests",
+      "room lists",
+      "inspection records",
+      "assignment sheets",
+      "completion records",
+      "query catalog"
+    ],
+    "files": [
+      "meadows_controlled_information_spaces_lesson.html"
+    ],
+    "integrations": [
+      "source records to structured storage",
+      "structured storage to named queries",
+      "queries to derived results",
+      "derived results to role-authorized views"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "content and lesson-profile structure validated",
+      "notes": [
+        "The source explicitly identifies itself as a Meadows Housekeeping training lesson on privacy, data collection, and query responsibility.",
+        "The lesson-reference 3.0-draft profile was applied.",
+        "All eleven source sections were represented.",
+        "The six source lesson-check questions were preserved and two synthesis questions were added.",
+        "The source defines conceptual role spaces and query principles but does not claim a deployed authorization system.",
+        "No canonical publication URL, creation date, repository path, or technical security implementation is provided."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Controlled Information Spaces",
+      "body": "This lesson explains why housekeeping records should not be exposed as one shared pile of raw data. The same source records can support different authorized answers for employees, supervisors, management, and requesting departments. Named queries, provenance, minimum-necessary detail, and role-based information spaces preserve both operational usefulness and trust.",
+      "audiences": [
+        "supervisors",
+        "management",
+        "staff",
+        "system collaborators"
+      ],
+      "detailLevel": "plain-language lesson introduction",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "publication URL not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Controlled Information Spaces",
+    "listingDescription": "A Meadows Housekeeping lesson on source records, derived results, raw-data risk, named queries, role-based information spaces, provenance, and compartmentalization.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "Controlled Information Spaces",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; canonical publication location not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded lesson HTML",
+    "sourceFiles": [
+      "meadows_controlled_information_spaces_lesson.html",
+      "lesson-reference-sidecar-template-3.0-draft.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T03:49:03+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source explicitly identifies itself as a Meadows Housekeeping training lesson on privacy, data collection, and query responsibility.",
+      "The lesson-reference 3.0-draft profile was used.",
+      "The source has no HTML section IDs, so normalized sidecar anchors were generated from section titles.",
+      "The source describes conceptual information spaces and named queries but does not define authentication, row-level security, field-level permissions, or a deployed access-control implementation.",
+      "The project name Meadows Housekeeping Information Governance is a descriptive classification inferred from the document's subject and framing.",
+      "No canonical HTTP(S) document URL, publication date, or repository path is provided."
+    ],
+    "unresolvedQuestions": [
+      "What date was the lesson created?",
+      "What canonical public filename and URL should identify the lesson?",
+      "Which roles will be implemented first in a real authorization model?",
+      "What schema should define the query catalog?",
+      "Who has authority to approve, revise, or retire named queries?",
+      "Which source records require individual-level access and which can be exposed only through aggregates?",
+      "Should query sensitivity and minimum-group-size rules be formalized in a separate specification?"
+    ]
+  }
+}

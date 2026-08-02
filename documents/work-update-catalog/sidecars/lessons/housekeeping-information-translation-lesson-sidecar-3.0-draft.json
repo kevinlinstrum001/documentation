@@ -1,0 +1,1497 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "lesson-reference",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "lesson-reference-sidecar-template-3.0-draft.json",
+    "previewMode": "lesson-reference"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "lesson-housekeeping-information-translation",
+    "filePath": "housekeeping_information_translation_lesson.html",
+    "documentUrl": "",
+    "title": "Housekeeping Information Translation",
+    "headline": "Enter the facts once and generate every required representation from the same structured record",
+    "documentType": "lesson",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "housekeeping-information-translation-lesson-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "lesson-housekeeping-information-translation",
+    "profileTemplatePath": "lesson-reference-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Meadows Housekeeping Information Translation",
+      "projectType": "operational information architecture and document-generation framework",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Capture operational events once as structured data, preserve source evidence, translate those events into management categories, and generate forms, schedules, reports, approvals, and later analysis without repeatedly re-entering the same facts.",
+      "projectPhase": "conceptual lesson and first-script design guidance",
+      "contributionType": "information-translation model, source-preservation rule, structured-record design, automatic document-generation workflow, observability framework, and inventory expansion",
+      "identificationBasis": "The lesson explicitly describes housekeeping as an information system and defines a translation boundary between operational events, structured records, management classifications, and official paperwork.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Automated Forms and PDF Generation",
+        "relationshipType": "primary implementation target",
+        "relationshipDescription": "The lesson proposes generating official forms and printable PDFs from structured records rather than recreating the information manually each time.",
+        "impact": "Required paperwork can remain familiar, portable, signable, and accepted while the underlying information becomes reusable and machine-readable.",
+        "evidenceSectionAnchors": [
+          "#structured-data-before-paperwork",
+          "#automatic-generation-workflow",
+          "#design-principle"
+        ],
+        "identificationBasis": "The document explicitly defines JSON-to-sheet-to-PDF workflows and lists the first script's responsibilities.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Roster and Calendar Tools",
+        "relationshipType": "derived outputs from shared operational events",
+        "relationshipDescription": "One overtime or staffing event can generate roster updates and calendar events from the same structured record.",
+        "impact": "Availability, coverage, dates, times, and reasons can remain synchronized across operational views.",
+        "evidenceSectionAnchors": [
+          "#one-event-many-outputs"
+        ],
+        "identificationBasis": "The lesson explicitly lists roster updates and calendar events among outputs generated from one record.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory",
+        "relationshipType": "expanded information-resource inventory",
+        "relationshipDescription": "The lesson expands inventory beyond materials and equipment to include tools, templates, records, and data structures.",
+        "impact": "Scripts, forms, schemas, records, and mappings become visible resources that can be tracked and reused.",
+        "evidenceSectionAnchors": [
+          "#inventory-expansion"
+        ],
+        "identificationBasis": "The document explicitly defines six inventory classes.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Documentation and Organizational Memory",
+        "relationshipType": "source-evidence and reusable-record foundation",
+        "relationshipDescription": "Source images, structured records, generated outputs, and approval states remain linked so later review and analysis can distinguish original evidence from interpretation and presentation.",
+        "impact": "The system supports traceability, historical reconstruction, and reuse of the same facts across many representations.",
+        "evidenceSectionAnchors": [
+          "#automatic-generation-workflow",
+          "#design-principle"
+        ],
+        "identificationBasis": "The source explicitly requires the original image to remain linked to the structured transcription.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Source evidence",
+        "foundationType": "original-document and event evidence layer",
+        "relationshipDescription": "Original paper, photographed forms, and direct operational events remain available as the evidentiary source.",
+        "impact": "Structured interpretation and generated documents can be checked against the original evidence."
+      },
+      {
+        "foundationId": "",
+        "name": "Structured operational record",
+        "foundationType": "canonical reusable data layer",
+        "relationshipDescription": "Operational facts are stored in a machine-readable form such as JSON and may also be represented in a Google Sheet.",
+        "impact": "The same event can drive many outputs without repeated manual entry."
+      },
+      {
+        "foundationId": "",
+        "name": "Translation rules",
+        "foundationType": "mapping and transformation layer",
+        "relationshipDescription": "Operational language is mapped to pay codes, approval fields, accounting periods, compliance categories, signatures, and official layouts.",
+        "impact": "Management paperwork can be generated from operational facts while preserving both perspectives."
+      }
+    ],
+    "relationshipSummary": "The lesson defines a layered architecture in which source evidence is preserved, structured records become reusable, translation rules map operations into administrative language, and many official or analytical outputs are generated from one event."
+  },
+  "subject": {
+    "projectName": "Meadows Housekeeping Information Translation",
+    "primaryApp": "",
+    "mainFocus": "Explaining how operational events can be captured once, preserved as structured records, translated into management categories, and reused to generate forms, schedules, reports, approvals, dashboards, and analysis.",
+    "description": "A housekeeping information-systems lesson covering inputs, internal state, outputs, translation boundaries, JSON records, automatic document generation, source evidence, observability, broader inventory classes, and the first script to build.",
+    "topics": [
+      "information translation",
+      "operational events",
+      "management language",
+      "structured data",
+      "JSON",
+      "official paperwork",
+      "PDF generation",
+      "source evidence",
+      "Google Forms",
+      "Google Sheets",
+      "automatic document generation",
+      "observability",
+      "one event many outputs",
+      "approval tracking",
+      "inventory expansion",
+      "data reuse"
+    ],
+    "keywords": [
+      "translation boundary",
+      "operational event",
+      "structured record",
+      "translation rules",
+      "official paperwork",
+      "enter the facts once",
+      "preserve the source",
+      "generate required representation",
+      "JSON preserves meaning",
+      "PDF preserves appearance",
+      "paper preserves portability",
+      "signature status",
+      "approval queue"
+    ],
+    "appsAffected": [
+      "Google Forms",
+      "Google Sheets",
+      "Apps Script",
+      "PDF generator",
+      "Roster",
+      "Calendar",
+      "Inventory",
+      "approval queue"
+    ],
+    "systemsAffected": [
+      "staffing",
+      "overtime reporting",
+      "attendance",
+      "work requests",
+      "inspection reporting",
+      "supply tracking",
+      "administrative approvals",
+      "historical analysis"
+    ],
+    "componentsAffected": [
+      "source images",
+      "JSON records",
+      "sheet rows",
+      "field mappings",
+      "official forms",
+      "generated PDFs",
+      "signature fields",
+      "approval fields",
+      "record links",
+      "consistent filenames"
+    ]
+  },
+  "learningContext": {
+    "audience": [
+      "supervisors",
+      "department staff",
+      "nontechnical system users",
+      "people designing automated forms and records"
+    ],
+    "prerequisites": [
+      "basic familiarity with forms, spreadsheets, and departmental paperwork"
+    ],
+    "learningPurpose": "Teach how housekeeping operations can be represented as an information system and how structured data can bridge operational language, administrative requirements, printed forms, and later analysis.",
+    "difficulty": "introductory to intermediate",
+    "estimatedStudyTime": "10–15 minutes",
+    "sourceType": "standalone information-systems lesson",
+    "instructionalApproach": "Uses tables, flow diagrams, a concrete overtime JSON example, contrasting source and output roles, a practical workflow, a design rule, and review questions."
+  },
+  "learningObjectives": [
+    {
+      "objectiveId": "objective-01",
+      "description": "Explain housekeeping as an information system with inputs, internal state, and outputs.",
+      "evidenceSectionAnchors": [
+        "#lesson-objective",
+        "#housekeeping-information-system"
+      ]
+    },
+    {
+      "objectiveId": "objective-02",
+      "description": "Distinguish supervisor language from management language and identify the structured record as the translation boundary.",
+      "evidenceSectionAnchors": [
+        "#translation-boundary"
+      ]
+    },
+    {
+      "objectiveId": "objective-03",
+      "description": "Explain why the structured record should be created before the official paper or PDF representation.",
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "objectiveId": "objective-04",
+      "description": "Describe both the preferred digital-first workflow and the historical-paper transcription workflow.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "objectiveId": "objective-05",
+      "description": "Explain why original images or source documents should remain linked to structured transcriptions.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "objectiveId": "objective-06",
+      "description": "Identify multiple outputs that can be generated from one operational event.",
+      "evidenceSectionAnchors": [
+        "#one-event-many-outputs"
+      ]
+    },
+    {
+      "objectiveId": "objective-07",
+      "description": "Define observability across staffing, work, administrative, and resource states.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "objectiveId": "objective-08",
+      "description": "Recognize tools, templates, records, and data structures as inventory alongside materials and equipment.",
+      "evidenceSectionAnchors": [
+        "#inventory-expansion"
+      ]
+    },
+    {
+      "objectiveId": "objective-09",
+      "description": "Describe the responsibilities of the first script that maps structured data into a generated form.",
+      "evidenceSectionAnchors": [
+        "#design-principle"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "principleId": "principle-01",
+      "title": "Digitization is not the final goal",
+      "statement": "The goal is to build a reliable information system, not merely to reproduce paperwork electronically.",
+      "explanation": "Operational events should be recorded once, translated into the language required by management, and reused for many outputs.",
+      "importance": "This prevents digital tools from becoming faster versions of repetitive clerical work.",
+      "evidenceSectionAnchors": [
+        "#lesson-objective"
+      ]
+    },
+    {
+      "principleId": "principle-02",
+      "title": "Housekeeping has inputs, internal state, and outputs",
+      "statement": "Physical work is governed by information entering the department, changing inside it, and leaving as completed conditions or records.",
+      "explanation": "Staffing requests, work orders, assignments, pending work, completed units, forms, and reports are all part of one information system.",
+      "importance": "It makes the department observable as a system rather than only as visible physical labor.",
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-system"
+      ]
+    },
+    {
+      "principleId": "principle-03",
+      "title": "The structured record is the translation boundary",
+      "statement": "Operational events should first become structured records before being translated into management categories and official forms.",
+      "explanation": "The record preserves what happened while translation rules express it as pay codes, approvals, accounting periods, compliance categories, and signatures.",
+      "importance": "It allows operational truth and administrative representation to remain linked without being confused.",
+      "evidenceSectionAnchors": [
+        "#translation-boundary"
+      ]
+    },
+    {
+      "principleId": "principle-04",
+      "title": "Structured data should precede paperwork",
+      "statement": "Create the machine-readable record first and generate the paper or PDF representation from it.",
+      "explanation": "JSON preserves meaning, the PDF preserves appearance, and paper preserves portability and signatures.",
+      "importance": "Each representation can perform its proper role without becoming the sole source of information.",
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "principleId": "principle-05",
+      "title": "Preserve source evidence",
+      "statement": "A structured transcription or interpretation should remain linked to the original paper or image.",
+      "explanation": "The JSON is not identical to the source evidence; it is a structured reading of that evidence.",
+      "importance": "Traceability supports correction, review, audit, and confidence.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "principleId": "principle-06",
+      "title": "One event should support many outputs",
+      "statement": "The same operational event should not be entered independently into rosters, calendars, forms, approvals, totals, and analysis.",
+      "explanation": "One structured record can generate every required representation and calculation.",
+      "importance": "This reduces duplication, inconsistency, and clerical effort.",
+      "evidenceSectionAnchors": [
+        "#one-event-many-outputs"
+      ]
+    },
+    {
+      "principleId": "principle-07",
+      "title": "Observability includes administrative and resource state",
+      "statement": "A supervisor needs visibility not only into work and staffing but also into forms, approvals, supplies, tools, scripts, and templates.",
+      "explanation": "The state of paperwork and information resources can constrain operations as directly as physical shortages.",
+      "importance": "It broadens supervision from task observation to system condition.",
+      "evidenceSectionAnchors": [
+        "#observability",
+        "#inventory-expansion"
+      ]
+    },
+    {
+      "principleId": "principle-08",
+      "title": "Information resources belong in inventory",
+      "statement": "Tools, templates, records, schemas, mappings, and field definitions are departmental resources.",
+      "explanation": "They are required to perform and reproduce administrative and operational work.",
+      "importance": "This supports ownership, maintenance, reuse, and continuity of digital capabilities.",
+      "evidenceSectionAnchors": [
+        "#inventory-expansion"
+      ]
+    },
+    {
+      "principleId": "principle-09",
+      "title": "Enter once, translate, and generate",
+      "statement": "Enter the facts once, preserve the source, translate the event into required categories, and generate every representation from the same record.",
+      "explanation": "The first script should load structured data, map fields, generate the output, name it consistently, link it to the source, and track approvals.",
+      "importance": "This is the lesson's governing design rule and implementation direction.",
+      "evidenceSectionAnchors": [
+        "#design-principle"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "concept-information-system",
+      "name": "Housekeeping information system",
+      "definition": "A model of the department as a system that receives information, maintains internal state, and produces physical and administrative outputs.",
+      "relationships": [
+        "Inputs define demand",
+        "Internal state shows current condition",
+        "Outputs demonstrate what the department produced"
+      ],
+      "examples": [
+        "A staffing request changes assignments and produces a roster update",
+        "An inspection requirement produces completed work and an inspection report"
+      ],
+      "misconceptions": [
+        "Housekeeping is only physical work rather than physical work coordinated through information"
+      ],
+      "evidenceSectionAnchors": [
+        "#housekeeping-information-system"
+      ]
+    },
+    {
+      "conceptId": "concept-translation-boundary",
+      "name": "Translation boundary",
+      "definition": "The point where an operational event becomes structured data and is then mapped into administrative categories and official paperwork.",
+      "relationships": [
+        "Separates operational language from management language",
+        "Uses translation rules",
+        "Produces official forms"
+      ],
+      "examples": [
+        "Converting overtime dates and hours into pay codes, approval fields, and an official Kronos layout"
+      ],
+      "misconceptions": [
+        "The official form itself is the only meaningful representation of the event"
+      ],
+      "evidenceSectionAnchors": [
+        "#translation-boundary"
+      ]
+    },
+    {
+      "conceptId": "concept-structured-record",
+      "name": "Structured record",
+      "definition": "A machine-readable representation of an event with explicit fields and values.",
+      "relationships": [
+        "May be represented as JSON",
+        "Can be stored in a sheet",
+        "Can generate PDFs and other outputs",
+        "Should remain linked to source evidence"
+      ],
+      "examples": [
+        "An overtime record containing employee, department, supervisor, week ending, time entries, and signature states"
+      ],
+      "misconceptions": [
+        "A formatted PDF and a structured record perform the same function"
+      ],
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "conceptId": "concept-source-record",
+      "name": "Source record",
+      "definition": "The original evidence from which a structured transcription or interpretation is created.",
+      "relationships": [
+        "May be a paper form or photographed image",
+        "Should remain linked to the structured record",
+        "Supports review and correction"
+      ],
+      "examples": [
+        "A photographed handwritten overtime form"
+      ],
+      "misconceptions": [
+        "The transcription makes the original evidence unnecessary"
+      ],
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow",
+        "#review-questions"
+      ]
+    },
+    {
+      "conceptId": "concept-representation",
+      "name": "Representation",
+      "definition": "A form in which the same underlying information is expressed for a particular purpose.",
+      "relationships": [
+        "JSON preserves meaning",
+        "PDF preserves appearance",
+        "Paper preserves portability and signatures",
+        "Calendar preserves time visibility",
+        "Roster preserves assignment and availability context"
+      ],
+      "examples": [
+        "One overtime event represented as JSON, a sheet row, a calendar event, and an official form"
+      ],
+      "misconceptions": [
+        "Only one representation should exist"
+      ],
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork",
+        "#one-event-many-outputs"
+      ]
+    },
+    {
+      "conceptId": "concept-observability",
+      "name": "Observability",
+      "definition": "The system's ability to expose current and recent staffing, work, administrative, and resource conditions.",
+      "relationships": [
+        "Reduces reconstruction from memory",
+        "Supports employees, supervisors, and management",
+        "Depends on maintained state"
+      ],
+      "examples": [
+        "Seeing which forms are generated, signed, approved, submitted, or missing"
+      ],
+      "misconceptions": [
+        "Observability concerns only active physical tasks"
+      ],
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "conceptId": "concept-information-inventory",
+      "name": "Information-resource inventory",
+      "definition": "An inventory that includes digital tools, templates, records, and data structures in addition to materials and equipment.",
+      "relationships": [
+        "Tools enable work",
+        "Templates define representations",
+        "Records preserve outcomes",
+        "Schemas and mappings define structure"
+      ],
+      "examples": [
+        "Apps Script, QR codes, Kronos templates, completed forms, JSON schemas, and field mappings"
+      ],
+      "misconceptions": [
+        "Inventory consists only of consumable physical supplies"
+      ],
+      "evidenceSectionAnchors": [
+        "#inventory-expansion"
+      ]
+    },
+    {
+      "conceptId": "concept-approval-state",
+      "name": "Approval state",
+      "definition": "A structured status indicating whether required employee, supervisor, timekeeper, or management actions have occurred.",
+      "relationships": [
+        "Can be stored as true or false",
+        "Can drive approval queues",
+        "Can appear on generated documents"
+      ],
+      "examples": [
+        "Employee signed: true; supervisor signed: false"
+      ],
+      "misconceptions": [
+        "Approval status must exist only as an unreadable handwritten mark on paper"
+      ],
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork",
+        "#design-principle"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "exampleId": "example-overtime-record",
+      "title": "Overtime event as a structured record",
+      "scenario": "An employee works extra hours that must later be represented in an official administrative form.",
+      "walkthrough": [
+        "Record employee name, ID, department, supervisor, and week ending.",
+        "Store date, begin time, end time, pay type, and total hours.",
+        "Track employee, supervisor, and timekeeper signature states.",
+        "Map the structured values into the required form fields."
+      ],
+      "result": "The event can be preserved as JSON, stored in a sheet, and used to generate a printable form.",
+      "lesson": "Meaning should be stored independently from the visual document used to submit it.",
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "exampleId": "example-historical-paper",
+      "title": "Converting a historical handwritten form",
+      "scenario": "An older paper record must be added to the structured information system.",
+      "walkthrough": [
+        "Photograph the paper.",
+        "Extract the relevant fields.",
+        "Review and correct the extracted values.",
+        "Save the result as structured JSON.",
+        "Link the JSON back to the original image."
+      ],
+      "result": "Historical evidence becomes searchable and reusable without discarding the original source.",
+      "lesson": "Transcription improves usability, while the image preserves evidence.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "exampleId": "example-one-event-many-outputs",
+      "title": "One overtime event, many outputs",
+      "scenario": "One overtime event affects staffing, scheduling, administrative approval, totals, and historical planning.",
+      "walkthrough": [
+        "Create one structured overtime record.",
+        "Generate a roster update.",
+        "Generate a calendar event.",
+        "Generate the official adjustment form.",
+        "Place the record in an approval queue.",
+        "Update weekly totals.",
+        "Retain the event for historical analysis."
+      ],
+      "result": "Multiple synchronized outputs are produced without re-entering the same event independently.",
+      "lesson": "One canonical record reduces duplication and inconsistency.",
+      "evidenceSectionAnchors": [
+        "#one-event-many-outputs"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "procedureId": "procedure-digital-first-generation",
+      "title": "Generate required paperwork from a structured record",
+      "purpose": "Create official printable documents while preserving reusable machine-readable data.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Enter the operational facts once.",
+          "expectedResult": "The event is captured without duplicative form entry."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Store the facts in a structured record.",
+          "expectedResult": "The record can be validated, queried, and reused."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Apply translation rules to map the record into official fields.",
+          "expectedResult": "Operational language is converted into the required management representation."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Generate the printable form or PDF.",
+          "expectedResult": "The accepted visual layout is produced."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Print, sign, and submit when paper or signatures are required.",
+          "expectedResult": "The official process remains compatible with organizational requirements."
+        },
+        {
+          "sequence": 6,
+          "instruction": "Link the generated document and approval states to the source record.",
+          "expectedResult": "The complete chain remains traceable."
+        }
+      ],
+      "verification": [
+        "Generated fields match the structured source values.",
+        "The source record remains available.",
+        "The output has a consistent filename.",
+        "Required signature and approval states are visible.",
+        "The generated document links back to the original record."
+      ],
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow",
+        "#design-principle"
+      ]
+    },
+    {
+      "procedureId": "procedure-historical-transcription",
+      "title": "Convert historical paper into structured data",
+      "purpose": "Add older records to the information system while preserving original evidence.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Photograph or scan the original paper.",
+          "expectedResult": "A durable image of the source exists."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Extract the required fields.",
+          "expectedResult": "The paper content becomes a draft structured record."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Review and correct the extracted values.",
+          "expectedResult": "Errors or ambiguities are resolved before storage."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Save the corrected structured record.",
+          "expectedResult": "The historical event becomes searchable and reusable."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Link the record to the original image.",
+          "expectedResult": "The interpretation remains traceable to evidence."
+        }
+      ],
+      "verification": [
+        "The original image is retained.",
+        "The structured record contains the required fields.",
+        "The record identifies its source image.",
+        "Corrections are distinguishable from the original evidence."
+      ],
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "procedureId": "procedure-first-script",
+      "title": "Build the first information-translation script",
+      "purpose": "Create the smallest useful automation that converts structured data into a linked official output.",
+      "steps": [
+        {
+          "sequence": 1,
+          "instruction": "Receive or load structured data.",
+          "expectedResult": "The script has one validated source object."
+        },
+        {
+          "sequence": 2,
+          "instruction": "Map the values to the correct form fields.",
+          "expectedResult": "Each required administrative field has a defined source."
+        },
+        {
+          "sequence": 3,
+          "instruction": "Generate a printable document or PDF.",
+          "expectedResult": "The official layout is produced automatically."
+        },
+        {
+          "sequence": 4,
+          "instruction": "Save the output using a consistent name.",
+          "expectedResult": "The file can be identified and retrieved reliably."
+        },
+        {
+          "sequence": 5,
+          "instruction": "Link the generated document to the original record.",
+          "expectedResult": "The output and source remain connected."
+        },
+        {
+          "sequence": 6,
+          "instruction": "Track signature and approval status as explicit values.",
+          "expectedResult": "Incomplete administrative steps remain observable."
+        }
+      ],
+      "verification": [
+        "The output reproduces the mapped values correctly.",
+        "The filename follows the selected convention.",
+        "The source and output links resolve.",
+        "Approval states survive reload and can be queried."
+      ],
+      "evidenceSectionAnchors": [
+        "#design-principle"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "warningId": "warning-digitize-only",
+      "title": "Do not merely digitize paperwork",
+      "risk": "The department may reproduce the same repeated entry and disconnected records in electronic form.",
+      "avoid": "Treating the PDF or online form as the architecture rather than as one representation.",
+      "correctiveAction": "Create a reusable structured record and generate required representations from it.",
+      "evidenceSectionAnchors": [
+        "#lesson-objective",
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "warningId": "warning-recreate-information",
+      "title": "Do not recreate the same information for every form",
+      "risk": "Independent entry causes duplication, inconsistency, missing updates, and unnecessary clerical work.",
+      "avoid": "Entering one event separately into a roster, calendar, form, approval queue, and report.",
+      "correctiveAction": "Use one canonical event record to generate all outputs.",
+      "evidenceSectionAnchors": [
+        "#translation-boundary",
+        "#one-event-many-outputs"
+      ]
+    },
+    {
+      "warningId": "warning-discard-source",
+      "title": "Do not discard the original source after transcription",
+      "risk": "Errors or interpretations in the structured record may become impossible to verify.",
+      "avoid": "Treating extracted JSON as identical to the original paper or image.",
+      "correctiveAction": "Keep the original source linked to the structured record.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "warningId": "warning-paper-as-database",
+      "title": "Do not use the official paper as the only data store",
+      "risk": "The information remains difficult to reuse for totals, dashboards, schedules, approvals, or analysis.",
+      "avoid": "Storing meaning only in the visual layout.",
+      "correctiveAction": "Store explicit fields in a structured record and treat the paper as a generated representation.",
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "warningId": "warning-narrow-inventory",
+      "title": "Do not limit inventory to physical supplies",
+      "risk": "Critical scripts, forms, schemas, records, and mappings may remain unowned, undocumented, or unavailable.",
+      "avoid": "Ignoring information resources because they are not consumable materials.",
+      "correctiveAction": "Track tools, templates, records, and data structures as inventory classes.",
+      "evidenceSectionAnchors": [
+        "#inventory-expansion"
+      ]
+    }
+  ],
+  "reviewQuestions": [
+    {
+      "questionId": "review-01",
+      "question": "Why is a paper form useful even when the underlying data is digital?",
+      "answerSummary": "It remains familiar, portable, signable, and accepted by the organization, while the structured record preserves reusable meaning.",
+      "evidenceSectionAnchors": [
+        "#translation-boundary",
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "questionId": "review-02",
+      "question": "What is the difference between a source record and a structured record?",
+      "answerSummary": "The source record is the original evidence; the structured record is a machine-readable transcription or representation derived from it.",
+      "evidenceSectionAnchors": [
+        "#automatic-generation-workflow"
+      ]
+    },
+    {
+      "questionId": "review-03",
+      "question": "Why should both the operational event and the management classification be preserved?",
+      "answerSummary": "The operational event records what actually happened, while the classification expresses it in the administrative language required for approvals, accounting, compliance, and forms.",
+      "evidenceSectionAnchors": [
+        "#translation-boundary"
+      ]
+    },
+    {
+      "questionId": "review-04",
+      "question": "How does observability improve supervisory control?",
+      "answerSummary": "It exposes staffing, work, administrative, and resource states so the supervisor does not have to reconstruct the department from memory.",
+      "evidenceSectionAnchors": [
+        "#observability"
+      ]
+    },
+    {
+      "questionId": "review-05",
+      "question": "What outputs can be generated from one overtime record?",
+      "answerSummary": "Roster updates, calendar events, official adjustment forms, approval-queue entries, weekly totals, and historical analysis.",
+      "evidenceSectionAnchors": [
+        "#one-event-many-outputs"
+      ]
+    },
+    {
+      "questionId": "review-06",
+      "question": "Why does the lesson say JSON, PDF, and paper have different purposes?",
+      "answerSummary": "JSON preserves explicit meaning, PDF preserves visual appearance, and paper provides portability and signatures.",
+      "evidenceSectionAnchors": [
+        "#structured-data-before-paperwork"
+      ]
+    },
+    {
+      "questionId": "review-07",
+      "question": "What should the first information-translation script do?",
+      "answerSummary": "Load structured data, map it to form fields, generate and name a printable output, link it to the source, and track signatures and approvals.",
+      "evidenceSectionAnchors": [
+        "#design-principle"
+      ]
+    }
+  ],
+  "futureApplications": [
+    {
+      "applicationId": "application-kronos-generator",
+      "title": "Kronos adjustment-form generator",
+      "description": "Generate the official adjustment form from a structured overtime or attendance record.",
+      "readiness": "ready for prototype design",
+      "dependencies": [
+        "field mapping",
+        "official form template",
+        "filename convention",
+        "PDF generation method"
+      ]
+    },
+    {
+      "applicationId": "application-approval-queue",
+      "title": "Signature and approval queue",
+      "description": "Track whether employee, supervisor, timekeeper, or management approval remains missing.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "structured approval fields",
+        "role definitions",
+        "status viewer"
+      ]
+    },
+    {
+      "applicationId": "application-historical-intake",
+      "title": "Historical paper-record ingestion",
+      "description": "Photograph older forms, extract and review fields, save structured records, and preserve links to source images.",
+      "readiness": "ready for workflow design",
+      "dependencies": [
+        "source-image storage",
+        "review interface",
+        "record schema"
+      ]
+    },
+    {
+      "applicationId": "application-shared-event-records",
+      "title": "Shared staffing-event records",
+      "description": "Use one staffing or overtime event to update rosters, calendars, forms, approvals, totals, and later analysis.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "shared event ID",
+        "calendar and roster mappings",
+        "output-generation functions"
+      ]
+    },
+    {
+      "applicationId": "application-expanded-inventory",
+      "title": "Expanded departmental inventory",
+      "description": "Track physical materials, equipment, digital tools, templates, completed records, schemas, and mappings in one resource model.",
+      "readiness": "planned",
+      "dependencies": [
+        "inventory-class schema",
+        "ownership and status fields"
+      ]
+    },
+    {
+      "applicationId": "application-observability-view",
+      "title": "Administrative observability dashboard",
+      "description": "Show current staffing, work state, generated forms, missing approvals, and unavailable information resources.",
+      "readiness": "conceptual",
+      "dependencies": [
+        "linked status records",
+        "shared identifiers",
+        "viewer design"
+      ]
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The lesson explains how one housekeeping event can be recorded once, translated into the categories required by management, and then reused to create the needed form, roster update, calendar entry, approval record, totals, and later analysis.",
+      "operationalImpact": "This approach can reduce repeated entry, preserve source evidence, make missing paperwork visible, and keep operational and administrative records synchronized.",
+      "currentStatus": "Complete information-translation lesson and first-script design outline.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The lesson does not define the final schema or exact official form mappings.",
+        "Historical transcription still requires human review and correction.",
+        "Generated paperwork must remain compatible with signature and approval requirements.",
+        "A canonical public URL for the lesson has not been established."
+      ],
+      "staffVisibleChanges": [
+        "Facts entered once rather than repeated across forms",
+        "Generated printable documents",
+        "Visible signature and approval status",
+        "Linked source images and structured records",
+        "Synchronized roster, calendar, and administrative outputs"
+      ],
+      "nextOperationalStep": "Select one official form and define the structured fields, mappings, filename rule, output location, and approval states required for a first generator.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-boundary",
+          "relatedSectionAnchor": "#translation-boundary",
+          "type": "architecture",
+          "title": "Translate once at a defined boundary",
+          "text": "Operational events become structured records before they are expressed as administrative categories and official paperwork."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-representations",
+          "relatedSectionAnchor": "#structured-data-before-paperwork",
+          "type": "principle",
+          "title": "Meaning, appearance, and signatures are different jobs",
+          "text": "JSON preserves meaning, PDF preserves appearance, and paper preserves portability and signatures."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-many-outputs",
+          "relatedSectionAnchor": "#one-event-many-outputs",
+          "type": "efficiency",
+          "title": "One event can generate many outputs",
+          "text": "The same record can update rosters, calendars, forms, approvals, totals, and historical analysis."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-first-script",
+          "relatedSectionAnchor": "#design-principle",
+          "type": "next-step",
+          "title": "The first script has a clear boundary",
+          "text": "Load structured data, map fields, generate the document, save it consistently, link it to the source, and track approvals."
+        }
+      ]
+    },
+    "general": {
+      "summary": "Housekeeping Information Translation explains how operational events can be preserved once as structured data and reused to produce official paperwork, schedules, records, approvals, dashboards, and analysis.",
+      "keyPoints": [
+        "Housekeeping is an information system as well as a physical-work system.",
+        "Operational and management language should be connected through structured records.",
+        "Structured data should come before generated paperwork.",
+        "Original source evidence should remain linked.",
+        "One event can generate many outputs.",
+        "Observability includes work, staffing, administrative, and resource state.",
+        "Digital tools and schemas are inventory resources.",
+        "The first script should map one structured record into one linked official output."
+      ]
+    },
+    "technical": {
+      "summary": "The lesson presents a conceptual architecture using Google Forms or an app for capture, JSON as the semantic record, Google Sheets for tabular storage, Apps Script or equivalent logic for mapping, and generated PDF or paper for official representation.",
+      "keyPoints": [
+        "The source includes a sample overtime JSON object.",
+        "Boolean signature fields are proposed.",
+        "Historical paper intake follows image, extraction, review, correction, JSON, and source-linking stages.",
+        "The first script requires deterministic field mapping and consistent output naming.",
+        "The lesson does not provide a deployed script, API, form template, or final schema."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Klinswork can use one operational record to drive both employee-facing and management-facing representations.",
+      "The current roster, calendar, inventory, and documentation tools can become outputs or consumers of shared event records.",
+      "Source images and generated documents should be linked through record identity rather than stored as unrelated files.",
+      "Approval state should be structured and queryable instead of visible only on paper."
+    ],
+    "generalLessons": [
+      "A form is a transport representation, not necessarily the canonical record.",
+      "Meaning, appearance, portability, and signature each require different representations.",
+      "Translation rules should be explicit rather than embedded in repeated human clerical work.",
+      "One canonical event record reduces inconsistency across outputs.",
+      "Historical transcription should preserve source evidence.",
+      "Observability includes information resources and administrative state.",
+      "Templates, schemas, scripts, and records are operational assets."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "The same event is re-entered into several systems.",
+        "pattern": "Rosters, calendars, official forms, approval queues, totals, and reports each receive independent versions of the same facts.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Translation"
+        ]
+      },
+      {
+        "problem": "Official paperwork is treated as the canonical data store.",
+        "pattern": "Important meaning remains locked in a visual document that is difficult to query or reuse.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Translation"
+        ]
+      },
+      {
+        "problem": "Structured transcriptions become detached from source evidence.",
+        "pattern": "Extracted fields are stored without a durable link to the original image or form.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Translation"
+        ]
+      },
+      {
+        "problem": "Information resources are omitted from inventory.",
+        "pattern": "Scripts, templates, schemas, mappings, and completed records remain invisible despite being required for operations.",
+        "projectsObservedIn": [
+          "Meadows Housekeeping Information Translation"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "The operational-to-administrative translation boundary",
+        "description": "Convert operational events into structured records, apply explicit mappings, and generate official paperwork.",
+        "suggestedDestination": "Klinswork information architecture",
+        "supportingSectionAnchors": [
+          "#translation-boundary"
+        ]
+      },
+      {
+        "title": "Structured data before paperwork",
+        "description": "Store meaning in machine-readable fields and generate PDFs or paper as purpose-specific representations.",
+        "suggestedDestination": "Klinswork document-generation practices",
+        "supportingSectionAnchors": [
+          "#structured-data-before-paperwork"
+        ]
+      },
+      {
+        "title": "Preserving source evidence during transcription",
+        "description": "Keep photographed or scanned originals linked to reviewed structured records.",
+        "suggestedDestination": "Klinswork provenance practices",
+        "supportingSectionAnchors": [
+          "#automatic-generation-workflow"
+        ]
+      },
+      {
+        "title": "One event, many synchronized outputs",
+        "description": "Use one canonical event to generate schedules, rosters, forms, approvals, totals, and later analysis.",
+        "suggestedDestination": "Klinswork integration architecture",
+        "supportingSectionAnchors": [
+          "#one-event-many-outputs"
+        ]
+      },
+      {
+        "title": "Information resources as inventory",
+        "description": "Track tools, templates, records, schemas, field definitions, and mappings alongside materials and equipment.",
+        "suggestedDestination": "Klinswork resource architecture",
+        "supportingSectionAnchors": [
+          "#inventory-expansion"
+        ]
+      },
+      {
+        "title": "First-script boundary for form generation",
+        "description": "Load structured data, map fields, generate and name the output, link it to the source, and track approval status.",
+        "suggestedDestination": "Klinswork development practices",
+        "supportingSectionAnchors": [
+          "#design-principle"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Create the structured record before generating official paperwork.",
+        "changeType": "added",
+        "explanation": "The record preserves reusable meaning while the generated document preserves the required appearance."
+      },
+      {
+        "rule": "Preserve the original source and link it to every transcription or generated output.",
+        "changeType": "confirmed",
+        "explanation": "The source remains the evidence against which interpretation can be reviewed."
+      },
+      {
+        "rule": "Do not enter the same operational event independently into multiple systems.",
+        "changeType": "added",
+        "explanation": "One canonical event should generate all related representations and calculations."
+      },
+      {
+        "rule": "Represent approval and signature state as explicit structured values.",
+        "changeType": "added",
+        "explanation": "Administrative completeness should be observable and queryable."
+      },
+      {
+        "rule": "Include digital tools, templates, records, and schemas in departmental inventory.",
+        "changeType": "added",
+        "explanation": "Information resources are required operational assets and should remain visible and maintainable."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "lesson-objective",
+      "title": "Lesson Objective",
+      "anchor": "#lesson-objective",
+      "contentSummary": "Defines the goal as creating a reliable information system in which events are recorded once, translated into management language, and reused for forms, schedules, reports, observability, and later analysis.",
+      "narrativeRole": "instructional-overview",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Lesson Objective'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "housekeeping-information-system",
+      "title": "The Housekeeping Department as an Information System",
+      "anchor": "#housekeeping-information-system",
+      "contentSummary": "Divides departmental information into inputs, internal state, and outputs and explains why supervision is weak when the actual state is hidden in conversation, paper, memory, or disconnected files.",
+      "narrativeRole": "systems-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'The Housekeeping Department as an Information System'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "translation-boundary",
+      "title": "The Translation Boundary",
+      "anchor": "#translation-boundary",
+      "contentSummary": "Contrasts supervisor language with management language and defines the path from operational event to structured record to translation rules to official paperwork.",
+      "narrativeRole": "information-architecture",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'The Translation Boundary'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-boundary",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "The operational-to-administrative translation boundary"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "structured-data-before-paperwork",
+      "title": "Structured Data Before Paperwork",
+      "anchor": "#structured-data-before-paperwork",
+      "contentSummary": "Argues for creating the JSON record first, storing it in a sheet, and generating the PDF afterward while assigning distinct purposes to JSON, PDF, and paper.",
+      "narrativeRole": "representation-design",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Structured Data Before Paperwork'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-representations",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Structured data before paperwork"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "automatic-generation-workflow",
+      "title": "Automatic Generation Workflow",
+      "anchor": "#automatic-generation-workflow",
+      "contentSummary": "Defines the preferred digital-first path and the historical paper-to-image-to-reviewed-JSON path, with a requirement to preserve the original image as source evidence.",
+      "narrativeRole": "dual-ingestion-workflow",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Automatic Generation Workflow'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Preserving source evidence during transcription"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "one-event-many-outputs",
+      "title": "One Event, Many Outputs",
+      "anchor": "#one-event-many-outputs",
+      "contentSummary": "Shows how one overtime event can generate roster updates, calendar events, official forms, approval-queue records, weekly totals, and historical analysis.",
+      "narrativeRole": "reuse-and-integration",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'One Event, Many Outputs'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-many-outputs",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "One event, many synchronized outputs"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "observability",
+      "title": "Observability",
+      "anchor": "#observability",
+      "contentSummary": "Defines visibility across current staffing, work state, administrative state, and resource state.",
+      "narrativeRole": "state-visibility",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Observability'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "inventory-expansion",
+      "title": "Inventory Expansion",
+      "anchor": "#inventory-expansion",
+      "contentSummary": "Expands inventory to six classes: materials, equipment, tools, templates, records, and data structures.",
+      "narrativeRole": "resource-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Inventory Expansion'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Information resources as inventory"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "design-principle",
+      "title": "Design Principle",
+      "anchor": "#design-principle",
+      "contentSummary": "States the enter-once, preserve-source, translate, and generate rule and lists the six responsibilities of the first script.",
+      "narrativeRole": "governing-rule-and-next-step",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Design Principle'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-first-script",
+        "reason": "Explains a core information-system, translation, observability, reuse, or implementation principle."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "First-script boundary for form generation"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "review-questions",
+      "title": "Review Questions",
+      "anchor": "#review-questions",
+      "contentSummary": "Provides five source questions covering paper usefulness, source versus structured records, operational and management classifications, observability, and generated outputs.",
+      "narrativeRole": "instructional-review",
+      "projectRelevance": {
+        "primaryProjectContribution": "Develops the information-translation framework through the section 'Review Questions'.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Forms",
+      "Google Sheets",
+      "Google Apps Script",
+      "PDF",
+      "paper forms"
+    ],
+    "apps": [
+      "Roster",
+      "Calendar",
+      "Inventory",
+      "approval queue",
+      "document generator"
+    ],
+    "scripts": [
+      "planned structured-data-to-form generator"
+    ],
+    "languages": [
+      "HTML",
+      "CSS",
+      "JSON"
+    ],
+    "services": [
+      "document generation",
+      "image capture and transcription",
+      "approval tracking"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "JSON records",
+      "Google Sheets",
+      "source images",
+      "generated PDFs",
+      "completed forms",
+      "approval records"
+    ],
+    "files": [
+      "housekeeping_information_translation_lesson.html"
+    ],
+    "integrations": [
+      "operational event to structured record",
+      "structured record to official form",
+      "event record to roster",
+      "event record to calendar",
+      "event record to approval queue",
+      "event record to totals and historical analysis"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "content and lesson-profile structure validated",
+      "notes": [
+        "The source explicitly identifies itself as a Meadows Housekeeping Information Systems Lesson.",
+        "The lesson-reference 3.0-draft profile was applied.",
+        "All ten source sections were represented.",
+        "Five source review questions were preserved and two additional synthesis questions were added.",
+        "No deployed script or performed software test is claimed by the source.",
+        "The source provides no canonical publication URL, creation date, or repository path."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "Housekeeping Information Translation",
+      "body": "This lesson explains how operational events can be entered once as structured records and then reused to create the forms, roster updates, calendar entries, approvals, totals, and reports required by the department. The original source remains linked, while JSON preserves meaning, PDF preserves appearance, and paper remains available for portability and signatures.",
+      "audiences": [
+        "supervisors",
+        "department staff",
+        "project collaborators"
+      ],
+      "detailLevel": "plain-language lesson introduction",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "publication URL not established",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Housekeeping Information Translation",
+    "listingDescription": "A lesson on preserving operational events as structured records and translating them into official paperwork, synchronized outputs, observability, and later analysis.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "HTML document",
+        "resourceName": "Housekeeping Information Translation",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "source file supplied; canonical publication location not stated",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded lesson HTML",
+    "sourceFiles": [
+      "housekeeping_information_translation_lesson.html",
+      "lesson-reference-sidecar-template-3.0-draft.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T03:46:00+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The source explicitly identifies itself as a Meadows Housekeeping Information Systems Lesson.",
+      "The lesson-reference 3.0-draft profile was used.",
+      "The source has no HTML section IDs, so normalized sidecar anchors were generated from section titles.",
+      "The document contains a sample overtime JSON record with personal and administrative example values; those values are treated as instructional examples rather than verified live data.",
+      "The source defines the responsibilities of a first script but does not claim that the script has been implemented.",
+      "No canonical HTTP(S) document URL, publication date, or repository path is provided."
+    ],
+    "unresolvedQuestions": [
+      "What date was the lesson created?",
+      "What canonical public filename and URL should identify the lesson?",
+      "Which official form should become the first generated-output prototype?",
+      "What exact source schema and field mapping should the first generator use?",
+      "Where should source images, generated PDFs, and approval records be stored?",
+      "Should the expanded inventory model become a separate specification or lesson?"
+    ]
+  }
+}

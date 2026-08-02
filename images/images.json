@@ -200,8 +200,18 @@
     "category": "Req Forms"
   },
   {
+    "name": "Apd Chain Of Command 01",
+    "file": "scenarios/apd-chain-of-command-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Daily Operating System 01",
     "file": "scenarios/apd-daily-operating-system-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Friendly Correction 01",
+    "file": "scenarios/apd-friendly-correction-01.png",
     "category": "Scenarios"
   },
   {
@@ -210,8 +220,38 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Specific Praise 01",
+    "file": "scenarios/apd-specific-praise-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Standardized Closet 01",
+    "file": "scenarios/apd-standardized-closet-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Supervisor Overview 01",
     "file": "scenarios/apd-supervisor-overview-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Supervisor Overview 02",
+    "file": "scenarios/apd-supervisor-overview-02.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Supervisor Rounds 01",
+    "file": "scenarios/apd-supervisor-rounds-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Uniform Onboarding 01",
+    "file": "scenarios/apd-uniform-onboarding-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd White Glove Inspection 01",
+    "file": "scenarios/apd-white-glove-inspection-01.png",
     "category": "Scenarios"
   },
   {

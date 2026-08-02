@@ -1,0 +1,448 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "work-update",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "work-update-sidecar-template-3.0-draft.json",
+    "previewMode": "work-update"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "work-update",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "work-update-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "",
+    "coverageDescription": "",
+    "coverageConfidence": ""
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "",
+      "projectType": "",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "",
+      "projectPhase": "",
+      "contributionType": "",
+      "identificationBasis": "",
+      "identificationConfidence": ""
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "relationshipType": "",
+        "relationshipDescription": "",
+        "impact": "",
+        "evidenceSectionAnchors": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "",
+        "foundationType": "",
+        "relationshipDescription": "",
+        "impact": ""
+      }
+    ],
+    "relationshipSummary": ""
+  },
+  "subject": {
+    "projectName": "",
+    "primaryApp": "",
+    "mainFocus": "",
+    "description": "",
+    "topics": [],
+    "keywords": [],
+    "appsAffected": [],
+    "systemsAffected": [],
+    "componentsAffected": []
+  },
+  "narrative": {
+    "promptingSituation": "",
+    "initialUnderstanding": "",
+    "intendedOutcome": "",
+    "approach": "",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "",
+        "description": "",
+        "result": ""
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "",
+        "effect": "",
+        "resolution": "",
+        "status": ""
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "",
+        "whyItWasTried": "",
+        "whyItDidNotWork": "",
+        "whatWasLearned": ""
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "",
+        "description": "",
+        "effectOnDirection": ""
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "",
+        "reason": "",
+        "alternativesConsidered": [],
+        "consequences": []
+      }
+    ],
+    "methodEstablished": "",
+    "result": "",
+    "lessonsLearned": [],
+    "directionChange": "",
+    "narrativeSummary": ""
+  },
+  "projectDelta": {
+    "previousState": "",
+    "priorOutstandingWork": [
+      {
+        "workItemId": "",
+        "title": "",
+        "statusBefore": "",
+        "statusAfter": "",
+        "contribution": "",
+        "evidenceSectionAnchors": [],
+        "notes": ""
+      }
+    ],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "description": "",
+        "evidenceSectionAnchors": []
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "completedPortion": "",
+        "remainingPortion": "",
+        "evidenceSectionAnchors": []
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "description": "",
+        "reasonStillOpen": ""
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "description": "",
+        "source": ""
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "reasonDeferred": "",
+        "reconsiderAfter": ""
+      }
+    ],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "",
+        "supersededBy": "",
+        "reason": ""
+      }
+    ],
+    "resultingState": "",
+    "roadmapChangeSummary": "",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "",
+        "description": "",
+        "priority": "",
+        "status": ""
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "",
+      "operationalImpact": "",
+      "currentStatus": "",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "",
+          "relatedSectionAnchor": "",
+          "type": "",
+          "title": "",
+          "text": ""
+        }
+      ]
+    },
+    "general": {
+      "summary": "",
+      "keyPoints": []
+    },
+    "technical": {
+      "summary": "",
+      "keyPoints": []
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "projectsObservedIn": []
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "description": "",
+        "suggestedDestination": "",
+        "supportingSectionAnchors": []
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "",
+        "changeType": "",
+        "explanation": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "",
+      "title": "",
+      "anchor": "",
+      "contentSummary": "",
+      "narrativeRole": "",
+      "projectRelevance": {
+        "primaryProjectContribution": "",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": [
+        {
+          "graphicId": "",
+          "role": "",
+          "url": "",
+          "repositoryPath": "",
+          "altText": "",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [],
+    "integrations": [],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "",
+        "type": "",
+        "result": "",
+        "notes": "",
+        "statusBasis": ""
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "",
+      "notes": []
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": [
+      {
+        "communicationType": "",
+        "audience": "",
+        "subject": "",
+        "body": ""
+      }
+    ]
+  },
+  "graphics": [
+    {
+      "graphicId": "",
+      "role": "",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "",
+    "listingDescription": "",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "",
+        "destinationType": "",
+        "url": "",
+        "status": ""
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "",
+        "resourceName": "",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "",
+    "interpretationNotes": [],
+    "unresolvedQuestions": []
+  }
+}
