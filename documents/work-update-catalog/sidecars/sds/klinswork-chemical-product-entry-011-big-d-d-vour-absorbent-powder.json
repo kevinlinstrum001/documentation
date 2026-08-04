@@ -1,0 +1,632 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-011-016600",
+  "entry_status": "conflicting_sources",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-011",
+      "inventory_listed_name": "D-vour, absorbent powder",
+      "inventory_listed_manufacturer": "bigdinc",
+      "inventory_listed_product_code": "16600",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "16 oz",
+      "inventory_unit": "each",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-011-dvour.png"
+    },
+    "department_context": {
+      "carried_form": "powder",
+      "container_or_dispenser": "16 oz / 1 lb shaker canister",
+      "department_category": "Cleaner",
+      "work_uses": [
+        "Absorb and congeal free-flowing liquid spills",
+        "Control odor during liquid-spill cleanup",
+        "Bodily-fluid spill cleanup when permitted by workplace procedure"
+      ],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The inventory code 16600 matches manufacturer product 016600 after restoring the manufacturer's leading zero.",
+        "The official product is a lemon-fragranced absorbent polymer powder.",
+        "The product is for free-flowing liquids and bodily-fluid spills, except oils.",
+        "Distributor guidance also warns against use on strong oxidizing materials such as acids; the official Big D product page does not state this limitation.",
+        "Actual department storage and deployment locations remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "Big D product 016700 is the 25 lb package of the D-Vour product family.",
+        "Big D product 016800 is the 50 lb package.",
+        "Big D product 017000 is the 1.5 oz bag package.",
+        "Separate package configurations may be separate catalog entries if independently carried or tracked."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Big D D-Vour Absorbent Powder, Lemon, 16 oz Can, 6/Case",
+      "brand": "Big D",
+      "manufacturer": "Big D Industries",
+      "manufacturer_parent_company": null,
+      "product_line": "D-Vour",
+      "form_type": "powder",
+      "formulation_description": "Lemon-fragranced absorbent polymer powder based primarily on sodium polyacrylate, formulated to congeal free-flowing liquids and reduce odor.",
+      "package_description": "16 oz / 1 lb can; six cans per outer case",
+      "dispensing_system": "Manual sprinkling from canister",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "016600"
+        ],
+        "model_numbers": [
+          "166"
+        ],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "unit_UPC",
+            "value": "752132001669"
+          },
+          {
+            "type": "outer_barcode",
+            "value": "60752132001661"
+          },
+          {
+            "type": "SDS_number",
+            "value": "0950"
+          },
+          {
+            "type": "inventory_normalized_code",
+            "value": "16600 -> 016600"
+          }
+        ]
+      },
+      "aliases": [
+        "D-vour, absorbent powder",
+        "Big D D'Vour",
+        "D-Vour Absorbent Powder",
+        "BGD166"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Big D Industries",
+      "page_or_document_title": "Big D Product Detail View — D-Vour 016600",
+      "source_url": "https://www.bigdind.com/numbers/016600",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T17:54:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Absorbent powder that transforms free-flowing liquid into a congealed semi-solid for pickup while controlling odor. The manufacturer states that it absorbs up to 100 times its weight.",
+      "recommended_uses": [
+        "Spilled bodily fluids",
+        "Other free-flowing liquid spills",
+        "Healthcare facilities",
+        "Schools",
+        "Restaurants",
+        "Grocery stores"
+      ],
+      "uses_advised_against": [
+        "Oils"
+      ],
+      "package_and_yield": {
+        "unit_size": "16 oz / 1 lb",
+        "units_per_case": 6,
+        "outer_case_weight_lb": 8,
+        "outer_case_dimensions_in": "9 x 6 x 8.25",
+        "case_cube_ft3": 0.24,
+        "cases_per_layer": 27,
+        "layers_per_pallet": 7,
+        "claimed_absorption_capacity": "Up to 100 times product weight"
+      },
+      "manufacturer_specifications": {
+        "fragrance": "Lemon",
+        "color": "Not stated",
+        "category": "Dry Deodorants",
+        "short_description": "Absorbent",
+        "best_if_used_by": "3 years",
+        "country_of_origin": "United States"
+      },
+      "other_official_facts": {
+        "official_family_page": "https://www.bigdind.com/d-vour",
+        "official_fact_sheet": "https://www.bigdind.com/_files/ugd/d3f87f_7958f06275084afa81a91c550c487383.pdf",
+        "official_fact_sheet_form_number": "364",
+        "official_fact_sheet_revision": "9/25",
+        "ingredient_disclosure": [
+          {
+            "name": "Sodium polyacrylate",
+            "cas_number": "9003-04-7",
+            "function": "Absorbent"
+          },
+          {
+            "name": "Precipitated silica",
+            "cas_number": "112926-00-8",
+            "function": "Absorbent"
+          },
+          {
+            "name": "Limonene",
+            "cas_number": "5989-27-5",
+            "function": "Fragrance component"
+          },
+          {
+            "name": "Geraniol",
+            "cas_number": "106-24-1",
+            "function": "Fragrance component"
+          },
+          {
+            "name": "Proprietary fragrance",
+            "cas_number": null,
+            "function": "Fragrance component"
+          }
+        ]
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official Big D Industries SDS linked from the exact D-Vour product page",
+      "official_sds_url": "https://www.bigdind.com/_files/ugd/d3f87f_0f3bf5b3128d4e8c8537e3acbfd574d5.pdf",
+      "official_sds_identifier": "0950",
+      "cas_numbers_referenced": [
+        "9003-04-7",
+        "112926-00-8",
+        "5989-27-5",
+        "106-24-1"
+      ],
+      "manufacturer_document_system_reference": "Big D D'Vour SDS 0950; product identifiers 166, 167, 168, 169, 170, 173",
+      "evidence_notes": [
+        "The official 016600 product page links the Big D D'Vour SDS directly.",
+        "The SDS covers product identifier 166, the manufacturer's shortened package identifier for 016600.",
+        "The official product page and SDS ingredient disclosures agree on sodium polyacrylate and precipitated silica as the principal ingredients."
+      ]
+    },
+    "identity_verification": {
+      "status": "verified",
+      "matched_on": [
+        "Inventory code 16600 normalizes exactly to official product 016600",
+        "D-Vour product name",
+        "Big D Industries manufacturer",
+        "16 oz / 1 lb can",
+        "Lemon fragrance",
+        "Six cans per case",
+        "Official product-page link to SDS 0950"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The leading zero is formatting rather than a product-identity conflict.",
+        "The Products sheet may retain 16600 if identifiers are normalized, or may be updated to the manufacturer-formatted 016600."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "Big D D'Vour",
+      "manufacturer": "Big D Industries",
+      "form_type": "powder",
+      "formulation_or_dilution": "Ready-to-use dry absorbent powder; no dilution",
+      "sds_identifier": "0950",
+      "revision_date": "2023-01-06",
+      "version": null,
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Big D Industries",
+      "source_url": "https://www.bigdind.com/_files/ugd/d3f87f_0f3bf5b3128d4e8c8537e3acbfd574d5.pdf",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T17:54:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "016600",
+      "matched_on": [
+        "Official SDS link from the exact product page",
+        "Big D D'Vour product identity",
+        "Product identifier 166 corresponding to 016600",
+        "Dry absorbent/deodorant powder form",
+        "Big D Industries manufacturer",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS covers multiple D-Vour package sizes; identifier 166 is the exact 16 oz package family code."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 1, page 1",
+        "data": {
+          "product_identifier": "Big D D'Vour",
+          "other_means_of_identification": [
+            "D'Vour",
+            "Product identifiers 166, 167, 168, 169, 170, 173",
+            "Manufacturer product 016600 for the 16 oz can",
+            "SDS 0950"
+          ],
+          "recommended_use": [
+            "Dry deodorant",
+            "Absorbent powder"
+          ],
+          "uses_advised_against": "None known in the SDS.",
+          "supplier": {
+            "name": "Big D Industries",
+            "address": "5620 SW 29th St, Oklahoma City, OK 73179, USA",
+            "phone": "405-682-2541",
+            "sds_information_phone": null,
+            "website": "https://www.bigdind.com"
+          },
+          "emergency_phone": [
+            "InfoTrac 1-800-535-5053, 24 hours"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "conflicting_sources",
+        "source_reference": "Official Big D SDS 0950, section 2, pages 1-2",
+        "data": {
+          "classification": [
+            "Skin irritation, Category 2",
+            "Eye irritation, Category 2B"
+          ],
+          "signal_word": "Warning",
+          "pictograms": [
+            "Exclamation mark"
+          ],
+          "hazard_statements": [
+            "H317 May cause an allergic skin reaction.",
+            "May cause eye and skin irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Wash thoroughly after handling.",
+              "Wear protective gloves."
+            ],
+            "response": [
+              "If on skin, wash with plenty of water.",
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing.",
+              "Use the specific treatment stated on the label.",
+              "If skin irritation occurs, obtain medical advice or attention.",
+              "If eye irritation persists, obtain medical advice or attention.",
+              "Remove contaminated clothing and wash it before reuse."
+            ],
+            "storage": [
+              "Store in accordance with local, regional, national, and international regulations."
+            ],
+            "disposal": [
+              "Dispose of contents and container according to applicable local, regional, national, and international regulations."
+            ]
+          },
+          "other_hazards": "Internal SDS inconsistency: H317 normally corresponds to skin sensitization, but the classification list states skin irritation Category 2 and does not list skin sensitization.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 3, page 2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Sodium polyacrylate",
+              "cas_number": "9003-04-7",
+              "weight_percent": "95%"
+            },
+            {
+              "name": "Precipitated silica",
+              "cas_number": "112926-00-8",
+              "weight_percent": "4%"
+            },
+            {
+              "name": "Fragrance",
+              "cas_number": "Trade secret",
+              "weight_percent": "1%"
+            }
+          ],
+          "trade_secret_note": "The SDS identifies the fragrance as a trade secret. The separate manufacturer ingredient disclosure names limonene, geraniol, and proprietary fragrance components."
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse with lukewarm, gently flowing water for five minutes while holding the eyelids open. Obtain medical advice if irritation persists.",
+          "skin": "Rinse with lukewarm, gently flowing water for five minutes.",
+          "inhalation": "Call a Poison Centre or doctor if the exposed person feels unwell.",
+          "ingestion": "Rinse the mouth with water. Call a Poison Centre or doctor if unwell.",
+          "most_important_symptoms_effects": "May cause mild skin or eye irritation. Ingestion may irritate the mouth, throat, and stomach.",
+          "immediate_medical_attention": "No special treatment stated.",
+          "notes_to_physician": "Not applicable."
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 5, pages 2-3",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Carbon dioxide",
+            "Dry chemical powder",
+            "Appropriate foam",
+            "Water spray",
+            "Water fog"
+          ],
+          "unsuitable_extinguishing_media": "None known.",
+          "specific_hazards": [
+            "Can ignite if strongly heated.",
+            "The product presents no unusual fire hazards."
+          ],
+          "hazardous_combustion_products": [
+            "No hazardous fire-decomposition products are known."
+          ],
+          "firefighter_protection": "Chemical protective clothing and positive-pressure self-contained breathing apparatus may be necessary.",
+          "special_methods": [
+            "No special firefighting precautions are stated."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 6, page 3",
+        "data": {
+          "personal_precautions": [
+            "No special precautions are stated."
+          ],
+          "protective_equipment": [],
+          "emergency_procedures": [],
+          "environmental_precautions": [
+            "Prevent releases into the environment as a matter of good practice."
+          ],
+          "containment": [],
+          "cleanup": [
+            "No special cleanup method is required."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 7, page 3",
+        "data": {
+          "safe_handling": [
+            "No special handling precautions are stated.",
+            "Follow the label and section 2 protective measures."
+          ],
+          "storage_conditions": [
+            "No special storage-area requirements are stated.",
+            "Store in accordance with applicable regulations."
+          ],
+          "incompatible_materials": [],
+          "specific_end_uses": [
+            "Dry deodorant and absorbent powder."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 8, page 3",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Precipitated silica",
+              "cas_number": "112926-00-8",
+              "limits": [
+                "ACGIH TWA: 3 mg/m3",
+                "OSHA PEL TWA: 5 mg/m3"
+              ]
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "The product has relatively low hazard potential; general ventilation is usually adequate.",
+          "eye_protection": "Not required when used as directed.",
+          "hand_protection": "Protective gloves are directed in section 2; section 8 states no special skin protection is required when used as directed.",
+          "skin_body_protection": "Not required when used as directed.",
+          "respiratory_protection": "Do not breathe the product. No respirator is stated as required under directed use with adequate general ventilation.",
+          "hygiene_measures": [
+            "Wash thoroughly after handling."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 9, pages 3-4",
+        "data": {
+          "physical_state": "Solid",
+          "appearance": "Powder",
+          "color": "Not stated",
+          "odor": "Fragrant",
+          "odor_threshold": "Not available",
+          "ph": "Not applicable",
+          "melting_freezing_point": "Melting point not available; freezing point not applicable",
+          "boiling_point": "Not applicable",
+          "flash_point": "Not applicable",
+          "evaporation_rate": "Not applicable",
+          "flammability": "Not available",
+          "explosive_limits": {
+            "lower": "Not applicable",
+            "upper": "Not applicable"
+          },
+          "vapor_pressure": "Not applicable",
+          "vapor_density": "Not applicable",
+          "relative_density": "Not applicable",
+          "density": null,
+          "solubility": "SDS states not applicable in water",
+          "partition_coefficient": "Not applicable",
+          "autoignition_temperature": "Not applicable",
+          "decomposition_temperature": "Not available",
+          "viscosity": "Not available",
+          "voc": null,
+          "other_properties": {
+            "particle_size": "Not available",
+            "bulk_density": "Not available",
+            "molecular_formula": "Not available",
+            "molecular_weight": "Not available",
+            "electrical_conductivity": "Not available"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 10, page 4",
+        "data": {
+          "reactivity": "None known.",
+          "chemical_stability": "Normally stable.",
+          "possibility_of_hazardous_reactions": [
+            "None known."
+          ],
+          "conditions_to_avoid": [
+            "None known."
+          ],
+          "incompatible_materials": [
+            "None known in the SDS."
+          ],
+          "hazardous_decomposition_products": [
+            "None known."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 11, pages 4-5",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Ingestion",
+            "Eye contact",
+            "Skin contact",
+            "Inhalation"
+          ],
+          "symptoms": {
+            "skin": "May cause mild irritation.",
+            "eyes": "Limited evidence of very mild irritation.",
+            "ingestion": "May irritate the mouth, throat, and stomach.",
+            "inhalation": "The SDS states that inhalation is not harmful."
+          },
+          "acute_toxicity": "No mixture LC50, oral LD50, or dermal LD50 information was located.",
+          "skin_corrosion_irritation": "The SDS states no information was located, despite section 2 classifying skin irritation Category 2.",
+          "serious_eye_damage_irritation": "Limited evidence of very mild irritation.",
+          "respiratory_or_skin_sensitization": "No information was located, despite section 2 including H317.",
+          "germ_cell_mutagenicity": "Not known to be mutagenic.",
+          "carcinogenicity": "Not known to cause cancer.",
+          "reproductive_toxicity": "Not known to affect sexual function or fertility; no developmental toxicity information was located.",
+          "stot_single_exposure": "Inhalation is stated as not harmful; other data were not located.",
+          "stot_repeated_exposure": "No information was located.",
+          "aspiration_toxicity": "No information was located.",
+          "numerical_toxicity_measures": [
+            {
+              "ingredient": "Precipitated silica",
+              "measure": "Oral LD50, rat",
+              "value": ">10,000 mg/kg"
+            },
+            {
+              "ingredient": "Precipitated silica",
+              "measure": "Dermal LD50, rabbit",
+              "value": ">5,000 mg/kg"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official Big D SDS 0950, section 16, page 6",
+        "data": {
+          "nfpa": {
+            "health": 1,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": null,
+          "version": null,
+          "preparation_date": "2023-01-06",
+          "reason_for_revision": null,
+          "prepared_by": "Big D Industries",
+          "additional_information": [
+            "SDS number 0950.",
+            "The SDS states that the product is not regulated under US DOT or Canadian TDG rules.",
+            "All ingredients are on or exempt from the TSCA Inventory.",
+            "The SDS states that the product is not a WHMIS controlled product.",
+            "The SDS's classification, H317 statement, and section 11 sensitization data are internally inconsistent."
+          ],
+          "notice": "The manufacturer states that the SDS is believed accurate but provides no warranty and assumes no liability arising from its use."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "conflicting_sources",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "Inventory code 16600 matches official Big D product 016600 after restoring the leading zero.",
+      "The exact package is a lemon-fragranced 16 oz / 1 lb can, six per case.",
+      "The exact manufacturer product page links official SDS 0950.",
+      "All required SDS sections were reviewed.",
+      "The SDS contains an internal safety-classification conflict: section 2 lists skin irritation Category 2 and eye irritation Category 2B but also gives H317, which ordinarily represents allergic skin reaction/skin sensitization.",
+      "Section 11 reports no sensitization information and no skin-irritation information despite those section 2 statements.",
+      "The entry should remain in conflicting-sources status until Big D confirms or corrects the current SDS classification."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T17:54:00-06:00",
+    "updated_at": "2026-08-03T17:54:00-06:00",
+    "change_summary": "Initial researched entry created from Inventory-3.0, the official Big D product record for 016600, the official D-Vour fact sheet, and official SDS 0950. Identity and section coverage are complete; record held in conflicting-sources status because the SDS contains an internal hazard-classification inconsistency."
+  }
+}

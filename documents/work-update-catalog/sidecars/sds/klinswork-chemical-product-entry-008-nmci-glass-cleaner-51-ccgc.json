@@ -1,0 +1,473 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-008-51-ccgc",
+  "entry_status": "conflicting_sources",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-008",
+      "inventory_listed_name": "Glass cleaner",
+      "inventory_listed_manufacturer": "NMCI",
+      "inventory_listed_product_code": "51-CCGC",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "32 oz",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-008-glass-cleaner.png"
+    },
+    "department_context": {
+      "carried_form": "ready_to_use",
+      "container_or_dispenser": "32 oz / 1 US quart / 946 mL workplace bottle",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The Inventory-3.0 record identifies CHEM-008 as a 32 oz NMCI glass-cleaner bottle with product code 51-CCGC.",
+        "The user previously reviewed the workplace label as ready to use with no dilution required.",
+        "The current official New Mexico Corrections Industries catalog instead names product 51-CCGC 'Glass Cleaner Concentrate.'",
+        "The concentrate-versus-ready-to-use distinction must be resolved from NMCI before this product can be represented as one exact formulation under the catalog policy.",
+        "Actual department work locations were not stated and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "North Carolina Correction Enterprises sells a separate 32 oz ready-to-use Glass Cleaner under SKU 55-0190.",
+        "Correction Enterprises SDS JC-007-049 is retained only as a comparison lead and is not substituted for an NMCI SDS.",
+        "The related product cannot be treated as formulation-equivalent without an official NMCI formulation or supplier relationship record."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "New Mexico Corrections Industries Glass Cleaner, 51-CCGC",
+      "brand": "New Mexico Corrections Industries",
+      "manufacturer": "New Mexico Corrections Industries",
+      "manufacturer_parent_company": "New Mexico Corrections Department",
+      "product_line": "Corrections Industries Janitorial Products",
+      "form_type": "other",
+      "formulation_description": "Form state unresolved: the official catalog identifies a concentrate, while the workplace label was previously reviewed as ready to use.",
+      "package_description": "Workplace container: 32 oz / 1 US quart / 946 mL bottle; the current official catalog does not publish package details.",
+      "dispensing_system": "Direct spray-bottle use according to the workplace label; official catalog dilution instructions unavailable",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "51-CCGC"
+        ],
+        "model_numbers": [],
+        "catalog_numbers": [
+          "51-CCGC"
+        ],
+        "other_identifiers": [
+          {
+            "type": "official_catalog_version",
+            "value": "23.0"
+          },
+          {
+            "type": "inventory_product_id",
+            "value": "CHEM-008"
+          }
+        ]
+      },
+      "aliases": [
+        "NMCI glass cleaner",
+        "Glass Cleaner Concentrate",
+        "Glass cleaner"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "New Mexico Corrections Industries",
+      "page_or_document_title": "New Mexico Corrections Industries Janitorial Products Catalog, Version 23.0",
+      "source_url": "https://www.cd.nm.gov/wp-content/uploads/2026/04/CI-Catalog-Janitorial-23.1-ADA-Compliant.pdf",
+      "source_type": "official_manufacturer_catalog",
+      "retrieved_at": "2026-08-03T17:43:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "The official catalog identifies product code 51-CCGC as Glass Cleaner Concentrate. No product description, dilution ratio, package size, yield, or technical specifications are published in the accessible catalog text.",
+      "recommended_uses": [
+        "Glass cleaning"
+      ],
+      "uses_advised_against": null,
+      "package_and_yield": {
+        "official_catalog_package": "Not stated",
+        "workplace_container": "32 oz / 1 US quart / 946 mL bottle",
+        "official_dilution_ratio": "Not stated",
+        "workplace_label_use_state": "Ready to use / no dilution"
+      },
+      "manufacturer_specifications": {
+        "official_catalog_name": "Glass Cleaner Concentrate",
+        "official_catalog_code": "51-CCGC",
+        "catalog_version": "23.0"
+      },
+      "other_official_facts": {
+        "workplace_label_observations_from_prior_review": {
+          "use_state": "Ready to use",
+          "net_contents": "1 US quart / 946 mL",
+          "listed_ingredients": [
+            "Water",
+            "Sodium dodecyl sulfate",
+            "Fragrance"
+          ],
+          "osha_hazard_summary": "Not classified as hazardous",
+          "basic_precautions": [
+            "Avoid eye contact",
+            "Avoid prolonged or repeated skin contact",
+            "Use safety glasses where splashing is possible"
+          ],
+          "emergency_contact": "CHEMTREC 1-800-424-9300",
+          "authority_note": "These observations derive from the workplace product label, not from an official SDS."
+        },
+        "official_order_contact": "NMCD-CorrectionsIndustries@state.nm.us"
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "unverified",
+      "reference_type": null,
+      "reference_label": null,
+      "official_sds_url": null,
+      "official_sds_identifier": null,
+      "cas_numbers_referenced": [],
+      "manufacturer_document_system_reference": null,
+      "evidence_notes": [
+        "No official NMCI SDS for 51-CCGC was located in the current NMCI product page, catalog, Inventory-3.0 SDS tab, connected Google Drive, or indexed web results.",
+        "The official product catalog does not reference an SDS, document identifier, or CAS information.",
+        "A separate Correction Enterprises product and SDS exist for 32 oz ready-to-use glass cleaner, but no official evidence establishes that NMCI uses the same formulation.",
+        "Related comparison product: https://www.correctionenterprises.com/product/glass-cleaner/",
+        "Related comparison SDS: https://www.correctionenterprises.com/wp-content/uploads/55-0190.pdf"
+      ]
+    },
+    "identity_verification": {
+      "status": "conflicting_sources",
+      "matched_on": [
+        "Exact official NMCI catalog code 51-CCGC",
+        "Exact official catalog name Glass Cleaner Concentrate",
+        "Inventory manufacturer NMCI",
+        "Inventory 32 oz workplace bottle",
+        "Workplace product label previously reviewed"
+      ],
+      "conflicts": [
+        {
+          "field": "form_type",
+          "official_catalog_value": "concentrate",
+          "workplace_label_value": "ready to use / no dilution",
+          "assessment": "Material formulation conflict. The catalog requires separate entries when concentrate and ready-to-use forms are distinguished."
+        },
+        {
+          "field": "official_sds",
+          "official_catalog_value": "No SDS reference published",
+          "located_value": null,
+          "assessment": "The required official safety authority is unavailable."
+        }
+      ],
+      "review_notes": [
+        "Commercial product code and NMCI identity are verified.",
+        "The exact formulation and use state are not verified.",
+        "Request the current 51-CCGC SDS and product-use instructions directly from New Mexico Corrections Industries.",
+        "Do not append this entry to the verified catalog until the form-state conflict and SDS are resolved."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": null,
+      "manufacturer": "New Mexico Corrections Industries",
+      "form_type": null,
+      "formulation_or_dilution": null,
+      "sds_identifier": null,
+      "revision_date": null,
+      "version": null,
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "New Mexico Corrections Industries",
+      "source_url": null,
+      "source_type": null,
+      "retrieved_at": "2026-08-03T17:43:00-06:00",
+      "access_status": "source_unavailable",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "unverified",
+      "matched_manufacturer_product_id": "51-CCGC",
+      "matched_on": [],
+      "conflicts": [
+        {
+          "field": "official_sds_record",
+          "status": "not located"
+        },
+        {
+          "field": "formulation_or_dilution",
+          "official_catalog": "concentrate",
+          "workplace_label": "ready to use"
+        }
+      ],
+      "review_notes": [
+        "No external SDS may be substituted solely because the product name, package size, or correctional-industry source appears similar."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [],
+      "partial_sections": [],
+      "unresolved_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "overall_status": "source_unavailable"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "product_identifier": null,
+          "other_means_of_identification": [],
+          "recommended_use": [],
+          "uses_advised_against": null,
+          "supplier": {
+            "name": null,
+            "address": null,
+            "phone": null,
+            "sds_information_phone": null,
+            "website": null
+          },
+          "emergency_phone": []
+        }
+      },
+      "2_hazard_identification": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "classification": [],
+          "signal_word": null,
+          "pictograms": [],
+          "hazard_statements": [],
+          "precautionary_statements": {
+            "prevention": [],
+            "response": [],
+            "storage": [],
+            "disposal": []
+          },
+          "other_hazards": null,
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "substance_or_mixture": null,
+          "ingredients": [],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "general_advice": [],
+          "eyes": null,
+          "skin": null,
+          "inhalation": null,
+          "ingestion": null,
+          "most_important_symptoms_effects": null,
+          "immediate_medical_attention": null,
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "suitable_extinguishing_media": [],
+          "unsuitable_extinguishing_media": null,
+          "specific_hazards": [],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": null,
+          "special_methods": []
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "personal_precautions": [],
+          "protective_equipment": [],
+          "emergency_procedures": [],
+          "environmental_precautions": [],
+          "containment": [],
+          "cleanup": []
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "safe_handling": [],
+          "storage_conditions": [],
+          "incompatible_materials": [],
+          "specific_end_uses": []
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "occupational_exposure_limits": [],
+          "biological_exposure_limits": [],
+          "engineering_controls": null,
+          "eye_protection": null,
+          "hand_protection": null,
+          "skin_body_protection": null,
+          "respiratory_protection": null,
+          "hygiene_measures": []
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "physical_state": null,
+          "appearance": null,
+          "color": null,
+          "odor": null,
+          "odor_threshold": null,
+          "ph": null,
+          "melting_freezing_point": null,
+          "boiling_point": null,
+          "flash_point": null,
+          "evaporation_rate": null,
+          "flammability": null,
+          "explosive_limits": {
+            "lower": null,
+            "upper": null
+          },
+          "vapor_pressure": null,
+          "vapor_density": null,
+          "relative_density": null,
+          "density": null,
+          "solubility": null,
+          "partition_coefficient": null,
+          "autoignition_temperature": null,
+          "decomposition_temperature": null,
+          "viscosity": null,
+          "voc": null,
+          "other_properties": {}
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "reactivity": null,
+          "chemical_stability": null,
+          "possibility_of_hazardous_reactions": [],
+          "conditions_to_avoid": [],
+          "incompatible_materials": [],
+          "hazardous_decomposition_products": []
+        }
+      },
+      "11_toxicological_information": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "likely_routes_of_exposure": [],
+          "symptoms": {},
+          "acute_toxicity": null,
+          "skin_corrosion_irritation": null,
+          "serious_eye_damage_irritation": null,
+          "respiratory_or_skin_sensitization": null,
+          "germ_cell_mutagenicity": null,
+          "carcinogenicity": null,
+          "reproductive_toxicity": null,
+          "stot_single_exposure": null,
+          "stot_repeated_exposure": null,
+          "aspiration_toxicity": null,
+          "numerical_toxicity_measures": []
+        }
+      },
+      "16_other_information": {
+        "status": "source_unavailable",
+        "source_reference": "Official NMCI SDS for product 51-CCGC not located as of 2026-08-03.",
+        "data": {
+          "nfpa": {
+            "health": null,
+            "flammability": null,
+            "instability": null,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": null,
+          "version": null,
+          "preparation_date": null,
+          "reason_for_revision": null,
+          "prepared_by": null,
+          "additional_information": [],
+          "notice": null
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "conflicting_sources",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": false,
+    "sds_product_match_verified": false,
+    "required_sections_reviewed": false,
+    "verified_at": null,
+    "verification_notes": [
+      "The current official NMCI catalog verifies product code 51-CCGC and the name Glass Cleaner Concentrate.",
+      "The workplace inventory verifies a 32 oz bottle, and the workplace label was previously reviewed as ready to use.",
+      "The concentrate-versus-ready-to-use conflict is unresolved.",
+      "No official NMCI SDS or manufacturer safety-reference identifier was located.",
+      "The similar North Carolina Correction Enterprises product and SDS were reviewed only as a research lead and were not used to populate the NMCI SDS sections.",
+      "This record must not be appended as verified until NMCI supplies the current SDS and clarifies the product form."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T17:43:00-06:00",
+    "updated_at": "2026-08-03T17:43:00-06:00",
+    "change_summary": "Initial candidate entry created from Inventory-3.0, the current official New Mexico Corrections Industries Janitorial Products Catalog, and prior workplace-label observations. The SDS sheet was left unresolved because no official NMCI SDS was located and the official catalog conflicts with the workplace label on product form."
+  }
+}

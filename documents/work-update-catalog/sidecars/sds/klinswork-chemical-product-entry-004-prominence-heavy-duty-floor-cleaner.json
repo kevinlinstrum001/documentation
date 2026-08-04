@@ -1,0 +1,582 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-004-94996466",
+  "entry_status": "verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-004",
+      "inventory_listed_name": "Prominence floor cleaner",
+      "inventory_listed_manufacturer": "Diversey",
+      "inventory_listed_product_code": "94996466",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "2.5 Liter",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-004-prominence-floor-cleaner.png"
+    },
+    "department_context": {
+      "carried_form": "concentrate",
+      "container_or_dispenser": "2.5 L J-Fill bottle for J-Fill or QuattroSelect dispensing system",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The Products sheet identifies the exact 2.5 L package and manufacturer product code 94996466.",
+        "Actual department work uses and locations were not stated in the inventory source and remain intentionally unfilled.",
+        "The official product record lists 1:256 and 1:512 use dilutions.",
+        "The official SDS specifically evaluates the 1:256 diluted product for hazard classification."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "The concentrate and manufacturer-defined diluted use solutions are separate product forms under the catalog formulation policy.",
+        "A separate use-solution entry may be created if a 1:256 or 1:512 dilution is independently recorded or managed."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Prominence Heavy Duty Floor Cleaner 68, 2.5 L, J-Fill / QuattroSelect, 2/CT",
+      "brand": "Prominence",
+      "manufacturer": "Diversey, Inc.",
+      "manufacturer_parent_company": "Solenis",
+      "product_line": "Prominence Heavy Duty Floor Cleaner",
+      "form_type": "concentrate",
+      "formulation_description": "Concentrated heavy-duty daily floor cleaner designed to emulsify soil and oil without dulling or altering floor appearance; pH neutral when diluted.",
+      "package_description": "2 x 84.5 oz / 2.5 L J-Fill containers per case",
+      "dispensing_system": "J-Fill / QuattroSelect",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "94996466"
+        ],
+        "model_numbers": [],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "EAN_UPC_consumer_unit",
+            "value": "00807174531374"
+          },
+          {
+            "type": "EAN_UPC_traded_unit",
+            "value": "10807174531371"
+          },
+          {
+            "type": "WERCS_WPS_ID",
+            "value": "1180603"
+          }
+        ]
+      },
+      "aliases": [
+        "Prominence floor cleaner",
+        "Prominence Heavy Duty Floor Cleaner",
+        "Prominence Heavy Duty Floor Cleaner 68"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Solenis / Diversey",
+      "page_or_document_title": "Prominence Heavy Duty Floor Cleaner 68, 2.5L, J-Fill / QuattroSelect, 2/CT",
+      "source_url": "https://products.solenis.com/product/prominence-heavy-duty-floor-cleaner-68-25l-j-fillr-quattroselectr-2ct-heavy-duty-floor-cleaner-94996466",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T16:56:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Highly effective cleaner designed to remove soils and oils without dulling or altering floor appearance. It quickly emulsifies dirt, dries film-free, and does not require rinsing.",
+      "recommended_uses": [
+        "Daily floor cleaning",
+        "Removal of soil, dirt, and oils",
+        "Use on most floor types",
+        "Floor-care programs involving cleaning, maintaining, stripping, and finishing"
+      ],
+      "uses_advised_against": "Uses other than those identified by the manufacturer are not recommended.",
+      "package_and_yield": {
+        "catalog_pack_size": "2 x 84.5 oz / 2.5 L J-Fill containers",
+        "catalog_dilution_ratio_range": [
+          "1:256",
+          "1:512"
+        ],
+        "dispensing_system_case_yield_gallons": {
+          "minimum": 340,
+          "maximum": 678
+        }
+      },
+      "manufacturer_specifications": {
+        "product_category": "Floor Cleaning & Maintenance Products",
+        "product_group": "Floor Cleaners & Maintainers",
+        "product_sub_group": "Heavy Duty",
+        "color": "Yellow",
+        "odor": "Citrus",
+        "neat_solution_ph": 8,
+        "storage_temperature_min_c": 0,
+        "storage_temperature_max_c": 50,
+        "shelf_life_days": 720,
+        "lifecycle_status": "Production",
+        "selling_location": [
+          "CA",
+          "JM",
+          "PR",
+          "US"
+        ],
+        "country_of_origin": "Canada"
+      },
+      "other_official_facts": {
+        "dot_shipping_name": "NOT REGULATED",
+        "imdg_shipping_name": "Cleaning, washing, buffing, or polishing compounds",
+        "marine_pollutant": false,
+        "limited_quantity": false
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official US English SDS linked from the exact manufacturer product page",
+      "official_sds_url": "https://sds.diversey.com/private/document.aspx?prd=MS0802259~~PDF~~MTR~~ANGH~~EN~~~~&",
+      "official_sds_identifier": "MS0802259",
+      "cas_numbers_referenced": [
+        "84133-50-6",
+        "68439-46-3"
+      ],
+      "manufacturer_document_system_reference": "MS0802259~~PDF~~MTR~~ANGH~~EN",
+      "evidence_notes": [
+        "The exact Solenis product page for product code 94996466 links SDS MS0802259.",
+        "The official English SDS endpoint rejected automated direct retrieval during research.",
+        "Required section content was cross-checked against the corresponding Spanish rendition carrying the same SDS identifier, revision date, and version."
+      ]
+    },
+    "identity_verification": {
+      "status": "verified",
+      "matched_on": [
+        "Exact manufacturer product code 94996466",
+        "Exact 2.5 L package size",
+        "J-Fill / QuattroSelect dispensing system",
+        "Prominence Heavy Duty Floor Cleaner identity",
+        "Official product-page link to SDS MS0802259"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "Inventory identity and manufacturer identity match exactly.",
+        "The product page lists 1:256 and 1:512; the SDS hazard summary specifically describes the 1:256 diluted product. This is recorded as scope, not a source conflict."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "Prominence Heavy Duty Floor Cleaner",
+      "manufacturer": "Diversey, Inc.",
+      "form_type": "concentrate",
+      "formulation_or_dilution": "Undiluted concentrate; official product record lists 1:256 and 1:512 dilution ratios, while the SDS specifically classifies the 1:256 diluted product.",
+      "sds_identifier": "MS0802259",
+      "revision_date": "2024-07-31",
+      "version": "01.0",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Diversey, Inc. / Solenis",
+      "source_url": "https://sds.diversey.com/private/document.aspx?prd=MS0802259~~PDF~~MTR~~ANGH~~EN~~~~&",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T16:56:00-06:00",
+      "access_status": "official_link_verified; automated direct retrieval blocked; section review cross-checked against same-id Spanish rendition",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "94996466",
+      "matched_on": [
+        "Official SDS link from the exact product page",
+        "Prominence Heavy Duty Floor Cleaner identity",
+        "Concentrated form requiring dilution",
+        "US jurisdiction",
+        "English SDS link",
+        "SDS identifier MS0802259",
+        "Revision 2024-07-31, version 01.0"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS is linked by the manufacturer from the exact 94996466 product record.",
+        "Section data was reviewed from a corresponding Spanish rendition with the same SDS identifier, revision date, and version because the English endpoint blocked automated retrieval."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, revision 2024-07-31, version 01.0, section 1, page 1; official English link verified and content cross-checked in corresponding Spanish rendition",
+        "data": {
+          "product_identifier": "Prominence Heavy Duty Floor Cleaner",
+          "other_means_of_identification": [
+            "SDS MS0802259",
+            "Manufacturer product code 94996466"
+          ],
+          "recommended_use": [
+            "Industrial/institutional use",
+            "Floor cleaner",
+            "Dilution before use"
+          ],
+          "uses_advised_against": "Uses other than those identified are not recommended.",
+          "supplier": {
+            "name": "Diversey, Inc.",
+            "address": "1300 Altura Rd., Suite 125, Fort Mill, SC 29708, US",
+            "phone": "1-888-352-2249",
+            "sds_information_phone": null,
+            "website": "https://sds.diversey.com"
+          },
+          "emergency_phone": [
+            "1-800-851-7145",
+            "1-651-917-6133 (international)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 2, pages 1-2; cross-language review source: https://fliphtml5.com/unqnw/hdke/Diversey_-_Prominence_Heavy_Duty_Floor_Cleaner_-_SP_-_2024-07-31/",
+        "data": {
+          "classification": [
+            "Undiluted product: Skin irritation, Category 2",
+            "Undiluted product: Eye irritation, Category 2A",
+            "1:256 diluted product: Not classified as hazardous under OSHA HazCom 2012"
+          ],
+          "signal_word": "Warning",
+          "pictograms": [],
+          "hazard_statements": [
+            "Causes skin irritation.",
+            "Causes serious eye irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Avoid contact with eyes, skin, and clothing.",
+              "Wash affected areas thoroughly after handling.",
+              "Wear chemical-splash goggles and chemical-resistant gloves."
+            ],
+            "response": [
+              "If swallowed, call a Poison Center or physician if unwell.",
+              "If on skin, wash with plenty of soap and water.",
+              "If skin irritation occurs, obtain medical advice or attention.",
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing for at least 15 minutes.",
+              "If eye irritation persists, obtain medical advice or attention.",
+              "Remove contaminated clothing and wash it before reuse."
+            ],
+            "storage": [],
+            "disposal": [
+              "Dispose of in accordance with applicable federal, state, and local regulations."
+            ]
+          },
+          "other_hazards": "HHNOC and PHNOC are stated as not applicable. No hazard or precautionary statements are required for the 1:256 diluted product. The text rendition did not expose any pictogram graphic.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 3, page 2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Ethoxylated secondary alcohol",
+              "cas_number": "84133-50-6",
+              "weight_percent": "10-30%"
+            },
+            {
+              "name": "Alcohol, C9-C11, ethoxylated",
+              "cas_number": "68439-46-3",
+              "weight_percent": "7-13%"
+            }
+          ],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse cautiously with water for several minutes; remove contact lenses when present and easy to remove; continue rinsing for at least 15 minutes; obtain medical advice if irritation persists.",
+          "skin": "Wash with plenty of soap and water and continue rinsing with water for at least 15 minutes. Obtain medical advice if irritation occurs.",
+          "inhalation": "No specific first-aid measures are required.",
+          "ingestion": "Call a Poison Center or physician if the exposed person feels unwell.",
+          "most_important_symptoms_effects": "No information available.",
+          "immediate_medical_attention": "Not applicable.",
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "The product is not flammable; use an extinguishing agent suitable for the surrounding fire."
+          ],
+          "unsuitable_extinguishing_media": "No information available.",
+          "specific_hazards": [
+            "None known."
+          ],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": "Wear pressure-demand self-contained breathing apparatus approved by MSHA/NIOSH or equivalent and full protective gear.",
+          "special_methods": [
+            "No special methods required."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Use appropriate personal protective equipment described in section 8."
+          ],
+          "protective_equipment": [
+            "Appropriate PPE for the exposure conditions."
+          ],
+          "emergency_procedures": [],
+          "environmental_precautions": [],
+          "containment": [
+            "For large spills, absorb with inert material such as dry sand or earth."
+          ],
+          "cleanup": [
+            "Place absorbed material in a chemical-waste container.",
+            "Use a water rinse for final cleanup."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 7, page 2",
+        "data": {
+          "safe_handling": [
+            "Avoid eye contact.",
+            "For commercial and industrial use only."
+          ],
+          "storage_conditions": [
+            "Keep the container closed.",
+            "Store in a dry, cool, well-ventilated place."
+          ],
+          "incompatible_materials": [],
+          "specific_end_uses": [
+            "Commercial and industrial floor cleaning."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 8, pages 2-3",
+        "data": {
+          "occupational_exposure_limits": [],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Usual general ventilation should be sufficient to maintain airborne levels at an acceptable level.",
+          "eye_protection": "Undiluted product: chemical-splash goggles. Diluted product: no eye PPE required under normal use conditions.",
+          "hand_protection": "Undiluted product: chemical-resistant gloves. Diluted product: no hand PPE required under normal use conditions.",
+          "skin_body_protection": "No personal protective equipment required under normal use conditions.",
+          "respiratory_protection": "No respiratory PPE required under normal use conditions. Use appropriate respiratory protection if aerosols, mists, or vapors are not adequately controlled by ventilation.",
+          "hygiene_measures": [
+            "Handle in accordance with good industrial hygiene and safety practice."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Clear liquid",
+          "color": "Yellow",
+          "odor": "Citrus",
+          "odor_threshold": "No information available",
+          "ph": "Approximately 8",
+          "melting_freezing_point": "Not determined",
+          "boiling_point": "Not determined",
+          "flash_point": ">200.12 °F (>93.4 °C)",
+          "evaporation_rate": "No information available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "Not determined",
+            "upper": "Not determined"
+          },
+          "vapor_pressure": "No information available",
+          "vapor_density": "No information available",
+          "relative_density": 1.02,
+          "density": "1.0177 kg/L",
+          "solubility": "Completely soluble",
+          "partition_coefficient": "No information available",
+          "autoignition_temperature": "No information available",
+          "decomposition_temperature": "Not determined",
+          "viscosity": "No information available",
+          "voc": "0% by weight; 0% by weight at use dilution",
+          "other_properties": {
+            "dilution_reviewed_by_sds": "1:256",
+            "dilution_ph": "Approximately 6.85",
+            "dilution_flash_point": ">200.12 °F (>93.4 °C)",
+            "elemental_phosphorus": "0.00% by weight",
+            "corrosion_to_metals": "Not corrosive to metals",
+            "sustained_combustion": "Not applicable"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 10, page 3",
+        "data": {
+          "reactivity": "Not applicable.",
+          "chemical_stability": "The product is stable.",
+          "possibility_of_hazardous_reactions": [
+            "None known."
+          ],
+          "conditions_to_avoid": [
+            "None known."
+          ],
+          "incompatible_materials": [
+            "Do not mix with another product or chemical unless specified in the use directions."
+          ],
+          "hazardous_decomposition_products": [
+            "None reasonably foreseeable."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 11, page 4",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Skin contact",
+            "Inhalation",
+            "Eye contact"
+          ],
+          "symptoms": {
+            "skin": "Causes skin irritation; symptoms may include delayed pain, redness, and discomfort.",
+            "eyes": "Causes serious eye irritation; symptoms may include pain, redness, and watering.",
+            "ingestion": "May irritate the mouth, throat, and stomach.",
+            "inhalation": "Symptoms may include coughing and difficulty breathing and irritation of the nose, throat, and respiratory tract."
+          },
+          "acute_toxicity": "Estimated acute toxicity values exceed the SDS classification thresholds stated.",
+          "skin_corrosion_irritation": "Causes skin irritation.",
+          "serious_eye_damage_irritation": "Causes serious eye irritation.",
+          "respiratory_or_skin_sensitization": "No known effects.",
+          "germ_cell_mutagenicity": "Not stated in the reviewed source.",
+          "carcinogenicity": "Not stated in the reviewed source.",
+          "reproductive_toxicity": "Not stated in the reviewed source.",
+          "stot_single_exposure": "No target organs known.",
+          "stot_repeated_exposure": "Not stated in the reviewed source.",
+          "aspiration_toxicity": "Not stated in the reviewed source.",
+          "numerical_toxicity_measures": [
+            {
+              "measure": "ATE oral",
+              "value": ">2000 mg/kg"
+            },
+            {
+              "measure": "ATE dermal",
+              "value": ">2000 mg/kg"
+            },
+            {
+              "measure": "ATE inhalation, gases",
+              "value": ">20000 mg/L"
+            },
+            {
+              "measure": "ATE inhalation, mists",
+              "value": ">5 mg/L"
+            },
+            {
+              "measure": "ATE inhalation, vapors",
+              "value": ">20 mg/L"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "SDS MS0802259, section 16, page 5",
+        "data": {
+          "nfpa": {
+            "health": 2,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2024-07-31",
+          "version": "01.0",
+          "preparation_date": null,
+          "reason_for_revision": "Not applicable",
+          "prepared_by": "North American Regulatory Affairs",
+          "additional_information": [
+            "The SDS states that the product contains an added fragrance.",
+            "For the 1:256 diluted product, NFPA health, flammability, and instability ratings are each 0."
+          ],
+          "notice": "The manufacturer states that users must evaluate available information for their particular use and comply with applicable laws."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": "2026-08-03T16:56:00-06:00",
+    "verification_notes": [
+      "Inventory product code 94996466 exactly matches the official manufacturer product record.",
+      "The exact manufacturer page links official US-English SDS MS0802259.",
+      "Inventory revision date 2024-07-31 matches the current SDS revision; the SDS version is 01.0.",
+      "All catalog-required sections were reviewed.",
+      "The official English SDS endpoint blocked automated direct retrieval. Section content was cross-checked against the corresponding Spanish rendition with the same SDS identifier, revision date, and version.",
+      "The product page lists 1:256 and 1:512 dilution ratios; the SDS hazard classification specifically evaluates 1:256."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T16:56:00-06:00",
+    "updated_at": "2026-08-03T16:56:00-06:00",
+    "change_summary": "Initial verified entry created from Inventory-3.0, the official Solenis product record for 94996466, the official manufacturer SDS link for MS0802259, and a corresponding same-id/date/version cross-language section review."
+  }
+}

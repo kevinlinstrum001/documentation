@@ -1,0 +1,650 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-006-2lef5",
+  "entry_status": "conflicting_sources",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-006",
+      "inventory_listed_name": "Toilet bowl cleaner",
+      "inventory_listed_manufacturer": "Tough Guy",
+      "inventory_listed_product_code": "913173",
+      "inventory_identifier_status": "conflicting_sources",
+      "inventory_container_size": "32 oz",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-006-toilet-bowl-cleaner.png"
+    },
+    "department_context": {
+      "carried_form": "ready_to_use",
+      "container_or_dispenser": "32 oz manual-pour bottle; Grainger item and manufacturer model 2LEF5",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The Products sheet links the exact Grainger 2LEF5 product page.",
+        "The inventory-listed code 913173 is not supported by the official product page or SDS.",
+        "The official product page identifies item and manufacturer model 2LEF5.",
+        "The SDS additionally lists internal code 4568867 and SDS code 5339708H.",
+        "Actual department work uses and locations were not stated in the inventory source and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "The current official product page uses the GRAINGER brand while the linked SDS uses the TOUGH GUY label brand.",
+        "The matching item/model 2LEF5 and direct SDS link indicate a continuing product record despite the brand presentation change."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Tough Guy 23% Hydrochloric Bowl Cleaner, Ready-to-Use, 32 oz Bottle",
+      "brand": "Tough Guy",
+      "manufacturer": "Tough Guy",
+      "manufacturer_parent_company": null,
+      "product_line": "Tough Guy Toilet Bowl Cleaner",
+      "form_type": "ready_to_use",
+      "formulation_description": "Ready-to-use, strongly acidic toilet-bowl cleaner containing 23% hydrochloric acid.",
+      "package_description": "32 oz bottle; current Grainger item and manufacturer model 2LEF5; sold in multiples of 12",
+      "dispensing_system": "Direct manual application from bottle",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "2LEF5"
+        ],
+        "model_numbers": [
+          "2LEF5"
+        ],
+        "catalog_numbers": [
+          "Catalog page 1454"
+        ],
+        "other_identifiers": [
+          {
+            "type": "SDS_code",
+            "value": "5339708H"
+          },
+          {
+            "type": "SDS_internal_code",
+            "value": "4568867"
+          },
+          {
+            "type": "UNSPSC",
+            "value": "47131829"
+          }
+        ]
+      },
+      "aliases": [
+        "Toilet bowl cleaner",
+        "Tough Guy toilet bowl cleaner",
+        "23% Hydrochloric Bowl Cleaner",
+        "Tough Guy 2LEF5"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "W.W. Grainger, Inc.",
+      "page_or_document_title": "GRAINGER Toilet Bowl Cleaner: Bottle, 32 oz Container Size, Ready to Use, Liquid, Floral",
+      "source_url": "https://www.grainger.com/product/GRAINGER-Toilet-Bowl-Cleaner-Bottle-2LEF5",
+      "source_type": "official_distributor_product_page",
+      "retrieved_at": "2026-08-03T17:18:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Ready-to-use acidic toilet-bowl cleaner for hard, nonporous surfaces. The product category description states that toilet cleaners break down stains, urine, rust, limescale, and mineral deposits.",
+      "recommended_uses": [
+        "Toilet bowl cleaning",
+        "Urinal cleaning",
+        "Removal of rust, limescale, mineral deposits, and urine soils",
+        "Hard nonporous surfaces compatible with the product label"
+      ],
+      "uses_advised_against": "Do not use in a manner inconsistent with the label. Do not mix with ammonia, bleach, chlorinated compounds, metals, or other cleaners.",
+      "package_and_yield": {
+        "container_size": "32 oz",
+        "container_type": "Bottle",
+        "ready_to_use": true,
+        "minimum_order_multiple": 12
+      },
+      "manufacturer_specifications": {
+        "cleaner_chemical_product_grouping": "Toilet Bowl Cleaner",
+        "cleaner_form": "Liquid",
+        "recommended_dilution": "Ready to Use",
+        "fragrance": "Floral",
+        "surfaces_for_use_on": [
+          "Hard nonporous surfaces"
+        ],
+        "product_page_color": "White",
+        "product_page_ph_value": "Acidic",
+        "product_page_voc_content": "0%",
+        "nsf_rating": "Not Rated",
+        "country_of_origin": "USA, subject to change",
+        "hazardous_material": "Limited Quantity"
+      },
+      "other_official_facts": {
+        "shipping_weight": "2.45 lb",
+        "international_sale_restricted": true,
+        "brand_supplier_relationship": {
+          "brand": "Tough Guy",
+          "supplier_distributor": "W.W. Grainger, Inc.",
+          "evidence": "User confirmed the workplace product is Tough Guy and is carried by Grainger."
+        }
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official SDS linked directly from the exact Grainger 2LEF5 product page",
+      "official_sds_url": "https://www.grainger.com/sds/pdf/219301.pdf",
+      "official_sds_identifier": "5339708H",
+      "cas_numbers_referenced": [
+        "7647-01-0"
+      ],
+      "manufacturer_document_system_reference": "Grainger SDS PDF 219301",
+      "evidence_notes": [
+        "The exact Grainger product listing links directly to SDS 219301.",
+        "The SDS identifies product code 2LEF5 and label brand TOUGH GUY.",
+        "The user confirmed that the physical workplace product is Tough Guy and that Grainger is the supplier/distributor."
+      ]
+    },
+    "identity_verification": {
+      "status": "conflicting_sources",
+      "matched_on": [
+        "User-confirmed physical brand: Tough Guy",
+        "Grainger distributor listing linked from Inventory-3.0",
+        "32 oz ready-to-use toilet bowl cleaner",
+        "Item and model 2LEF5",
+        "SDS label brand TOUGH GUY",
+        "Direct product-page link to SDS 219301"
+      ],
+      "conflicts": [
+        {
+          "field": "inventory_listed_product_code",
+          "inventory_value": "913173",
+          "official_value": "2LEF5",
+          "assessment": "The inventory identifier is unsupported and should be corrected."
+        },
+        {
+          "field": "color",
+          "official_product_page_value": "White",
+          "official_sds_value": "Dark red/rust liquid",
+          "assessment": "Material specification conflict between official sources."
+        },
+        {
+          "field": "voc",
+          "official_product_page_value": "0%",
+          "official_sds_value": "0.20%",
+          "assessment": "Minor numerical discrepancy between official sources."
+        }
+      ],
+      "review_notes": [
+        "The workplace product brand is confirmed as Tough Guy.",
+        "Grainger is recorded as the supplier/distributor and SDS supplier.",
+        "The inventory identifier 913173 remains unsupported and should be corrected to 2LEF5.",
+        "Official page and SDS still disagree on color and VOC content."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "23% Hydrochloric Bowl Cleaner",
+      "manufacturer": "W.W. Grainger, Inc.",
+      "form_type": "ready_to_use",
+      "formulation_or_dilution": "Ready-to-use; mix only with water",
+      "sds_identifier": "5339708H",
+      "revision_date": null,
+      "version": null,
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "W.W. Grainger, Inc.",
+      "source_url": "https://www.grainger.com/sds/pdf/219301.pdf",
+      "source_type": "official_brand_owner_sds",
+      "retrieved_at": "2026-08-03T17:18:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "2LEF5",
+      "matched_on": [
+        "Exact SDS link from product page",
+        "Product code 2LEF5 in SDS",
+        "Toilet bowl cleaner use",
+        "32 oz ready-to-use acidic cleaner identity",
+        "W.W. Grainger supplier identity",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [
+        {
+          "field": "appearance",
+          "product_page": "White",
+          "sds": "Dark red/rust liquid"
+        }
+      ],
+      "review_notes": [
+        "The SDS belongs to the exact product item/model 2LEF5.",
+        "The user-confirmed Tough Guy brand agrees with the SDS label brand.",
+        "The remaining appearance discrepancy should be checked against the physical bottle."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 1, page 1",
+        "data": {
+          "product_identifier": "23% Hydrochloric Bowl Cleaner",
+          "other_means_of_identification": [
+            "Label brand: TOUGH GUY",
+            "SDS 5339708H",
+            "Code 4568867",
+            "Product code 2LEF5"
+          ],
+          "recommended_use": [
+            "Toilet bowl cleaner"
+          ],
+          "uses_advised_against": "Do not use in a manner inconsistent with the label.",
+          "supplier": {
+            "name": "W.W. Grainger, Inc.",
+            "address": "100 Grainger Parkway, Lake Forest, IL 60045, USA",
+            "phone": "1-847-535-1000",
+            "sds_information_phone": "1-847-793-5187",
+            "website": "https://www.grainger.com"
+          },
+          "emergency_phone": [
+            "1-866-923-4913 (24/7, USA)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 2, page 1",
+        "data": {
+          "classification": [
+            "Skin corrosion, Category 1B",
+            "Serious eye damage, Category 1",
+            "Corrosive to metals, Category 1",
+            "Acute toxicity, oral, Category 4",
+            "Specific target organ toxicity, single exposure, Category 3"
+          ],
+          "signal_word": "Danger",
+          "pictograms": [
+            "Corrosion",
+            "Exclamation mark"
+          ],
+          "hazard_statements": [
+            "Causes severe skin burns and serious eye damage.",
+            "May be corrosive to metals.",
+            "Harmful if swallowed.",
+            "May cause respiratory irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Wear chemical-splash goggles, chemical-resistant gloves, and protective footwear.",
+              "Avoid contact with eyes, skin, and clothing.",
+              "Do not breathe vapors or mists.",
+              "Use only in a well-ventilated area.",
+              "Do not eat, drink, or smoke while using the product.",
+              "Wash hands and affected areas thoroughly after handling.",
+              "Absorb spillage to prevent material damage.",
+              "Mix only with water.",
+              "Do not mix with ammonia, bleach, or other chlorinated compounds."
+            ],
+            "response": [
+              "Immediately begin first aid and call a Poison Center or physician.",
+              "For eye exposure, rinse cautiously with water for at least 15 minutes.",
+              "For skin or hair exposure, remove contaminated clothing and rinse with water for at least 15 minutes.",
+              "If swallowed, rinse mouth, do not induce vomiting, and dilute with up to one cup of milk or water if conscious and tolerated.",
+              "If inhaled, move the person to fresh air and keep comfortable for breathing."
+            ],
+            "storage": [
+              "Store tightly closed in the original corrosion-resistant plastic container.",
+              "Store locked up."
+            ],
+            "disposal": [
+              "Dispose of contents in accordance with applicable federal, state, and local laws and regulations."
+            ]
+          },
+          "other_hazards": "Hazards not otherwise classified: not applicable.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 3, pages 1-2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Hydrochloric acid",
+              "cas_number": "7647-01-0",
+              "weight_percent": "23.0%"
+            }
+          ],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 4, page 2",
+        "data": {
+          "general_advice": [
+            "Start first aid immediately and call a Poison Center or physician."
+          ],
+          "eyes": "Rinse cautiously with water for several minutes, remove contact lenses when present and easy to remove, and continue rinsing for at least 15 minutes.",
+          "skin": "Immediately remove contaminated clothing and rinse skin or hair with water for at least 15 minutes. Wash clothing before reuse.",
+          "inhalation": "Move the person to fresh air and keep comfortable for breathing. Call a Poison Center or physician if unwell.",
+          "ingestion": "Rinse mouth. Do not induce vomiting. If conscious, dilute by drinking up to one cup of milk or water as tolerated.",
+          "most_important_symptoms_effects": "Corrosive to all body tissues; may cause blindness without immediate first aid; harmful if swallowed; causes burns and serious damage to mouth, throat, and stomach.",
+          "immediate_medical_attention": "Immediate Poison Center or physician contact is required.",
+          "notes_to_physician": "Call 1-866-923-4913 for exposure-management assistance."
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Water",
+            "Dry chemical",
+            "Carbon dioxide",
+            "Foam suitable for the surrounding fire"
+          ],
+          "unsuitable_extinguishing_media": "No restrictions based on the chemical hazards.",
+          "specific_hazards": [
+            "Corrosive",
+            "Non-flammable"
+          ],
+          "hazardous_combustion_products": [
+            "Oxides of carbon",
+            "Other fumes"
+          ],
+          "firefighter_protection": "Wear self-contained breathing apparatus and full protective gear as conditions warrant.",
+          "special_methods": [
+            "Select extinguisher and firefighting methods based on fire size and type."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Evacuate unprotected personnel.",
+            "Ventilate the area if needed.",
+            "Use caution to prevent slipping.",
+            "Wash thoroughly after cleanup."
+          ],
+          "protective_equipment": [
+            "Personal protection described in section 8",
+            "Rubber boots"
+          ],
+          "emergency_procedures": [
+            "Keep unprotected personnel away from the spill area."
+          ],
+          "environmental_precautions": [
+            "Prevent entry into drains, storm sewers, or surface waterways.",
+            "Prevent water and soil contamination."
+          ],
+          "containment": [
+            "Dike larger spills to contain them.",
+            "Pump material into a labeled container or absorb with inert material."
+          ],
+          "cleanup": [
+            "Wipe up small spills and rinse with water.",
+            "Scoop up absorbed material.",
+            "Rinse the area with water and follow normal cleanup procedures."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 7, pages 2-3",
+        "data": {
+          "safe_handling": [
+            "Follow all label directions.",
+            "Train personnel on proper use, hazards, precautions, and first aid.",
+            "Avoid inhalation, ingestion, and contact with skin, eyes, and clothing.",
+            "Do not taste or swallow.",
+            "Remove and wash contaminated clothing and footwear before reuse.",
+            "Handle empty containers carefully because residue may remain.",
+            "Avoid damaging the container."
+          ],
+          "storage_conditions": [
+            "Store tightly closed only in the original corrosion-resistant plastic container.",
+            "Store locked up.",
+            "Store at ambient temperature in a dry area away from direct sunlight.",
+            "Protect from freezing.",
+            "Rotate stock regularly.",
+            "Keep away from food and drink.",
+            "Keep out of reach of children."
+          ],
+          "incompatible_materials": [
+            "Bleach",
+            "Metals",
+            "Other cleaners",
+            "Ammonia",
+            "Chlorinated compounds"
+          ],
+          "specific_end_uses": [
+            "Commercial and industrial toilet-bowl cleaning."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 8, page 3",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Hydrochloric acid",
+              "osha_pel": "5 ppm ceiling",
+              "acgih_tlv": "5 ppm ceiling"
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "No special engineering controls are required; general room ventilation is typically adequate.",
+          "eye_protection": "Indirect-vented or non-vented safety goggles and an eyewash station.",
+          "hand_protection": "Chemical-resistant protective gloves made of rubber or neoprene.",
+          "skin_body_protection": "Rubber full-cover protective clothing and rubber boots when exposure is possible.",
+          "respiratory_protection": "Use a suitable respirator if mists or vapors are not controlled by ventilation.",
+          "hygiene_measures": [
+            "Wash hands and affected areas thoroughly after handling.",
+            "Wash thoroughly after spill cleanup."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Dark red/rust liquid",
+          "color": "Dark red/rust",
+          "odor": "Floral",
+          "odor_threshold": "Not available",
+          "ph": "Below 2.0",
+          "melting_freezing_point": "Not available",
+          "boiling_point": "Not available",
+          "flash_point": "None",
+          "evaporation_rate": "Not available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "None",
+            "upper": "None"
+          },
+          "vapor_pressure": "Not available",
+          "vapor_density": "Not available",
+          "relative_density": 1.115,
+          "density": null,
+          "solubility": "Completely soluble in water",
+          "partition_coefficient": "Not available",
+          "autoignition_temperature": "Not available",
+          "decomposition_temperature": "Not available",
+          "viscosity": "Non-viscous",
+          "voc": "0.20% by California ARB calculation method",
+          "other_properties": {
+            "acid_content": "23% hydrochloric acid",
+            "product_page_color_conflict": "Current product page states White",
+            "product_page_voc_conflict": "Current product page states 0%"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 10, page 3",
+        "data": {
+          "reactivity": "Mixing with incompatible materials can release heat and hazardous gases.",
+          "chemical_stability": "Stable.",
+          "possibility_of_hazardous_reactions": [
+            "See reactivity information.",
+            "Will not polymerize."
+          ],
+          "conditions_to_avoid": [
+            "Temperatures below 35 °F (1.6 °C)",
+            "Temperatures above 120 °F (49 °C)"
+          ],
+          "incompatible_materials": [
+            "Bleach",
+            "Metals",
+            "Other cleaners",
+            "Ammonia",
+            "Chlorinated compounds"
+          ],
+          "hazardous_decomposition_products": [
+            "None under normal conditions."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 11, pages 3-4",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Eyes",
+            "Skin",
+            "Ingestion",
+            "Inhalation"
+          ],
+          "symptoms": {
+            "eyes": "Serious eye damage, pain, redness, and watering; may cause blindness.",
+            "skin": "Severe skin burns with possible delayed pain, redness, and blistering.",
+            "ingestion": "Burns and serious damage to the mouth, throat, and stomach.",
+            "inhalation": "Corrosive effects to the nose, throat, and respiratory system."
+          },
+          "acute_toxicity": "Harmful if swallowed; no mixture LC50/LD50 test data are provided.",
+          "skin_corrosion_irritation": "Causes severe skin burns.",
+          "serious_eye_damage_irritation": "Causes serious eye damage.",
+          "respiratory_or_skin_sensitization": "No reportable skin or respiratory sensitizers.",
+          "germ_cell_mutagenicity": "No reportable germ-cell mutagens.",
+          "carcinogenicity": "No reportable ACGIH, IARC, NTP, or OSHA carcinogens.",
+          "reproductive_toxicity": "No reportable reproductive toxins.",
+          "stot_single_exposure": "May cause respiratory irritation.",
+          "stot_repeated_exposure": "None known.",
+          "aspiration_toxicity": "No reportable aspiration hazards.",
+          "numerical_toxicity_measures": [
+            {
+              "measure": "ATE mixture, oral, rat",
+              "value": "965 mg/kg"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official Grainger SDS 5339708H, section 16, page 4",
+        "data": {
+          "nfpa": {
+            "health": 3,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": null,
+          "version": null,
+          "preparation_date": "2014-04-04",
+          "reason_for_revision": "Section 16 revised",
+          "prepared_by": "RC",
+          "additional_information": [
+            "The current Grainger product page continues to link this SDS despite its 2014 preparation date.",
+            "The SDS label brand is TOUGH GUY, while the current product page brand is GRAINGER.",
+            "The SDS states that the product is not EPA registered.",
+            "The SDS identifies DOT/IMDG/TDG transport as UN1789, Hydrochloric acid solution, Class 8, Packing Group II, limited quantity."
+          ],
+          "notice": "The SDS states that the document uses sources considered technically reliable but does not warrant accuracy; users remain responsible for evaluating the product for their use and complying with applicable laws."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "conflicting_sources",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "The user confirmed that Tough Guy is the workplace product brand and Grainger is the supplier/distributor.",
+      "The exact product listing and SDS both resolve to item/model 2LEF5.",
+      "All required SDS sections were reviewed.",
+      "The Products sheet identifier 913173 must be replaced with 2LEF5.",
+      "The current distributor page and linked SDS still disagree on color and VOC content.",
+      "The active linked SDS has a preparation date of 2014-04-04 and does not provide a newer revision date."
+    ]
+  },
+  "record_history": {
+    "record_revision": 2,
+    "created_at": "2026-08-03T17:18:00-06:00",
+    "updated_at": "2026-08-03T17:30:00-06:00",
+    "change_summary": "Corrected the product identity to Tough Guy based on the user's physical-product confirmation and reclassified Grainger as the supplier/distributor rather than the product brand. Removed the brand conflict while retaining the unresolved identifier, color, and VOC discrepancies."
+  }
+}

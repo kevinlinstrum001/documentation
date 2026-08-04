@@ -1,0 +1,1674 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "generic-document-sidecar-template-3.0-draft.json",
+    "previewMode": "generic-document"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [
+          "add an optional leadership-profile preview mode",
+          "add explicit historical-period and organizational-unit fields"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should leadership profiles become a specialized profile or remain generic documents?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "nmbhi-first-supervisor-profile",
+    "filePath": "nmbhi-first-supervisor-profile.html",
+    "documentUrl": "",
+    "title": "Profile of My First Supervisor at NMBHI",
+    "headline": "A connected housekeeping leadership system built from predictable schedules, common standards, continuous supervision, inspections, inventory control, audited records, and specific feedback.",
+    "documentType": "leadership-profile",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "nmbhi-first-supervisor-profile.html",
+    "url": "",
+    "sidecarFilePath": "nmbhi-first-supervisor-profile-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "sidecars/nmbhi-first-supervisor-profile-sidecar-3.0-draft.json",
+    "catalogId": "klinswork-document-catalog",
+    "catalogEntryId": "nmbhi-first-supervisor-profile",
+    "profileTemplatePath": "generic-document-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "sidecar-generation",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "klinswork-documentation",
+      "projectName": "Klinswork Documentation",
+      "projectType": "documentation and organizational knowledge system",
+      "parentProjectId": "klinswork",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Preserve operational work, systems, lessons, and historical context as structured, searchable, and reusable documentation.",
+      "projectPhase": "operational-history and leadership-knowledge expansion",
+      "contributionType": "historical profile, management-system analysis, and reusable housekeeping leadership knowledge",
+      "identificationBasis": "The document is a structured profile that extracts operational lessons from the author’s first NMBHI housekeeping supervisor.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "nmbhi-housekeeping-operations",
+        "projectName": "NMBHI Housekeeping Operations",
+        "relationshipType": "historical operating context",
+        "relationshipDescription": "The document records the operating practices used in the Adult Psychiatric Division housekeeping program in February 2024.",
+        "impact": "Preserves a concrete example of a coherent housekeeping management system.",
+        "evidenceSectionAnchors": [
+          "#adult-psychiatric-division-february-2024",
+          "#the-complete-leadership-system"
+        ],
+        "identificationBasis": "Explicit subject of the document.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "meadows-housekeeping-documentation",
+        "projectName": "Meadows Housekeeping Documentation",
+        "relationshipType": "historical comparison and conceptual foundation",
+        "relationshipDescription": "The profile identifies APD as the author’s original standard for later comparison with Meadows operations.",
+        "impact": "Explains the operational benchmark behind later Meadows documentation and system-building work.",
+        "evidenceSectionAnchors": [
+          "#paperwork-connected-to-physical-reality",
+          "#the-lesson-she-established-for-me"
+        ],
+        "identificationBasis": "The document explicitly compares APD paper practices with Meadows and calls APD the beginning of the later Meadows story.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "operational-clarity",
+        "name": "Operational clarity",
+        "foundationType": "management and information foundation",
+        "relationshipDescription": "Schedules, standards, communication, authority, supplies, inspection, and feedback make the next action and expected result visible.",
+        "impact": "Reduces uncertainty, waiting, conflicting interpretations, and unnecessary interpersonal conflict."
+      },
+      {
+        "foundationId": "records-connected-to-reality",
+        "name": "Records connected to physical reality",
+        "foundationType": "verification and accountability foundation",
+        "relationshipDescription": "Recorded completion is treated as a factual claim that must agree with observable conditions.",
+        "impact": "Makes paperwork operationally meaningful and creates a basis for follow-up."
+      },
+      {
+        "foundationId": "known-expected-state",
+        "name": "Known expected state",
+        "foundationType": "standardization foundation",
+        "relationshipDescription": "Rooms, closets, equipment, supplies, and completed routines have recognizable target conditions.",
+        "impact": "Allows workers and supervisors to detect variation and restore readiness consistently."
+      }
+    ],
+    "relationshipSummary": "The profile preserves APD as a historical example of the connected operating principles that later informed Klinswork and Meadows documentation: clear assignments, shared standards, structured communication, inventory readiness, verification, and feedback."
+  },
+  "subject": {
+    "projectName": "NMBHI Housekeeping Leadership Profile",
+    "primaryApp": "",
+    "mainFocus": "How one APD housekeeping supervisor combined scheduling, training, authority, communication, inspection, inventory, records, and feedback into a coherent operating system.",
+    "description": "Reflective profile of the author’s first housekeeping supervisor at NMBHI’s Adult Psychiatric Division in February 2024, emphasizing the systems that produced orderly work and consistent results.",
+    "topics": [
+      "housekeeping supervision",
+      "Adult Psychiatric Division",
+      "predictable work systems",
+      "daily schedules",
+      "advance planning",
+      "morning huddles",
+      "chain of command",
+      "uniform onboarding",
+      "communication requirements",
+      "paired work",
+      "supervisory rounds",
+      "quality inspections",
+      "specific praise",
+      "friendly correction",
+      "professional neutrality",
+      "standardized closets",
+      "inventory readiness",
+      "paper audits",
+      "continuous feedback",
+      "performance evaluations",
+      "operational clarity",
+      "workplace harmony"
+    ],
+    "keywords": [
+      "NMBHI",
+      "APD",
+      "Adult Psychiatric Division",
+      "housekeeping",
+      "supervisor",
+      "white-glove inspection",
+      "known expected state",
+      "closed-loop supervision",
+      "daily sheets",
+      "dated audits",
+      "chain of command",
+      "standardized inventory",
+      "paired movement",
+      "operational clarity"
+    ],
+    "appsAffected": [],
+    "systemsAffected": [
+      "housekeeping operations",
+      "staff scheduling",
+      "onboarding and training",
+      "supervisory communication",
+      "inventory and supply readiness",
+      "inspection and quality assurance",
+      "paper records and audits",
+      "performance feedback and evaluation"
+    ],
+    "componentsAffected": [
+      "daily schedule",
+      "weekly planning board",
+      "morning huddle",
+      "chain of command",
+      "training standard",
+      "paired-worker communication rule",
+      "supervisory rounds",
+      "inspection standard",
+      "housekeeping closets",
+      "daily work sheets",
+      "performance evaluations"
+    ]
+  },
+  "documentSummary": {
+    "purpose": "Preserve and analyze the operating practices of the author’s first NMBHI housekeeping supervisor as an example of effective, system-based supervision.",
+    "scope": "Covers the Adult Psychiatric Division assignment beginning in February 2024, including schedules, planning, authority, onboarding, communication, rounds, inspections, feedback, neutrality, closet standardization, inventory, paperwork, evaluation, and resulting work culture.",
+    "summary": "The document argues that the supervisor’s success did not rest on charisma or unusually motivated employees. It came from a connected operating system. Workers had known schedules, shared training, clear authority, communication rules, standardized supplies, predictable inspections, audited records, immediate feedback, and continuous follow-up. These practices reduced uncertainty, made standards visible, produced relatively uniform results from different workers, and allowed workplace harmony to emerge from operational clarity.",
+    "intendedAudience": [
+      "housekeeping supervisors",
+      "facilities and environmental-services managers",
+      "operations staff",
+      "organizational knowledge practitioners",
+      "Klinswork documentation readers"
+    ],
+    "status": "complete document; publication location unverified",
+    "confidence": "explicit"
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "The department operated from a known daily system",
+      "description": "Assignments, timing, routine sequence, and completion standards were stable enough that workers rarely stopped to ask what came next.",
+      "evidenceSectionAnchors": [
+        "#a-predictable-daily-operating-system"
+      ]
+    },
+    {
+      "sequence": 2,
+      "title": "Planning and alignment prevented competing plans",
+      "description": "Weekly posted priorities and morning huddles gave the whole team the same current instructions.",
+      "evidenceSectionAnchors": [
+        "#advance-planning-and-daily-alignment"
+      ]
+    },
+    {
+      "sequence": 3,
+      "title": "Authority remained continuous",
+      "description": "The supervisor or a qualified counterpart maintained an unmistakable chain of command and follow-up path.",
+      "evidenceSectionAnchors": [
+        "#a-continuous-and-unmistakable-chain-of-command"
+      ]
+    },
+    {
+      "sequence": 4,
+      "title": "One onboarding method created one standard",
+      "description": "Prior experience did not replace APD training; everyone learned the same methods, timing, communication, and definition of completion.",
+      "evidenceSectionAnchors": [
+        "#uniform-onboarding-and-one-shared-standard"
+      ]
+    },
+    {
+      "sequence": 5,
+      "title": "Rounds completed the management loop",
+      "description": "Instruction was followed by observed work, inspection, feedback, and correction or confirmation.",
+      "evidenceSectionAnchors": [
+        "#regular-rounds-that-connected-the-entire-operation"
+      ]
+    },
+    {
+      "sequence": 6,
+      "title": "Inspection standards were exact and predictable",
+      "description": "Repeated attention to the same details trained workers to anticipate the standard without arbitrary changes.",
+      "evidenceSectionAnchors": [
+        "#predictable-nearly-white-glove-inspections"
+      ]
+    },
+    {
+      "sequence": 7,
+      "title": "Praise and correction were both evidence-based",
+      "description": "The supervisor identified specific good work and specific missed work while preserving authority without humiliation.",
+      "evidenceSectionAnchors": [
+        "#specific-praise-as-well-as-specific-correction",
+        "#friendly-correction-without-loss-of-authority"
+      ]
+    },
+    {
+      "sequence": 8,
+      "title": "Closets had a known expected state",
+      "description": "Common arrangement, quantities, equipment condition, and immediate restocking kept supplies ready across units.",
+      "evidenceSectionAnchors": [
+        "#standardized-housekeeping-closets"
+      ]
+    },
+    {
+      "sequence": 9,
+      "title": "Paper records were tested against reality",
+      "description": "Daily sheets were reviewed, dated, and compared with room conditions, so checked boxes functioned as verifiable claims.",
+      "evidenceSectionAnchors": [
+        "#paperwork-connected-to-physical-reality"
+      ]
+    },
+    {
+      "sequence": 10,
+      "title": "The system produced consistent results from different people",
+      "description": "Uniform outcomes depended on the operating structure rather than requiring equal enthusiasm or identical personalities.",
+      "evidenceSectionAnchors": [
+        "#uniform-results-from-different-workers"
+      ]
+    },
+    {
+      "sequence": 11,
+      "title": "Operational clarity produced momentum and harmony",
+      "description": "Reduced uncertainty allowed the day to move quickly and prevented many conflicts from arising.",
+      "evidenceSectionAnchors": [
+        "#why-the-days-passed-quickly",
+        "#the-lesson-she-established-for-me"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "predictable-daily-operating-system",
+      "name": "Predictable daily operating system",
+      "definition": "A work structure in which assignments, sequence, timing, priorities, and completion standards are known before employees must act.",
+      "relationships": [
+        "supported by advance planning and morning huddles",
+        "made enforceable through uniform onboarding",
+        "maintained through rounds and predictable inspections",
+        "produces workday momentum by reducing uncertainty"
+      ],
+      "evidenceSectionAnchors": [
+        "#a-predictable-daily-operating-system",
+        "#advance-planning-and-daily-alignment",
+        "#why-the-days-passed-quickly"
+      ]
+    },
+    {
+      "conceptId": "closed-loop-supervision",
+      "name": "Closed-loop supervision",
+      "definition": "A complete management cycle in which instructions are followed by work, inspection, feedback, and correction or confirmation.",
+      "relationships": [
+        "depends on continuous supervisory coverage",
+        "connects planning to observable results",
+        "prevents announced changes from drifting without verification"
+      ],
+      "evidenceSectionAnchors": [
+        "#a-continuous-and-unmistakable-chain-of-command",
+        "#regular-rounds-that-connected-the-entire-operation"
+      ]
+    },
+    {
+      "conceptId": "known-expected-state",
+      "name": "Known expected state",
+      "definition": "A shared, recognizable target condition for completed work, supplies, closets, equipment, records, and routines.",
+      "relationships": [
+        "established through uniform onboarding",
+        "measured through predictable inspections",
+        "restored through closet inspection and restocking",
+        "allows records to be compared with physical conditions"
+      ],
+      "evidenceSectionAnchors": [
+        "#uniform-onboarding-and-one-shared-standard",
+        "#predictable-nearly-white-glove-inspections",
+        "#standardized-housekeeping-closets",
+        "#paperwork-connected-to-physical-reality"
+      ]
+    },
+    {
+      "conceptId": "communication-as-operational-work",
+      "name": "Communication as operational work",
+      "definition": "The requirement that employees communicate location, purpose, return expectations, changes, and exceptions as part of completing the assignment.",
+      "relationships": [
+        "supports safety and accountability",
+        "preserves paired-work continuity",
+        "prevents employees from developing different versions of the plan",
+        "supports corroboration of events"
+      ],
+      "evidenceSectionAnchors": [
+        "#advance-planning-and-daily-alignment",
+        "#communication-as-part-of-the-work"
+      ]
+    },
+    {
+      "conceptId": "records-as-verifiable-claims",
+      "name": "Records as verifiable claims",
+      "definition": "The principle that a recorded completion is a factual statement that should agree with observable conditions.",
+      "relationships": [
+        "requires review and dated audits",
+        "connects paperwork to inspections",
+        "exposes disagreement between records and physical reality",
+        "is limited by paper’s weak search, aggregation, and automation capabilities"
+      ],
+      "evidenceSectionAnchors": [
+        "#paperwork-connected-to-physical-reality"
+      ]
+    },
+    {
+      "conceptId": "continuous-visible-performance",
+      "name": "Continuous visible performance",
+      "definition": "A performance environment where expectations, good work, missed work, improvement, and unresolved weaknesses remain visible throughout the year.",
+      "relationships": [
+        "uses specific praise and correction",
+        "depends on regular rounds and dated audits",
+        "makes formal evaluations unsurprising",
+        "reduces hidden or retrospective judgments"
+      ],
+      "evidenceSectionAnchors": [
+        "#specific-praise-as-well-as-specific-correction",
+        "#friendly-correction-without-loss-of-authority",
+        "#ongoing-feedback-and-unsurprising-evaluations"
+      ]
+    },
+    {
+      "conceptId": "operational-clarity-produces-harmony",
+      "name": "Operational clarity as a condition for workplace harmony",
+      "definition": "The conclusion that many interpersonal conflicts are prevented when workers share clear knowledge of what, why, when, how, and what completion looks like.",
+      "relationships": [
+        "emerges from the complete leadership system",
+        "does not require harmony or motivation as a prerequisite",
+        "connects system design to workplace culture"
+      ],
+      "evidenceSectionAnchors": [
+        "#the-complete-leadership-system",
+        "#the-lesson-she-established-for-me"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "maintain-known-daily-system",
+      "title": "Maintain a known daily operating system",
+      "description": "Make assignments, routines, timing, priorities, and completion standards visible before the shift begins.",
+      "reason": "The profile connects predictable work structure with reduced uncertainty, fewer delays, and faster workday momentum.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#a-predictable-daily-operating-system",
+        "#why-the-days-passed-quickly"
+      ]
+    },
+    {
+      "recommendationId": "use-shared-planning-and-huddles",
+      "title": "Use shared advance planning and daily alignment",
+      "description": "Publish special priorities in advance and review immediate changes with the whole team before work begins.",
+      "reason": "Shared alignment prevents separate and conflicting versions of the operating plan.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#advance-planning-and-daily-alignment"
+      ]
+    },
+    {
+      "recommendationId": "standardize-onboarding",
+      "title": "Train every worker to one shared method",
+      "description": "Teach the expected sequence, method, detail, timing, communication, equipment practices, and completion standard regardless of prior experience.",
+      "reason": "Uniform training makes correction refer to a known standard rather than personal preference.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#uniform-onboarding-and-one-shared-standard"
+      ]
+    },
+    {
+      "recommendationId": "complete-supervisory-loop",
+      "title": "Complete the supervisory loop",
+      "description": "Follow instructions and announced changes with observation, inspection, feedback, and confirmation or correction.",
+      "reason": "The profile treats follow-up as the mechanism that keeps plans and standards connected to actual results.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#regular-rounds-that-connected-the-entire-operation"
+      ]
+    },
+    {
+      "recommendationId": "standardize-supply-locations",
+      "title": "Give supply locations a known expected state",
+      "description": "Standardize item placement, expected quantities, equipment condition, storage, inspection, and replenishment.",
+      "reason": "Known supply conditions preserve readiness and prevent workers from losing time to shortages and searching.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#standardized-housekeeping-closets"
+      ]
+    },
+    {
+      "recommendationId": "verify-records-against-conditions",
+      "title": "Verify records against physical conditions",
+      "description": "Review and date work records, compare them with actual spaces, and follow up when recorded completion and observed condition disagree.",
+      "reason": "Records become operationally meaningful only when someone tests their claims.",
+      "priority": "high",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#paperwork-connected-to-physical-reality"
+      ]
+    },
+    {
+      "recommendationId": "make-feedback-continuous",
+      "title": "Make feedback continuous and specific",
+      "description": "Identify exact strengths and weaknesses throughout the year so formal evaluation confirms an existing understanding.",
+      "reason": "Specific ongoing feedback makes both good work and missed work visible without creating evaluation surprises.",
+      "priority": "medium",
+      "status": "recommended",
+      "evidenceSectionAnchors": [
+        "#specific-praise-as-well-as-specific-correction",
+        "#friendly-correction-without-loss-of-authority",
+        "#ongoing-feedback-and-unsurprising-evaluations"
+      ]
+    }
+  ],
+  "openQuestions": [],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The profile describes a housekeeping department where workers knew their assignments, standards, supplies, communication rules, inspection details, and chain of command. The supervisor maintained quality through regular rounds, specific feedback, standardized closets, audited records, and consistent follow-up.",
+      "operationalImpact": "The connected system reduced uncertainty, prevented drift, preserved supply readiness, made performance visible, and produced relatively consistent work from employees with different personalities and motivation.",
+      "currentStatus": "The profile is complete as a structured HTML document. Its canonical publication URL and catalog inclusion have not yet been verified.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "The profile reflects the author’s experience and does not include corroborating records or the supervisor’s own account.",
+        "The supervisor is not named in the source.",
+        "The historical period is identified as February 2024, but the document creation and revision dates are not stated.",
+        "The canonical publication location is not present in the source file."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Confirm the publication path, add the sidecar to the document catalog, and decide whether leadership profiles require a specialized preview mode.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-operating-system",
+          "relatedSectionAnchor": "#a-predictable-daily-operating-system",
+          "type": "operating-model",
+          "title": "Workers knew what came next",
+          "text": "Stable schedules, assignments, routines, and completion standards removed much of the uncertainty from the workday."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-closed-loop",
+          "relatedSectionAnchor": "#regular-rounds-that-connected-the-entire-operation",
+          "type": "management-cycle",
+          "title": "Supervision formed a complete loop",
+          "text": "Instruction was followed by work, inspection, feedback, and correction or confirmation."
+        },
+        {
+          "sequence": 3,
+          "anchor": "#supervisor-records",
+          "relatedSectionAnchor": "#paperwork-connected-to-physical-reality",
+          "type": "verification",
+          "title": "Records were tested against reality",
+          "text": "A checked box was treated as a factual claim that had to agree with the observed condition of the room."
+        },
+        {
+          "sequence": 4,
+          "anchor": "#supervisor-system-result",
+          "relatedSectionAnchor": "#uniform-results-from-different-workers",
+          "type": "outcome",
+          "title": "The system reduced variation",
+          "text": "Shared training, inspection, supplies, communication, and feedback produced consistent results without requiring identical worker attitudes."
+        },
+        {
+          "sequence": 5,
+          "anchor": "#supervisor-foundational-lesson",
+          "relatedSectionAnchor": "#the-lesson-she-established-for-me",
+          "type": "lesson",
+          "title": "Clarity created the conditions for harmony",
+          "text": "The department did not depend on harmony first; clear operating conditions supported good work, and harmony followed."
+        }
+      ]
+    },
+    "general": {
+      "summary": "A reflective profile of an NMBHI housekeeping supervisor whose connected management practices turned a demanding operation into a predictable, accountable, and relatively harmonious work system.",
+      "keyPoints": [
+        "Known schedules and routines reduced uncertainty.",
+        "Shared planning and huddles kept workers aligned.",
+        "Uniform onboarding created one standard.",
+        "Regular rounds connected instruction to results.",
+        "Inspections were demanding but predictable.",
+        "Praise and correction were specific.",
+        "Closets and inventory had a known expected state.",
+        "Paper records were audited against actual conditions.",
+        "Continuous feedback made evaluations unsurprising.",
+        "Operational clarity produced consistent work and workplace momentum."
+      ]
+    },
+    "technical": {
+      "summary": "The source is a responsive standalone HTML document with semantic headings, a generated table of contents, nineteen linked illustrations, figure captions, embedded image briefs, mobile and print styles, and no JavaScript dependencies.",
+      "keyPoints": [
+        "Semantic HTML5 structure",
+        "Responsive CSS with mobile and desktop layouts",
+        "Print-specific stylesheet",
+        "Eighteen substantive h2 sections",
+        "Nineteen GitHub Pages image assets",
+        "Accessible skip link and descriptive image alt text",
+        "No scripts or external runtime dependencies"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "APD provides the author’s original operational benchmark for later Meadows housekeeping analysis.",
+      "The management practices later represented digitally in Klinswork had a working paper-and-supervision precedent in APD.",
+      "The value of a record depends not only on its format but on whether someone reviews, verifies, and follows up on it.",
+      "Inventory readiness, supervision, communication, inspection, and documentation should be modeled as connected parts of one operating system."
+    ],
+    "generalLessons": [
+      "Predictability can make demanding work feel orderly rather than chaotic.",
+      "A shared standard reduces disputes over personal methods and interpretations.",
+      "Continuous authority coverage prevents workers from inventing informal chains of command.",
+      "Communication about location and exceptions is part of operational safety and accountability.",
+      "Inspection trains worker attention when the standard is consistent.",
+      "Specific praise is credible because it demonstrates that good work was actually observed.",
+      "Correction can remain firm without humiliation or emotional theatrics.",
+      "A known expected state makes variation visible and recovery easier.",
+      "A record should be treated as a claim that can be checked against reality.",
+      "Continuous feedback prevents formal evaluations from becoming ambushes.",
+      "Well-designed systems can produce consistent results without requiring uniformly enthusiastic employees.",
+      "Workplace harmony can emerge from clarity rather than serving as a prerequisite for effective work."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Workers must repeatedly ask what to do next.",
+        "pattern": "Assignments, sequence, priorities, or completion standards are not known in advance.",
+        "projectsObservedIn": [
+          "NMBHI housekeeping operations",
+          "Meadows housekeeping documentation"
+        ]
+      },
+      {
+        "problem": "Instructions drift after they are announced.",
+        "pattern": "A change is communicated but not followed by observation, inspection, and confirmation.",
+        "projectsObservedIn": [
+          "NMBHI housekeeping operations",
+          "Klinswork work management"
+        ]
+      },
+      {
+        "problem": "Supply locations deteriorate into different local arrangements.",
+        "pattern": "There is no shared expected inventory, placement, quantity, condition, or restocking cycle.",
+        "projectsObservedIn": [
+          "NMBHI housekeeping operations",
+          "Klinswork Inventory"
+        ]
+      },
+      {
+        "problem": "Paper records become detached from actual work.",
+        "pattern": "Forms are completed but not reviewed, dated, audited, compared with conditions, or used for follow-up.",
+        "projectsObservedIn": [
+          "NMBHI housekeeping operations",
+          "Meadows housekeeping documentation"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Predictable daily operating systems",
+        "description": "Use known schedules, assignments, sequence, priorities, and completion standards to reduce operational uncertainty.",
+        "suggestedDestination": "Klinswork operations knowledge base",
+        "supportingSectionAnchors": [
+          "#a-predictable-daily-operating-system",
+          "#why-the-days-passed-quickly"
+        ]
+      },
+      {
+        "title": "Closed-loop supervisory rounds",
+        "description": "Combine inspection, compliance, communication, inventory, restocking, and follow-up into a repeated management cycle.",
+        "suggestedDestination": "Klinswork supervision practices",
+        "supportingSectionAnchors": [
+          "#regular-rounds-that-connected-the-entire-operation"
+        ]
+      },
+      {
+        "title": "Known expected state for inventory holders",
+        "description": "Define where each item belongs, expected quantities, equipment condition, storage rules, and the replenishment process.",
+        "suggestedDestination": "Klinswork Inventory architecture",
+        "supportingSectionAnchors": [
+          "#standardized-housekeeping-closets"
+        ]
+      },
+      {
+        "title": "Records tested against physical reality",
+        "description": "Treat recorded completion as a verifiable claim and compare it with observable conditions.",
+        "suggestedDestination": "Klinswork documentation and compliance practices",
+        "supportingSectionAnchors": [
+          "#paperwork-connected-to-physical-reality"
+        ]
+      },
+      {
+        "title": "Continuous feedback and unsurprising evaluations",
+        "description": "Use regular observation, specific praise, correction, audits, and coaching so evaluations confirm known performance.",
+        "suggestedDestination": "Klinswork supervision practices",
+        "supportingSectionAnchors": [
+          "#specific-praise-as-well-as-specific-correction",
+          "#friendly-correction-without-loss-of-authority",
+          "#ongoing-feedback-and-unsurprising-evaluations"
+        ]
+      },
+      {
+        "title": "Operational clarity as a condition for workplace harmony",
+        "description": "Design the operating system so workers share a clear understanding of work before relying on interpersonal harmony.",
+        "suggestedDestination": "Klinswork systems lessons",
+        "supportingSectionAnchors": [
+          "#the-complete-leadership-system",
+          "#the-lesson-she-established-for-me"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Define work through shared standards rather than individual habits.",
+        "changeType": "confirmed",
+        "explanation": "Uniform onboarding made correction refer to an established APD method."
+      },
+      {
+        "rule": "Treat communication as part of completing the work.",
+        "changeType": "confirmed",
+        "explanation": "Workers were responsible for communicating location, purpose, and expected return when separating from a partner."
+      },
+      {
+        "rule": "Follow every operational instruction with verification.",
+        "changeType": "confirmed",
+        "explanation": "The supervisor returned to determine whether changes produced the intended result."
+      },
+      {
+        "rule": "Maintain inventory holders in a known expected state.",
+        "changeType": "confirmed",
+        "explanation": "Standardized closets had known placement, quantities, equipment condition, and replenishment."
+      },
+      {
+        "rule": "A completed record is a claim that should agree with physical reality.",
+        "changeType": "confirmed",
+        "explanation": "Daily sheets were reviewed and audited against actual room conditions."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "adult-psychiatric-division-february-2024",
+      "title": "Adult Psychiatric Division, February 2024",
+      "anchor": "#adult-psychiatric-division-february-2024",
+      "contentSummary": "Introduces the author’s first NMBHI assignment in the Adult Psychiatric Division and presents the supervisor’s operation as demanding but orderly. Scheduling, training, communication, supervision, inventory, inspection, and paperwork functioned together rather than as isolated practices.",
+      "narrativeRole": "context-and-thesis",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Adult Psychiatric Division, February 2024.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-adult-psychiatric-division-february-2024",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-supervisor-overview-01",
+          "role": "document-overview",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-01.png",
+          "repositoryPath": "images/scenarios/apd-supervisor-overview-01.png",
+          "altText": "A tightly managed APD housekeeping operation",
+          "description": "NMBHI in Las Vegas New Mexico is a sprawling campus of many buildings."
+        }
+      ]
+    },
+    {
+      "sectionId": "a-predictable-daily-operating-system",
+      "title": "A predictable daily operating system",
+      "anchor": "#a-predictable-daily-operating-system",
+      "contentSummary": "Describes stable assignments, repeated routines, known timing, and clearly defined completion standards across APD areas. Workers rarely had to stop and ask where to go, what came next, which instruction mattered, or what finished work should look like.",
+      "narrativeRole": "operating-model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: A predictable daily operating system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-a-predictable-daily-operating-system",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Predictable daily operating systems"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-daily-operating-system-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png",
+          "repositoryPath": "images/scenarios/apd-daily-operating-system-01.png",
+          "altText": "A predictable daily housekeeping operating system",
+          "description": "Show momentum, routine, and employees always knowing exactly what comes next."
+        }
+      ]
+    },
+    {
+      "sectionId": "advance-planning-and-daily-alignment",
+      "title": "Advance planning and daily alignment",
+      "anchor": "#advance-planning-and-daily-alignment",
+      "contentSummary": "Explains how weekly priorities and override orders were posted in advance and reinforced through a short morning huddle. Shared announcements prevented competing versions of the day’s plan from developing among workers.",
+      "narrativeRole": "planning-and-alignment",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Advance planning and daily alignment.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-advance-planning-and-daily-alignment",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Shared operational alignment"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-morning-huddle-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png",
+          "repositoryPath": "images/scenarios/apd-morning-huddle-01.png",
+          "altText": "Weekly planning and daily alignment before work begins",
+          "description": "Show how the supervisor kept everyone on the same page through advance planning and practical daily meetings."
+        }
+      ]
+    },
+    {
+      "sectionId": "a-continuous-and-unmistakable-chain-of-command",
+      "title": "A continuous and unmistakable chain of command",
+      "anchor": "#a-continuous-and-unmistakable-chain-of-command",
+      "contentSummary": "Shows how the supervisor or a qualified counterpart maintained continuous coverage. Workers knew who directed the operation, answered questions, approved exceptions, followed up, and relayed information.",
+      "narrativeRole": "authority-and-continuity",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: A continuous and unmistakable chain of command.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-a-continuous-and-unmistakable-chain-of-command",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Continuous supervisory coverage"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-chain-of-command-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png",
+          "repositoryPath": "images/scenarios/apd-chain-of-command-01.png",
+          "altText": "Continuous supervisory coverage and an unmistakable chain of command",
+          "description": "Illustrate continuity, clear authority, friendly competence, and no uncertainty about who is responsible."
+        }
+      ]
+    },
+    {
+      "sectionId": "uniform-onboarding-and-one-shared-standard",
+      "title": "Uniform onboarding and one shared standard",
+      "anchor": "#uniform-onboarding-and-one-shared-standard",
+      "contentSummary": "Describes uniform training regardless of prior experience. Employees learned the same sequence, method, detail level, timing, equipment practices, closet organization, communication expectations, patient-environment practices, and definition of completion.",
+      "narrativeRole": "training-and-standardization",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Uniform onboarding and one shared standard.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-uniform-onboarding-and-one-shared-standard",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Uniform onboarding and shared standards"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-uniform-onboarding-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png?v=2",
+          "repositoryPath": "images/scenarios/apd-uniform-onboarding-01.png",
+          "altText": "Uniform onboarding and one shared housekeeping standard",
+          "description": "Show that the APD standard was taught uniformly rather than assumed from prior experience."
+        }
+      ]
+    },
+    {
+      "sectionId": "communication-as-part-of-the-work",
+      "title": "Communication as part of the work",
+      "anchor": "#communication-as-part-of-the-work",
+      "contentSummary": "Treats communication as an operational and safety requirement. Paired workers were expected to remain aware of one another’s location, purpose, and expected return time so assignments did not fragment and employee accounts remained corroborated.",
+      "narrativeRole": "communication-and-safety",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Communication as part of the work.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Communication as operational work"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "regular-rounds-that-connected-the-entire-operation",
+      "title": "Regular rounds that connected the entire operation",
+      "anchor": "#regular-rounds-that-connected-the-entire-operation",
+      "contentSummary": "Explains the supervisor’s rounds as a combined management activity covering inspection, compliance, worker pairing, routine performance, supplies, restocking, special instructions, and verification of operational changes. The resulting cycle was instruction, work, inspection, feedback, and correction or confirmation.",
+      "narrativeRole": "closed-loop-supervision",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Regular rounds that connected the entire operation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-regular-rounds-that-connected-the-entire-operation",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Closed-loop supervisory rounds"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-supervisor-rounds-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png",
+          "repositoryPath": "images/scenarios/apd-supervisor-rounds-01.png",
+          "altText": "Supervisor rounds connecting the entire operation",
+          "description": "Show inspection, compliance, communication, inventory, restocking, and follow-up combined into one efficient routine."
+        }
+      ]
+    },
+    {
+      "sectionId": "predictable-nearly-white-glove-inspections",
+      "title": "Predictable, nearly white-glove inspections",
+      "anchor": "#predictable-nearly-white-glove-inspections",
+      "contentSummary": "Describes demanding, highly consistent inspections that repeatedly examined the same details. Because standards did not change with mood or employee identity, workers learned to anticipate the inspection and see spaces through the expected standard.",
+      "narrativeRole": "quality-assurance",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Predictable, nearly white-glove inspections.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-predictable-nearly-white-glove-inspections",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Predictable inspection standards"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-white-glove-inspection-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png",
+          "repositoryPath": "images/scenarios/apd-white-glove-inspection-01.png",
+          "altText": "Predictable, nearly white-glove inspection",
+          "description": "Show that she checked the same small details every time and made the standard completely predictable."
+        }
+      ]
+    },
+    {
+      "sectionId": "specific-praise-as-well-as-specific-correction",
+      "title": "Specific praise as well as specific correction",
+      "anchor": "#specific-praise-as-well-as-specific-correction",
+      "contentSummary": "Shows that close observation supported credible praise as well as correction. The supervisor identified the precise work, location, importance, and improvement being recognized, making good performance as visible as mistakes.",
+      "narrativeRole": "performance-recognition",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Specific praise as well as specific correction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-specific-praise-as-well-as-specific-correction",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Specific evidence-based praise"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-specific-praise-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png",
+          "repositoryPath": "images/scenarios/apd-specific-praise-01.png",
+          "altText": "Specific praise grounded in observed work",
+          "description": "Show that careful work was noticed as precisely as mistakes were noticed."
+        }
+      ]
+    },
+    {
+      "sectionId": "friendly-correction-without-loss-of-authority",
+      "title": "Friendly correction without loss of authority",
+      "anchor": "#friendly-correction-without-loss-of-authority",
+      "contentSummary": "Describes correction delivered with composure and occasional humor while preserving unmistakable expectations. Authority did not depend on humiliation, theatrical anger, emotional volatility, or displays of power.",
+      "narrativeRole": "corrective-leadership",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Friendly correction without loss of authority.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-friendly-correction-without-loss-of-authority",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Correction without humiliation"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-friendly-correction-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png",
+          "repositoryPath": "images/scenarios/apd-friendly-correction-01.png",
+          "altText": "Friendly correction without loss of authority",
+          "description": "Show authority without hostility, correction without theatrics, and the message: you know better than this."
+        }
+      ]
+    },
+    {
+      "sectionId": "neutrality-and-professional-inscrutability",
+      "title": "Neutrality and professional inscrutability",
+      "anchor": "#neutrality-and-professional-inscrutability",
+      "contentSummary": "Explains how the supervisor remained available for individual conversations without allowing favoritism, flattery, cliques, complaints, or emotional pressure to redefine standards. Personal relationships remained subordinate to the work.",
+      "narrativeRole": "fairness-and-boundaries",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Neutrality and professional inscrutability.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-neutrality-and-professional-inscrutability",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Professional neutrality in supervision"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-supervisor-overview-02",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-02.png",
+          "repositoryPath": "images/scenarios/apd-supervisor-overview-02.png",
+          "altText": "A standardized housekeeping closet maintained in a known expected state",
+          "description": "A standardized housekeeping closet maintained in a known expected state"
+        }
+      ]
+    },
+    {
+      "sectionId": "standardized-housekeeping-closets",
+      "title": "Standardized housekeeping closets",
+      "anchor": "#standardized-housekeeping-closets",
+      "contentSummary": "Describes closets with common inventory, arrangement, expected quantities, equipment condition, and storage rules. Inspection and restocking were combined so each closet retained a known ready state and workers could find ordinary supplies without searching.",
+      "narrativeRole": "inventory-and-readiness",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Standardized housekeeping closets.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-standardized-housekeeping-closets",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Known expected state for supply locations"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-standardized-closet-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png",
+          "repositoryPath": "images/scenarios/apd-standardized-closet-01.png",
+          "altText": "A standardized housekeeping closet maintained in a known expected state",
+          "description": "Illustrate standardization, readiness, inventory control, and the certainty that workers would find the same arrangement in every unit."
+        },
+        {
+          "graphicId": "apd-closet-restocking-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png",
+          "repositoryPath": "images/scenarios/apd-closet-restocking-01.png",
+          "altText": "Closet inspection combined with immediate restocking",
+          "description": "Show inspection and replenishment as one continuous operation that preserved readiness."
+        },
+        {
+          "graphicId": "apd-mop-storage-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png",
+          "repositoryPath": "images/scenarios/apd-mop-storage-01.png",
+          "altText": "Proper mop storage as sanitation, safety, and equipment care",
+          "description": "Show why a seemingly small storage rule protected drying, sanitation, safety, equipment life, and readiness for the next worker."
+        }
+      ]
+    },
+    {
+      "sectionId": "paperwork-connected-to-physical-reality",
+      "title": "Paperwork connected to physical reality",
+      "anchor": "#paperwork-connected-to-physical-reality",
+      "contentSummary": "Explains that daily sheets became operationally meaningful because they were reviewed, dated, audited, compared with actual conditions, and followed up when records and rooms disagreed. The document also distinguishes disciplined use of paper from the medium’s limits in search, aggregation, analysis, sharing, preservation, and automation.",
+      "narrativeRole": "records-and-verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Paperwork connected to physical reality.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "meadows-housekeeping-documentation",
+            "contribution": "Provides a historical operating standard and comparison point for later Meadows housekeeping analysis."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-paperwork-connected-to-physical-reality",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Records tested against physical reality"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-paper-limitations-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png",
+          "repositoryPath": "images/scenarios/apd-paper-limitations-01.png",
+          "altText": "The operational limitations of paper records",
+          "description": "Illustrate that disciplined use could make paper meaningful while the medium still retained serious limitations."
+        },
+        {
+          "graphicId": "apd-paper-audit-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png",
+          "repositoryPath": "images/scenarios/apd-paper-audit-01.png",
+          "altText": "Paperwork tested against physical reality",
+          "description": "Show that a checked box represented a factual claim that had to agree with observable conditions."
+        }
+      ]
+    },
+    {
+      "sectionId": "ongoing-feedback-and-unsurprising-evaluations",
+      "title": "Ongoing feedback and unsurprising evaluations",
+      "anchor": "#ongoing-feedback-and-unsurprising-evaluations",
+      "contentSummary": "Shows formal evaluations as continuations of daily observation, rounds, specific praise, immediate correction, dated audits, one-on-one conversations, and coaching. Employees already knew the metrics, strengths, weaknesses, and expected next steps.",
+      "narrativeRole": "continuous-performance-management",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Ongoing feedback and unsurprising evaluations.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-ongoing-feedback-and-unsurprising-evaluations",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Continuous feedback and unsurprising evaluations"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-continuous-evaluation-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png",
+          "repositoryPath": "images/scenarios/apd-continuous-evaluation-01.png",
+          "altText": "Ongoing feedback leading to an unsurprising formal evaluation",
+          "description": "Show that evaluation was a continuation of known expectations and regular coaching, not an ambush."
+        }
+      ]
+    },
+    {
+      "sectionId": "uniform-results-from-different-workers",
+      "title": "Uniform results from different workers",
+      "anchor": "#uniform-results-from-different-workers",
+      "contentSummary": "Argues that the strongest evidence of effective supervision was relatively uniform work from employees with differing motivation and attitudes. The operating system reduced variation in results without requiring identical personalities or enthusiasm.",
+      "narrativeRole": "system-outcomes",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Uniform results from different workers.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-uniform-results-from-different-workers",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Systems that reduce performance variation"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "why-the-days-passed-quickly",
+      "title": "Why the days passed quickly",
+      "anchor": "#why-the-days-passed-quickly",
+      "contentSummary": "Connects the subjective speed and momentum of the workday to reduced uncertainty. Known schedules, standards, meetings, rounds, inspections, inventory readiness, and visible feedback prevented waiting, searching, priority disputes, and repeated renegotiation of completion.",
+      "narrativeRole": "operational-effect",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: Why the days passed quickly.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Operational clarity and workday momentum"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-workday-momentum-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png",
+          "repositoryPath": "images/scenarios/apd-workday-momentum-01.png",
+          "altText": "A demanding workday moving quickly because everyone knows what to do",
+          "description": "Show how clarity, sequence, supplies, and shared expectations gave the workday momentum."
+        }
+      ]
+    },
+    {
+      "sectionId": "the-complete-leadership-system",
+      "title": "The complete leadership system",
+      "anchor": "#the-complete-leadership-system",
+      "contentSummary": "Synthesizes the individual practices into one connected leadership system: schedules, assignments, onboarding, standards, planning, huddles, coverage, communication, rounds, inspection, praise, correction, inventory, audits, meetings, evaluations, and consistent treatment.",
+      "narrativeRole": "synthesis",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: The complete leadership system.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-the-complete-leadership-system",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Connected housekeeping leadership system"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-leadership-system-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png",
+          "repositoryPath": "images/scenarios/apd-leadership-system-01.png",
+          "altText": "The complete APD housekeeping leadership system",
+          "description": "Present the supervisor’s effectiveness as a connected management system rather than a single personality trait."
+        }
+      ]
+    },
+    {
+      "sectionId": "the-lesson-she-established-for-me",
+      "title": "The lesson she established for me",
+      "anchor": "#the-lesson-she-established-for-me",
+      "contentSummary": "Presents the APD supervisor as the author’s original benchmark for housekeeping leadership. The section concludes that operational clarity can produce workplace harmony and establishes APD as the foundation for later comparisons with Meadows.",
+      "narrativeRole": "reflection-and-conclusion",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves operational knowledge from the APD supervisor profile: The lesson she established for me.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "meadows-housekeeping-documentation",
+            "contribution": "Provides a historical operating standard and comparison point for later Meadows housekeeping analysis."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-the-lesson-she-established-for-me",
+        "reason": "Describes a management practice, operating standard, verification method, or leadership outcome applicable to housekeeping supervision."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Operational clarity as a condition for workplace harmony"
+        ]
+      },
+      "graphics": [
+        {
+          "graphicId": "apd-foundational-lesson-01",
+          "role": "section-illustration",
+          "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png",
+          "repositoryPath": "images/scenarios/apd-foundational-lesson-01.png",
+          "altText": "The operational standard carried forward from APD",
+          "description": "Show APD as the foundational experience that later made the contrast with Meadows meaningful."
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "web browser",
+      "GitHub Pages image hosting"
+    ],
+    "apps": [],
+    "scripts": [],
+    "languages": [
+      "HTML",
+      "CSS"
+    ],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [
+      "nmbhi-first-supervisor-profile.html",
+      "nmbhi-first-supervisor-profile-sidecar-3.0-draft.json",
+      "images/scenarios/apd-supervisor-overview-01.png",
+      "images/scenarios/apd-daily-operating-system-01.png",
+      "images/scenarios/apd-morning-huddle-01.png",
+      "images/scenarios/apd-chain-of-command-01.png",
+      "images/scenarios/apd-uniform-onboarding-01.png",
+      "images/scenarios/apd-supervisor-rounds-01.png",
+      "images/scenarios/apd-white-glove-inspection-01.png",
+      "images/scenarios/apd-specific-praise-01.png",
+      "images/scenarios/apd-friendly-correction-01.png",
+      "images/scenarios/apd-supervisor-overview-02.png",
+      "images/scenarios/apd-standardized-closet-01.png",
+      "images/scenarios/apd-closet-restocking-01.png",
+      "images/scenarios/apd-mop-storage-01.png",
+      "images/scenarios/apd-paper-limitations-01.png",
+      "images/scenarios/apd-paper-audit-01.png",
+      "images/scenarios/apd-continuous-evaluation-01.png",
+      "images/scenarios/apd-workday-momentum-01.png",
+      "images/scenarios/apd-leadership-system-01.png",
+      "images/scenarios/apd-foundational-lesson-01.png"
+    ],
+    "integrations": [
+      "GitHub Pages-hosted illustration assets"
+    ],
+    "apis": [],
+    "versions": [
+      "generic-document profile 1.0",
+      "sidecar schema 3.0-draft"
+    ],
+    "tests": [
+      {
+        "name": "JSON template conformance",
+        "type": "structure",
+        "result": "passed",
+        "notes": "The generated sidecar retains every top-level field defined by the generic-document 3.0-draft template.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Source section coverage",
+        "type": "content extraction",
+        "result": "passed",
+        "notes": "All eighteen h2 document sections were represented in the sections array.",
+        "statusBasis": "validated against the source HTML"
+      },
+      {
+        "name": "Graphic extraction",
+        "type": "content extraction",
+        "result": "passed",
+        "notes": "All nineteen source figures were represented globally and within their corresponding sections.",
+        "statusBasis": "validated against the source HTML"
+      },
+      {
+        "name": "Output JSON parse",
+        "type": "syntax",
+        "result": "passed",
+        "notes": "The completed output was serialized and parsed successfully as UTF-8 JSON.",
+        "statusBasis": "validated after file creation"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "The source HTML and sidecar template were read successfully.",
+        "All eighteen substantive sections were cataloged.",
+        "All nineteen graphics were captured.",
+        "No canonical document URL was invented because none appears in the source.",
+        "The final JSON was reloaded successfully after writing."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "New Klinswork Document: Profile of My First Supervisor at NMBHI",
+      "body": "This profile records the connected management system used by my first NMBHI housekeeping supervisor in the Adult Psychiatric Division. It explains how predictable schedules, shared training, clear authority, communication rules, regular inspections, standardized inventory, audited records, and continuous feedback produced consistent work and an orderly work environment.",
+      "audiences": [
+        "supervisors",
+        "operations staff",
+        "Klinswork documentation readers"
+      ],
+      "detailLevel": "plain-language summary",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [
+    {
+      "graphicId": "apd-supervisor-overview-01",
+      "role": "document-overview",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-01.png",
+      "repositoryPath": "images/scenarios/apd-supervisor-overview-01.png",
+      "altText": "A tightly managed APD housekeeping operation",
+      "description": "NMBHI in Las Vegas New Mexico is a sprawling campus of many buildings.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-daily-operating-system-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-daily-operating-system-01.png",
+      "repositoryPath": "images/scenarios/apd-daily-operating-system-01.png",
+      "altText": "A predictable daily housekeeping operating system",
+      "description": "Show momentum, routine, and employees always knowing exactly what comes next.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-morning-huddle-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-morning-huddle-01.png",
+      "repositoryPath": "images/scenarios/apd-morning-huddle-01.png",
+      "altText": "Weekly planning and daily alignment before work begins",
+      "description": "Show how the supervisor kept everyone on the same page through advance planning and practical daily meetings.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-chain-of-command-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-chain-of-command-01.png",
+      "repositoryPath": "images/scenarios/apd-chain-of-command-01.png",
+      "altText": "Continuous supervisory coverage and an unmistakable chain of command",
+      "description": "Illustrate continuity, clear authority, friendly competence, and no uncertainty about who is responsible.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-uniform-onboarding-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-uniform-onboarding-01.png?v=2",
+      "repositoryPath": "images/scenarios/apd-uniform-onboarding-01.png",
+      "altText": "Uniform onboarding and one shared housekeeping standard",
+      "description": "Show that the APD standard was taught uniformly rather than assumed from prior experience.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-supervisor-rounds-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-rounds-01.png",
+      "repositoryPath": "images/scenarios/apd-supervisor-rounds-01.png",
+      "altText": "Supervisor rounds connecting the entire operation",
+      "description": "Show inspection, compliance, communication, inventory, restocking, and follow-up combined into one efficient routine.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-white-glove-inspection-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-white-glove-inspection-01.png",
+      "repositoryPath": "images/scenarios/apd-white-glove-inspection-01.png",
+      "altText": "Predictable, nearly white-glove inspection",
+      "description": "Show that she checked the same small details every time and made the standard completely predictable.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-specific-praise-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-specific-praise-01.png",
+      "repositoryPath": "images/scenarios/apd-specific-praise-01.png",
+      "altText": "Specific praise grounded in observed work",
+      "description": "Show that careful work was noticed as precisely as mistakes were noticed.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-friendly-correction-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-friendly-correction-01.png",
+      "repositoryPath": "images/scenarios/apd-friendly-correction-01.png",
+      "altText": "Friendly correction without loss of authority",
+      "description": "Show authority without hostility, correction without theatrics, and the message: you know better than this.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-supervisor-overview-02",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-supervisor-overview-02.png",
+      "repositoryPath": "images/scenarios/apd-supervisor-overview-02.png",
+      "altText": "A standardized housekeeping closet maintained in a known expected state",
+      "description": "A standardized housekeeping closet maintained in a known expected state",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-standardized-closet-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-standardized-closet-01.png",
+      "repositoryPath": "images/scenarios/apd-standardized-closet-01.png",
+      "altText": "A standardized housekeeping closet maintained in a known expected state",
+      "description": "Illustrate standardization, readiness, inventory control, and the certainty that workers would find the same arrangement in every unit.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-closet-restocking-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-closet-restocking-01.png",
+      "repositoryPath": "images/scenarios/apd-closet-restocking-01.png",
+      "altText": "Closet inspection combined with immediate restocking",
+      "description": "Show inspection and replenishment as one continuous operation that preserved readiness.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-mop-storage-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-mop-storage-01.png",
+      "repositoryPath": "images/scenarios/apd-mop-storage-01.png",
+      "altText": "Proper mop storage as sanitation, safety, and equipment care",
+      "description": "Show why a seemingly small storage rule protected drying, sanitation, safety, equipment life, and readiness for the next worker.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-paper-limitations-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-limitations-01.png",
+      "repositoryPath": "images/scenarios/apd-paper-limitations-01.png",
+      "altText": "The operational limitations of paper records",
+      "description": "Illustrate that disciplined use could make paper meaningful while the medium still retained serious limitations.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-paper-audit-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-paper-audit-01.png",
+      "repositoryPath": "images/scenarios/apd-paper-audit-01.png",
+      "altText": "Paperwork tested against physical reality",
+      "description": "Show that a checked box represented a factual claim that had to agree with observable conditions.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-continuous-evaluation-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-continuous-evaluation-01.png",
+      "repositoryPath": "images/scenarios/apd-continuous-evaluation-01.png",
+      "altText": "Ongoing feedback leading to an unsurprising formal evaluation",
+      "description": "Show that evaluation was a continuation of known expectations and regular coaching, not an ambush.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-workday-momentum-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-workday-momentum-01.png",
+      "repositoryPath": "images/scenarios/apd-workday-momentum-01.png",
+      "altText": "A demanding workday moving quickly because everyone knows what to do",
+      "description": "Show how clarity, sequence, supplies, and shared expectations gave the workday momentum.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-leadership-system-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-leadership-system-01.png",
+      "repositoryPath": "images/scenarios/apd-leadership-system-01.png",
+      "altText": "The complete APD housekeeping leadership system",
+      "description": "Present the supervisor’s effectiveness as a connected management system rather than a single personality trait.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    {
+      "graphicId": "apd-foundational-lesson-01",
+      "role": "section-illustration",
+      "url": "https://kevinlinstrum001.github.io/documentation/images/scenarios/apd-foundational-lesson-01.png",
+      "repositoryPath": "images/scenarios/apd-foundational-lesson-01.png",
+      "altText": "The operational standard carried forward from APD",
+      "description": "Show APD as the foundational experience that later made the contrast with Meadows meaningful.",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "draft",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Profile of My First Supervisor at NMBHI",
+    "listingDescription": "A profile of the connected scheduling, training, communication, inspection, inventory, recordkeeping, and feedback practices used by the author’s first NMBHI housekeeping supervisor.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "klinswork-document-catalog",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Current conversation and uploaded NMBHI first-supervisor HTML document",
+    "sourceFiles": [
+      "nmbhi-first-supervisor-profile(1).html",
+      "generic-document-sidecar-template-3.0(1).json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-02T05:48:24+00:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The uploaded duplicate suffix '(1)' was removed from the proposed canonical source filename and sidecar filename.",
+      "The source identifies the historical setting as the Adult Psychiatric Division in February 2024, but it does not state the HTML document’s creation or revision date.",
+      "The supervisor remains unnamed because the source does not provide a name.",
+      "The document is classified as a leadership-profile within the generic-document profile.",
+      "The proposed sidecar repository path follows the established root sidecars directory convention.",
+      "No canonical document URL or publication destination was inferred from the image URLs."
+    ],
+    "unresolvedQuestions": [
+      "What is the canonical repository path and public URL for the HTML document?",
+      "When was the HTML document authored and last revised?",
+      "Should this document be added to klinswork-document-catalog immediately?",
+      "Should leadership profiles receive a specialized sidecar profile and preview mode?",
+      "Should the supervisor remain unnamed in every publication context?"
+    ]
+  }
+}

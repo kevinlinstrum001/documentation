@@ -1,0 +1,531 @@
+{
+  "schema": {
+    "schema_name": "klinswork_chemical_product_catalog",
+    "schema_version": "1.0-draft",
+    "record_type": "verified_chemical_product"
+  },
+  "catalog_metadata": {
+    "catalog_id": "klinswork-chemical-product-catalog",
+    "title": "Klinswork Chemical Product Catalog",
+    "purpose": "Maintain verified product identity, official manufacturer product information, and official SDS information for chemical products used by the work department.",
+    "created_at": "2026-08-02T08:47:00-06:00",
+    "updated_at": "2026-08-02T08:47:00-06:00",
+    "jurisdiction": "US",
+    "default_language": "en",
+    "entry_count": 0
+  },
+  "catalog_policy": {
+    "entry_unit": "One exact commercial product form or formulation, in one jurisdiction and language.",
+    "authority_model": {
+      "inventory_sheet": "Research lead and workplace-context source only.",
+      "manufacturer_product_record": "Primary authority for commercial product identity.",
+      "official_sds_record": "Primary authority for product safety information."
+    },
+    "inventory_identifier_policy": "Product codes, model numbers, manufacturer numbers, and similar identifiers from the inventory sheet are unverified until confirmed by an official manufacturer record.",
+    "formulation_policy": "Concentrate, manufacturer-defined diluted use solution, and ready-to-use forms are separate entries whenever the official product or SDS records distinguish them.",
+    "append_policy": "Only append an entry to entries after product identity, manufacturer record, SDS match, and required section coverage have been reviewed."
+  },
+  "acceptance_requirements": {
+    "manufacturer_information_sheet": {
+      "must_be_owned_or_published_by_manufacturer": true,
+      "must_have_stable_source_url": true,
+      "must_match_exact_product_form": true,
+      "must_reference_sds_or_cas_information": true,
+      "must_record_retrieval_date": true
+    },
+    "sds_information_sheet": {
+      "must_be_official_for_product": true,
+      "must_match_product_identity": true,
+      "must_identify_formulation_or_use_state": true,
+      "must_identify_jurisdiction_and_language": true,
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ]
+    }
+  },
+  "section_scope": {
+    "included_sections": [
+      {
+        "number": 1,
+        "key": "1_identification",
+        "title": "Identification"
+      },
+      {
+        "number": 2,
+        "key": "2_hazard_identification",
+        "title": "Hazard identification"
+      },
+      {
+        "number": 3,
+        "key": "3_composition_information_on_ingredients",
+        "title": "Composition/information on ingredients"
+      },
+      {
+        "number": 4,
+        "key": "4_first_aid_measures",
+        "title": "First-aid measures"
+      },
+      {
+        "number": 5,
+        "key": "5_fire_fighting_measures",
+        "title": "Fire-fighting measures"
+      },
+      {
+        "number": 6,
+        "key": "6_accidental_release_measures",
+        "title": "Accidental release measures"
+      },
+      {
+        "number": 7,
+        "key": "7_handling_and_storage",
+        "title": "Handling and storage"
+      },
+      {
+        "number": 8,
+        "key": "8_exposure_controls_personal_protection",
+        "title": "Exposure controls/personal protection"
+      },
+      {
+        "number": 9,
+        "key": "9_physical_and_chemical_properties",
+        "title": "Physical and chemical properties"
+      },
+      {
+        "number": 10,
+        "key": "10_stability_and_reactivity",
+        "title": "Stability and reactivity"
+      },
+      {
+        "number": 11,
+        "key": "11_toxicological_information",
+        "title": "Toxicological information"
+      },
+      {
+        "number": 16,
+        "key": "16_other_information",
+        "title": "Other information"
+      }
+    ],
+    "excluded_sections": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "excluded_sections_note": "Sections 12-15 are intentionally outside the current Klinswork catalog scope."
+  },
+  "controlled_vocabulary": {
+    "verification_status": [
+      "unverified",
+      "candidate",
+      "partially_verified",
+      "verified",
+      "conflicting_sources",
+      "rejected"
+    ],
+    "section_status": [
+      "pending",
+      "complete",
+      "partial",
+      "not_stated_in_source",
+      "not_applicable",
+      "source_unavailable",
+      "conflicting_sources"
+    ],
+    "form_type": [
+      "concentrate",
+      "manufacturer_diluted_use_solution",
+      "ready_to_use",
+      "wipe",
+      "aerosol",
+      "powder",
+      "other"
+    ],
+    "safety_reference_type": [
+      "official_sds_link",
+      "official_sds_identifier",
+      "cas_number_reference",
+      "manufacturer_document_system_reference",
+      "multiple"
+    ]
+  },
+  "entry_template": {
+    "catalog_entry_id": null,
+    "entry_status": "candidate",
+    "product_info": {
+      "workplace_product": {
+        "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+        "inventory_tab": "Products",
+        "inventory_product_id": null,
+        "inventory_listed_name": null,
+        "inventory_listed_manufacturer": null,
+        "inventory_listed_product_code": null,
+        "inventory_identifier_status": "unverified",
+        "inventory_container_size": null,
+        "inventory_unit": null,
+        "product_image_url": null
+      },
+      "department_context": {
+        "carried_form": null,
+        "container_or_dispenser": null,
+        "department_category": null,
+        "work_uses": [],
+        "work_locations": [],
+        "handling_context_notes": []
+      },
+      "product_relationships": {
+        "related_catalog_entries": [],
+        "relationship_notes": []
+      }
+    },
+    "manufacturer_info_sheet": {
+      "identity": {
+        "canonical_product_name": null,
+        "brand": null,
+        "manufacturer": null,
+        "manufacturer_parent_company": null,
+        "product_line": null,
+        "form_type": null,
+        "formulation_description": null,
+        "package_description": null,
+        "dispensing_system": null,
+        "jurisdiction": "US",
+        "language": "en",
+        "manufacturer_identifiers": {
+          "product_codes": [],
+          "model_numbers": [],
+          "catalog_numbers": [],
+          "other_identifiers": []
+        },
+        "aliases": []
+      },
+      "official_product_record": {
+        "source_owner": null,
+        "page_or_document_title": null,
+        "source_url": null,
+        "source_type": null,
+        "retrieved_at": null,
+        "access_status": "pending",
+        "stable_reference_status": "unverified",
+        "saved_capture": {
+          "status": "not_saved",
+          "relative_path": null,
+          "content_hash_sha256": null
+        }
+      },
+      "manufacturer_product_data": {
+        "description": null,
+        "recommended_uses": [],
+        "uses_advised_against": null,
+        "package_and_yield": {},
+        "manufacturer_specifications": {},
+        "other_official_facts": {}
+      },
+      "safety_reference": {
+        "relationship_status": "unverified",
+        "reference_type": null,
+        "reference_label": null,
+        "official_sds_url": null,
+        "official_sds_identifier": null,
+        "cas_numbers_referenced": [],
+        "manufacturer_document_system_reference": null,
+        "evidence_notes": []
+      },
+      "identity_verification": {
+        "status": "unverified",
+        "matched_on": [],
+        "conflicts": [],
+        "review_notes": []
+      }
+    },
+    "sds_info_sheet": {
+      "sds_identity": {
+        "official_product_name": null,
+        "manufacturer": null,
+        "form_type": null,
+        "formulation_or_dilution": null,
+        "sds_identifier": null,
+        "revision_date": null,
+        "version": null,
+        "jurisdiction": "US",
+        "language": "en"
+      },
+      "official_sds_record": {
+        "source_owner": null,
+        "source_url": null,
+        "source_type": null,
+        "retrieved_at": null,
+        "access_status": "pending",
+        "saved_capture": {
+          "status": "not_saved",
+          "relative_path": null,
+          "content_hash_sha256": null
+        }
+      },
+      "product_match": {
+        "status": "unverified",
+        "matched_manufacturer_product_id": null,
+        "matched_on": [],
+        "conflicts": [],
+        "review_notes": []
+      },
+      "coverage": {
+        "required_sections": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          16
+        ],
+        "complete_sections": [],
+        "partial_sections": [],
+        "unresolved_sections": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          16
+        ],
+        "overall_status": "pending"
+      },
+      "sections": {
+        "1_identification": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "product_identifier": null,
+            "other_means_of_identification": [],
+            "recommended_use": [],
+            "uses_advised_against": null,
+            "supplier": {
+              "name": null,
+              "address": null,
+              "phone": null,
+              "sds_information_phone": null,
+              "website": null
+            },
+            "emergency_phone": []
+          }
+        },
+        "2_hazard_identification": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "classification": [],
+            "signal_word": null,
+            "pictograms": [],
+            "hazard_statements": [],
+            "precautionary_statements": {
+              "prevention": [],
+              "response": [],
+              "storage": [],
+              "disposal": []
+            },
+            "other_hazards": null,
+            "unknown_toxicity": null
+          }
+        },
+        "3_composition_information_on_ingredients": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "substance_or_mixture": null,
+            "ingredients": [],
+            "trade_secret_note": null
+          }
+        },
+        "4_first_aid_measures": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "general_advice": [],
+            "eyes": null,
+            "skin": null,
+            "inhalation": null,
+            "ingestion": null,
+            "most_important_symptoms_effects": null,
+            "immediate_medical_attention": null,
+            "notes_to_physician": null
+          }
+        },
+        "5_fire_fighting_measures": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "suitable_extinguishing_media": [],
+            "unsuitable_extinguishing_media": null,
+            "specific_hazards": [],
+            "hazardous_combustion_products": [],
+            "firefighter_protection": null,
+            "special_methods": []
+          }
+        },
+        "6_accidental_release_measures": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "personal_precautions": [],
+            "protective_equipment": [],
+            "emergency_procedures": [],
+            "environmental_precautions": [],
+            "containment": [],
+            "cleanup": []
+          }
+        },
+        "7_handling_and_storage": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "safe_handling": [],
+            "storage_conditions": [],
+            "incompatible_materials": [],
+            "specific_end_uses": []
+          }
+        },
+        "8_exposure_controls_personal_protection": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "occupational_exposure_limits": [],
+            "biological_exposure_limits": [],
+            "engineering_controls": null,
+            "eye_protection": null,
+            "hand_protection": null,
+            "skin_body_protection": null,
+            "respiratory_protection": null,
+            "hygiene_measures": []
+          }
+        },
+        "9_physical_and_chemical_properties": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "physical_state": null,
+            "appearance": null,
+            "color": null,
+            "odor": null,
+            "odor_threshold": null,
+            "ph": null,
+            "melting_freezing_point": null,
+            "boiling_point": null,
+            "flash_point": null,
+            "evaporation_rate": null,
+            "flammability": null,
+            "explosive_limits": {
+              "lower": null,
+              "upper": null
+            },
+            "vapor_pressure": null,
+            "vapor_density": null,
+            "relative_density": null,
+            "density": null,
+            "solubility": null,
+            "partition_coefficient": null,
+            "autoignition_temperature": null,
+            "decomposition_temperature": null,
+            "viscosity": null,
+            "voc": null,
+            "other_properties": {}
+          }
+        },
+        "10_stability_and_reactivity": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "reactivity": null,
+            "chemical_stability": null,
+            "possibility_of_hazardous_reactions": [],
+            "conditions_to_avoid": [],
+            "incompatible_materials": [],
+            "hazardous_decomposition_products": []
+          }
+        },
+        "11_toxicological_information": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "likely_routes_of_exposure": [],
+            "symptoms": {},
+            "acute_toxicity": null,
+            "skin_corrosion_irritation": null,
+            "serious_eye_damage_irritation": null,
+            "respiratory_or_skin_sensitization": null,
+            "germ_cell_mutagenicity": null,
+            "carcinogenicity": null,
+            "reproductive_toxicity": null,
+            "stot_single_exposure": null,
+            "stot_repeated_exposure": null,
+            "aspiration_toxicity": null,
+            "numerical_toxicity_measures": []
+          }
+        },
+        "16_other_information": {
+          "status": "pending",
+          "source_reference": null,
+          "data": {
+            "nfpa": {
+              "health": null,
+              "flammability": null,
+              "instability": null,
+              "special_hazards": null
+            },
+            "hmis": {
+              "health": null,
+              "flammability": null,
+              "physical_hazard": null,
+              "personal_protection": null
+            },
+            "revision_date": null,
+            "version": null,
+            "preparation_date": null,
+            "reason_for_revision": null,
+            "prepared_by": null,
+            "additional_information": [],
+            "notice": null
+          }
+        }
+      }
+    },
+    "record_verification": {
+      "overall_status": "unverified",
+      "manufacturer_identity_verified": false,
+      "manufacturer_safety_reference_verified": false,
+      "sds_product_match_verified": false,
+      "required_sections_reviewed": false,
+      "verified_at": null,
+      "verification_notes": []
+    },
+    "record_history": {
+      "record_revision": 0,
+      "created_at": null,
+      "updated_at": null,
+      "change_summary": null
+    }
+  },
+  "entries": []
+}

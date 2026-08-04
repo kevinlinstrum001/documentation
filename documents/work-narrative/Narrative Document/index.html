@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Three-Section Document Frame</title>
+
+    <style>
+      :root {
+        --page-background: #f7f7f4;
+        --section-background: #f0f0ec;
+        --section-border: #d6d6cf;
+        --corner-accent: #b8b8ae;
+        --text-color: #252525;
+        --muted-text: #66665f;
+        --nav-background: #ffffff;
+        --nav-border: #ddddd7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page-background);
+        color: var(--text-color);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+      }
+
+      body > header {
+        padding: 48px 64px 24px;
+      }
+
+      body > header h1 {
+        margin: 0 0 8px;
+        font-size: 2.4rem;
+        line-height: 1.15;
+      }
+
+      body > header p {
+        margin: 0;
+        padding: 0;
+        color: var(--muted-text);
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        gap: 12px;
+        padding: 14px 64px;
+        background: var(--nav-background);
+        border-top: 1px solid var(--nav-border);
+        border-bottom: 1px solid var(--nav-border);
+      }
+
+      nav a {
+        display: inline-block;
+        padding: 10px 16px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid transparent;
+        border-radius: 6px;
+      }
+
+      nav a:hover {
+        background: var(--section-background);
+        border-color: var(--section-border);
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 28px;
+        padding: 40px 64px 80px;
+      }
+
+      section {
+        position: relative;
+        grid-column: 1 / -1;
+        min-height: 320px;
+        padding: 36px;
+        background: var(--section-background);
+        border: 1px solid var(--section-border);
+        border-radius: 10px;
+        box-shadow: 10px 10px 0 -4px var(--corner-accent);
+        scroll-margin-top: 90px;
+      }
+
+      section::after {
+        content: "";
+        position: absolute;
+        right: -1px;
+        bottom: -1px;
+        width: 72px;
+        height: 72px;
+        border-right: 5px solid var(--corner-accent);
+        border-bottom: 5px solid var(--corner-accent);
+        border-bottom-right-radius: 10px;
+        pointer-events: none;
+      }
+
+      section h2 {
+        margin: 0 0 18px;
+        font-size: 1.8rem;
+      }
+
+      p {
+        margin: 0 0 18px;
+        padding: 10px 4px;
+        font-size: 1.08rem;
+      }
+
+      /*
+        Each email occupies one of three equal columns.
+
+        Hidden emails remain removed from the layout until their
+        corresponding Reply button is clicked.
+      */
+
+      .email-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 24px;
+      }
+
+      .hidden-email {
+        display: none;
+      }
+
+      .email-preview {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        background: #ffffff;
+        color: #292929;
+        border: 1px solid #d8d8d2;
+        border-radius: 12px;
+        box-shadow:
+          0 18px 40px rgba(40, 40, 35, 0.12),
+          9px 9px 0 -3px #c4c4ba;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .email-window-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 0 18px;
+        background: #eeeeea;
+        border-bottom: 1px solid #d8d8d2;
+      }
+
+      .email-window-dot {
+        flex: 0 0 auto;
+        width: 11px;
+        height: 11px;
+        background: #c7c7c0;
+        border: 1px solid #b2b2aa;
+        border-radius: 50%;
+      }
+
+      .email-window-title {
+        min-width: 0;
+        margin-left: 8px;
+        overflow: hidden;
+        color: #686862;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .email-header {
+        padding: 24px 22px 20px;
+        border-bottom: 1px solid #e3e3de;
+      }
+
+      .email-subject {
+        margin: 0 0 20px;
+        font-size: 1.35rem;
+        line-height: 1.25;
+      }
+
+      .email-address-row {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        align-items: start;
+        gap: 12px;
+      }
+
+      .email-avatar {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        background: #deded7;
+        border: 1px solid #cacac2;
+        border-radius: 50%;
+        color: #44443f;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .email-address-details {
+        min-width: 0;
+      }
+
+      .email-address-details p {
+        margin: 0 0 5px;
+        padding: 0;
+        overflow-wrap: anywhere;
+        color: #595954;
+        font-size: 0.86rem;
+        line-height: 1.4;
+      }
+
+      .email-address-details strong {
+        color: #292929;
+      }
+
+      .email-date {
+        display: block;
+        grid-column: 2;
+        margin-top: 8px;
+        color: #74746e;
+        font-size: 0.8rem;
+      }
+
+      .email-body {
+        min-height: 360px;
+        padding: 28px 26px 34px;
+        background: linear-gradient(
+          to bottom,
+          rgba(250, 250, 248, 0.45),
+          rgba(255, 255, 255, 1)
+        );
+      }
+
+      .email-body p {
+        margin: 0 0 18px;
+        padding: 0;
+        font-size: 0.98rem;
+        line-height: 1.65;
+      }
+
+      .email-actions {
+        display: flex;
+        gap: 10px;
+        padding: 16px 22px 20px;
+        background: #fafaf8;
+        border-top: 1px solid #e3e3de;
+      }
+
+      .email-actions button {
+        padding: 9px 14px;
+        background: #ffffff;
+        color: #393936;
+        border: 1px solid #ccccc5;
+        border-radius: 6px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .email-actions button:hover {
+        background: #eeeeea;
+      }
+
+      .email-actions .reveal-reply {
+        background: #000000;
+        color: #ffff00;
+        border-color: #000000;
+      }
+
+      .email-actions .reveal-reply:hover {
+        background: #292929;
+      }
+
+      .email-actions button:disabled {
+        cursor: default;
+        opacity: 0.55;
+      }
+
+      body > footer {
+        padding: 24px 64px 48px;
+        color: var(--muted-text);
+        border-top: 1px solid var(--section-border);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>First Cycle</h1>
+      <p>Artifacts from the first journey</p>
+    </header>
+
+    <nav aria-label="Section navigation">
+      <a href="#section-one">Email Evidence</a>
+      <a href="#section-two">Section Two</a>
+      <a href="#section-three">Section Three</a>
+    </nav>
+
+    <main>
+      <section id="section-one">
+        <h2>Email Evidence</h2>
+
+        <div class="email-grid">
+          <!-- Email One: visible when the page loads -->
+
+          <article
+            id="email-one"
+            class="email-preview"
+            aria-label="First email"
+          >
+            <div class="email-window-bar">
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+
+              <span class="email-window-title">
+                Department of Things@GuvMail.guv
+              </span>
+            </div>
+
+            <header class="email-header">
+              <h3 class="email-subject">QR Code Policy Notice</h3>
+
+              <div class="email-address-row">
+                <div class="email-avatar">KH</div>
+
+                <div class="email-address-details">
+                  <p>
+                    <strong>From:</strong>
+                    Kenneth Halverson
+                    &lt;khalverson@doth.guv&gt;
+                  </p>
+
+                  <p>
+                    <strong>To:</strong>
+                    Douglas Bennett
+                    &lt;dbennett@doth.guv&gt;
+                  </p>
+                </div>
+
+                <time class="email-date" datetime="2026-08-02">
+                  August 2, 2026
+                </time>
+              </div>
+            </header>
+
+            <div class="email-body">
+              <p>Mr. Bennett,</p>
+
+              <p>
+                It has been brought to our attention that you have recently
+                posted several QR codes around the warehouse.
+              </p>
+
+              <p>
+                It is in strict violation of Information Technology Department
+                policy to use non-government programs or applications anywhere
+                on the State campus.
+              </p>
+
+              <p>
+                Due to security reasons, you must remove all QR codes from the
+                campus property.
+              </p>
+
+              <p>
+                Thank you,<br />
+                Kenneth Halverson^C%_]doth.guv+"dont forget to use my email this time remember its "^C%_]doth.guv+"don
+              </p>
+            </div>
+
+            <footer class="email-actions">
+              <button
+                type="button"
+                class="reveal-reply"
+                data-reveal="email-two"
+                aria-controls="email-two"
+                aria-expanded="false"
+              >
+                ↩ Reply
+              </button>
+
+              <button type="button">↪ Forward</button>
+            </footer>
+          </article>
+
+          <!-- Email Two: revealed by the first Reply button -->
+
+          <article
+            id="email-two"
+            class="email-preview hidden-email"
+            aria-label="Second email"
+          >
+            <div class="email-window-bar">
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+
+              <span class="email-window-title">
+                Department of Things@GuvMail.guv
+              </span>
+            </div>
+
+            <header class="email-header">
+              <h3 class="email-subject">
+                Re: QR Code Policy Notice
+              </h3>
+
+              <div class="email-address-row">
+                <div class="email-avatar">DB</div>
+
+                <div class="email-address-details">
+                  <p>
+                    <strong>From:</strong>
+                    Douglas Bennett
+                    &lt;dbennett@doth.guv&gt;
+                  </p>
+
+                  <p>
+                    <strong>To:</strong>
+                    Kenneth Halverson
+                    &lt;khalverson@doth.guv&gt;
+                  </p>
+                </div>
+
+                <time class="email-date" datetime="2026-08-02">
+                  August 2, 2026
+                </time>
+              </div>
+            </header>
+
+            <div class="email-body">
+              <p>Mr. Halverson,</p>
+
+              <p>
+                I received your message. The QR codes were posted to provide
+                workers with direct access to approved safety and inventory
+                information.
+              </p>
+
+              <p>
+                Please provide the specific written policy that prohibits these
+                materials so that I can review the applicable requirements.
+              </p>
+
+              <p>
+                Thank you,<br />
+                Douglas Bennett <br /><br />
+                P.S.: Ctrl + C doesn't work in guvMail
+              </p>
+        
+            </div>
+
+            <footer class="email-actions">
+              <button
+                type="button"
+                class="reveal-reply"
+                data-reveal="email-three"
+                aria-controls="email-three"
+                aria-expanded="false"
+              >
+                ↩ Reply
+              </button>
+
+              <button type="button">↪ Forward</button>
+            </footer>
+          </article>
+
+          <!-- Email Three: revealed by the second Reply button -->
+
+          <article
+            id="email-three"
+            class="email-preview hidden-email"
+            aria-label="Third email"
+          >
+            <div class="email-window-bar">
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+              <span class="email-window-dot"></span>
+
+              <span class="email-window-title">
+                Department of Things@GuvMail.guv
+              </span>
+            </div>
+
+            <header class="email-header">
+              <h3 class="email-subject">
+                Re: QR Code Policy Notice
+              </h3>
+
+              <div class="email-address-row">
+                <div class="email-avatar">KH</div>
+
+                <div class="email-address-details">
+                  <p>
+                    <strong>From:</strong>
+                    Kenneth Halverson
+                    &lt;khalverson@doth.guv&gt;
+                  </p>
+
+                  <p>
+                    <strong>To:</strong>
+                    Douglas Bennett
+                    &lt;dbennett@doth.guv&gt;
+                  </p>
+                </div>
+
+                <time class="email-date" datetime="2026-08-03">
+                  August 3, 2026
+                </time>
+              </div>
+            </header>
+
+            <div class="email-body">
+              <p>Mr. Bennett,</p>
+
+              <p>
+                As you 'well know', it against policy to require workers for the State to use 'unauthorized' apps or qr codes. Federal policy strictly prohibits the use of computers that don't belong to the state!
+              </p>
+
+              <p>
+                As I stated in the last email - you have been advised. Your insistence in this matter has been noted.
+              </p>
+
+              <p>
+                Regards,<br />
+                Kenneth Halverson^C%_]^C%_]"Dont forget to "?:help  :help?  :stupidthingpasteit KennethHalverson@doth.guv! this time
+              </p>
+            </div>
+
+            <footer class="email-actions">
+              <button type="button">↩ Reply</button>
+              <button type="button">↪ Forward</button>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <section id="section-two">
+        <h2>Dennis@startTheDamnThing()</h2>
+
+        <p>
+          Blink. Blink. Blink.
+        </p>
+        <p>
+            This thing is on. You're looking at it. It's not doing anything yet, but you know what it's going to do. Or at least you think you know. For now it is stupid. What is the capital of Alaska? What the capital of Alaska is. Where am I going? Where you are going. 
+        </p>
+      </section>
+
+      <section id="section-three">
+        <h2>Section Three</h2>
+
+        <p>
+          Add the main text for this section here.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Add footer text here.
+    </footer>
+
+    <script>
+      document.querySelectorAll(".reveal-reply").forEach((button) => {
+        button.addEventListener("click", () => {
+          const emailId = button.dataset.reveal;
+          const email = document.getElementById(emailId);
+
+          if (!email) {
+            return;
+          }
+
+          email.classList.remove("hidden-email");
+
+          button.setAttribute("aria-expanded", "true");
+          button.disabled = true;
+          button.textContent = "↩ Reply shown";
+        });
+      });
+    </script>
+  </body>
+</html>

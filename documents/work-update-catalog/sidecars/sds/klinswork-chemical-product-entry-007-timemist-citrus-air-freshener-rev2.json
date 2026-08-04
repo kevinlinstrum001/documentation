@@ -1,0 +1,649 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-007-1042781",
+  "entry_status": "partially_verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-007",
+      "inventory_listed_name": "Air freshener",
+      "inventory_listed_manufacturer": "Zepinc",
+      "inventory_listed_product_code": "A07759",
+      "inventory_identifier_status": "unverified",
+      "inventory_container_size": "6.6 oz",
+      "inventory_unit": "can",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-007-air-freshener.png"
+    },
+    "department_context": {
+      "carried_form": "aerosol",
+      "container_or_dispenser": "6.6 oz metered aerosol refill can for a TimeMist automatic dispenser",
+      "department_category": "Deodorizer",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The user confirmed that the workplace can is 6.6 oz.",
+        "The inventory and workplace package therefore agree on the exact carried size.",
+        "The official Zep product page currently markets SKU 1042781 as 7 oz, while some distribution records use 7.1 oz; these are retained as alternate market descriptions rather than workplace-size uncertainty.",
+        "The existing inventory SDS filename identifies the product family as Citrus 30 Day Refill.",
+        "The product is intended for 30 days of use when the dispenser is set to a 15-minute interval.",
+        "Actual department locations and dispenser assignments were not stated and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "Other TimeMist fragrances are separate commercial formulations and require separate catalog entries.",
+        "The exact workplace package is confirmed as 6.6 oz.",
+        "The current Zep page and some distributors round or describe the same SKU as 7 oz or 7.1 oz."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "TimeMist Premium Metered 30-Day Air Freshener Refill — Citrus",
+      "brand": "TimeMist",
+      "manufacturer": "Zep Inc.",
+      "manufacturer_parent_company": null,
+      "product_line": "TimeMist Premium Metered Air Freshener",
+      "form_type": "aerosol",
+      "formulation_description": "Metered citrus-fragrance aerosol containing fragrance, odor counteractants, acetone, propane, and orange oils.",
+      "package_description": "Exact workplace package: 6.6 oz metered aerosol refill can; current manufacturer page markets the same SKU as 7 oz, while some distribution records describe it as 7.1 oz",
+      "dispensing_system": "TimeMist metered aerosol dispenser",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "1042781"
+        ],
+        "model_numbers": [
+          "TMS1042781"
+        ],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "SDS_material_number",
+            "value": "000000000001042781"
+          },
+          {
+            "type": "inventory_or_reseller_identifier_unverified",
+            "value": "A07759"
+          }
+        ]
+      },
+      "aliases": [
+        "Air freshener",
+        "Citrus 30 Day Refill",
+        "TimeMist Citrus",
+        "Premium Metered Air Freshener Refill Citrus",
+        "TIMEMIST CITRUS AIR FRESHENER 30 DAY 12N7.1 12CT"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Zep Inc.",
+      "page_or_document_title": "Premium TimeMist Metered 30 Day Air Freshener - Citrus - 7 Oz.",
+      "source_url": "https://zep.com/products/premium-metered-30-day-air-freshener-citrus",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T17:35:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Citrus-scented metered aerosol refill combining fragrance and odor counteractants. The manufacturer describes citrus notes from lemons, limes, and oranges.",
+      "recommended_uses": [
+        "Automatic odor control",
+        "Restrooms",
+        "Offices",
+        "Locker rooms",
+        "Other compatible indoor areas"
+      ],
+      "uses_advised_against": "Do not use outside a compatible metered aerosol dispenser or in a manner inconsistent with the product label.",
+      "package_and_yield": {
+        "manufacturer_page_size": "7 oz",
+        "inventory_size": "6.6 oz",
+        "other_distribution_size": "7.1 oz",
+        "case_quantity": 12,
+        "refill_life": "30 days at 15-minute intervals",
+        "coverage": "Approximately 6,000 cubic feet in distributor specifications",
+        "exact_workplace_size": "6.6 oz",
+        "workplace_size_confirmed_by_user": true
+      },
+      "manufacturer_specifications": {
+        "fragrance": "Citrus",
+        "manufacturer_page_color": "Clear",
+        "application": "Automatic odor control",
+        "physical_form": "Liquid aerosol",
+        "contains_essential_oils": true,
+        "odor_counteractants": true
+      },
+      "other_official_facts": {
+        "manufacturer_sku": "1042781",
+        "product_page_status_at_retrieval": "Sold out"
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official Zep SDS portal record for material 1042781, reviewed through a text mirror of the manufacturer SDS",
+      "official_sds_url": "https://zsds3.zepinc.com/ehswww/zep/search/search_index.jsp?P_LANGU=E&P_SSN=28&P_SYS=2",
+      "official_sds_identifier": "000000000001042781",
+      "cas_numbers_referenced": [
+        "67-64-1",
+        "74-98-6",
+        "8028-48-6",
+        "8008-57-9"
+      ],
+      "manufacturer_document_system_reference": "TIMEMIST CITRUS AIR FRESHENER 30 DAY 12N7.1 12CT; material 000000000001042781; version 1.5",
+      "evidence_notes": [
+        "The official product page links Zep's SDS portal.",
+        "The reviewed SDS text names Zep Inc. and material number 000000000001042781.",
+        "The SDS material number corresponds to manufacturer SKU 1042781.",
+        "The SDS section text was reviewed from a mirror because the Zep portal did not expose a stable direct PDF URL."
+      ]
+    },
+    "identity_verification": {
+      "status": "partially_verified",
+      "matched_on": [
+        "User-confirmed workplace package size: 6.6 oz",
+        "Zep manufacturer identity",
+        "TimeMist brand",
+        "Citrus fragrance",
+        "Metered 30-day aerosol refill",
+        "Official manufacturer SKU 1042781",
+        "SDS material number ending in 1042781"
+      ],
+      "conflicts": [
+        {
+          "field": "inventory_listed_product_code",
+          "inventory_value": "A07759",
+          "official_value": "1042781",
+          "assessment": "A07759 appears to be a reseller or internal catalog identifier, not the manufacturer's product number."
+        },
+        {
+          "field": "color",
+          "manufacturer_page_value": "Clear",
+          "sds_value": "Yellow",
+          "assessment": "Official product and SDS descriptions differ; this may reflect liquid color versus spray appearance or a specification change."
+        }
+      ],
+      "review_notes": [
+        "The workplace package size is confirmed as 6.6 oz.",
+        "The 7 oz and 7.1 oz descriptions are retained as alternate market descriptions for the same SKU.",
+        "Final verification still requires resolving inventory code A07759, confirming the product color against the can, and capturing a stable direct manufacturer SDS PDF."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "TIMEMIST CITRUS AIR FRESHENER 30 DAY 12N7.1 12CT",
+      "manufacturer": "Zep Inc.",
+      "form_type": "aerosol",
+      "formulation_or_dilution": "Ready-to-use pressurized aerosol; no dilution",
+      "sds_identifier": "000000000001042781",
+      "revision_date": "2023-10-01",
+      "version": "1.5",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Zep Inc.",
+      "source_url": "https://zsds3.zepinc.com/ehswww/zep/search/search_index.jsp?P_LANGU=E&P_SSN=28&P_SYS=2",
+      "source_type": "official_manufacturer_sds_portal",
+      "retrieved_at": "2026-08-03T17:35:00-06:00",
+      "access_status": "official portal accessible; direct stable PDF URL not exposed; section text reviewed through mirrored manufacturer SDS",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "1042781",
+      "matched_on": [
+        "TimeMist Citrus identity",
+        "30-day metered aerosol form",
+        "Zep Inc. manufacturer",
+        "SDS material number 000000000001042781",
+        "Manufacturer SKU 1042781",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS formulation identity matches manufacturer SKU 1042781.",
+        "Package-size presentation varies across current manufacturer and distributor records but does not change the identified SDS formulation."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [
+        4,
+        8
+      ],
+      "unresolved_sections": [],
+      "overall_status": "partial"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 1, page 1",
+        "data": {
+          "product_identifier": "TIMEMIST CITRUS AIR FRESHENER 30 DAY 12N7.1 12CT",
+          "other_means_of_identification": [
+            "Material number 000000000001042781",
+            "Manufacturer SKU 1042781",
+            "TimeMist Citrus"
+          ],
+          "recommended_use": [
+            "Metered aerosol air freshener",
+            "Automatic odor control"
+          ],
+          "uses_advised_against": "Not stated in the reviewed SDS extraction.",
+          "supplier": {
+            "name": "Zep Inc.",
+            "address": "350 Joe Frank Harris Parkway, SE, Emerson, GA 30137, USA",
+            "phone": "877-428-9937",
+            "sds_information_phone": "877-428-9937",
+            "website": "https://zep.com"
+          },
+          "emergency_phone": [
+            "Medical emergency: 877-541-2016",
+            "CHEMTREC: 800-424-9300",
+            "District of Columbia: 202-483-7616"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 2, pages 1-2",
+        "data": {
+          "classification": [
+            "Flammable aerosol, Category 1",
+            "Gas under pressure: liquefied gas",
+            "Eye irritation, Category 2A",
+            "Specific target organ toxicity — single exposure, Category 3 (central nervous system)"
+          ],
+          "signal_word": "Danger",
+          "pictograms": [
+            "Flame",
+            "Gas cylinder",
+            "Exclamation mark"
+          ],
+          "hazard_statements": [
+            "Extremely flammable aerosol.",
+            "Contains gas under pressure; may explode if heated.",
+            "Causes serious eye irritation.",
+            "May cause drowsiness or dizziness."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Keep away from heat, sparks, open flames, and hot surfaces.",
+              "Do not spray on an open flame or other ignition source.",
+              "Do not pierce or burn the pressurized container, even after use.",
+              "Avoid breathing mist, vapor, or spray.",
+              "Use only outdoors or in a well-ventilated area.",
+              "Wear eye or face protection."
+            ],
+            "response": [
+              "If inhaled, move the person to fresh air and keep comfortable for breathing.",
+              "Call a Poison Center or physician if the person feels unwell.",
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing and obtain medical advice if irritation persists."
+            ],
+            "storage": [
+              "Store in a well-ventilated place.",
+              "Keep the container tightly closed.",
+              "Protect from sunlight.",
+              "Do not expose to temperatures above 50 °C / 122 °F."
+            ],
+            "disposal": [
+              "Dispose of contents and container in accordance with local regulation."
+            ]
+          },
+          "other_hazards": null,
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 3, page 2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Acetone",
+              "cas_number": "67-64-1",
+              "weight_percent": "45-<70%"
+            },
+            {
+              "name": "Propane",
+              "cas_number": "74-98-6",
+              "weight_percent": "10-<30%"
+            },
+            {
+              "name": "Orange, sweet, extract",
+              "cas_number": "8028-48-6",
+              "weight_percent": "1-<5%"
+            },
+            {
+              "name": "Oil of orange",
+              "cas_number": "8008-57-9",
+              "weight_percent": "1-<5%"
+            }
+          ],
+          "trade_secret_note": "Exact percentages of disclosed substances are withheld as trade secrets."
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "partial",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 4, page 2; text extraction was incomplete",
+        "data": {
+          "general_advice": [
+            "Move the person out of the dangerous area.",
+            "Show the SDS to the attending physician.",
+            "Do not leave the affected person unattended.",
+            "Obtain medical attention."
+          ],
+          "eyes": "Rinse cautiously with water for several minutes; remove contact lenses when present and easy to remove; continue rinsing; obtain medical advice if irritation persists.",
+          "skin": "Full manufacturer wording was not available in the reviewed extraction.",
+          "inhalation": "Consult a physician after significant exposure. If unconscious, place in the recovery position and seek medical advice.",
+          "ingestion": "Full manufacturer wording was not available in the reviewed extraction.",
+          "most_important_symptoms_effects": "Irritation, redness, pain, rash, headache, nausea, dizziness, tiredness, and possible central-nervous-system depression.",
+          "immediate_medical_attention": "Treat symptomatically; symptoms may be delayed.",
+          "notes_to_physician": "Treat symptomatically; symptoms may be delayed."
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 5, page 3",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Alcohol-resistant foam",
+            "Carbon dioxide",
+            "Dry chemical"
+          ],
+          "unsuitable_extinguishing_media": "High-volume water jet",
+          "specific_hazards": [
+            "Extremely flammable aerosol",
+            "Pressurized container",
+            "Do not allow firefighting runoff to enter drains or watercourses"
+          ],
+          "hazardous_combustion_products": [
+            "Carbon dioxide",
+            "Carbon monoxide",
+            "Smoke"
+          ],
+          "firefighter_protection": "Wear self-contained breathing apparatus when necessary.",
+          "special_methods": [
+            "Use extinguishing measures appropriate to local circumstances and the surrounding environment.",
+            "Collect contaminated extinguishing water separately."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 6, page 3",
+        "data": {
+          "personal_precautions": [
+            "Use personal protective equipment.",
+            "Ensure adequate ventilation.",
+            "Remove all ignition sources.",
+            "Evacuate personnel to safe areas.",
+            "Beware of vapors accumulating in low areas and forming explosive concentrations."
+          ],
+          "protective_equipment": [
+            "Personal protective equipment appropriate to the exposure."
+          ],
+          "emergency_procedures": [
+            "Evacuate personnel and control ignition sources."
+          ],
+          "environmental_precautions": [
+            "Prevent product from entering drains.",
+            "Prevent further leakage or spillage if safe to do so.",
+            "Notify authorities if rivers, lakes, or drains are contaminated."
+          ],
+          "containment": [
+            "Absorb with inert material such as sand, silica gel, universal binder, or sawdust."
+          ],
+          "cleanup": [
+            "Sweep or vacuum spilled material and collect it in a suitable disposal container."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 7, pages 3-4",
+        "data": {
+          "safe_handling": [
+            "Avoid contact with skin and eyes.",
+            "Do not smoke, eat, or drink in the application area.",
+            "Take precautions against static discharge.",
+            "Provide sufficient air exchange or exhaust ventilation.",
+            "Dispose of rinse water according to local and national regulations.",
+            "Do not spray on flames or red-hot objects.",
+            "Do not pierce or burn the container."
+          ],
+          "storage_conditions": [
+            "Keep away from direct sunlight.",
+            "Do not expose above 50 °C / 122 °F.",
+            "Store in a dry, cool, well-ventilated place.",
+            "Observe label precautions."
+          ],
+          "incompatible_materials": [
+            "Oxidizing agents"
+          ],
+          "specific_end_uses": [
+            "Metered automatic air freshening and odor control."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "partial",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 8, pages 4-5; numerical exposure-limit table was not fully available in the reviewed extraction",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Acetone",
+              "cas_number": "67-64-1",
+              "note": "SDS provides TWA, STEL, ceiling, and PEL entries; numerical table requires direct-PDF confirmation."
+            },
+            {
+              "ingredient": "Propane",
+              "cas_number": "74-98-6",
+              "note": "SDS provides workplace-control entries; numerical table requires direct-PDF confirmation."
+            },
+            {
+              "ingredient": "Oil of orange",
+              "cas_number": "8008-57-9",
+              "note": "SDS lists a workplace-control parameter; numerical table requires direct-PDF confirmation."
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Provide sufficient air exchange or exhaust ventilation.",
+          "eye_protection": "Wear eye protection when inadvertent eye contact cannot be excluded; use an eyewash bottle, tightly fitting goggles, and face protection for abnormal processing conditions.",
+          "hand_protection": "No special hand protection is normally required; wash skin after contact and select gloves appropriate to the specific workplace.",
+          "skin_body_protection": "No special protection is normally required; use impervious clothing according to the amount and concentration present.",
+          "respiratory_protection": "No respiratory protection is normally required. Use an approved filter respirator if vapor, dust, or aerosol formation warrants it.",
+          "hygiene_measures": [
+            "Do not eat, drink, or smoke while using the product.",
+            "Wash hands before breaks and at the end of the workday."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 9, pages 5-6",
+        "data": {
+          "physical_state": "Aerosol containing a liquefied gas",
+          "appearance": "Pressurized aerosol",
+          "color": "Yellow",
+          "odor": "Characteristic citrus fragrance",
+          "odor_threshold": "No data available",
+          "ph": "Not applicable",
+          "melting_freezing_point": "No data available",
+          "boiling_point": "No data available",
+          "flash_point": "No data available",
+          "evaporation_rate": "No data available",
+          "flammability": "Extremely flammable aerosol",
+          "explosive_limits": {
+            "lower": "No data available",
+            "upper": "No data available"
+          },
+          "vapor_pressure": "No data available in reviewed extraction",
+          "vapor_density": "No data available",
+          "relative_density": "No data available",
+          "density": null,
+          "solubility": "Soluble in water",
+          "partition_coefficient": "No data available",
+          "autoignition_temperature": "Not determined",
+          "decomposition_temperature": "No data available",
+          "viscosity": "No data available",
+          "voc": null,
+          "other_properties": {
+            "heat_of_combustion": "36.44 kJ/g",
+            "manufacturer_page_color": "Clear"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 10, page 6",
+        "data": {
+          "reactivity": "Stable.",
+          "chemical_stability": "Stable under normal conditions.",
+          "possibility_of_hazardous_reactions": [
+            "Vapors may form an explosive mixture with air.",
+            "No decomposition occurs when stored and applied as directed."
+          ],
+          "conditions_to_avoid": [
+            "Heat",
+            "Flames",
+            "Sparks",
+            "Temperature extremes",
+            "Direct sunlight"
+          ],
+          "incompatible_materials": [
+            "Oxidizing agents"
+          ],
+          "hazardous_decomposition_products": [
+            "Carbon monoxide",
+            "Carbon dioxide"
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 11, pages 6-8",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Inhalation",
+            "Eye contact",
+            "Skin contact"
+          ],
+          "symptoms": {
+            "general": "Irritation, redness, pain, rash, headache, nausea, dizziness, tiredness, and central-nervous-system depression.",
+            "eyes": "Serious eye irritation.",
+            "inhalation": "May cause drowsiness or dizziness and narcotic effects at high concentrations.",
+            "skin": "Solvents may degrease the skin."
+          },
+          "acute_toxicity": "Mixture-level acute toxicity was not stated in the reviewed extraction; the SDS provides component data for acetone.",
+          "skin_corrosion_irritation": "May irritate and degrease skin.",
+          "serious_eye_damage_irritation": "Causes serious eye irritation.",
+          "respiratory_or_skin_sensitization": "Not classified in the reviewed hazard summary.",
+          "germ_cell_mutagenicity": "No data available.",
+          "carcinogenicity": "The SDS reports no components at or above 0.1% identified as carcinogens by IARC, ACGIH, OSHA, or NTP.",
+          "reproductive_toxicity": "No data available.",
+          "stot_single_exposure": "May cause drowsiness or dizziness; central nervous system effects.",
+          "stot_repeated_exposure": "No data available.",
+          "aspiration_toxicity": "No data available.",
+          "numerical_toxicity_measures": []
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Zep SDS material 000000000001042781, version 1.5, section 16, pages 11-13",
+        "data": {
+          "nfpa": {
+            "health": 2,
+            "flammability": 4,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2023-10-01",
+          "version": "1.5",
+          "preparation_date": null,
+          "reason_for_revision": null,
+          "prepared_by": "Compliance Services organization supporting Zep Inc.",
+          "additional_information": [
+            "SDS print date: 2024-10-09.",
+            "SDS material number: 000000000001042781.",
+            "Transport classification: UN1950, Aerosols, flammable, Class 2.1, limited quantity.",
+            "The product is reported on the TSCA inventory.",
+            "The SDS states that the product neither contains nor was manufactured with Class I or Class II ozone-depleting substances."
+          ],
+          "notice": "The SDS states that its technical information is believed reliable but is provided without warranty and that users must determine suitability for their circumstances."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "partially_verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "The exact chemical product is TimeMist Citrus, Zep SKU 1042781.",
+      "The user confirmed that the workplace package is the 6.6 oz can.",
+      "The official manufacturer page links Zep's SDS portal, and the SDS material number matches 1042781.",
+      "All required sections were reviewed; sections 4 and 8 remain partial because the available text extraction did not expose all manufacturer wording and numerical exposure-limit values.",
+      "Inventory code A07759 is not the manufacturer product number and should be reclassified as a reseller/internal identifier or replaced with 1042781.",
+      "The manufacturer product page says clear, while the SDS says yellow.",
+      "Capture a stable direct Zep SDS PDF URL during manual portal review before promoting the record to verified."
+    ]
+  },
+  "record_history": {
+    "record_revision": 2,
+    "created_at": "2026-08-03T17:35:00-06:00",
+    "updated_at": "2026-08-03T17:40:00-06:00",
+    "change_summary": "Confirmed the exact workplace package as 6.6 oz based on the user's physical-product knowledge. Removed container size as an unresolved identity conflict and retained 7 oz and 7.1 oz only as alternate market descriptions of the same SKU."
+  }
+}

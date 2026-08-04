@@ -1,0 +1,673 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-012-53-27037-18",
+  "entry_status": "verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-012",
+      "inventory_listed_name": "McKesson hand sanitizer pump",
+      "inventory_listed_manufacturer": "McKesson",
+      "inventory_listed_product_code": "53-27037-18",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "18 oz",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-012-mckesson-hand-sanitizer.png"
+    },
+    "department_context": {
+      "carried_form": "ready_to_use",
+      "container_or_dispenser": "18 fl oz / approximately 532 g pump bottle; compatible with McKesson wall bracket 53-18OZBK",
+      "department_category": "Hygiene",
+      "work_uses": [
+        "Topical hand antisepsis when soap and water are unavailable",
+        "Reduction of transient microorganisms on intact skin"
+      ],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The inventory code, manufacturer, package size, and product form exactly match the current McKesson product record.",
+        "The sanitizer is ready to use and rinse free.",
+        "The product is an FDA-regulated OTC topical antiseptic with NDC 68599-5202-4 for the 18 oz package.",
+        "Actual department placement locations were not stated and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "Other package sizes in the same formulation family include 2 oz, 4 oz, 8 oz, 64 oz, and 1,000 mL refill packages.",
+        "McKesson 53-18OZBK is compatible wall-bracket hardware, not a chemical product.",
+        "McKesson Premium Hand Sanitizer without Aloe and McKesson foaming sanitizer are separate formulations."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "McKesson Premium Hand Sanitizer with Aloe, 70% Ethyl Alcohol Gel, 18 oz Pump Bottle",
+      "brand": "McKesson Premium",
+      "manufacturer": "McKesson Medical-Surgical Inc.",
+      "manufacturer_parent_company": "McKesson Corporation",
+      "product_line": "McKesson Premium Hand Sanitizer with Aloe",
+      "form_type": "ready_to_use",
+      "formulation_description": "Ready-to-use, rinse-free topical antiseptic gel containing 70% ethanol, aloe, vitamin E, moisturizers, and emollients.",
+      "package_description": "18 fl oz pump bottle; 12 bottles per case",
+      "dispensing_system": "Integrated pump; optionally mounted in McKesson wall bracket 53-18OZBK",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "53-27037-18"
+        ],
+        "model_numbers": [
+          "53-27037-18"
+        ],
+        "catalog_numbers": [
+          "McKesson item 937918"
+        ],
+        "other_identifiers": [
+          {
+            "type": "NDC",
+            "value": "68599-5202-4"
+          },
+          {
+            "type": "NDC_compact",
+            "value": "68599520204"
+          },
+          {
+            "type": "UNSPSC",
+            "value": "53131626"
+          },
+          {
+            "type": "DailyMed_setid",
+            "value": "13d42582-df02-41d5-bada-1d67c6131015"
+          }
+        ]
+      },
+      "aliases": [
+        "McKesson hand sanitizer pump",
+        "McKesson Premium Instant Hand Sanitizer with Aloe",
+        "Premium Hand Sanitizer with Aloe",
+        "McKesson 53-27037-18"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "McKesson Medical-Surgical Inc.",
+      "page_or_document_title": "Hand Sanitizer with Aloe McKesson Premium 18 oz. Ethyl Alcohol Gel Pump Bottle",
+      "source_url": "https://mms.mckesson.com/product/937918/McKesson-Brand-53-27037-18",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T18:05:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Topical antiseptic gel formulated to reduce transient microorganisms on intact skin. The manufacturer describes a slick, rinse-free gel that reaches nailbeds, cuticles, and spaces between fingers while aloe, vitamin E, moisturizers, and emollients help reduce skin dryness.",
+      "recommended_uses": [
+        "Repeated topical hand antisepsis",
+        "Use when soap and water are unavailable",
+        "Healthcare and institutional hand-hygiene programs",
+        "Use on intact skin"
+      ],
+      "uses_advised_against": [
+        "Internal use",
+        "Use in or near the eyes",
+        "Use on broken skin",
+        "Use near fire or flame"
+      ],
+      "package_and_yield": {
+        "unit_volume": "18 fl oz",
+        "label_package_mass": "532 g",
+        "units_per_case": 12,
+        "ready_to_use": true,
+        "rinse_free": true,
+        "compatible_wall_bracket": "53-18OZBK"
+      },
+      "manufacturer_specifications": {
+        "active_ingredient": "Ethyl alcohol",
+        "strength": "70%",
+        "form": "Gel",
+        "container_type": "Pump bottle",
+        "scent": "Spring Water",
+        "country_of_origin": "United States",
+        "latex_status": "Not made with natural rubber latex",
+        "buy_american_act_compliant": true,
+        "trade_agreement_act_compliant": true,
+        "fsa_eligible_primary_uom": true
+      },
+      "other_official_facts": {
+        "manufacturer_claim": "Designed to kill more than 99% of most bacteria on skin.",
+        "current_fda_label": {
+          "source_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=13d42582-df02-41d5-bada-1d67c6131015",
+          "updated": "2025-08-18",
+          "product_type": "Human OTC drug",
+          "route": "Topical",
+          "active_ingredient": "Ethanol 70 g in 100 g",
+          "package_ndc": "68599-5202-4"
+        },
+        "inactive_ingredients_from_current_fda_label": [
+          "Purified water",
+          "Carbomer",
+          "Isopropanol",
+          "Glycerin",
+          "Aloe barbadensis leaf juice",
+          "Tocopherol (vitamin E)",
+          "Isopropyl myristate",
+          "Diisopropyl sebacate",
+          "Propylene glycol",
+          "Aminomethyl propanol",
+          "Fragrance",
+          "Yellow 5",
+          "Blue 1"
+        ],
+        "official_product_sheet": "https://imgcdn.mckesson.com/CumulusWeb/Click_and_learn/premium_hand_sanitizer_tear_sheet%202024-01_v4.pdf"
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official McKesson SDS linked from the exact product page, corroborated by the current FDA DailyMed label",
+      "official_sds_url": "https://mms-cms.mckesson.com/uploads/2022/08/937918-SDS_McKesson-Premium-Hand-Sanitizer-with-Aloe.pdf",
+      "official_sds_identifier": "McKesson Premium Hand Sanitizer with Aloe SDS, revision 2015-09-18",
+      "cas_numbers_referenced": [
+        "64-17-5",
+        "9003-01-4",
+        "56-81-5",
+        "67-63-0",
+        "110-27-0",
+        "25322-69-4"
+      ],
+      "manufacturer_document_system_reference": "937918-SDS_McKesson-Premium-Hand-Sanitizer-with-Aloe.pdf",
+      "evidence_notes": [
+        "The current exact McKesson product page lists and links the SDS.",
+        "The SDS explicitly includes manufacturer number 53-27037-18.",
+        "The current 2025 DailyMed label confirms the same 70% ethanol formulation and NDC 68599-5202-4.",
+        "The SDS revision is older than the current FDA label but remains the SDS presently linked by McKesson."
+      ]
+    },
+    "identity_verification": {
+      "status": "verified",
+      "matched_on": [
+        "Exact manufacturer code 53-27037-18",
+        "McKesson item 937918",
+        "18 oz pump bottle",
+        "70% ethyl alcohol gel",
+        "Aloe-containing formulation",
+        "Spring Water scent",
+        "NDC 68599-5202-4",
+        "Official product-page link to the SDS",
+        "Current FDA DailyMed label"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "Inventory and manufacturer product identities match exactly.",
+        "The SDS revision date is 2015-09-18, but it is still the document linked from McKesson's current product record.",
+        "DailyMed updated the product label on 2025-08-18 without changing the core 70% ethanol formulation or 18 oz package identity."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "McKesson Premium Hand Sanitizer with Aloe",
+      "manufacturer": "McKesson Medical-Surgical Inc.",
+      "form_type": "ready_to_use",
+      "formulation_or_dilution": "Ready-to-use 70% ethanol gel; no dilution",
+      "sds_identifier": "937918-SDS_McKesson-Premium-Hand-Sanitizer-with-Aloe",
+      "revision_date": "2015-09-18",
+      "version": null,
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "McKesson Medical-Surgical Inc.",
+      "source_url": "https://mms-cms.mckesson.com/uploads/2022/08/937918-SDS_McKesson-Premium-Hand-Sanitizer-with-Aloe.pdf",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T18:05:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "53-27037-18",
+      "matched_on": [
+        "Exact manufacturer number printed in SDS section 1",
+        "Exact McKesson Premium Hand Sanitizer with Aloe name",
+        "70% ethanol gel formulation",
+        "McKesson Medical-Surgical distributor identity",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS covers several package sizes of the same formulation and explicitly includes 53-27037-18."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 1, page 1",
+        "data": {
+          "product_identifier": "McKesson Premium Hand Sanitizer with Aloe",
+          "other_means_of_identification": [
+            "Manufacturer number 53-27037-18",
+            "McKesson item 937918",
+            "NDC 68599-5202-4"
+          ],
+          "recommended_use": [
+            "Gelled alcohol hand sanitizer with aloe",
+            "Handwashing to decrease bacteria on the skin"
+          ],
+          "uses_advised_against": "Use only as directed for topical hand antisepsis.",
+          "supplier": {
+            "name": "McKesson Medical-Surgical Inc.",
+            "address": "9954 Mayland Drive, Suite 4000, Richmond, Virginia 23233",
+            "phone": "1-800-777-4908",
+            "sds_information_phone": "1-800-777-4908",
+            "website": "https://www.mckesson.com"
+          },
+          "emergency_phone": [
+            "CHEMTREC 1-800-424-9300",
+            "3E Company 1-800-451-8346"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 2, page 1",
+        "data": {
+          "classification": [
+            "Flammable liquids, Category 2"
+          ],
+          "signal_word": "Danger",
+          "pictograms": [
+            "Flame"
+          ],
+          "hazard_statements": [
+            "Highly flammable liquid and vapor."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Keep away from heat, sparks, open flames, and hot surfaces.",
+              "No smoking.",
+              "Keep container tightly closed.",
+              "Ground and bond container and receiving equipment.",
+              "Use explosion-proof equipment.",
+              "Use only non-sparking tools.",
+              "Take precautions against static discharge.",
+              "Wear protective gloves, protective clothing, eye protection, and face protection."
+            ],
+            "response": [
+              "In case of fire, use carbon dioxide, dry chemical, or foam."
+            ],
+            "storage": [
+              "Store in a well-ventilated place."
+            ],
+            "disposal": [
+              "Dispose of contents and container at an approved waste-disposal facility."
+            ]
+          },
+          "other_hazards": "The SDS states that the product is toxic to aquatic life with long-lasting effects.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 3, page 2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Ethanol",
+              "cas_number": "64-17-5",
+              "weight_percent": "70%"
+            }
+          ],
+          "trade_secret_note": "Only ethanol is disclosed in the SDS composition table. The current FDA label supplies the complete inactive-ingredient list."
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse immediately with plenty of water, including under the eyelids, for at least 15 minutes.",
+          "skin": "If skin irritation occurs, rinse the affected area with water.",
+          "inhalation": "Move the exposed person to fresh air.",
+          "ingestion": "Dilute by giving a large amount of water and call a physician or Poison Control Center.",
+          "most_important_symptoms_effects": "Eye tearing, redness, and discomfort; gastrointestinal disturbance; inhalation may cause giddiness or loss of consciousness.",
+          "immediate_medical_attention": "Treat symptomatically.",
+          "notes_to_physician": "Treat symptomatically."
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Carbon dioxide",
+            "Alcohol-resistant foam",
+            "Dry chemical"
+          ],
+          "unsuitable_extinguishing_media": "Not determined.",
+          "specific_hazards": [
+            "Vapors may travel to an ignition source and flash back.",
+            "Alcohol flames may be difficult to see because they are virtually colorless."
+          ],
+          "hazardous_combustion_products": [
+            "Carbon oxides"
+          ],
+          "firefighter_protection": "Wear pressure-demand self-contained breathing apparatus approved by MSHA/NIOSH or equivalent and full protective gear.",
+          "special_methods": [
+            "Use cool water to cool equipment and disperse vapors."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 6, pages 2-3",
+        "data": {
+          "personal_precautions": [
+            "Use personal protective equipment as required."
+          ],
+          "protective_equipment": [
+            "Appropriate PPE for the spill conditions."
+          ],
+          "emergency_procedures": [],
+          "environmental_precautions": [
+            "Prevent further leakage or spillage when safe.",
+            "Consult the ecological information in SDS section 12."
+          ],
+          "containment": [
+            "Contain spills larger than one gallon."
+          ],
+          "cleanup": [
+            "Small spills under one gallon may be washed down a drain with plenty of water or cleaned and disposed of through a sanitary sewer system where permitted.",
+            "Large spills should be absorbed with sand, clay, or another absorbent, or vacuumed, collected, and properly disposed of."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 7, page 3",
+        "data": {
+          "safe_handling": [
+            "Keep away from heat, sparks, open flames, and hot surfaces.",
+            "No smoking.",
+            "Use spark-proof tools and explosion-proof equipment.",
+            "Ground and bond containers and receiving equipment.",
+            "Take precautions against static discharge."
+          ],
+          "storage_conditions": [
+            "Keep containers tightly closed.",
+            "Store in a dry, cool, well-ventilated place.",
+            "Do not contaminate food or feed.",
+            "Do not reuse the container.",
+            "Keep out of reach of children."
+          ],
+          "incompatible_materials": [
+            "Strong oxidizers",
+            "Hydrogen peroxide",
+            "Bromine",
+            "Chromic acid"
+          ],
+          "specific_end_uses": [
+            "Ready-to-use topical hand antisepsis."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 8, pages 3-4",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Ethanol",
+              "cas_number": "64-17-5",
+              "limits": [
+                "ACGIH STEL: 1,000 ppm",
+                "OSHA TWA: 1,000 ppm / 1,900 mg/m3",
+                "NIOSH IDLH: 3,300 ppm"
+              ]
+            },
+            {
+              "ingredient": "Glycerol",
+              "cas_number": "56-81-5",
+              "limits": [
+                "ACGIH TWA mist: 10 mg/m3",
+                "OSHA total mist: 15 mg/m3",
+                "OSHA respirable mist: 5 mg/m3"
+              ]
+            },
+            {
+              "ingredient": "Isopropyl alcohol",
+              "cas_number": "67-63-0",
+              "limits": [
+                "ACGIH TWA: 200 ppm",
+                "ACGIH STEL: 400 ppm",
+                "OSHA TWA: 400 ppm / 980 mg/m3",
+                "NIOSH IDLH: 2,000 ppm"
+              ]
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Apply technical measures and ventilation systems as necessary to comply with occupational exposure limits.",
+          "eye_protection": "Avoid eye contact.",
+          "hand_protection": "No special technical protective measures are necessary under normal use.",
+          "skin_body_protection": "No special technical protective measures are necessary under normal use.",
+          "respiratory_protection": "No respiratory protective equipment is needed under normal use conditions.",
+          "hygiene_measures": [
+            "Do not get the product in the eyes.",
+            "Keep away from food and drink."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 9, pages 4-5",
+        "data": {
+          "physical_state": "Gel",
+          "appearance": "Clear light-green gel",
+          "color": "Light green",
+          "odor": "Alcohol",
+          "odor_threshold": "Not determined",
+          "ph": "6.00-8.00",
+          "melting_freezing_point": "Not established",
+          "boiling_point": "100 °C / 212 °F",
+          "flash_point": "21 °C / 70 °F, SETA",
+          "evaporation_rate": "Not established",
+          "flammability": "Flammable liquid, Category 2",
+          "explosive_limits": {
+            "lower": "Not determined",
+            "upper": "Not determined"
+          },
+          "vapor_pressure": "Not established",
+          "vapor_density": "Not established",
+          "relative_density": "Specific gravity 0.858-0.882",
+          "density": "7.15-7.35 lb/gal",
+          "solubility": "Completely soluble in water",
+          "partition_coefficient": "Not determined",
+          "autoignition_temperature": "Not determined",
+          "decomposition_temperature": "Not determined",
+          "viscosity": "Dynamic viscosity 6,000-10,000 cps",
+          "voc": null,
+          "other_properties": {
+            "explosive_properties": "Not determined",
+            "oxidizing_properties": "Not determined"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 10, page 5",
+        "data": {
+          "reactivity": "Not reactive under normal conditions.",
+          "chemical_stability": "Stable under recommended storage conditions.",
+          "possibility_of_hazardous_reactions": [
+            "None under normal processing.",
+            "Hazardous polymerization does not occur."
+          ],
+          "conditions_to_avoid": [
+            "Keep out of reach of children.",
+            "Ignition sources and excessive heat."
+          ],
+          "incompatible_materials": [
+            "Strong oxidizers",
+            "Hydrogen peroxide",
+            "Bromine",
+            "Chromic acid"
+          ],
+          "hazardous_decomposition_products": [
+            "Carbon oxides"
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 11, pages 5-6",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Eye contact",
+            "Skin contact",
+            "Inhalation",
+            "Ingestion"
+          ],
+          "symptoms": {
+            "eyes": "Tearing, redness, and discomfort.",
+            "skin": "Not expected to irritate skin during prescribed use.",
+            "inhalation": "Giddiness or loss of consciousness may occur.",
+            "ingestion": "Gastrointestinal disturbance may occur."
+          },
+          "acute_toxicity": "Mixture numerical toxicity was not determined; component values are provided.",
+          "skin_corrosion_irritation": "Not expected to be a skin irritant during prescribed use.",
+          "serious_eye_damage_irritation": "May cause mild eye irritation.",
+          "respiratory_or_skin_sensitization": "Not classified in the SDS.",
+          "germ_cell_mutagenicity": "Not stated.",
+          "carcinogenicity": "The SDS explains that beverage-consumed ethanol is carcinogenic in long-term studies and that the isopropyl alcohol used is not manufactured by the strong-acid process.",
+          "reproductive_toxicity": "Not stated.",
+          "stot_single_exposure": "Inhalation may cause giddiness or loss of consciousness.",
+          "stot_repeated_exposure": "Not stated.",
+          "aspiration_toxicity": "Not stated.",
+          "numerical_toxicity_measures": [
+            {
+              "ingredient": "Ethanol",
+              "measure": "Oral LD50, rat",
+              "value": "7,060 mg/kg"
+            },
+            {
+              "ingredient": "Ethanol",
+              "measure": "Inhalation LC50, rat, 4 h",
+              "value": "124.7 mg/L"
+            },
+            {
+              "ingredient": "Glycerol",
+              "measure": "Oral LD50, rat",
+              "value": "12,600 mg/kg"
+            },
+            {
+              "ingredient": "Isopropyl alcohol",
+              "measure": "Oral LD50, rat",
+              "value": "4,396 mg/kg"
+            },
+            {
+              "ingredient": "Isopropyl alcohol",
+              "measure": "Inhalation LC50, rat, 4 h",
+              "value": "72.6 mg/L"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official McKesson SDS, revision 2015-09-18, section 16, page 8",
+        "data": {
+          "nfpa": {
+            "health": null,
+            "flammability": null,
+            "instability": null,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": 0,
+            "flammability": 3,
+            "physical_hazard": 0,
+            "personal_protection": "0"
+          },
+          "revision_date": "2015-09-18",
+          "version": null,
+          "preparation_date": "2013-06-26",
+          "reason_for_revision": "New format",
+          "prepared_by": "McKesson Medical-Surgical Inc.",
+          "additional_information": [
+            "The current McKesson product page still links this SDS.",
+            "The SDS identifies DOT/IATA/IMDG transport as UN1170, Ethanol solution, Class 3, Packing Group II.",
+            "The SDS treats smaller packaged sizes as limited quantity; the 18 oz product is within the formulation family but the transport note explicitly names 15 oz rather than 18 oz because the SDS predates the current package presentation.",
+            "The current FDA DailyMed label was updated August 18, 2025 and confirms the 18 oz NDC package and 70% ethanol formulation.",
+            "Web PDF screenshot rendering was attempted but failed because the PDF screenshot cache was unavailable; the complete manufacturer-hosted PDF text was nevertheless parsed and reviewed."
+          ],
+          "notice": "McKesson states that the information is believed accurate and reliable but provides no warranty and requires users to determine suitability and appropriate safe-handling procedures."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": "2026-08-03T18:05:00-06:00",
+    "verification_notes": [
+      "Inventory product code 53-27037-18 exactly matches the current McKesson product record.",
+      "The exact package is an 18 oz pump bottle, 12 bottles per case.",
+      "The formulation is 70% ethanol gel with aloe and a Spring Water scent.",
+      "The current official product page links the McKesson SDS revised 2015-09-18.",
+      "The current FDA DailyMed label, updated 2025-08-18, confirms NDC 68599-5202-4 and the same 70% ethanol product identity.",
+      "All required SDS sections were reviewed.",
+      "The SDS is old but remains the manufacturer-linked current safety document for this exact product family."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T18:05:00-06:00",
+    "updated_at": "2026-08-03T18:05:00-06:00",
+    "change_summary": "Initial verified entry created from Inventory-3.0, the exact current McKesson product record for 53-27037-18, McKesson's linked SDS revised 2015-09-18, the 2024 manufacturer product sheet, and the current FDA DailyMed label updated 2025-08-18."
+  }
+}

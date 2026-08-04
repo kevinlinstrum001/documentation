@@ -1,0 +1,583 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-001-4963331",
+  "entry_status": "partially_verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-001",
+      "inventory_listed_name": "Oxivir 5/16",
+      "inventory_listed_manufacturer": "Diversey",
+      "inventory_listed_product_code": "496331",
+      "inventory_identifier_status": "conflicting_sources",
+      "inventory_container_size": "2.5 Liter",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-001-oxivir-5-16.png"
+    },
+    "department_context": {
+      "carried_form": "concentrate",
+      "container_or_dispenser": "2.5 L J-Fill bottle; used with J-Fill or QuattroSelect dispensing system",
+      "department_category": "Disinfectant",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "Inventory identifies a 2.5 Liter bottle.",
+        "Official manufacturer record identifies the exact 2.5 L package as product code 4963331.",
+        "Inventory-listed code 496331 does not exactly match the official product code."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "The SDS distinguishes the undiluted concentrate from the manufacturer-defined 1:16 diluted product.",
+        "A separate catalog entry may be warranted for the 1:16 use solution if the department carries or records it as a distinct product form."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Oxivir Five 16 Concentrate, 2.5 L, J-Fill / QuattroSelect, 2/CT",
+      "brand": "Oxivir",
+      "manufacturer": "Diversey, Inc.",
+      "manufacturer_parent_company": "Solenis",
+      "product_line": "Oxivir Five 16",
+      "form_type": "concentrate",
+      "formulation_description": "Accelerated Hydrogen Peroxide-based one-step disinfectant cleaner intended for controlled dilution before use.",
+      "package_description": "2 x 84.5 oz / 2.5 L J-Fill containers per case",
+      "dispensing_system": "J-Fill / QuattroSelect",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "4963331"
+        ],
+        "model_numbers": [],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "EAN_UPC_consumer_unit",
+            "value": "00807174502732"
+          },
+          {
+            "type": "EAN_UPC_traded_unit",
+            "value": "10807174502739"
+          },
+          {
+            "type": "WERCS_WPS_ID",
+            "value": "1199298"
+          }
+        ]
+      },
+      "aliases": [
+        "Oxivir 5/16",
+        "Oxivir Five 16 Concentrate (US)",
+        "Oxivir Five 16 One Step Disinfectant Cleaner"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Solenis / Diversey",
+      "page_or_document_title": "Oxivir Five 16 Concentrate, 2.5L, J-Fill / QuattroSelect, 2/CT - One Step Disinfectant Cleaner",
+      "source_url": "https://products.solenis.com/product/oxivirr-five-16-concentrate-25l-j-fillr-quattroselectr-2ct-one-step-disinfectant-cleaner-4963331",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T16:37:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Concentrated one-step disinfectant cleaner using Accelerated Hydrogen Peroxide technology. The official record describes five-minute disinfection at a 1:16 dilution.",
+      "recommended_uses": [
+        "Clean and disinfect hard, nonporous surfaces",
+        "Clean and disinfect high-touch surfaces",
+        "Institutional and healthcare infection-prevention applications"
+      ],
+      "uses_advised_against": null,
+      "package_and_yield": {
+        "catalog_pack_size": "2 x 84.5 oz / 2.5 L J-Fill containers",
+        "catalog_dilution_ratio_range": [
+          "1:16"
+        ],
+        "dispensing_system_case_yield_gallons": 23
+      },
+      "manufacturer_specifications": {
+        "product_category": "Infection Prevention",
+        "product_group": "Healthcare Disinfectants",
+        "product_sub_group": "AHP Based",
+        "color": "Colorless",
+        "odor": "Characteristic",
+        "neat_solution_ph": 0.8,
+        "storage_temperature_min_c": 6,
+        "storage_temperature_max_c": 35,
+        "shelf_life_days": 1080,
+        "lifecycle_status": "Production",
+        "selling_location": [
+          "US",
+          "PR",
+          "VI"
+        ]
+      },
+      "other_official_facts": {
+        "marine_pollutant": false,
+        "limited_quantity": false
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official US English SDS linked from the manufacturer product page",
+      "official_sds_url": "https://sdslibrary.solenis.com/BlobDownload/FetchFiles?filename=SDS/000000000004963331-US-EN.PDF",
+      "official_sds_identifier": "MS0800464",
+      "cas_numbers_referenced": [
+        "1569-01-3",
+        "68439-45-2",
+        "7722-84-1",
+        "7664-38-2",
+        "68584-22-5"
+      ],
+      "manufacturer_document_system_reference": "000000000004963331-US-EN.PDF",
+      "evidence_notes": [
+        "The official Solenis product page links directly to the US English SDS.",
+        "The reviewed manufacturer SDS identifies product code 4963331 among the covered product forms."
+      ]
+    },
+    "identity_verification": {
+      "status": "partially_verified",
+      "matched_on": [
+        "Inventory name matches the Oxivir Five 16 product line.",
+        "Inventory container size matches the official 2.5 L package.",
+        "Official record identifies a J-Fill / QuattroSelect concentrate.",
+        "Official SDS identity and manufacturer product page agree."
+      ],
+      "conflicts": [
+        {
+          "field": "inventory_listed_product_code",
+          "inventory_value": "496331",
+          "official_value": "4963331",
+          "assessment": "Likely truncated inventory identifier; correction requires review."
+        }
+      ],
+      "review_notes": [
+        "Do not silently replace the inventory code.",
+        "Confirm the container label or correct the Products sheet before setting manufacturer identity to verified."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "Oxivir Five 16 Concentrate (US) One Step Disinfectant Cleaner",
+      "manufacturer": "Diversey, Inc.",
+      "form_type": "concentrate",
+      "formulation_or_dilution": "Undiluted concentrate; SDS separately describes the manufacturer-defined 1:16 diluted product.",
+      "sds_identifier": "MS0800464",
+      "revision_date": "2024-07-31",
+      "version": "04.0",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Diversey, Inc. / Solenis",
+      "source_url": "https://sdslibrary.solenis.com/BlobDownload/FetchFiles?filename=SDS/000000000004963331-US-EN.PDF",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T16:37:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "4963331",
+      "matched_on": [
+        "Exact product line name",
+        "Concentrate form",
+        "US jurisdiction",
+        "English language",
+        "Official product page SDS link",
+        "Manufacturer product code 4963331"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS covers several Oxivir Five 16 package codes; 4963331 is the exact 2.5 L J-Fill product."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 1, page 1",
+        "data": {
+          "product_identifier": "Oxivir Five 16 Concentrate (US) One Step Disinfectant Cleaner",
+          "other_means_of_identification": [
+            "SDS MS0800464",
+            "Manufacturer product code 4963331"
+          ],
+          "recommended_use": [
+            "Industrial/institutional use",
+            "Disinfectant",
+            "Deodorizer",
+            "Sanitizer",
+            "Dilution before use"
+          ],
+          "uses_advised_against": "Uses other than those identified by the manufacturer are not recommended.",
+          "supplier": {
+            "name": "Diversey, Inc.",
+            "address": "P.O. Box 19747, Charlotte, NC 28219-0747, US",
+            "phone": "1-888-352-2249",
+            "sds_information_phone": null,
+            "website": "https://sds.diversey.com"
+          },
+          "emergency_phone": [
+            "1-800-851-7145",
+            "1-651-917-6133 (international)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 2, page 1",
+        "data": {
+          "classification": [
+            "Undiluted product: Eye irritation, Category 2B",
+            "1:16 diluted product: Not classified as hazardous under OSHA HazCom 2012"
+          ],
+          "signal_word": "Warning",
+          "pictograms": [],
+          "hazard_statements": [
+            "Causes eye irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Avoid contact with eyes, skin, and clothing.",
+              "Wash exposed areas thoroughly after handling."
+            ],
+            "response": [
+              "For eye exposure, rinse cautiously with water for at least 15 minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Obtain medical advice if eye irritation persists."
+            ],
+            "storage": [],
+            "disposal": []
+          },
+          "other_hazards": "HHNOC and PHNOC are stated as not applicable.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 3, page 1",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Propylene glycol n-propyl ether",
+              "cas_number": "1569-01-3",
+              "weight_percent": "5-10%"
+            },
+            {
+              "name": "Alcohols, C6-C12, ethoxylated (3.5EO)",
+              "cas_number": "68439-45-2",
+              "weight_percent": "3-7%"
+            },
+            {
+              "name": "Hydrogen peroxide",
+              "cas_number": "7722-84-1",
+              "weight_percent": "1-5%"
+            },
+            {
+              "name": "Phosphoric acid",
+              "cas_number": "7664-38-2",
+              "weight_percent": "1-5%"
+            },
+            {
+              "name": "Dodecylbenzene sulfonic acid",
+              "cas_number": "68584-22-5",
+              "weight_percent": "1-5%"
+            }
+          ],
+          "trade_secret_note": "Exact percentages are withheld as trade-secret information."
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse cautiously with water for at least 15 minutes; remove contact lenses when easy to do; obtain medical advice if irritation persists.",
+          "skin": "Remove contaminated clothing and rinse skin or hair with water for at least 15 minutes.",
+          "inhalation": "No specific first-aid measures are required.",
+          "ingestion": "Rinse mouth; do not induce vomiting unless directed by medical personnel; drink a cupful of milk or water.",
+          "most_important_symptoms_effects": "No information available.",
+          "immediate_medical_attention": "Not applicable.",
+          "notes_to_physician": "Probable mucosal damage may contraindicate gastric lavage."
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "The product is not flammable; use an extinguishing agent suitable for the surrounding fire."
+          ],
+          "unsuitable_extinguishing_media": "No information available.",
+          "specific_hazards": [
+            "None known."
+          ],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": "Use pressure-demand self-contained breathing apparatus and full protective gear.",
+          "special_methods": [
+            "No special methods required."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Use appropriate personal protective equipment described in section 8."
+          ],
+          "protective_equipment": [
+            "Appropriate PPE for the exposure conditions."
+          ],
+          "emergency_procedures": [],
+          "environmental_precautions": [],
+          "containment": [
+            "Absorb large spills with inert material such as dry sand or earth."
+          ],
+          "cleanup": [
+            "Place absorbed material in a chemical-waste container.",
+            "Use a water rinse for final cleanup."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 7, page 2",
+        "data": {
+          "safe_handling": [
+            "Do not mix with products or chemicals except as directed on the label.",
+            "Mix only with water.",
+            "Wash thoroughly after handling.",
+            "Avoid prolonged or repeated skin contact.",
+            "Avoid eye contact."
+          ],
+          "storage_conditions": [
+            "Keep tightly closed.",
+            "Store in a dry, cool, well-ventilated place."
+          ],
+          "incompatible_materials": [],
+          "specific_end_uses": [
+            "Commercial and industrial use only."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 8, pages 2-3",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Hydrogen peroxide",
+              "acgih": "1 ppm TWA",
+              "osha": [
+                "1 ppm TWA",
+                "1.4 mg/m3 TWA"
+              ]
+            },
+            {
+              "ingredient": "Phosphoric acid",
+              "acgih": [
+                "3 mg/m3 STEL",
+                "1 mg/m3 TWA"
+              ],
+              "osha": "1 mg/m3 TWA"
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Good general ventilation should be sufficient to control airborne levels.",
+          "eye_protection": "Normally not required; safety glasses are recommended when handling undiluted product where splashing is possible.",
+          "hand_protection": "Wear chemical-resistant gloves for prolonged or repeated skin contact.",
+          "skin_body_protection": "No specific PPE is required under normal use conditions.",
+          "respiratory_protection": "No specific PPE is required under normal use conditions; use suitable respiratory protection if aerosols, mists, or vapors are not adequately controlled.",
+          "hygiene_measures": [
+            "Follow good industrial hygiene and safety practice."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Clear liquid",
+          "color": "Colorless",
+          "odor": "Characteristic",
+          "odor_threshold": "No information available",
+          "ph": "<2",
+          "melting_freezing_point": "Not determined",
+          "boiling_point": "Not determined",
+          "flash_point": ">200 °F (>93 °C)",
+          "evaporation_rate": "No information available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "Not determined",
+            "upper": "Not determined"
+          },
+          "vapor_pressure": "No information available",
+          "vapor_density": "No information available",
+          "relative_density": 1.04,
+          "density": "1.038 kg/L",
+          "solubility": "Completely soluble",
+          "partition_coefficient": "No information available",
+          "autoignition_temperature": "No information available",
+          "decomposition_temperature": "Not determined",
+          "viscosity": "1 mPa·s",
+          "voc": "8.3% by weight; 0.5% by weight at use dilution",
+          "other_properties": {
+            "dilution_ph": "<2",
+            "dilution_flash_point": ">200 °F (>93.4 °C)",
+            "elemental_phosphorus": "1.314% by weight",
+            "corrosion_to_metals": "Not corrosive to metals",
+            "sustained_combustion": "Not applicable"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 10, page 3",
+        "data": {
+          "reactivity": "Not applicable.",
+          "chemical_stability": "Stable.",
+          "possibility_of_hazardous_reactions": [
+            "May react vigorously with strong alkaline products, producing spattering and excessive heat."
+          ],
+          "conditions_to_avoid": [
+            "None known."
+          ],
+          "incompatible_materials": [
+            "Strong bases",
+            "Ammonia",
+            "Chlorinated products such as bleach",
+            "Other products or chemicals unless permitted by the use directions"
+          ],
+          "hazardous_decomposition_products": [
+            "Oxygen"
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 11, pages 3-4",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Skin contact",
+            "Inhalation",
+            "Eye contact"
+          ],
+          "symptoms": {
+            "skin": "May be mildly irritating.",
+            "eyes": "Irritation may include discomfort, redness, and watering.",
+            "ingestion": "May cause stomach pain and nausea and irritate the mouth, throat, and stomach.",
+            "inhalation": "May cause coughing, difficulty breathing, and irritation of the nose, throat, or respiratory tract."
+          },
+          "acute_toxicity": "Not stated in the source.",
+          "skin_corrosion_irritation": "May be mildly irritating to skin.",
+          "serious_eye_damage_irritation": "Causes eye irritation.",
+          "respiratory_or_skin_sensitization": "No known effects.",
+          "germ_cell_mutagenicity": "Not stated in the source.",
+          "carcinogenicity": "Not stated in the source.",
+          "reproductive_toxicity": "Not stated in the source.",
+          "stot_single_exposure": "No target organs known.",
+          "stot_repeated_exposure": "Not stated in the source.",
+          "aspiration_toxicity": "Not stated in the source.",
+          "numerical_toxicity_measures": []
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800464, section 16, page 5",
+        "data": {
+          "nfpa": {
+            "health": 1,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2024-07-31",
+          "version": "04.0",
+          "preparation_date": null,
+          "reason_for_revision": "Not applicable",
+          "prepared_by": "North American Regulatory Affairs",
+          "additional_information": [
+            "The SDS states that the product does not contain added fragrance.",
+            "For the 1:16 diluted product, NFPA health, flammability, and instability ratings are each 0."
+          ],
+          "notice": "Manufacturer notice states that users must evaluate available information for their particular use and comply with applicable laws."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "partially_verified",
+    "manufacturer_identity_verified": false,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "Manufacturer record, official SDS link, SDS identity, and required section coverage are complete.",
+      "Final verification is blocked only by the inventory product-code mismatch: 496331 versus 4963331.",
+      "Confirm the workplace container label or correct the inventory Products sheet before catalog append."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T16:37:00-06:00",
+    "updated_at": "2026-08-03T16:37:00-06:00",
+    "change_summary": "Initial researched candidate entry created from the Inventory-3.0 Products and SDS tabs, the official Solenis product page, and manufacturer SDS MS0800464."
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-003-95773791",
+  "entry_status": "conflicting_sources",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-003",
+      "inventory_listed_name": "Breakdown odor control",
+      "inventory_listed_manufacturer": "Diversey",
+      "inventory_listed_product_code": "95773791",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "2.5 Liter",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-003-breakdown-odor-control.png"
+    },
+    "department_context": {
+      "carried_form": "concentrate",
+      "container_or_dispenser": "2.5 L J-Fill bottle for J-Fill or QuattroSelect dispensing system",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The Products sheet identifies the exact 2.5 L package and manufacturer product code 95773791.",
+        "Actual department work uses and work locations were not stated in the inventory source and remain intentionally unfilled.",
+        "The product is an enzyme-producing odor eliminator and cleaner concentrate intended for controlled dilution.",
+        "Official sources disagree on the manufacturer-defined dilution: the product page states 1:20 and 1:128, while the linked SDS describes a 1:18 diluted product."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "The concentrate and any manufacturer-defined diluted use solutions are separate product forms under the catalog formulation policy.",
+        "Do not create a diluted-use entry until the 1:18 versus 1:20/1:128 official-source conflict is resolved."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "BreakDown XC Odor Eliminator & Cleaner Concentrate Fresh 47, 2.5 L, J-Fill / QuattroSelect, 2/CT",
+      "brand": "BreakDown",
+      "manufacturer": "Diversey, Inc.",
+      "manufacturer_parent_company": "Solenis",
+      "product_line": "BreakDown XC",
+      "form_type": "concentrate",
+      "formulation_description": "Extra-concentrated enzyme-producing odor eliminator and cleaner containing enzyme-producing bacteria and odor counteractants.",
+      "package_description": "2 x 84.5 oz / 2.5 L J-Fill containers per case",
+      "dispensing_system": "J-Fill / QuattroSelect",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "95773791"
+        ],
+        "model_numbers": [],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "EAN_UPC_consumer_unit",
+            "value": "00807174527469"
+          },
+          {
+            "type": "EAN_UPC_traded_unit",
+            "value": "10807174527466"
+          },
+          {
+            "type": "WERCS_WPS_ID",
+            "value": "1201292"
+          }
+        ]
+      },
+      "aliases": [
+        "Breakdown odor control",
+        "BreakDown XC",
+        "BreakDown XC Odor Eliminator & Cleaner Concentrate - Fresh",
+        "BreakDown XC Fresh 47"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Solenis / Diversey",
+      "page_or_document_title": "BreakDown XC Odor Eliminator & Cleaner Concentrate Fresh 47, 2.5L, J-Fill / QuattroSelect, 2/CT",
+      "source_url": "https://products.solenis.com/product/breakdown-xc-odor-eliminator-cleaner-concentrate-fresh-47-25l-j-fillr-quattroselectr-2ct-odor-eliminator-cleaner-concentrate-fresh-95773791",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T16:46:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Extra-concentrated odor eliminator and cleaner containing enzyme-producing bacteria and odor counteractants intended to combat odor sources rather than only masking them.",
+      "recommended_uses": [
+        "Washrooms",
+        "Floors",
+        "Counters",
+        "Urinals",
+        "Walls",
+        "Carpets",
+        "Shower and locker rooms",
+        "Drains",
+        "Trash cans and other odor-source areas"
+      ],
+      "uses_advised_against": "Uses other than those identified by the manufacturer are not recommended.",
+      "package_and_yield": {
+        "catalog_pack_size": "2 x 84.5 oz / 2.5 L J-Fill containers",
+        "catalog_dilution_ratio_range": [
+          "1:20",
+          "1:128"
+        ],
+        "dispensing_system_case_yield_gallons": 170
+      },
+      "manufacturer_specifications": {
+        "product_category": "Surface & Washroom Cleaning",
+        "product_group": "Air Care (BC)",
+        "product_sub_group": "Odor Control",
+        "color": "Red",
+        "odor": "Fresh",
+        "neat_solution_ph": 7.75,
+        "storage_condition": "Enzymatic",
+        "storage_temperature_min_c": 6,
+        "storage_temperature_max_c": 35,
+        "shelf_life_days": 720,
+        "lifecycle_status": "Production",
+        "selling_location": [
+          "CA",
+          "US"
+        ],
+        "country_of_origin": [
+          "Canada",
+          "United States"
+        ]
+      },
+      "other_official_facts": {
+        "dot_shipping_name": "NOT REGULATED",
+        "imdg_shipping_name": "Deodorants",
+        "marine_pollutant": false,
+        "limited_quantity": false
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official US English SDS linked from the exact manufacturer product page",
+      "official_sds_url": "https://sds.diversey.com/DirectDocumentDownloader/Document?prd=MS0801655~~PDF~~MTR~~ANGH~~EN~~",
+      "official_sds_identifier": "MS0801655",
+      "cas_numbers_referenced": [
+        "68439-46-3",
+        "1300-72-7"
+      ],
+      "manufacturer_document_system_reference": "MS0801655~~PDF~~MTR~~ANGH~~EN",
+      "evidence_notes": [
+        "The exact Solenis product page for product code 95773791 links SDS MS0801655.",
+        "Product identity, package size, dispensing system, jurisdiction, and language match.",
+        "The official product page and linked SDS disagree on the defined use dilution."
+      ]
+    },
+    "identity_verification": {
+      "status": "conflicting_sources",
+      "matched_on": [
+        "Exact manufacturer product code 95773791",
+        "Exact 2.5 L package size",
+        "J-Fill / QuattroSelect dispensing system",
+        "BreakDown XC Fresh product identity",
+        "Official product-page link to SDS MS0801655"
+      ],
+      "conflicts": [
+        {
+          "field": "manufacturer_defined_dilution",
+          "official_product_record_value": [
+            "1:20",
+            "1:128"
+          ],
+          "official_sds_value": [
+            "1:18"
+          ],
+          "assessment": "Material conflict between two official sources. The exact diluted use state cannot yet be verified."
+        }
+      ],
+      "review_notes": [
+        "Commercial product identity is verified.",
+        "Keep the overall record in conflicting-sources status until Diversey or Solenis clarifies the applicable dilution for product code 95773791."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "BreakDown XC Odor Eliminator & Cleaner Concentrate - Fresh",
+      "manufacturer": "Diversey, Inc.",
+      "form_type": "concentrate",
+      "formulation_or_dilution": "Undiluted concentrate; the SDS describes a 1:18 diluted product. The product page instead lists 1:20 and 1:128.",
+      "sds_identifier": "MS0801655",
+      "revision_date": "2025-12-04",
+      "version": "03.0",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Diversey, Inc. / Solenis",
+      "source_url": "https://sds.diversey.com/DirectDocumentDownloader/Document?prd=MS0801655~~PDF~~MTR~~ANGH~~EN~~",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T16:46:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "conflicting_sources",
+      "matched_manufacturer_product_id": "95773791",
+      "matched_on": [
+        "Official SDS link from the exact product page",
+        "BreakDown XC product identity",
+        "Fresh odor variant",
+        "Concentrated form requiring dilution",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [
+        {
+          "field": "diluted_product_ratio",
+          "product_page": [
+            "1:20",
+            "1:128"
+          ],
+          "sds": [
+            "1:18"
+          ]
+        }
+      ],
+      "review_notes": [
+        "The SDS is unquestionably associated with the exact manufacturer product page.",
+        "The conflict concerns the defined diluted use state, not the concentrate's commercial identity."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 1, page 1",
+        "data": {
+          "product_identifier": "BreakDown XC Odor Eliminator & Cleaner Concentrate - Fresh",
+          "other_means_of_identification": [
+            "SDS MS0801655",
+            "Manufacturer product code 95773791"
+          ],
+          "recommended_use": [
+            "Dilution before use",
+            "Odor control",
+            "Industrial/institutional use"
+          ],
+          "uses_advised_against": "Uses other than those identified are not recommended.",
+          "supplier": {
+            "name": "Diversey, Inc.",
+            "address": "1300 Altura Rd., Suite 125, Fort Mill, SC 29708, US",
+            "phone": "1-888-352-2249",
+            "sds_information_phone": null,
+            "website": "https://sds.diversey.com"
+          },
+          "emergency_phone": [
+            "1-800-851-7145",
+            "1-651-917-6133 (international)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 2, page 1",
+        "data": {
+          "classification": [
+            "Undiluted product: Eye irritation, Category 2A",
+            "SDS-defined 1:18 diluted product: Not classified as hazardous under OSHA HazCom 2012"
+          ],
+          "signal_word": "Warning",
+          "pictograms": [],
+          "hazard_statements": [
+            "Causes serious eye irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Avoid contact with eyes, skin, and clothing.",
+              "Wash affected areas thoroughly after handling.",
+              "Wear chemical-splash goggles and chemical-resistant gloves."
+            ],
+            "response": [
+              "If swallowed, call a Poison Center or physician if unwell.",
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing for at least 15 minutes.",
+              "Obtain medical advice if eye irritation persists."
+            ],
+            "storage": [],
+            "disposal": [
+              "Dispose of in accordance with applicable federal, state, and local regulations."
+            ]
+          },
+          "other_hazards": "HHNOC and PHNOC are stated as not applicable. The SDS-defined 1:18 diluted product requires no hazard or precautionary statements.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 3, pages 1-2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Alcohol, C9-C11, ethoxylated",
+              "cas_number": "68439-46-3",
+              "weight_percent": "7-13%"
+            },
+            {
+              "name": "Sodium xylene sulfonate",
+              "cas_number": "1300-72-7",
+              "weight_percent": "0.5-1.5%"
+            }
+          ],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse cautiously with water for several minutes; remove contact lenses when present and easy to remove; continue rinsing for at least 15 minutes; obtain medical advice if irritation persists.",
+          "skin": "Wash with plenty of water for at least 15 minutes.",
+          "inhalation": "No specific first-aid measures are required.",
+          "ingestion": "Call a Poison Center or physician if the exposed person feels unwell.",
+          "most_important_symptoms_effects": "No information available.",
+          "immediate_medical_attention": "Not applicable.",
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "The product is not flammable; use an extinguishing agent suitable for the surrounding fire."
+          ],
+          "unsuitable_extinguishing_media": "No information available.",
+          "specific_hazards": [
+            "None known."
+          ],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": "Wear pressure-demand self-contained breathing apparatus approved by MSHA/NIOSH or equivalent and full protective gear.",
+          "special_methods": [
+            "No special methods required."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Put on appropriate personal protective equipment described in section 8."
+          ],
+          "protective_equipment": [
+            "Appropriate PPE for the exposure conditions."
+          ],
+          "emergency_procedures": [],
+          "environmental_precautions": [],
+          "containment": [
+            "For large spills, absorb with inert material such as dry sand or earth."
+          ],
+          "cleanup": [
+            "Place absorbed material in a chemical-waste container.",
+            "Use a water rinse for final cleanup."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 7, page 2",
+        "data": {
+          "safe_handling": [
+            "Avoid contact with skin, eyes, and clothing.",
+            "Wash thoroughly after handling.",
+            "Do not taste or swallow.",
+            "Apply all handling precautions to empty containers and residue.",
+            "Remove and wash contaminated clothing and footwear before reuse."
+          ],
+          "storage_conditions": [
+            "Keep tightly closed.",
+            "Store in a dry, cool, well-ventilated place."
+          ],
+          "incompatible_materials": [],
+          "specific_end_uses": [
+            "Commercial and industrial use only."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 8, pages 2-3",
+        "data": {
+          "occupational_exposure_limits": [],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Good general ventilation should be sufficient to control airborne levels.",
+          "eye_protection": "Undiluted product: chemical-splash goggles. SDS-defined diluted product: no eye PPE required under normal use conditions.",
+          "hand_protection": "Undiluted product: chemical-resistant gloves. SDS-defined diluted product: no hand PPE required under normal use conditions.",
+          "skin_body_protection": "No personal protective equipment required under normal use conditions.",
+          "respiratory_protection": "No respiratory PPE required under normal use conditions. Use suitable respiratory protection if aerosols, mists, or vapors are not adequately controlled by ventilation.",
+          "hygiene_measures": [
+            "Handle in accordance with good industrial hygiene and safety practice."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Hazy liquid",
+          "color": "Red",
+          "odor": "Fresh",
+          "odor_threshold": "No information available",
+          "ph": "Approximately 7.75",
+          "melting_freezing_point": "Not determined",
+          "boiling_point": "Not determined",
+          "flash_point": ">200 °F (>93 °C)",
+          "evaporation_rate": "No information available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "Not determined",
+            "upper": "Not determined"
+          },
+          "vapor_pressure": "No information available",
+          "vapor_density": "No information available",
+          "relative_density": 1.01,
+          "density": "1.012 kg/L",
+          "solubility": "Completely soluble",
+          "partition_coefficient": "No information available",
+          "autoignition_temperature": "No information available",
+          "decomposition_temperature": "Not determined",
+          "viscosity": "5 mPa·s",
+          "voc": "0% by weight; 0.0002% by weight at use dilution",
+          "other_properties": {
+            "sds_dilution_ph": "Approximately 7",
+            "sds_dilution_flash_point": ">199 °F (>93 °C)",
+            "elemental_phosphorus": "0.00% by weight",
+            "corrosion_to_metals": "Not corrosive to metals",
+            "sustained_combustion": "Not applicable",
+            "particle_characteristics": "No data available"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 10, page 3",
+        "data": {
+          "reactivity": "Not applicable.",
+          "chemical_stability": "The product is stable.",
+          "possibility_of_hazardous_reactions": [
+            "None known."
+          ],
+          "conditions_to_avoid": [
+            "None known."
+          ],
+          "incompatible_materials": [
+            "Do not mix with another product or chemical unless specified in the use directions."
+          ],
+          "hazardous_decomposition_products": [
+            "None reasonably foreseeable."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 11, pages 3-4",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Skin contact",
+            "Inhalation",
+            "Eye contact"
+          ],
+          "symptoms": {
+            "skin": "Unlikely to be irritating in normal use.",
+            "eyes": "Serious irritation; symptoms may include pain, redness, and watering.",
+            "ingestion": "Symptoms may include stomach pain and nausea and irritation of the mouth, throat, and stomach.",
+            "inhalation": "Symptoms may include coughing and difficulty breathing and irritation of the nose, throat, and respiratory tract."
+          },
+          "acute_toxicity": "Not stated in the reviewed source text.",
+          "skin_corrosion_irritation": "Unlikely to be irritating in normal use.",
+          "serious_eye_damage_irritation": "Causes serious eye irritation.",
+          "respiratory_or_skin_sensitization": "No known effects.",
+          "germ_cell_mutagenicity": "Not stated in the source.",
+          "carcinogenicity": "Not stated in the source.",
+          "reproductive_toxicity": "Not stated in the source.",
+          "stot_single_exposure": "No target organs known.",
+          "stot_repeated_exposure": "Not stated in the reviewed source text.",
+          "aspiration_toxicity": "Not stated in the source.",
+          "numerical_toxicity_measures": []
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0801655, section 16, page 5",
+        "data": {
+          "nfpa": {
+            "health": 2,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2025-12-04",
+          "version": "03.0",
+          "preparation_date": null,
+          "reason_for_revision": "Not applicable",
+          "prepared_by": "North American Regulatory Affairs",
+          "additional_information": [
+            "The SDS states that the product contains an added fragrance.",
+            "For the SDS-defined diluted product, NFPA health, flammability, and instability ratings are each 0."
+          ],
+          "notice": "The manufacturer states that users must evaluate available information for their particular use and comply with applicable laws."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "conflicting_sources",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "Inventory product code 95773791 exactly matches the official manufacturer product record.",
+      "The exact manufacturer product page links official SDS MS0801655.",
+      "All catalog-required SDS sections were reviewed.",
+      "The official product page lists 1:20 and 1:128 dilution ratios, while the linked SDS defines a 1:18 diluted product.",
+      "The Inventory-3.0 SDS tab records a 2020-09-06 revision, but the current official SDS is revision 2025-12-04, version 03.0.",
+      "Do not append this record to the verified catalog until the dilution conflict is resolved; update the inventory SDS revision separately."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T16:46:00-06:00",
+    "updated_at": "2026-08-03T16:46:00-06:00",
+    "change_summary": "Initial researched entry created from Inventory-3.0, the official Solenis product record for 95773791, and official Diversey SDS MS0801655. Record held in conflicting-sources status because official dilution values disagree."
+  }
+}

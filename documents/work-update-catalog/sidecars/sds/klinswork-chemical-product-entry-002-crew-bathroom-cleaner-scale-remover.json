@@ -1,0 +1,610 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-002-93172650",
+  "entry_status": "verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-002",
+      "inventory_listed_name": "Crew scale remover",
+      "inventory_listed_manufacturer": "Diversey",
+      "inventory_listed_product_code": "93172650",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "2.5 Liter",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-002-crew-scale-remover.png"
+    },
+    "department_context": {
+      "carried_form": "concentrate",
+      "container_or_dispenser": "2.5 L J-Fill bottle for J-Fill or QuattroSelect dispensing system",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The Products sheet identifies the exact 2.5 L bottle and manufacturer product code 93172650.",
+        "Actual department work uses and work locations were not stated in the inventory source and remain intentionally unfilled.",
+        "The official SDS requires dilution before use and separately describes the 1:18 diluted product."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "The concentrate and the manufacturer-defined 1:18 diluted use solution are distinct product forms under the catalog formulation policy.",
+        "Create a separate catalog entry for the 1:18 use solution if it is recorded or managed independently."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Crew Bathroom Cleaner & Scale Remover 44, 2.5 L, J-Fill / QuattroSelect, 2/CT",
+      "brand": "Crew",
+      "manufacturer": "Diversey, Inc.",
+      "manufacturer_parent_company": "Solenis",
+      "product_line": "Crew Bathroom Cleaner & Scale Remover 44",
+      "form_type": "concentrate",
+      "formulation_description": "Mildly acidic concentrated restroom cleaner formulated to remove soap scum and hard-water deposits and intended for controlled dilution at 1:18.",
+      "package_description": "2 x 84.5 oz / 2.5 L J-Fill containers per case",
+      "dispensing_system": "J-Fill / QuattroSelect",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "93172650"
+        ],
+        "model_numbers": [],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "EAN_UPC_consumer_unit",
+            "value": "00807174532258"
+          },
+          {
+            "type": "EAN_UPC_traded_unit",
+            "value": "10807174532255"
+          },
+          {
+            "type": "WERCS_WPS_ID",
+            "value": "1232980"
+          }
+        ]
+      },
+      "aliases": [
+        "Crew scale remover",
+        "Crew Bathroom Cleaner & Scale Remover",
+        "Crew Bathroom Cleaner and Scale Remover #44"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "Solenis / Diversey",
+      "page_or_document_title": "Crew Bathroom Cleaner & Scale Remover 44, 2.5L, J-Fill / QuattroSelect, 2/CT - Bathroom Cleaner & Scale Remover",
+      "source_url": "https://products.solenis.com/product/crewr-bathroom-cleaner-scale-remover-44-25l-j-fillr-quattroselectr-2ct-bathroom-cleaner-scale-remover-93172650",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T16:43:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Mildly acidic liquid cleaner developed to remove soap scum and hard-water deposits from most washable restroom surfaces. The official product record describes a purple liquid with a surfactant scent.",
+      "recommended_uses": [
+        "Bathroom fixtures",
+        "Tile",
+        "Shower doors",
+        "Other washable restroom surfaces",
+        "Removal of dirt, soap scum, and hard-water deposits"
+      ],
+      "uses_advised_against": "Uses other than those identified by the manufacturer are not recommended.",
+      "package_and_yield": {
+        "catalog_pack_size": "2 x 84.5 oz / 2.5 L J-Fill containers",
+        "catalog_dilution_ratio_range": [
+          "1:18"
+        ],
+        "dispensing_system_case_yield_gallons": 25
+      },
+      "manufacturer_specifications": {
+        "product_category": "Surface & Washroom Cleaning",
+        "product_group": "Washroom Cleaners",
+        "product_sub_group": "Multi-Surface Cleaners",
+        "color": "Purple",
+        "odor": "Surfactant",
+        "neat_solution_ph": 4.41,
+        "storage_temperature_min_c": 0,
+        "storage_temperature_max_c": 40,
+        "shelf_life_days": 720,
+        "lifecycle_status": "Production",
+        "selling_location": [
+          "CA",
+          "US"
+        ],
+        "country_of_origin": "US",
+        "certifications": [
+          "EcoLogo",
+          "Environmental Choice",
+          "GREENGUARD"
+        ]
+      },
+      "other_official_facts": {
+        "dot_shipping_name": "NOT REGULATED",
+        "imdg_shipping_name": "NOT REGULATED",
+        "limited_quantity": false
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Official US English SDS linked from the exact manufacturer product page",
+      "official_sds_url": "https://sds.diversey.com/private/document.aspx?prd=MS0800505~~PDF~~MTR~~ANGH~~EN~~~~&",
+      "official_sds_identifier": "MS0800505",
+      "cas_numbers_referenced": [
+        "68584-27-0",
+        "100-51-6",
+        "68002-97-1",
+        "111-90-0",
+        "1932-50-9",
+        "77-92-9"
+      ],
+      "manufacturer_document_system_reference": "MS0800505~~PDF~~MTR~~ANGH~~EN",
+      "evidence_notes": [
+        "The official Solenis product page for product code 93172650 links directly to SDS MS0800505.",
+        "The product page, package size, dispensing system, dilution ratio, and SDS product identity agree."
+      ]
+    },
+    "identity_verification": {
+      "status": "verified",
+      "matched_on": [
+        "Exact manufacturer product code 93172650",
+        "Exact 2.5 L package size",
+        "J-Fill / QuattroSelect dispensing system",
+        "Crew Bathroom Cleaner & Scale Remover product identity",
+        "Manufacturer-defined 1:18 dilution",
+        "Official product-page link to SDS MS0800505"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The inventory identifier exactly matches the official manufacturer product code.",
+        "No unresolved product-identity conflict was found."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "Crew Bathroom Cleaner & Scale Remover",
+      "manufacturer": "Diversey, Inc.",
+      "form_type": "concentrate",
+      "formulation_or_dilution": "Undiluted concentrate; SDS separately describes the 1:18 diluted product.",
+      "sds_identifier": "MS0800505",
+      "revision_date": "2025-12-04",
+      "version": "02.0",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "Diversey, Inc. / Solenis",
+      "source_url": "https://sds.diversey.com/private/document.aspx?prd=MS0800505~~PDF~~MTR~~ANGH~~EN~~~~&",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T16:43:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "93172650",
+      "matched_on": [
+        "Exact official product page",
+        "Official SDS link from that product page",
+        "Crew Bathroom Cleaner & Scale Remover identity",
+        "Concentrated form requiring dilution",
+        "1:18 manufacturer dilution",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS is linked by the manufacturer from the exact 93172650 product record.",
+        "The SDS title omits package size because it covers the chemical formulation rather than one package configuration."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 1, page 1",
+        "data": {
+          "product_identifier": "Crew Bathroom Cleaner & Scale Remover",
+          "other_means_of_identification": [
+            "SDS MS0800505",
+            "Manufacturer product code 93172650"
+          ],
+          "recommended_use": [
+            "Industrial/institutional use",
+            "Restroom care",
+            "Dilution before use"
+          ],
+          "uses_advised_against": "Uses other than those identified by the manufacturer are not recommended.",
+          "supplier": {
+            "name": "Diversey, Inc.",
+            "address": "1300 Altura Rd., Suite 125, Fort Mill, SC 29708, US",
+            "phone": "1-888-352-2249",
+            "sds_information_phone": null,
+            "website": "https://sds.diversey.com"
+          },
+          "emergency_phone": [
+            "1-800-851-7145",
+            "1-651-917-6133 (international)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 2, page 1",
+        "data": {
+          "classification": [
+            "Undiluted product: Serious eye damage, Category 1",
+            "Undiluted product: Skin irritation, Category 2",
+            "1:18 diluted product: Not classified as hazardous under OSHA HazCom 2012"
+          ],
+          "signal_word": "Danger",
+          "pictograms": [
+            "Corrosion (GHS05)"
+          ],
+          "hazard_statements": [
+            "Causes skin irritation.",
+            "Causes serious eye damage."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Avoid contact with eyes, skin, and clothing.",
+              "Wash affected areas thoroughly after handling.",
+              "Wear protective gloves and eye or face protection."
+            ],
+            "response": [
+              "If on skin, wash with plenty of soap and water.",
+              "If skin irritation occurs, obtain medical advice or attention.",
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing for at least 15 minutes.",
+              "Immediately call a Poison Center or physician.",
+              "Remove contaminated clothing and wash it before reuse."
+            ],
+            "storage": [],
+            "disposal": []
+          },
+          "other_hazards": "HHNOC and PHNOC are stated as not applicable. No hazard or precautionary statements are required for the 1:18 diluted product.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 3, pages 1-2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Benzenesulfonic acid, C10-16-alkyl derivatives, potassium salts",
+              "cas_number": "68584-27-0",
+              "weight_percent": "10-30%"
+            },
+            {
+              "name": "Benzyl alcohol",
+              "cas_number": "100-51-6",
+              "weight_percent": "3-7%"
+            },
+            {
+              "name": "Alcohols, C10-16, ethoxylated (7-<15 EO)",
+              "cas_number": "68002-97-1",
+              "weight_percent": "3-7%"
+            },
+            {
+              "name": "2-(2-ethoxyethoxy)ethanol",
+              "cas_number": "111-90-0",
+              "weight_percent": "3-7%"
+            },
+            {
+              "name": "Glycolic acid potassium salt",
+              "cas_number": "1932-50-9",
+              "weight_percent": "1-5%"
+            },
+            {
+              "name": "Citric acid",
+              "cas_number": "77-92-9",
+              "weight_percent": "1-5%"
+            }
+          ],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 4, page 2",
+        "data": {
+          "general_advice": [],
+          "eyes": "Rinse cautiously with water for several minutes; remove contact lenses when present and easy to remove; continue rinsing for at least 15 minutes.",
+          "skin": "Wash with plenty of soap and water and continue rinsing with water for at least 15 minutes. Obtain medical advice if irritation occurs.",
+          "inhalation": "No specific first-aid measures are required.",
+          "ingestion": "Call a Poison Center or physician if the exposed person feels unwell.",
+          "most_important_symptoms_effects": "No information available.",
+          "immediate_medical_attention": "Not applicable.",
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "The product is not flammable; use an extinguishing agent suitable for the surrounding fire."
+          ],
+          "unsuitable_extinguishing_media": "No information available.",
+          "specific_hazards": [
+            "Corrosive material; see SDS sections 8 and 10."
+          ],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": "Wear pressure-demand self-contained breathing apparatus approved by MSHA/NIOSH or equivalent and full protective gear.",
+          "special_methods": [
+            "No special methods required."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Put on appropriate personal protective equipment described in section 8."
+          ],
+          "protective_equipment": [
+            "Appropriate PPE for the exposure conditions."
+          ],
+          "emergency_procedures": [],
+          "environmental_precautions": [],
+          "containment": [
+            "For large spills, absorb with inert material such as dry sand or earth."
+          ],
+          "cleanup": [
+            "Place absorbed material in a chemical-waste container.",
+            "Use a water rinse for final cleanup."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 7, page 2",
+        "data": {
+          "safe_handling": [
+            "For commercial and industrial use only.",
+            "Avoid contact with skin, eyes, and clothing.",
+            "Wash thoroughly after handling.",
+            "Do not taste or swallow.",
+            "Treat empty containers and residue with the same handling precautions.",
+            "Avoid breathing vapors or mists.",
+            "Use only with adequate ventilation.",
+            "Remove and wash contaminated clothing and footwear before reuse."
+          ],
+          "storage_conditions": [
+            "Keep tightly closed.",
+            "Store in a dry, cool, well-ventilated place."
+          ],
+          "incompatible_materials": [
+            "Do not mix with any other product or chemical unless specified in the use directions."
+          ],
+          "specific_end_uses": [
+            "Commercial and industrial restroom care."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 8, pages 2-3",
+        "data": {
+          "occupational_exposure_limits": [],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Good general ventilation should be sufficient to control airborne levels.",
+          "eye_protection": "Undiluted product: chemical-splash goggles. Diluted product: no eye PPE required under normal use conditions.",
+          "hand_protection": "Undiluted product: chemical-resistant gloves. Diluted product: no hand PPE required under normal use conditions.",
+          "skin_body_protection": "No personal protective equipment required under normal use conditions.",
+          "respiratory_protection": "No respiratory PPE required under normal use conditions. Use appropriate respiratory protection if aerosols, mists, or vapors are not adequately controlled by ventilation.",
+          "hygiene_measures": [
+            "Handle in accordance with good industrial hygiene and safety practice."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Clear liquid",
+          "color": "Dark purple",
+          "odor": "Surfactant",
+          "odor_threshold": "No information available",
+          "ph": "Approximately 4.41",
+          "melting_freezing_point": "Not determined",
+          "boiling_point": "Not determined",
+          "flash_point": ">200.12 °F (>93.4 °C)",
+          "evaporation_rate": "No information available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "Not determined",
+            "upper": "Not determined"
+          },
+          "vapor_pressure": "No information available",
+          "vapor_density": "No information available",
+          "relative_density": 1.07,
+          "density": "1.067 kg/L",
+          "solubility": "Completely soluble",
+          "partition_coefficient": "No information available",
+          "autoignition_temperature": "No information available",
+          "decomposition_temperature": "Not determined",
+          "viscosity": "No information available",
+          "voc": "0.1% by weight; 0% by weight at use dilution",
+          "other_properties": {
+            "dilution_ph": "Approximately 5",
+            "dilution_flash_point": ">200 °F (>93.4 °C)",
+            "elemental_phosphorus": "0.00% by weight",
+            "corrosion_to_metals": "Not corrosive to metals",
+            "sustained_combustion": "Not applicable",
+            "particle_characteristics": "No data available"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 10, page 3",
+        "data": {
+          "reactivity": "Not applicable.",
+          "chemical_stability": "The product is stable.",
+          "possibility_of_hazardous_reactions": [
+            "None known."
+          ],
+          "conditions_to_avoid": [
+            "None known."
+          ],
+          "incompatible_materials": [
+            "Do not mix with another product or chemical unless specified in the use directions."
+          ],
+          "hazardous_decomposition_products": [
+            "None reasonably foreseeable."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 11, pages 3-4",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Skin contact",
+            "Inhalation",
+            "Ingestion",
+            "Eye contact"
+          ],
+          "symptoms": {
+            "skin": "Pain, which may be delayed, redness, and discomfort.",
+            "eyes": "Pain, burning sensation, redness, watering, blurred vision, or loss of vision.",
+            "ingestion": "No information available.",
+            "inhalation": "Irritation and corrosive effects to the nose, throat, and respiratory tract; coughing and difficulty breathing."
+          },
+          "acute_toxicity": "Estimated acute toxicity values exceed the SDS classification thresholds stated.",
+          "skin_corrosion_irritation": "Causes skin irritation.",
+          "serious_eye_damage_irritation": "Corrosive; causes serious eye damage.",
+          "respiratory_or_skin_sensitization": "No known effects.",
+          "germ_cell_mutagenicity": "Not stated in the source.",
+          "carcinogenicity": "Not stated in the source.",
+          "reproductive_toxicity": "Not stated in the source.",
+          "stot_single_exposure": "No target organs known.",
+          "stot_repeated_exposure": "No target organs known.",
+          "aspiration_toxicity": "Not stated in the source.",
+          "numerical_toxicity_measures": [
+            {
+              "measure": "ATE oral",
+              "value": ">2000 mg/kg"
+            },
+            {
+              "measure": "ATE dermal",
+              "value": ">2000 mg/kg"
+            },
+            {
+              "measure": "ATE inhalation, gases",
+              "value": ">20000 mg/L"
+            },
+            {
+              "measure": "ATE inhalation, mists",
+              "value": ">5 mg/L"
+            },
+            {
+              "measure": "ATE inhalation, vapors",
+              "value": ">20 mg/L"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official SDS MS0800505, section 16, page 5",
+        "data": {
+          "nfpa": {
+            "health": 3,
+            "flammability": 0,
+            "instability": 0,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2025-12-04",
+          "version": "02.0",
+          "preparation_date": null,
+          "reason_for_revision": "Not applicable",
+          "prepared_by": "North American Regulatory Affairs",
+          "additional_information": [
+            "The SDS states that the product does not contain added fragrance.",
+            "For the 1:18 diluted product, NFPA health, flammability, and instability ratings are each 0."
+          ],
+          "notice": "The manufacturer states that users must evaluate available information for their particular use and comply with applicable laws."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": "2026-08-03T16:43:00-06:00",
+    "verification_notes": [
+      "Inventory product code 93172650 exactly matches the official manufacturer record.",
+      "The exact manufacturer product page links official SDS MS0800505.",
+      "All catalog-required SDS sections were reviewed.",
+      "The 1:18 diluted product remains a related but separate formulation under the catalog policy."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T16:43:00-06:00",
+    "updated_at": "2026-08-03T16:43:00-06:00",
+    "change_summary": "Initial verified entry created from Inventory-3.0, the official Solenis product record for 93172650, and official Diversey SDS MS0800505."
+  }
+}

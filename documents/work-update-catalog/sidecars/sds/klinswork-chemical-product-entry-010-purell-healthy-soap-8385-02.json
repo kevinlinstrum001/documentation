@@ -1,0 +1,682 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-010-8385-02",
+  "entry_status": "partially_verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-010",
+      "inventory_listed_name": "Hand soap, dispenser",
+      "inventory_listed_manufacturer": "Gojo",
+      "inventory_listed_product_code": "8385-02",
+      "inventory_identifier_status": "verified",
+      "inventory_container_size": "1",
+      "inventory_unit": "each",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-010-purell-hand-soap.png"
+    },
+    "department_context": {
+      "carried_form": "ready_to_use",
+      "container_or_dispenser": "1,200 mL sealed refill cartridge for PURELL ES10 automatic touch-free soap dispenser",
+      "department_category": "Hygiene",
+      "work_uses": [
+        "Routine handwashing"
+      ],
+      "work_locations": [],
+      "handling_context_notes": [
+        "Inventory product code 8385-02 exactly identifies the soap refill product.",
+        "The inventory name 'Hand soap, dispenser' is imprecise: 8385-02 is the refill, not the wall-mounted dispenser.",
+        "The inventory quantity fields '1 each' do not record the commercial package: the manufacturer item is two 1,200 mL refills per case.",
+        "Actual department dispenser locations were not stated and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "Compatible PURELL ES10 soap dispensers include 8330-E1, 8334-E1, and 8338-E1.",
+        "The dispenser hardware is not a chemical product and should not be represented as this chemical catalog entry.",
+        "Other PURELL ES10 soap and sanitizer refill formulations require separate entries."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "PURELL HEALTHY SOAP with CLEAN RELEASE Technology Fragrance Free Foam, 1,200 mL ES10 Refill, 2/Case",
+      "brand": "PURELL",
+      "manufacturer": "GOJO Industries, Inc.",
+      "manufacturer_parent_company": null,
+      "product_line": "PURELL HEALTHY SOAP with CLEAN RELEASE Technology",
+      "form_type": "ready_to_use",
+      "formulation_description": "Ready-to-use fragrance-free foaming hand soap containing plant-based ingredients and no antibacterial active ingredient.",
+      "package_description": "Two 1,200 mL sealed refill cartridges per case; each refill includes a battery for the ES10 automatic dispenser system",
+      "dispensing_system": "PURELL ES10 automatic touch-free soap dispenser",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "8385-02"
+        ],
+        "model_numbers": [
+          "8385-02"
+        ],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "case_GTIN",
+            "value": "10073852294726"
+          },
+          {
+            "type": "unit_UPC",
+            "value": "073852294729"
+          },
+          {
+            "type": "SDS_number",
+            "value": "400000000737"
+          }
+        ]
+      },
+      "aliases": [
+        "Hand soap, dispenser",
+        "PURELL ES10 Healthy Soap refill",
+        "PURELL Healthy Soap Fragrance Free Foam",
+        "PURELL Clean Release soap 8385-02"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "GOJO Industries, Inc.",
+      "page_or_document_title": "PURELL HEALTHY SOAP with CLEAN RELEASE Technology Fragrance Free Foam — 8385-02",
+      "source_url": "https://www.gojo.com/en-US-int/product-catalog/product?sku=8385-02",
+      "source_type": "official_manufacturer_product_catalog_url",
+      "retrieved_at": "2026-08-03T17:49:00-06:00",
+      "access_status": "manufacturer_url_identified_but_not_retrieved",
+      "stable_reference_status": "unverified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Fragrance-free foaming hand soap designed to clean without harsh preservatives or antibacterial ingredients. CLEAN RELEASE Technology is marketed as reaching into skin crevices to lift and wash away more than 99% of dirt and germs.",
+      "recommended_uses": [
+        "Routine handwashing",
+        "Restrooms",
+        "Healthcare and institutional hand-hygiene programs",
+        "Use in compatible PURELL ES10 automatic soap dispensers"
+      ],
+      "uses_advised_against": "Do not use as a hand sanitizer or disinfectant. Use only in a compatible soap-dispensing system and according to package instructions.",
+      "package_and_yield": {
+        "refill_volume": "1,200 mL",
+        "refills_per_case": 2,
+        "case_total_volume": "2,400 mL",
+        "compatible_dispensers": [
+          "8330-E1",
+          "8334-E1",
+          "8338-E1"
+        ],
+        "estimated_water_savings_per_refill": "6 gallons compared with regular soap"
+      },
+      "manufacturer_specifications": {
+        "application": "Hand soap",
+        "product_form": "Foam",
+        "scent": "Fragrance free / unscented",
+        "color_market_descriptions": [
+          "Clear",
+          "Translucent blue",
+          "Light yellow"
+        ],
+        "antibacterial": false,
+        "disinfectant": false,
+        "hypoallergenic_market_claim": true,
+        "country_of_origin": "United States"
+      },
+      "other_official_facts": {
+        "package_identity_corroboration": {
+          "source_owner": "Baumann Paper",
+          "source_url": "https://www.baumannpaper.com/show_product/GOJ-8385",
+          "manufacturer_number": "8385-02",
+          "manufacturer_name": "GOJO Industries, Inc.",
+          "case_description": "Two 1,200 mL refills per case",
+          "case_upc": "10073852294726"
+        },
+        "source_note": "A manufacturer-owned product URL was identified, but its content was not retrievable during this review. Package details were corroborated through multiple current authorized-distributor records."
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "GOJO-authored US-English SDS for PURELL HEALTHY SOAP with CLEAN RELEASE Technology Fragrance Free Foam",
+      "official_sds_url": "https://www.webstaurantstore.com/documents/sds/8385-02_sds.pdf",
+      "official_sds_identifier": "400000000737",
+      "cas_numbers_referenced": [
+        "64-17-5",
+        "68585-34-2",
+        "56-81-5"
+      ],
+      "manufacturer_document_system_reference": "GOJO SDS 400000000737, version 1.1",
+      "evidence_notes": [
+        "The SDS names GOJO Industries, Inc. as supplier.",
+        "The SDS product name exactly matches the 8385-02 commercial product name.",
+        "Current distributor records consistently associate product code 8385-02 with this exact formulation and package."
+      ]
+    },
+    "identity_verification": {
+      "status": "partially_verified",
+      "matched_on": [
+        "Exact inventory and commercial product code 8385-02",
+        "PURELL HEALTHY SOAP product name",
+        "Fragrance-free foam formulation",
+        "1,200 mL ES10 refill format",
+        "Two refills per case",
+        "GOJO-authored SDS product identity"
+      ],
+      "conflicts": [
+        {
+          "field": "inventory_listed_name",
+          "inventory_value": "Hand soap, dispenser",
+          "official_value": "Soap refill for ES10 dispenser",
+          "assessment": "The inventory wording confuses the chemical refill with the nonchemical dispenser hardware."
+        },
+        {
+          "field": "inventory_container_size",
+          "inventory_value": "1 each",
+          "official_value": "1,200 mL refill; two refills per case",
+          "assessment": "The inventory quantity is operational rather than a complete commercial package description."
+        },
+        {
+          "field": "manufacturer_product_page_access",
+          "value": "Official URL identified but not successfully retrieved",
+          "assessment": "The entry does not yet satisfy the shell's manufacturer-owned product-record access requirement."
+        },
+        {
+          "field": "color",
+          "current_market_values": [
+            "Clear",
+            "Translucent blue",
+            "Light yellow"
+          ],
+          "sds_value": "Clear, colorless, light yellow",
+          "assessment": "Market descriptions vary. The SDS description is retained as the safety-authority value."
+        }
+      ],
+      "review_notes": [
+        "Product code, formulation, package, and SDS identity are strongly supported.",
+        "Correct the Products sheet name to identify a soap refill rather than a dispenser.",
+        "Record 1,200 mL as the refill size and preserve two per case as the commercial package.",
+        "Capture or save the manufacturer-owned 8385-02 product page before promoting the record to verified."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "PURELL HEALTHY SOAP with CLEAN RELEASE Technology Fragrance Free Foam",
+      "manufacturer": "GOJO Industries, Inc.",
+      "form_type": "ready_to_use",
+      "formulation_or_dilution": "Ready-to-use foaming hand soap; no dilution",
+      "sds_identifier": "400000000737",
+      "revision_date": "2023-08-01",
+      "version": "1.1",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "GOJO Industries, Inc.",
+      "source_url": "https://www.webstaurantstore.com/documents/sds/8385-02_sds.pdf",
+      "source_type": "manufacturer_authored_sds_distributor_hosted_copy",
+      "retrieved_at": "2026-08-03T17:49:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "8385-02",
+      "matched_on": [
+        "Exact commercial product name",
+        "GOJO supplier identity",
+        "Fragrance-free foam form",
+        "Current 8385-02 distributor package records",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The SDS does not print SKU 8385-02, but exact product-name and manufacturer matching plus current package records establish the relationship."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 1, page 1",
+        "data": {
+          "product_identifier": "PURELL HEALTHY SOAP with CLEAN RELEASE Technology Fragrance Free Foam",
+          "other_means_of_identification": [
+            "SDS 400000000737",
+            "Commercial product code 8385-02"
+          ],
+          "recommended_use": [
+            "Skin care",
+            "Routine handwashing"
+          ],
+          "uses_advised_against": "Use only as a personal-care hand soap according to package instructions.",
+          "supplier": {
+            "name": "GOJO Industries, Inc.",
+            "address": "One GOJO Plaza, Suite 500, Akron, Ohio 44311, USA",
+            "phone": "1-330-255-6000",
+            "sds_information_phone": null,
+            "website": "https://www.gojo.com"
+          },
+          "emergency_phone": [
+            "CHEMTREC 1-800-424-9300",
+            "CHEMTREC +1-703-527-3887 outside USA and Canada"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 2, pages 1-2",
+        "data": {
+          "classification": [
+            "Flammable liquids, Category 3",
+            "Eye irritation, Category 2A"
+          ],
+          "signal_word": "Warning",
+          "pictograms": [
+            "Flame",
+            "Exclamation mark"
+          ],
+          "hazard_statements": [
+            "Flammable liquid and vapor.",
+            "Causes serious eye irritation."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Keep away from heat, sparks, open flames, and hot surfaces.",
+              "No smoking.",
+              "Keep container tightly closed.",
+              "Ground and bond container and receiving equipment.",
+              "Use explosion-proof equipment and non-sparking tools where applicable.",
+              "Take precautions against static discharge.",
+              "Wear eye or face protection."
+            ],
+            "response": [
+              "If in eyes, rinse cautiously with water for several minutes.",
+              "Remove contact lenses when present and easy to remove.",
+              "Continue rinsing.",
+              "If eye irritation persists, obtain medical advice or attention.",
+              "In case of fire, use dry sand, dry chemical, or alcohol-resistant foam."
+            ],
+            "storage": [
+              "Store in a well-ventilated place.",
+              "Keep cool."
+            ],
+            "disposal": [
+              "Dispose of contents and container at an approved waste-disposal facility."
+            ]
+          },
+          "other_hazards": "None known.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 3, page 2",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Ethyl alcohol",
+              "cas_number": "64-17-5",
+              "weight_percent": "10-<20%"
+            },
+            {
+              "name": "Sodium laureth sulfate",
+              "cas_number": "68585-34-2",
+              "weight_percent": "1-<5%"
+            },
+            {
+              "name": "Glycerin",
+              "cas_number": "56-81-5",
+              "weight_percent": "1-<5%"
+            }
+          ],
+          "trade_secret_note": null
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 4, pages 2-3",
+        "data": {
+          "general_advice": [
+            "Seek medical advice immediately in case of accident or if unwell.",
+            "Seek medical advice when symptoms persist or in cases of doubt."
+          ],
+          "eyes": "Immediately flush with plenty of water for at least 15 minutes. Remove contact lenses if easy to do and obtain medical advice.",
+          "skin": "Obtain medical attention if irritation develops and persists.",
+          "inhalation": "Move to fresh air and call a physician if symptoms persist.",
+          "ingestion": "Do not induce vomiting. Rinse mouth with water and obtain medical attention.",
+          "most_important_symptoms_effects": "Causes serious eye irritation.",
+          "immediate_medical_attention": "Treat according to symptoms; seek medical advice when symptoms persist.",
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 5, page 3",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Water spray",
+            "Alcohol-resistant foam",
+            "Dry chemical",
+            "Carbon dioxide"
+          ],
+          "unsuitable_extinguishing_media": "High-volume water jet",
+          "specific_hazards": [
+            "A solid water stream may scatter and spread fire.",
+            "Flashback may occur over a considerable distance.",
+            "Vapors may form explosive mixtures with air.",
+            "Exposure to decomposition products may be hazardous to health."
+          ],
+          "hazardous_combustion_products": [
+            "Carbon oxides",
+            "Nitrogen oxides",
+            "Metal oxides"
+          ],
+          "firefighter_protection": "Wear self-contained breathing apparatus and appropriate personal protective equipment.",
+          "special_methods": [
+            "Use extinguishing methods appropriate to local conditions and surrounding materials.",
+            "Cool unopened containers with water spray.",
+            "Collect contaminated firefighting water separately."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 6, pages 3-4",
+        "data": {
+          "personal_precautions": [
+            "Use personal protective equipment.",
+            "Ensure adequate ventilation.",
+            "Remove ignition sources.",
+            "Evacuate personnel to safe areas.",
+            "Keep people away from and upwind of the spill.",
+            "Use caution because spilled material may create slippery conditions."
+          ],
+          "protective_equipment": [
+            "Personal protective equipment appropriate to the exposure conditions."
+          ],
+          "emergency_procedures": [
+            "Evacuate personnel and control ignition sources."
+          ],
+          "environmental_precautions": [
+            "Avoid discharge to the environment.",
+            "Prevent further leakage or spillage when safe.",
+            "Retain and dispose of contaminated wash water.",
+            "Notify local authorities if significant spills cannot be contained."
+          ],
+          "containment": [
+            "Use non-sparking tools.",
+            "Absorb with inert material."
+          ],
+          "cleanup": [
+            "Suppress vapors, gases, or mist with water spray where needed.",
+            "Place material in suitable closed containers for disposal.",
+            "Clean contaminated floors and objects while observing environmental regulations."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 7, page 4",
+        "data": {
+          "safe_handling": [
+            "Keep away from heat.",
+            "Use with local exhaust ventilation where required.",
+            "Avoid eye contact.",
+            "Follow the personal-protection guidance in section 8."
+          ],
+          "storage_conditions": [
+            "Prevent buildup of electrostatic charge.",
+            "Keep in properly labeled containers.",
+            "Keep tightly closed in a dry, cool, well-ventilated place.",
+            "Store according to applicable national regulations."
+          ],
+          "incompatible_materials": [
+            "Oxidizing agents"
+          ],
+          "specific_end_uses": [
+            "Ready-to-use handwashing soap"
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 8, page 4",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Ethyl alcohol",
+              "cas_number": "64-17-5",
+              "limits": [
+                "NIOSH REL TWA: 1,000 ppm / 1,900 mg/m3",
+                "OSHA Z-1 TWA: 1,000 ppm / 1,900 mg/m3",
+                "ACGIH STEL: 1,000 ppm"
+              ]
+            },
+            {
+              "ingredient": "Glycerin",
+              "cas_number": "56-81-5",
+              "limits": [
+                "OSHA Z-1 TWA respirable mist: 5 mg/m3",
+                "OSHA Z-1 TWA total mist: 15 mg/m3"
+              ]
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Use ventilation appropriate to workplace conditions; eye-flushing systems and safety showers should be located near industrial handling areas.",
+          "eye_protection": "Wear a face shield and protective suit for abnormal processing problems.",
+          "hand_protection": "No special protective equipment normally required.",
+          "skin_body_protection": "No special measures are necessary when the product is used correctly.",
+          "respiratory_protection": "No respiratory protective equipment is normally required.",
+          "hygiene_measures": [
+            "Follow good industrial hygiene and safety practice.",
+            "Avoid eye contact."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 9, page 5",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Liquid",
+          "color": "Clear, colorless, light yellow",
+          "odor": "Soap-like",
+          "odor_threshold": "No data available",
+          "ph": "5.1-7.8 at 20 °C",
+          "melting_freezing_point": "-4.6 °C",
+          "boiling_point": "77 °C",
+          "flash_point": "35 °C",
+          "evaporation_rate": "No data available",
+          "flammability": "Does not sustain combustion",
+          "explosive_limits": {
+            "lower": "No data available",
+            "upper": "No data available"
+          },
+          "vapor_pressure": "No data available",
+          "vapor_density": "No data available",
+          "relative_density": null,
+          "density": "0.98 g/cm3",
+          "solubility": "Soluble in water",
+          "partition_coefficient": "Not applicable",
+          "autoignition_temperature": "No data available",
+          "decomposition_temperature": "Not classified as self-reactive",
+          "viscosity": "10-20 mm2/s at 20 °C",
+          "voc": null,
+          "other_properties": {
+            "explosive_properties": "Not explosive",
+            "oxidizing_properties": "Not classified as oxidizing"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 10, pages 5-6",
+        "data": {
+          "reactivity": "Not classified as a reactivity hazard.",
+          "chemical_stability": "Stable under normal conditions.",
+          "possibility_of_hazardous_reactions": [
+            "Vapors may form an explosive mixture with air."
+          ],
+          "conditions_to_avoid": [
+            "Heat",
+            "Flames",
+            "Sparks"
+          ],
+          "incompatible_materials": [
+            "Oxidizing agents"
+          ],
+          "hazardous_decomposition_products": [
+            "No hazardous decomposition products are known."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 11, pages 6-9",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Inhalation",
+            "Eye contact",
+            "Skin contact"
+          ],
+          "symptoms": {
+            "eyes": "Serious eye irritation.",
+            "skin": "Product was not irritating when applied to human skin.",
+            "general": "Local irritation may occur."
+          },
+          "acute_toxicity": "Not classified based on available information.",
+          "skin_corrosion_irritation": "Not classified; product testing reported no skin irritation.",
+          "serious_eye_damage_irritation": "Causes serious eye irritation.",
+          "respiratory_or_skin_sensitization": "Not classified for skin or respiratory sensitization.",
+          "germ_cell_mutagenicity": "Not classified.",
+          "carcinogenicity": "Not classified; no component at 0.1% or more is identified as a carcinogen by IARC, OSHA, or NTP.",
+          "reproductive_toxicity": "Not classified.",
+          "stot_single_exposure": "Not classified.",
+          "stot_repeated_exposure": "Not classified.",
+          "aspiration_toxicity": "Not classified.",
+          "numerical_toxicity_measures": [
+            {
+              "ingredient": "Ethyl alcohol",
+              "measure": "Oral LD50, rat",
+              "value": ">5,000 mg/kg"
+            },
+            {
+              "ingredient": "Ethyl alcohol",
+              "measure": "Inhalation LC50, rat, vapor, 4 h",
+              "value": "124.7 mg/L"
+            },
+            {
+              "ingredient": "Sodium laureth sulfate",
+              "measure": "Oral LD50, rat",
+              "value": ">2,000 mg/kg"
+            },
+            {
+              "ingredient": "Glycerin",
+              "measure": "Oral LD50, rat",
+              "value": ">5,000 mg/kg"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "GOJO SDS 400000000737, version 1.1, section 16, page 12",
+        "data": {
+          "nfpa": {
+            "health": null,
+            "flammability": null,
+            "instability": null,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": null,
+            "flammability": null,
+            "physical_hazard": null,
+            "personal_protection": null
+          },
+          "revision_date": "2023-08-01",
+          "version": "1.1",
+          "preparation_date": null,
+          "reason_for_revision": null,
+          "prepared_by": "GOJO Industries, Inc.",
+          "additional_information": [
+            "The SDS displays NFPA and HMIS headings graphically, but the parsed text did not expose the numerical ratings.",
+            "The SDS states that the product is not regulated as dangerous goods under IATA, IMDG, or 49 CFR.",
+            "The SDS states that no California Proposition 65 warning is required.",
+            "The product is a personal-care/cosmetic product under normal use, but the SDS provides industrial-workplace handling information for unusual exposures and large spills."
+          ],
+          "notice": "The manufacturer states that the information is believed correct at publication and is guidance for safe handling rather than a warranty."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "partially_verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "Inventory product code 8385-02 correctly identifies the exact PURELL soap refill formulation.",
+      "The canonical package is two 1,200 mL ES10 refills per case.",
+      "The inventory wording incorrectly describes the product as a dispenser and records only '1 each.'",
+      "The GOJO-authored SDS is document 400000000737, revision 2023-08-01, version 1.1.",
+      "All catalog-required SDS sections were reviewed.",
+      "The manufacturer-owned product URL was identified but was not successfully retrieved during this review.",
+      "Promote the record to verified after saving or reviewing the manufacturer-owned 8385-02 product page and correcting the Products sheet description and package fields."
+    ]
+  },
+  "record_history": {
+    "record_revision": 1,
+    "created_at": "2026-08-03T17:49:00-06:00",
+    "updated_at": "2026-08-03T17:49:00-06:00",
+    "change_summary": "Initial researched entry created from Inventory-3.0, current commercial package records for GOJO product 8385-02, and GOJO-authored SDS 400000000737 version 1.1. The entry remains partially verified because the inventory describes refill product as dispenser hardware and the manufacturer-owned product page was not retrievable."
+  }
+}

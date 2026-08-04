@@ -1,0 +1,639 @@
+{
+  "catalog_entry_id": "klinswork-chemical-product-chem-005-31415",
+  "entry_status": "partially_verified",
+  "product_info": {
+    "workplace_product": {
+      "inventory_sheet_id": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+      "inventory_tab": "Products",
+      "inventory_product_id": "CHEM-005",
+      "inventory_listed_name": "Urine remover",
+      "inventory_listed_manufacturer": "Clorox",
+      "inventory_listed_product_code": "31478",
+      "inventory_identifier_status": "conflicting_sources",
+      "inventory_container_size": "32 oz",
+      "inventory_unit": "bottle",
+      "product_image_url": "https://raw.githubusercontent.com/kevinlinstrum001/inventory/main/images/products/chem-005-urine-remover.png"
+    },
+    "department_context": {
+      "carried_form": "ready_to_use",
+      "container_or_dispenser": "32 oz ready-to-use bottle; Grainger item 48RF66; manufacturer model 31415; sold 6 bottles per package",
+      "department_category": "Cleaner",
+      "work_uses": [],
+      "work_locations": [],
+      "handling_context_notes": [
+        "The user identified Grainger item 48RF66 as the exact workplace product.",
+        "Grainger identifies the exact package as a 32 oz ready-to-use bottle, manufacturer model 31415, sold six per package.",
+        "The official CloroxPro product family page confirms that Urine Remover is available in a 32 fl oz pull-top bottle form.",
+        "The Products sheet still lists 31478, which belongs to Clorox Healthcare Fuzion Cleaner Disinfectant and must be corrected to 31415.",
+        "Actual department work uses and locations were not stated in the inventory source and remain intentionally unfilled."
+      ]
+    },
+    "product_relationships": {
+      "related_catalog_entries": [],
+      "relationship_notes": [
+        "Manufacturer model 31415 is the exact 32 oz bottle package used by the department.",
+        "Manufacturer item 31036 is the separate 32 oz trigger-spray package and is not the workplace package identified here.",
+        "Clorox Healthcare Fuzion Cleaner Disinfectant item 31478 is a separate chemical product and must not be associated with this record."
+      ]
+    }
+  },
+  "manufacturer_info_sheet": {
+    "identity": {
+      "canonical_product_name": "Clorox Urine Remover For Stains & Odors, Ready-to-Use, 32 oz Bottle, 6/PK",
+      "brand": "Clorox",
+      "manufacturer": "The Clorox Company",
+      "manufacturer_parent_company": null,
+      "product_line": "Clorox Urine Remover",
+      "form_type": "ready_to_use",
+      "formulation_description": "Bleach-free, hydrogen-peroxide-based ready-to-use cleaner formulated to break down urine odors and remove protein-based stains from hard and soft surfaces.",
+      "package_description": "32 oz bottle, manufacturer model 31415; Grainger item 48RF66; 6 bottles per package",
+      "dispensing_system": "Direct application from 32 oz bottle",
+      "jurisdiction": "US",
+      "language": "en",
+      "manufacturer_identifiers": {
+        "product_codes": [
+          "31415"
+        ],
+        "model_numbers": [
+          "31415"
+        ],
+        "catalog_numbers": [],
+        "other_identifiers": [
+          {
+            "type": "Grainger_item_number",
+            "value": "48RF66"
+          },
+          {
+            "type": "SDS_document_number",
+            "value": "USA001015"
+          },
+          {
+            "type": "package_quantity",
+            "value": "6 bottles"
+          }
+        ]
+      },
+      "aliases": [
+        "Urine remover",
+        "Clorox Urine Odor Remover",
+        "Clorox Urine Remover for Stains & Odors",
+        "Clorox Urine Remover 31415"
+      ]
+    },
+    "official_product_record": {
+      "source_owner": "CloroxPro / The Clorox Company",
+      "page_or_document_title": "Clorox Urine Odor Remover",
+      "source_url": "https://www.cloroxpro.com/products/clorox/urine-remover/",
+      "source_type": "official_manufacturer_product_page",
+      "retrieved_at": "2026-08-03T16:59:00-06:00",
+      "access_status": "accessible",
+      "stable_reference_status": "verified",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "manufacturer_product_data": {
+      "description": "Bleach-free cleaner for short-term messes and long-term urine stains. The manufacturer states that hydrogen peroxide breaks down odors and lifts stains on soft, absorbent surfaces and hard, porous surfaces.",
+      "recommended_uses": [
+        "Tile and grout",
+        "Urinals and toilets",
+        "Carpet",
+        "Mattresses",
+        "Upholstery",
+        "Walls",
+        "Concrete, pavement, sidewalks, and outdoor tile",
+        "Human soils including feces, blood, and vomit",
+        "Pet stains",
+        "Laundry pretreatment"
+      ],
+      "uses_advised_against": "Not recommended for brass, natural marble, silk, or leather upholstery.",
+      "package_and_yield": {
+        "ready_to_use": true,
+        "exact_package_type": "32 oz bottle",
+        "manufacturer_model": "31415",
+        "distributor_item_number": "48RF66",
+        "unit_quantity_per_package": 6,
+        "dilution": "Ready to use"
+      },
+      "manufacturer_specifications": {
+        "active_ingredient_listing": "N/A on manufacturer product page",
+        "formula_basis": "Hydrogen peroxide",
+        "bleach_free": true,
+        "trigger_spray_shelf_life_months": 24,
+        "trigger_spray_toxicity_signal_word": "Caution",
+        "trigger_spray_hmis_rating_product_page": "0-0-0-A",
+        "container_size": "32 oz",
+        "container_type": "Bottle",
+        "cleaner_form": "Liquid",
+        "recommended_dilution": "Ready to use",
+        "fragrance": "Unscented",
+        "color": "Clear",
+        "ph_character": "Acidic",
+        "nonflammable": true,
+        "voc_content": "1%",
+        "rinse_required": true,
+        "country_of_origin": "USA, subject to change"
+      },
+      "other_official_facts": {
+        "general_application": "Apply directly until the stain is covered, then rinse with water or wipe with a clean damp cloth.",
+        "tough_stain_contact_time": "5 minutes",
+        "soft_surface_contact_time": "3 minutes before blotting",
+        "painted_surface_instruction": "Test a small area for colorfastness before use.",
+        "not_an_epa_registered_disinfectant": true,
+        "exact_commercial_package_reference": {
+          "source_owner": "W.W. Grainger, Inc.",
+          "source_url": "https://www.grainger.com/product/CLOROX-Urine-Remover-Bottle-48RF66",
+          "item_number": "48RF66",
+          "manufacturer_model": "31415",
+          "package": "32 oz bottle, 6 PK",
+          "retrieved_at": "2026-08-03T17:15:00-06:00"
+        }
+      }
+    },
+    "safety_reference": {
+      "relationship_status": "verified",
+      "reference_type": "multiple",
+      "reference_label": "Current official Clorox US-English SDS, corroborated by the older SDS linked from the exact Grainger package listing",
+      "official_sds_url": "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/USA001015-Clorox-Urine-Remover-for-Stains-and-Odors_1.pdf",
+      "official_sds_identifier": "USA001015",
+      "cas_numbers_referenced": [
+        "7722-84-1"
+      ],
+      "manufacturer_document_system_reference": "https://www.thecloroxcompany.com/sds/clorox-urine-remover-for-stains-odors/",
+      "evidence_notes": [
+        "The current official Clorox Company SDS portal identifies Clorox Urine Remover For Stains & Odors as document USA001015.",
+        "Grainger item 48RF66 identifies the exact workplace package as manufacturer model 31415.",
+        "The SDS linked from the exact Grainger package is the older March 29, 2019 revision of the same Clorox Commercial Solutions product.",
+        "The current manufacturer SDS dated December 1, 2021 supersedes the older distributor-hosted SDS for catalog safety information."
+      ]
+    },
+    "identity_verification": {
+      "status": "partially_verified",
+      "matched_on": [
+        "User-confirmed exact Grainger item 48RF66",
+        "Grainger manufacturer model 31415",
+        "32 oz ready-to-use bottle",
+        "Clorox Urine Remover product identity",
+        "Official CloroxPro product family record confirms a 32 fl oz bottle form",
+        "Official Clorox Company SDS USA001015",
+        "Older SDS linked from the exact Grainger package corroborates the same formulation identity"
+      ],
+      "conflicts": [
+        {
+          "field": "inventory_listed_product_code",
+          "inventory_value": "31478",
+          "verified_exact_package_value": "31415",
+          "assessment": "The exact workplace package is now resolved. The remaining conflict is an incorrect value in the Products sheet."
+        },
+        {
+          "field": "sds_revision_in_inventory",
+          "inventory_value": "2019-03-29",
+          "current_official_value": "2021-12-01",
+          "assessment": "Grainger still links the older revision, but the current manufacturer SDS is the catalog safety authority."
+        }
+      ],
+      "review_notes": [
+        "Exact workplace package identity is resolved as manufacturer model 31415.",
+        "Correct the Products sheet from 31478 to 31415.",
+        "Correct the SDS sheet to document USA001015, issue date 2021-12-01, version 01.",
+        "After those source-sheet corrections are made, the record can be promoted from partially_verified to verified."
+      ]
+    }
+  },
+  "sds_info_sheet": {
+    "sds_identity": {
+      "official_product_name": "Clorox Urine Remover For Stains & Odors",
+      "manufacturer": "The Clorox Company",
+      "form_type": "ready_to_use",
+      "formulation_or_dilution": "Ready-to-use; no dilution stated or required",
+      "sds_identifier": "USA001015",
+      "revision_date": "2021-12-01",
+      "version": "01",
+      "jurisdiction": "US",
+      "language": "en"
+    },
+    "official_sds_record": {
+      "source_owner": "The Clorox Company",
+      "source_url": "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/USA001015-Clorox-Urine-Remover-for-Stains-and-Odors_1.pdf",
+      "source_type": "official_manufacturer_sds",
+      "retrieved_at": "2026-08-03T17:15:00-06:00",
+      "access_status": "accessible",
+      "saved_capture": {
+        "status": "not_saved",
+        "relative_path": null,
+        "content_hash_sha256": null
+      }
+    },
+    "product_match": {
+      "status": "verified",
+      "matched_manufacturer_product_id": "31415",
+      "matched_on": [
+        "Exact Grainger package identifies manufacturer model 31415",
+        "Exact package listing links an older SDS for Clorox Commercial Solutions Clorox Urine Remover For Stains & Odors",
+        "Current Clorox SDS identifies the same product as document USA001015",
+        "Ready-to-use liquid formulation",
+        "Hydrogen peroxide ingredient",
+        "US jurisdiction",
+        "English language"
+      ],
+      "conflicts": [],
+      "review_notes": [
+        "The exact package-to-product relationship is now established.",
+        "The current official Clorox SDS supersedes the older 2019 SDS linked by Grainger."
+      ]
+    },
+    "coverage": {
+      "required_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "complete_sections": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16
+      ],
+      "partial_sections": [],
+      "unresolved_sections": [],
+      "overall_status": "complete"
+    },
+    "sections": {
+      "1_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 1, page 1",
+        "data": {
+          "product_identifier": "Clorox Urine Remover For Stains & Odors",
+          "other_means_of_identification": [
+            "Document number USA001015",
+            "Reference item 52580.001"
+          ],
+          "recommended_use": [
+            "Spot remover"
+          ],
+          "uses_advised_against": "None known.",
+          "supplier": {
+            "name": "The Clorox Company",
+            "address": "1221 Broadway, Oakland, CA 94612, United States",
+            "phone": "1-510-271-7000",
+            "sds_information_phone": "1-800-492-9729",
+            "website": "https://www.thecloroxcompany.com"
+          },
+          "emergency_phone": [
+            "Medical Emergency: 1-800-446-1014",
+            "Transportation Emergency: 1-800-424-9300 (CHEMTREC)"
+          ]
+        }
+      },
+      "2_hazard_identification": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 2, page 1",
+        "data": {
+          "classification": [
+            "Physical hazards: Not classified",
+            "Health hazards: Not classified",
+            "Environmental hazards: Not classified",
+            "OSHA-defined hazards: Not classified"
+          ],
+          "signal_word": null,
+          "pictograms": [],
+          "hazard_statements": [
+            "The mixture does not meet the criteria for classification."
+          ],
+          "precautionary_statements": {
+            "prevention": [
+              "Observe good industrial hygiene practices."
+            ],
+            "response": [
+              "Wash hands after handling."
+            ],
+            "storage": [
+              "Store away from incompatible materials."
+            ],
+            "disposal": [
+              "Dispose of container in accordance with local, regional, national, and international regulations."
+            ]
+          },
+          "other_hazards": "No hazards not otherwise classified are known.",
+          "unknown_toxicity": null
+        }
+      },
+      "3_composition_information_on_ingredients": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 3, page 1",
+        "data": {
+          "substance_or_mixture": "Mixture",
+          "ingredients": [
+            {
+              "name": "Hydrogen peroxide",
+              "cas_number": "7722-84-1",
+              "weight_percent": "1-5%"
+            }
+          ],
+          "trade_secret_note": "The exact percentage has been withheld as a trade secret under 29 CFR 1910.1200 paragraph (i)."
+        }
+      },
+      "4_first_aid_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 4, pages 1-2",
+        "data": {
+          "general_advice": [
+            "If unwell, seek medical advice and show the label or SDS where possible.",
+            "Keep out of reach of children and pets."
+          ],
+          "eyes": "Flush with water for 15 minutes. If irritation persists, call a doctor.",
+          "skin": "Flush with cool water, wash with soap and water, and obtain medical attention if irritation persists.",
+          "inhalation": "Move the person into fresh air.",
+          "ingestion": "Drink a glassful of water and call a doctor or poison control center.",
+          "most_important_symptoms_effects": "Direct eye contact may cause temporary irritation.",
+          "immediate_medical_attention": "Provide general supportive measures and treat symptomatically; symptoms may be delayed.",
+          "notes_to_physician": null
+        }
+      },
+      "5_fire_fighting_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 5, page 2",
+        "data": {
+          "suitable_extinguishing_media": [
+            "Use extinguishing media appropriate for the surrounding material."
+          ],
+          "unsuitable_extinguishing_media": "Do not use a water jet because it may spread the fire; water spray may be inefficient.",
+          "specific_hazards": [
+            "Gases hazardous to health may be formed during fire."
+          ],
+          "hazardous_combustion_products": [],
+          "firefighter_protection": "Wear self-contained breathing apparatus and full protective clothing.",
+          "special_methods": [
+            "Move containers from the fire area if this can be done without risk.",
+            "Use standard firefighting procedures and consider hazards of other involved materials.",
+            "No unusual fire or explosion hazards are noted."
+          ]
+        }
+      },
+      "6_accidental_release_measures": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 6, page 2",
+        "data": {
+          "personal_precautions": [
+            "Keep unnecessary personnel away and upwind of the spill.",
+            "Do not touch damaged containers or spilled material without appropriate protection.",
+            "Ensure adequate ventilation."
+          ],
+          "protective_equipment": [
+            "Wear appropriate protective equipment and clothing during cleanup."
+          ],
+          "emergency_procedures": [
+            "Advise local authorities if significant spills cannot be contained."
+          ],
+          "environmental_precautions": [
+            "Avoid release to the environment.",
+            "Prevent discharge into drains, waterways, lakes, streams, ponds, or public waters.",
+            "Prevent further leakage or spillage if safe to do so."
+          ],
+          "containment": [
+            "Prevent entry into waterways, sewers, basements, or confined areas.",
+            "Prevent large spills from entering sewers or waterways."
+          ],
+          "cleanup": [
+            "Absorb small spills with non-reactive absorbent.",
+            "Place collected material in suitable covered and labeled containers.",
+            "Contact emergency services and the supplier for advice on large spills."
+          ]
+        }
+      },
+      "7_handling_and_storage": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 7, page 2",
+        "data": {
+          "safe_handling": [
+            "Avoid contact with eyes, skin, or clothing.",
+            "Wash thoroughly after handling.",
+            "Use good industrial hygiene practices.",
+            "Do not eat or drink while using the product."
+          ],
+          "storage_conditions": [
+            "Keep in the original container.",
+            "Do not reuse containers.",
+            "Keep out of reach of children and pets.",
+            "Store away from incompatible materials."
+          ],
+          "incompatible_materials": [
+            "Oxidizers"
+          ],
+          "specific_end_uses": [
+            "Ready-to-use spot and odor removal."
+          ]
+        }
+      },
+      "8_exposure_controls_personal_protection": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 8, pages 2-3",
+        "data": {
+          "occupational_exposure_limits": [
+            {
+              "ingredient": "Hydrogen peroxide",
+              "osha_pel": [
+                "1 ppm",
+                "1.4 mg/m3"
+              ],
+              "acgih_twa": "1 ppm",
+              "niosh_twa": [
+                "1 ppm",
+                "1.4 mg/m3"
+              ]
+            }
+          ],
+          "biological_exposure_limits": [],
+          "engineering_controls": "Use good general ventilation, typically 10 air changes per hour, and match ventilation to conditions. Use enclosure or local exhaust where needed to maintain acceptable airborne levels.",
+          "eye_protection": "Normally not required under normal use conditions; use safety glasses with side shields if splashing is likely.",
+          "hand_protection": "Normally not required when used as directed; wear rubber gloves for prolonged use.",
+          "skin_body_protection": "Wear appropriate chemical-resistant clothing as required by employer policy.",
+          "respiratory_protection": "Use an approved NIOSH respirator where exposure guidelines may be exceeded, selected and supervised by a trained health and safety professional.",
+          "hygiene_measures": [
+            "Wash hands before breaks and immediately after handling.",
+            "Wash before eating, drinking, or smoking.",
+            "Routinely wash work clothing and protective equipment.",
+            "Do not eat or drink while using the product."
+          ]
+        }
+      },
+      "9_physical_and_chemical_properties": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 9, page 3",
+        "data": {
+          "physical_state": "Liquid",
+          "appearance": "Clear liquid",
+          "color": "Clear",
+          "odor": "Fruity, floral",
+          "odor_threshold": "Not available",
+          "ph": "5-6",
+          "melting_freezing_point": "Not available",
+          "boiling_point": "Not available",
+          "flash_point": "Not available",
+          "evaporation_rate": "Not available",
+          "flammability": "Not applicable",
+          "explosive_limits": {
+            "lower": "Not available",
+            "upper": "Not available"
+          },
+          "vapor_pressure": "Not available",
+          "vapor_density": "Not available",
+          "relative_density": "Approximately 1.0",
+          "density": null,
+          "solubility": "Soluble",
+          "partition_coefficient": "Not available",
+          "autoignition_temperature": "Not available",
+          "decomposition_temperature": "Not available",
+          "viscosity": "Not available",
+          "voc": null,
+          "other_properties": {
+            "pour_point": "Not available"
+          }
+        }
+      },
+      "10_stability_and_reactivity": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 10, pages 3-4",
+        "data": {
+          "reactivity": "May react with strong oxidizing agents.",
+          "chemical_stability": "Stable under normal conditions.",
+          "possibility_of_hazardous_reactions": [
+            "No dangerous reaction is known under normal conditions of use."
+          ],
+          "conditions_to_avoid": [
+            "Do not mix with other chemicals."
+          ],
+          "incompatible_materials": [
+            "Oxidizers"
+          ],
+          "hazardous_decomposition_products": [
+            "May include oxides of carbon."
+          ]
+        }
+      },
+      "11_toxicological_information": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 11, pages 4-5",
+        "data": {
+          "likely_routes_of_exposure": [
+            "Inhalation",
+            "Skin contact",
+            "Eye contact",
+            "Ingestion"
+          ],
+          "symptoms": {
+            "inhalation": "No adverse effects are expected during normal use; excessive intentional inhalation may irritate the respiratory tract.",
+            "skin": "Not expected to be a primary skin irritant.",
+            "eyes": "Direct contact may cause temporary irritation.",
+            "ingestion": "May cause stomach distress, nausea, or vomiting."
+          },
+          "acute_toxicity": "The SDS provides ingredient-level hydrogen-peroxide acute toxicity data.",
+          "skin_corrosion_irritation": "Not expected to be a primary skin irritant.",
+          "serious_eye_damage_irritation": "Direct eye contact may cause temporary irritation.",
+          "respiratory_or_skin_sensitization": "Not a respiratory sensitizer; skin-sensitization data not available.",
+          "germ_cell_mutagenicity": "Not classified.",
+          "carcinogenicity": "Product not classified. Hydrogen peroxide is ACGIH A3 and IARC Group 3.",
+          "reproductive_toxicity": "Not expected to cause reproductive or developmental effects.",
+          "stot_single_exposure": "Not classified.",
+          "stot_repeated_exposure": "Not classified.",
+          "aspiration_toxicity": "Not an aspiration hazard.",
+          "numerical_toxicity_measures": [
+            {
+              "ingredient": "Hydrogen peroxide",
+              "route": "Dermal LD50, rabbit",
+              "value": ">2000 mg/kg, 24 hours"
+            },
+            {
+              "ingredient": "Hydrogen peroxide",
+              "route": "Inhalation LC50, rat",
+              "value": ">170 mg/m3, 4 hours"
+            },
+            {
+              "ingredient": "Hydrogen peroxide",
+              "route": "Oral LD50, rat, male",
+              "value": "1026 mg/kg"
+            },
+            {
+              "ingredient": "Hydrogen peroxide",
+              "route": "Oral LD50, rat, female",
+              "value": "693.7 mg/kg"
+            }
+          ]
+        }
+      },
+      "16_other_information": {
+        "status": "complete",
+        "source_reference": "Official SDS USA001015, section 16, page 6",
+        "data": {
+          "nfpa": {
+            "health": null,
+            "flammability": null,
+            "instability": null,
+            "special_hazards": null
+          },
+          "hmis": {
+            "health": 1,
+            "flammability": 0,
+            "physical_hazard": 0,
+            "personal_protection": "X"
+          },
+          "revision_date": "2021-12-01",
+          "version": "01",
+          "preparation_date": null,
+          "reason_for_revision": null,
+          "prepared_by": "The Clorox Company; SDS text prepared by Dell Tech Laboratories Ltd.",
+          "additional_information": [
+            "Reference item: 52580.001",
+            "The current official manufacturer SDS is USA001015, issue date December 1, 2021, version 01.",
+            "The exact Grainger package listing still links a superseded SDS revised March 29, 2019.",
+            "The current SDS HMIS rating is 1-0-0-X; the superseded Grainger-linked SDS reports 0-0-0-A.",
+            "The catalog authority model therefore uses the current official manufacturer SDS for safety information."
+          ],
+          "notice": "The SDS states that information is believed technically accurate and reliable but that actual conditions of use are outside the supplier's control."
+        }
+      }
+    }
+  },
+  "record_verification": {
+    "overall_status": "partially_verified",
+    "manufacturer_identity_verified": true,
+    "manufacturer_safety_reference_verified": true,
+    "sds_product_match_verified": true,
+    "required_sections_reviewed": true,
+    "verified_at": null,
+    "verification_notes": [
+      "The user identified Grainger item 48RF66 as the exact workplace product.",
+      "Grainger identifies the package as manufacturer model 31415, 32 oz ready-to-use bottle, six per package.",
+      "The official CloroxPro product record confirms the 32 fl oz bottle product form.",
+      "The current official manufacturer SDS is USA001015, issue date 2021-12-01, version 01.",
+      "The Grainger listing links a superseded SDS revised 2019-03-29; this confirms product continuity but is not used as the current safety authority.",
+      "All required SDS sections remain reviewed and complete.",
+      "The record remains partially verified only because Inventory-3.0 still contains product code 31478 and the superseded SDS date."
+    ]
+  },
+  "record_history": {
+    "record_revision": 2,
+    "created_at": "2026-08-03T16:59:00-06:00",
+    "updated_at": "2026-08-03T17:15:00-06:00",
+    "change_summary": "Resolved the exact workplace package from the user-provided Grainger listing as item 48RF66 / manufacturer model 31415, replaced the incorrect SDS identity USA001335 with current official SDS USA001015, and reduced the unresolved scope to corrections required in the Inventory-3.0 Products and SDS tabs."
+  }
+}
