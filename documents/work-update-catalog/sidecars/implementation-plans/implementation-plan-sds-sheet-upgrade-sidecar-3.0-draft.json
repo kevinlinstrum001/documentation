@@ -1,0 +1,2088 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "implementation-plan",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "implementation-plan-sidecar-template-3.0-draft.json",
+    "previewMode": "implementation-plan"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [
+          "Formal linkage to project records when the project catalog exists",
+          "Implementation-plan catalog identifiers",
+          "Optional amendment and execution-result linkage"
+        ],
+        "changes": [
+          "Clarify repositoryPath semantics for document versus sidecar locations"
+        ],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should implementation-plan sidecars include a formal approval block?",
+          "Should planned and actual implementation stages remain in one sidecar or be linked to a later execution record?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "implementation-plan-inventory-app-sds-registry-upgrade-2026-08-04",
+    "filePath": "documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "documentUrl": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "title": "Inventory 3.0 SDS Registry Rebuild and App Integration",
+    "headline": "Rebuild the Inventory App SDS registry and integrate verification status into the current Inventory 3.0 interface",
+    "documentType": "implementation-plan",
+    "createdTimestamp": "2026-08-04T05:32:00-06:00",
+    "updatedTimestamp": "2026-08-04T05:57:00-06:00"
+  },
+  "metadata": {
+    "filePath": "documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "url": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "sidecarFilePath": "documents/work-update-catalog/sidecars/implementation-plans/implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json",
+    "summaryFilePath": "",
+    "repositoryPath": "documents/work-update-catalog/sidecars/implementation-plans/implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "implementation-plan-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-project-change-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "WORK_SESSION_REGISTERED",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory App",
+      "projectType": "inventory-management and product-information application",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Maintain product, quantity, location, transaction-history, product-reference, and SDS information through a stable inventory application whose project identity is independent of release numbering.",
+      "projectPhase": "SDS registry rebuild and app-integration planning",
+      "contributionType": "data-model migration and interface enhancement",
+      "identificationBasis": "The user explicitly designated Inventory App as the stable project name, the repository path is projects/inventory-app, and the current deployed application and plan still use the historical product name Inventory 3.0.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Klinswork Chemical Product Catalog",
+        "relationshipType": "authoritative-research-source",
+        "relationshipDescription": "Supplies the assembled twelve-product identity, SDS, verification-status, section-coverage, issue, and source data used to rebuild the operational SDS sheet.",
+        "impact": "The catalog becomes the detailed research authority while the Inventory App SDS sheet becomes its concise operational projection.",
+        "evidenceSectionAnchors": [
+          "#planning-basis",
+          "#new-sds-sheet-structure",
+          "#planned-record-population"
+        ],
+        "identificationBasis": "The implementation plan explicitly names klinswork-chemical-product-catalog-001.json as a planning basis.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Google Workspace application foundation",
+        "foundationType": "platform-foundation",
+        "relationshipDescription": "Inventory App uses Google Sheets as its datastore and Google Apps Script as its web-application runtime.",
+        "impact": "The sheet schema and browser-side rendering must remain compatible with generic Apps Script table loading."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork structured-record conventions",
+        "foundationType": "information-architecture foundation",
+        "relationshipDescription": "Stable IDs, controlled statuses, explicit source authority, individual sidecars, and later catalog aggregation govern the work.",
+        "impact": "Current, verified, conflicting, historical, and unavailable records remain distinguishable."
+      }
+    ],
+    "relationshipSummary": "Inventory App is the primary project. The current deployed product is still named Inventory 3.0. The Klinswork Chemical Product Catalog provides the detailed source records; the rebuilt SDS sheet will expose a smaller operational view to the application."
+  },
+  "subject": {
+    "projectName": "Inventory App",
+    "primaryApp": "Inventory 3.0",
+    "mainFocus": "SDS registry rebuild and application integration",
+    "description": "A bounded implementation plan for replacing the bootstrap SDS sheet with a status-aware current-and-history registry, correcting a small set of confirmed product references, and updating the client interface without changing inventory transaction behavior.",
+    "topics": [
+      "safety data sheets",
+      "chemical product records",
+      "data migration",
+      "record verification",
+      "historical revisions",
+      "Google Sheets schema",
+      "Apps Script integration",
+      "interface status display",
+      "data integrity",
+      "deployment verification"
+    ],
+    "keywords": [
+      "Inventory App",
+      "Inventory 3.0",
+      "SDS",
+      "current",
+      "status",
+      "verified",
+      "partially_verified",
+      "conflicting_sources",
+      "source_unavailable",
+      "CHEM-001",
+      "CHEM-012",
+      "Google Apps Script",
+      "Google Sheets"
+    ],
+    "appsAffected": [
+      "Inventory 3.0 web application",
+      "Inventory-3.0 Google Sheet"
+    ],
+    "systemsAffected": [
+      "Inventory App",
+      "Klinswork Chemical Product Catalog",
+      "documentation work-update catalog"
+    ],
+    "componentsAffected": [
+      "SDS sheet",
+      "Products sheet selected rows",
+      "product detail page",
+      "SDS action panel",
+      "SDS lookup logic",
+      "SDS status styling",
+      "Apps Script deployment version"
+    ]
+  },
+  "planContext": {
+    "promptingNeed": "The seven-row bootstrap SDS tab no longer represents the twelve-product catalog and cannot distinguish current document selection from verification quality, source conflicts, historical revisions, or known source unavailability.",
+    "planningScope": "Rebuild and populate the SDS sheet; apply a narrow set of confirmed product-reference corrections; refactor client-side SDS selection and presentation; add status styling; run integrity, integration, regression, and deployment tests.",
+    "planningStatus": "draft-ready-for-review-and-scheduling",
+    "planningBasis": "The assembled chemical product catalog, live Inventory App spreadsheet, current Apps Script deployment, supplied source files, and the Klinswork project-change documentation workflow.",
+    "assumptions": [
+      "The project will use the stable name Inventory App even while the current deployed interface remains named Inventory 3.0.",
+      "The rebuilt sheet will remain named SDS.",
+      "The existing columns product_id, current, revision_date, source, date_verified, and document_url will be retained for compatibility.",
+      "DataService.gs will continue to read arbitrary nonblank, unique headers.",
+      "The chemical product catalog remains the detailed research authority.",
+      "The work session will be scheduled later and may occur after work or during the following weekend."
+    ],
+    "constraints": [
+      "The implementation must not alter inventory quantities, events, transfer behavior, or rollback behavior.",
+      "The app must never silently select a historical SDS when no current row is marked.",
+      "Status and document availability must remain separate.",
+      "Genuine source conflicts must remain visible.",
+      "Date-only values should be stored as YYYY-MM-DD text to avoid timezone conversion.",
+      "The formal project registry and implementation-plan catalog do not yet exist."
+    ],
+    "outOfScope": [
+      "Rewriting DataService.gs",
+      "Changing configured spreadsheet or sheet names",
+      "Changing inventory transaction calculations",
+      "Storing complete SDS section text in Google Sheets",
+      "Inventing resolutions to manufacturer contradictions",
+      "Building the formal project catalog",
+      "Building the implementation-plan catalog",
+      "Redesigning the entire application",
+      "Creating a new authorization system"
+    ],
+    "confidence": "high"
+  },
+  "targetState": {
+    "currentState": "The SDS tab contains seven bootstrap rows, omits five products, uses current as its only state indicator, includes three superseded revisions as current records, and does not expose product match, coverage, issues, actions, source roles, or source-unavailable findings. The client can fall back to an arbitrary first row.",
+    "desiredState": "The SDS tab contains one current operational record for CHEM-001 through CHEM-012 plus retained historical revisions; current and status are independent; exact SDS identity, source, coverage, issues, and actions are represented; and both client views use one integrity-aware selector.",
+    "successDefinition": "All twelve products have exactly one current registry row, historical records remain noncurrent, representative status conditions render correctly, available documents remain openable, source-unavailable records are represented honestly, unrelated inventory behavior passes regression checks, and the updated canonical deployment is verified.",
+    "nonGoals": [
+      "Resolve every remaining source conflict",
+      "Replace the chemical catalog with the spreadsheet",
+      "Change inventory event semantics",
+      "Complete the formal project registry",
+      "Complete the future implementation-plan catalog"
+    ],
+    "transitionSummary": "Move from a link-oriented bootstrap table to a controlled operational registry backed by the chemical catalog, then update the client selection and presentation layers without disturbing inventory operations."
+  },
+  "implementationStages": [
+    {
+      "sequence": 1,
+      "stageId": "preserve-current-state",
+      "title": "Preserve the current state",
+      "objective": "Create a recoverable before-state.",
+      "description": "Back up the current SDS tab, record its headers and rows, capture the deployed version and URL, and preserve representative screenshots.",
+      "dependencies": [],
+      "deliverables": [
+        "SDS-tab backup",
+        "before-state record",
+        "baseline screenshots"
+      ],
+      "tests": [
+        "TEST-SDS-013"
+      ],
+      "exitCriteria": [
+        "The current SDS data can be restored.",
+        "Current application behavior is documented."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-1-preserve-the-current-state"
+      ]
+    },
+    {
+      "sequence": 2,
+      "stageId": "build-new-sheet-structure",
+      "title": "Build the new sheet structure",
+      "objective": "Establish the approved headers, controls, and maintenance view.",
+      "description": "Create the status-aware schema, date handling, dropdown validation, filters, grouped columns, conditional formatting, and duplicate-current checks.",
+      "dependencies": [
+        "preserve-current-state"
+      ],
+      "deliverables": [
+        "rebuilt SDS header row",
+        "validation rules",
+        "maintenance formatting"
+      ],
+      "tests": [
+        "TEST-SDS-001",
+        "TEST-SDS-002"
+      ],
+      "exitCriteria": [
+        "Headers are unique and nonblank.",
+        "The table loads through readTable()."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-2-build-the-new-sheet-structure"
+      ]
+    },
+    {
+      "sequence": 3,
+      "stageId": "populate-current-and-history",
+      "title": "Populate current and historical records",
+      "objective": "Transfer catalog knowledge into the operational registry.",
+      "description": "Create twelve current rows and historical rows for superseded CHEM-003, CHEM-005, and CHEM-007 revisions.",
+      "dependencies": [
+        "build-new-sheet-structure",
+        "chemical-product-catalog"
+      ],
+      "deliverables": [
+        "12 current SDS rows",
+        "3 historical rows",
+        "current-row integrity result"
+      ],
+      "tests": [
+        "TEST-SDS-002",
+        "TEST-SDS-003",
+        "TEST-SDS-004",
+        "TEST-SDS-005",
+        "TEST-SDS-006",
+        "TEST-SDS-007"
+      ],
+      "exitCriteria": [
+        "Every product has exactly one current row.",
+        "Historical rows are noncurrent.",
+        "CHEM-008 is explicitly represented."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-3-populate-current-and-historical-records"
+      ]
+    },
+    {
+      "sequence": 4,
+      "stageId": "apply-product-corrections",
+      "title": "Apply conclusive product corrections",
+      "objective": "Correct only product-reference errors supported conclusively by the catalog.",
+      "description": "Review and update selected Products rows while retaining genuine conflicts and prior identifiers where useful.",
+      "dependencies": [
+        "populate-current-and-history"
+      ],
+      "deliverables": [
+        "corrected selected Products rows",
+        "retained issue notes"
+      ],
+      "tests": [
+        "TEST-SDS-012"
+      ],
+      "exitCriteria": [
+        "Corrected values agree with catalog evidence.",
+        "Unresolved conflicts remain visible."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-4-apply-conclusive-product-corrections"
+      ]
+    },
+    {
+      "sequence": 5,
+      "stageId": "refactor-sds-selection",
+      "title": "Refactor SDS record selection",
+      "objective": "Create one controlled client-side SDS selection path.",
+      "description": "Add shared lookup helpers, case-insensitive matching, no-current handling, multiple-current handling, and remove the first-row fallback.",
+      "dependencies": [
+        "populate-current-and-history"
+      ],
+      "deliverables": [
+        "shared SDS lookup helpers",
+        "integrity-aware selection result"
+      ],
+      "tests": [
+        "TEST-SDS-008",
+        "TEST-SDS-009",
+        "TEST-SDS-011"
+      ],
+      "exitCriteria": [
+        "Both client views resolve the same current record.",
+        "Integrity errors are explicit."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-5-refactor-sds-record-selection"
+      ]
+    },
+    {
+      "sequence": 6,
+      "stageId": "update-sds-presentation",
+      "title": "Update SDS presentation",
+      "objective": "Display current record identity, status, coverage, issues, actions, and document availability.",
+      "description": "Modify renderProductPage() and renderSdsAction() while retaining document access for partial and conflicting records.",
+      "dependencies": [
+        "refactor-sds-selection"
+      ],
+      "deliverables": [
+        "updated product-page SDS panel",
+        "updated action-sheet SDS panel"
+      ],
+      "tests": [
+        "TEST-SDS-003",
+        "TEST-SDS-004",
+        "TEST-SDS-005",
+        "TEST-SDS-006",
+        "TEST-SDS-010",
+        "TEST-SDS-011"
+      ],
+      "exitCriteria": [
+        "Representative states render correctly.",
+        "Available documents are not hidden by status."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-6-update-sds-presentation"
+      ]
+    },
+    {
+      "sequence": 7,
+      "stageId": "add-status-styling",
+      "title": "Add status styling",
+      "objective": "Make record condition readable and accessible.",
+      "description": "Add text-supported visual treatments for verified, partial, conflicting, unavailable, and integrity-warning conditions.",
+      "dependencies": [
+        "update-sds-presentation"
+      ],
+      "deliverables": [
+        "SDS status styles",
+        "issue and warning blocks"
+      ],
+      "tests": [
+        "TEST-SDS-003",
+        "TEST-SDS-004",
+        "TEST-SDS-005",
+        "TEST-SDS-006"
+      ],
+      "exitCriteria": [
+        "States are visually distinct.",
+        "Meaning does not depend on color alone."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-7-add-status-styling"
+      ]
+    },
+    {
+      "sequence": 8,
+      "stageId": "update-version-and-regress",
+      "title": "Update version and run regression checks",
+      "objective": "Prepare a deployable revision and protect unrelated behavior.",
+      "description": "Update CONFIG.APP_VERSION and verify location, browsing, quantity actions, product details, and SDS actions.",
+      "dependencies": [
+        "add-status-styling",
+        "apply-product-corrections"
+      ],
+      "deliverables": [
+        "updated application version",
+        "regression-test evidence"
+      ],
+      "tests": [
+        "TEST-SDS-012"
+      ],
+      "exitCriteria": [
+        "No unrelated inventory regression is observed.",
+        "The new version is visible."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-8-update-version-and-run-regression-checks"
+      ]
+    },
+    {
+      "sequence": 9,
+      "stageId": "deploy-and-verify",
+      "title": "Deploy and verify",
+      "objective": "Publish and validate the approved application revision.",
+      "description": "Create a new Apps Script version, update the existing deployment, open the canonical /exec URL, and run the final test matrix.",
+      "dependencies": [
+        "update-version-and-regress"
+      ],
+      "deliverables": [
+        "updated Apps Script deployment",
+        "final verification evidence"
+      ],
+      "tests": [
+        "TEST-SDS-013"
+      ],
+      "exitCriteria": [
+        "The canonical deployment serves the new version.",
+        "Required tests have explicit dispositions."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-9-deploy-and-verify"
+      ]
+    },
+    {
+      "sequence": 10,
+      "stageId": "declare-documentation-checkpoint",
+      "title": "Declare the documentation checkpoint",
+      "objective": "Bound the completed work and preserve evidence for downstream documentation.",
+      "description": "Record actual times, classify results and deviations, preserve changed files and tests, and prepare the later summary and sidecar reconciliation.",
+      "dependencies": [
+        "deploy-and-verify"
+      ],
+      "deliverables": [
+        "checkpoint record",
+        "evidence package",
+        "deviation and unresolved-item list"
+      ],
+      "tests": [],
+      "exitCriteria": [
+        "The work boundary is clear.",
+        "Evidence is sufficient for later summary and debrief."
+      ],
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#stage-10-declare-the-documentation-checkpoint"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependencyId": "chemical-product-catalog",
+      "name": "Klinswork Chemical Product Catalog 001",
+      "dependencyType": "authoritative-data-source",
+      "requiredFor": [
+        "build-new-sheet-structure",
+        "populate-current-and-history",
+        "apply-product-corrections"
+      ],
+      "description": "Provides the twelve detailed chemical product and SDS records used by the migration.",
+      "status": "available",
+      "owner": "Klinswork",
+      "risks": [
+        "Catalog statuses must not be promoted or simplified during projection."
+      ]
+    },
+    {
+      "dependencyId": "inventory-spreadsheet",
+      "name": "Inventory-3.0 spreadsheet",
+      "dependencyType": "operational-datastore",
+      "requiredFor": [
+        "preserve-current-state",
+        "build-new-sheet-structure",
+        "populate-current-and-history",
+        "apply-product-corrections"
+      ],
+      "description": "Contains the SDS, Products, Locations, Current Inventory, and Inventory Events tabs.",
+      "status": "available",
+      "owner": "Inventory App",
+      "risks": [
+        "Header defects can block all application data loading.",
+        "Sheet changes affect the live deployed app."
+      ]
+    },
+    {
+      "dependencyId": "apps-script-source",
+      "name": "Inventory 3.0 Apps Script source project",
+      "dependencyType": "application-source",
+      "requiredFor": [
+        "refactor-sds-selection",
+        "update-sds-presentation",
+        "add-status-styling",
+        "update-version-and-regress"
+      ],
+      "description": "Contains Scripts.html, Styles.html, Config.gs, and the unchanged supporting files.",
+      "status": "available",
+      "owner": "Inventory App",
+      "risks": [
+        "Client changes must preserve current routes and inventory actions."
+      ]
+    },
+    {
+      "dependencyId": "apps-script-deployment",
+      "name": "Inventory 3.0 canonical Apps Script deployment",
+      "dependencyType": "deployment-target",
+      "requiredFor": [
+        "deploy-and-verify"
+      ],
+      "description": "Existing canonical /exec deployment to be updated after testing.",
+      "status": "available",
+      "owner": "Inventory App",
+      "risks": [
+        "A failed deployment could expose a partially migrated sheet to the older client."
+      ]
+    },
+    {
+      "dependencyId": "data-service-header-contract",
+      "name": "DataService.gs header contract",
+      "dependencyType": "compatibility-contract",
+      "requiredFor": [
+        "build-new-sheet-structure",
+        "update-version-and-regress"
+      ],
+      "description": "Requires every populated header to be nonblank and unique and passes arbitrary columns to the browser.",
+      "status": "confirmed",
+      "owner": "Inventory App",
+      "risks": [
+        "Blank or duplicate headers cause a blocking runtime error."
+      ]
+    },
+    {
+      "dependencyId": "session-approval-and-schedule",
+      "name": "Plan approval and scheduled work session",
+      "dependencyType": "workflow-gate",
+      "requiredFor": [
+        "preserve-current-state"
+      ],
+      "description": "Execution begins only after the tactical plan is reviewed, approved, and assigned a work window.",
+      "status": "pending",
+      "owner": "Kevin Linstrum",
+      "risks": [
+        "Actual start and stop times remain unknown until scheduled."
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "riskId": "risk-blank-or-duplicate-headers",
+      "risk": "Blank or duplicate headers prevent DataService.gs from loading application data.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Validate the complete header row before populating data.",
+      "contingency": "Restore the backed-up SDS tab.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-multiple-current-rows",
+      "risk": "A product receives more than one current SDS row.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Add sheet checks and explicit client integrity handling.",
+      "contingency": "Correct current flags before deployment.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-historical-row-selected",
+      "risk": "A historical SDS is displayed as current.",
+      "likelihood": "low-after-refactor",
+      "impact": "high",
+      "mitigation": "Remove the records[0] fallback and require one explicit current row.",
+      "contingency": "Block display with an integrity warning until the sheet is corrected.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-status-confused-with-availability",
+      "risk": "Users interpret a partial or conflicting status as meaning the available SDS cannot be opened.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Display status and document availability as separate fields and retain the Open SDS action whenever a URL exists.",
+      "contingency": "Revise labels and status help text.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-date-timezone-shift",
+      "risk": "Date-only values become timezone-shifted ISO timestamps.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Store revision_date and date_verified as YYYY-MM-DD text.",
+      "contingency": "Normalize affected values and add a display formatter.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-live-sheet-client-mismatch",
+      "risk": "The rebuilt live sheet and deployed older client become temporarily incompatible.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Retain backward-compatible headers and stage the migration carefully.",
+      "contingency": "Restore the original SDS tab until the new client is deployed.",
+      "status": "open"
+    },
+    {
+      "riskId": "risk-inventory-regression",
+      "risk": "Unrelated inventory behavior regresses during the client update.",
+      "likelihood": "low",
+      "impact": "high",
+      "mitigation": "Do not modify quantity, event, validation, or rollback files and run regression checks.",
+      "contingency": "Restore prior Scripts.html, Styles.html, Config.gs version, and deployment.",
+      "status": "open"
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "criterionId": "AC-SDS-001",
+      "description": "The SDS tab uses the approved structured schema.",
+      "verificationMethod": "Inspect headers, validation, and readTable() output.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-002",
+      "description": "CHEM-001 through CHEM-012 each have exactly one current registry row.",
+      "verificationMethod": "Run grouped current-row validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-003",
+      "description": "Superseded CHEM-003, CHEM-005, and CHEM-007 rows remain as noncurrent history.",
+      "verificationMethod": "Inspect historical rows and superseded_by_sds_id links.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-004",
+      "description": "Current and verification status are interpreted independently.",
+      "verificationMethod": "Review sheet values and client rendering for mixed-status current rows.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-005",
+      "description": "CHEM-008 is represented as a current source-unavailable/conflicting record.",
+      "verificationMethod": "Open CHEM-008 in the sheet and client.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-006",
+      "description": "The client never falls back to an arbitrary historical row.",
+      "verificationMethod": "Run no-current and historical-row tests.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-007",
+      "description": "Product page and SDS action panel display the same current record.",
+      "verificationMethod": "Compare both views for representative products.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-008",
+      "description": "Available SDS documents remain openable for partial and conflicting records.",
+      "verificationMethod": "Open CHEM-009 and CHEM-011 document actions.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-009",
+      "description": "Conclusive Products-tab identity corrections are applied and verified.",
+      "verificationMethod": "Compare selected Products rows with catalog evidence.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-010",
+      "description": "Genuine source conflicts remain documented.",
+      "verificationMethod": "Inspect issue_summary and action_needed fields.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-011",
+      "description": "No unrelated inventory regression is observed.",
+      "verificationMethod": "Run location, search, opening, receive, use, correction, and transfer checks.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-012",
+      "description": "CONFIG.APP_VERSION is updated.",
+      "verificationMethod": "Inspect Config.gs and application subtitle.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-013",
+      "description": "The canonical deployment serves the new version.",
+      "verificationMethod": "Open and verify the /exec URL.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-SDS-014",
+      "description": "Actual timing, tests, deviations, and unresolved items are recorded.",
+      "verificationMethod": "Review the checkpoint evidence package.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "#acceptance-criteria"
+      ]
+    }
+  ],
+  "plannedTests": [
+    {
+      "testId": "TEST-SDS-001",
+      "name": "Sheet structure loads",
+      "type": "integration",
+      "preconditions": [
+        "New SDS headers exist.",
+        "At least one data row exists."
+      ],
+      "steps": [
+        "Run getAppData().",
+        "Inspect the returned sds array.",
+        "Confirm new properties are present."
+      ],
+      "expectedResult": "SDS rows load without blank-header or duplicate-header errors.",
+      "failureCondition": "readTable() throws or required fields are absent.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-002",
+      "name": "One current row per product",
+      "type": "data-integrity",
+      "preconditions": [
+        "Current and historical rows are populated."
+      ],
+      "steps": [
+        "Group rows by product_id.",
+        "Count active current rows.",
+        "Review CHEM-001 through CHEM-012."
+      ],
+      "expectedResult": "Every product has exactly one current row.",
+      "failureCondition": "Any product has zero or more than one current row.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-003",
+      "name": "Verified record display",
+      "type": "interface",
+      "preconditions": [
+        "CHEM-012 current row exists."
+      ],
+      "steps": [
+        "Open CHEM-012 product details.",
+        "Open its SDS action.",
+        "Open the SDS document."
+      ],
+      "expectedResult": "Verified status, SDS identity, complete coverage, and working document action display.",
+      "failureCondition": "Any required field is missing or the document does not open.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-004",
+      "name": "Partially verified record display",
+      "type": "interface",
+      "preconditions": [
+        "CHEM-009 current row exists."
+      ],
+      "steps": [
+        "Open CHEM-009.",
+        "Inspect status and issue.",
+        "Open the SDS document."
+      ],
+      "expectedResult": "Partial status and issue display without blocking the available document.",
+      "failureCondition": "The app hides the document or omits the limitation.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-005",
+      "name": "Conflicting record with document",
+      "type": "interface",
+      "preconditions": [
+        "CHEM-011 current row exists."
+      ],
+      "steps": [
+        "Open CHEM-011.",
+        "Inspect conflict details.",
+        "Open the SDS."
+      ],
+      "expectedResult": "Conflict status and issue display while the SDS remains available.",
+      "failureCondition": "Conflict is hidden or document access is removed.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-006",
+      "name": "Source unavailable record",
+      "type": "interface",
+      "preconditions": [
+        "CHEM-008 current row exists without a document URL."
+      ],
+      "steps": [
+        "Open CHEM-008 product details.",
+        "Open its SDS action."
+      ],
+      "expectedResult": "Known conflict and source-unavailable state display without an Open SDS button or 'No SDS record' message.",
+      "failureCondition": "The app reports no record or shows a broken document action.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-007",
+      "name": "Historical revision not selected",
+      "type": "data-integrity",
+      "preconditions": [
+        "CHEM-003 current and historical rows exist."
+      ],
+      "steps": [
+        "Open CHEM-003.",
+        "Compare selected row with current flag.",
+        "Inspect historical row in the sheet."
+      ],
+      "expectedResult": "The current replacement displays and the historical row remains retained but unselected.",
+      "failureCondition": "The historical row is displayed as current.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-008",
+      "name": "No current row integrity failure",
+      "type": "negative-integration",
+      "preconditions": [
+        "A temporary test copy is available."
+      ],
+      "steps": [
+        "Remove the current flag for one product.",
+        "Open its SDS view."
+      ],
+      "expectedResult": "The app reports that records exist but none is current.",
+      "failureCondition": "The app silently displays the first row.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-009",
+      "name": "Multiple current rows integrity failure",
+      "type": "negative-integration",
+      "preconditions": [
+        "A temporary test copy is available."
+      ],
+      "steps": [
+        "Mark two rows current for one product.",
+        "Open its SDS view."
+      ],
+      "expectedResult": "The app reports a multiple-current integrity problem.",
+      "failureCondition": "The app silently selects one row.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-010",
+      "name": "Relative and absolute document URLs",
+      "type": "integration",
+      "preconditions": [
+        "At least one external and one repository-relative URL are present."
+      ],
+      "steps": [
+        "Open each document action.",
+        "Verify URL resolution."
+      ],
+      "expectedResult": "Both URL forms open through the existing resolver.",
+      "failureCondition": "Either URL form produces an invalid target.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-011",
+      "name": "Product-page and action-panel consistency",
+      "type": "interface-consistency",
+      "preconditions": [
+        "Representative current rows are loaded."
+      ],
+      "steps": [
+        "Open product-page SDS details.",
+        "Open the SDS action panel.",
+        "Compare fields."
+      ],
+      "expectedResult": "Both views show the same current record, status, revision, and issue.",
+      "failureCondition": "The views select or describe different rows.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-012",
+      "name": "Inventory regression",
+      "type": "regression",
+      "preconditions": [
+        "Updated development version is loaded."
+      ],
+      "steps": [
+        "Select a location.",
+        "Search and filter products.",
+        "Inspect opening, receive, use, correction, and transfer controls."
+      ],
+      "expectedResult": "Existing inventory behavior remains available and no SDS change modifies quantities or event history.",
+      "failureCondition": "Any unrelated inventory function is broken or changes data unexpectedly.",
+      "status": "planned"
+    },
+    {
+      "testId": "TEST-SDS-013",
+      "name": "Canonical deployment verification",
+      "type": "deployment",
+      "preconditions": [
+        "A new Apps Script version has been deployed."
+      ],
+      "steps": [
+        "Open the canonical /exec URL.",
+        "Confirm the new app version.",
+        "Run representative SDS checks."
+      ],
+      "expectedResult": "The canonical deployment serves the updated version and new SDS presentation.",
+      "failureCondition": "The old version remains active or representative SDS views fail.",
+      "status": "planned"
+    }
+  ],
+  "implementationOrder": [
+    {
+      "sequence": 1,
+      "stageId": "preserve-current-state",
+      "title": "Preserve the current state",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "The current SDS data can be restored.; Current application behavior is documented."
+    },
+    {
+      "sequence": 2,
+      "stageId": "build-new-sheet-structure",
+      "title": "Build the new sheet structure",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "Headers are unique and nonblank.; The table loads through readTable()."
+    },
+    {
+      "sequence": 3,
+      "stageId": "populate-current-and-history",
+      "title": "Populate current and historical records",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "Every product has exactly one current row.; Historical rows are noncurrent.; CHEM-008 is explicitly represented."
+    },
+    {
+      "sequence": 4,
+      "stageId": "apply-product-corrections",
+      "title": "Apply conclusive product corrections",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "Corrected values agree with catalog evidence.; Unresolved conflicts remain visible."
+    },
+    {
+      "sequence": 5,
+      "stageId": "refactor-sds-selection",
+      "title": "Refactor SDS record selection",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "Both client views resolve the same current record.; Integrity errors are explicit."
+    },
+    {
+      "sequence": 6,
+      "stageId": "update-sds-presentation",
+      "title": "Update SDS presentation",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "Representative states render correctly.; Available documents are not hidden by status."
+    },
+    {
+      "sequence": 7,
+      "stageId": "add-status-styling",
+      "title": "Add status styling",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "States are visually distinct.; Meaning does not depend on color alone."
+    },
+    {
+      "sequence": 8,
+      "stageId": "update-version-and-regress",
+      "title": "Update version and run regression checks",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "No unrelated inventory regression is observed.; The new version is visible."
+    },
+    {
+      "sequence": 9,
+      "stageId": "deploy-and-verify",
+      "title": "Deploy and verify",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "The canonical deployment serves the new version.; Required tests have explicit dispositions."
+    },
+    {
+      "sequence": 10,
+      "stageId": "declare-documentation-checkpoint",
+      "title": "Declare the documentation checkpoint",
+      "reason": "This order preserves recoverability, establishes valid data before client dependence, protects unrelated behavior, and defers deployment until integrity and regression checks are complete.",
+      "gate": "The work boundary is clear.; Evidence is sufficient for later summary and debrief."
+    }
+  ],
+  "roadmapImpact": {
+    "previousPlan": "Inventory 3.0 exposed a small SDS link table for seven products and did not yet have a complete catalog-backed operational registry.",
+    "additions": [
+      "Complete twelve-product SDS operational registry",
+      "Historical SDS revision retention",
+      "Independent current and verification status fields",
+      "Integrity-aware client selection",
+      "Status, issue, action, and coverage display",
+      "Formal deployment and regression test matrix"
+    ],
+    "changes": [
+      "Use Inventory App as the stable project name.",
+      "Treat Inventory 3.0 as the current application/release name.",
+      "Treat the chemical catalog as detailed authority and the SDS sheet as an operational projection."
+    ],
+    "deprecations": [
+      "Single-state current-only SDS model",
+      "Arbitrary first-record fallback",
+      "Seven-row SDS coverage"
+    ],
+    "deferredItems": [
+      "Formal Inventory App project ID and project record",
+      "Implementation-plan catalog",
+      "Official NMCI 51-CCGC SDS acquisition",
+      "Final application version label",
+      "Exact work-session scheduling"
+    ],
+    "resultingPlan": "Execute the ten-stage migration and integration session after approval and scheduling, then reconcile actual results through the documentation workflow.",
+    "nextDecision": "Approve the plan and assign the bounded work-session date and time."
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "The plan upgrades the Inventory App safety-document index so all twelve products have a current record, known issues remain visible, old SDS revisions are retained, and available documents can still be opened.",
+      "operationalImpact": "Product pages will show clearer SDS identity, status, review coverage, and corrective notes without changing inventory quantity operations.",
+      "currentStatus": "Plan created; implementation has not started and remains unscheduled.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "CHEM-008 still lacks an official NMCI SDS.",
+        "Several current records remain partial or conflicting by design.",
+        "The project registry and implementation-plan catalog are not yet built."
+      ],
+      "staffVisibleChanges": [
+        "Expanded SDS information on product pages",
+        "Clear status labels",
+        "Visible issue and action notes",
+        "Honest source-unavailable messaging"
+      ],
+      "nextOperationalStep": "Review, approve, and schedule the implementation session.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "#supervisor-callout-current-vs-status",
+          "relatedSectionAnchor": "#purpose",
+          "type": "key-distinction",
+          "title": "Current does not mean problem-free",
+          "text": "The active SDS may still be partially verified or contain documented source conflicts."
+        },
+        {
+          "sequence": 2,
+          "anchor": "#supervisor-callout-no-inventory-change",
+          "relatedSectionAnchor": "#scope",
+          "type": "operational-boundary",
+          "title": "Inventory quantities are outside this change",
+          "text": "Receiving, use, transfers, corrections, events, and rollback behavior remain unchanged."
+        }
+      ]
+    },
+    "general": {
+      "summary": "A plan to replace a small SDS link table with a complete, traceable, status-aware registry and update the Inventory App interface accordingly.",
+      "keyPoints": [
+        "Twelve current product records",
+        "Three retained historical SDS revisions",
+        "Independent current and verification status",
+        "Known issues remain visible",
+        "No intended changes to inventory transactions"
+      ]
+    },
+    "technical": {
+      "summary": "A Google Sheets schema migration plus browser-side Apps Script selection and rendering refactor, followed by regression and deployment verification.",
+      "keyPoints": [
+        "Modify Scripts.html and Styles.html",
+        "Update Config.gs version only",
+        "Leave Index.html, Code.gs, DataService.gs, validation, and business rules unchanged unless evidence disproves the plan",
+        "Remove records[0] fallback",
+        "Add no-current and multiple-current integrity handling",
+        "Preserve backward-compatible SDS field names"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "The stable project name should not include a release number; Inventory App can contain Inventory 3.0 and later versions.",
+      "The SDS sheet should be an operational projection of the detailed chemical catalog rather than a competing authority.",
+      "Current document selection and verification quality are separate dimensions.",
+      "Known absence should be represented by a record rather than by omission."
+    ],
+    "generalLessons": [
+      "Bootstrap tables often remain useful longer when their original join fields are preserved during migration.",
+      "Historical records should be retained explicitly instead of overwritten.",
+      "Client fallback behavior can conceal data-integrity failures and should be replaced by visible error states.",
+      "A document sidecar should describe the authoritative human-readable plan rather than replace it."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "A bootstrap operational index becomes too small and semantically coarse for later requirements.",
+        "pattern": "A Boolean current flag is asked to represent selection, validity, completeness, and trust simultaneously.",
+        "projectsObservedIn": [
+          "Inventory App"
+        ]
+      },
+      {
+        "problem": "Version numbers are embedded in project names.",
+        "pattern": "Every release appears to require renaming the project and its documentation references.",
+        "projectsObservedIn": [
+          "Inventory App"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Separate current selection from verification status",
+        "description": "A reusable pattern for registries in which the active record may still be partial, conflicting, or unavailable.",
+        "suggestedDestination": "Klinswork data-modeling knowledge base",
+        "supportingSectionAnchors": [
+          "#purpose",
+          "#new-sds-sheet-structure",
+          "#record-rules"
+        ]
+      },
+      {
+        "title": "Project names versus release names",
+        "description": "Use a stable project identity while treating numbered application names as products or versions.",
+        "suggestedDestination": "Klinswork project-catalog rules",
+        "supportingSectionAnchors": [
+          "#planning-basis",
+          "#known-unresolved-items"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Individual plan documents are authoritative; JSON sidecars describe and index them.",
+        "changeType": "confirmed",
+        "explanation": "The Markdown implementation plan remains the tactical authority and this JSON accompanies it."
+      },
+      {
+        "rule": "Missing project records are acknowledged rather than invented.",
+        "changeType": "confirmed",
+        "explanation": "The project name is explicit, but projectId and projectRecordPath remain blank until formal records exist."
+      },
+      {
+        "rule": "Stable project identity should be independent of release numbering.",
+        "changeType": "revised",
+        "explanation": "Inventory App is used as the project name; Inventory 3.0 remains the current application name."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "purpose",
+      "title": "Purpose",
+      "anchor": "#purpose",
+      "contentSummary": "Defines the SDS registry rebuild, product corrections, interface integration, and the distinction between current and status.",
+      "narrativeRole": "establishes intent",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-callout-current-vs-status",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Separate current selection from verification status"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "planning-basis",
+      "title": "Planning basis",
+      "anchor": "#planning-basis",
+      "contentSummary": "Lists the catalog, spreadsheet, source files, workflow, and bootstrap naming convention supporting the plan.",
+      "narrativeRole": "establishes evidence",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Uses the Klinswork Chemical Product Catalog as the detailed data authority."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Project names versus release names"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "authoritative-resources",
+      "title": "Authoritative resources",
+      "anchor": "#authoritative-resources",
+      "contentSummary": "Records spreadsheet, Apps Script source, deployment, and documentation repository resources.",
+      "narrativeRole": "establishes authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "current-state",
+      "title": "Current state",
+      "anchor": "#current-state",
+      "contentSummary": "Describes the seven-row SDS tab and the current client fallback and display limitations.",
+      "narrativeRole": "defines before-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "target-state",
+      "title": "Target state",
+      "anchor": "#target-state",
+      "contentSummary": "Defines the observable operational and application condition expected after implementation.",
+      "narrativeRole": "defines after-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "scope",
+      "title": "Scope",
+      "anchor": "#scope",
+      "contentSummary": "Separates required migration and interface work from inventory, catalog, and full-redesign non-goals.",
+      "narrativeRole": "bounds work",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "#supervisor-callout-no-inventory-change",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "new-sds-sheet-structure",
+      "title": "New SDS sheet structure",
+      "anchor": "#new-sds-sheet-structure",
+      "contentSummary": "Defines columns, visible maintenance fields, date handling, controlled values, and record rules.",
+      "narrativeRole": "defines data model",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Uses the Klinswork Chemical Product Catalog as the detailed data authority."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Separate current selection from verification status"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "planned-record-population",
+      "title": "Planned record population",
+      "anchor": "#planned-record-population",
+      "contentSummary": "Specifies twelve current records, three historical revisions, and representative status conditions.",
+      "narrativeRole": "defines migration contents",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Uses the Klinswork Chemical Product Catalog as the detailed data authority."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "conclusive-products-tab-corrections",
+      "title": "Conclusive Products-tab corrections",
+      "anchor": "#conclusive-products-tab-corrections",
+      "contentSummary": "Identifies product-reference corrections and conflicts that must remain unresolved.",
+      "narrativeRole": "controls data correction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Uses the Klinswork Chemical Product Catalog as the detailed data authority."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "apps-script-change-map",
+      "title": "Apps Script change map",
+      "anchor": "#apps-script-change-map",
+      "contentSummary": "Identifies required, version-only, and expected-nonchange source files.",
+      "narrativeRole": "maps technical changes",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "implementation-stages",
+      "title": "Implementation stages",
+      "anchor": "#implementation-stages",
+      "contentSummary": "Orders the ten migration, coding, testing, deployment, and checkpoint stages.",
+      "narrativeRole": "defines execution",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "planned-tests",
+      "title": "Planned tests",
+      "anchor": "#planned-tests",
+      "contentSummary": "Defines thirteen integrity, interface, integration, regression, and deployment tests.",
+      "narrativeRole": "defines verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "acceptance-criteria",
+      "title": "Acceptance criteria",
+      "anchor": "#acceptance-criteria",
+      "contentSummary": "Lists the conditions required to classify the session as complete.",
+      "narrativeRole": "defines completion",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "risks-and-mitigations",
+      "title": "Risks and mitigations",
+      "anchor": "#risks-and-mitigations",
+      "contentSummary": "Analyzes header, current-row, historical-selection, status, date, live-migration, and regression risks.",
+      "narrativeRole": "controls risk",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "recovery-and-rollback-plan",
+      "title": "Recovery and rollback plan",
+      "anchor": "#recovery-and-rollback-plan",
+      "contentSummary": "Defines backups and restoration paths for sheet, client, version, and deployment failures.",
+      "narrativeRole": "defines recovery",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "evidence-to-collect",
+      "title": "Evidence to collect",
+      "anchor": "#evidence-to-collect",
+      "contentSummary": "Lists the records, screenshots, code changes, versions, tests, and deviations to preserve.",
+      "narrativeRole": "supports documentation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "expected-changed-artifacts",
+      "title": "Expected changed artifacts",
+      "anchor": "#expected-changed-artifacts",
+      "contentSummary": "Names expected changed and unchanged data and source artifacts.",
+      "narrativeRole": "controls file scope",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "known-unresolved-items",
+      "title": "Known unresolved items",
+      "anchor": "#known-unresolved-items",
+      "contentSummary": "Records project identifiers, repository/catalog metadata, schedule, version, deployment time, and NMCI source gaps.",
+      "narrativeRole": "preserves unknowns",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Project names versus release names"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "approval-and-scheduling-gate",
+      "title": "Approval and scheduling gate",
+      "anchor": "#approval-and-scheduling-gate",
+      "contentSummary": "Requires review, approval, scheduling, and append-only amendments before execution.",
+      "narrativeRole": "governs transition to work",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or controls the Inventory App SDS registry upgrade.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Explains operational purpose, boundary, status, completion, or risk."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "GitHub"
+    ],
+    "apps": [
+      "Inventory 3.0",
+      "Inventory App"
+    ],
+    "scripts": [
+      "getAppData",
+      "readTable",
+      "renderProductPage",
+      "renderSdsAction",
+      "makeAbsoluteProjectUrl",
+      "getSdsRecordsForProduct (planned)",
+      "getCurrentSdsRecord (planned)"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "JSON",
+      "Markdown"
+    ],
+    "services": [
+      "Google Sheets",
+      "Google Apps Script Web App",
+      "GitHub repository"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      {
+        "name": "Inventory-3.0 spreadsheet",
+        "type": "Google Sheets",
+        "resourceId": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI",
+        "affectedResources": [
+          "SDS",
+          "Products"
+        ]
+      },
+      {
+        "name": "Klinswork Chemical Product Catalog 001",
+        "type": "JSON catalog",
+        "resourceId": "klinswork-chemical-product-catalog-001",
+        "affectedResources": [
+          "twelve catalog entries"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "fileName": "implementation-plan.md",
+        "path": "documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+        "role": "authoritative tactical plan",
+        "plannedChange": "none after approval except append-only amendments"
+      },
+      {
+        "fileName": "Scripts.html",
+        "path": "Apps Script source project",
+        "role": "client lookup and rendering",
+        "plannedChange": "modify"
+      },
+      {
+        "fileName": "Styles.html",
+        "path": "Apps Script source project",
+        "role": "client status presentation",
+        "plannedChange": "modify"
+      },
+      {
+        "fileName": "Config.gs",
+        "path": "Apps Script source project",
+        "role": "application configuration",
+        "plannedChange": "update APP_VERSION only"
+      },
+      {
+        "fileName": "Index.html",
+        "path": "Apps Script source project",
+        "role": "application document structure",
+        "plannedChange": "expected unchanged"
+      },
+      {
+        "fileName": "Code.gs",
+        "path": "Apps Script source project",
+        "role": "web entry points and app data loading",
+        "plannedChange": "expected unchanged"
+      },
+      {
+        "fileName": "DataService.gs",
+        "path": "Apps Script source project",
+        "role": "generic Google Sheets data access",
+        "plannedChange": "expected unchanged"
+      },
+      {
+        "fileName": "shared validation file",
+        "path": "Apps Script source project",
+        "role": "inventory command validation",
+        "plannedChange": "expected unchanged"
+      },
+      {
+        "fileName": "inventory business-rules file",
+        "path": "Apps Script source project",
+        "role": "inventory quantities, events, and rollback",
+        "plannedChange": "expected unchanged"
+      }
+    ],
+    "integrations": [
+      {
+        "integrationId": "",
+        "name": "Chemical catalog to Inventory App SDS sheet",
+        "direction": "catalog-to-sheet",
+        "status": "planned",
+        "description": "Project detailed catalog records into concise current and history rows."
+      },
+      {
+        "integrationId": "",
+        "name": "Inventory App SDS sheet to Apps Script client",
+        "direction": "sheet-to-web-app",
+        "status": "existing-to-be-enhanced",
+        "description": "Load current and historical SDS rows through getAppData() and render the selected current record."
+      }
+    ],
+    "apis": [
+      "SpreadsheetApp",
+      "HtmlService",
+      "ScriptApp"
+    ],
+    "versions": [
+      {
+        "resource": "Inventory 3.0",
+        "currentVersion": "ROUTE-TEST-0115",
+        "plannedVersion": "TBD"
+      },
+      {
+        "resource": "Implementation-plan sidecar schema",
+        "currentVersion": "3.0-draft",
+        "plannedVersion": "3.1"
+      }
+    ],
+    "tests": [
+      {
+        "name": "Sheet structure loads",
+        "type": "integration",
+        "result": "",
+        "notes": "SDS rows load without blank-header or duplicate-header errors.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "One current row per product",
+        "type": "data-integrity",
+        "result": "",
+        "notes": "Every product has exactly one current row.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Verified record display",
+        "type": "interface",
+        "result": "",
+        "notes": "Verified status, SDS identity, complete coverage, and working document action display.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Partially verified record display",
+        "type": "interface",
+        "result": "",
+        "notes": "Partial status and issue display without blocking the available document.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Conflicting record with document",
+        "type": "interface",
+        "result": "",
+        "notes": "Conflict status and issue display while the SDS remains available.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Source unavailable record",
+        "type": "interface",
+        "result": "",
+        "notes": "Known conflict and source-unavailable state display without an Open SDS button or 'No SDS record' message.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Historical revision not selected",
+        "type": "data-integrity",
+        "result": "",
+        "notes": "The current replacement displays and the historical row remains retained but unselected.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "No current row integrity failure",
+        "type": "negative-integration",
+        "result": "",
+        "notes": "The app reports that records exist but none is current.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Multiple current rows integrity failure",
+        "type": "negative-integration",
+        "result": "",
+        "notes": "The app reports a multiple-current integrity problem.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Relative and absolute document URLs",
+        "type": "integration",
+        "result": "",
+        "notes": "Both URL forms open through the existing resolver.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Product-page and action-panel consistency",
+        "type": "interface-consistency",
+        "result": "",
+        "notes": "Both views show the same current record, status, revision, and issue.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Inventory regression",
+        "type": "regression",
+        "result": "",
+        "notes": "Existing inventory behavior remains available and no SDS change modifies quantities or event history.",
+        "statusBasis": "planned in implementation-plan.md"
+      },
+      {
+        "name": "Canonical deployment verification",
+        "type": "deployment",
+        "result": "",
+        "notes": "The canonical deployment serves the updated version and new SDS presentation.",
+        "statusBasis": "planned in implementation-plan.md"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed",
+      "notes": [
+        "The sidecar is valid JSON.",
+        "All template top-level fields are present.",
+        "The sidecar contains ten implementation stages, fourteen acceptance criteria, and thirteen planned tests.",
+        "Formal project and catalog identifiers remain intentionally blank.",
+        "The document path was verified in the live GitHub repository."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "repository-draft",
+    "canonicalDocumentUrl": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "listingTitle": "Inventory App SDS Registry Rebuild and App Integration",
+    "listingDescription": "Implementation plan for rebuilding the Inventory App SDS registry, integrating catalog verification status, preserving historical revisions, and updating the current Inventory 3.0 interface.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "2026-08-04T05:57:00-06:00",
+    "destinations": [
+      {
+        "platform": "GitHub",
+        "destinationType": "repository-document",
+        "url": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+        "status": "available"
+      },
+      {
+        "platform": "GitHub",
+        "destinationType": "sidecar-target",
+        "url": "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/sidecars/implementation-plans/implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json",
+        "status": "not-yet-committed"
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "Inventory 3.0",
+        "canonicalExecUrl": "https://script.google.com/macros/s/AKfycbwj6qFGpouW_HBx9_EudvlFgWZCAUK9f7RZz0ZqYuI_E_YrWhprurtEBAXZaqENVBcMDQ/exec",
+        "deploymentId": "AKfycbwj6qFGpouW_HBx9_EudvlFgWZCAUK9f7RZz0ZqYuI_E_YrWhprurtEBAXZaqENVBcMDQ",
+        "sourceProjectUrl": "https://script.google.com/home/projects/1q1diIzyslOWet_ZRt-iLTVovaQf9P9jGgqtXZ3QFii-qm_uvGHxU-CA1/edit",
+        "status": "current-deployment-pre-implementation",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "Google Sheets",
+        "resourceName": "Inventory-3.0 SDS tab",
+        "canonicalUrl": "https://docs.google.com/spreadsheets/d/1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI/edit?gid=87941017#gid=87941017",
+        "resourceId": "1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI:87941017",
+        "status": "current-bootstrap-structure",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [
+      "https://docs.google.com/spreadsheets/d/1bdsasTjlBr20_Kr89tbPy7HWE8xMWLzQH5Z2l5BEviI/edit?gid=87941017#gid=87941017",
+      "https://script.google.com/home/projects/1q1diIzyslOWet_ZRt-iLTVovaQf9P9jGgqtXZ3QFii-qm_uvGHxU-CA1/edit",
+      "https://script.google.com/macros/s/AKfycbwj6qFGpouW_HBx9_EudvlFgWZCAUK9f7RZz0ZqYuI_E_YrWhprurtEBAXZaqENVBcMDQ/exec"
+    ],
+    "sourceUrls": [
+      "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+      "https://github.com/kevinlinstrum001/documentation/tree/main/documents/work-update-catalog/projects/inventory-app/implementation-plans",
+      "https://github.com/kevinlinstrum001/documentation/tree/main/documents/work-update-catalog/catalogs",
+      "https://github.com/kevinlinstrum001/documentation/tree/main/documents/work-update-catalog/sidecars/implementation-plans"
+    ],
+    "relatedDocumentUrls": [
+      "https://github.com/kevinlinstrum001/documentation/blob/main/documents/work-update-catalog/catalogs/klinswork-chemical-product-catalog-001.json"
+    ],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "Documentation project planning conversation, 2026-08-04, covering the chemical catalog, SDS sheet redesign, Apps Script file review, implementation-plan creation, repository restructuring, and stable Inventory App naming decision.",
+    "sourceFiles": [
+      "documents/work-update-catalog/projects/inventory-app/implementation-plans/implementation-plan.md",
+      "implementation-plan-sidecar-template-3.0-draft.json",
+      "documentation-workflow.json",
+      "documents/work-update-catalog/catalogs/klinswork-chemical-product-catalog-001.json",
+      "Inventory App: Index.html",
+      "Inventory App: Scripts.html",
+      "Inventory App: Styles.html",
+      "Inventory App: Code.gs",
+      "Inventory App: DataService.gs",
+      "Inventory App: Config.gs",
+      "Inventory App: shared validation file",
+      "Inventory App: inventory business-rules file"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Thinking",
+    "generatedTimestamp": "2026-08-04T05:57:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "draft-ready-for-user-review",
+    "interpretationNotes": [
+      "Inventory App is used as the stable project name by explicit user direction.",
+      "Inventory 3.0 is retained as the current deployed application name and in the source document title.",
+      "The Markdown plan is the authoritative tactical document; this JSON is its descriptive sidecar.",
+      "The formal project ID and project record path are not invented because the project catalog has not yet been built.",
+      "The implementation-plan catalog does not yet exist, so catalogId and catalogEntryId remain blank.",
+      "The sidecar path is prospective until the generated file is committed to GitHub."
+    ],
+    "unresolvedQuestions": [
+      "What permanent projectId will be assigned to Inventory App?",
+      "What projectRecordPath will be assigned after the project catalog is created?",
+      "When will the implementation session begin and end?",
+      "What APP_VERSION will identify the completed SDS registry upgrade?",
+      "When will the implementation-plan catalog and catalog entry IDs be created?",
+      "Will the older duplicate Markdown plan under sidecars/implementation-plans be removed or archived?",
+      "Will an official NMCI 51-CCGC SDS become available before implementation?"
+    ]
+  }
+}
