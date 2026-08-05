@@ -1,0 +1,3388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>PST-SP JSON Viewer</title>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+
+      --background: #edf2f6;
+      --panel: #ffffff;
+      --panel-secondary: #f6f8fa;
+      --panel-tertiary: #eaf0f5;
+
+      --text: #17212b;
+      --muted: #667482;
+      --line: #d3dce4;
+
+      --accent: #315f8f;
+      --accent-strong: #23496f;
+      --accent-soft: #dce9f4;
+
+      --success: #2b743e;
+      --success-soft: #e9f6ed;
+
+      --warning: #8b6811;
+      --warning-soft: #fff7dc;
+
+      --danger: #a13b3b;
+      --danger-soft: #fff0f0;
+
+      --shadow: 0 8px 28px rgba(28, 52, 75, 0.09);
+      --radius: 12px;
+
+      --sans:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      --mono:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #111820;
+        --panel: #18222c;
+        --panel-secondary: #202c37;
+        --panel-tertiary: #273644;
+
+        --text: #edf5fb;
+        --muted: #a9b7c3;
+        --line: #344553;
+
+        --accent: #83b9e5;
+        --accent-strong: #afd7f4;
+        --accent-soft: #213d55;
+
+        --success: #99d7a8;
+        --success-soft: #203d2a;
+
+        --warning: #efd27b;
+        --warning-soft: #3c351f;
+
+        --danger: #ff9e9e;
+        --danger-soft: #422529;
+
+        --shadow: none;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--sans);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+      padding: 0.48rem 0.68rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    button[aria-pressed="true"],
+    button[aria-selected="true"] {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-secondary);
+      color: var(--text);
+      padding: 0.5rem 0.6rem;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    [tabindex="0"]:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      outline-offset: 2px;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: minmax(270px, 340px) minmax(0, 1fr);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+    }
+
+    .sidebar-header {
+      flex: 0 0 auto;
+      padding: 0.9rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar-title {
+      margin: 0;
+      color: var(--accent-strong);
+      font-size: 1.12rem;
+    }
+
+    .sidebar-subtitle {
+      margin: 0.2rem 0 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.4;
+    }
+
+    .sidebar-controls {
+      display: grid;
+      gap: 0.45rem;
+      margin-top: 0.75rem;
+    }
+
+    .sidebar-control-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.42rem;
+    }
+
+    .manifest-status {
+      margin-top: 0.52rem;
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.4;
+    }
+
+    .file-list {
+      min-height: 0;
+      overflow: auto;
+      padding: 0.5rem;
+      scrollbar-gutter: stable;
+    }
+
+    .folder-heading {
+      margin: 0.6rem 0 0.25rem;
+      padding: 0 0.38rem;
+      color: var(--accent-strong);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .file-button {
+      display: block;
+      width: 100%;
+      margin: 0.12rem 0;
+      padding: 0.55rem;
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+
+    .file-button:hover {
+      background: var(--panel-secondary);
+      border-color: var(--line);
+    }
+
+    .file-button.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .file-title {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: 0.8rem;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .file-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.26rem;
+      margin-top: 0.28rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      padding: 0.13rem 0.34rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel-secondary);
+      color: var(--muted);
+      font-size: 0.59rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chip.accent {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      border-color: var(--accent);
+    }
+
+    .chip.success {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .chip.warning {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .file-path {
+      display: block;
+      margin-top: 0.24rem;
+      overflow: hidden;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .main {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      min-width: 0;
+      min-height: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .topbar {
+      padding: 0.7rem 0.82rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      z-index: 2;
+    }
+
+    .current-file-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-width: 0;
+    }
+
+    .mobile-files-button {
+      display: none;
+    }
+
+    .current-file-name {
+      min-width: 0;
+      overflow: hidden;
+      font-size: 0.86rem;
+      font-weight: 750;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mode-badge {
+      flex: 0 0 auto;
+      padding: 0.14rem 0.38rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.62rem;
+      font-weight: 850;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.36rem;
+      align-items: center;
+      margin-top: 0.52rem;
+    }
+
+    .toolbar-search {
+      flex: 1 1 220px;
+      min-width: 140px;
+    }
+
+    .status-line {
+      margin-top: 0.42rem;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 0.68rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .content {
+      min-width: 0;
+      min-height: 0;
+      overflow: auto;
+      padding: 0.85rem;
+      scrollbar-gutter: stable;
+    }
+
+    .empty,
+    .error-panel {
+      max-width: 820px;
+      margin: 8vh auto 0;
+      padding: 1.5rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .empty {
+      text-align: center;
+    }
+
+    .empty h2,
+    .error-panel h2 {
+      margin: 0;
+      color: var(--accent-strong);
+    }
+
+    .empty p,
+    .error-panel p {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .error-panel {
+      color: var(--danger);
+      background: var(--danger-soft);
+      border-left: 6px solid var(--danger);
+    }
+
+    .raw-view {
+      min-height: 100%;
+      margin: 0;
+      padding: 0.9rem;
+      overflow: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font: 0.82rem/1.5 var(--mono);
+      white-space: pre;
+    }
+
+    .tree-shell {
+      width: max-content;
+      min-width: 100%;
+      padding: 0.75rem 0.85rem 2rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .tree-node {
+      margin-left: 1rem;
+      padding-left: 0.5rem;
+      border-left: 1px dotted var(--line);
+    }
+
+    .tree-node.root {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    details.tree-node > summary {
+      padding: 0.17rem 0.26rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: var(--mono);
+      list-style: none;
+    }
+
+    details.tree-node > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.tree-node > summary::before {
+      content: "▸";
+      display: inline-block;
+      width: 1rem;
+      color: var(--accent);
+      transition: transform 0.1s ease;
+    }
+
+    details.tree-node[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.tree-node > summary:hover,
+    .tree-leaf:hover {
+      background: var(--panel-secondary);
+    }
+
+    .tree-key {
+      color: var(--accent-strong);
+      font-weight: 750;
+    }
+
+    .tree-type {
+      color: var(--muted);
+      font-size: 0.76em;
+    }
+
+    .tree-leaf {
+      display: grid;
+      grid-template-columns: minmax(130px, auto) minmax(180px, 1fr);
+      gap: 0.6rem;
+      padding: 0.17rem 0.3rem 0.17rem 1.08rem;
+      border-radius: 5px;
+      font-family: var(--mono);
+    }
+
+    .tree-value {
+      max-width: 90ch;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .string {
+      color: #347840;
+    }
+
+    .number {
+      color: #985d00;
+    }
+
+    .boolean {
+      color: #7b4fa3;
+      font-weight: 700;
+    }
+
+    .null {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .string {
+        color: #9bd5a4;
+      }
+
+      .number {
+        color: #ffc56e;
+      }
+
+      .boolean {
+        color: #d7a6ff;
+      }
+    }
+
+    mark {
+      padding: 0 0.08em;
+      border-radius: 3px;
+      background: #ffe18b;
+      color: inherit;
+    }
+
+    .preview-document {
+      max-width: 980px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .preview-hero {
+      padding: 1.2rem 1.25rem 1.08rem;
+      background:
+        linear-gradient(
+          145deg,
+          color-mix(in srgb, var(--accent-soft) 70%, var(--panel)),
+          var(--panel) 75%
+        );
+      border-bottom: 1px solid var(--line);
+    }
+
+    .preview-eyebrow {
+      margin: 0 0 0.34rem;
+      color: var(--accent);
+      font-size: 0.65rem;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .preview-title {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1.15;
+      text-wrap: balance;
+    }
+
+    .preview-subtitle {
+      margin: 0.48rem 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .preview-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.32rem;
+      margin-top: 0.72rem;
+    }
+
+    .preview-summary {
+      margin: 0;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .preview-footer {
+      padding: 0.78rem 1.2rem;
+      background: var(--panel-secondary);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.45;
+    }
+
+    .preview-tabs {
+      position: sticky;
+      top: -0.85rem;
+      z-index: 3;
+      display: flex;
+      gap: 0.32rem;
+      overflow-x: auto;
+      margin: -0.85rem -1.05rem 0.85rem;
+      padding: 0.7rem 1.05rem;
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .preview-tab {
+      flex: 0 0 auto;
+      font-size: 0.7rem;
+      font-weight: 750;
+    }
+
+    .preview-body {
+      padding: 0.85rem 1.05rem 1.1rem;
+    }
+
+    .preview-panel[hidden] {
+      display: none !important;
+    }
+
+    .section-heading {
+      margin-bottom: 0.7rem;
+    }
+
+    .section-heading h3 {
+      margin: 0;
+      color: var(--accent-strong);
+      font-size: 1rem;
+    }
+
+    .section-heading p {
+      margin: 0.28rem 0 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.48rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .stat-card {
+      padding: 0.7rem 0.6rem;
+      text-align: center;
+      background: var(--panel-secondary);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--accent-strong);
+      font-size: 1.12rem;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--muted);
+      font-size: 0.63rem;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.48rem;
+    }
+
+    .detail-card {
+      min-width: 0;
+      padding: 0.58rem 0.62rem;
+      background: var(--panel-secondary);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+    }
+
+    .detail-card h4 {
+      margin: 0 0 0.3rem;
+      color: var(--accent-strong);
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .detail-card p {
+      margin: 0;
+      font-size: 0.74rem;
+      line-height: 1.45;
+    }
+
+    .detail-card ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .detail-card li {
+      margin: 0.22rem 0;
+      font-size: 0.71rem;
+      line-height: 1.4;
+    }
+
+    .card-list {
+      display: grid;
+      gap: 0.58rem;
+    }
+
+    details.record-card {
+      overflow: hidden;
+      background: var(--panel-secondary);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    details.record-card > summary {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0.55rem;
+      align-items: start;
+      padding: 0.68rem 0.72rem;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    details.record-card > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.record-card > summary::before {
+      content: "▸";
+      color: var(--accent);
+      font-weight: 850;
+      transition: transform 0.1s ease;
+    }
+
+    details.record-card[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    .record-heading {
+      min-width: 0;
+    }
+
+    .record-heading strong {
+      display: block;
+      color: var(--accent-strong);
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .record-heading span {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.4;
+    }
+
+    .record-badge {
+      padding: 0.15rem 0.34rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.59rem;
+      white-space: nowrap;
+    }
+
+    .record-body {
+      padding: 0.7rem 0.74rem 0.78rem;
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+    }
+
+    .record-purpose {
+      margin: 0 0 0.62rem;
+      font-size: 0.79rem;
+      line-height: 1.5;
+    }
+
+    .filter-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(150px, 240px);
+      gap: 0.45rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .visual-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.55rem;
+      padding: 0.65rem 0.7rem;
+      background: var(--panel-secondary);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+    }
+
+    .visual-row strong {
+      display: block;
+      font-size: 0.79rem;
+      line-height: 1.3;
+    }
+
+    .visual-row span {
+      display: block;
+      margin-top: 0.16rem;
+      color: var(--muted);
+      font-size: 0.66rem;
+      line-height: 1.4;
+    }
+
+    .generic-sections {
+      display: grid;
+      gap: 0.58rem;
+      padding: 1rem 1.2rem;
+    }
+
+    .generic-section {
+      padding: 0.75rem;
+      background: var(--panel-secondary);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+    }
+
+    .generic-section h3 {
+      margin: 0;
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .generic-section p {
+      margin: 0.36rem 0 0;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .sidebar-backdrop {
+      display: none;
+    }
+
+    @media (max-width: 800px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(88vw, 350px);
+        z-index: 20;
+        transform: translateX(-100%);
+        transition: transform 0.18s ease;
+        box-shadow: 12px 0 35px rgba(0, 0, 0, 0.22);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 19;
+        background: rgba(0, 0, 0, 0.32);
+      }
+
+      .sidebar-backdrop.visible {
+        display: block;
+      }
+
+      .mobile-files-button {
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-grid,
+      .filter-row {
+        grid-template-columns: 1fr;
+      }
+
+      .content {
+        padding: 0.55rem;
+      }
+
+      .preview-body {
+        padding: 0.65rem 0.72rem 0.9rem;
+      }
+
+      .preview-tabs {
+        margin-left: -0.72rem;
+        margin-right: -0.72rem;
+        padding-left: 0.72rem;
+        padding-right: 0.72rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <header class="sidebar-header">
+        <h1 class="sidebar-title">PST-SP JSON Viewer</h1>
+
+        <p class="sidebar-subtitle">
+          Static online browser for sidecars, catalogs, templates, and structured
+          JSON documents.
+        </p>
+
+        <div class="sidebar-controls">
+          <div class="sidebar-control-row">
+            <input
+              id="fileFilter"
+              type="search"
+              placeholder="Filter files, titles, types, or topics"
+            >
+
+            <button id="refreshButton" type="button">
+              Refresh
+            </button>
+          </div>
+
+          <select id="typeFilter" aria-label="Filter by record type">
+            <option value="">All record types</option>
+          </select>
+        </div>
+
+        <div class="manifest-status" id="manifestStatus">
+          Loading json-manifest.json…
+        </div>
+      </header>
+
+      <nav class="file-list" id="fileList" aria-label="JSON files"></nav>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="current-file-row">
+          <button
+            id="mobileFilesButton"
+            class="mobile-files-button"
+            type="button"
+          >
+            Files
+          </button>
+
+          <strong class="current-file-name" id="currentFileName">
+            Choose a JSON file
+          </strong>
+
+          <span class="mode-badge" id="modeBadge">
+            PREVIEW
+          </span>
+        </div>
+
+        <div class="toolbar">
+          <button id="previewButton" type="button" aria-pressed="true">
+            Preview
+          </button>
+
+          <button id="treeButton" type="button" aria-pressed="false">
+            Tree
+          </button>
+
+          <button id="rawButton" type="button" aria-pressed="false">
+            Raw
+          </button>
+
+          <button id="expandButton" type="button">
+            Expand
+          </button>
+
+          <button id="collapseButton" type="button">
+            Collapse
+          </button>
+
+          <input
+            id="contentSearch"
+            class="toolbar-search"
+            type="search"
+            placeholder="Search current JSON"
+          >
+        </div>
+
+        <div class="status-line" id="statusLine">
+          No file loaded.
+        </div>
+      </header>
+
+      <section class="content" id="content">
+        <div class="empty">
+          <h2>Loading repository manifest</h2>
+
+          <p>
+            The viewer will build its file list from
+            <code>json-manifest.json</code>.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const MANIFEST_PATH = "./json-manifest.json";
+
+      const state = {
+        manifest: null,
+        files: [],
+        currentEntry: null,
+        currentData: null,
+        currentRaw: "",
+        currentView: "preview",
+        fileQuery: "",
+        typeFilter: "",
+        contentQuery: "",
+      };
+
+      const elements = {
+        sidebar: document.getElementById("sidebar"),
+        sidebarBackdrop: document.getElementById("sidebarBackdrop"),
+        mobileFilesButton: document.getElementById("mobileFilesButton"),
+
+        fileFilter: document.getElementById("fileFilter"),
+        typeFilter: document.getElementById("typeFilter"),
+        refreshButton: document.getElementById("refreshButton"),
+        manifestStatus: document.getElementById("manifestStatus"),
+        fileList: document.getElementById("fileList"),
+
+        currentFileName: document.getElementById("currentFileName"),
+        modeBadge: document.getElementById("modeBadge"),
+
+        previewButton: document.getElementById("previewButton"),
+        treeButton: document.getElementById("treeButton"),
+        rawButton: document.getElementById("rawButton"),
+
+        expandButton: document.getElementById("expandButton"),
+        collapseButton: document.getElementById("collapseButton"),
+
+        contentSearch: document.getElementById("contentSearch"),
+        statusLine: document.getElementById("statusLine"),
+        content: document.getElementById("content"),
+      };
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function isObject(value) {
+        return value !== null &&
+          typeof value === "object" &&
+          !Array.isArray(value);
+      }
+
+      function isMeaningful(value) {
+        if (value === null || value === undefined) {
+          return false;
+        }
+
+        if (typeof value === "string") {
+          return value.trim().length > 0;
+        }
+
+        if (Array.isArray(value)) {
+          return value.some(isMeaningful);
+        }
+
+        if (isObject(value)) {
+          return Object.values(value).some(isMeaningful);
+        }
+
+        return true;
+      }
+
+      function arrayValue(value) {
+        return Array.isArray(value) ? value : [];
+      }
+
+      function objectValue(value) {
+        return isObject(value) ? value : {};
+      }
+
+      function compactText(value, maximumLength = 1000) {
+        let text = "";
+
+        if (value === null || value === undefined) {
+          return "";
+        }
+
+        if (typeof value === "string") {
+          text = value.trim();
+        } else if (
+          typeof value === "number" ||
+          typeof value === "boolean"
+        ) {
+          text = String(value);
+        } else if (Array.isArray(value)) {
+          text = value
+            .map(item => compactText(item, 240))
+            .filter(Boolean)
+            .join("; ");
+        } else if (isObject(value)) {
+          const preferredKeys = [
+            "summary",
+            "description",
+            "text",
+            "purpose",
+            "title",
+            "name",
+            "status",
+          ];
+
+          for (const key of preferredKeys) {
+            if (isMeaningful(value[key])) {
+              text = compactText(value[key], maximumLength);
+              break;
+            }
+          }
+
+          if (!text) {
+            text = Object.entries(value)
+              .filter(([, item]) => {
+                return [
+                  "string",
+                  "number",
+                  "boolean",
+                ].includes(typeof item);
+              })
+              .slice(0, 6)
+              .map(([key, item]) => `${key}: ${item}`)
+              .join(" · ");
+          }
+        }
+
+        if (text.length > maximumLength) {
+          return `${text.slice(0, maximumLength - 1).trim()}…`;
+        }
+
+        return text;
+      }
+
+      function formatBytes(bytes) {
+        const numeric = Number(bytes) || 0;
+
+        if (numeric < 1024) {
+          return `${numeric} B`;
+        }
+
+        if (numeric < 1024 * 1024) {
+          return `${(numeric / 1024).toFixed(1)} KB`;
+        }
+
+        return `${(numeric / (1024 * 1024)).toFixed(1)} MB`;
+      }
+
+      function safeString(value) {
+        return typeof value === "string" ? value.trim() : "";
+      }
+
+      function nestedGet(root, path) {
+        if (!path) {
+          return root;
+        }
+
+        return path.split(".").reduce((current, key) => {
+          if (
+            current === null ||
+            current === undefined ||
+            typeof current !== "object"
+          ) {
+            return undefined;
+          }
+
+          return current[key];
+        }, root);
+      }
+
+      function firstMeaningful(root, paths) {
+        for (const path of paths) {
+          const value = nestedGet(root, path);
+
+          if (isMeaningful(value)) {
+            return value;
+          }
+        }
+
+        return undefined;
+      }
+
+      function makeChip(text, className = "") {
+        const chip = document.createElement("span");
+        chip.className = `chip${className ? ` ${className}` : ""}`;
+        chip.textContent = text;
+        return chip;
+      }
+
+      async function fetchJson(path) {
+        const url = new URL(path, window.location.href);
+        url.searchParams.set("_", Date.now().toString());
+
+        const response = await fetch(url.href, {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `HTTP ${response.status} while loading ${path}`
+          );
+        }
+
+        const raw = await response.text();
+
+        try {
+          return {
+            data: JSON.parse(raw),
+            raw,
+          };
+        } catch (error) {
+          throw new Error(
+            `Invalid JSON in ${path}: ${error.message}`
+          );
+        }
+      }
+
+      async function loadManifest() {
+        elements.manifestStatus.textContent =
+          "Loading json-manifest.json…";
+
+        elements.statusLine.textContent =
+          "Refreshing online repository manifest…";
+
+        try {
+          const result = await fetchJson(MANIFEST_PATH);
+
+          state.manifest = result.data;
+          state.files = Array.isArray(result.data.files)
+            ? result.data.files
+            : [];
+
+          populateTypeFilter();
+          renderFileList();
+
+          const generated =
+            result.data.repository?.generatedTimestamp || "";
+
+          elements.manifestStatus.textContent =
+            `${state.files.length} files` +
+            (generated ? ` · generated ${generated}` : "");
+
+          elements.statusLine.textContent =
+            `${state.files.length} manifest entries loaded.`;
+
+          restoreLastSelection();
+        } catch (error) {
+          showError(
+            "Manifest could not be loaded",
+            error.message
+          );
+
+          elements.manifestStatus.textContent =
+            "Manifest load failed.";
+        }
+      }
+
+      function populateTypeFilter() {
+        const current = elements.typeFilter.value;
+
+        const types = [
+          ...new Set(
+            state.files
+              .map(file => safeString(file.recordType))
+              .filter(Boolean)
+          ),
+        ].sort((left, right) => left.localeCompare(right));
+
+        elements.typeFilter.innerHTML =
+          '<option value="">All record types</option>';
+
+        for (const type of types) {
+          const option = document.createElement("option");
+          option.value = type;
+          option.textContent = type;
+          elements.typeFilter.appendChild(option);
+        }
+
+        elements.typeFilter.value = types.includes(current)
+          ? current
+          : "";
+      }
+
+      function fileSearchBlob(file) {
+        return [
+          file.name,
+          file.path,
+          file.folder,
+          file.title,
+          file.description,
+          file.recordType,
+          file.status,
+          ...(Array.isArray(file.topics) ? file.topics : []),
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+      }
+
+      function visibleFiles() {
+        const query = state.fileQuery.trim().toLowerCase();
+
+        return state.files.filter(file => {
+          if (
+            state.typeFilter &&
+            file.recordType !== state.typeFilter
+          ) {
+            return false;
+          }
+
+          if (query && !fileSearchBlob(file).includes(query)) {
+            return false;
+          }
+
+          return true;
+        });
+      }
+
+      function renderFileList() {
+        const files = visibleFiles();
+
+        elements.fileList.innerHTML = "";
+
+        if (!files.length) {
+          elements.fileList.innerHTML = `
+            <div class="empty" style="margin:1rem 0 0;padding:1rem">
+              <p>No files match the current filters.</p>
+            </div>
+          `;
+
+          return;
+        }
+
+        const folders = new Map();
+
+        for (const file of files) {
+          const folder = safeString(file.folder) || "Root";
+
+          if (!folders.has(folder)) {
+            folders.set(folder, []);
+          }
+
+          folders.get(folder).push(file);
+        }
+
+        const sortedFolders = [...folders.keys()].sort(
+          (left, right) => left.localeCompare(right)
+        );
+
+        for (const folder of sortedFolders) {
+          const heading = document.createElement("h2");
+          heading.className = "folder-heading";
+          heading.textContent = folder;
+          elements.fileList.appendChild(heading);
+
+          const folderFiles = folders.get(folder).sort(
+            (left, right) => {
+              const leftTitle =
+                safeString(left.title) ||
+                safeString(left.name);
+
+              const rightTitle =
+                safeString(right.title) ||
+                safeString(right.name);
+
+              return leftTitle.localeCompare(
+                rightTitle,
+                undefined,
+                {
+                  numeric: true,
+                  sensitivity: "base",
+                }
+              );
+            }
+          );
+
+          for (const file of folderFiles) {
+            elements.fileList.appendChild(
+              makeFileButton(file)
+            );
+          }
+        }
+      }
+
+      function makeFileButton(file) {
+        const button = document.createElement("button");
+        button.type = "button";
+
+        button.className =
+          "file-button" +
+          (
+            state.currentEntry?.path === file.path
+              ? " active"
+              : ""
+          );
+
+        const title = document.createElement("span");
+        title.className = "file-title";
+        title.textContent =
+          safeString(file.title) ||
+          safeString(file.name) ||
+          file.path;
+
+        const meta = document.createElement("span");
+        meta.className = "file-meta";
+
+        if (file.recordType) {
+          meta.appendChild(
+            makeChip(file.recordType, "accent")
+          );
+        }
+
+        if (file.status) {
+          meta.appendChild(
+            makeChip(file.status)
+          );
+        }
+
+        if (file.validJson === false) {
+          meta.appendChild(
+            makeChip("invalid JSON", "warning")
+          );
+        }
+
+        if (file.size !== undefined) {
+          meta.appendChild(
+            makeChip(formatBytes(file.size))
+          );
+        }
+
+        const path = document.createElement("span");
+        path.className = "file-path";
+        path.textContent = file.path;
+
+        button.append(title, meta, path);
+
+        button.addEventListener("click", () => {
+          loadFile(file);
+        });
+
+        return button;
+      }
+
+      async function loadFile(entry) {
+        state.currentEntry = entry;
+
+        elements.currentFileName.textContent =
+          entry.path || entry.title || entry.name;
+
+        elements.statusLine.textContent =
+          `Loading ${entry.path}…`;
+
+        renderFileList();
+
+        try {
+          const result = await fetchJson(entry.path);
+
+          state.currentData = result.data;
+          state.currentRaw = JSON.stringify(
+            result.data,
+            null,
+            2
+          );
+
+          state.contentQuery = "";
+          elements.contentSearch.value = "";
+
+          localStorage.setItem(
+            "pstViewerSelectedPath",
+            entry.path
+          );
+
+          renderCurrentView();
+
+          elements.statusLine.textContent =
+            `${entry.path} · ${formatBytes(entry.size || result.raw.length)}`;
+
+          closeMobileSidebar();
+        } catch (error) {
+          state.currentData = null;
+          state.currentRaw = "";
+
+          showError(
+            "JSON file could not be loaded",
+            error.message
+          );
+        }
+      }
+
+      function restoreLastSelection() {
+        const savedPath = localStorage.getItem(
+          "pstViewerSelectedPath"
+        );
+
+        const selected =
+          state.files.find(file => file.path === savedPath) ||
+          state.files.find(file => {
+            return file.recordType === "pst-sp-study-guide";
+          }) ||
+          state.files[0];
+
+        if (selected) {
+          loadFile(selected);
+        } else {
+          showEmpty(
+            "No JSON files",
+            "The manifest contains no file entries."
+          );
+        }
+      }
+
+      function setView(view) {
+        state.currentView = view;
+        renderCurrentView();
+      }
+
+      function updateViewControls() {
+        const view = state.currentView;
+
+        elements.previewButton.setAttribute(
+          "aria-pressed",
+          String(view === "preview")
+        );
+
+        elements.treeButton.setAttribute(
+          "aria-pressed",
+          String(view === "tree")
+        );
+
+        elements.rawButton.setAttribute(
+          "aria-pressed",
+          String(view === "raw")
+        );
+
+        elements.modeBadge.textContent = view.toUpperCase();
+
+        const treeMode = view === "tree";
+
+        elements.expandButton.disabled = !treeMode;
+        elements.collapseButton.disabled = !treeMode;
+      }
+
+      function renderCurrentView() {
+        updateViewControls();
+
+        if (!state.currentData) {
+          showEmpty(
+            "Choose a JSON file",
+            "Select a document from the file list."
+          );
+
+          return;
+        }
+
+        if (state.currentView === "raw") {
+          renderRaw();
+          return;
+        }
+
+        if (state.currentView === "tree") {
+          renderTree();
+          return;
+        }
+
+        renderPreview();
+      }
+
+      function valueClass(value) {
+        if (value === null) {
+          return "null";
+        }
+
+        if (typeof value === "string") {
+          return "string";
+        }
+
+        if (typeof value === "number") {
+          return "number";
+        }
+
+        if (typeof value === "boolean") {
+          return "boolean";
+        }
+
+        return "";
+      }
+
+      function displayValue(value) {
+        if (value === null) {
+          return "null";
+        }
+
+        if (typeof value === "string") {
+          return value;
+        }
+
+        return JSON.stringify(value);
+      }
+
+      function childPath(parentPath, key, isArray) {
+        if (isArray) {
+          return `${parentPath}[${key}]`;
+        }
+
+        const identifier =
+          /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(key);
+
+        if (!parentPath) {
+          return identifier
+            ? key
+            : `[${JSON.stringify(key)}]`;
+        }
+
+        return identifier
+          ? `${parentPath}.${key}`
+          : `${parentPath}[${JSON.stringify(key)}]`;
+      }
+
+      function createTreeNode(
+        key,
+        value,
+        path,
+        isRoot = false
+      ) {
+        const isArray = Array.isArray(value);
+
+        const isContainer =
+          value !== null &&
+          typeof value === "object";
+
+        if (isContainer) {
+          const details = document.createElement("details");
+
+          details.className =
+            `tree-node${isRoot ? " root" : ""}`;
+
+          details.dataset.path = path;
+
+          details.dataset.search = [
+            key,
+            path,
+          ].join(" ").toLowerCase();
+
+          const summary = document.createElement("summary");
+
+          const count = isArray
+            ? value.length
+            : Object.keys(value).length;
+
+          summary.innerHTML = `
+            <span class="tree-key">${escapeHtml(key)}</span>
+            <span class="tree-type">
+              ${isArray ? "Array" : "Object"} · ${count}
+            </span>
+          `;
+
+          details.appendChild(summary);
+
+          const entries = isArray
+            ? value.map((item, index) => [
+                String(index),
+                item,
+              ])
+            : Object.entries(value);
+
+          for (const [childKey, childValue] of entries) {
+            details.appendChild(
+              createTreeNode(
+                childKey,
+                childValue,
+                childPath(path, childKey, isArray)
+              )
+            );
+          }
+
+          return details;
+        }
+
+        const row = document.createElement("div");
+        row.className = "tree-leaf tree-node";
+        row.dataset.path = path;
+
+        row.dataset.search = [
+          key,
+          path,
+          displayValue(value),
+        ].join(" ").toLowerCase();
+
+        const keyElement = document.createElement("span");
+        keyElement.className = "tree-key";
+        keyElement.textContent = key;
+
+        const valueElement = document.createElement("span");
+
+        valueElement.className =
+          `tree-value ${valueClass(value)}`;
+
+        valueElement.textContent = displayValue(value);
+
+        row.append(keyElement, valueElement);
+
+        return row;
+      }
+
+      function renderTree() {
+        elements.content.innerHTML = "";
+
+        const shell = document.createElement("div");
+        shell.className = "tree-shell";
+
+        shell.appendChild(
+          createTreeNode(
+            "root",
+            state.currentData,
+            "",
+            true
+          )
+        );
+
+        elements.content.appendChild(shell);
+
+        setTreeDepth(2);
+        applyContentSearch();
+      }
+
+      function setTreeDepth(maximumDepth) {
+        const details = [
+          ...elements.content.querySelectorAll(
+            "details.tree-node"
+          ),
+        ];
+
+        for (const node of details) {
+          let depth = 0;
+          let parent = node.parentElement;
+
+          while (parent && parent !== elements.content) {
+            if (
+              parent.matches?.("details.tree-node")
+            ) {
+              depth += 1;
+            }
+
+            parent = parent.parentElement;
+          }
+
+          node.open = depth < maximumDepth;
+        }
+      }
+
+      function renderRaw() {
+        elements.content.innerHTML = "";
+
+        const pre = document.createElement("pre");
+        pre.className = "raw-view";
+        pre.textContent = state.currentRaw;
+
+        elements.content.appendChild(pre);
+
+        applyContentSearch();
+      }
+
+      function detectPstSp(data) {
+        return Boolean(
+          isObject(data) &&
+          (
+            isObject(data.pstSpContent) ||
+            data.profile?.previewMode ===
+              "pst-sp-study-guide" ||
+            data.document?.documentType ===
+              "pst-sp-study-guide"
+          )
+        );
+      }
+
+      function renderPreview() {
+        if (detectPstSp(state.currentData)) {
+          renderPstSpPreview();
+          return;
+        }
+
+        renderGenericPreview();
+      }
+
+      function documentTitle(data) {
+        return compactText(
+          firstMeaningful(data, [
+            "document.title",
+            "document.documentTitle",
+            "publication.listingTitle",
+            "title",
+            "name",
+          ]) || "Untitled JSON document",
+          300
+        );
+      }
+
+      function documentHeadline(data) {
+        return compactText(
+          firstMeaningful(data, [
+            "document.headline",
+            "document.subtitle",
+            "headline",
+            "publication.subtitle",
+          ]),
+          500
+        );
+      }
+
+      function documentSummary(data) {
+        return compactText(
+          firstMeaningful(data, [
+            "documentSummary.summary",
+            "documentSummary.purpose",
+            "document.executiveSummary",
+            "publication.listingDescription",
+            "subject.description",
+            "summary",
+            "description",
+          ]),
+          1800
+        );
+      }
+
+      function appendMetaChip(
+        container,
+        label,
+        value,
+        className = ""
+      ) {
+        if (!isMeaningful(value)) {
+          return;
+        }
+
+        container.appendChild(
+          makeChip(
+            `${label}: ${compactText(value, 200)}`,
+            className
+          )
+        );
+      }
+
+      function createPreviewHero(data, eyebrowText) {
+        const hero = document.createElement("header");
+        hero.className = "preview-hero";
+
+        const eyebrow = document.createElement("p");
+        eyebrow.className = "preview-eyebrow";
+        eyebrow.textContent = eyebrowText;
+
+        const title = document.createElement("h2");
+        title.className = "preview-title";
+        title.textContent = documentTitle(data);
+
+        hero.append(eyebrow, title);
+
+        const headline = documentHeadline(data);
+
+        if (headline) {
+          const subtitle = document.createElement("p");
+          subtitle.className = "preview-subtitle";
+          subtitle.textContent = headline;
+          hero.appendChild(subtitle);
+        }
+
+        const meta = document.createElement("div");
+        meta.className = "preview-meta";
+
+        appendMetaChip(
+          meta,
+          "Type",
+          firstMeaningful(data, [
+            "document.documentType",
+            "profile.profileType",
+            "recordType",
+          ])
+        );
+
+        appendMetaChip(
+          meta,
+          "Status",
+          firstMeaningful(data, [
+            "documentSummary.status",
+            "publication.status",
+            "pstSpContent.coverage.sidecarStatus",
+            "status",
+          ])
+        );
+
+        appendMetaChip(
+          meta,
+          "Updated",
+          firstMeaningful(data, [
+            "document.updatedTimestamp",
+            "document.createdTimestamp",
+          ])
+        );
+
+        appendMetaChip(
+          meta,
+          "Schema",
+          data.schemaVersion
+        );
+
+        if (meta.children.length) {
+          hero.appendChild(meta);
+        }
+
+        return hero;
+      }
+
+      function createSectionHeading(title, description = "") {
+        const wrapper = document.createElement("div");
+        wrapper.className = "section-heading";
+
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        wrapper.appendChild(heading);
+
+        if (description) {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = description;
+          wrapper.appendChild(paragraph);
+        }
+
+        return wrapper;
+      }
+
+      function appendTextDetail(
+        container,
+        title,
+        value
+      ) {
+        if (!isMeaningful(value)) {
+          return;
+        }
+
+        const card = document.createElement("section");
+        card.className = "detail-card";
+
+        const heading = document.createElement("h4");
+        heading.textContent = title;
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = compactText(value, 1000);
+
+        card.append(heading, paragraph);
+        container.appendChild(card);
+      }
+
+      function appendListDetail(
+        container,
+        title,
+        values
+      ) {
+        const items = arrayValue(values).filter(isMeaningful);
+
+        if (!items.length) {
+          return;
+        }
+
+        const card = document.createElement("section");
+        card.className = "detail-card";
+
+        const heading = document.createElement("h4");
+        heading.textContent = title;
+
+        const list = document.createElement("ul");
+
+        for (const value of items) {
+          const item = document.createElement("li");
+          item.textContent = compactText(value, 600);
+          list.appendChild(item);
+        }
+
+        card.append(heading, list);
+        container.appendChild(card);
+      }
+
+      function makeRecordCard({
+        title,
+        subtitle = "",
+        badge = "",
+        purpose = "",
+        details = [],
+      }) {
+        const record = document.createElement("details");
+        record.className = "record-card";
+
+        const summary = document.createElement("summary");
+
+        const heading = document.createElement("div");
+        heading.className = "record-heading";
+
+        const titleElement = document.createElement("strong");
+        titleElement.textContent =
+          title || "Untitled record";
+
+        heading.appendChild(titleElement);
+
+        if (subtitle) {
+          const subtitleElement =
+            document.createElement("span");
+
+          subtitleElement.textContent = subtitle;
+          heading.appendChild(subtitleElement);
+        }
+
+        summary.appendChild(heading);
+
+        if (badge) {
+          const badgeElement =
+            document.createElement("span");
+
+          badgeElement.className = "record-badge";
+          badgeElement.textContent = badge;
+
+          summary.appendChild(badgeElement);
+        }
+
+        record.appendChild(summary);
+
+        const body = document.createElement("div");
+        body.className = "record-body";
+
+        if (purpose) {
+          const purposeElement =
+            document.createElement("p");
+
+          purposeElement.className = "record-purpose";
+          purposeElement.textContent = purpose;
+
+          body.appendChild(purposeElement);
+        }
+
+        const grid = document.createElement("div");
+        grid.className = "detail-grid";
+
+        for (const detail of details) {
+          if (detail.kind === "list") {
+            appendListDetail(
+              grid,
+              detail.title,
+              detail.value
+            );
+          } else {
+            appendTextDetail(
+              grid,
+              detail.title,
+              detail.value
+            );
+          }
+        }
+
+        if (grid.children.length) {
+          body.appendChild(grid);
+        }
+
+        record.appendChild(body);
+
+        return record;
+      }
+
+      function createTabSystem(
+        container,
+        definitions
+      ) {
+        const tabBar = document.createElement("div");
+        tabBar.className = "preview-tabs";
+        tabBar.setAttribute("role", "tablist");
+
+        const panels = new Map();
+
+        for (const definition of definitions) {
+          const panel = definition.render();
+          panel.classList.add("preview-panel");
+          panel.dataset.tabId = definition.id;
+          panels.set(definition.id, panel);
+          container.appendChild(panel);
+        }
+
+        function activate(tabId) {
+          tabBar
+            .querySelectorAll(".preview-tab")
+            .forEach(button => {
+              const selected =
+                button.dataset.tabId === tabId;
+
+              button.setAttribute(
+                "aria-selected",
+                String(selected)
+              );
+            });
+
+          for (const [id, panel] of panels) {
+            panel.hidden = id !== tabId;
+          }
+
+          localStorage.setItem(
+            "pstViewerActiveTab",
+            tabId
+          );
+        }
+
+        for (const definition of definitions) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "preview-tab";
+          button.dataset.tabId = definition.id;
+          button.setAttribute("role", "tab");
+          button.textContent = definition.label;
+
+          button.addEventListener("click", () => {
+            activate(definition.id);
+          });
+
+          tabBar.appendChild(button);
+        }
+
+        container.prepend(tabBar);
+
+        const saved = localStorage.getItem(
+          "pstViewerActiveTab"
+        );
+
+        const initial = panels.has(saved)
+          ? saved
+          : definitions[0].id;
+
+        activate(initial);
+      }
+
+      function renderPstSpPreview() {
+        const data = state.currentData;
+        const pst = objectValue(data.pstSpContent);
+
+        elements.content.innerHTML = "";
+
+        const article = document.createElement("article");
+        article.className = "preview-document";
+
+        article.appendChild(
+          createPreviewHero(
+            data,
+            "PST-SP structured study guide"
+          )
+        );
+
+        const summaryText = documentSummary(data);
+
+        if (summaryText) {
+          const summary = document.createElement("p");
+          summary.className = "preview-summary";
+          summary.textContent = summaryText;
+          article.appendChild(summary);
+        }
+
+        const body = document.createElement("div");
+        body.className = "preview-body";
+
+        createTabSystem(body, [
+          {
+            id: "overview",
+            label: "Overview",
+            render: () => renderOverviewPanel(pst),
+          },
+          {
+            id: "toolkits",
+            label: "Toolkits",
+            render: () => renderToolkitsPanel(pst),
+          },
+          {
+            id: "exercises",
+            label: "Exercises",
+            render: () => renderExercisesPanel(pst),
+          },
+          {
+            id: "measures",
+            label: "Measures",
+            render: () => renderMeasuresPanel(pst),
+          },
+          {
+            id: "visuals",
+            label: "Visuals",
+            render: () => renderVisualsPanel(pst),
+          },
+          {
+            id: "coverage",
+            label: "Coverage",
+            render: () => renderCoveragePanel(pst),
+          },
+        ]);
+
+        article.appendChild(body);
+
+        const footer = document.createElement("footer");
+        footer.className = "preview-footer";
+
+        footer.textContent =
+          "This online preview is generated directly from the published JSON sidecar. The JSON file remains authoritative.";
+
+        article.appendChild(footer);
+
+        elements.content.appendChild(article);
+      }
+
+      function renderOverviewPanel(pst) {
+        const panel = document.createElement("section");
+
+        const program = objectValue(pst.program);
+        const source = objectValue(pst.sourcePacket);
+        const curriculum =
+          objectValue(pst.curriculumModel);
+
+        const coverage = objectValue(pst.coverage);
+
+        panel.appendChild(
+          createSectionHeading(
+            "Program overview",
+            compactText(
+              program.programPurpose,
+              1200
+            )
+          )
+        );
+
+        const stats = document.createElement("div");
+        stats.className = "stat-grid";
+
+        const values = [
+          [
+            arrayValue(pst.toolkits).length,
+            "Toolkits",
+          ],
+          [
+            arrayValue(pst.exercises).length,
+            "Exercises",
+          ],
+          [
+            arrayValue(pst.measures).length,
+            "Measures",
+          ],
+          [
+            arrayValue(pst.visualAssets).length,
+            "Visual records",
+          ],
+        ];
+
+        for (const [value, label] of values) {
+          const card = document.createElement("div");
+          card.className = "stat-card";
+
+          const strong = document.createElement("strong");
+          strong.textContent = String(value);
+
+          const span = document.createElement("span");
+          span.textContent = label;
+
+          card.append(strong, span);
+          stats.appendChild(card);
+        }
+
+        panel.appendChild(stats);
+
+        const grid = document.createElement("div");
+        grid.className = "detail-grid";
+
+        appendTextDetail(
+          grid,
+          "Source packet",
+          program.sourcePacketTitle
+        );
+
+        appendTextDetail(
+          grid,
+          "Issuing organization",
+          [
+            program.issuingOrganization,
+            program.issuingAdministration,
+          ]
+            .filter(Boolean)
+            .join(" / ")
+        );
+
+        appendTextDetail(
+          grid,
+          "Coverage status",
+          source.coverageStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Coverage confidence",
+          source.coverageConfidence
+        );
+
+        appendListDetail(
+          grid,
+          "Instructional sequence",
+          curriculum.instructionalSequence
+        );
+
+        appendListDetail(
+          grid,
+          "Core workflow",
+          curriculum.coreWorkflow
+        );
+
+        appendListDetail(
+          grid,
+          "Remaining work",
+          coverage.remainingWork
+        );
+
+        appendListDetail(
+          grid,
+          "Known gaps",
+          coverage.knownGaps
+        );
+
+        panel.appendChild(grid);
+
+        return panel;
+      }
+
+      function pageRangeText(record) {
+        const range = objectValue(
+          record.sourcePageRange
+        );
+
+        if (!range.startPage) {
+          return "";
+        }
+
+        if (
+          range.endPage &&
+          range.endPage !== range.startPage
+        ) {
+          return `Pages ${range.startPage}–${range.endPage}`;
+        }
+
+        return `Page ${range.startPage}`;
+      }
+
+      function renderToolkitsPanel(pst) {
+        const panel = document.createElement("section");
+
+        panel.appendChild(
+          createSectionHeading(
+            "Toolkits",
+            "Open each toolkit to review its purpose, obstacles, skills, exercises, and source coverage."
+          )
+        );
+
+        const list = document.createElement("div");
+        list.className = "card-list";
+
+        arrayValue(pst.toolkits).forEach(
+          (toolkit, index) => {
+            if (!isObject(toolkit)) {
+              return;
+            }
+
+            list.appendChild(
+              makeRecordCard({
+                title:
+                  toolkit.title ||
+                  toolkit.toolkitId ||
+                  `Toolkit ${index + 1}`,
+
+                subtitle:
+                  toolkit.shortTitle &&
+                  toolkit.shortTitle !== toolkit.title
+                    ? toolkit.shortTitle
+                    : "",
+
+                badge: [
+                  toolkit.status,
+                  pageRangeText(toolkit),
+                ]
+                  .filter(Boolean)
+                  .join(" · "),
+
+                purpose: compactText(
+                  toolkit.purpose,
+                  1000
+                ),
+
+                details: [
+                  {
+                    kind: "list",
+                    title: "Obstacles addressed",
+                    value: toolkit.obstaclesAddressed,
+                  },
+                  {
+                    kind: "list",
+                    title: "Skills taught",
+                    value: toolkit.skillsTaught,
+                  },
+                  {
+                    kind: "list",
+                    title: "When to use",
+                    value: toolkit.whenToUse,
+                  },
+                  {
+                    kind: "list",
+                    title: "When not to use",
+                    value: toolkit.whenNotToUse,
+                  },
+                  {
+                    kind: "list",
+                    title: "Exercise IDs",
+                    value: toolkit.exerciseIds,
+                  },
+                  {
+                    kind: "list",
+                    title: "Related toolkits",
+                    value: toolkit.relatedToolkitIds,
+                  },
+                ],
+              })
+            );
+          }
+        );
+
+        panel.appendChild(list);
+        return panel;
+      }
+
+      function renderExercisesPanel(pst) {
+        const panel = document.createElement("section");
+
+        panel.appendChild(
+          createSectionHeading(
+            "Exercise inventory",
+            "Filter exercises by title, type, toolkit, intended use, or content."
+          )
+        );
+
+        const controls = document.createElement("div");
+        controls.className = "filter-row";
+
+        const input = document.createElement("input");
+        input.type = "search";
+        input.placeholder = "Filter exercises";
+
+        const select = document.createElement("select");
+        select.innerHTML =
+          '<option value="">All toolkits</option>';
+
+        const toolkitIds = [
+          ...new Set(
+            arrayValue(pst.exercises)
+              .map(exercise => exercise?.toolkitId)
+              .filter(Boolean)
+          ),
+        ].sort();
+
+        for (const toolkitId of toolkitIds) {
+          const option = document.createElement("option");
+          option.value = toolkitId;
+          option.textContent = toolkitId;
+          select.appendChild(option);
+        }
+
+        controls.append(input, select);
+        panel.appendChild(controls);
+
+        const list = document.createElement("div");
+        list.className = "card-list";
+        panel.appendChild(list);
+
+        function render() {
+          const query =
+            input.value.trim().toLowerCase();
+
+          const toolkitFilter = select.value;
+
+          list.innerHTML = "";
+
+          arrayValue(pst.exercises).forEach(
+            (exercise, index) => {
+              if (!isObject(exercise)) {
+                return;
+              }
+
+              if (
+                toolkitFilter &&
+                exercise.toolkitId !== toolkitFilter
+              ) {
+                return;
+              }
+
+              if (
+                query &&
+                !JSON.stringify(exercise)
+                  .toLowerCase()
+                  .includes(query)
+              ) {
+                return;
+              }
+
+              list.appendChild(
+                makeRecordCard({
+                  title:
+                    exercise.title ||
+                    exercise.exerciseId ||
+                    `Exercise ${index + 1}`,
+
+                  subtitle: [
+                    exercise.exerciseType,
+                    exercise.toolkitId,
+                  ]
+                    .filter(Boolean)
+                    .join(" · "),
+
+                  badge: [
+                    exercise.status,
+                    pageRangeText(exercise),
+                  ]
+                    .filter(Boolean)
+                    .join(" · "),
+
+                  purpose: compactText(
+                    exercise.purpose,
+                    1000
+                  ),
+
+                  details: [
+                    {
+                      kind: "list",
+                      title: "When to use",
+                      value: exercise.whenToUse,
+                    },
+                    {
+                      kind: "text",
+                      title: "Estimated duration",
+                      value: exercise.estimatedDuration,
+                    },
+                    {
+                      kind: "list",
+                      title: "Preparation",
+                      value: exercise.preparation,
+                    },
+                    {
+                      kind: "list",
+                      title: "Steps",
+                      value: exercise.steps,
+                    },
+                    {
+                      kind: "list",
+                      title: "Practice guidance",
+                      value: exercise.practiceGuidance,
+                    },
+                    {
+                      kind: "list",
+                      title: "Safety notes",
+                      value: exercise.safetyNotes,
+                    },
+                  ],
+                })
+              );
+            }
+          );
+
+          if (!list.children.length) {
+            list.innerHTML = `
+              <div class="empty" style="margin:0;padding:1rem">
+                <p>No exercises match the filter.</p>
+              </div>
+            `;
+          }
+        }
+
+        input.addEventListener("input", render);
+        select.addEventListener("change", render);
+
+        render();
+
+        return panel;
+      }
+
+      function renderMeasuresPanel(pst) {
+        const panel = document.createElement("section");
+
+        panel.appendChild(
+          createSectionHeading(
+            "Measures",
+            "Assessment instruments are summarized for context and should be interpreted within their intended clinical setting."
+          )
+        );
+
+        const list = document.createElement("div");
+        list.className = "card-list";
+
+        arrayValue(pst.measures).forEach(
+          (measure, index) => {
+            if (!isObject(measure)) {
+              return;
+            }
+
+            list.appendChild(
+              makeRecordCard({
+                title:
+                  measure.name ||
+                  measure.measureId ||
+                  `Measure ${index + 1}`,
+
+                subtitle: [
+                  measure.abbreviation,
+                  measure.authorsOrSource,
+                  measure.publicationYear,
+                ]
+                  .filter(Boolean)
+                  .join(" · "),
+
+                badge: [
+                  measure.status,
+                  pageRangeText(measure),
+                ]
+                  .filter(Boolean)
+                  .join(" · "),
+
+                details: [
+                  {
+                    kind: "list",
+                    title: "Constructs measured",
+                    value: measure.constructsMeasured,
+                  },
+                  {
+                    kind: "text",
+                    title: "Response format",
+                    value: measure.responseFormat,
+                  },
+                  {
+                    kind: "text",
+                    title: "Item count",
+                    value: measure.itemCount,
+                  },
+                  {
+                    kind: "text",
+                    title: "Timeframe",
+                    value: measure.timeframe,
+                  },
+                  {
+                    kind: "text",
+                    title: "Reproduction status",
+                    value: measure.reproductionStatus,
+                  },
+                  {
+                    kind: "text",
+                    title: "Clinical interpretation",
+                    value:
+                      measure.clinicalInterpretationRequired
+                        ? "Required"
+                        : "Not specified",
+                  },
+                  {
+                    kind: "list",
+                    title: "Related toolkits",
+                    value: measure.relatedToolkitIds,
+                  },
+                  {
+                    kind: "list",
+                    title: "Notes",
+                    value: measure.notes,
+                  },
+                ],
+              })
+            );
+          }
+        );
+
+        panel.appendChild(list);
+        return panel;
+      }
+
+      function renderVisualsPanel(pst) {
+        const panel = document.createElement("section");
+
+        panel.appendChild(
+          createSectionHeading(
+            "Visual asset inventory",
+            "Review image placeholders, filenames, inclusion decisions, and replacement status."
+          )
+        );
+
+        const controls = document.createElement("div");
+        controls.className = "filter-row";
+
+        const input = document.createElement("input");
+        input.type = "search";
+        input.placeholder = "Filter visuals";
+
+        const select = document.createElement("select");
+
+        select.innerHTML = `
+          <option value="">All decisions</option>
+          <option value="include">Include</option>
+          <option value="optional">Optional</option>
+          <option value="pending">Pending</option>
+          <option value="omit">Omit</option>
+        `;
+
+        controls.append(input, select);
+        panel.appendChild(controls);
+
+        const list = document.createElement("div");
+        list.className = "card-list";
+
+        panel.appendChild(list);
+
+        function render() {
+          const query =
+            input.value.trim().toLowerCase();
+
+          const decisionFilter = select.value;
+
+          list.innerHTML = "";
+
+          arrayValue(pst.visualAssets).forEach(
+            visual => {
+              if (!isObject(visual)) {
+                return;
+              }
+
+              if (
+                decisionFilter &&
+                visual.inclusionDecision !== decisionFilter
+              ) {
+                return;
+              }
+
+              if (
+                query &&
+                !JSON.stringify(visual)
+                  .toLowerCase()
+                  .includes(query)
+              ) {
+                return;
+              }
+
+              const row =
+                document.createElement("div");
+
+              row.className = "visual-row";
+
+              const body =
+                document.createElement("div");
+
+              const title =
+                document.createElement("strong");
+
+              title.textContent =
+                visual.title ||
+                visual.graphicId ||
+                "Untitled visual";
+
+              const details =
+                document.createElement("span");
+
+              details.textContent = [
+                visual.visualType,
+                visual.status,
+                visual.suggestedFilename,
+              ]
+                .filter(Boolean)
+                .join(" · ");
+
+              body.append(title, details);
+
+              const decision =
+                document.createElement("span");
+
+              decision.className = "chip accent";
+
+              decision.textContent =
+                visual.inclusionDecision ||
+                "pending";
+
+              row.append(body, decision);
+              list.appendChild(row);
+            }
+          );
+
+          if (!list.children.length) {
+            list.innerHTML = `
+              <div class="empty" style="margin:0;padding:1rem">
+                <p>No visuals match the filter.</p>
+              </div>
+            `;
+          }
+        }
+
+        input.addEventListener("input", render);
+        select.addEventListener("change", render);
+
+        render();
+
+        return panel;
+      }
+
+      function renderCoveragePanel(pst) {
+        const panel = document.createElement("section");
+
+        panel.appendChild(
+          createSectionHeading(
+            "Source and production coverage",
+            "Source capture, editorial integration, sidecar completion, and publication are tracked separately."
+          )
+        );
+
+        const source = objectValue(pst.sourcePacket);
+        const coverage = objectValue(pst.coverage);
+        const editorial =
+          objectValue(pst.editorialModel);
+
+        const grid = document.createElement("div");
+        grid.className = "detail-grid";
+
+        appendTextDetail(
+          grid,
+          "Source format",
+          source.sourceFormat
+        );
+
+        appendTextDetail(
+          grid,
+          "Estimated page count",
+          source.estimatedPageCount
+        );
+
+        appendTextDetail(
+          grid,
+          "Reviewed through",
+          source.lastReviewedPage
+        );
+
+        appendTextDetail(
+          grid,
+          "Source coverage",
+          coverage.sourceCaptureStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Core curriculum",
+          coverage.coreCurriculumStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Optional handouts",
+          coverage.optionalHandoutsStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Measures",
+          coverage.measuresStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Visual review",
+          coverage.visualReviewStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Editorial integration",
+          coverage.editorialIntegrationStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Sidecar",
+          coverage.sidecarStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "HTML",
+          coverage.htmlStatus
+        );
+
+        appendTextDetail(
+          grid,
+          "Master format",
+          editorial.masterFormat
+        );
+
+        appendListDetail(
+          grid,
+          "Remaining work",
+          coverage.remainingWork
+        );
+
+        appendListDetail(
+          grid,
+          "Known gaps",
+          coverage.knownGaps
+        );
+
+        appendListDetail(
+          grid,
+          "Non-blocking gaps",
+          coverage.nonBlockingGaps
+        );
+
+        appendListDetail(
+          grid,
+          "Editorial notes",
+          editorial.editorialNotes
+        );
+
+        panel.appendChild(grid);
+
+        return panel;
+      }
+
+      function renderGenericPreview() {
+        const data = state.currentData;
+
+        elements.content.innerHTML = "";
+
+        const article = document.createElement("article");
+        article.className = "preview-document";
+
+        article.appendChild(
+          createPreviewHero(
+            data,
+            "Structured JSON preview"
+          )
+        );
+
+        const summaryText = documentSummary(data);
+
+        if (summaryText) {
+          const summary = document.createElement("p");
+          summary.className = "preview-summary";
+          summary.textContent = summaryText;
+          article.appendChild(summary);
+        }
+
+        const sections =
+          firstMeaningful(data, [
+            "sections",
+            "document.sections",
+            "content.sections",
+          ]);
+
+        if (Array.isArray(sections)) {
+          const container =
+            document.createElement("div");
+
+          container.className = "generic-sections";
+
+          for (const section of sections) {
+            if (!isObject(section)) {
+              continue;
+            }
+
+            const card =
+              document.createElement("section");
+
+            card.className = "generic-section";
+
+            const heading =
+              document.createElement("h3");
+
+            heading.textContent =
+              section.title ||
+              section.sectionId ||
+              "Section";
+
+            const paragraph =
+              document.createElement("p");
+
+            paragraph.textContent =
+              compactText(
+                section.contentSummary ||
+                section.summary ||
+                section.description,
+                1000
+              );
+
+            card.append(heading, paragraph);
+            container.appendChild(card);
+          }
+
+          article.appendChild(container);
+        } else {
+          const container =
+            document.createElement("div");
+
+          container.className = "generic-sections";
+
+          const card =
+            document.createElement("section");
+
+          card.className = "generic-section";
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent = "JSON document";
+
+          const paragraph =
+            document.createElement("p");
+
+          paragraph.textContent =
+            "No specialized preview profile was detected. Use Tree or Raw view to inspect the complete document.";
+
+          card.append(heading, paragraph);
+          container.appendChild(card);
+          article.appendChild(container);
+        }
+
+        const footer = document.createElement("footer");
+        footer.className = "preview-footer";
+
+        footer.textContent =
+          "This is a generic preview. Tree and Raw views expose the complete JSON structure.";
+
+        article.appendChild(footer);
+
+        elements.content.appendChild(article);
+      }
+
+      function clearMarks(root) {
+        root.querySelectorAll("mark").forEach(mark => {
+          mark.replaceWith(
+            document.createTextNode(
+              mark.textContent || ""
+            )
+          );
+        });
+      }
+
+      function highlightFirstTextMatch(root, query) {
+        const walker = document.createTreeWalker(
+          root,
+          NodeFilter.SHOW_TEXT
+        );
+
+        const nodes = [];
+
+        while (walker.nextNode()) {
+          nodes.push(walker.currentNode);
+        }
+
+        for (const textNode of nodes) {
+          const text = textNode.nodeValue || "";
+          const index =
+            text.toLowerCase().indexOf(query);
+
+          if (index < 0) {
+            continue;
+          }
+
+          const before =
+            document.createTextNode(
+              text.slice(0, index)
+            );
+
+          const mark = document.createElement("mark");
+
+          mark.textContent = text.slice(
+            index,
+            index + query.length
+          );
+
+          const after =
+            document.createTextNode(
+              text.slice(index + query.length)
+            );
+
+          textNode.replaceWith(before, mark, after);
+
+          mark.scrollIntoView({
+            block: "center",
+            behavior: "smooth",
+          });
+
+          return true;
+        }
+
+        return false;
+      }
+
+      function applyContentSearch() {
+        if (!state.currentData) {
+          return;
+        }
+
+        const query =
+          elements.contentSearch.value
+            .trim()
+            .toLowerCase();
+
+        state.contentQuery = query;
+
+        clearMarks(elements.content);
+
+        if (!query) {
+          if (state.currentView === "raw") {
+            const pre =
+              elements.content.querySelector(
+                ".raw-view"
+              );
+
+            if (pre) {
+              pre.textContent = state.currentRaw;
+            }
+          }
+
+          return;
+        }
+
+        if (state.currentView === "raw") {
+          const pre =
+            elements.content.querySelector(
+              ".raw-view"
+            );
+
+          if (!pre) {
+            return;
+          }
+
+          const index =
+            state.currentRaw
+              .toLowerCase()
+              .indexOf(query);
+
+          if (index < 0) {
+            elements.statusLine.textContent =
+              "No raw-text match.";
+            return;
+          }
+
+          const before =
+            document.createTextNode(
+              state.currentRaw.slice(0, index)
+            );
+
+          const mark = document.createElement("mark");
+
+          mark.textContent =
+            state.currentRaw.slice(
+              index,
+              index + query.length
+            );
+
+          const after =
+            document.createTextNode(
+              state.currentRaw.slice(
+                index + query.length
+              )
+            );
+
+          pre.replaceChildren(before, mark, after);
+
+          mark.scrollIntoView({
+            block: "center",
+          });
+
+          elements.statusLine.textContent =
+            "First raw-text match highlighted.";
+
+          return;
+        }
+
+        if (state.currentView === "tree") {
+          const nodes = [
+            ...elements.content.querySelectorAll(
+              "[data-search]"
+            ),
+          ];
+
+          const matchingNodes = nodes.filter(node => {
+            return node.dataset.search.includes(query);
+          });
+
+          if (!matchingNodes.length) {
+            elements.statusLine.textContent =
+              "No tree matches.";
+            return;
+          }
+
+          for (const node of matchingNodes) {
+            let parent = node.parentElement;
+
+            while (parent) {
+              if (
+                parent.matches?.(
+                  "details.tree-node"
+                )
+              ) {
+                parent.open = true;
+              }
+
+              parent = parent.parentElement;
+            }
+          }
+
+          matchingNodes[0].scrollIntoView({
+            block: "center",
+            behavior: "smooth",
+          });
+
+          highlightFirstTextMatch(
+            matchingNodes[0],
+            query
+          );
+
+          elements.statusLine.textContent =
+            `${matchingNodes.length} matching JSON nodes.`;
+
+          return;
+        }
+
+        const found = highlightFirstTextMatch(
+          elements.content,
+          query
+        );
+
+        elements.statusLine.textContent = found
+          ? "First preview match highlighted."
+          : "No preview match.";
+      }
+
+      function showEmpty(title, message) {
+        elements.content.innerHTML = `
+          <div class="empty">
+            <h2>${escapeHtml(title)}</h2>
+            <p>${escapeHtml(message)}</p>
+          </div>
+        `;
+      }
+
+      function showError(title, message) {
+        elements.content.innerHTML = `
+          <div class="error-panel">
+            <h2>${escapeHtml(title)}</h2>
+            <p>${escapeHtml(message)}</p>
+          </div>
+        `;
+
+        elements.statusLine.textContent = message;
+      }
+
+      function openMobileSidebar() {
+        elements.sidebar.classList.add("open");
+        elements.sidebarBackdrop.classList.add(
+          "visible"
+        );
+      }
+
+      function closeMobileSidebar() {
+        elements.sidebar.classList.remove("open");
+        elements.sidebarBackdrop.classList.remove(
+          "visible"
+        );
+      }
+
+      elements.fileFilter.addEventListener(
+        "input",
+        event => {
+          state.fileQuery = event.target.value;
+          renderFileList();
+        }
+      );
+
+      elements.typeFilter.addEventListener(
+        "change",
+        event => {
+          state.typeFilter = event.target.value;
+          renderFileList();
+        }
+      );
+
+      elements.refreshButton.addEventListener(
+        "click",
+        loadManifest
+      );
+
+      elements.previewButton.addEventListener(
+        "click",
+        () => setView("preview")
+      );
+
+      elements.treeButton.addEventListener(
+        "click",
+        () => setView("tree")
+      );
+
+      elements.rawButton.addEventListener(
+        "click",
+        () => setView("raw")
+      );
+
+      elements.expandButton.addEventListener(
+        "click",
+        () => {
+          elements.content
+            .querySelectorAll("details.tree-node")
+            .forEach(node => {
+              node.open = true;
+            });
+        }
+      );
+
+      elements.collapseButton.addEventListener(
+        "click",
+        () => {
+          elements.content
+            .querySelectorAll("details.tree-node")
+            .forEach(node => {
+              node.open = false;
+            });
+        }
+      );
+
+      elements.contentSearch.addEventListener(
+        "input",
+        applyContentSearch
+      );
+
+      elements.mobileFilesButton.addEventListener(
+        "click",
+        openMobileSidebar
+      );
+
+      elements.sidebarBackdrop.addEventListener(
+        "click",
+        closeMobileSidebar
+      );
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          closeMobileSidebar();
+        }
+      });
+
+      loadManifest();
+    })();
+  </script>
+</body>
+</html>
