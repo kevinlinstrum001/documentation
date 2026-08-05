@@ -1,0 +1,611 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "pst-sp-study-guide",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "pst-sp-study-guide-sidecar-template-1.0.json",
+    "previewMode": "pst-sp-study-guide"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "Optional specialized viewer support for toolkit, exercise, measure, and visual-asset previews",
+          "Optional validation rules for source-page ranges and anchor references"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should measure records support scoring metadata, or remain descriptive only?",
+          "Should source-image records be separated into a reusable media manifest?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "pst-sp-study-guide",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "pst-sp-study-guide-sidecar-template-1.0.json",
+    "baseTemplatePath": "generic-document-sidecar-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "",
+    "sourceSummaryPath": "",
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "",
+      "projectType": "",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "",
+      "projectPhase": "",
+      "contributionType": "",
+      "identificationBasis": "",
+      "identificationConfidence": ""
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "relationshipType": "",
+        "relationshipDescription": "",
+        "impact": "",
+        "evidenceSectionAnchors": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "",
+        "foundationType": "",
+        "relationshipDescription": "",
+        "impact": ""
+      }
+    ],
+    "relationshipSummary": ""
+  },
+  "subject": {
+    "projectName": "",
+    "primaryApp": "",
+    "mainFocus": "",
+    "description": "",
+    "topics": [],
+    "keywords": [],
+    "appsAffected": [],
+    "systemsAffected": [],
+    "componentsAffected": []
+  },
+  "documentSummary": {
+    "purpose": "",
+    "scope": "",
+    "summary": "",
+    "intendedAudience": [],
+    "status": "",
+    "confidence": ""
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "",
+      "description": "",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "",
+      "name": "",
+      "definition": "",
+      "relationships": [],
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "",
+      "title": "",
+      "description": "",
+      "reason": "",
+      "priority": "",
+      "status": "",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "openQuestions": [
+    {
+      "questionId": "",
+      "question": "",
+      "reasonOpen": "",
+      "nextStep": ""
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "",
+      "operationalImpact": "",
+      "currentStatus": "",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "",
+          "relatedSectionAnchor": "",
+          "type": "",
+          "title": "",
+          "text": ""
+        }
+      ]
+    },
+    "general": {
+      "summary": "",
+      "keyPoints": []
+    },
+    "technical": {
+      "summary": "",
+      "keyPoints": []
+    },
+    "clinicalContext": {
+      "summary": "",
+      "intendedUse": "",
+      "limitations": [],
+      "safetyNotes": [],
+      "clinicalInterpretationRequired": true
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "projectsObservedIn": []
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "description": "",
+        "suggestedDestination": "",
+        "supportingSectionAnchors": []
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "",
+        "changeType": "",
+        "explanation": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "",
+      "title": "",
+      "anchor": "",
+      "contentSummary": "",
+      "narrativeRole": "",
+      "projectRelevance": {
+        "primaryProjectContribution": "",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": [
+        {
+          "graphicId": "",
+          "role": "",
+          "url": "",
+          "repositoryPath": "",
+          "altText": "",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "pstSpContent": {
+    "program": {
+      "programName": "Problem-Solving Therapy for Suicide Prevention",
+      "programAbbreviation": "PST-SP",
+      "issuingOrganization": "U.S. Department of Veterans Affairs",
+      "issuingAdministration": "Veterans Health Administration",
+      "sourcePacketTitle": "Veteran Handouts and Measures: PST-SP Program",
+      "programPurpose": "",
+      "programPopulation": [],
+      "programContext": "",
+      "officialPublicationStatus": "unverified",
+      "publicDigitalSourceLocated": false,
+      "sourceNotes": []
+    },
+    "sourcePacket": {
+      "sourceFormat": "hard-copy packet",
+      "estimatedPageCount": null,
+      "firstReviewedPage": null,
+      "lastReviewedPage": null,
+      "reviewedPageRanges": [
+        {
+          "startPage": null,
+          "endPage": null,
+          "status": "",
+          "notes": ""
+        }
+      ],
+      "missingPageRanges": [
+        {
+          "startPage": null,
+          "endPage": null,
+          "consequential": false,
+          "notes": ""
+        }
+      ],
+      "coverageStatus": "",
+      "coverageConfidence": "",
+      "pageFaithfulnessRequired": false,
+      "conceptualReorganizationAllowed": true,
+      "personalMarkingsPresent": false,
+      "personalMarkingsHandling": "",
+      "redistributionStatus": "unknown",
+      "sourceImageArchivePath": "",
+      "sourceReviewLogPath": ""
+    },
+    "curriculumModel": {
+      "curriculumPurpose": "",
+      "instructionalSequence": [],
+      "coreWorkflow": [],
+      "obstacleToToolkitMappings": [
+        {
+          "obstacleId": "",
+          "obstacleName": "",
+          "toolkitId": "",
+          "toolkitName": "",
+          "relationshipDescription": "",
+          "evidenceSectionAnchors": []
+        }
+      ],
+      "curriculumStages": [
+        {
+          "stageId": "",
+          "sequence": 1,
+          "title": "",
+          "purpose": "",
+          "toolkitIds": [],
+          "sectionAnchors": []
+        }
+      ]
+    },
+    "toolkits": [
+      {
+        "toolkitId": "",
+        "sequence": 1,
+        "title": "",
+        "shortTitle": "",
+        "purpose": "",
+        "obstaclesAddressed": [],
+        "skillsTaught": [],
+        "whenToUse": [],
+        "whenNotToUse": [],
+        "prerequisiteToolkitIds": [],
+        "relatedToolkitIds": [],
+        "exerciseIds": [],
+        "measureIds": [],
+        "sourcePageRange": {
+          "startPage": null,
+          "endPage": null
+        },
+        "sectionAnchors": [],
+        "status": "",
+        "notes": []
+      }
+    ],
+    "exercises": [
+      {
+        "exerciseId": "",
+        "title": "",
+        "exerciseType": "",
+        "sourceType": "va-derived",
+        "sourceHandoutNumber": "",
+        "toolkitId": "",
+        "purpose": "",
+        "whenToUse": [],
+        "estimatedDuration": "",
+        "preparation": [],
+        "steps": [],
+        "practiceGuidance": [],
+        "safetyNotes": [],
+        "relatedExerciseIds": [],
+        "imagePlaceholderIds": [],
+        "sourcePageRange": {
+          "startPage": null,
+          "endPage": null
+        },
+        "sectionAnchor": "",
+        "status": "",
+        "notes": []
+      }
+    ],
+    "measures": [
+      {
+        "measureId": "",
+        "name": "",
+        "abbreviation": "",
+        "authorsOrSource": "",
+        "publicationYear": "",
+        "constructsMeasured": [],
+        "responseFormat": "",
+        "itemCount": null,
+        "timeframe": "",
+        "administrationContext": "",
+        "clinicalInterpretationRequired": true,
+        "reproductionStatus": "summarized-only",
+        "scoringIncluded": false,
+        "scoringNotes": "",
+        "relatedToolkitIds": [],
+        "sourcePageRange": {
+          "startPage": null,
+          "endPage": null
+        },
+        "sectionAnchor": "",
+        "status": "",
+        "notes": []
+      }
+    ],
+    "visualAssets": [
+      {
+        "graphicId": "",
+        "title": "",
+        "visualType": "",
+        "role": "",
+        "sourceType": "source-image",
+        "sourcePageRange": {
+          "startPage": null,
+          "endPage": null
+        },
+        "status": "placeholder",
+        "inclusionDecision": "pending",
+        "suggestedFilename": "",
+        "currentFilePath": "",
+        "url": "",
+        "repositoryPath": "",
+        "physicalDescription": "",
+        "semanticDescription": "",
+        "altText": "",
+        "sectionAnchor": "",
+        "replacementAllowed": true,
+        "replacementType": "",
+        "copyrightOrRedistributionNotes": "",
+        "notes": []
+      }
+    ],
+    "editorialModel": {
+      "masterFormat": "markdown",
+      "masterFilePath": "",
+      "authoritativeSource": "markdown",
+      "downstreamProducts": [
+        "json-sidecar",
+        "html"
+      ],
+      "pageByPageStructureRequired": false,
+      "conceptualOrganizationPreferred": true,
+      "sourceDerivedContentSeparated": true,
+      "originalSupplementaryContentSeparated": true,
+      "sourceImageDescriptionsRequired": true,
+      "physicalAndSemanticDescriptionsRequired": true,
+      "imagePlaceholderRequiredWhenDescribed": true,
+      "clinicalDisclaimerRequired": true,
+      "measureReproductionPolicy": "summarize-unless-authorized",
+      "revisionStrategy": "",
+      "editorialNotes": []
+    },
+    "coverage": {
+      "coreCurriculumStatus": "",
+      "optionalHandoutsStatus": "",
+      "measuresStatus": "",
+      "visualReviewStatus": "",
+      "sourceCaptureStatus": "",
+      "editorialIntegrationStatus": "",
+      "sidecarStatus": "",
+      "htmlStatus": "",
+      "overallCompletionPercent": null,
+      "remainingWork": [],
+      "knownGaps": [],
+      "nonBlockingGaps": []
+    },
+    "terminology": [
+      {
+        "termId": "",
+        "term": "",
+        "definition": "",
+        "sourceType": "",
+        "relatedToolkitIds": [],
+        "evidenceSectionAnchors": []
+      }
+    ],
+    "crossReferences": [
+      {
+        "crossReferenceId": "",
+        "fromAnchor": "",
+        "toAnchor": "",
+        "relationshipType": "",
+        "description": ""
+      }
+    ],
+    "originalSupplementaryContent": [
+      {
+        "supplementId": "",
+        "title": "",
+        "contentType": "",
+        "purpose": "",
+        "relationshipToPstSp": "",
+        "clearlyLabeledAsOriginal": true,
+        "sectionAnchor": "",
+        "status": ""
+      }
+    ]
+  },
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [],
+    "integrations": [],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "",
+        "type": "",
+        "result": "",
+        "notes": "",
+        "statusBasis": ""
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "",
+      "notes": []
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "general"
+    },
+    "messages": [
+      {
+        "communicationType": "",
+        "audience": "",
+        "subject": "",
+        "body": ""
+      }
+    ]
+  },
+  "graphics": [
+    {
+      "graphicId": "",
+      "role": "",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "",
+    "listingDescription": "",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "",
+        "destinationType": "",
+        "url": "",
+        "status": ""
+      }
+    ]
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "",
+        "resourceName": "",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ]
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "",
+    "interpretationNotes": [],
+    "unresolvedQuestions": []
+  }
+}

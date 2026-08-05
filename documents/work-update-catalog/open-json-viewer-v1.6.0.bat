@@ -2,10 +2,10 @@
 setlocal
 cd /d "%~dp0"
 
-set "VIEWER=%~dp0tools\json-viewer-v1.5.0.py"
+set "VIEWER=%~dp0tools\json-viewer-v1.6.0.py"
 set "CONTENT_ROOT=%~dp0."
 
-echo Local JSON Explorer launcher v1.5.0
+echo Local JSON Explorer launcher v1.6.0
 echo.
 echo Application:
 echo %VIEWER%
