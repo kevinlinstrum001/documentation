@@ -325,6 +325,21 @@
     "category": "Web Apps"
   },
   {
+    "name": "Transparent System 01",
+    "file": "web-apps/lessons/transparent-system-01.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Transparent System 02",
+    "file": "web-apps/lessons/transparent-system-02.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Transparent System 03",
+    "file": "web-apps/lessons/transparent-system-03.png",
+    "category": "Web Apps"
+  },
+  {
     "name": "Locations Viewer Detail",
     "file": "web-apps/locations-viewer-detail.png",
     "category": "Web Apps"
