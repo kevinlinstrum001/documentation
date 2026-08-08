@@ -3,154 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Meadows Housekeeping Documentation</title>
+  <title>Documentation Repository</title>
 
   <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-alt: #eef2f5;
+      --text: #1f2933;
+      --muted: #66737f;
+      --border: #d8dee4;
+      --accent: #2f5d7c;
+      --accent-dark: #23465d;
+      --shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+      --radius: 12px;
+    }
+
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f5f4;
-      color: #24312d;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* ==========================================
-       Shared Navigation Header
-    ========================================== */
+    a {
+      color: inherit;
+    }
 
-    .docs-header {
-      background: #213c37;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 32px;
-      margin: 0;
-      border: 0;
-      text-align: left;
+    /* ---------- Navbar ---------- */
+
+    .navbar {
       position: sticky;
       top: 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       z-index: 1000;
-    }
-
-    .docs-header__title {
-      margin: 0;
-      padding: 0;
-    }
-
-    .docs-header__title a {
-      color: white;
-      background: transparent;
-      border: 0;
-      text-decoration: none;
-      font-size: 1.4rem;
-      font-weight: bold;
-      padding: 0;
-      margin: 0;
-    }
-
-    .docs-header__nav {
       display: flex;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 28px;
+      background: #17232d;
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .docs-header__nav a {
-      display: inline-block;
-      color: white;
-      background: transparent;
-      border: 0;
-      text-decoration: none;
+    .nav-brand {
       font-size: 1rem;
-      font-weight: bold;
-      padding: 8px 14px;
-      margin: 0;
-      border-radius: 6px;
-      transition: background 0.25s;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
-    .docs-header__nav a:hover,
-    .docs-header__nav a:focus-visible {
-      background: rgba(255, 255, 255, 0.15);
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 7px;
+      color: #dfe8ee;
       text-decoration: none;
+      font-size: 0.92rem;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
-    /* ==========================================
-       Index Page Hero
-    ========================================== */
-
-    .home-hero {
-      background: #213c37;
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.1);
       color: white;
-      padding: 50px 24px;
-      text-align: center;
     }
 
-    .home-hero h1 {
-      margin: 0 0 12px;
-      font-size: 2.4rem;
-    }
+    /* ---------- Page ---------- */
 
-    .home-hero p {
-      margin: 0;
-    }
-
-    main {
-      max-width: 900px;
+    .page {
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 20px;
+      padding: 48px 0 72px;
+    }
+
+    .hero {
+      margin-bottom: 36px;
+      padding: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    section {
+      margin-top: 42px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
     }
 
     .card {
-      background: white;
-      border-left: 6px solid #2f8b57;
-      border-radius: 8px;
-      padding: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .card h2 {
-      margin-top: 0;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 8px;
-      color: #1769aa;
-      font-weight: bold;
+      display: block;
+      min-height: 150px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       text-decoration: none;
+      box-shadow: 0 4px 14px rgba(31, 41, 51, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #aebbc5;
+      box-shadow: 0 8px 22px rgba(31, 41, 51, 0.09);
+    }
+
+    .card-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: var(--surface-alt);
+      color: var(--accent-dark);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .note {
+      margin-top: 48px;
+      padding: 18px 20px;
+      background: var(--surface-alt);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      color: var(--muted);
     }
 
     footer {
-      text-align: center;
-      padding: 28px;
-      color: #66736e;
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
-    @media (max-width: 760px) {
-      .docs-header {
+    @media (max-width: 720px) {
+      .navbar {
         align-items: flex-start;
         flex-direction: column;
-        gap: 12px;
         padding: 14px 18px;
+        gap: 10px;
       }
 
-      .docs-header__nav {
-        flex-wrap: wrap;
-        gap: 6px;
+      .nav-links {
+        width: 100%;
       }
 
-      .docs-header__nav a {
-        padding: 7px 9px;
+      .page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 28px;
+      }
+
+      .hero {
+        padding: 26px 22px;
       }
     }
   </style>
@@ -158,52 +238,145 @@
 
 <body>
 
-  <header class="docs-header">
-    <div class="docs-header__title">
-      <a href="index.html">Klinswork: Meadows</a>
+  <nav class="navbar">
+    <div class="nav-brand">Documentation Repository</div>
+
+    <div class="nav-links">
+      <a href="#projects">1</a>
+      <a href="#catalogs">2</a>
+      <a href="#viewers">3</a>
+      <a href="#tools">4</a>
+      <a href="#archive">5</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <header class="hero">
+      <p class="eyebrow">Repository Overview</p>
+      <h1>Documentation</h1>
+      <p>
+        A working index for projects, documents, catalogs, viewers, utilities,
+        and archived material stored in this repository.
+      </p>
+    </header>
+
+    <section id="projects">
+      <div class="section-heading">
+        <h2>Projects</h2>
+        <span>Major documentation areas</span>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#">
+          <span class="card-number">1</span>
+          <h3>Project 1</h3>
+          <p>Placeholder for a major project or documentation collection.</p>
+        </a>
+
+        <a class="card" href="#">
+          <span class="card-number">2</span>
+          <h3>Project 2</h3>
+          <p>Placeholder for another active area of the repository.</p>
+        </a>
+
+        <a class="card" href="#">
+          <span class="card-number">3</span>
+          <h3>Project 3</h3>
+          <p>Additional project documentation can be linked here.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="catalogs">
+      <div class="section-heading">
+        <h2>Catalogs &amp; Indices</h2>
+        <span>Structured ways into the repository</span>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#">
+          <span class="card-number">4</span>
+          <h3>Catalog 1</h3>
+          <p>Placeholder for a document, work-update, or metadata catalog.</p>
+        </a>
+
+        <a class="card" href="#">
+          <span class="card-number">5</span>
+          <h3>Index 1</h3>
+          <p>Placeholder for a repository or project-level index.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="viewers">
+      <div class="section-heading">
+        <h2>Viewers</h2>
+        <span>Interfaces for reading repository data</span>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#">
+          <span class="card-number">6</span>
+          <h3>Viewer 1</h3>
+          <p>Placeholder for a JSON, catalog, Markdown, or document viewer.</p>
+        </a>
+
+        <a class="card" href="#">
+          <span class="card-number">7</span>
+          <h3>Viewer 2</h3>
+          <p>Additional viewing tools can be linked here.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="section-heading">
+        <h2>Tools</h2>
+        <span>Repository utilities</span>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#">
+          <span class="card-number">8</span>
+          <h3>Tool 1</h3>
+          <p>Placeholder for manifests, generators, converters, or utilities.</p>
+        </a>
+
+        <a class="card" href="#">
+          <span class="card-number">9</span>
+          <h3>Tool 2</h3>
+          <p>Additional repository tools can live here.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="archive">
+      <div class="section-heading">
+        <h2>Archive</h2>
+        <span>Older and superseded material</span>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#">
+          <span class="card-number">10</span>
+          <h3>Archive 1</h3>
+          <p>Historical documentation that is still useful to retain.</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="note">
+      This page is intentionally lightweight. As repository catalogs and
+      viewers become established, these placeholders can be replaced with
+      actual destinations without redesigning the page.
     </div>
 
-    <nav class="docs-header__nav" aria-label="Main navigation">
-      <a href="https://sites.google.com/view/meadows-hk/home/documentation">Back to Meadows</a>
-      <a href="hk3.html">Overview</a>
-      <a href="#">Page 3</a>
-      <a href="#">Page 4</a>
-    </nav>
-  </header>
-
-  <section class="home-hero">
-    <h1>Meadows Housekeeping</h1>
-    <p>System documentation, Work Updates, Resources</p>
-  </section>
-
-  <main>
-
-    <section class="card">
-      <h2><a href="hk3.html">Klinswork Overview</a></h2>
-      <p>
-        What is it, how does it work, how do you use it? 
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Reference Material</h2>
-      <p>
-        An index of user manuals, project design reference, landing pages for navigation and more. How do Google suite tools and specialized software create the system? Get into topics at various levels from "how to get there from the phone" to "How do appScripts trigger Gmail events"
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Operating Procedures</h2>
-      <p>
-        Instructions for supervisors and employees using the system.
-      </p>
-    </section>
+    <footer>
+      Documentation Repository
+    </footer>
 
   </main>
-
-  <footer>
-    Meadows Housekeeping Documentation
-  </footer>
 
 </body>
 </html>
