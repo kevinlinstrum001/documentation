@@ -1,2 +1,348 @@
-# documentation
-collection of html docs made for learning projects
+# Documentation Repository
+
+This repository is a working Klinswork repository for hosting documents, images, structured records, viewers, tools, and other files that benefit from stable repository and GitHub Pages locations.
+
+It is not a single-purpose website. GitHub Pages is one publication layer over a broader repository that also serves as storage, documentation infrastructure, a structured-information collection, and a toolbox for working with the material stored here.
+
+## Primary Responsibilities
+
+The repository currently serves several overlapping purposes:
+
+- **Host documents and reference material**  
+  Store HTML documents, work updates, study material, project documentation, and other files that need durable locations.
+
+- **Host images and reusable assets**  
+  Maintain images, icons, banners, screenshots, and other visual material that can be referenced by documents and tools.
+
+- **Provide stable public URLs**  
+  Use GitHub Pages to make selected HTML documents, images, viewers, and other static files available through predictable URLs.
+
+- **Store structured records**  
+  Maintain JSON sidecars, catalogs, manifests, project records, workflow records, templates, metadata, and related structured information.
+
+- **Host tools and viewers**  
+  Keep browser-based viewers, Python utilities, launchers, generators, and related support tools close to the information they operate on.
+
+- **Preserve working and historical material**  
+  Retain prior versions, archived structures, superseded documents, and historical records when they remain useful for context or provenance.
+
+## Repository Orientation
+
+The repository should be understood by **function and relationships**, not only by directory structure.
+
+A directory tree can show where files live, but it cannot explain:
+
+- what a directory is for;
+- which file is current;
+- which files are historical or archived;
+- what generates a file;
+- what consumes a file;
+- which artifact is authoritative;
+- which files are companions to one another;
+- which viewer understands a catalog or document type;
+- which workflow governs a change;
+- what should be read before modifying a subsystem.
+
+A root-level `repository-manifest.json` is planned to provide that machine-readable semantic map. This README provides the human-readable orientation.
+
+## Major Areas
+
+### `documents/`
+
+Primary home for documentation systems, structured records, catalogs, sidecars, workflows, templates, and related document-support material.
+
+One important subsystem is:
+
+```text
+documents/work-update-catalog/
+```
+
+This area contains the JSON catalog and viewer system, including catalogs, sidecars, project records, workflows, templates, the online JSON viewer, and its manifest.
+
+Important files include:
+
+```text
+documents/work-update-catalog/json-viewer.html
+documents/work-update-catalog/json-manifest.json
+documents/work-update-catalog/manifest.py
+documents/work-update-catalog/open-json-viewer-v1.6.0.bat
+documents/work-update-catalog/tools/json-viewer-v1.6.0.py
+documents/work-update-catalog/tools/json-viewer-system-readme.md
+```
+
+Before making substantial changes to the JSON Viewer or its catalog system, read:
+
+```text
+documents/work-update-catalog/tools/json-viewer-system-readme.md
+```
+
+### `work_updates/`
+
+Published HTML work-update documents.
+
+These are full human-readable publications. Some are accompanied by structured JSON sidecars that preserve important document content for cataloging, search, filtering, and compact previews.
+
+### `images/`
+
+Central image repository.
+
+It contains reusable repository images and the image inventory used by other tools.
+
+Important files:
+
+```text
+images/images.json
+images/build_images_json.py
+```
+
+`images/images.json` is generated from the repository image collection and is used by the Email Composer to present repository images for user selection.
+
+Regenerate it when repository images are added, removed, renamed, moved, or otherwise change in a way that affects the image selector.
+
+### Root-Level Files and Tools
+
+The repository root is itself functional. It contains entry points, site assets, configuration, and material that supports access to the repository as a whole.
+
+Examples include:
+
+```text
+index.html
+README.md
+site.webmanifest
+manifest.json
+favicon.ico
+favicon-16x16.png
+favicon-32x32.png
+apple-touch-icon.png
+icon-192.png
+icon-512.png
+```
+
+The root page is intended to become a useful repository overview and access point rather than a single-project website.
+
+Browser/PWA manifests such as `site.webmanifest` and `manifest.json` describe web-app identity, icons, theme, and startup behavior. They are different from repository-data manifests.
+
+## Manifest Types
+
+Several files in this repository may be called a "manifest," but they have different responsibilities.
+
+### JSON Viewer Manifest
+
+```text
+documents/work-update-catalog/json-manifest.json
+```
+
+Generated by:
+
+```text
+documents/work-update-catalog/manifest.py
+```
+
+Purpose:
+
+- inventory JSON files for the static online JSON Viewer;
+- record paths and useful file metadata;
+- allow GitHub Pages to provide repository navigation without a Python server.
+
+Consumer:
+
+```text
+documents/work-update-catalog/json-viewer.html
+```
+
+### Image Manifest
+
+```text
+images/images.json
+```
+
+Generated by:
+
+```text
+images/build_images_json.py
+```
+
+Purpose:
+
+- inventory repository images;
+- provide image names, paths, and categories to tools.
+
+Known consumer:
+
+- Email Composer image selector.
+
+### Site / Web-App Manifests
+
+Examples:
+
+```text
+site.webmanifest
+manifest.json
+```
+
+Purpose:
+
+- browser/PWA identity;
+- icons;
+- theme colors;
+- start URL;
+- install/display behavior.
+
+These are site configuration files, not repository inventories.
+
+### Planned Repository Manifest
+
+Planned root file:
+
+```text
+repository-manifest.json
+```
+
+Purpose:
+
+- provide a semantic map of the entire repository;
+- identify major systems and areas;
+- record current/canonical artifacts;
+- describe generators and consumers;
+- record relationships between files and systems;
+- identify read-first documentation;
+- preserve durable architectural knowledge discovered during work sessions;
+- expose unresolved or not-yet-classified areas without guessing.
+
+The repository manifest should be more than a generated directory tree.
+
+## Structured Documentation Model
+
+Some published HTML documents have structured sidecars.
+
+Conceptually:
+
+```text
+full HTML document
+        │
+        └── companion sidecar
+                │
+                ├── preserves selected semantic content
+                ├── supports search and filtering
+                ├── may be aggregated into a catalog
+                └── can support a compact viewer preview
+```
+
+The full HTML remains the publication.
+
+A sidecar is a structured companion record. Depending on the document type, it may preserve identity, summaries, sections, project context, outcomes, decisions, status, next steps, publication information, and other useful content.
+
+Catalogs aggregate records for discovery and presentation.
+
+The JSON Viewer provides generic JSON inspection as well as specialized human-readable views for document and catalog types that warrant them.
+
+## JSON Viewer
+
+The JSON Viewer is both a generic JSON inspection tool and a type-aware presentation layer.
+
+The local viewer currently lives at:
+
+```text
+documents/work-update-catalog/tools/json-viewer-v1.6.0.py
+```
+
+The launcher currently lives at:
+
+```text
+documents/work-update-catalog/open-json-viewer-v1.6.0.bat
+```
+
+The online GitHub Pages companion lives at:
+
+```text
+documents/work-update-catalog/json-viewer.html
+```
+
+The local viewer can use Python endpoints and scan the filesystem directly.
+
+The online viewer must use static repository resources such as:
+
+```text
+json-manifest.json
+catalogs/*.json
+sidecars/*.json
+```
+
+Viewer changes are commonly made when:
+
+- general viewer functionality is improved;
+- a catalog needs a richer or catalog-specific presentation;
+- a new catalog structure is introduced;
+- a new type of document or sidecar is added to the collection;
+- a new specialized preview becomes useful.
+
+The viewer is intentionally allowed to evolve with the structured records it presents.
+
+## Repository Design Principles
+
+1. **The repository has multiple responsibilities.**  
+   Do not reduce it conceptually to one project, one website, or one catalog system.
+
+2. **Hosting is a primary function.**  
+   Stable file and GitHub Pages locations are valuable even when no elaborate website surrounds them.
+
+3. **Structure should carry meaning.**  
+   Use README files, manifests, sidecars, catalogs, workflows, and metadata to explain relationships that filenames alone cannot express.
+
+4. **Keep authority clear.**  
+   Distinguish source records, aggregate catalogs, generated manifests, companion files, and published documents.
+
+5. **Generated files should identify their generators where practical.**
+
+6. **Consumers matter.**  
+   Record not only what generates an artifact but what uses it.
+
+7. **Current and historical material should remain distinguishable.**
+
+8. **Do not invent explanations for unknown areas.**  
+   If the purpose or relationship of a file is not established, mark it as unresolved until it is understood.
+
+9. **Durable discoveries should be preserved.**  
+   When a work session reveals useful architectural knowledge, update the appropriate README, workflow, sidecar, or future repository manifest so the next session does not have to rediscover it.
+
+10. **Human and machine orientation should complement each other.**  
+    This README explains the repository in prose. The planned `repository-manifest.json` should provide a machine-readable semantic map.
+
+## Context Restoration for Future Work Sessions
+
+A future work session should begin at the root and establish:
+
+```text
+1. Read README.md.
+2. Read repository-manifest.json when available.
+3. Identify the subsystem involved.
+4. Follow that subsystem's read-first documentation.
+5. Inspect current files and versions before proposing changes.
+6. Determine which artifacts are source, generated, aggregate, companion, or published.
+7. Determine whether the work changes any generator/consumer relationships.
+8. Update durable documentation when new architectural facts are learned.
+```
+
+For JSON Viewer and catalog work, continue with:
+
+```text
+documents/work-update-catalog/tools/json-viewer-system-readme.md
+```
+
+## Publication
+
+The GitHub Pages root is:
+
+```text
+https://kevinlinstrum001.github.io/documentation/
+```
+
+Selected static repository files can therefore serve both as stored artifacts and as hosted resources.
+
+The root `index.html` is intended to provide a practical overview of projects, catalogs, viewers, tools, and archived material rather than attempting to contain all repository knowledge itself.
+
+## Status
+
+This repository is an evolving working system.
+
+Its organization, catalogs, viewers, workflows, and metadata structures are expected to improve as they are used. Documentation should preserve enough context that future work can begin from the current understanding rather than reconstructing the system from scratch.
