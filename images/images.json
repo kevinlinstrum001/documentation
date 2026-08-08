@@ -1,8 +1,13 @@
 [
   {
-    "name": "Calendar",
-    "file": "calendar.png",
-    "category": "Uncategorized"
+    "name": "General Announcement",
+    "file": "banners/general-announcement.png",
+    "category": "Banners"
+  },
+  {
+    "name": "Image 001",
+    "file": "banners/image-001.png",
+    "category": "Banners"
   },
   {
     "name": "Chatgpt Image Jul 21, 2026, 05 09 07 Pm",
@@ -10,114 +15,44 @@
     "category": "Uncategorized"
   },
   {
-    "name": "Chatgpt Image Jul 21, 2026, 09 56 37 Pm (1)",
-    "file": "ChatGPT Image Jul 21, 2026, 09_56_37 PM (1).png",
-    "category": "Uncategorized"
-  },
-  {
     "name": "Chatgpt Image Jul 21, 2026, 10 02 40 Am",
-    "file": "ChatGPT Image Jul 21, 2026, 10_02_40 AM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 21, 2026, 10 08 25 Pm",
-    "file": "ChatGPT Image Jul 21, 2026, 10_08_25 PM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 21, 2026, 10 21 37 Pm",
-    "file": "ChatGPT Image Jul 21, 2026, 10_21_37 PM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 23, 2026, 05 28 26 Pm",
-    "file": "ChatGPT Image Jul 23, 2026, 05_28_26 PM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 25, 2026, 02 37 55 Am",
-    "file": "ChatGPT Image Jul 25, 2026, 02_37_55 AM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 25, 2026, 02 45 43 Am",
-    "file": "ChatGPT Image Jul 25, 2026, 02_45_43 AM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 25, 2026, 06 47 53 Pm",
-    "file": "ChatGPT Image Jul 25, 2026, 06_47_53 PM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Chatgpt Image Jul 26, 2026, 07 34 24 Pm",
-    "file": "ChatGPT Image Jul 26, 2026, 07_34_24 PM.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Email Formatter",
-    "file": "email-formatter.png",
-    "category": "Uncategorized"
+    "file": "icons/ChatGPT Image Jul 21, 2026, 10_02_40 AM.png",
+    "category": "Icons"
   },
   {
     "name": "Favicon Monkey 01",
-    "file": "favicon-monkey-01.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "General Announcement",
-    "file": "general-announcement.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Hkplan07132026",
-    "file": "hkplan07132026.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Image 001",
-    "file": "image-001.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Inventory 3 0",
-    "file": "inventory-3-0.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Inventory Tools",
-    "file": "inventory-tools.png",
-    "category": "Uncategorized"
+    "file": "icons/favicon-monkey-01.png",
+    "category": "Icons"
   },
   {
     "name": "Klinswork Favicon 02",
-    "file": "klinswork-favicon-02.png",
-    "category": "Uncategorized"
+    "file": "icons/klinswork-favicon-02.png",
+    "category": "Icons"
   },
   {
     "name": "Klinswork Favicon",
-    "file": "klinswork-favicon.png",
-    "category": "Uncategorized"
+    "file": "icons/klinswork-favicon.png",
+    "category": "Icons"
   },
   {
     "name": "Klinswork Icon 180",
-    "file": "klinswork-icon-180.png",
-    "category": "Uncategorized"
+    "file": "icons/klinswork-icon-180.png",
+    "category": "Icons"
   },
   {
     "name": "Klinswork Icon 192",
-    "file": "klinswork-icon-192.png",
-    "category": "Uncategorized"
+    "file": "icons/klinswork-icon-192.png",
+    "category": "Icons"
   },
   {
-    "name": "Landing Page",
-    "file": "landing-page.png",
-    "category": "Uncategorized"
+    "name": "Chatgpt Image Jul 21, 2026, 10 21 37 Pm",
+    "file": "meadows/ChatGPT Image Jul 21, 2026, 10_21_37 PM.png",
+    "category": "Meadows"
   },
   {
-    "name": "Landing Page2",
-    "file": "landing-page2.png",
-    "category": "Uncategorized"
+    "name": "Chatgpt Image Jul 23, 2026, 05 28 26 Pm",
+    "file": "meadows/ChatGPT Image Jul 23, 2026, 05_28_26 PM.png",
+    "category": "Meadows"
   },
   {
     "name": "Chatgpt Image Jul 21, 2026, 06 33 16 Pm",
@@ -153,11 +88,6 @@
     "name": "Floor Image",
     "file": "personal/floor-image.png",
     "category": "Personal"
-  },
-  {
-    "name": "Report Issue",
-    "file": "report-issue.png",
-    "category": "Uncategorized"
   },
   {
     "name": "Img 20241213 151635",
@@ -255,21 +185,6 @@
     "category": "Scenarios"
   },
   {
-    "name": "Sds View",
-    "file": "sds-view.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "Tasker",
-    "file": "tasker.png",
-    "category": "Uncategorized"
-  },
-  {
-    "name": "User Guide",
-    "file": "user-guide.png",
-    "category": "Uncategorized"
-  },
-  {
     "name": "Calendar 01",
     "file": "web-apps/calendar-01.png",
     "category": "Web Apps"
@@ -282,6 +197,36 @@
   {
     "name": "Calendar Weekly",
     "file": "web-apps/calendar-weekly.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Calendar",
+    "file": "web-apps/calendar.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 21, 2026, 10 08 25 Pm",
+    "file": "web-apps/ChatGPT Image Jul 21, 2026, 10_08_25 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 25, 2026, 02 37 55 Am",
+    "file": "web-apps/ChatGPT Image Jul 25, 2026, 02_37_55 AM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 25, 2026, 02 45 43 Am",
+    "file": "web-apps/ChatGPT Image Jul 25, 2026, 02_45_43 AM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 25, 2026, 06 47 53 Pm",
+    "file": "web-apps/ChatGPT Image Jul 25, 2026, 06_47_53 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 26, 2026, 07 34 24 Pm",
+    "file": "web-apps/ChatGPT Image Jul 26, 2026, 07_34_24 PM.png",
     "category": "Web Apps"
   },
   {
@@ -322,6 +267,31 @@
   {
     "name": "Delivery System 08",
     "file": "web-apps/delivery-system-08.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Email Formatter",
+    "file": "web-apps/email-formatter.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Inventory 3 0",
+    "file": "web-apps/inventory-3-0.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Inventory Tools",
+    "file": "web-apps/inventory-tools.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Landing Page",
+    "file": "web-apps/landing-page.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Landing Page2",
+    "file": "web-apps/landing-page2.png",
     "category": "Web Apps"
   },
   {
@@ -370,6 +340,11 @@
     "category": "Web Apps"
   },
   {
+    "name": "Report Issue",
+    "file": "web-apps/report-issue.png",
+    "category": "Web Apps"
+  },
+  {
     "name": "Roster 01",
     "file": "web-apps/roster-01.png",
     "category": "Web Apps"
@@ -385,6 +360,26 @@
     "category": "Web Apps"
   },
   {
+    "name": "Sds View",
+    "file": "web-apps/sds-view.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Tasker",
+    "file": "web-apps/tasker.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "User Guide",
+    "file": "web-apps/user-guide.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Work Queue 02",
+    "file": "web-apps/work-queue-02.png",
+    "category": "Web Apps"
+  },
+  {
     "name": "Work Queue 2 1 Beta 01",
     "file": "web-apps/work-queue-2-1-beta-01.png",
     "category": "Web Apps"
@@ -395,43 +390,48 @@
     "category": "Web Apps"
   },
   {
-    "name": "Work Queue 02",
-    "file": "work-queue-02.png",
-    "category": "Uncategorized"
+    "name": "Work Queue",
+    "file": "web-apps/work-queue.png",
+    "category": "Web Apps"
   },
   {
-    "name": "Work Queue",
-    "file": "work-queue.png",
-    "category": "Uncategorized"
+    "name": "Chatgpt Image Jul 21, 2026, 09 56 37 Pm (1)",
+    "file": "work-updates/ChatGPT Image Jul 21, 2026, 09_56_37 PM (1).png",
+    "category": "Work Updates"
+  },
+  {
+    "name": "Hkplan07132026",
+    "file": "work-updates/hkplan07132026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update 07 21 2026",
-    "file": "work-update-07-21-2026.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work-update-07-21-2026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update 07 23 2026",
-    "file": "work-update-07-23-2026.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work-update-07-23-2026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update 07 25 2026",
-    "file": "work-update-07-25-2026.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work-update-07-25-2026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update 07 26 2026",
-    "file": "work-update-07-26-2026.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work-update-07-26-2026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update 07 19 2026",
-    "file": "work_update_07_19_2026.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work_update_07_19_2026.png",
+    "category": "Work Updates"
   },
   {
     "name": "Work Update Image",
-    "file": "work_update_image.png",
-    "category": "Uncategorized"
+    "file": "work-updates/work_update_image.png",
+    "category": "Work Updates"
   }
 ]
