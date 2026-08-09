@@ -40,6 +40,16 @@
     "category": "Icons"
   },
   {
+    "name": "Calendar Monthly",
+    "file": "meadows/calendar-monthly.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Calendar Weekly",
+    "file": "meadows/calendar-weekly.png",
+    "category": "Meadows"
+  },
+  {
     "name": "Chatgpt Image Jul 21, 2026, 10 21 37 Pm",
     "file": "meadows/ChatGPT Image Jul 21, 2026, 10_21_37 PM.png",
     "category": "Meadows"
@@ -47,6 +57,11 @@
   {
     "name": "Chatgpt Image Jul 23, 2026, 05 28 26 Pm",
     "file": "meadows/ChatGPT Image Jul 23, 2026, 05_28_26 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Img 20260105 111746 663",
+    "file": "meadows/IMG_20260105_111746_663.jpg",
     "category": "Meadows"
   },
   {

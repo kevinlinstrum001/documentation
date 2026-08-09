@@ -1,0 +1,311 @@
+documentation/
+├── archive/
+│   ├── calendar-utility-sample.html
+│   ├── filing_cabinet_and_database_lesson.html
+│   ├── filing_cabinet_metaphor.html
+│   ├── from_messages_to_organizational_memory.html
+│   ├── head-icon-links.html
+│   ├── hk3.html
+│   ├── housekeeping_information_translation_lesson.html
+│   ├── meadows-housekeeping-new-user-guide.html
+│   ├── meadows_controlled_information_spaces_lesson.html
+│   ├── meadows_hk_v1_build_report_today.html
+│   ├── meadows_housekeeping_system_presentation.html
+│   ├── meadows_housekeeping_website_presentation (1).html
+│   ├── meadows_housekeeping_work_completed (1).html
+│   ├── preview.html
+│   └── routing_from_viewer_lesson.html
+├── Delivery Service Story/
+│   ├── delivery-service.html
+│   ├── delivery-service.txt
+│   └── local-delivery-service-clean.md
+├── documents/
+│   ├── personal/
+│   │   ├── PST-SP_Veteran_Study_Guide_v0.5_assembled.md
+│   │   └── rose-proposal-floor-upgrade.html
+│   ├── therapy-documentation-work/
+│   │   ├── therapy-component-library/
+│   │   │   ├── assemblies/
+│   │   │   ├── fragments/
+│   │   │   │   ├── cpt/
+│   │   │   │   └── pst-sp/
+│   │   │   ├── sidecars/
+│   │   │   │   ├── cpt/
+│   │   │   │   └── pst-sp/
+│   │   │   └── sources/
+│   │   │       ├── cpt/
+│   │   │       │   ├── 2017-guilford/
+│   │   │       │   │   └── resick-forms.pdf
+│   │   │       │   ├── 2024-guilford/
+│   │   │       │   └── older-va/
+│   │   │       ├── emdr/
+│   │   │       │   └── 2017-guilford/
+│   │   │       │       ├── shapiro-forms.pdf
+│   │   │       │       └── source-url.txt
+│   │   │       ├── measures/
+│   │   │       ├── pct/
+│   │   │       ├── pe/
+│   │   │       ├── pst-sp/
+│   │   │       │   ├── nezu/
+│   │   │       │   └── va/
+│   │   │       ├── wet/
+│   │   │       └── source-urls.txt
+│   │   └── create-therapy-library.py
+│   ├── work-narrative/
+│   │   ├── Narrative Document/
+│   │   │   ├── index.html
+│   │   │   └── work-queue-ecosystem.docx
+│   │   ├── apd-narrative-supervisor.md
+│   │   ├── nmbhi-first-supervisor-profile-image-prompts.md
+│   │   ├── nmbhi-first-supervisor-profile.html
+│   │   └── transparent-system.html
+│   ├── work-update-catalog/
+│   │   ├── archived/
+│   │   │   ├── document-sidecar-template-1.0.json
+│   │   │   ├── document-sidecar-template-1.1.json
+│   │   │   ├── documentation-workflow-1.0.json
+│   │   │   ├── json-viewer-diagnostics-v1.1.0.txt
+│   │   │   ├── klinswork-document-catalog-002.json
+│   │   │   ├── klinswork-document-catalog-003.json
+│   │   │   ├── klinswork-document-catalog-004.json
+│   │   │   ├── open-json-viewer-v1.2.0.bat
+│   │   │   ├── open-json-viewer-v1.3.0.bat
+│   │   │   └── open-json-viewer-v1.4.0.bat
+│   │   ├── catalogs/
+│   │   │   ├── archived/
+│   │   │   │   ├── klinswork-chemical-product-catalog-shell-1.0.json
+│   │   │   │   ├── klinswork-document-catalog-005.json
+│   │   │   │   ├── klinswork-document-catalog-006-v1.json
+│   │   │   │   └── klinswork-document-catalog-006-v2.json
+│   │   │   ├── klinswork-chemical-product-catalog-001.json
+│   │   │   ├── klinswork-document-catalog-005-metadata.json
+│   │   │   ├── klinswork-document-catalog-006.json
+│   │   │   ├── klinswork-document-catalog-007.json
+│   │   │   └── klinswork-lesson-catalog-001.json
+│   │   ├── projects/
+│   │   │   ├── inventory-app/
+│   │   │   │   └── implementation-plans/
+│   │   │   │       ├── implementation-plan.md
+│   │   │   │       └── README.md
+│   │   │   └── work-queue-system/
+│   │   │       └── README.md
+│   │   ├── sidecars/
+│   │   │   ├── implementation-plans/
+│   │   │   │   └── implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json
+│   │   │   ├── lessons/
+│   │   │   │   ├── controlled-information-spaces-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── digital-office-metaphor-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── filing-cabinet-and-database-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── from-messages-to-organizational-memory-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── housekeeping-information-translation-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── routing-from-viewer-lesson-sidecar-2.0.json
+│   │   │   │   └── the-ship-that-remembers-lesson-sidecar-3.0-draft.json
+│   │   │   ├── sds/
+│   │   │   │   ├── klinswork-chemical-product-entry-001-oxivir-five-16.json
+│   │   │   │   ├── klinswork-chemical-product-entry-002-crew-bathroom-cleaner-scale-remover.json
+│   │   │   │   ├── klinswork-chemical-product-entry-003-breakdown-xc-odor-eliminator-cleaner.json
+│   │   │   │   ├── klinswork-chemical-product-entry-004-prominence-heavy-duty-floor-cleaner.json
+│   │   │   │   ├── klinswork-chemical-product-entry-005-clorox-urine-remover-31415-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-006-tough-guy-23-percent-hydrochloric-bowl-cleaner-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-007-timemist-citrus-air-freshener-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-008-nmci-glass-cleaner-51-ccgc.json
+│   │   │   │   ├── klinswork-chemical-product-entry-009-purell-advanced-hand-sanitizer-fragrance-free-foam.json
+│   │   │   │   ├── klinswork-chemical-product-entry-010-purell-healthy-soap-8385-02.json
+│   │   │   │   ├── klinswork-chemical-product-entry-011-big-d-d-vour-absorbent-powder.json
+│   │   │   │   └── klinswork-chemical-product-entry-012-mckesson-premium-hand-sanitizer-with-aloe.json
+│   │   │   ├── work-update-sidecars/
+│   │   │   │   ├── meadows-housekeeping-work-completed-sidecar-3.0-draft.json
+│   │   │   │   ├── work-update-07-16-2026-02-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-16-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-19-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-21-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-23-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-25-2026-phase-2-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-25-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-26-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-30-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-08-01-2026-sidecar-2.0.json
+│   │   │   │   └── wu001-sidecar-2.0.json
+│   │   │   ├── documentation-workflow-sidecar-3.0-draft.json
+│   │   │   ├── nmbhi-first-supervisor-profile-sidecar-3.0-draft.json
+│   │   │   └── pst-sp-veteran-study-guide-sidecar.json
+│   │   ├── summaries/
+│   │   │   ├── 2026-08-08-pst-sp-clinical-handout-systems-investigation-summary.md
+│   │   │   ├── documentation-morning-session-summary-2026-08-04.md
+│   │   │   ├── summary-2026-08-01-documentation-catalog-bootstrap.md
+│   │   │   ├── summary-2026-08-01-documentation-system-bootstrap-revised.md
+│   │   │   └── summary-2026-08-01-documentation-workflow-bootstrap.md
+│   │   ├── templates/
+│   │   │   ├── archive/
+│   │   │   │   ├── document-sidecar-template-2.0.json
+│   │   │   │   └── sidecar-profile-registry-1.0.json
+│   │   │   ├── document-sidecar-base-template-3.0.json
+│   │   │   ├── generic-document-sidecar-template-3.0.json
+│   │   │   ├── implementation-plan-sidecar-template-3.0.json
+│   │   │   ├── lesson-reference-sidecar-template-3.0.json
+│   │   │   ├── pst-sp-study-guide-sidecar-template-1.0.json
+│   │   │   ├── sidecar-profile-registry-1.0.json
+│   │   │   ├── sidecar-profile-system-readme-updated.md
+│   │   │   ├── sidecar-profile-system-readme.md
+│   │   │   ├── summary-md-template.json
+│   │   │   ├── work-update-sidecar-template-3.0.json
+│   │   │   └── workflow-specification-sidecar-template-3.0.json
+│   │   ├── tools/
+│   │   │   ├── archived/
+│   │   │   │   ├── json-viewer-v1.2.0.py
+│   │   │   │   ├── json-viewer-v1.3.0.py
+│   │   │   │   ├── json-viewer-v1.4.0.py
+│   │   │   │   └── json-viewer-v1.5.0.py
+│   │   │   ├── json-viewer-system-readme.md
+│   │   │   ├── json-viewer-v1.6.0-upgrade-readme.md
+│   │   │   └── json-viewer-v1.6.0.py
+│   │   ├── workflows/
+│   │   │   ├── documentation-workflow.json
+│   │   │   └── upgrade-08-09-2026.md
+│   │   ├── json-manifest.json
+│   │   ├── json-viewer-original.html
+│   │   ├── json-viewer.html
+│   │   ├── manifest.py
+│   │   └── open-json-viewer-v1.6.0.bat
+│   ├── locations-viewer.html
+│   ├── relative-paths-appScript.html
+│   ├── relative-paths-appScript.png
+│   └── the_ship_that_remembers_lesson.html
+├── images/
+│   ├── banners/
+│   │   ├── general-announcement.png
+│   │   └── image-001.png
+│   ├── icons/
+│   │   ├── ChatGPT Image Jul 21, 2026, 10_02_40 AM.png
+│   │   ├── favicon-monkey-01.png
+│   │   ├── klinswork-favicon-02.png
+│   │   ├── klinswork-favicon.png
+│   │   ├── klinswork-icon-180.png
+│   │   └── klinswork-icon-192.png
+│   ├── meadows/
+│   │   ├── calendar-monthly.png
+│   │   ├── calendar-weekly.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 10_21_37 PM.png
+│   │   ├── ChatGPT Image Jul 23, 2026, 05_28_26 PM.png
+│   │   └── IMG_20260105_111746_663.jpg
+│   ├── misc/
+│   │   ├── ChatGPT Image Aug 2, 2026, 03_04_04 PM.png
+│   │   ├── ChatGPT Image Aug 2, 2026, 03_10_37 PM.png
+│   │   ├── ChatGPT Image Jul 12, 2026, 01_25_43 PM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 05_42_39 AM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 08_11_48 AM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 09_16_50 AM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 09_24_06 AM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 09_31_55 AM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 09_50_15 AM.png
+│   │   └── image001.png
+│   ├── monkeys/
+│   │   ├── ChatGPT Image Jul 21, 2026, 05_09_07 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 06_33_16 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 06_36_58 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 06_38_25 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 06_40_03 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 06_56_22 PM.png
+│   │   └── ChatGPT Image Jul 21, 2026, 07_01_53 PM.png
+│   ├── personal/
+│   │   └── floor-image.png
+│   ├── req-forms/
+│   │   ├── IMG_20241213_151635.jpg
+│   │   ├── IMG_20241216_123709.jpg
+│   │   ├── IMG_20241217_135030.jpg
+│   │   ├── IMG_20241218_141754.jpg
+│   │   ├── IMG_20241218_141816.jpg
+│   │   ├── IMG_20241218_170459.jpg
+│   │   ├── IMG_20241218_170534.jpg
+│   │   └── IMG_20241218_170541.jpg
+│   ├── scenarios/
+│   │   ├── apd-chain-of-command-01.png
+│   │   ├── apd-daily-operating-system-01.png
+│   │   ├── apd-friendly-correction-01.png
+│   │   ├── apd-morning-huddle-01.png
+│   │   ├── apd-specific-praise-01.png
+│   │   ├── apd-standardized-closet-01.png
+│   │   ├── apd-supervisor-overview-01.png
+│   │   ├── apd-supervisor-overview-02.png
+│   │   ├── apd-supervisor-rounds-01.png
+│   │   ├── apd-uniform-onboarding-01.png
+│   │   └── apd-white-glove-inspection-01.png
+│   ├── web-apps/
+│   │   ├── lessons/
+│   │   │   ├── transparent-system-01.png
+│   │   │   ├── transparent-system-02.png
+│   │   │   └── transparent-system-03.png
+│   │   ├── calendar-01.png
+│   │   ├── calendar-monthly.png
+│   │   ├── calendar-weekly.png
+│   │   ├── calendar.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 10_08_25 PM.png
+│   │   ├── ChatGPT Image Jul 25, 2026, 02_37_55 AM.png
+│   │   ├── ChatGPT Image Jul 25, 2026, 02_45_43 AM.png
+│   │   ├── ChatGPT Image Jul 25, 2026, 06_47_53 PM.png
+│   │   ├── ChatGPT Image Jul 26, 2026, 07_34_24 PM.png
+│   │   ├── delivery-service-01.png
+│   │   ├── delivery-service-02.png
+│   │   ├── delivery-service-03.png
+│   │   ├── delivery-service-04.png
+│   │   ├── delivery-service-05.png
+│   │   ├── delivery-service-06.png
+│   │   ├── delivery-service-07.png
+│   │   ├── delivery-system-08.png
+│   │   ├── email-formatter.png
+│   │   ├── inventory-3-0.png
+│   │   ├── inventory-tools.png
+│   │   ├── landing-page.png
+│   │   ├── landing-page2.png
+│   │   ├── locations-viewer-detail.png
+│   │   ├── locations-viewer-overview.png
+│   │   ├── locations-viewer-sanitizer-stations.png
+│   │   ├── meadows-02.png
+│   │   ├── meadows-03.png
+│   │   ├── meadows-hk-01.png
+│   │   ├── report-issue.png
+│   │   ├── roster-01.png
+│   │   ├── roster-02.png
+│   │   ├── roster-03.png
+│   │   ├── sds-view.png
+│   │   ├── tasker.png
+│   │   ├── user-guide.png
+│   │   ├── work-queue-02.png
+│   │   ├── work-queue-2-1-beta-01.png
+│   │   ├── work-queue-2-1-beta.png
+│   │   └── work-queue.png
+│   ├── work-updates/
+│   │   ├── ChatGPT Image Jul 21, 2026, 09_56_37 PM (1).png
+│   │   ├── hkplan07132026.png
+│   │   ├── work-update-07-21-2026.png
+│   │   ├── work-update-07-23-2026.png
+│   │   ├── work-update-07-25-2026.png
+│   │   ├── work-update-07-26-2026.png
+│   │   ├── work_update_07_19_2026.png
+│   │   └── work_update_image.png
+│   ├── build_images_json.py
+│   └── images.json
+├── work_updates/
+│   ├── work-update-07-16-2026.html
+│   ├── work-update-07-21-2026.html
+│   ├── work-update-07-23-2026.html
+│   ├── work-update-07-25-2026-phase-2.html
+│   ├── work-update-07-25-2026.html
+│   ├── work-update-07-26-2026-1st-version.html
+│   ├── work-update-07-26-2026.html
+│   ├── work-update-07-30-2026.html
+│   ├── work-update-7-19-2026.html
+│   ├── work-update-8-01-2026.html
+│   └── wu001.html
+├── ai_story_living_lesson.html
+├── apple-touch-icon.png
+├── build_repository_tree.py
+├── favicon-16x16.png
+├── favicon-32x32.png
+├── favicon.ico
+├── icon-192.png
+├── icon-512.png
+├── index.html
+├── manifest.json
+├── README.md
+└── site.webmanifest
