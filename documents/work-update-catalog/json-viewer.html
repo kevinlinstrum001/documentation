@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Local JSON Explorer v1.6.0</title>
+  <title>Local JSON Explorer v1.6.1</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -1289,7 +1289,7 @@
     <div class="sidebar-header">
       <h1>Local JSON Explorer</h1>
       <p class="subtle">Recursive, read-only repository browser</p>
-      <p class="subtle runtime-info" id="runtimeInfo">Version 1.6.0 · loading runtime identity…</p>
+      <p class="subtle runtime-info" id="runtimeInfo">Version 1.6.1 · detecting runtime…</p>
       <div class="file-controls">
         <input id="fileFilter" type="search" placeholder="Filter filenames or paths">
         <button id="refreshButton" title="Refresh repository">Refresh</button>
@@ -1390,6 +1390,47 @@
     catalogSort: "newest",
   };
 
+  // Runtime adapter:
+  // - Local Python viewer exposes /api/about, /api/files, and /api/file.
+  // - GitHub Pages is static, so it uses json-manifest.json plus direct relative file fetches.
+  const runtime = {
+    mode: ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname) ? "local-api" : "static-manifest",
+    manifestUrl: "json-manifest.json",
+  };
+
+  function isLocalApiRuntime() {
+    return runtime.mode === "local-api";
+  }
+
+  function encodeRelativePath(path) {
+    return String(path || "")
+      .split("/")
+      .map(segment => encodeURIComponent(segment))
+      .join("/");
+  }
+
+  function countJsonNodes(value) {
+    let count = 1;
+    if (Array.isArray(value)) {
+      for (const item of value) count += countJsonNodes(item);
+    } else if (value !== null && typeof value === "object") {
+      for (const item of Object.values(value)) count += countJsonNodes(item);
+    }
+    return count;
+  }
+
+  function normalizeManifestFile(file) {
+    const modifiedMs = Date.parse(file.modifiedTimestamp || "");
+    return {
+      ...file,
+      name: file.name || String(file.path || "").split("/").pop() || "",
+      path: file.path || file.name || "",
+      size: Number(file.size) || 0,
+      modified: Number.isFinite(modifiedMs) ? modifiedMs / 1000 : 0,
+      archived: Boolean(file.archived),
+    };
+  }
+
   const els = {
     app: document.getElementById("app"),
     sidebar: document.getElementById("sidebar"),
@@ -1462,26 +1503,51 @@
   }
 
   async function loadAbout() {
+    if (!isLocalApiRuntime()) {
+      els.runtimeInfo.textContent = "Version 1.6.1 · GitHub Pages static mode";
+      els.runtimeInfo.title = `Static repository browser · manifest: ${runtime.manifestUrl}`;
+      return;
+    }
+
     try {
       const response = await fetch("/api/about", { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const about = await response.json();
-      els.runtimeInfo.textContent = `v${about.version} · build ${about.buildId} · PID ${about.processId} · port ${about.port}`;
+      els.runtimeInfo.textContent = `v${about.version || "1.6.1"} · build ${about.buildId} · PID ${about.processId} · port ${about.port}`;
       els.runtimeInfo.title = `Script: ${about.scriptPath}\nRepository: ${about.folder}`;
     } catch {
-      els.runtimeInfo.textContent = "Version 1.6.0 · runtime identity unavailable";
+      els.runtimeInfo.textContent = "Version 1.6.1 · local API runtime unavailable";
     }
   }
 
   async function loadFileList() {
     els.status.textContent = "Refreshing repository…";
     try {
-      const archived = state.includeArchived ? "1" : "0";
-      const response = await fetch(`/api/files?includeArchived=${archived}`, { cache: "no-store" });
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error || "Could not load repository files.");
-      state.files = payload.files;
-      renderFileTree();
-      els.status.textContent = `${payload.files.length} JSON files discovered beneath ${payload.folder}`;
+      if (isLocalApiRuntime()) {
+        const archived = state.includeArchived ? "1" : "0";
+        const response = await fetch(`/api/files?includeArchived=${archived}`, { cache: "no-store" });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Could not load repository files.");
+        state.files = payload.files;
+        renderFileTree();
+        els.status.textContent = `${payload.files.length} JSON files discovered beneath ${payload.folder}`;
+      } else {
+        const response = await fetch(runtime.manifestUrl, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Could not load ${runtime.manifestUrl} (HTTP ${response.status}).`);
+        const payload = await response.json();
+        if (!Array.isArray(payload.files)) throw new Error(`${runtime.manifestUrl} does not contain a files array.`);
+
+        state.files = payload.files
+          .map(normalizeManifestFile)
+          .filter(file => file.validJson !== false)
+          .filter(file => state.includeArchived || !file.archived);
+
+        renderFileTree();
+        const generated = payload.repository?.generatedTimestamp
+          ? ` · manifest ${new Date(payload.repository.generatedTimestamp).toLocaleString()}`
+          : "";
+        els.status.textContent = `${state.files.length} JSON files discovered from ${runtime.manifestUrl}${generated}`;
+      }
 
       if (!state.initialSelectionApplied) {
         state.initialSelectionApplied = true;
@@ -1576,12 +1642,49 @@
   async function loadFile(path) {
     els.status.textContent = `Loading ${path}…`;
     try {
-      const response = await fetch(`/api/file?path=${encodeURIComponent(path)}`, { cache: "no-store" });
-      const payload = await response.json();
-      if (!response.ok) {
-        resetLoadedState(path, payload.raw || "");
-        showError(payload.error || "Invalid JSON.");
-        return;
+      let payload;
+
+      if (isLocalApiRuntime()) {
+        const response = await fetch(`/api/file?path=${encodeURIComponent(path)}`, { cache: "no-store" });
+        const contentType = response.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+          const raw = await response.text();
+          throw new Error(`Local API returned non-JSON content for ${path} (HTTP ${response.status}).`);
+        }
+        payload = await response.json();
+        if (!response.ok) {
+          resetLoadedState(path, payload.raw || "");
+          showError(payload.error || "Invalid JSON.");
+          return;
+        }
+      } else {
+        const fileUrl = encodeRelativePath(path);
+        const response = await fetch(fileUrl, { cache: "no-store" });
+        const raw = await response.text();
+
+        if (!response.ok) {
+          throw new Error(`Could not load ${path} (HTTP ${response.status}).`);
+        }
+
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch (error) {
+          const looksLikeHtml = /^\s*</.test(raw);
+          const hint = looksLikeHtml
+            ? " The server returned HTML instead of JSON; check the manifest path and GitHub Pages publication state."
+            : "";
+          throw new Error(`Invalid JSON in ${path}: ${error.message}.${hint}`);
+        }
+
+        const manifestFile = state.files.find(file => file.path === path);
+        payload = {
+          name: manifestFile?.name || path.split("/").pop(),
+          data,
+          raw,
+          nodeCount: countJsonNodes(data),
+          size: new Blob([raw]).size,
+        };
       }
 
       state.currentFile = state.files.find(file => file.path === path) || { path, name: payload.name };
