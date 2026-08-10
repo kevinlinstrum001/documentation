@@ -1,0 +1,795 @@
+{
+  "schemaVersion": "3.1-draft",
+  "profile": {
+    "profileType": "workflow-run",
+    "profileVersion": "1.0-draft",
+    "baseSchemaVersion": "3.1-draft",
+    "templateFile": "workflow-run-sidecar-template-3.1-draft.json",
+    "previewMode": "workflow-run"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.1-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.2",
+        "status": "planned",
+        "additions": [
+          "formal workflow-specification-to-run validation",
+          "Registry resource-resolution validation",
+          "automatic step-transition derivation",
+          "workflow-run catalog linkage",
+          "machine-checkable postconditions for Startup and workflow stages"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should workflow-run sidecars become the durable documentation-run record, or describe a separate run record?",
+          "Should Startup execution be represented as workflow step zero or remain a precondition?",
+          "Should reconstructed sessions require a distinct RECOVERED_WORK_SESSION state family?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "workflow-run-2026-08-09-documentation-registry-bootstrap",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "Documentation Resource Registry, Startup Routing, and Project-File Prerequisites",
+    "headline": "A reconstructed Documentation work session that turned a URL shortcut table into a context-routing Resource Registry and Startup bootstrap mechanism",
+    "documentType": "workflow-run-sidecar",
+    "createdTimestamp": "2026-08-09T16:59:00-06:00",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "workflow-run-sidecar-template-3.1-draft.json",
+    "baseTemplatePath": ""
+  },
+  "runIdentity": {
+    "documentationRunId": "doc-run-2026-08-09-registry-bootstrap",
+    "workSessionId": "work-session-2026-08-09-documentation-registry-bootstrap",
+    "runTitle": "Resource Registry and Startup Bootstrap",
+    "runDate": "2026-08-09",
+    "runType": "documentation-architecture-and-infrastructure",
+    "entryMode": "reconstructed-during-work",
+    "entryModeAllowedValues": [
+      "declared-before-work",
+      "reconstructed-during-work",
+      "reconstructed-after-work",
+      "resumed-existing-run"
+    ],
+    "formalizationPoint": "The session was explicitly recognized as a Documentation workflow run after the Resource Registry and Startup architecture had already emerged.",
+    "sourceConversationReference": "Current ChatGPT Documentation project conversation",
+    "runStatus": "active-reconstructed",
+    "currentState": "WORK_SESSION",
+    "currentStepNumber": 11,
+    "currentStepId": "record-amendments-and-discoveries",
+    "nextRequiredAction": "Formalize the reconstructed intention and remaining implementation plan, revise the workflow architecture, complete Startup/Registry changes, then verify the resulting documentation infrastructure."
+  },
+  "workflowReference": {
+    "workflowId": "klinswork-project-change-documentation-workflow",
+    "workflowTitle": "Klinswork Project Change and Documentation Workflow",
+    "workflowVersion": "2.0-draft with 2026-08-09 revision candidate",
+    "workflowSpecificationPath": "",
+    "workflowSpecificationResourceId": "",
+    "workflowSpecificationStatus": "revision required",
+    "mappingStatus": "mapped-with-front-end-exceptions",
+    "mappingNotes": [
+      "The existing 30-step workflow remains the closest authoritative process description.",
+      "Today's work establishes Startup and Registry-based context resolution that should precede or revise the current project-first front end.",
+      "The session began before a work-session intention was declared, so early steps are reconstructed and must not be represented as prospectively completed."
+    ],
+    "initialState": "PROJECT_CHANGE_CANDIDATE",
+    "finalState": "DOCUMENTATION_RUN_COMPLETE"
+  },
+  "startupContext": {
+    "startupApplicable": true,
+    "startupStatus": "manual-equivalent-observed",
+    "startupMode": "manual-equivalent",
+    "startupModeAllowedValues": [
+      "automatic-breadcrumb",
+      "explicit-startup-command",
+      "manual-equivalent",
+      "not-applicable"
+    ],
+    "registryResourceId": "Klinswork Resource Registry",
+    "registryName": "References for Klinswork Tools and Data",
+    "bootstrapResourceId": "RES-000",
+    "bootstrapInstruction": "CHATGPT — READ THIS FIRST",
+    "orientationResourceId": "",
+    "orientationResourceName": "documentation/README.md",
+    "orientationResourceUrl": "https://github.com/kevinlinstrum001/documentation/blob/main/README.md",
+    "startupProcedureTab": "Startup",
+    "startupProcedureVersion": "",
+    "resourcesInitiallySupplied": [
+      "specific Documentation repository and workflow documents used to establish context before the Registry abstraction existed"
+    ],
+    "startupSequenceObserved": [
+      "Context was built manually from specific documents.",
+      "A shortcut table for URLs was created.",
+      "The shortcut table expanded into a Resource Registry with stable resource identities, descriptions, metadata references, and activity history.",
+      "RES-000 was established as a read-first breadcrumb to the root Documentation README.",
+      "A Startup tab was added to the Registry and its intended role was defined.",
+      "The Registry came to be understood as a routing authority capable of resolving atomic information and beginning a context-loading sequence."
+    ],
+    "startupPostconditions": [
+      {
+        "postconditionId": "",
+        "description": "",
+        "status": "",
+        "evidence": ""
+      }
+    ],
+    "exceptions": [
+      "The formal Startup procedure did not exist when this session began; today's session created the architecture that future sessions will use."
+    ]
+  },
+  "workContext": {
+    "contextStatus": "established-and-still-being-reconciled",
+    "candidateWork": {
+      "promptingNeed": "Prepare the Documentation repository and project architecture so formal project files can be created without repeatedly reconstructing context and resource locations.",
+      "initialDescription": "Build a shortcut table for useful URLs and references.",
+      "evolvedDescription": "Create a Resource Registry and Startup routing mechanism that can establish context, resolve atomic information, preserve resource-change provenance, and support authoritative project-file creation.",
+      "whyNow": "The August 1 Documentation bootstrap identified formal project files as the next major milestone but left resource discovery, context loading, and authoritative routing unresolved."
+    },
+    "projectPlacement": {
+      "projectId": "",
+      "projectName": "Documentation",
+      "placementStatus": "confirmed by current architecture discussion",
+      "placementBasis": "The work changes Klinswork's documentation, context-routing, resource-registration, provenance, and workflow infrastructure.",
+      "placementConfidence": "high"
+    },
+    "systems": [
+      "Documentation workflow",
+      "Resource discovery and routing",
+      "Documentation repository organization",
+      "Resource-change provenance"
+    ],
+    "applications": [
+      "Klinswork Resource Registry",
+      "Resource Registry bound Apps Script project (RES-040; currently no code)"
+    ],
+    "resources": [
+      "RES-000 — CHATGPT — READ THIS FIRST",
+      "RES-040 — Resource Registry Apps Script trigger/bound script project",
+      "Root documentation/README.md",
+      "Documentation workflow specification",
+      "August 1 Documentation bootstrap work update"
+    ],
+    "sharedFoundations": [],
+    "relationships": [],
+    "requiredContext": [
+      {
+        "requirementId": "",
+        "requirement": "",
+        "reason": "",
+        "resolutionMethod": "Resource Registry",
+        "resolvedResourceIds": [],
+        "status": ""
+      }
+    ],
+    "resolvedResources": [
+      {
+        "resourceId": "",
+        "name": "",
+        "role": "",
+        "authorityScope": "",
+        "location": "",
+        "loaded": false,
+        "notes": ""
+      }
+    ],
+    "contextGaps": []
+  },
+  "workCoverage": {
+    "workStartedAt": "",
+    "workEndedAt": "",
+    "coverageType": "reconstructed-active-work-session",
+    "coverageDescription": "Covers the August 9 Documentation work in which manual context-building and URL shortcut organization evolved into the Klinswork Resource Registry, activity/provenance model, read-first README breadcrumb, Startup architecture, and a clearer prerequisite structure for creating project files.",
+    "coverageConfidence": "high for current-conversation work; exact session start time remains to be reconstructed",
+    "preFormalizationWorkIncluded": true,
+    "formalizationTimestamp": "2026-08-09T16:59:00-06:00",
+    "reconstructionBasis": [
+      "Current conversation chronology",
+      "live Klinswork Resource Registry and Activities records",
+      "August 1 Documentation work update",
+      "documentation-workflow-sidecar-3.0-draft.json"
+    ],
+    "continuationRelationship": {
+      "continuesPriorWork": true,
+      "priorDocumentIds": [
+        "work-update-2026-08-01-documentation-workflow-bootstrap"
+      ],
+      "priorRunIds": [
+        "bootstrap-2026-08-01"
+      ],
+      "relationshipDescription": "Continues the August 1 bootstrap by implementing prerequisites needed before formal project files can be created: reliable context orientation, resource discovery/routing, provenance for resource changes, and a startup sequence."
+    }
+  },
+  "intention": {
+    "baselineStatus": "retroactively-reconstructed",
+    "baselineStatusAllowedValues": [
+      "approved-before-work",
+      "draft-before-work",
+      "retroactively-reconstructed",
+      "missing-with-exception"
+    ],
+    "baselineTimestamp": "",
+    "reconstructionStatement": "No pre-work intention was declared or frozen. This record reconstructs the understanding that existed and evolved during the session; it must not be represented as a true prospective baseline.",
+    "originalPromptingProblemOrOpportunity": "The Documentation project needed better context-building and reliable locations for the resources required to define and maintain project files.",
+    "intendedChange": "Establish a Registry-centered context-routing and startup architecture, then reconcile the Documentation workflow so future work sessions can discover required context without manually assembled packages.",
+    "expectedResult": "A new ChatGPT session can orient through the root README, interpret the Resource Registry, follow Startup, load the relevant workflow, resolve session-specific resources, and preserve changes to registered resources with activity provenance.",
+    "inScope": [
+      "Resource Registry role and schema",
+      "Activities provenance model",
+      "RES-000 read-first breadcrumb",
+      "Startup tab/procedure design",
+      "Documentation workflow revision needed to use Registry-resolved context",
+      "Clarifying prerequisites for formal project-file creation"
+    ],
+    "outOfScope": [
+      "Creating all formal project files during the initial Registry architecture work",
+      "Implementing RES-040 Apps Script code before the current Documentation run is formalized",
+      "Replacing the complete publication/back-half workflow unless evidence requires it"
+    ],
+    "assumptions": [],
+    "unknowns": [
+      "Exact final Startup table rows and wording",
+      "Exact final revision of the Documentation workflow front end",
+      "Whether workflow-run sidecars should replace or accompany documentation-run.json"
+    ],
+    "risks": [],
+    "definitionOfDone": [
+      "The Startup procedure and Registry routing roles are explicit and internally consistent.",
+      "The Documentation workflow no longer hard-codes obsolete project-first context loading.",
+      "Today's work is represented as a reconstructed workflow run with exceptions rather than false prospective claims.",
+      "Current project-file prerequisites are clear enough to resume formal project-file creation.",
+      "The session can proceed through verification, reconciliation, summary/publication, supervisor-view communication, and closure."
+    ],
+    "plannedTests": [
+      "Cold-start a future Documentation conversation with the Registry and observe whether RES-000 routes the model to the root README.",
+      "Invoke startup() explicitly and verify the Startup procedure can be followed.",
+      "Verify workflow context requirements can be resolved through Registry resources without loading unrelated projects.",
+      "Verify a Registry change produces a corresponding Activities record once the controlled write path is implemented."
+    ],
+    "anticipatedEffects": [
+      "Reduced manual reconstruction of context.",
+      "More reliable project/system/application/resource classification.",
+      "Resource URL changes become traceable events rather than silent cell edits.",
+      "Project files can reference stable resource identities while locations remain replaceable."
+    ],
+    "amendments": []
+  },
+  "implementationPlan": {
+    "planStatus": "to-be-formalized-for-remaining-work",
+    "planAuthority": "This run sidecar records the plan status; a separate implementation plan may be created if the remaining work warrants one.",
+    "planCreatedAt": "",
+    "planApprovedAt": "",
+    "remainingWorkOnly": true,
+    "stages": [
+      "Finalize and populate the Startup table.",
+      "Revise the Documentation workflow front end for Startup + Registry-resolved context.",
+      "Validate Registry/Activities semantics and record any structural changes as Activities.",
+      "Reconstruct and approve the current run state and remaining scope.",
+      "Run verification against live Documentation resources.",
+      "Declare the documentation checkpoint.",
+      "Construct summary/change interpretation and reconcile Documentation project truth.",
+      "Generate downstream work-update artifacts, preserve the supervisor reading path, publish/index as applicable, and close the run."
+    ],
+    "rollbackOrRecovery": [],
+    "notes": []
+  },
+  "workflowExecution": {
+    "stateStatus": "active with reconstructed early steps",
+    "currentState": "WORK_SESSION",
+    "currentStepNumber": 11,
+    "currentStepId": "record-amendments-and-discoveries",
+    "stepTracking": [
+      {
+        "stepNumber": 1,
+        "stepId": "create-run-and-select-target",
+        "title": "Create the run record and select the project-change target",
+        "status": "completed-retroactively",
+        "startedAt": "",
+        "completedAt": "2026-08-09T16:59:00-06:00",
+        "evidence": [
+          "Current conversation formalized the run as Documentation work."
+        ],
+        "exceptions": [
+          "Run identity was created after work had begun."
+        ],
+        "notes": [
+          "Target evolved from URL shortcut organization to Documentation context-routing infrastructure."
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "stepId": "load-project-and-integration-context",
+        "title": "Load authoritative project, roadmap, and integration context",
+        "status": "partially-completed",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [
+          "Documentation repository, Resource Registry, August 1 work update, and workflow specification were consulted."
+        ],
+        "exceptions": [
+          "The current step model is itself being revised because hard-coded project/integration context is obsolete."
+        ],
+        "notes": [
+          "Functionally this became authoritative context resolution rather than fixed project-file loading."
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "stepId": "confirm-scope-and-related-entities",
+        "title": "Confirm the milestone boundary and related entities",
+        "status": "completed-retroactively",
+        "startedAt": "",
+        "completedAt": "2026-08-09T16:59:00-06:00",
+        "evidence": [
+          "User confirmed this work belongs to Documentation and continues August 1 prerequisites to project files."
+        ],
+        "exceptions": [],
+        "notes": []
+      },
+      {
+        "stepNumber": 4,
+        "stepId": "load-intention-template",
+        "title": "Load the work-session intention template",
+        "status": "skipped-with-exception",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [
+          "Session began without a declared workflow run or intention template."
+        ],
+        "notes": []
+      },
+      {
+        "stepNumber": 5,
+        "stepId": "draft-work-session-intention",
+        "title": "Draft work-session intention",
+        "status": "completed-retroactively",
+        "startedAt": "",
+        "completedAt": "2026-08-09T16:59:00-06:00",
+        "evidence": [
+          "Reconstructed intention fields in this run sidecar."
+        ],
+        "exceptions": [
+          "This is reconstruction, not a prospective baseline."
+        ],
+        "notes": []
+      },
+      {
+        "stepNumber": 6,
+        "stepId": "approve-and-freeze-intention",
+        "title": "Review, approve, and freeze the intention baseline",
+        "status": "skipped-with-exception",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [
+          "A true pre-work baseline cannot be created after the work occurred."
+        ],
+        "notes": [
+          "The reconstructed intention can be reviewed for historical accuracy but must remain labeled retroactive."
+        ]
+      },
+      {
+        "stepNumber": 7,
+        "stepId": "register-work-session-conversation",
+        "title": "Open and register the bounded work-session conversation",
+        "status": "completed-retroactively",
+        "startedAt": "",
+        "completedAt": "2026-08-09T16:59:00-06:00",
+        "evidence": [
+          "Current Documentation project conversation is identified as the work-session conversation."
+        ],
+        "exceptions": [
+          "The conversation was not opened as a fresh bounded execution session; it became one through the work."
+        ],
+        "notes": []
+      },
+      {
+        "stepNumber": 8,
+        "stepId": "create-implementation-plan",
+        "title": "Inspect the implementation and create the session plan",
+        "status": "in-progress",
+        "startedAt": "2026-08-09T16:59:00-06:00",
+        "completedAt": "",
+        "evidence": [
+          "Remaining stages are now explicitly identified."
+        ],
+        "exceptions": [
+          "Plan covers remaining work; prior work is preserved as chronology rather than rewritten as planned work."
+        ],
+        "notes": []
+      },
+      {
+        "stepNumber": 9,
+        "stepId": "approve-implementation-plan",
+        "title": "Review and approve the implementation and test strategy",
+        "status": "not-started",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [],
+        "notes": []
+      },
+      {
+        "stepNumber": 10,
+        "stepId": "perform-work",
+        "title": "Perform the work",
+        "status": "partially-completed",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [
+          "Resource Registry and Activities architecture were materially developed before formalization."
+        ],
+        "exceptions": [
+          "Execution preceded formal plan approval."
+        ],
+        "notes": [
+          "Remaining implementation should proceed under the formalized plan."
+        ]
+      },
+      {
+        "stepNumber": 11,
+        "stepId": "record-amendments-and-discoveries",
+        "title": "Append intention and plan amendments / preserve discoveries",
+        "status": "in-progress",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [
+          "Shortcut table evolved into Resource Registry; Registry became routing authority; Startup architecture emerged; project-file prerequisites were clarified."
+        ],
+        "exceptions": [
+          "Because no prospective baseline existed, these are preserved as chronology/discoveries rather than amendments to a frozen intention."
+        ],
+        "notes": [
+          "This is the best representation of the current actual workflow position."
+        ]
+      },
+      {
+        "stepNumber": 12,
+        "stepId": "run-acceptance-and-real-use-tests",
+        "title": "Run acceptance, regression, and real-use verification",
+        "status": "not-started",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [],
+        "notes": []
+      },
+      {
+        "stepNumber": 13,
+        "stepId": "declare-documentation-checkpoint",
+        "title": "Declare the final milestone and documentation checkpoint",
+        "status": "not-started",
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [],
+        "notes": []
+      }
+    ],
+    "chronology": [
+      {
+        "sequence": 1,
+        "timestamp": "",
+        "eventType": "context-building",
+        "description": "Session began by loading specific Documentation context and attempting to make useful URLs easier to reach.",
+        "resourceIds": [],
+        "decisionIds": [],
+        "evidenceIds": []
+      },
+      {
+        "sequence": 2,
+        "timestamp": "",
+        "eventType": "architecture-emergence",
+        "description": "The URL shortcut table rapidly became a generalized Klinswork Resource Registry with stable identities and semantic descriptions.",
+        "resourceIds": [
+          "Klinswork Resource Registry"
+        ],
+        "decisionIds": [],
+        "evidenceIds": []
+      },
+      {
+        "sequence": 3,
+        "timestamp": "",
+        "eventType": "provenance-design",
+        "description": "The Activities tab became the history/provenance layer so resource changes, including authoritative URL replacement, can carry contextual notes rather than silently overwrite prior state.",
+        "resourceIds": [
+          "Klinswork Resource Registry"
+        ],
+        "decisionIds": [],
+        "evidenceIds": []
+      },
+      {
+        "sequence": 4,
+        "timestamp": "",
+        "eventType": "bootstrap-design",
+        "description": "RES-000 was changed to CHATGPT — READ THIS FIRST and routed to the root documentation README; Startup was added as a dedicated procedure tab.",
+        "resourceIds": [
+          "RES-000"
+        ],
+        "decisionIds": [],
+        "evidenceIds": []
+      },
+      {
+        "sequence": 5,
+        "timestamp": "",
+        "eventType": "workflow-reinterpretation",
+        "description": "The Registry was recognized as the missing resource-resolution mechanism anticipated by the August 1 documentation architecture, allowing workflow-required context to be resolved dynamically.",
+        "resourceIds": [],
+        "decisionIds": [],
+        "evidenceIds": []
+      },
+      {
+        "sequence": 6,
+        "timestamp": "2026-08-09T16:59:00-06:00",
+        "eventType": "formalization",
+        "description": "The ongoing conversation was explicitly recognized as a Documentation work session continuing the August 1 bootstrap prerequisites to formal project-file creation.",
+        "resourceIds": [],
+        "decisionIds": [],
+        "evidenceIds": []
+      }
+    ],
+    "decisions": [
+      {
+        "decisionId": "",
+        "timestamp": "",
+        "decision": "",
+        "reason": "",
+        "alternativesConsidered": [],
+        "consequences": [],
+        "status": ""
+      }
+    ],
+    "discoveries": [
+      {
+        "discoveryId": "",
+        "timestamp": "",
+        "description": "",
+        "effectOnUnderstanding": "",
+        "effectOnScope": "",
+        "requiredAmendment": false
+      }
+    ]
+  },
+  "evidence": {
+    "observations": [],
+    "tests": [],
+    "changedArtifacts": [],
+    "screenshots": [],
+    "logs": [],
+    "activityRecords": [
+      "ACT-0043 — RES-040 resource added",
+      "ACT-0044 — RES-040 controlled write-path requirement recorded",
+      "ACT-0051 — RES-000 bootstrap read-first routing established"
+    ],
+    "verificationSummary": {
+      "verified": [
+        "The live Resource Registry contains RES-000 labeled CHATGPT — READ THIS FIRST and points its metadata reference to the root documentation README.",
+        "The Registry contains a Startup tab.",
+        "RES-040 is the bound Apps Script project reserved for the controlled Registry write path and currently contains no code.",
+        "Activities records exist for resource-registration and bootstrap-routing changes."
+      ],
+      "observed": [
+        "The Resource Registry evolved from a URL shortcut table into a routing/discovery and provenance mechanism.",
+        "The current workflow's hard-coded project-first context model is now inconsistent with the emerging Startup + Registry architecture."
+      ],
+      "notYetVerified": [
+        "The Startup table has not yet been populated and cold-start tested.",
+        "The Documentation workflow has not yet been revised to the new context-resolution model.",
+        "The revised workflow has not yet been run end to end.",
+        "The controlled Registry write form has not been implemented."
+      ]
+    }
+  },
+  "changeInterpretation": {
+    "status": "draft-in-progress",
+    "summary": "Today's work implemented a missing prerequisite from the August 1 Documentation bootstrap: a durable routing and provenance layer capable of orienting ChatGPT, resolving atomic resource locations, and recording resource changes as contextualized events.",
+    "projectDelta": [
+      "Documentation now has a Resource Registry that functions as more than a URL list.",
+      "Startup is emerging as an explicit pre-work bootstrap layer.",
+      "Formal project-file creation can now depend on stable resource identities and Registry routing rather than ad hoc context reconstruction."
+    ],
+    "systemDelta": [],
+    "applicationDelta": [],
+    "resourceDelta": [
+      "RES-000 became the context-naive read-first breadcrumb to documentation/README.md.",
+      "RES-040 identifies the bound Apps Script project reserved for controlled Registry writes.",
+      "Resource changes are associated with Activities history and LAST UPDATE derivation."
+    ],
+    "relationshipDelta": [],
+    "authorityDelta": [
+      "The root README provides repository/documentation orientation.",
+      "The Resource Registry provides resource identity, location, and context routing.",
+      "The workflow should declare required context rather than hard-code fixed project files."
+    ],
+    "historicalInterpretation": [],
+    "unresolvedQuestions": [
+      "Exact final Startup table contents.",
+      "Exact revised wording and state model for the workflow front end.",
+      "Final project-file schema and project IDs.",
+      "Whether to implement the Registry write form in this same run or defer until the current Documentation architecture run is closed."
+    ]
+  },
+  "reconciliation": {
+    "status": "",
+    "projectRecordsUpdated": [],
+    "systemRecordsUpdated": [],
+    "applicationRecordsUpdated": [],
+    "resourceRegistryUpdates": [],
+    "activitiesAppended": [],
+    "repositoryDocumentationUpdated": [],
+    "roadmapOrNextStepUpdates": [],
+    "preservedPriorState": []
+  },
+  "audienceViews": {
+    "general": {
+      "summary": "",
+      "actionRequired": ""
+    },
+    "technical": {
+      "summary": "",
+      "actionRequired": ""
+    },
+    "supervisor": {
+      "retained": true,
+      "actualRecipient": "Kevin Linstrum / project owner",
+      "simulatedRole": "supervisor",
+      "summary": "The Documentation project now has the beginnings of a self-orienting resource and workflow layer: a Resource Registry, read-first README breadcrumb, Activities-based provenance, and a Startup procedure. This work continues the August 1 bootstrap and removes prerequisites that were blocking reliable project-file creation.",
+      "actionOrDecisionRequired": "Review the reconstructed session scope and approve the remaining-work plan before continuing implementation.",
+      "risksOrLimitations": [
+        "The session began before a formal intention or plan was approved.",
+        "Startup has not yet been cold-start tested.",
+        "The workflow specification still contains obsolete project-first assumptions."
+      ],
+      "whatParticipantWouldNotice": "No operational housekeeping application changes are required; the improvement is in how Documentation establishes context, routes resources, records changes, and prepares future work.",
+      "nextOperationalStep": "Finalize the Startup table and revise the Documentation workflow front end, then verify the new bootstrap/context-resolution path."
+    }
+  },
+  "publicationAndClosure": {
+    "summary": {
+      "status": "",
+      "path": "",
+      "approved": false
+    },
+    "html": {
+      "status": "",
+      "path": "",
+      "canonicalUrl": ""
+    },
+    "documentSidecar": {
+      "status": "",
+      "path": ""
+    },
+    "catalog": {
+      "status": "",
+      "catalogId": "",
+      "entryId": ""
+    },
+    "image": {
+      "status": "",
+      "path": "",
+      "manifestUpdated": false
+    },
+    "portal": {
+      "status": "",
+      "destination": ""
+    },
+    "communication": {
+      "status": "",
+      "recipient": "",
+      "recipientRole": "",
+      "supervisorViewUsed": true,
+      "messageReference": ""
+    },
+    "closure": {
+      "status": "",
+      "closedAt": "",
+      "finalVerification": "",
+      "unresolvedIssues": []
+    }
+  },
+  "workflowEvaluation": {
+    "workflowRevisionTriggered": true,
+    "startupEvaluation": {
+      "effective": "not-yet-tested",
+      "observations": [
+        "The session itself demonstrated why Startup is needed: initial context was assembled manually from specific documents.",
+        "RES-000 plus the root README provides a plausible automatic breadcrumb, with explicit startup() as a fallback."
+      ],
+      "recommendedChanges": [
+        "Treat Startup as a workflow precondition rather than a project-change step.",
+        "Use the Registry as the routing authority after repository orientation."
+      ]
+    },
+    "contextResolutionEvaluation": {
+      "effective": "promising",
+      "observations": [
+        "A simple URL table evolved into a stable resource-resolution layer.",
+        "The Registry can point to atomic information and preserve context around authoritative location changes."
+      ],
+      "recommendedChanges": [
+        "Replace hard-coded project.json / PROJECT.md / ROADMAP.md context loading with workflow-declared context requirements resolved through the Registry."
+      ]
+    },
+    "intentionEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "executionEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "documentationEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    }
+  },
+  "exceptions": [
+    {
+      "exceptionId": "EXC-2026-08-09-001",
+      "timestamp": "2026-08-09T16:59:00-06:00",
+      "type": "late-workflow-declaration",
+      "description": "The Documentation work session was recognized and formalized only after substantial work had already occurred.",
+      "reason": "The work began as ordinary context-building and URL organization, then evolved into architectural Documentation work.",
+      "effectOnWorkflow": "Steps involving prospective intention freeze, clean session registration, and pre-execution plan approval cannot truthfully be marked as normally completed.",
+      "disposition": "Reconstruct early steps, preserve explicit exceptions, create a plan only for remaining work, and continue from the current active-work state."
+    }
+  ],
+  "validation": {
+    "performed": true,
+    "result": "draft structurally complete; historical status intentionally contains workflow exceptions",
+    "rules": [
+      "Do not convert a reconstructed intention into a falsely claimed pre-work baseline.",
+      "Do not infer project, system, application, or resource placement without recording the basis.",
+      "Startup establishes orientation and routing; session-specific context is resolved from workflow requirements.",
+      "Resource locations should resolve through the Resource Registry when registered.",
+      "Current, historical, planned, and reconstructed truth remain distinguishable.",
+      "Material discoveries and scope changes are preserved as chronology, amendments, or exceptions.",
+      "Every claimed completed workflow step has supporting evidence or an explicit human decision.",
+      "The supervisor view is retained even when no actual supervisor participates.",
+      "Routine workflow execution does not recursively create another run unless the workflow, schema, authority rules, or capabilities changed materially."
+    ],
+    "validationNotes": [
+      "The run does not claim that a pre-work intention was approved.",
+      "The run does not claim that the session began as a fresh bounded workflow conversation.",
+      "The current state is mapped to WORK_SESSION / step 11 as the closest representation of actual progress, while step 8 remains in progress for the remaining-work plan.",
+      "This draft is intended for user review before being treated as an authoritative workflow-run record."
+    ]
+  },
+  "provenance": {
+    "sourceConversationReference": "Current ChatGPT Documentation project conversation",
+    "sourceFiles": [
+      "documentation-workflow-sidecar-3.0-draft.json",
+      "documentation-workflow-v2-draft.json (referenced through File Library)",
+      "August 1 Documentation work update and revised summary"
+    ],
+    "sourceUrls": [
+      "https://kevinlinstrum001.github.io/documentation/work_updates/work-update-8-01-2026.html"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Sol",
+    "generatedTimestamp": "2026-08-09T16:59:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The template intentionally separates workflow-specification sidecars from workflow-run sidecars.",
+      "The reconstructed run preserves the difference between prospective baseline data and facts inferred after work began.",
+      "The August 1 work is treated as predecessor architecture, not silently rewritten to match August 9 terminology."
+    ]
+  }
+}

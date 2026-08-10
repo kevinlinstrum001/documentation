@@ -9,23 +9,24 @@
   "repository": {
     "name": "work-update-catalog",
     "rootPath": ".",
-    "generatedTimestamp": "2026-08-09T16:57:59Z"
+    "generatedTimestamp": "2026-08-10T00:09:17Z"
   },
   "summary": {
-    "fileCount": 62,
-    "validJsonCount": 62,
+    "fileCount": 65,
+    "validJsonCount": 65,
     "invalidJsonCount": 0,
-    "archivedFileCount": 12,
+    "archivedFileCount": 13,
     "recordTypeCounts": {
       "catalog": 9,
       "generic-document": 2,
-      "implementation-plan": 3,
+      "implementation-plan": 4,
       "json-document": 20,
       "klinswork_chemical_product_catalog": 2,
       "lesson": 1,
       "lesson-reference": 7,
       "pst-sp-study-guide": 2,
       "work-update": 12,
+      "workflow-run": 2,
       "workflow-specification": 4
     }
   },
@@ -713,6 +714,24 @@
       "previewMode": ""
     },
     {
+      "name": "workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json",
+      "path": "sidecars/work-update-sidecars/workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json",
+      "folder": "sidecars/work-update-sidecars",
+      "size": 34923,
+      "modifiedTimestamp": "2026-08-09T23:08:26Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Documentation Resource Registry, Startup Routing, and Project-File Prerequisites",
+      "description": "",
+      "recordType": "workflow-run",
+      "status": "",
+      "documentDate": "2026-08-09T16:59:00-06:00",
+      "topics": [],
+      "schemaVersion": "3.1-draft",
+      "previewMode": "workflow-run"
+    },
+    {
       "name": "work-update-07-16-2026-02-sidecar-2.0.json",
       "path": "sidecars/work-update-sidecars/work-update-07-16-2026-02-sidecar-2.0.json",
       "folder": "sidecars/work-update-sidecars",
@@ -1090,21 +1109,21 @@
       "previewMode": "generic-document"
     },
     {
-      "name": "implementation-plan-sidecar-template-3.0.json",
-      "path": "templates/implementation-plan-sidecar-template-3.0.json",
+      "name": "implementation-plan-sidecar-template-3.1-draft.json",
+      "path": "templates/implementation-plan-sidecar-template-3.1-draft.json",
       "folder": "templates",
-      "size": 8715,
-      "modifiedTimestamp": "2026-08-02T02:58:53Z",
+      "size": 19876,
+      "modifiedTimestamp": "2026-08-10T00:03:23Z",
       "archived": false,
       "validJson": true,
       "parseError": "",
-      "title": "implementation-plan-sidecar-template-3.0",
+      "title": "implementation-plan-sidecar-template-3.1-draft",
       "description": "",
       "recordType": "implementation-plan",
       "status": "",
-      "documentDate": "2026-08-02T02:58:53Z",
+      "documentDate": "2026-08-10T00:03:23Z",
       "topics": [],
-      "schemaVersion": "3.0-draft",
+      "schemaVersion": "3.1-draft",
       "previewMode": "implementation-plan"
     },
     {
@@ -1232,6 +1251,24 @@
       "topics": [],
       "schemaVersion": "2.0-draft",
       "previewMode": ""
+    },
+    {
+      "name": "workflow-run-sidecar-template-3.1-draft.json",
+      "path": "workflows/workflow-run-sidecar-template-3.1-draft.json",
+      "folder": "workflows",
+      "size": 11138,
+      "modifiedTimestamp": "2026-08-09T23:07:59Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "workflow-run-sidecar-template-3.1-draft",
+      "description": "",
+      "recordType": "workflow-run",
+      "status": "",
+      "documentDate": "2026-08-09T23:07:59Z",
+      "topics": [],
+      "schemaVersion": "3.1-draft",
+      "previewMode": "workflow-run"
     },
     {
       "name": "document-sidecar-template-1.0.json",
@@ -1437,6 +1474,24 @@
       "topics": [],
       "schemaVersion": "2.0-draft",
       "previewMode": ""
+    },
+    {
+      "name": "implementation-plan-sidecar-template-3.0.json",
+      "path": "templates/archive/implementation-plan-sidecar-template-3.0.json",
+      "folder": "templates/archive",
+      "size": 8715,
+      "modifiedTimestamp": "2026-08-02T02:58:53Z",
+      "archived": true,
+      "validJson": true,
+      "parseError": "",
+      "title": "implementation-plan-sidecar-template-3.0",
+      "description": "",
+      "recordType": "implementation-plan",
+      "status": "",
+      "documentDate": "2026-08-02T02:58:53Z",
+      "topics": [],
+      "schemaVersion": "3.0-draft",
+      "previewMode": "implementation-plan"
     },
     {
       "name": "sidecar-profile-registry-1.0.json",

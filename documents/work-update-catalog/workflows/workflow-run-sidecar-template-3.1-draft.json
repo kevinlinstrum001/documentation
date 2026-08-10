@@ -1,0 +1,435 @@
+{
+  "schemaVersion": "3.1-draft",
+  "profile": {
+    "profileType": "workflow-run",
+    "profileVersion": "1.0-draft",
+    "baseSchemaVersion": "3.1-draft",
+    "templateFile": "workflow-run-sidecar-template-3.1-draft.json",
+    "previewMode": "workflow-run"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.1-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.2",
+        "status": "planned",
+        "additions": [
+          "formal workflow-specification-to-run validation",
+          "Registry resource-resolution validation",
+          "automatic step-transition derivation",
+          "workflow-run catalog linkage",
+          "machine-checkable postconditions for Startup and workflow stages"
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should workflow-run sidecars become the durable documentation-run record, or describe a separate run record?",
+          "Should Startup execution be represented as workflow step zero or remain a precondition?",
+          "Should reconstructed sessions require a distinct RECOVERED_WORK_SESSION state family?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "workflow-run-sidecar",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "workflow-run-sidecar-template-3.1-draft.json",
+    "baseTemplatePath": ""
+  },
+  "runIdentity": {
+    "documentationRunId": "",
+    "workSessionId": "",
+    "runTitle": "",
+    "runDate": "",
+    "runType": "",
+    "entryMode": "",
+    "entryModeAllowedValues": [
+      "declared-before-work",
+      "reconstructed-during-work",
+      "reconstructed-after-work",
+      "resumed-existing-run"
+    ],
+    "formalizationPoint": "",
+    "sourceConversationReference": "",
+    "runStatus": "",
+    "currentState": "",
+    "currentStepNumber": null,
+    "currentStepId": "",
+    "nextRequiredAction": ""
+  },
+  "workflowReference": {
+    "workflowId": "",
+    "workflowTitle": "",
+    "workflowVersion": "",
+    "workflowSpecificationPath": "",
+    "workflowSpecificationResourceId": "",
+    "workflowSpecificationStatus": "",
+    "mappingStatus": "",
+    "mappingNotes": [],
+    "initialState": "",
+    "finalState": ""
+  },
+  "startupContext": {
+    "startupApplicable": true,
+    "startupStatus": "",
+    "startupMode": "",
+    "startupModeAllowedValues": [
+      "automatic-breadcrumb",
+      "explicit-startup-command",
+      "manual-equivalent",
+      "not-applicable"
+    ],
+    "registryResourceId": "",
+    "registryName": "",
+    "bootstrapResourceId": "",
+    "bootstrapInstruction": "",
+    "orientationResourceId": "",
+    "orientationResourceName": "",
+    "orientationResourceUrl": "",
+    "startupProcedureTab": "Startup",
+    "startupProcedureVersion": "",
+    "resourcesInitiallySupplied": [],
+    "startupSequenceObserved": [],
+    "startupPostconditions": [
+      {
+        "postconditionId": "",
+        "description": "",
+        "status": "",
+        "evidence": ""
+      }
+    ],
+    "exceptions": []
+  },
+  "workContext": {
+    "contextStatus": "",
+    "candidateWork": {
+      "promptingNeed": "",
+      "initialDescription": "",
+      "evolvedDescription": "",
+      "whyNow": ""
+    },
+    "projectPlacement": {
+      "projectId": "",
+      "projectName": "",
+      "placementStatus": "",
+      "placementBasis": "",
+      "placementConfidence": ""
+    },
+    "systems": [],
+    "applications": [],
+    "resources": [],
+    "sharedFoundations": [],
+    "relationships": [],
+    "requiredContext": [
+      {
+        "requirementId": "",
+        "requirement": "",
+        "reason": "",
+        "resolutionMethod": "Resource Registry",
+        "resolvedResourceIds": [],
+        "status": ""
+      }
+    ],
+    "resolvedResources": [
+      {
+        "resourceId": "",
+        "name": "",
+        "role": "",
+        "authorityScope": "",
+        "location": "",
+        "loaded": false,
+        "notes": ""
+      }
+    ],
+    "contextGaps": []
+  },
+  "workCoverage": {
+    "workStartedAt": "",
+    "workEndedAt": "",
+    "coverageType": "",
+    "coverageDescription": "",
+    "coverageConfidence": "",
+    "preFormalizationWorkIncluded": true,
+    "formalizationTimestamp": "",
+    "reconstructionBasis": [],
+    "continuationRelationship": {
+      "continuesPriorWork": false,
+      "priorDocumentIds": [],
+      "priorRunIds": [],
+      "relationshipDescription": ""
+    }
+  },
+  "intention": {
+    "baselineStatus": "",
+    "baselineStatusAllowedValues": [
+      "approved-before-work",
+      "draft-before-work",
+      "retroactively-reconstructed",
+      "missing-with-exception"
+    ],
+    "baselineTimestamp": "",
+    "reconstructionStatement": "",
+    "originalPromptingProblemOrOpportunity": "",
+    "intendedChange": "",
+    "expectedResult": "",
+    "inScope": [],
+    "outOfScope": [],
+    "assumptions": [],
+    "unknowns": [],
+    "risks": [],
+    "definitionOfDone": [],
+    "plannedTests": [],
+    "anticipatedEffects": [],
+    "amendments": []
+  },
+  "implementationPlan": {
+    "planStatus": "",
+    "planAuthority": "",
+    "planCreatedAt": "",
+    "planApprovedAt": "",
+    "remainingWorkOnly": false,
+    "stages": [],
+    "rollbackOrRecovery": [],
+    "notes": []
+  },
+  "workflowExecution": {
+    "stateStatus": "",
+    "currentState": "",
+    "currentStepNumber": null,
+    "currentStepId": "",
+    "stepTracking": [
+      {
+        "stepNumber": null,
+        "stepId": "",
+        "title": "",
+        "status": "",
+        "statusAllowedValues": [
+          "not-started",
+          "in-progress",
+          "completed",
+          "completed-retroactively",
+          "partially-completed",
+          "skipped-with-exception",
+          "not-applicable"
+        ],
+        "startedAt": "",
+        "completedAt": "",
+        "evidence": [],
+        "exceptions": [],
+        "notes": []
+      }
+    ],
+    "chronology": [
+      {
+        "sequence": null,
+        "timestamp": "",
+        "eventType": "",
+        "description": "",
+        "resourceIds": [],
+        "decisionIds": [],
+        "evidenceIds": []
+      }
+    ],
+    "decisions": [
+      {
+        "decisionId": "",
+        "timestamp": "",
+        "decision": "",
+        "reason": "",
+        "alternativesConsidered": [],
+        "consequences": [],
+        "status": ""
+      }
+    ],
+    "discoveries": [
+      {
+        "discoveryId": "",
+        "timestamp": "",
+        "description": "",
+        "effectOnUnderstanding": "",
+        "effectOnScope": "",
+        "requiredAmendment": false
+      }
+    ]
+  },
+  "evidence": {
+    "observations": [],
+    "tests": [],
+    "changedArtifacts": [],
+    "screenshots": [],
+    "logs": [],
+    "activityRecords": [],
+    "verificationSummary": {
+      "verified": [],
+      "observed": [],
+      "notYetVerified": []
+    }
+  },
+  "changeInterpretation": {
+    "status": "",
+    "summary": "",
+    "projectDelta": [],
+    "systemDelta": [],
+    "applicationDelta": [],
+    "resourceDelta": [],
+    "relationshipDelta": [],
+    "authorityDelta": [],
+    "historicalInterpretation": [],
+    "unresolvedQuestions": []
+  },
+  "reconciliation": {
+    "status": "",
+    "projectRecordsUpdated": [],
+    "systemRecordsUpdated": [],
+    "applicationRecordsUpdated": [],
+    "resourceRegistryUpdates": [],
+    "activitiesAppended": [],
+    "repositoryDocumentationUpdated": [],
+    "roadmapOrNextStepUpdates": [],
+    "preservedPriorState": []
+  },
+  "audienceViews": {
+    "general": {
+      "summary": "",
+      "actionRequired": ""
+    },
+    "technical": {
+      "summary": "",
+      "actionRequired": ""
+    },
+    "supervisor": {
+      "retained": true,
+      "actualRecipient": "",
+      "simulatedRole": "supervisor",
+      "summary": "",
+      "actionOrDecisionRequired": "",
+      "risksOrLimitations": [],
+      "whatParticipantWouldNotice": "",
+      "nextOperationalStep": ""
+    }
+  },
+  "publicationAndClosure": {
+    "summary": {
+      "status": "",
+      "path": "",
+      "approved": false
+    },
+    "html": {
+      "status": "",
+      "path": "",
+      "canonicalUrl": ""
+    },
+    "documentSidecar": {
+      "status": "",
+      "path": ""
+    },
+    "catalog": {
+      "status": "",
+      "catalogId": "",
+      "entryId": ""
+    },
+    "image": {
+      "status": "",
+      "path": "",
+      "manifestUpdated": false
+    },
+    "portal": {
+      "status": "",
+      "destination": ""
+    },
+    "communication": {
+      "status": "",
+      "recipient": "",
+      "recipientRole": "",
+      "supervisorViewUsed": true,
+      "messageReference": ""
+    },
+    "closure": {
+      "status": "",
+      "closedAt": "",
+      "finalVerification": "",
+      "unresolvedIssues": []
+    }
+  },
+  "workflowEvaluation": {
+    "workflowRevisionTriggered": false,
+    "startupEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "contextResolutionEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "intentionEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "executionEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    },
+    "documentationEvaluation": {
+      "effective": "",
+      "observations": [],
+      "recommendedChanges": []
+    }
+  },
+  "exceptions": [
+    {
+      "exceptionId": "",
+      "timestamp": "",
+      "type": "",
+      "description": "",
+      "reason": "",
+      "effectOnWorkflow": "",
+      "disposition": ""
+    }
+  ],
+  "validation": {
+    "performed": false,
+    "result": "",
+    "rules": [
+      "Do not convert a reconstructed intention into a falsely claimed pre-work baseline.",
+      "Do not infer project, system, application, or resource placement without recording the basis.",
+      "Startup establishes orientation and routing; session-specific context is resolved from workflow requirements.",
+      "Resource locations should resolve through the Resource Registry when registered.",
+      "Current, historical, planned, and reconstructed truth remain distinguishable.",
+      "Material discoveries and scope changes are preserved as chronology, amendments, or exceptions.",
+      "Every claimed completed workflow step has supporting evidence or an explicit human decision.",
+      "The supervisor view is retained even when no actual supervisor participates.",
+      "Routine workflow execution does not recursively create another run unless the workflow, schema, authority rules, or capabilities changed materially."
+    ],
+    "validationNotes": []
+  },
+  "provenance": {
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "sourceUrls": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": []
+  }
+}
