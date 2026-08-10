@@ -125,6 +125,7 @@ documentation/
 │   │   │   │   ├── work-update-07-26-2026-sidecar-2.0.json
 │   │   │   │   ├── work-update-07-30-2026-sidecar-2.0.json
 │   │   │   │   ├── work-update-08-01-2026-sidecar-2.0.json
+│   │   │   │   ├── workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json
 │   │   │   │   └── wu001-sidecar-2.0.json
 │   │   │   ├── documentation-workflow-sidecar-3.0-draft.json
 │   │   │   ├── nmbhi-first-supervisor-profile-sidecar-3.0-draft.json
@@ -134,14 +135,17 @@ documentation/
 │   │   │   ├── documentation-morning-session-summary-2026-08-04.md
 │   │   │   ├── summary-2026-08-01-documentation-catalog-bootstrap.md
 │   │   │   ├── summary-2026-08-01-documentation-system-bootstrap-revised.md
-│   │   │   └── summary-2026-08-01-documentation-workflow-bootstrap.md
+│   │   │   ├── summary-2026-08-01-documentation-workflow-bootstrap.md
+│   │   │   ├── summary-2026-08-08-09-klinswork-weekend-architecture.md
+│   │   │   └── summary-2026-08-09-documentation-resource-registry-startup.md
 │   │   ├── templates/
 │   │   │   ├── archive/
 │   │   │   │   ├── document-sidecar-template-2.0.json
+│   │   │   │   ├── implementation-plan-sidecar-template-3.0.json
 │   │   │   │   └── sidecar-profile-registry-1.0.json
 │   │   │   ├── document-sidecar-base-template-3.0.json
 │   │   │   ├── generic-document-sidecar-template-3.0.json
-│   │   │   ├── implementation-plan-sidecar-template-3.0.json
+│   │   │   ├── implementation-plan-sidecar-template-3.1-draft.json
 │   │   │   ├── lesson-reference-sidecar-template-3.0.json
 │   │   │   ├── pst-sp-study-guide-sidecar-template-1.0.json
 │   │   │   ├── sidecar-profile-registry-1.0.json
@@ -161,7 +165,8 @@ documentation/
 │   │   │   └── json-viewer-v1.6.0.py
 │   │   ├── workflows/
 │   │   │   ├── documentation-workflow.json
-│   │   │   └── upgrade-08-09-2026.md
+│   │   │   ├── upgrade-08-09-2026.md
+│   │   │   └── workflow-run-sidecar-template-3.1-draft.json
 │   │   ├── json-manifest.json
 │   │   ├── json-viewer-original.html
 │   │   ├── json-viewer.html
@@ -294,6 +299,7 @@ documentation/
 │   ├── work-update-07-26-2026-1st-version.html
 │   ├── work-update-07-26-2026.html
 │   ├── work-update-07-30-2026.html
+│   ├── work-update-08-09-2026.html
 │   ├── work-update-7-19-2026.html
 │   ├── work-update-8-01-2026.html
 │   └── wu001.html

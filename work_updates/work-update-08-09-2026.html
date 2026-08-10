@@ -1,0 +1,3383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Klinswork work update for August 9, 2026 covering weekend architecture consolidation, the Resource Registry and Startup model, Housekeeping Operations system architecture, Work Queue employee assignment, and Documentation workflow reconciliation.">
+  <meta name="author" content="Kevin Linstrum">
+  <meta name="document-id" content="work-update-2026-08-09-weekend-architecture-consolidation">
+  <title>From Repository to Self-Describing System — Klinswork Work Update — August 9, 2026</title>
+  <style>
+    :root {
+      --ink: #1c2735;
+      --muted: #5d6875;
+      --paper: #ffffff;
+      --page: #eef2f6;
+      --navy: #17324d;
+      --blue: #2f628f;
+      --blue-soft: #eaf2f9;
+      --line: #d6dde5;
+      --gold: #9a7419;
+      --gold-border: #c9a84d;
+      --gold-paper: #fff8dc;
+      --gold-ink: #382b0b;
+      --green: #266148;
+      --green-soft: #edf7f1;
+      --shadow: 0 16px 45px rgba(21, 41, 62, 0.10);
+      --radius: 16px;
+      --content-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 1.25rem;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(47, 98, 143, 0.09), transparent 34rem),
+        var(--page);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: 0.18em;
+      text-decoration-thickness: 0.08em;
+    }
+
+    a:hover {
+      color: var(--navy);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #3478b5;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 10;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 0.5rem;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-header {
+      color: #fff;
+      background:
+        linear-gradient(132deg, rgba(23, 50, 77, 0.97), rgba(39, 78, 111, 0.94)),
+        var(--navy);
+      border-bottom: 5px solid var(--gold-border);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 4.4rem 0 3.8rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: #d7e7f5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.45rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    .dek {
+      max-width: 800px;
+      margin: 1.35rem 0 0;
+      color: #e6eef5;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.55;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.6rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.35rem 0.75rem;
+      color: #eef7ff;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 2.2rem 0 5rem;
+    }
+
+    .bootstrap-banner {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.2rem;
+      background: var(--blue-soft);
+      border: 1px solid #b9cfe1;
+      border-left: 6px solid var(--blue);
+      border-radius: 12px;
+    }
+
+    .bootstrap-banner strong {
+      color: var(--navy);
+    }
+
+    .supervisor-path-intro {
+      margin: 0 0 1.5rem;
+      padding: 1.25rem 1.4rem;
+      color: var(--gold-ink);
+      background: linear-gradient(145deg, #fff9e3, #fff5c9);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(80, 60, 10, 0.08);
+    }
+
+    .supervisor-path-intro h2 {
+      margin: 0 0 0.35rem;
+      color: #5b430c;
+      font-size: 1.25rem;
+    }
+
+    .supervisor-path-intro p {
+      margin: 0;
+    }
+
+    .toc {
+      margin: 0 0 1.8rem;
+      padding: 1.25rem 1.4rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toc h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .toc ol {
+      columns: 2 280px;
+      column-gap: 2.2rem;
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .toc li {
+      break-inside: avoid;
+      margin: 0.22rem 0;
+    }
+
+    .content-section {
+      margin: 1.35rem 0;
+      padding: clamp(1.35rem, 3vw, 2.3rem);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .content-section > h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.65rem);
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    .section-eyebrow {
+      margin: 0 0 0.35rem;
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .section-body {
+      margin-top: 1.25rem;
+    }
+
+    .section-body h3 {
+      margin: 2rem 0 0.55rem;
+      color: var(--navy);
+      font-size: 1.35rem;
+      line-height: 1.28;
+    }
+
+    .section-body h4 {
+      margin: 1.5rem 0 0.4rem;
+      color: #314d66;
+      font-size: 1.08rem;
+    }
+
+    .section-body p {
+      margin: 0.8rem 0;
+    }
+
+    .section-body ul,
+    .section-body ol {
+      padding-left: 1.35rem;
+    }
+
+    .section-body li {
+      margin: 0.36rem 0;
+    }
+
+    .section-body blockquote {
+      margin: 1.25rem 0;
+      padding: 0.8rem 1.15rem;
+      color: #3e5366;
+      background: #f3f7fa;
+      border-left: 5px solid #8fb3cf;
+    }
+
+    code {
+      padding: 0.12em 0.32em;
+      color: #17324d;
+      background: #edf3f8;
+      border: 1px solid #d8e3ec;
+      border-radius: 0.28rem;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.91em;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 1rem 1.1rem;
+      color: #edf6ff;
+      background: #172a3a;
+      border-radius: 10px;
+    }
+
+    pre code {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+      border: 0;
+    }
+
+    .supervisor-callout {
+      margin: 1.35rem 0;
+      padding: clamp(1.3rem, 3vw, 2rem);
+      color: var(--gold-ink);
+      background:
+        linear-gradient(145deg, rgba(255, 252, 234, 0.96), rgba(255, 245, 202, 0.96)),
+        var(--gold-paper);
+      border: 1px solid var(--gold-border);
+      border-left: 8px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(72, 55, 12, 0.10);
+    }
+
+    .supervisor-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+
+    .supervisor-label {
+      margin: 0;
+      color: #73540d;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .callout-type {
+      padding: 0.18rem 0.55rem;
+      color: #5c4208;
+      background: rgba(154, 116, 25, 0.10);
+      border: 1px solid rgba(154, 116, 25, 0.35);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .supervisor-callout h2 {
+      margin: 0.55rem 0 0.45rem;
+      color: #4d390b;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      line-height: 1.18;
+    }
+
+    .supervisor-callout p {
+      max-width: 850px;
+      margin: 0.6rem 0;
+      font-size: 1.04rem;
+    }
+
+    .supervisor-navigation {
+      margin-top: 1.05rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(114, 83, 13, 0.25);
+    }
+
+    .supervisor-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #5e450c;
+      font-weight: 850;
+      text-decoration-thickness: 2px;
+    }
+
+    .hand {
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .bootstrap-next-steps {
+      border-color: #b9d7c7;
+    }
+
+    .bootstrap-note {
+      margin-top: 1.1rem;
+      padding: 0.9rem 1rem;
+      color: #244c3b;
+      background: var(--green-soft);
+      border: 1px solid #bad8c7;
+      border-left: 5px solid var(--green);
+      border-radius: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      padding: 0.7rem;
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--navy);
+      background: #f2f6f9;
+    }
+
+    .page-footer {
+      margin-top: 2rem;
+      padding: 1.4rem 0 0;
+      color: var(--muted);
+      border-top: 1px solid #cbd4dd;
+      font-size: 0.88rem;
+    }
+
+    .page-footer p {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 16px;
+      }
+
+      .header-inner {
+        padding: 3.2rem 0 2.8rem;
+      }
+
+      .page {
+        width: min(calc(100% - 1rem), var(--content-width));
+      }
+
+      .content-section,
+      .supervisor-callout,
+      .toc,
+      .supervisor-path-intro {
+        border-radius: 12px;
+      }
+
+      .toc ol {
+        columns: 1;
+      }
+    }
+
+    @media print {
+      :root {
+        --page: #fff;
+        --shadow: none;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11pt;
+      }
+
+      .site-header {
+        color: #000;
+        background: #fff;
+        border-bottom: 2px solid #9a7419;
+      }
+
+      .kicker, .dek {
+        color: #333;
+      }
+
+      .meta-chip {
+        color: #222;
+        background: #fff;
+        border-color: #aaa;
+      }
+
+      .page {
+        width: 100%;
+        padding-top: 1rem;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .content-section,
+      .supervisor-callout {
+        break-inside: avoid-page;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .supervisor-navigation {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body id="document-top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="kicker">Klinswork · Work Update · August 9, 2026</p>
+      <h1>From Repository to Self-Describing System</h1>
+      <p class="dek">
+        Weekend work across August 8–9 reorganized Klinswork around stable resource identity,
+        progressive context loading, project/system architecture, operational evidence, and
+        durable documentation—while also advancing Work Queue employee assignment and the
+        therapy-document processing environment.
+      </p>
+      <div class="meta-row" aria-label="Document metadata">
+        <span class="meta-chip">Weekend architecture consolidation</span>
+        <span class="meta-chip">RES-043 Resource Registry</span>
+        <span class="meta-chip">Project/System architecture era</span>
+        <span class="meta-chip">Work Queue employee-ID milestone</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="main-content">
+    <div class="bootstrap-banner" role="note">
+      <strong>Architecture transition note:</strong>
+      This update covers work materially completed or reconciled across Saturday, August 8,
+      and Sunday, August 9, 2026. Earlier app-centered names and classifications are preserved
+      as historical evidence; the current working architecture distinguishes projects,
+      operational environments, systems, applications/implementations, and resources.
+    </div>
+
+    <section class="supervisor-path-intro" aria-labelledby="supervisor-path-title">
+      <h2 id="supervisor-path-title">Supervisor reading path</h2>
+      <p>
+        This document contains five gold supervisor notes. Follow the
+        <strong>pointing-hand links</strong> for the shortest operational reading path.
+        The complete weekend architecture and technical record remains available below.
+      </p>
+    </section>
+
+    <nav class="toc" aria-labelledby="contents-title">
+      <h2 id="contents-title">Contents</h2>
+      <ol>
+        <li><a href="#executive-summary">Executive Summary and Starting Position</a></li>
+        <li><a href="#repository-consolidation">Repository, Viewer, and Document-Family Consolidation</a></li>
+        <li><a href="#therapy-resources">Therapy-Resource and Document-Processing Infrastructure</a></li>
+        <li><a href="#work-queue">Work Queue 2.1 — Stable Employee Assignment</a></li>
+        <li><a href="#registry-startup">Resource Registry, Activities, Startup, and Context Routing</a></li>
+        <li><a href="#project-system-model">Projects, Systems, Applications, Resources, and Meadows Housekeeping</a></li>
+        <li><a href="#inventory">Inventory Management</a></li>
+        <li><a href="#operations-systems">Scheduling, Employee Achievements, and Task Assignment</a></li>
+        <li><a href="#documentation-project">Documentation Project and Repository Architecture</a></li>
+        <li><a href="#workflow-run">Registry Write Layer, Workflow Reconciliation, and Run-Sidecar 3.1</a></li>
+        <li><a href="#shared-history">Shared Resources, Historical Eras, and Open Determinations</a></li>
+        <li><a href="#self-awareness">Repository Self-Awareness, Human/Machine Layers, and Viewer Direction</a></li>
+        <li><a href="#capabilities-next">Capabilities Gained, Artifacts, Incomplete Work, and Review Order</a></li>
+        <li><a href="#assessment">Interpretation, Self-Description, Current Architecture, and Final Assessment</a></li>
+      </ol>
+    </nav>
+
+
+<section class="content-section" id="executive-summary" aria-labelledby="executive-summary-title">
+  <p class="section-eyebrow">What changed</p>
+  <h2 id="executive-summary-title">Executive Summary and Starting Position</h2>
+  <div class="section-body">
+    <h3>1. Executive summary</h3>
+<p>At the beginning of the weekend, Klinswork already contained substantial functional material: Apps Script applications, Google Sheets data stores, GitHub-hosted documents and tools, Google Sites indexes, work updates, JSON sidecars, catalogs, images, viewers, therapy-study materials, and operational applications such as Inventory 3.0 and Work Queue.</p>
+<p>The persistent weakness was not lack of content. It was <strong>lack of sufficiently explicit semantic structure across the content</strong>.</p>
+<p>Important questions still depended too heavily on conversational memory:</p>
+<ul>
+<li>What is Klinswork as a whole?</li>
+<li>Which undertaking is a project versus a system versus an application?</li>
+<li>Which file or resource is authoritative for a given fact?</li>
+<li>Which artifacts are historical, current, generated, published, or merely experimental?</li>
+<li>How does a new conversation discover the right documents without being handed the whole project universe?</li>
+<li>How should a workflow describe the information it needs without hard-coding one particular file path or URL?</li>
+<li>How can a resource remain conceptually the same resource when its URL or deployment changes?</li>
+<li>How should project files be created if the system cannot yet reliably locate and interpret the resources from which those files must be built?</li>
+</ul>
+<p>The weekend attacked those questions from both directions.</p>
+<p>On one side, the <strong>Documentation infrastructure</strong> became more explicit. The repository README was expanded into a genuine orientation document. Manifest types were distinguished. The JSON viewer was understood as both a generic inspector and a type-aware presentation layer. The Resource Registry evolved from a shortcut list into an identity and routing authority. Activities became a provenance mechanism. <code>RES-000 — CHATGPT — READ THIS FIRST</code> created an entry route. Startup became a distinct bootstrap procedure. Workflows were reconceived as declaring semantic context requirements that the Registry resolves into current resources.</p>
+<p>On the other side, the <strong>subject matter being documented</strong> became more explicit. The Meadows Housekeeping Projects Summary established Housekeeping Operations as the parent operational project, Meadows Housekeeping as its current primary operational environment, and durable operational systems beneath it. Work Queue and Inventory 3.0 were demoted, correctly, from being treated as the organizing entities themselves to being applications or implementations of larger real-world systems. Paper processes, verbal reports, ordinary institutional channels, people, locations, supplies, tasks, schedules, and operational histories were all restored to the model as first-class realities independent of whether an application existed or was adopted.</p>
+<p>By the end of the weekend, the architecture could be expressed approximately as:</p>
+<pre><code class="language-text">Klinswork
+│
+├── Documentation                         [cross-project infrastructure project]
+│   ├── repository
+│   ├── workflows
+│   ├── Resource Registry
+│   ├── Startup
+│   ├── summaries / sidecars / catalogs
+│   ├── viewers / manifests / templates
+│   └── project and system documentation
+│
+└── Housekeeping Operations               [operational project]
+    │
+    └── Meadows Housekeeping              [primary current operational environment]
+        │
+        ├── Inventory Management          [operational system]
+        │   └── Inventory 3.0             [principal application / implementation]
+        │
+        ├── Scheduling                    [operational system]
+        │   └── Calendar / roster tools   [implementations]
+        │
+        ├── Task Assignment and Tracking  [operational system]
+        │   └── Work Queue                [principal application]
+        │
+        └── Employee Achievements         [provisional system / capability]
+</code></pre>
+<p>Shared resources can cross these boundaries rather than being copied into each project as if they were independently owned. Examples include employee and role data, locations data, Email Composer, repository infrastructure, common identifiers, templates, and import/export methods.</p>
+<p>The weekend therefore marks a transition from <strong>organizing applications and files</strong> toward <strong>organizing represented systems, authorities, relationships, histories, and resources</strong>.</p>
+<hr />
+
+<h3>2. Scope and source discipline</h3>
+<p>This summary deliberately distinguishes several kinds of evidence.</p>
+<h3>2.1 Direct weekend architecture records</h3>
+<p>The strongest direct records are:</p>
+<ul>
+<li><code>summary-2026-08-09-documentation-resource-registry-startup.md</code>;</li>
+<li>the root Documentation <code>README.md</code>;</li>
+<li><code>workflow-run-sidecar-template-3.1-draft.json</code>;</li>
+<li>the linked Google Doc <strong>Meadows Housekeeping Projects Summary</strong>;</li>
+<li>repository and code artifacts preserved from the Work Queue work;</li>
+<li>retained PST-SP study-guide files and viewer artifacts.</li>
+</ul>
+<h3>2.2 Historical baseline</h3>
+<p>The August 1 work update, <strong>A Documentation System for Projects, Narrative, and Repeatable Work</strong>, is used as the principal earlier baseline. It is not weekend work, but the August 9 work explicitly continued it and solved several problems that August 1 had left unresolved.</p>
+<h3>2.3 Conversation-derived weekend details</h3>
+<p>Some Saturday details—particularly the exact debugging sequence around the Work Queue employee field, repository therapy folders, and some viewer work—are preserved primarily in conversation history and retained code/files rather than in a final dated work update. Those items are identified as such rather than presented as if they came from a formal published record.</p>
+<h3>2.4 Chronology caveat</h3>
+<p>The weekend architecture itself insists on preserving chronology honestly. Some major ideas were discovered before they were recognized as formal Documentation work. The August 9 record explicitly rejects rewriting the session as though the final architecture had been prospectively planned from the beginning.</p>
+<p>This summary follows the same principle.</p>
+<hr />
+
+<h3>3. Starting position before the weekend</h3>
+<p>The weekend did not begin with an empty repository. Klinswork already had substantial history.</p>
+<p>The Documentation repository contained, among other things:</p>
+<ul>
+<li>published HTML work updates;</li>
+<li>Markdown summaries;</li>
+<li>JSON sidecars;</li>
+<li>sidecar templates;</li>
+<li>cumulative catalogs;</li>
+<li>workflow specifications;</li>
+<li>viewer tools;</li>
+<li>image collections and image manifests;</li>
+<li>scripts;</li>
+<li>project-oriented or application-oriented directories;</li>
+<li>GitHub Pages publication;</li>
+<li>root-level web assets;</li>
+<li>a growing set of study and reference materials.</li>
+</ul>
+<p>The August 1 Documentation bootstrap had already established several crucial principles:</p>
+<ol>
+<li>A dated work-update record is not the same thing as a durable project record.</li>
+<li>A narrative summary and a structured sidecar serve different purposes.</li>
+<li><code>summary.md</code>-style narrative can preserve how work unfolded and why decisions were made.</li>
+<li>Sidecars can preserve structured identity, relationships, metadata, outcomes, and other machine-readable information.</li>
+<li>A cumulative catalog can support discovery across documents.</li>
+<li>Documentation itself should operate through a reusable workflow rather than being reconstructed ad hoc every time.</li>
+<li>Context should be loaded progressively and purposefully rather than requiring the model to hold the entire project universe continuously.</li>
+<li>Formal project records were a major next milestone.</li>
+</ol>
+<p>But August 1 still left major questions unresolved:</p>
+<ul>
+<li>How should an instruction set or workflow discover the files it needs?</li>
+<li>How should project context be made reliably available to a fresh conversation?</li>
+<li>Where should authoritative project records live?</li>
+<li>How should a new work session resume from known state without depending on memory?</li>
+<li>How should relationships among Markdown, HTML, sidecars, catalogs, templates, and project records be represented?</li>
+</ul>
+<p>By the weekend, these unresolved questions became limiting factors.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="supervisor-note-1" aria-labelledby="supervisor-note-1-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 1 of 5</p>
+    <span class="callout-type">Outcome</span>
+  </div>
+  <h2 id="supervisor-note-1-title">What changed over the weekend</h2>
+  <p>Klinswork moved from organizing files and applications toward an explicit architecture of projects, operational systems, applications, resources, authorities, and history. The Documentation environment can now increasingly explain what a resource is, where its current version lives, what should be read first, and what context a workflow needs.</p>
+  
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    <a class="supervisor-next" href="#supervisor-note-2">
+      <span class="hand" aria-hidden="true">☞</span>
+      <span>Next supervisor note: Concrete Work Queue progress</span>
+    </a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="repository-consolidation" aria-labelledby="repository-consolidation-title">
+  <p class="section-eyebrow">Saturday infrastructure</p>
+  <h2 id="repository-consolidation-title">Repository, Viewer, and Document-Family Consolidation</h2>
+  <div class="section-body">
+    <h3>4. Saturday, August 8 — repository, application, and document-family consolidation</h3>
+<p>Saturday's work was broad. It included application-level debugging, repository organization, therapy-resource structure, viewer thinking, and a major shift in how the broader project should be modeled.</p>
+<h3>4.1 Repository landing page and structural orientation</h3>
+<p>Work on the repository landing page and navigation helped clarify that the Documentation repository was no longer merely a collection of work updates.</p>
+<p>The repository had become a shared home for:</p>
+<ul>
+<li>documents;</li>
+<li>images;</li>
+<li>structured metadata;</li>
+<li>JSON sidecars;</li>
+<li>catalogs;</li>
+<li>manifests;</li>
+<li>viewers;</li>
+<li>scripts;</li>
+<li>templates;</li>
+<li>project and application records;</li>
+<li>historical artifacts;</li>
+<li>web publication.</li>
+</ul>
+<p>This led to a crucial distinction:</p>
+<pre><code class="language-text">directory organization
+    is not the same thing as
+semantic organization
+</code></pre>
+<p>A directory can tell a reader where a file lives. It cannot, by itself, explain:</p>
+<ul>
+<li>why the file exists;</li>
+<li>whether the file is current;</li>
+<li>whether it is source, generated, aggregate, companion, or published output;</li>
+<li>what process generates it;</li>
+<li>what tools consume it;</li>
+<li>what other artifacts it belongs with;</li>
+<li>which workflow governs changes to it;</li>
+<li>what should be read before modifying it.</li>
+</ul>
+<p>That distinction became one of the foundations of the root README and the planned repository-manifest concept.</p>
+<h3>4.2 Repository responsibilities become explicit</h3>
+<p>The refined repository model identifies several overlapping responsibilities:</p>
+<h4>Hosting durable documents and reference material</h4>
+<p>The repository stores work updates, study material, project documentation, HTML pages, Markdown sources, and other files that benefit from stable versioned locations.</p>
+<h4>Hosting images and reusable assets</h4>
+<p>The <code>images/</code> area holds screenshots, icons, banners, work-update graphics, and other visual material that can be reused by documents and tools.</p>
+<h4>Providing stable public URLs</h4>
+<p>GitHub Pages allows selected static documents, images, viewers, and JSON resources to be referenced through predictable public locations.</p>
+<h4>Storing structured records</h4>
+<p>JSON sidecars, catalogs, manifests, templates, project/system records, workflow records, and metadata belong alongside the documents they describe.</p>
+<h4>Hosting tools and viewers</h4>
+<p>Local and online JSON viewers, Python utilities, launchers, manifest generators, and related support tools operate close to the records they understand.</p>
+<h4>Preserving working and historical material</h4>
+<p>Earlier versions, bootstrap-era folders, abandoned experiments, and superseded structures can remain as evidence rather than being silently erased.</p>
+<p>This was a substantial conceptual upgrade: the repository was formally understood as <strong>documentation infrastructure and durable storage</strong>, not simply as “the website.”</p>
+<h3>4.3 Manifest types were separated</h3>
+<p>The weekend clarified that several things called “manifest” serve different functions.</p>
+<h4>JSON Viewer manifest</h4>
+<p><code>documents/work-update-catalog/json-manifest.json</code></p>
+<p>Generated by <code>manifest.py</code>, it inventories JSON files for the online static viewer and allows GitHub Pages to provide file discovery without a local Python server.</p>
+<h4>Image manifest</h4>
+<p><code>images/images.json</code></p>
+<p>Generated by the image inventory script, it inventories repository images and is consumed by systems such as Email Composer.</p>
+<h4>Browser / PWA manifests</h4>
+<p>Files such as <code>site.webmanifest</code> and root <code>manifest.json</code> describe web-app/browser identity, icons, theme, start URL, and install/display behavior.</p>
+<h4>Planned repository manifest</h4>
+<p>A future <code>repository-manifest.json</code> is intended to be a semantic map of the repository itself: major systems, canonical artifacts, generators, consumers, relationships, read-first documentation, and unresolved areas.</p>
+<p>The distinction prevented the word <em>manifest</em> from becoming a vague catch-all.</p>
+<h3>4.4 JSON Viewer and online/local viewing model</h3>
+<p>The viewer work continued to evolve from a utility for opening JSON into a generalized structured-document presentation system.</p>
+<p>The model now distinguishes:</p>
+<h4>Local viewer</h4>
+<p>The local Python-based viewer can:</p>
+<ul>
+<li>use filesystem access;</li>
+<li>scan directories directly;</li>
+<li>use Python endpoints;</li>
+<li>provide desktop-oriented inspection;</li>
+<li>support specialized preview behavior.</li>
+</ul>
+<h4>Online viewer</h4>
+<p>The GitHub Pages viewer cannot scan the local filesystem and therefore depends on static repository resources such as:</p>
+<ul>
+<li><code>json-manifest.json</code>;</li>
+<li>catalogs;</li>
+<li>sidecars;</li>
+<li>structured JSON files;</li>
+<li>static HTML/JavaScript behavior.</li>
+</ul>
+<p>The same conceptual collection can therefore support two runtimes:</p>
+<pre><code class="language-text">Local runtime
+    filesystem-aware
+    Python-assisted
+
+Static online runtime
+    manifest-driven
+    GitHub Pages
+</code></pre>
+<p>This became part of the larger effort to make the viewer a general portal into structured project/document information rather than a one-purpose PST-SP tool.</p>
+<h3>4.5 Root README shifts from description to orientation authority</h3>
+<p>A major Saturday/Sunday product was the root Documentation README.</p>
+<p>Its role became:</p>
+<pre><code class="language-text">README.md
+    = human-readable orientation
+</code></pre>
+<p>The README explicitly says the repository should be understood by <strong>function and relationships</strong>, not directory structure alone.</p>
+<p>It documents:</p>
+<ul>
+<li>the repository's overlapping responsibilities;</li>
+<li>major directories;</li>
+<li>important viewer and manifest files;</li>
+<li>generator/consumer relationships;</li>
+<li>the difference among manifests;</li>
+<li>sidecars and catalogs;</li>
+<li>the viewer ecosystem;</li>
+<li>design principles;</li>
+<li>context-restoration procedure for future sessions.</li>
+</ul>
+<p>This document later became the destination of <code>RES-000 — CHATGPT — READ THIS FIRST</code>, making the README not simply a passive repository description but part of the active Startup architecture.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="therapy-resources" aria-labelledby="therapy-resources-title">
+  <p class="section-eyebrow">Parallel documentation work</p>
+  <h2 id="therapy-resources-title">Therapy-Resource and Document-Processing Infrastructure</h2>
+  <div class="section-body">
+    <h3>5. Saturday therapy-resource and document-processing work</h3>
+<p>A parallel branch of the weekend organized therapy and clinical-study documents into the same broader Documentation approach.</p>
+<h3>5.1 PST-SP master study-guide architecture</h3>
+<p>The PST-SP work had already established a strong document-processing model:</p>
+<pre><code class="language-text">source packet / PDF / photographed pages
+        ↓
+master Markdown study guide
+        ↓
+structured JSON sidecar
+        ↓
+HTML publication
+        ↓
+viewer / catalog / metadata integration
+</code></pre>
+<p>The master Markdown document is deliberately concept-based rather than a simple page-by-page transcription.</p>
+<p>The retained PST-SP study guide includes major sections for:</p>
+<ul>
+<li>program overview;</li>
+<li>treatment structure;</li>
+<li>problem-solving model of stress;</li>
+<li>obstacles to effective problem solving;</li>
+<li>Toolkit One: Stop and Slow Down;</li>
+<li>Toolkit Two: Visualization for Hope and Motivation;</li>
+<li>Toolkit Three: Overcoming Brain Overload;</li>
+<li>Toolkit Four: Planful Problem Solving;</li>
+<li>problem-solving beliefs and styles;</li>
+<li>review and future forecasting;</li>
+<li>optional handouts and supporting tools;</li>
+<li>measures;</li>
+<li>integrated PST-SP workflow;</li>
+<li>personal notes and applications;</li>
+<li>source review log.</li>
+</ul>
+<p>One important interpretive discovery from the source material was the repeated idea of <strong>building a toolkit</strong> rather than simply consuming a packet of worksheets. That terminology aligned strongly with the larger Klinswork pattern: reusable structured tools, selected according to the problem being solved.</p>
+<h3>5.2 Visual-source policy</h3>
+<p>The PST-SP project also developed a durable policy for images and diagrams.</p>
+<p>When a source visual matters, the Markdown master should preserve:</p>
+<ol>
+<li>an explicit image placeholder;</li>
+<li>a physical description of what the image looks like;</li>
+<li>a semantic description of what the image communicates.</li>
+</ol>
+<p>This allows later decisions about which original images should actually be uploaded while preventing the meaning of the visual from disappearing if the image itself is not yet present.</p>
+<h3>5.3 CPT / PST-SP / EMDR repository organization</h3>
+<p>The weekend extended the therapy-resource concept beyond one packet.</p>
+<p>The repository was organized with dedicated folders including:</p>
+<ul>
+<li><code>cpt/</code>;</li>
+<li><code>pst-sp/</code>;</li>
+<li><code>emdr/</code>;</li>
+<li>additional therapy/resource folders created during the same organization pass.</li>
+</ul>
+<p>The intent was not merely file storage. The emerging concept was a <strong>clinician-style assembly and reference environment</strong> based on authoritative PDFs, structured sidecars, and extractable document fragments.</p>
+<p>Important observations preserved from the work include:</p>
+<ul>
+<li>the VA CPT packet in hand contained 17 listed handouts;</li>
+<li>a CPT book preview exposed a larger handout family of roughly 48 items;</li>
+<li>the PST-SP paper packet listed 28 handouts plus 3 optional handouts;</li>
+<li>PST-SP pages used mixed portrait and landscape layouts;</li>
+<li>some handouts were multi-page;</li>
+<li>footers and version marks included clues such as <code>Veteran Version</code>, <code>Version 2</code>, <code>Revised 10/4/2023 JFG</code>, and <code>HANDOUT ##</code>;</li>
+<li>decimal handout numbering such as <code>5.1</code> appeared;</li>
+<li>the table of contents and footer conventions provided clues for locating authoritative digital resources;</li>
+<li>CPT, PST-SP, and EMDR were being treated as distinct source families that could share a common document-processing and viewing architecture.</li>
+</ul>
+<h3>5.4 Specialized viewer as proof of a broader pattern</h3>
+<p><code>pst-viewer.html</code> became useful conceptually even beyond PST-SP.</p>
+<p>It demonstrated that the Documentation system can support:</p>
+<ul>
+<li>generic JSON inspection;</li>
+<li>shared catalogs and manifests;</li>
+<li>specialized document-family previews;</li>
+<li>domain-specific navigation where useful.</li>
+</ul>
+<p>The likely long-term model is therefore not one monolithic viewer that renders every document identically, but a shared structured-data infrastructure capable of specialized views.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="work-queue" aria-labelledby="work-queue-title">
+  <p class="section-eyebrow">Application milestone</p>
+  <h2 id="work-queue-title">Work Queue 2.1 — Stable Employee Assignment</h2>
+  <div class="section-body">
+    <h3>6. Saturday Work Queue 2.1 — stable employee assignment</h3>
+<p>One of the clearest concrete application advances during the weekend was the employee-assignment work in Work Queue 2.1.</p>
+<h3>6.1 Problem being solved</h3>
+<p>Work Queue already managed tasks, locations, status, completion, task activity, and inventory-holder integration. But assignment still needed stronger linkage to the employee dataset.</p>
+<p>The desired behavior was not merely to type a person's name. A task should be able to store a stable employee identity and display the employee's current human-readable name.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">Employee directory
+    Employee ID
+    Display Name
+        ↓
+Work Queue task
+    Assigned Employee ID   [stable identity]
+    Assigned To            [human-readable name]
+</code></pre>
+<p>This distinction is essential for future bulk assignment, reassignment, employee views, and cross-system identity.</p>
+<h3>6.2 New task schema field</h3>
+<p>The Tasks sheet required a new header:</p>
+<pre><code class="language-text">Assigned Employee ID
+</code></pre>
+<p>A debugging interruption occurred because the header was initially added to the Work Queue 2.0 sheet rather than the active Work Queue 2.1 sheet. The validation error correctly reported that the required header was missing.</p>
+<p>After the header was added to the correct 2.1 dataset, configuration validation succeeded.</p>
+<h3>6.3 Application logic</h3>
+<p>Retained Work Queue code shows the stronger assignment model directly.</p>
+<p>Task creation accepts:</p>
+<pre><code class="language-text">assignedEmployeeId
+</code></pre>
+<p>The employee ID is validated against the employee directory. The task record then stores both:</p>
+<pre><code class="language-text">Assigned To
+Assigned Employee ID
+</code></pre>
+<p>Reassignment follows the same pattern. <code>assignTask()</code> resolves the employee by ID, updates the display name, updates <code>Assigned Employee ID</code>, and writes an <code>ASSIGNEE_CHANGED</code> activity record.</p>
+<p>That means assignment is no longer just presentation text. It is part of the task's structured identity and history.</p>
+<h3>6.4 UI work</h3>
+<p>The Create Task interface gained an <strong>Assigned Employee</strong> field sourced from the employee data rather than relying on free-form names.</p>
+<p>During the same debugging pass, a missing <code>assignedToFilter</code> UI element was identified and restored in the correct file.</p>
+<p>The debugging sequence was frustrating because several copies of the HTML existed and one returned version appeared much shorter than expected, raising concern that a truncated or wrong file had been edited. The final implementation was tested rather than accepted solely from code inspection.</p>
+<h3>6.5 Successful test</h3>
+<p>A test task for <strong>vacuuming in Aspen South</strong> was assigned to <strong>Gina</strong>.</p>
+<p>The employee list populated correctly, and the assignment appeared to work as intended.</p>
+<p>The practical conclusion was that Work Queue had moved a significant step closer to the larger goal:</p>
+<pre><code class="language-text">select employee
+    ↓
+select unit / work plan
+    ↓
+generate or assign many appropriate tasks
+</code></pre>
+<h3>6.6 Relationship to the bulk-assignment roadmap</h3>
+<p>Retained roadmap material describes a future batch-generation flow:</p>
+<pre><code class="language-text">Select assignment information
+→ Load matching templates
+→ Resolve target locations
+→ Build preview
+→ Confirm
+→ Create batch
+</code></pre>
+<p>The roadmap expects batch-created tasks to preserve:</p>
+<ul>
+<li>valid task IDs;</li>
+<li>valid employee IDs;</li>
+<li>employee display names where needed;</li>
+<li>valid location IDs;</li>
+<li>batch IDs;</li>
+<li>task-template IDs;</li>
+<li>creation activity records;</li>
+<li>compatibility with the ordinary Work Queue interface.</li>
+</ul>
+<p>The weekend employee-ID work is therefore not an isolated UI improvement. It satisfies one of the prerequisites for bulk task assignment.</p>
+<hr />
+
+<h3>7. A major semantic correction: Work Queue is not the system</h3>
+<p>Saturday-era documentation still contained app-centered language that could call Work Queue itself a project. The weekend's later architecture clarified that this was historically understandable but semantically incomplete.</p>
+<p>The canonical direction became:</p>
+<pre><code class="language-text">Task Assignment and Tracking
+    = durable operational system
+
+Work Queue
+    = principal digital application implementing part of that system
+</code></pre>
+<p>This distinction matters because the real operational system includes work that may never enter Work Queue at all.</p>
+<p>A task can originate from:</p>
+<ul>
+<li>a supervisor instruction;</li>
+<li>ordinary departmental paperwork;</li>
+<li>a verbal report;</li>
+<li>a nurse or technician request;</li>
+<li>an observation;</li>
+<li>an email;</li>
+<li>a digital form;</li>
+<li>a Work Queue action.</li>
+</ul>
+<p>The system is therefore not created by the software. The software models and assists the system.</p>
+<p>The weekend did not erase the older app-centered README. Instead, the evolving documentation model treats it as bootstrap-era or transitional evidence and links it forward into the more mature system-centered architecture.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="supervisor-note-2" aria-labelledby="supervisor-note-2-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 2 of 5</p>
+    <span class="callout-type">Operational milestone</span>
+  </div>
+  <h2 id="supervisor-note-2-title">Work Queue can now assign by stable employee identity</h2>
+  <p>Work Queue 2.1 now stores an employee’s stable ID together with the display name. The Create Task interface was connected to the employee list, the active 2.1 task schema was corrected, and a vacuuming task in Aspen South was successfully assigned to Gina. This is a prerequisite for reliable bulk assignment by employee.</p>
+  
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    <a class="supervisor-next" href="#supervisor-note-3">
+      <span class="hand" aria-hidden="true">☞</span>
+      <span>Next supervisor note: The new routing architecture</span>
+    </a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="registry-startup" aria-labelledby="registry-startup-title">
+  <p class="section-eyebrow">Sunday architecture</p>
+  <h2 id="registry-startup-title">Resource Registry, Activities, Startup, and Context Routing</h2>
+  <div class="section-body">
+    <h3>8. Sunday, August 9 — the Resource Registry emerges</h3>
+<p>Sunday's Documentation work began from a practical annoyance: too many important URLs and resource locations had to be rediscovered repeatedly.</p>
+<h3>8.1 First form: a shortcut table</h3>
+<p>The initial Google Sheet was essentially a convenient list of useful links:</p>
+<ul>
+<li>Apps Script projects;</li>
+<li>Google Sheets;</li>
+<li>Google Docs;</li>
+<li>GitHub pages;</li>
+<li>tools;</li>
+<li>data;</li>
+<li>documentation resources.</li>
+</ul>
+<p>That alone would have been useful, but the table quickly became something more structural.</p>
+<h3>8.2 Stable <code>RES-###</code> identity</h3>
+<p>Resources were assigned durable IDs such as:</p>
+<pre><code class="language-text">RES-000
+RES-001
+...
+RES-040
+...
+RES-043
+</code></pre>
+<p>The key conceptual distinction became:</p>
+<pre><code class="language-text">resource identity != resource location
+</code></pre>
+<p>A resource may retain its conceptual identity even if:</p>
+<ul>
+<li>a web-app deployment URL changes;</li>
+<li>a Google Sheet is replaced;</li>
+<li>a file moves;</li>
+<li>a GitHub path changes;</li>
+<li>a new canonical publication supersedes an older location;</li>
+<li>a resource migrates between services.</li>
+</ul>
+<p>This means a workflow or document can refer to the resource by stable ID while the Registry resolves its current location.</p>
+<h3>8.3 Registry fields</h3>
+<p>The Resources sheet developed fields such as:</p>
+<ul>
+<li>Resource ID;</li>
+<li>name;</li>
+<li>project reference;</li>
+<li>link/current location;</li>
+<li>description;</li>
+<li>metadata reference;</li>
+<li>last update.</li>
+</ul>
+<p>The Registry became a <strong>routing and discovery authority</strong>, not merely a bookmark list.</p>
+<h3>8.4 Resource Registry identity itself</h3>
+<p>By the time the Meadows high-level document was reconciled, the Klinswork Resource Registry itself was identified as:</p>
+<pre><code class="language-text">RES-043 — Klinswork Resource Registry
+</code></pre>
+<p>Earlier August 9 work also registered a related bound Apps Script project as <code>RES-040</code>; these are distinct resources and should not be confused.</p>
+<hr />
+
+<h3>9. Activities: provenance for resource changes</h3>
+<p>Once resource identity was separated from resource location, a second problem became obvious.</p>
+<p>Suppose a resource's URL changes.</p>
+<p>Simply replacing the link tells us the current answer but destroys the history:</p>
+<pre><code class="language-text">old URL
+    overwritten by
+new URL
+</code></pre>
+<p>The system instead needs to know that <strong>a change happened</strong>.</p>
+<h3>9.1 Activities tab</h3>
+<p>The Resource Registry therefore gained an <code>Activities</code> tab.</p>
+<p>An Activity can record:</p>
+<ul>
+<li>an activity ID;</li>
+<li>timestamp;</li>
+<li>affected Resource ID;</li>
+<li>action;</li>
+<li>explanatory note.</li>
+</ul>
+<p>This permits Registry changes to preserve context such as:</p>
+<ul>
+<li>why a deployment changed;</li>
+<li>which version superseded another;</li>
+<li>whether a resource was migrated or replaced;</li>
+<li>what work session produced the change;</li>
+<li>whether the conceptual resource stayed the same;</li>
+<li>whether a resource was deprecated or retired;</li>
+<li>what evidence supported the update;</li>
+<li>what other resources were affected.</li>
+</ul>
+<h3>9.2 <code>LAST UPDATE</code> derived from evidence</h3>
+<p>Rather than treating <code>LAST UPDATE</code> as an independently typed fact, the model connects it to Activity history.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">resource activity history
+        ↓
+latest relevant activity timestamp
+        ↓
+Resources.LAST UPDATE
+</code></pre>
+<p>This makes the date evidence-based.</p>
+<h3>9.3 Broader significance</h3>
+<p>This was the point at which the Registry stopped being simply an index and became part of the historical record.</p>
+<p>The same principle appears elsewhere in Klinswork:</p>
+<ul>
+<li>task activity records explain task state;</li>
+<li>inventory events explain quantity state;</li>
+<li>holder events explain service state;</li>
+<li>Registry Activities explain resource state.</li>
+</ul>
+<p>In each case, <strong>state becomes more trustworthy when the transition history is preserved</strong>.</p>
+<hr />
+
+<h3>10. `RES-000 — CHATGPT — READ THIS FIRST`</h3>
+<p>The Resource Registry itself created another bootstrapping problem.</p>
+<p>A fresh ChatGPT conversation could be given the Registry and still not know:</p>
+<ul>
+<li>what Klinswork means;</li>
+<li>what the Documentation repository is;</li>
+<li>how Resource IDs should be interpreted;</li>
+<li>which files are authoritative;</li>
+<li>which entries are historical versus current;</li>
+<li>what should be read before acting.</li>
+</ul>
+<p>The solution was to make the first Registry entry conspicuous:</p>
+<pre><code class="language-text">RES-000 — CHATGPT — READ THIS FIRST
+</code></pre>
+<p>Its metadata reference points to the root Documentation README.</p>
+<p>This creates a deliberate division of labor:</p>
+<pre><code class="language-text">README
+    = orientation and meaning
+
+Resource Registry
+    = identity, location, discovery, and routing
+</code></pre>
+<p>The Registry therefore contains the breadcrumb required to understand how to use the Registry.</p>
+<p>That is an early form of system self-description.</p>
+<hr />
+
+<h3>11. Startup architecture</h3>
+<p>Sunday's work then formalized the broader procedure implied by <code>RES-000</code>.</p>
+<h3>11.1 <code>Startup</code> versus <code>startup()</code></h3>
+<p>A dedicated <code>Startup</code> tab was created in the Registry.</p>
+<p>The emerging naming convention was:</p>
+<pre><code class="language-text">Startup
+    = canonical documented procedure
+
+startup()
+    = conversational shorthand meaning “execute Startup”
+</code></pre>
+<p>The table itself was intentionally not rushed to completion. Its semantics were discussed before its final structure was committed.</p>
+<h3>11.2 Automatic bootstrap path</h3>
+<p>The intended route became:</p>
+<pre><code class="language-text">fresh Documentation conversation
+        ↓
+Resource Registry supplied
+        ↓
+RES-000 — CHATGPT — READ THIS FIRST
+        ↓
+root Documentation README
+        ↓
+return to Registry with orientation established
+        ↓
+Startup
+        ↓
+current workflow
+</code></pre>
+<p>An explicit fallback exists:</p>
+<pre><code class="language-text">user: startup()
+        ↓
+execute Startup
+</code></pre>
+<h3>11.3 Startup must remain small</h3>
+<p>One of the most important design decisions was <strong>what Startup should not do</strong>.</p>
+<p>Startup should not preload:</p>
+<ul>
+<li>every project file;</li>
+<li>every work update;</li>
+<li>every Sheet;</li>
+<li>every application document;</li>
+<li>every historical record;</li>
+<li>every sidecar;</li>
+<li>the entire repository.</li>
+</ul>
+<p>Instead:</p>
+<pre><code class="language-text">startup context
+    = enough durable information to intelligently begin
+
+session context
+    = enough information to perform this particular body of work
+</code></pre>
+<p>This preserves the progressive context-loading principle established on August 1.</p>
+<hr />
+
+<h3>12. Workflow declares context; Registry resolves it</h3>
+<p>The Startup work led to one of the weekend's central architectural statements:</p>
+<pre><code class="language-text">Startup
+    establishes orientation and routing authorities
+
+Workflow
+    declares what context the current work requires
+
+Resource Registry
+    resolves those requirements to actual resources
+</code></pre>
+<p>This replaces an older assumption that a workflow should simply hard-code a fixed family of project files.</p>
+<h3>12.1 Context requirements become semantic</h3>
+<p>A workflow should be able to say things like:</p>
+<pre><code class="language-text">Need the current Work Queue technical implementation context.
+Need the authoritative employee dataset.
+Need the current Documentation workflow specification.
+Need the system-level Inventory Management record.
+Need the historical work update that established a specific integration.
+</code></pre>
+<p>Those statements describe <strong>what information is required</strong>, not where it happens to be stored.</p>
+<p>The Registry can then resolve the requirement to one or more Resource IDs and current authoritative locations.</p>
+<h3>12.2 Why this matters</h3>
+<p>Hard-coded paths do not scale because:</p>
+<ul>
+<li>resources move;</li>
+<li>deployments change;</li>
+<li>project structure evolves;</li>
+<li>some resources are shared;</li>
+<li>one project may require a different context family than another;</li>
+<li>the same workflow may run against different systems.</li>
+</ul>
+<p>Semantic context requirements plus stable resource IDs make the workflow more portable and durable.</p>
+<hr />
+
+<h3>13. Project files were not abandoned; their prerequisites were discovered</h3>
+<p>The August 1 bootstrap had identified formal project files as the next major milestone.</p>
+<p>Sunday's work did not reverse that conclusion.</p>
+<p>Instead, it asked a more basic question:</p>
+<blockquote>
+<p>How can authoritative project records be created reliably if the system does not yet have a dependable way to identify, locate, and interpret the resources from which those records must be built?</p>
+</blockquote>
+<p>The answer was that several prerequisites had to exist first:</p>
+<ul>
+<li>reliable resource identity;</li>
+<li>resource-location resolution;</li>
+<li>repository orientation;</li>
+<li>provenance;</li>
+<li>semantic context routing;</li>
+<li>controlled terminology;</li>
+<li>a repeatable Startup path.</li>
+</ul>
+<p>Thus the project-file milestone was <strong>reframed, not discarded</strong>.</p>
+<p>The formal Project Registry was intentionally deferred until the high-level project and system documents had been sufficiently reconciled.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="supervisor-note-3" aria-labelledby="supervisor-note-3-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 3 of 5</p>
+    <span class="callout-type">Architecture</span>
+  </div>
+  <h2 id="supervisor-note-3-title">A fresh work session now has a designed route into context</h2>
+  <p>The intended path is now: READ THIS FIRST → repository README → Resource Registry → Startup → current workflow → workflow-declared context requirements → Registry-resolved authoritative resources. The goal is not to load everything; it is to load the minimum durable orientation and then retrieve only the context required for the current work.</p>
+  
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    <a class="supervisor-next" href="#supervisor-note-4">
+      <span class="hand" aria-hidden="true">☞</span>
+      <span>Next supervisor note: How Meadows is now modeled</span>
+    </a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="project-system-model" aria-labelledby="project-system-model-title">
+  <p class="section-eyebrow">Semantic architecture</p>
+  <h2 id="project-system-model-title">Projects, Systems, Applications, Resources, and Meadows Housekeeping</h2>
+  <div class="section-body">
+    <h3>14. Project → System → Application / Implementation → Resource</h3>
+<p>The weekend produced a more mature Klinswork ontology.</p>
+<h3>14.1 Project</h3>
+<p>A <strong>Project</strong> is a substantial organized body of work containing one or more systems, implementations, resources, histories, and objectives.</p>
+<p>Current example:</p>
+<pre><code class="language-text">Housekeeping Operations
+</code></pre>
+<h3>14.2 Operational environment</h3>
+<p>An <strong>Operational Environment</strong> is the real-world setting in which a project or system operates.</p>
+<p>Current example:</p>
+<pre><code class="language-text">Meadows Housekeeping
+</code></pre>
+<p>This is an important refinement. Meadows Housekeeping is not simply another software project. It is the real environment that supplies the people, work, rooms, schedules, supplies, requests, observations, and history represented by Housekeeping Operations.</p>
+<h3>14.3 System</h3>
+<p>A <strong>System</strong> is a durable real-world operational function or management process that exists independently of any one digital implementation.</p>
+<p>Current examples:</p>
+<ul>
+<li>Inventory Management;</li>
+<li>Scheduling;</li>
+<li>Task Assignment and Tracking;</li>
+<li>Employee Achievements, provisionally.</li>
+</ul>
+<h3>14.4 Application / implementation</h3>
+<p>An <strong>Application</strong> is a digital implementation that models, records, presents, or assists part of a system.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Work Queue
+Inventory 3.0
+Calendar tools
+roster displays
+</code></pre>
+<p>An application is not automatically the project or system.</p>
+<h3>14.5 Resource</h3>
+<p>A <strong>Resource</strong> is an identifiable artifact or service used by projects and systems.</p>
+<p>Examples include:</p>
+<ul>
+<li>a Google Sheet;</li>
+<li>an Apps Script project;</li>
+<li>a Google Doc;</li>
+<li>an HTML viewer;</li>
+<li>a JSON sidecar;</li>
+<li>a repository location;</li>
+<li>a dataset;</li>
+<li>a template;</li>
+<li>a catalog;</li>
+<li>a deployment;</li>
+<li>an image manifest.</li>
+</ul>
+<h3>14.6 Shared resource</h3>
+<p>A shared resource can support multiple systems or projects without being owned exclusively by any one of them.</p>
+<p>Examples include:</p>
+<ul>
+<li>Email Composer;</li>
+<li>employee and role data;</li>
+<li>shared Locations data;</li>
+<li>repository infrastructure;</li>
+<li>common identifiers;</li>
+<li>import/export methods.</li>
+</ul>
+<p>The resulting working hierarchy is:</p>
+<pre><code class="language-text">Project
+    ↓
+System
+    ↓
+Application / Implementation
+    ↓
+Resource
+</code></pre>
+<p>with shared resources allowed to cross the tree.</p>
+<hr />
+
+<h3>15. Meadows Housekeeping Projects Summary — major weekend artifact</h3>
+<p>The linked Google Doc, <strong>Meadows Housekeeping Projects Summary</strong>, is one of the most substantial products of the weekend.</p>
+<p>It is not merely an overview page. It is a multi-tab working architecture source that begins to define the Housekeeping Operations domain in human-readable form before final structured records are synthesized.</p>
+<p>Its current major tabs include:</p>
+<ul>
+<li>Definitions;</li>
+<li>Housekeeping Operations — Meadows Housekeeping;</li>
+<li>Modeling Principles;</li>
+<li>Project and System Register;</li>
+<li>Inventory Management;</li>
+<li>Scheduling;</li>
+<li>Employee Achievements;</li>
+<li>Task Assignment and Tracking;</li>
+<li>Documentation;</li>
+<li>Shared Resources;</li>
+<li>Historical Eras;</li>
+<li>Open Determinations.</li>
+</ul>
+<p>The document describes itself as an <strong>initial structured draft</strong> in the <strong>project/system architecture era</strong>, with authority as a working summary subject to later sidecar formalization.</p>
+<p>The Resource Registry already exists; the formal Project Registry does not yet.</p>
+<hr />
+
+<h3>16. Controlled definitions</h3>
+<p>The Definitions tab establishes vocabulary so later project and system documents can use terms consistently.</p>
+<p>Important defined concepts include:</p>
+<ul>
+<li>Klinswork;</li>
+<li>Project;</li>
+<li>Operational Environment;</li>
+<li>System;</li>
+<li>Application;</li>
+<li>Resource;</li>
+<li>Shared Resource;</li>
+<li>Housekeeping Operations;</li>
+<li>Meadows Housekeeping;</li>
+<li>Scheduling;</li>
+<li>Schedule Assignment;</li>
+<li>Task Assignment and Tracking;</li>
+<li>Work Queue;</li>
+<li>Operational Assignment;</li>
+<li>Task;</li>
+<li>Routine Responsibility;</li>
+<li>Special Task;</li>
+<li>Assigned Employee;</li>
+<li>Location;</li>
+<li>Inventory Management;</li>
+<li>Inventory Holder;</li>
+<li>Event;</li>
+<li>Completion;</li>
+<li>Verification;</li>
+<li>Integration;</li>
+<li>Documentation;</li>
+<li>Resource Registry;</li>
+<li>Resource ID;</li>
+<li>Startup;</li>
+<li>Context Requirement;</li>
+<li>Resource Resolution;</li>
+<li>Project Registry;</li>
+<li>Manifest;</li>
+<li>Authority / Source of Truth;</li>
+<li>Historical / Experimental Implementation.</li>
+</ul>
+<p>Several distinctions are especially important.</p>
+<h3>16.1 Scheduled employee versus assigned task employee</h3>
+<p>A person scheduled to an area and a person assigned to a particular task may often be the same individual, but those are different facts with different authorities.</p>
+<h3>16.2 Completion versus verification</h3>
+<p>Completion records that the work was performed. Verification is a separate act or rule establishing that the claim or state is sufficiently supported.</p>
+<h3>16.3 Task versus routine responsibility</h3>
+<p>Not every operational responsibility needs its own discrete task record.</p>
+<p>A location assignment may imply routine work even when Work Queue contains no individual row for each expected action.</p>
+<p>This prevents the digital task table from being mistaken for the entire job.</p>
+<hr />
+
+<h3>17. Housekeeping Operations project definition</h3>
+<p>The Meadows overview establishes:</p>
+<pre><code class="language-text">Housekeeping Operations
+    = parent operational project
+
+Meadows Housekeeping
+    = primary current operational environment
+</code></pre>
+<p>The project includes real operational systems and digital representations developed to model or support them.</p>
+<p>Critically, the real system continues to exist whether or not a Klinswork application is:</p>
+<ul>
+<li>deployed;</li>
+<li>adopted;</li>
+<li>activated;</li>
+<li>completed;</li>
+<li>available.</li>
+</ul>
+<p>The project currently contains major systems or capabilities including:</p>
+<ul>
+<li>Inventory Management;</li>
+<li>Scheduling;</li>
+<li>Task Assignment and Tracking;</li>
+<li>Employee Achievements;</li>
+<li>additional systems or capabilities still to be identified.</li>
+</ul>
+<p>Documentation is treated separately as a cross-project Klinswork project.</p>
+<hr />
+
+<h3>18. The paperwork parallel and adoption constraint</h3>
+<p>One of the strongest operational principles documented over the weekend is the <strong>paperwork parallel</strong>.</p>
+<p>Klinswork tools for Meadows cannot assume that every employee will use an unofficial digital application.</p>
+<p>Institutional authority determines official work methods. Employee adoption cannot simply be compelled by the application developer.</p>
+<p>Therefore the real housekeeping process must remain understandable and operable through ordinary channels such as:</p>
+<ul>
+<li>paper forms;</li>
+<li>supervisor records;</li>
+<li>meetings;</li>
+<li>verbal reports;</li>
+<li>published schedules;</li>
+<li>photographs;</li>
+<li>email;</li>
+<li>existing institutional processes.</li>
+</ul>
+<p>Digital tools can:</p>
+<ul>
+<li>mirror;</li>
+<li>structure;</li>
+<li>reconcile;</li>
+<li>analyze;</li>
+<li>route;</li>
+<li>preserve;</li>
+</ul>
+<p>these records without requiring every information provider to become an application user.</p>
+<p>This elevates batch conversion and automation from a convenience to a strategic design principle.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">ordinary institutional record
+    paper / verbal / email / observation
+                ↓
+     capture / scan / transcription
+                ↓
+          structured record
+                ↓
+ analysis / routing / reconciliation / history
+</code></pre>
+<p>The person who supplied the original information remains the information provider even if someone else—or an automated process—performed the digital conversion.</p>
+<hr />
+
+<h3>19. Information participation is broader than digital participation</h3>
+<p>The weekend architecture explicitly separates several roles that should not be inferred from one another:</p>
+<ul>
+<li>operational role;</li>
+<li>information-provider role;</li>
+<li>submission channel;</li>
+<li>digital access;</li>
+<li>editorial authority;</li>
+<li>administrative authority.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>a housekeeping employee can provide a paper count without logging into Inventory 3.0;</li>
+<li>a nurse can report a work need without becoming a Work Queue editor;</li>
+<li>a supervisor can supply information without becoming the author of the project documentation;</li>
+<li>a batch job can create JSON without becoming the information provider;</li>
+<li>ChatGPT can assist with organization or drafting without becoming the owner of the underlying operational facts.</li>
+</ul>
+<p>This distinction is important for provenance, privacy, permissions, and accurate authorship.</p>
+<hr />
+
+<h3>20. Capability does not imply activation, adoption, or use</h3>
+<p>Another major modeling principle is the separation of <strong>what an implementation can do</strong> from <strong>whether it became an operational mechanism</strong>.</p>
+<p>Useful implementation states include:</p>
+<ul>
+<li>Proposed;</li>
+<li>Designed;</li>
+<li>Implemented;</li>
+<li>Tested;</li>
+<li>Pilot;</li>
+<li>Available;</li>
+<li>Activated;</li>
+<li>Not activated;</li>
+<li>Suspended;</li>
+<li>Retired.</li>
+</ul>
+<p>The represented real-world system and the digital implementation require separate status statements.</p>
+<p>The QR Issue Form is the clearest example.</p>
+<p>It was:</p>
+<ul>
+<li>designed and implemented;</li>
+<li>used during development/testing;</li>
+<li>briefly used by the supervisor;</li>
+<li>not established as a meaningful sustained customer-facing channel;</li>
+<li>later largely abandoned.</li>
+</ul>
+<p>The underlying need for issue intake still exists. The application history should be preserved without falsely describing the QR form as an adopted operational system.</p>
+<hr />
+
+<h3>21. Modeling principles established in the Meadows document</h3>
+<p>The Modeling Principles tab consolidates thirteen major rules.</p>
+<h3>Principle 1 — projects, systems, applications, and resources are different entities</h3>
+<p>None should be inferred automatically from another.</p>
+<h3>Principle 2 — systems mirror independently existing operational functions</h3>
+<p>Inventory Management exists because real supplies must be received, stored, counted, distributed, and replenished, not because Inventory 3.0 exists.</p>
+<h3>Principle 3 — applications are implementations, not automatically projects</h3>
+<p>One system may have multiple implementations. One implementation may support more than one system.</p>
+<h3>Principle 4 — information participation is broader than digital participation</h3>
+<p>Participation, access, authority, and authorship must remain separate.</p>
+<h3>Principle 5 — paper and non-digital sources remain first-class evidence</h3>
+<p>Structured records should preserve source channel, source provider where known, conversion method, and provenance.</p>
+<h3>Principle 6 — capability does not imply activation or use</h3>
+<p>Implementation state must be recorded separately from represented-system state.</p>
+<h3>Principle 7 — Documentation is recursive</h3>
+<p>The Documentation project includes the method used to determine what the Documentation project is. Versioning prevents this recursion from becoming an infinite loop.</p>
+<h3>Principle 8 — bootstrap history must be preserved</h3>
+<p>Earlier app-centered files should not be rewritten as though the current architecture always existed.</p>
+<h3>Principle 9 — relationships may cross project and system boundaries</h3>
+<p>Shared tools should be registered once and related outward.</p>
+<h3>Principle 10 — narrative and structured records have different jobs</h3>
+<p>Human-readable documents explain meaning and history; Sheets and structured records maintain registries, IDs, statuses, relationships, and machine-readable state.</p>
+<h3>Principle 11 — uncertainty should be explicit</h3>
+<p>A documented provisional position is preferable to false certainty.</p>
+<h3>Principle 12 — housekeeping digital systems should preserve a paperwork parallel</h3>
+<p>The digital implementation augments independently valid operational channels.</p>
+<h3>Principle 13 — role-specific views may cross system boundaries without becoming data owners</h3>
+<p>An employee or supervisor dashboard may assemble information from several systems while each source system remains authoritative for its own facts.</p>
+<hr />
+
+<h3>22. Project and System Register</h3>
+<p>The weekend produced a working register of current high-level entities.</p>
+<h3>22.1 Inventory Management</h3>
+<p>Classification:</p>
+<pre><code class="language-text">Operational-management system
+</code></pre>
+<p>Parent:</p>
+<pre><code class="language-text">Housekeeping Operations
+</code></pre>
+<p>Represented function:</p>
+<ul>
+<li>supply control;</li>
+<li>storage;</li>
+<li>cart inventory;</li>
+<li>distribution;</li>
+<li>replenishment;</li>
+<li>consumption;</li>
+<li>reporting.</li>
+</ul>
+<p>Principal implementations include Inventory 3.0, associated Sheets/Apps Script, inventory-holder events, and Work Queue integration.</p>
+<h3>22.2 Scheduling</h3>
+<p>Classification:</p>
+<pre><code class="language-text">Operational-management system
+</code></pre>
+<p>Represented function:</p>
+<pre><code class="language-text">who is expected to be where, at what time, and on what days
+</code></pre>
+<p>Principal implementations include Calendar, Klinswork Calendar, roster/schedule displays, and trigger experiments.</p>
+<h3>22.3 Employee Achievements</h3>
+<p>Classification:</p>
+<pre><code class="language-text">Reporting and evidence system / capability
+</code></pre>
+<p>Status:</p>
+<pre><code class="language-text">provisional
+</code></pre>
+<p>It represents accomplishment, contribution, training, recognition, and demonstrated-capability records.</p>
+<h3>22.4 Task Assignment and Tracking</h3>
+<p>Classification:</p>
+<pre><code class="language-text">Operational-management system
+</code></pre>
+<p>Represented function:</p>
+<ul>
+<li>work intake;</li>
+<li>assignment;</li>
+<li>communication;</li>
+<li>performance;</li>
+<li>completion;</li>
+<li>reporting;</li>
+<li>verification.</li>
+</ul>
+<p>Principal application:</p>
+<pre><code class="language-text">Work Queue
+</code></pre>
+<p>Future direction includes user differentiation, sign-in, employee-specific views, and supervisor dashboards.</p>
+<h3>22.5 Documentation</h3>
+<p>Classification:</p>
+<pre><code class="language-text">Documentation-infrastructure project
+</code></pre>
+<p>It remains separate from Housekeeping Operations and supports Klinswork more broadly.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="supervisor-note-4" aria-labelledby="supervisor-note-4-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 4 of 5</p>
+    <span class="callout-type">System model</span>
+  </div>
+  <h2 id="supervisor-note-4-title">Meadows Housekeeping is now modeled as an operating environment, not as an app collection</h2>
+  <p>Housekeeping Operations is the parent operational project. Meadows Housekeeping is its primary current operating environment. Inventory Management, Scheduling, and Task Assignment and Tracking are durable operational systems; Inventory 3.0 and Work Queue are applications that implement parts of those systems. Paperwork, verbal reports, ordinary assignments, people, locations, and supplies remain first-class parts of the real operation whether or not a digital tool is adopted.</p>
+  
+  <nav class="supervisor-navigation" aria-label="Supervisor reading path">
+    <a class="supervisor-next" href="#supervisor-note-5">
+      <span class="hand" aria-hidden="true">☞</span>
+      <span>Next supervisor note: What comes next</span>
+    </a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="inventory" aria-labelledby="inventory-title">
+  <p class="section-eyebrow">Verified system reconciliation</p>
+  <h2 id="inventory-title">Inventory Management</h2>
+  <div class="section-body">
+    <h3>23. Inventory Management — detailed weekend reconciliation</h3>
+<p>Inventory Management became the deepest worked example of the new system-record style.</p>
+<h3>23.1 System identity</h3>
+<p>Inventory Management is explicitly not identical to Inventory 3.0.</p>
+<p>The represented system includes the real process by which supplies are:</p>
+<ul>
+<li>identified;</li>
+<li>received;</li>
+<li>stored;</li>
+<li>counted;</li>
+<li>placed on carts;</li>
+<li>distributed;</li>
+<li>replenished;</li>
+<li>consumed;</li>
+<li>requested;</li>
+<li>reported.</li>
+</ul>
+<p>Physical supplies, carts, closets, storage rooms, employees, requisitions, shortages, and counts remain real even if the application is unavailable.</p>
+<h3>23.2 System aims</h3>
+<p>The documented aims include:</p>
+<ul>
+<li>defining products, categories, holders, carts, storage locations, and dispensers;</li>
+<li>recording intake and quantity-changing events;</li>
+<li>distinguishing observed from assumed quantity;</li>
+<li>providing useful cart status;</li>
+<li>supporting paper and digital input;</li>
+<li>preserving reasons and provenance for changes;</li>
+<li>connecting qualifying tasks to exact inventory holders;</li>
+<li>associating chemical products with SDS references;</li>
+<li>supporting personal daily cart checks;</li>
+<li>producing auditable records suitable for later summary or batch import.</li>
+</ul>
+<h3>23.3 Two complementary state models</h3>
+<p>The weekend documentation made an important distinction between two different inventory concepts.</p>
+<h4>Bulk quantity state</h4>
+<p>Primary stores:</p>
+<pre><code class="language-text">Inventory-3.0 Current Inventory
+Inventory Events
+</code></pre>
+<p>Question answered:</p>
+<blockquote>
+<p>How many units are currently at this cart, closet, supply room, or other stock location?</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="language-text">Cart 01 contains eleven rolls of PAPER-001.
+</code></pre>
+<h4>Service-holder state</h4>
+<p>Primary stores:</p>
+<pre><code class="language-text">Work Queue Locations Data
+Inventory_Holders
+Inventory_Holder_Events
+</code></pre>
+<p>Question answered:</p>
+<blockquote>
+<p>What is the service condition of this exact dispenser or endpoint?</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="language-text">TPD-JUNIPER-N-220-RR is Full and Operational.
+</code></pre>
+<p>These should not be collapsed. Exact stock quantity and endpoint service state have different identifiers, semantics, update rules, and audit needs.</p>
+<h3>23.4 Verified cross-system event flow</h3>
+<p>The documented flow is:</p>
+<pre><code class="language-text">1. Work Queue task created from template
+2. Template may require compatible holder and product category
+3. Task stores Related Holder ID and expected completion state/event
+4. Worker starts/completes task
+5. Task_Activity records lifecycle
+6. Completion creates Inventory_Holder_Event
+7. Holder event stores previous/new state, product, task, actor, time, notes
+8. Holder-event ID can be written back to the task
+9. Future/separate integration may create matching bulk-stock deduction
+</code></pre>
+<p>Traceability is bidirectional:</p>
+<pre><code class="language-text">Work Queue task
+    → Related Holder ID
+        → Inventory Holder
+
+Work Queue task
+    → Related Holder Event ID
+        → Inventory Holder Event
+
+Inventory Holder Event
+    → Related Task ID
+        → Work Queue task
+
+Inventory Holder
+    → Assigned Product ID
+        → Inventory-3.0 Product
+
+Inventory Holder
+    → Location ID
+        → Shared physical Location
+</code></pre>
+<p>This allows the system to reconstruct <strong>why a holder changed state and which work action produced the record</strong>.</p>
+<h3>23.5 Three verified data resources</h3>
+<p>The Inventory technical review directly identified three major workbooks:</p>
+<h4>Inventory-3.0 workbook</h4>
+<p>Role:</p>
+<ul>
+<li>product catalog;</li>
+<li>SDS references;</li>
+<li>local inventory locations;</li>
+<li>current quantity state;</li>
+<li>inventory event history;</li>
+<li>legacy Inventory 2 archive.</li>
+</ul>
+<h4>Work Queue 2.1 Test Data workbook</h4>
+<p>Role:</p>
+<ul>
+<li>tasks;</li>
+<li>task templates;</li>
+<li>settings;</li>
+<li>task activity history;</li>
+<li>location-to-task mappings;</li>
+<li>explicit task linkage to holder events.</li>
+</ul>
+<h4>Work Queue Locations Data workbook</h4>
+<p>Role:</p>
+<ul>
+<li>shared physical-location hierarchy;</li>
+<li>inventory-holder registry;</li>
+<li>holder-event ledger.</li>
+</ul>
+<h3>23.6 Time-zone issue discovered</h3>
+<p>A concrete integration risk was documented:</p>
+<pre><code class="language-text">Inventory-3.0 workbook: America/Los_Angeles
+Work Queue workbooks:    America/Denver
+</code></pre>
+<p>Cross-system timestamps may therefore differ by one hour if not normalized.</p>
+<p>This is an excellent example of why high-level documentation must eventually connect to verified lower-level technical resources.</p>
+<h3>23.7 Holder capacity uncertainty preserved</h3>
+<p>Earlier conversation history had described a toilet-paper dispenser holding four rolls. Verified holder records examined later often represented capacities such as one roll, one bundle, or one refill.</p>
+<p>Instead of silently correcting one record with the other, the weekend document preserved the discrepancy as unresolved historical modeling until the specific holder/test configuration can be identified.</p>
+<p>That is exactly the kind of historical discipline the new architecture is intended to enforce.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="operations-systems" aria-labelledby="operations-systems-title">
+  <p class="section-eyebrow">Housekeeping systems</p>
+  <h2 id="operations-systems-title">Scheduling, Employee Achievements, and Task Assignment</h2>
+  <div class="section-body">
+    <h3>24. Scheduling — boundary clarified</h3>
+<p>Scheduling had previously risked absorbing too much.</p>
+<p>The weekend produced a clearer boundary:</p>
+<pre><code class="language-text">Scheduling
+    owns who / where / when / day
+
+Task Assignment and Tracking
+    owns what the work means, its status, performance, completion, and history
+</code></pre>
+<p>Scheduling may provide:</p>
+<ul>
+<li>date;</li>
+<li>time window;</li>
+<li>employee;</li>
+<li>location;</li>
+<li>recurring trigger;</li>
+<li>availability;</li>
+<li>substitution;</li>
+<li>same-day change.</li>
+</ul>
+<p>But a recurring maintenance job or corrective task is not automatically “Scheduling” merely because it happens on a date.</p>
+<p>This distinction resolves one of the current open determinations in favor of a clearer separation of temporal assignment from work semantics.</p>
+<hr />
+
+<h3>25. Employee Achievements — provisional but important</h3>
+<p>Employee Achievements remains less settled than Inventory, Scheduling, or Task Assignment.</p>
+<p>Its current purpose is to preserve evidence concerning:</p>
+<ul>
+<li>accomplishments;</li>
+<li>completed initiatives;</li>
+<li>training;</li>
+<li>contributions;</li>
+<li>improvements;</li>
+<li>demonstrated capabilities;</li>
+<li>recognition.</li>
+</ul>
+<p>Potential evidence sources include:</p>
+<ul>
+<li>employees;</li>
+<li>supervisors;</li>
+<li>task-completion records;</li>
+<li>training records;</li>
+<li>work updates;</li>
+<li>emails and reports;</li>
+<li>photographs;</li>
+<li>tools and applications created;</li>
+<li>operational observations;</li>
+<li>appropriately documented feedback.</li>
+</ul>
+<p>A future employee-specific view could assemble achievement evidence, work history, completed tasks, training, and supporting artifacts after authentication and user differentiation are established.</p>
+<p>The documentation carefully avoids claiming that this is an official performance-appraisal system.</p>
+<hr />
+
+<h3>26. Task Assignment and Tracking — high-level system record</h3>
+<p>The weekend's Meadows document gives Task Assignment and Tracking a system-level definition distinct from Work Queue.</p>
+<h3>26.1 Represented system</h3>
+<p>It includes:</p>
+<ul>
+<li>intake;</li>
+<li>assignment;</li>
+<li>communication;</li>
+<li>performance;</li>
+<li>completion;</li>
+<li>reporting;</li>
+<li>verification;</li>
+<li>task history;</li>
+<li>inventory-related downstream effects.</li>
+</ul>
+<p>It covers ordinary paper and verbal practices as well as digital implementations.</p>
+<h3>26.2 Operational scope</h3>
+<p>Examples include:</p>
+<ul>
+<li>daily assignments;</li>
+<li>special assignments;</li>
+<li>recurring work;</li>
+<li>corrective work;</li>
+<li>client-reported issues;</li>
+<li>assignment to employee, role, unit, or queue;</li>
+<li>due dates and priorities;</li>
+<li>status changes;</li>
+<li>completion reporting;</li>
+<li>verification/auditing;</li>
+<li>task-related inventory events;</li>
+<li>reassignment history.</li>
+</ul>
+<h3>26.3 Work Queue role</h3>
+<p>Work Queue is the principal digital application.</p>
+<p>The current high-level record recognizes capabilities such as:</p>
+<ul>
+<li>task creation;</li>
+<li>stable employee assignment;</li>
+<li>location relationships;</li>
+<li>activity history;</li>
+<li>status and completion;</li>
+<li>verified downstream inventory-holder integration.</li>
+</ul>
+<p>A separate technical/ecosystem manual is intentionally used for deeper implementation detail so the high-level system record does not become another giant code manual.</p>
+<h3>26.4 Future role-specific views</h3>
+<p>The planned architecture is:</p>
+<pre><code class="language-text">identity / sign-in
+        ↓
+role differentiation
+        ↓
+employee view / supervisor view
+</code></pre>
+<p>An employee view may surface:</p>
+<ul>
+<li>assignments;</li>
+<li>relevant work history;</li>
+<li>completion records;</li>
+<li>achievement evidence.</li>
+</ul>
+<p>A supervisor view may assemble:</p>
+<ul>
+<li>assignments;</li>
+<li>completion;</li>
+<li>verification;</li>
+<li>coverage;</li>
+<li>reporting;</li>
+<li>cross-system status.</li>
+</ul>
+<p>The presentation layer does not become the owner of the underlying facts.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="documentation-project" aria-labelledby="documentation-project-title">
+  <p class="section-eyebrow">Recursive infrastructure</p>
+  <h2 id="documentation-project-title">Documentation Project and Repository Architecture</h2>
+  <div class="section-body">
+    <h3>27. Documentation as a separate recursive Klinswork project</h3>
+<p>The Meadows document includes a dedicated Documentation tab because Documentation is not simply a support folder inside Housekeeping Operations.</p>
+<p>It is a separate Klinswork project.</p>
+<h3>27.1 Represented Documentation system</h3>
+<p>Documentation encompasses:</p>
+<ul>
+<li>creation;</li>
+<li>organization;</li>
+<li>description;</li>
+<li>validation;</li>
+<li>publication;</li>
+<li>retrieval;</li>
+<li>context routing;</li>
+<li>preservation.</li>
+</ul>
+<p>It operates on information about:</p>
+<ul>
+<li>projects;</li>
+<li>systems;</li>
+<li>applications;</li>
+<li>decisions;</li>
+<li>histories;</li>
+<li>methods;</li>
+<li>artifacts.</li>
+</ul>
+<p>Housekeeping Operations is a major current subject, but Documentation is not limited to Meadows.</p>
+<h3>27.2 Documentation aims</h3>
+<p>The project aims to:</p>
+<ul>
+<li>define projects, systems, environments, resources, and relationships;</li>
+<li>preserve bootstrap history honestly;</li>
+<li>establish stable identifiers;</li>
+<li>maintain human-readable narrative and machine-readable companions;</li>
+<li>publish navigable HTML;</li>
+<li>connect documents to evidence and project state;</li>
+<li>provide local and online viewers;</li>
+<li>generate catalogs and manifests;</li>
+<li>record the methodology used to create the documentation itself;</li>
+<li>make recursion finite through versioning and provenance.</li>
+</ul>
+<h3>27.3 Recursive methodology</h3>
+<p>The Documentation project includes the method used to determine what the Documentation project is.</p>
+<p>The solution is versioned methodology.</p>
+<p>A methodology version should say:</p>
+<ul>
+<li>which rules it applies;</li>
+<li>which records it produced;</li>
+<li>which earlier assumptions it reviewed;</li>
+<li>which records it supersedes;</li>
+<li>which bootstrap artifacts it preserves;</li>
+<li>which questions remain open.</li>
+</ul>
+<p>A record created under Method v1 can later become evidence reviewed by Method v2.</p>
+<hr />
+
+<h3>28. Documentation repository architecture</h3>
+<p>The Documentation tab and root README together clarify the repository's current major area:</p>
+<pre><code class="language-text">documents/work-update-catalog/
+</code></pre>
+<p>Known structural elements include:</p>
+<ul>
+<li><code>catalogs/</code>;</li>
+<li><code>projects/</code>;</li>
+<li><code>sidecars/</code>;</li>
+<li><code>summaries/</code>;</li>
+<li><code>archived/</code>;</li>
+<li><code>json-manifest.json</code>;</li>
+<li><code>manifest.py</code>;</li>
+<li><code>pst-viewer.html</code>;</li>
+<li>local JSON viewer tools;</li>
+<li>bootstrap-era project/application material.</li>
+</ul>
+<p>The repository structure itself is treated as an artifact of the Documentation project rather than a neutral accident.</p>
+<hr />
+
+<h3>29. Document families clarified</h3>
+<p>The weekend consolidated a family model in which different artifact types have different jobs.</p>
+<h3>Work updates</h3>
+<p>Human-readable reports of performed work, decisions, current state, and outcomes.</p>
+<h3>Work-update sidecars</h3>
+<p>Structured companions describing identity, sections, projects, topics, dates, relationships, sources, and metadata.</p>
+<h3>Summaries</h3>
+<p>Human-readable consolidation of sessions, project histories, or document meaning.</p>
+<h3>Summary sidecars</h3>
+<p>Structured companions to summaries.</p>
+<h3>HTML documents</h3>
+<p>Published browser-readable renderings.</p>
+<h3>Markdown master documents</h3>
+<p>Editable authoritative human-readable sources where Markdown is chosen as the source format, including study-guide work.</p>
+<h3>Project and system records</h3>
+<p>Structured descriptions of durable entities: identity, environment, aims, methods, actors, channels, applications, data, resources, timeline, status, relationships, authority, and open determinations.</p>
+<h3>Catalogs</h3>
+<p>Discovery records for document families, projects, systems, resources, and metadata.</p>
+<h3>Rulesets</h3>
+<p>Controlled terms, validation requirements, identifier rules, relationship rules, and generation expectations.</p>
+<h3>Templates</h3>
+<p>Reusable structures for sidecars, records, catalogs, Markdown, and HTML.</p>
+<h3>Manifests</h3>
+<p>Machine-generated physical inventories of available records/resources.</p>
+<h3>Viewers</h3>
+<p>Interfaces for interpreting those structured records.</p>
+<p>This family model is one of the main ways the repository becomes intelligible rather than merely populated.</p>
+<hr />
+
+<h3>30. Current Documentation context-routing sequence</h3>
+<p>The Meadows document records the current intended route explicitly:</p>
+<pre><code class="language-text">RES-000 — CHATGPT — READ THIS FIRST
+        ↓
+root Documentation README
+        ↓
+RES-043 — Klinswork Resource Registry
+        ↓
+Startup
+        ↓
+current workflow
+        ↓
+workflow-declared context requirements
+        ↓
+Registry-resolved authoritative resources
+</code></pre>
+<p>This is perhaps the single clearest expression of the weekend's architectural outcome.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="workflow-run" aria-labelledby="workflow-run-title">
+  <p class="section-eyebrow">Workflow control</p>
+  <h2 id="workflow-run-title">Registry Write Layer, Workflow Reconciliation, and Run-Sidecar 3.1</h2>
+  <div class="section-body">
+    <h3>31. `RES-040` — controlled Registry write layer remains unimplemented</h3>
+<p>During the Registry work, a bound Apps Script project was created and registered as:</p>
+<pre><code class="language-text">RES-040 — Resource Registry Apps Script trigger
+</code></pre>
+<p>The name initially created ambiguity because no actual trigger had yet been implemented.</p>
+<p>The record was corrected to preserve current truth:</p>
+<pre><code class="language-text">bound Apps Script project: exists
+code: none
+trigger function: none
+installable trigger: none
+deployment: none
+</code></pre>
+<p>The intended future role is a controlled write path that can:</p>
+<pre><code class="language-text">submit Registry change
+        ↓
+validate
+        ↓
+update Resources
+        ↓
+append Activity record
+        ↓
+LAST UPDATE follows Activity history
+</code></pre>
+<p>This is still an open implementation item.</p>
+<hr />
+
+<h3>32. Workflow reconciliation</h3>
+<p>The existing Documentation workflow was reviewed against the new architecture.</p>
+<p>Its main lifecycle remained sound:</p>
+<ul>
+<li>establish intent;</li>
+<li>plan;</li>
+<li>implement;</li>
+<li>test;</li>
+<li>preserve discoveries;</li>
+<li>interpret results;</li>
+<li>reconcile current truth;</li>
+<li>generate documentation;</li>
+<li>publish;</li>
+<li>communicate;</li>
+<li>close.</li>
+</ul>
+<p>The problem was primarily the <strong>front end</strong>.</p>
+<p>Older workflow assumptions expected relatively fixed project/integration context to be loaded up front.</p>
+<p>The weekend replaced that assumption with:</p>
+<pre><code class="language-text">Startup first
+        ↓
+workflow declares what it needs
+        ↓
+Registry resolves resources dynamically
+</code></pre>
+<p>Thus the workflow was not discarded. Its entry/context model required revision.</p>
+<hr />
+
+<h3>33. Honest reconstruction of an undeclared work session</h3>
+<p>The August 9 session did not begin as a formally declared Documentation workflow run.</p>
+<p>It began as practical context building and resource organization.</p>
+<p>Then it produced substantial architecture.</p>
+<p>Rather than pretending the architecture had been planned before it was discovered, the session established a new principle:</p>
+<pre><code class="language-text">work already performed before formalization
+    must remain distinguishable from
+remaining work intentionally planned afterward
+</code></pre>
+<p>This is an important capability for real work because not every significant discovery announces itself in advance as “a formal project run.”</p>
+<p>The record should be able to say:</p>
+<ul>
+<li>when the work started;</li>
+<li>when it became formal;</li>
+<li>what was reconstructed afterward;</li>
+<li>what was actually planned prospectively;</li>
+<li>what evidence supports the reconstruction.</li>
+</ul>
+<hr />
+
+<h3>34. Workflow-run sidecar 3.1 draft</h3>
+<p>By the time of this comprehensive synthesis, a substantial new artifact exists:</p>
+<pre><code class="language-text">workflow-run-sidecar-template-3.1-draft.json
+</code></pre>
+<p>This represents a further advance beyond the August 9 summary's earlier statement that the existing plan/run templates needed revision.</p>
+<h3>34.1 Run identity</h3>
+<p>The template can represent:</p>
+<ul>
+<li>Documentation run ID;</li>
+<li>work-session ID;</li>
+<li>run title/date/type;</li>
+<li>entry mode;</li>
+<li>formalization point;</li>
+<li>current step and state;</li>
+<li>next required action.</li>
+</ul>
+<p>Allowed entry modes include:</p>
+<ul>
+<li>declared before work;</li>
+<li>reconstructed during work;</li>
+<li>reconstructed after work;</li>
+<li>resumed existing run.</li>
+</ul>
+<h3>34.2 Startup context</h3>
+<p>The template contains a dedicated <code>startupContext</code> structure for:</p>
+<ul>
+<li>Startup applicability;</li>
+<li>startup mode;</li>
+<li>Registry Resource ID;</li>
+<li>bootstrap resource;</li>
+<li>orientation resource;</li>
+<li>Startup tab/version;</li>
+<li>resources initially supplied;</li>
+<li>observed Startup sequence;</li>
+<li>Startup postconditions;</li>
+<li>exceptions.</li>
+</ul>
+<p>This directly encodes the weekend's new bootstrap architecture.</p>
+<h3>34.3 Work context and Registry resolution</h3>
+<p><code>workContext</code> can represent:</p>
+<ul>
+<li>candidate work;</li>
+<li>project placement;</li>
+<li>systems;</li>
+<li>applications;</li>
+<li>resources;</li>
+<li>shared foundations;</li>
+<li>relationships;</li>
+<li>required context;</li>
+<li>resolved resources;</li>
+<li>context gaps.</li>
+</ul>
+<p>Each required context item can record that its resolution method is the Resource Registry and preserve the resolved Resource IDs.</p>
+<h3>34.4 Work coverage</h3>
+<p>The template can distinguish:</p>
+<ul>
+<li>start/end;</li>
+<li>coverage type;</li>
+<li>coverage confidence;</li>
+<li>pre-formalization work;</li>
+<li>formalization timestamp;</li>
+<li>reconstruction basis;</li>
+<li>continuation relationship to prior work.</li>
+</ul>
+<h3>34.5 Intention</h3>
+<p>The <code>intention</code> block can distinguish:</p>
+<ul>
+<li>approved-before-work baseline;</li>
+<li>draft-before-work baseline;</li>
+<li>retroactively reconstructed intention;</li>
+<li>missing intention with explicit exception.</li>
+</ul>
+<p>This prevents reconstructed history from being mislabeled as a prospective plan.</p>
+<h3>34.6 Execution history</h3>
+<p>The template contains structured support for:</p>
+<ul>
+<li>workflow steps;</li>
+<li>chronology;</li>
+<li>decisions;</li>
+<li>discoveries;</li>
+<li>evidence;</li>
+<li>exceptions.</li>
+</ul>
+<p>This allows the run record to preserve not just final state but how understanding changed.</p>
+<h3>34.7 Interpretation and reconciliation</h3>
+<p>Separate structures represent:</p>
+<ul>
+<li>project delta;</li>
+<li>system delta;</li>
+<li>application delta;</li>
+<li>resource delta;</li>
+<li>relationship delta;</li>
+<li>authority delta;</li>
+<li>historical interpretation;</li>
+<li>project/system/resource updates;</li>
+<li>repository documentation updates;</li>
+<li>preserved prior state.</li>
+</ul>
+<h3>34.8 Audience views</h3>
+<p>The template preserves general, technical, and supervisor-oriented views.</p>
+<p>This continues the August 1 insight that different audiences need different slices of the same underlying work.</p>
+<h3>34.9 Publication and closure</h3>
+<p>The template can track:</p>
+<ul>
+<li>summary;</li>
+<li>HTML;</li>
+<li>document sidecar;</li>
+<li>catalog;</li>
+<li>image;</li>
+<li>portal;</li>
+<li>communication;</li>
+<li>closure.</li>
+</ul>
+<p>Thus the work session can be represented through completion rather than ending at implementation.</p>
+<h3>34.10 Workflow evaluation</h3>
+<p>The run can evaluate whether:</p>
+<ul>
+<li>Startup worked;</li>
+<li>context resolution worked;</li>
+<li>intention handling worked;</li>
+<li>execution worked;</li>
+<li>documentation worked.</li>
+</ul>
+<p>This turns the workflow itself into an inspectable and improvable system.</p>
+<h3>34.11 3.2 roadmap</h3>
+<p>The 3.1 draft also records planned 3.2 capabilities such as:</p>
+<ul>
+<li>formal workflow-specification-to-run validation;</li>
+<li>Registry resource-resolution validation;</li>
+<li>automatic step-transition derivation;</li>
+<li>workflow-run catalog linkage;</li>
+<li>machine-checkable Startup/workflow postconditions.</li>
+</ul>
+<p>The exact long-term relationship between this workflow-run profile and the earlier implementation-plan sidecar family still warrants formal reconciliation rather than assumption.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="shared-history" aria-labelledby="shared-history-title">
+  <p class="section-eyebrow">Cross-system foundations</p>
+  <h2 id="shared-history-title">Shared Resources, Historical Eras, and Open Determinations</h2>
+  <div class="section-body">
+    <h3>35. Shared resources architecture</h3>
+<p>The weekend explicitly rejected the idea that every useful resource must belong to exactly one project or system.</p>
+<p>Examples of shared resources include:</p>
+<h3>Email Composer</h3>
+<p>Referenced as:</p>
+<pre><code class="language-text">RES-006
+Templates: RES-007
+</code></pre>
+<p>Potential relationships include:</p>
+<ul>
+<li>requisition communication;</li>
+<li>task communication;</li>
+<li>work updates;</li>
+<li>Documentation;</li>
+<li>general communication.</li>
+</ul>
+<h3>Klinswork Tools page</h3>
+<p>Referenced as:</p>
+<pre><code class="language-text">RES-001
+</code></pre>
+<p>It is a user-facing catalog of applications, not the authority defining project ontology.</p>
+<h3>Locations data and viewers</h3>
+<p>The shared Locations workbook and related resources provide canonical place identifiers for units, rooms, storage areas, dispensers, door-jamb references, and other operational entities.</p>
+<p>A location can be represented once while having different enablement states for:</p>
+<ul>
+<li>Work Queue;</li>
+<li>Inventory;</li>
+<li>Calendar.</li>
+</ul>
+<h3>Employee and role records</h3>
+<p>The Work Queue Employees dataset currently participates in assignment, but the canonical shared employee authority remains to be finalized.</p>
+<p>Employee identity should support:</p>
+<ul>
+<li>scheduling;</li>
+<li>task assignment;</li>
+<li>information-provider relationships;</li>
+<li>achievement records;</li>
+<li>role-specific views.</li>
+</ul>
+<h3>Common identifiers and vocabulary</h3>
+<p>Stable names/IDs are needed for:</p>
+<ul>
+<li>projects;</li>
+<li>systems;</li>
+<li>environments;</li>
+<li>applications;</li>
+<li>resources;</li>
+<li>documents;</li>
+<li>actors;</li>
+<li>events;</li>
+<li>statuses;</li>
+<li>methods;</li>
+<li>templates;</li>
+<li>catalogs;</li>
+<li>relationships.</li>
+</ul>
+<h3>Repository and publishing infrastructure</h3>
+<p>GitHub, GitHub Pages, viewers, manifests, common templates, and related publication infrastructure may serve many projects.</p>
+<p>The governing rule is:</p>
+<pre><code class="language-text">register shared resource once
+        ↓
+assign stable Resource ID
+        ↓
+relate it to every supported project/system
+        ↓
+let the Registry resolve current location
+</code></pre>
+<hr />
+
+<h3>36. Historical eras — preserving how the architecture evolved</h3>
+<p>The Meadows document does not treat the current architecture as if it always existed.</p>
+<p>It defines overlapping historical eras.</p>
+<h3>36.1 Bootstrap era</h3>
+<p>Characteristics:</p>
+<ul>
+<li>app-centered names;</li>
+<li>informal project tracking;</li>
+<li>standalone HTML documents;</li>
+<li>early repository structure;</li>
+<li>incomplete/inconsistent sidecars;</li>
+<li>important evidence that must be preserved.</li>
+</ul>
+<h3>36.2 Application-development era</h3>
+<p>Characteristics:</p>
+<ul>
+<li>active building of Inventory, Scheduling, Work Queue, issue reporting, communication, and documentation tools;</li>
+<li>Google Sheets and Apps Script implementations;</li>
+<li>rapid iteration;</li>
+<li>personal testing and limited participation;</li>
+<li>operational concepts discovered through software design.</li>
+</ul>
+<h3>36.3 Documentation-consolidation era</h3>
+<p>Characteristics:</p>
+<ul>
+<li>work updates;</li>
+<li>navigation;</li>
+<li>sidecars;</li>
+<li>summaries;</li>
+<li>catalogs;</li>
+<li>manifests;</li>
+<li>viewers;</li>
+<li>GitHub Pages;</li>
+<li>recognition that Documentation itself required documentation.</li>
+</ul>
+<h3>36.4 Formal-domain transitional era</h3>
+<p>An intermediate August 2026 model introduced useful distinctions among domains, represented systems, projects, implementations, information providers, deployment states, and records, but still promoted some operational systems to project status.</p>
+<p>This stage is preserved historically rather than hidden.</p>
+<h3>36.5 Project/system architecture era</h3>
+<p>The current model distinguishes:</p>
+<ul>
+<li>Project;</li>
+<li>Operational Environment;</li>
+<li>System;</li>
+<li>Application / Implementation;</li>
+<li>Resource.</li>
+</ul>
+<p>Housekeeping Operations becomes the parent project. Meadows Housekeeping becomes the operational environment. Inventory Management, Scheduling, and Task Assignment and Tracking become systems. Work Queue and Inventory 3.0 become applications.</p>
+<p>This is a major conceptual consolidation of the weekend.</p>
+<hr />
+
+<h3>37. Open determinations become a first-class record</h3>
+<p>Another important advance is the decision not to force premature answers.</p>
+<p>The Meadows document includes an <strong>Open Determinations</strong> tab intended to become a live decision register.</p>
+<p>Each determination should eventually preserve:</p>
+<ul>
+<li>Determination ID;</li>
+<li>question;</li>
+<li>affected entities;</li>
+<li>current working position;</li>
+<li>alternatives;</li>
+<li>evidence needed;</li>
+<li>owner/reviewer;</li>
+<li>status;</li>
+<li>date opened;</li>
+<li>date resolved;</li>
+<li>resolution;</li>
+<li>resulting changes;</li>
+<li>superseded decision where applicable.</li>
+</ul>
+<p>Current open areas include:</p>
+<h3>Identifier architecture</h3>
+<ul>
+<li>permanent ID formats;</li>
+<li>whether both opaque IDs and human-readable slugs are needed;</li>
+<li>versioning/permanence rules.</li>
+</ul>
+<h3>Project/system boundaries</h3>
+<ul>
+<li>exact Employee Achievements boundary;</li>
+<li>future issue-reporting classification;</li>
+<li>Safety/Chemical Information boundary;</li>
+<li>Communication and Reporting boundary.</li>
+</ul>
+<h3>Participation and provenance</h3>
+<ul>
+<li>standard representation of non-digital information providers;</li>
+<li>batch-import provenance;</li>
+<li>author/editor/contributor/source-provider/generator distinctions.</li>
+</ul>
+<h3>Status and deployment</h3>
+<ul>
+<li>canonical lifecycle vocabulary;</li>
+<li>evidence required for labels such as activated, adopted, suspended, or retired.</li>
+</ul>
+<h3>Documentation architecture</h3>
+<ul>
+<li>project/system JSON schema;</li>
+<li>template migration;</li>
+<li>authority order among Docs, Sheets, GitHub JSON, Markdown, HTML;</li>
+<li>sidecar relationships;</li>
+<li>catalog numbering;</li>
+<li>viewer/schema compatibility;</li>
+<li>methodology-version records.</li>
+</ul>
+<h3>Inventory</h3>
+<ul>
+<li>units of measure;</li>
+<li>audit rules;</li>
+<li>matched transfer events;</li>
+<li>requisition boundary;</li>
+<li>SDS relationship;</li>
+<li>authoritative Inventory 3.0 files.</li>
+</ul>
+<h3>Scheduling</h3>
+<ul>
+<li>schedule assignments versus routine responsibilities versus discrete tasks;</li>
+<li>recurring-maintenance representation;</li>
+<li>substitution/change history.</li>
+</ul>
+<h3>Employee Achievements</h3>
+<ul>
+<li>evidence quality;</li>
+<li>privacy/publication;</li>
+<li>relationship to official performance systems and personal work-profile material.</li>
+</ul>
+<p>This explicit uncertainty register prevents “architecture by accidental assumption.”</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="self-awareness" aria-labelledby="self-awareness-title">
+  <p class="section-eyebrow">System navigation</p>
+  <h2 id="self-awareness-title">Repository Self-Awareness, Human/Machine Layers, and Viewer Direction</h2>
+  <div class="section-body">
+    <h3>38. Weekend-created self-awareness of the repository</h3>
+<p>A recurring phrase in the August 9 summary is that the repository was already physically mature; what it lacked was <strong>self-awareness</strong>.</p>
+<p>That can now be described as a stack of complementary authorities:</p>
+<pre><code class="language-text">repository-tree.txt
+    answers: What physically exists?
+
+README.md
+    answers: What environment is this?
+
+Resource Registry
+    answers: What resource is this, and where is it now?
+
+Project/System documentation
+    answers: What does the thing mean?
+
+Workflow
+    answers: What process should occur?
+
+Sidecars/Catalogs
+    answer: How is this document/record described and discovered?
+
+Startup
+    answers: What must a fresh session read first?
+</code></pre>
+<p>No single layer has to do every job.</p>
+<p>That division of responsibility is one of the weekend's strongest architectural outcomes.</p>
+<hr />
+
+<h3>39. Relationship among human-readable and machine-readable layers</h3>
+<p>The weekend repeatedly reinforced that a useful system needs both narrative and structure.</p>
+<h3>Human-readable architecture documents</h3>
+<p>Best for:</p>
+<ul>
+<li>meaning;</li>
+<li>explanation;</li>
+<li>boundaries;</li>
+<li>rationale;</li>
+<li>history;</li>
+<li>unresolved questions;</li>
+<li>conceptual relationships.</li>
+</ul>
+<h3>Google Sheets / working registries</h3>
+<p>Best for:</p>
+<ul>
+<li>current IDs;</li>
+<li>structured relationships;</li>
+<li>statuses;</li>
+<li>activity ledgers;</li>
+<li>current operational rows;</li>
+<li>sortable/filterable state.</li>
+</ul>
+<h3>GitHub structured records</h3>
+<p>Best for:</p>
+<ul>
+<li>versioned JSON;</li>
+<li>Markdown;</li>
+<li>HTML;</li>
+<li>catalogs;</li>
+<li>rulesets;</li>
+<li>templates;</li>
+<li>manifests;</li>
+<li>viewer source;</li>
+<li>historical snapshots.</li>
+</ul>
+<h3>Original evidence</h3>
+<p>Examples:</p>
+<ul>
+<li>work updates;</li>
+<li>emails;</li>
+<li>screenshots;</li>
+<li>paper records;</li>
+<li>application data;</li>
+<li>photos;</li>
+<li>observations.</li>
+</ul>
+<p>These remain evidence from which later canonical records can be derived.</p>
+<hr />
+
+<h3>40. The viewer/editor idea becomes more plausible</h3>
+<p>A major consequence of the Registry work was the realization that once the highest-level document for each resource or project is established, the Registry can become the foundation of a much richer viewer/editor.</p>
+<p>The emerging interaction model is approximately:</p>
+<pre><code class="language-text">Registry entry
+    ↓
+identity + description + metadata reference
+    ↓
+high-level project/system document
+    ↓
+related resources resolved as needed
+    ↓
+structured project/system record
+    ↓
+viewer presents the relevant slice
+</code></pre>
+<p>The user no longer has to manually explain every link at the beginning of each session.</p>
+<p>The system can traverse the graph selectively.</p>
+<p>This is why the Resource Registry became more consequential than a bookmark sheet.</p>
+<hr />
+
+<h3>41. A new intended way to begin future work</h3>
+<p>The weekend produced a concrete long-term working habit:</p>
+<blockquote>
+<p>Do not begin substantial Klinswork work by manually reconstructing the environment from memory. Begin from the Registry/Startup structure and let the workflow obtain only the context required for the current task.</p>
+</blockquote>
+<p>The ideal future interaction is therefore:</p>
+<pre><code class="language-text">User supplies Resource Registry / invokes startup()
+        ↓
+ChatGPT orients through RES-000 and README
+        ↓
+Startup establishes routing authorities
+        ↓
+Current workflow identifies needed context
+        ↓
+Registry resolves specific resources
+        ↓
+Only those resources are loaded deeply
+        ↓
+work begins
+</code></pre>
+<p>This is a direct answer to the long-standing problem of losing context across conversations.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="capabilities-next" aria-labelledby="capabilities-next-title">
+  <p class="section-eyebrow">Resulting state</p>
+  <h2 id="capabilities-next-title">Capabilities Gained, Artifacts, Incomplete Work, and Review Order</h2>
+  <div class="section-body">
+    <h3>42. Concrete capabilities gained during the weekend</h3>
+<p>By the end of the weekend, the system could conceptually support all of the following more clearly than before:</p>
+<ul>
+<li>stable resource identity independent of URL;</li>
+<li>centralized discovery of Klinswork resources;</li>
+<li>metadata routing from Registry entries;</li>
+<li>provenance for resource changes;</li>
+<li>activity-derived update dates;</li>
+<li>read-first orientation for a context-naive model;</li>
+<li>progressive Startup rather than universal preload;</li>
+<li>workflow-declared context requirements;</li>
+<li>Registry-based context resolution;</li>
+<li>stronger project/system/application/resource classification;</li>
+<li>explicit operational environments;</li>
+<li>shared-resource relationships;</li>
+<li>preservation of bootstrap history;</li>
+<li>explicit uncertainty/open determinations;</li>
+<li>paper/non-digital provenance;</li>
+<li>separate represented-system and implementation status;</li>
+<li>local and online structured viewing;</li>
+<li>specialized viewer families;</li>
+<li>structured workflow-run representation;</li>
+<li>reconstructed work sessions without false prospective planning;</li>
+<li>stable employee identity in Work Queue tasks;</li>
+<li>stronger foundation for employee-based bulk assignment;</li>
+<li>deeper inventory/task traceability;</li>
+<li>a high-level Meadows Housekeeping orientation document;</li>
+<li>stronger foundations for formal Project Registry creation.</li>
+</ul>
+<hr />
+
+<h3>43. Artifacts materially created, expanded, or clarified</h3>
+<p>The weekend's artifact family includes at least the following.</p>
+<h3>Documentation architecture</h3>
+<ul>
+<li>root <code>README.md</code>;</li>
+<li>August 9 Resource Registry / Startup work summary;</li>
+<li>Resource Registry Google Sheet;</li>
+<li><code>Resources</code> tab;</li>
+<li><code>Activities</code> tab;</li>
+<li><code>Startup</code> tab;</li>
+<li><code>RES-000 — CHATGPT — READ THIS FIRST</code>;</li>
+<li><code>RES-043 — Klinswork Resource Registry</code>;</li>
+<li><code>RES-040</code> bound Apps Script project reserved for controlled Registry writes;</li>
+<li>repository tree / tree-generator concept;</li>
+<li>planned <code>repository-manifest.json</code> concept.</li>
+</ul>
+<h3>Workflow / metadata</h3>
+<ul>
+<li>existing Documentation workflow reviewed and targeted for front-end revision;</li>
+<li>sidecar-profile distinctions reestablished;</li>
+<li>workflow-run sidecar 3.1 draft;</li>
+<li>planned 3.2 validation/transition features;</li>
+<li>clearer distinction among workflow specification, workflow run, implementation plan, summary, HTML publication, and work-update sidecar.</li>
+</ul>
+<h3>Meadows / Housekeeping Operations</h3>
+<ul>
+<li>Meadows Housekeeping Projects Summary;</li>
+<li>Definitions tab;</li>
+<li>Housekeeping Operations overview;</li>
+<li>Modeling Principles;</li>
+<li>Project and System Register;</li>
+<li>Inventory Management system draft;</li>
+<li>Scheduling system draft;</li>
+<li>Employee Achievements draft;</li>
+<li>Task Assignment and Tracking system draft;</li>
+<li>Documentation project draft;</li>
+<li>Shared Resources draft;</li>
+<li>Historical Eras model;</li>
+<li>Open Determinations register.</li>
+</ul>
+<h3>Work Queue</h3>
+<ul>
+<li><code>Assigned Employee ID</code> schema support;</li>
+<li>employee-ID validation and assignment logic;</li>
+<li>employee assignment UI work;</li>
+<li>assignment history event support;</li>
+<li>corrected 2.1 Tasks schema;</li>
+<li>successful employee-assignment test;</li>
+<li>retained Work Queue technical/ecosystem documentation;</li>
+<li>bulk-assignment roadmap context.</li>
+</ul>
+<h3>Therapy-document infrastructure</h3>
+<ul>
+<li>PST-SP master Markdown progression;</li>
+<li>source-review / toolkit organization;</li>
+<li>CPT/PST-SP/EMDR repository areas;</li>
+<li>sidecar and HTML downstream model;</li>
+<li>specialized PST viewer;</li>
+<li>authoritative-source research and packet-identification work;</li>
+<li>image-placeholder/semantic-description policy.</li>
+</ul>
+<h3>Viewer / publication</h3>
+<ul>
+<li>local JSON viewer model;</li>
+<li>online static JSON viewer model;</li>
+<li><code>json-manifest.json</code> role;</li>
+<li><code>manifest.py</code> role;</li>
+<li><code>pst-viewer.html</code> as a specialized-view example;</li>
+<li>root landing-page/repository-index direction;</li>
+<li>clarified image-manifest relationship to Email Composer.</li>
+</ul>
+<hr />
+
+<h3>44. Items still incomplete after the weekend</h3>
+<p>The work was architecturally significant but not finished.</p>
+<h3>Startup</h3>
+<p>Still needed:</p>
+<ul>
+<li>finalize the Startup table;</li>
+<li>cold-start test <code>startup()</code> explicitly;</li>
+<li>test the automatic <code>RES-000</code> breadcrumb in a genuinely context-naive conversation;</li>
+<li>define machine-checkable Startup postconditions.</li>
+</ul>
+<h3>Resource Registry</h3>
+<p>Still needed:</p>
+<ul>
+<li>implement the <code>RES-040</code> controlled write interface;</li>
+<li>verify that one operation can update Resources and append the matching Activity;</li>
+<li>formalize permanence/versioning rules for Resource IDs;</li>
+<li>continue filling high-value metadata references.</li>
+</ul>
+<h3>Documentation workflow</h3>
+<p>Still needed:</p>
+<ul>
+<li>revise the workflow front end around Startup and Registry resolution;</li>
+<li>reconcile workflow-run versus implementation-plan artifact roles;</li>
+<li>add stronger validation;</li>
+<li>test the lifecycle end to end.</li>
+</ul>
+<h3>Project/System records</h3>
+<p>Still needed:</p>
+<ul>
+<li>finalize stable project/system identifiers;</li>
+<li>determine the canonical structured-record schema;</li>
+<li>create formal canonical project/system records;</li>
+<li>synthesize the formal Project Registry after high-level documentation is reconciled.</li>
+</ul>
+<h3>Repository semantics</h3>
+<p>Still needed:</p>
+<ul>
+<li>create <code>repository-manifest.json</code> or equivalent semantic map;</li>
+<li>formalize generator/consumer relationships;</li>
+<li>document remaining unknown repository areas;</li>
+<li>define authority precedence where multiple artifacts describe the same fact.</li>
+</ul>
+<h3>Viewer/catalog system</h3>
+<p>Still needed:</p>
+<ul>
+<li>formal viewer/schema compatibility declarations;</li>
+<li>current catalog numbering/supersession rules;</li>
+<li>reconcile online and local viewer version histories;</li>
+<li>continue specialized previews without fragmenting the common data model.</li>
+</ul>
+<h3>Work Queue</h3>
+<p>Still needed:</p>
+<ul>
+<li>continue employee/bulk-assignment architecture;</li>
+<li>implement batch creation against work plans/templates;</li>
+<li>preserve batch/task activity consistency;</li>
+<li>develop authentication/user differentiation before privileged views;</li>
+<li>continue tracing task → holder event → bulk-stock effects.</li>
+</ul>
+<h3>Inventory</h3>
+<p>Still needed:</p>
+<ul>
+<li>resolve time-zone normalization;</li>
+<li>define matched transfer accounting;</li>
+<li>formalize holder-capacity/state/quantity rules;</li>
+<li>define canonical product and location authorities;</li>
+<li>map the Inventory 2 archive;</li>
+<li>inspect Apps Script source through an accessible source/export;</li>
+<li>trace a complete PAPER-001 refill end to end.</li>
+</ul>
+<h3>Therapy document projects</h3>
+<p>Still needed:</p>
+<ul>
+<li>continue source acquisition and authoritative PDF identification;</li>
+<li>complete the PST-SP master guide;</li>
+<li>build/refresh sidecars;</li>
+<li>generate HTML downstream products;</li>
+<li>develop clinician-style fragment assembly and viewing;</li>
+<li>formalize cross-family metadata for CPT/PST-SP/EMDR.</li>
+</ul>
+<hr />
+
+<h3>45. Recommended next review order already implied by the work</h3>
+<p>The current architecture suggests a sensible order rather than trying to formalize everything simultaneously.</p>
+<h3>First — reconcile the highest-level human-readable documents</h3>
+<p>Continue reviewing:</p>
+<ul>
+<li>Housekeeping Operations;</li>
+<li>Inventory Management;</li>
+<li>Task Assignment and Tracking;</li>
+<li>Scheduling;</li>
+<li>Employee Achievements;</li>
+<li>Documentation;</li>
+<li>shared resources.</li>
+</ul>
+<p>These documents should agree on vocabulary and boundaries before their structure is frozen into a formal registry.</p>
+<h3>Second — use Inventory and Task Assignment as system exemplars</h3>
+<p>They already have:</p>
+<ul>
+<li>real-world operations;</li>
+<li>paper and digital inputs;</li>
+<li>structured datasets;</li>
+<li>cross-system relationships;</li>
+<li>tested applications;</li>
+<li>historical records;</li>
+<li>open technical questions.</li>
+</ul>
+<p>They are therefore ideal test cases for a canonical system-record schema.</p>
+<h3>Third — reconcile Documentation itself</h3>
+<p>Because Documentation is recursive, its own record should explicitly state the method/version under which it was created.</p>
+<h3>Fourth — formalize stable identifiers</h3>
+<p>Once boundaries are sufficiently clear, assign project/system/document/method identifiers without forcing premature stability.</p>
+<h3>Fifth — synthesize the Project Registry</h3>
+<p>The Project Registry should emerge from reconciled high-level documentation rather than impose a premature ontology on it.</p>
+<h3>Sixth — derive structured schemas and sidecars</h3>
+<p>The machine-readable forms should preserve what the human-readable reconciliation has established.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="supervisor-note-5" aria-labelledby="supervisor-note-5-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Supervisor relevance · 5 of 5</p>
+    <span class="callout-type">Next step</span>
+  </div>
+  <h2 id="supervisor-note-5-title">The next milestone is reconciliation, not another layer of premature structure</h2>
+  <p>The highest-level project and system documents now need to be reconciled against lower-level evidence. Inventory Management and Task Assignment and Tracking are the strongest exemplars. After those boundaries and authorities stabilize, the formal Project Registry and structured project/system records can be synthesized from the documentation rather than imposed ahead of it.</p>
+  
+</aside>
+
+
+<section class="content-section" id="assessment" aria-labelledby="assessment-title">
+  <p class="section-eyebrow">Architectural meaning</p>
+  <h2 id="assessment-title">Interpretation, Self-Description, Current Architecture, and Final Assessment</h2>
+  <div class="section-body">
+    <h3>46. Architectural interpretation of the weekend</h3>
+<p>Several deeper conclusions became visible only because the work crossed so many layers at once.</p>
+<h3>46.1 Organization created capability</h3>
+<p>The Resource Registry began as a convenience list.</p>
+<p>Once resources had stable identities, the list could support routing.</p>
+<p>Once changes were recorded as Activities, it could support provenance.</p>
+<p>Once <code>RES-000</code> pointed to the README, it could support bootstrapping.</p>
+<p>Once workflows could declare context requirements, it could support dynamic context loading.</p>
+<p>The capability was not fully designed first and then implemented. It emerged from progressively better organization.</p>
+<h3>46.2 High-level documents and routing infrastructure need each other</h3>
+<p>A Registry containing perfect links is not enough if the linked resources do not explain what the project means.</p>
+<p>A perfect project overview is not enough if a new work session cannot find it.</p>
+<p>The weekend built both ends:</p>
+<pre><code class="language-text">routing infrastructure
+    +
+high-level semantic documentation
+    =
+restorable working context
+</code></pre>
+<h3>46.3 Software development revealed the represented systems</h3>
+<p>Work Queue helped expose the structure of Task Assignment and Tracking.</p>
+<p>Inventory 3.0 helped expose the structure of Inventory Management.</p>
+<p>But once those systems became visible, the software had to become subordinate to the system definition.</p>
+<p>This is a natural maturation from:</p>
+<pre><code class="language-text">“What does this app do?”
+</code></pre>
+<p>to:</p>
+<pre><code class="language-text">“What real system are we representing, and which part of it does this app implement?”
+</code></pre>
+<h3>46.4 Repository location is not ontology</h3>
+<p>A file does not become part of a project merely because it sits in that project's folder.</p>
+<p>A shared resource does not become owned by Work Queue merely because Work Queue consumes it.</p>
+<p>A tool listed on a common site does not become part of the same project simply because it is nearby in the UI.</p>
+<p>Semantic ownership and physical storage are separate dimensions.</p>
+<h3>46.5 History is data</h3>
+<p>The weekend repeatedly turned historical change into first-class information:</p>
+<ul>
+<li>Registry Activities;</li>
+<li>Task Activity;</li>
+<li>Inventory Events;</li>
+<li>Holder Events;</li>
+<li>historical eras;</li>
+<li>bootstrap artifacts;</li>
+<li>reconstructed workflow sessions;</li>
+<li>supersession and open determinations.</li>
+</ul>
+<p>The system increasingly preserves not just <em>what is true now</em> but <em>how the current state came to be true</em>.</p>
+<h3>46.6 “Current truth” must coexist with historical truth</h3>
+<p>An app-centered README can be historically authentic even if the current system model has changed.</p>
+<p>An earlier four-roll holder description can remain valid historical evidence even when currently inspected records often model a one-roll holder.</p>
+<p>An experimental QR form can remain documented without being treated as an adopted operational channel.</p>
+<p>The architecture is moving away from destructive correction toward versioned interpretation.</p>
+<hr />
+
+<h3>47. The self-describing-system milestone</h3>
+<p>The strongest description of the weekend may be that Klinswork began acquiring a <strong>self-describing layer</strong>.</p>
+<p>A future session should increasingly be able to answer:</p>
+<pre><code class="language-text">What is this environment?
+    → README
+
+What resources exist?
+    → Resource Registry
+
+Where is the current resource?
+    → Resource Registry
+
+What changed and why?
+    → Activities / histories
+
+What should I read first?
+    → RES-000 / Startup
+
+What does this project mean?
+    → high-level project documentation
+
+What does this system mean?
+    → system documentation
+
+What application implements it?
+    → application / technical records
+
+What facts are authoritative?
+    → authority model + source resources
+
+What does this workflow need?
+    → context requirements
+
+Where is that context?
+    → Registry resolution
+
+What happened during this run?
+    → workflow-run record / summary / evidence
+</code></pre>
+<p>The repository is therefore beginning to support a new kind of interaction:</p>
+<blockquote>
+<p><strong>The user supplies an entry point; the system explains enough of itself to allow selective navigation instead of requiring the user to reconstruct the whole map manually.</strong></p>
+</blockquote>
+<hr />
+
+<h3>48. Relationship to the longer Klinswork trajectory</h3>
+<p>The weekend also makes earlier work easier to reinterpret.</p>
+<p>The sequence is approximately:</p>
+<pre><code class="language-text">Build useful applications
+        ↓
+Document application work
+        ↓
+Create sidecars and catalogs
+        ↓
+Build viewers for the sidecars
+        ↓
+Notice projects cannot be reconstructed reliably from documents alone
+        ↓
+Define projects and represented systems
+        ↓
+Notice project files cannot be built reliably without resource discovery
+        ↓
+Create Resource Registry and Startup
+        ↓
+Create high-level semantic project/system documents
+        ↓
+Use them to synthesize formal structured project/system records
+        ↓
+Allow viewers and workflows to navigate the structure dynamically
+</code></pre>
+<p>Seen this way, the weekend was not a detour into organization.</p>
+<p>It was the point at which the earlier application work, documentation work, and metadata work began to converge into a coherent architecture.</p>
+<hr />
+
+<h3>49. Current concise statement of the architecture</h3>
+<p>If the weekend's results had to be compressed into one working model, it would be this:</p>
+<pre><code class="language-text">KLINSWORK
+    organizes projects, systems, applications, documentation, resources, and shared infrastructure.
+
+DOCUMENTATION
+    is a separate cross-project Klinswork project responsible for preserving, describing,
+    publishing, retrieving, and routing knowledge about the rest of Klinswork and itself.
+
+HOUSEKEEPING OPERATIONS
+    is the parent operational project for the Meadows housekeeping work currently modeled.
+
+MEADOWS HOUSEKEEPING
+    is the primary current operational environment, not merely an app or project folder.
+
+SYSTEMS
+    represent durable real-world functions such as Inventory Management, Scheduling,
+    and Task Assignment and Tracking.
+
+APPLICATIONS
+    implement portions of systems. Work Queue and Inventory 3.0 are principal examples.
+
+RESOURCES
+    are specific identifiable artifacts/services and receive stable RES-### identities when registered.
+
+RESOURCE REGISTRY
+    resolves stable identity to current location and preserves resource relationships.
+
+ACTIVITIES
+    preserve why Registry state changed.
+
+README
+    orients a reader to the repository.
+
+STARTUP
+    establishes the minimum durable context and routing authority for a new session.
+
+WORKFLOW
+    declares semantic context requirements and governs the work lifecycle.
+
+REGISTRY RESOLUTION
+    maps those requirements to current authoritative resources.
+
+HUMAN-READABLE PROJECT/SYSTEM DOCUMENTS
+    explain meaning, boundaries, history, and uncertainty.
+
+STRUCTURED RECORDS / SIDECARS / CATALOGS / MANIFESTS
+    make the same environment machine-readable and discoverable.
+
+VIEWERS
+    present those records locally and online.
+
+HISTORY
+    is preserved rather than overwritten when the architecture changes.
+</code></pre>
+<hr />
+
+<h3>50. Final assessment</h3>
+<p>The weekend produced a large quantity of visible work, but its importance is better measured by the number of <strong>structural dependencies that were resolved</strong>.</p>
+<p>Before the weekend, many pieces already existed:</p>
+<ul>
+<li>applications;</li>
+<li>data;</li>
+<li>work updates;</li>
+<li>sidecars;</li>
+<li>catalogs;</li>
+<li>viewers;</li>
+<li>GitHub pages;</li>
+<li>study guides;</li>
+<li>project ideas.</li>
+</ul>
+<p>After the weekend, those pieces had a much stronger framework for answering:</p>
+<ul>
+<li>what they are;</li>
+<li>what they belong to;</li>
+<li>what they represent;</li>
+<li>how they relate;</li>
+<li>where they are;</li>
+<li>how their history is preserved;</li>
+<li>how a future conversation finds them;</li>
+<li>how a workflow requests them;</li>
+<li>how their current and historical states remain distinguishable.</li>
+</ul>
+<p>The shift can be summarized as:</p>
+<pre><code class="language-text">BEFORE
+collection of useful applications, documents, URLs, and files
+
+        ↓
+
+WEEKEND WORK
+identity + ontology + provenance + orientation + routing + high-level documentation
+
+        ↓
+
+AFTER
+an emerging system that can increasingly explain and navigate its own structure
+</code></pre>
+<p>That is why the weekend feels disproportionately significant compared with any one visible application feature.</p>
+<p>The employee dropdown in Work Queue was a meaningful functional step. The repository README was a meaningful documentation step. The PST-SP/CPT/EMDR organization was a meaningful document-processing step. The Resource Registry was a meaningful organizational step. The Meadows Housekeeping overview was a meaningful project-modeling step.</p>
+<p>But together they did something larger: they established the beginnings of a <strong>common structural language</strong> across Klinswork.</p>
+<p>The next phase is no longer “organize everything somehow.”</p>
+<p>The next phase is to <strong>use the architecture</strong>:</p>
+<ul>
+<li>finish the highest-level project/system documents;</li>
+<li>validate Startup and context routing;</li>
+<li>formalize project/system records from the reconciled documents;</li>
+<li>continue Resource Registry enrichment;</li>
+<li>build controlled Registry writes;</li>
+<li>exercise the workflow-run model on real sessions;</li>
+<li>develop the Project Registry from evidence rather than assumption;</li>
+<li>allow viewers and future sessions to navigate from stable identities into progressively deeper context.</li>
+</ul>
+<p>The weekend therefore marks a credible transition from a body of impressive but partly implicit work into a <strong>durable, inspectable, navigable project environment</strong>.</p>
+<hr />
+
+<h3>Appendix A — principal weekend source artifacts</h3>
+<h3>Direct records</h3>
+<ol>
+<li><p><code>summary-2026-08-09-documentation-resource-registry-startup.md</code></p>
+<ul>
+<li>Detailed historical account of the August 9 Registry and Startup session.</li>
+</ul>
+</li>
+<li><p>Root Documentation <code>README.md</code></p>
+<ul>
+<li>Human-readable repository orientation and design principles.</li>
+</ul>
+</li>
+<li><p><code>workflow-run-sidecar-template-3.1-draft.json</code></p>
+<ul>
+<li>Structured workflow-run model incorporating Startup, resource resolution, reconstructed sessions, execution state, evidence, reconciliation, publication, and evaluation.</li>
+</ul>
+</li>
+<li><p><strong>Meadows Housekeeping Projects Summary</strong> Google Doc</p>
+<ul>
+<li>Working high-level project/system architecture source.</li>
+<li>Includes definitions, system records, modeling principles, shared resources, historical eras, and open determinations.</li>
+</ul>
+</li>
+<li><p>August 1 Documentation bootstrap work update</p>
+<ul>
+<li>Historical baseline establishing the earlier workflow/document/project model that the weekend extended.</li>
+</ul>
+</li>
+</ol>
+<h3>Supporting retained artifacts</h3>
+<ol start="6">
+<li><p>Work Queue 2.1 code and HTML files</p>
+<ul>
+<li>Evidence of <code>Assigned Employee ID</code>, employee-ID validation, assignment behavior, and UI work.</li>
+</ul>
+</li>
+<li><p>Work Queue high-level README and technical/ecosystem manual</p>
+<ul>
+<li>Transitional and deeper application documentation.</li>
+</ul>
+</li>
+<li><p>Work Queue bulk-assignment roadmap</p>
+<ul>
+<li>Future batch-generation model using employee IDs, templates, locations, batch IDs, and activity records.</li>
+</ul>
+</li>
+<li><p>PST-SP Veteran Study Guide versions</p>
+<ul>
+<li>Evidence of the Markdown-master and toolkit-based study architecture.</li>
+</ul>
+</li>
+<li><p>PST-SP JSON viewer artifacts/screenshots</p>
+<ul>
+<li>Evidence of specialized structured-document presentation.</li>
+</ul>
+</li>
+</ol>
+<hr />
+
+<h3>Appendix B — high-value Resource IDs appearing in the weekend architecture</h3>
+<p>The following IDs appear in the current working documentation and should be verified against the live Registry before being treated as immutable long-term assignments:</p>
+<table>
+<thead>
+<tr>
+  <th>Resource ID</th>
+  <th>Working meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>RES-000</code></td>
+  <td><code>CHATGPT — READ THIS FIRST</code> bootstrap entry</td>
+</tr>
+<tr>
+  <td><code>RES-001</code></td>
+  <td>Klinswork Tools page</td>
+</tr>
+<tr>
+  <td><code>RES-002</code></td>
+  <td>Work Queue application</td>
+</tr>
+<tr>
+  <td><code>RES-003</code></td>
+  <td>Work Queue primary data workbook</td>
+</tr>
+<tr>
+  <td><code>RES-006</code></td>
+  <td>Email Composer</td>
+</tr>
+<tr>
+  <td><code>RES-007</code></td>
+  <td>Email Composer templates</td>
+</tr>
+<tr>
+  <td><code>RES-010</code></td>
+  <td>Shared Locations workbook in the current Meadows documentation</td>
+</tr>
+<tr>
+  <td><code>RES-011</code></td>
+  <td>Online JSON Viewer in current Documentation references</td>
+</tr>
+<tr>
+  <td><code>RES-013</code></td>
+  <td>Work Queue Employees dataset in current working references</td>
+</tr>
+<tr>
+  <td><code>RES-014</code></td>
+  <td>Work Queue-related Locations reference in current working documentation</td>
+</tr>
+<tr>
+  <td><code>RES-022</code></td>
+  <td>Current working catalog reference noted in the Documentation tab</td>
+</tr>
+<tr>
+  <td><code>RES-037</code></td>
+  <td>Repository/publishing infrastructure reference in shared-resource material</td>
+</tr>
+<tr>
+  <td><code>RES-040</code></td>
+  <td>Bound Resource Registry Apps Script project reserved for controlled writes</td>
+</tr>
+<tr>
+  <td><code>RES-043</code></td>
+  <td>Klinswork Resource Registry</td>
+</tr>
+</tbody>
+</table>
+<p>These assignments reflect the current working records and should remain Registry-resolved rather than copied into code as permanent physical locations.</p>
+<hr />
+
+<h3>Appendix C — current high-level entity map</h3>
+<pre><code class="language-text">Klinswork
+│
+├── Project: Documentation
+│   │
+│   ├── Resource Registry (RES-043)
+│   │   ├── Resources
+│   │   ├── Activities
+│   │   ├── Startup
+│   │   ├── RES-000 bootstrap route
+│   │   └── RES-040 future controlled-write Apps Script resource
+│   │
+│   ├── Documentation Repository
+│   │   ├── README
+│   │   ├── work updates
+│   │   ├── summaries
+│   │   ├── sidecars
+│   │   ├── catalogs
+│   │   ├── templates
+│   │   ├── manifests
+│   │   ├── viewers
+│   │   ├── scripts
+│   │   └── historical artifacts
+│   │
+│   ├── Documentation Workflow
+│   │   ├── Startup
+│   │   ├── context requirements
+│   │   ├── Registry resolution
+│   │   ├── implementation / execution
+│   │   ├── testing / evidence
+│   │   ├── reconciliation
+│   │   ├── publication
+│   │   └── closure / evaluation
+│   │
+│   └── Therapy / reference document families
+│       ├── PST-SP
+│       ├── CPT
+│       ├── EMDR
+│       ├── master Markdown
+│       ├── sidecars
+│       ├── HTML
+│       └── specialized viewers
+│
+└── Project: Housekeeping Operations
+    │
+    └── Operational Environment: Meadows Housekeeping
+        │
+        ├── System: Inventory Management
+        │   ├── Inventory 3.0
+        │   ├── Products / SDS
+        │   ├── Current Inventory / Inventory Events
+        │   ├── holders / holder events
+        │   └── Work Queue integration
+        │
+        ├── System: Scheduling
+        │   ├── Calendar
+        │   ├── Klinswork Calendar
+        │   ├── rosters
+        │   └── trigger experiments
+        │
+        ├── System: Task Assignment and Tracking
+        │   ├── Work Queue
+        │   ├── Tasks
+        │   ├── Task Activity
+        │   ├── employee assignment
+        │   ├── location relationships
+        │   └── holder-event integration
+        │
+        └── System/Capability: Employee Achievements
+            ├── work updates
+            ├── completion evidence
+            ├── training
+            ├── contributions
+            └── future employee view
+</code></pre>
+<hr />
+
+<h3>Appendix D — key unresolved architecture tests</h3>
+<p>The following tests would provide especially high information value:</p>
+<ol>
+<li><p><strong>Cold-start test</strong></p>
+<ul>
+<li>Begin a new context-naive conversation with only the intended Registry entry point.</li>
+<li>Verify README → Registry → Startup → workflow routing.</li>
+</ul>
+</li>
+<li><p><strong>Registry controlled-write test</strong></p>
+<ul>
+<li>Update one resource through the future <code>RES-040</code> interface.</li>
+<li>Verify Resources update and matching Activity creation.</li>
+</ul>
+</li>
+<li><p><strong>Workflow-run reconstruction test</strong></p>
+<ul>
+<li>Use the 3.1 draft to encode a session that became formal midstream.</li>
+<li>Verify prospective and reconstructed truth remain distinguishable.</li>
+</ul>
+</li>
+<li><p><strong>Inventory cross-system trace</strong></p>
+<ul>
+<li>Trace a PAPER-001 refill through Work Queue task → Task Activity → holder event → holder state → bulk inventory effect.</li>
+</ul>
+</li>
+<li><p><strong>Bulk Work Queue assignment test</strong></p>
+<ul>
+<li>Generate a batch for one employee and one unit using stable employee ID, valid locations, templates, shared batch ID, and matching creation activities.</li>
+</ul>
+</li>
+<li><p><strong>Project/system record pilot</strong></p>
+<ul>
+<li>Use Inventory Management as the first complete system-record exemplar.</li>
+<li>Compare the resulting structured record against the human-readable Meadows system tab.</li>
+</ul>
+</li>
+<li><p><strong>Viewer routing test</strong></p>
+<ul>
+<li>Resolve a system from a Registry/project record and open the appropriate high-level document plus specialized structured preview without hard-coded physical paths.</li>
+</ul>
+</li>
+</ol>
+<hr />
+
+<h3>Appendix E — one-sentence weekend conclusion</h3>
+<p><strong>During August 8–9, 2026, Klinswork advanced from an increasingly organized collection of applications, documents, and repository artifacts toward an explicit project/system architecture with stable resource identity, provenance, progressive context routing, high-level Meadows Housekeeping system documentation, stronger Work Queue assignment identity, and a Documentation infrastructure capable of increasingly explaining how its own resources should be found, interpreted, and used.</strong></p>
+
+  </div>
+</section>
+
+
+    <footer class="page-footer">
+      <p><strong>Document ID:</strong> work-update-2026-08-09-weekend-architecture-consolidation</p>
+      <p><strong>Source:</strong> summary-2026-08-08-09-klinswork-weekend-architecture.md</p>
+      <p><strong>Coverage:</strong> August 8–9, 2026</p>
+      <p><strong>Architecture status:</strong> High-level project/system reconciliation in progress; formal Project Registry not yet synthesized</p>
+    </footer>
+  </main>
+</body>
+</html>
