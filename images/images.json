@@ -275,6 +275,11 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Supervisor Overview Original",
+    "file": "scenarios/apd-supervisor-overview-original.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Supervisor Rounds 01",
     "file": "scenarios/apd-supervisor-rounds-01.png",
     "category": "Scenarios"
