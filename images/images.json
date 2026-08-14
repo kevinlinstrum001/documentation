@@ -115,6 +115,11 @@
     "category": "Misc"
   },
   {
+    "name": "Relative Paths Appscript",
+    "file": "misc/relative-paths-appScript.png",
+    "category": "Misc"
+  },
+  {
     "name": "Chatgpt Image Jul 21, 2026, 05 09 07 Pm",
     "file": "monkeys/ChatGPT Image Jul 21, 2026, 05_09_07 PM.png",
     "category": "Monkeys"
@@ -200,6 +205,11 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Closet Restocking 01",
+    "file": "scenarios/apd-closet-restocking-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Daily Operating System 01",
     "file": "scenarios/apd-daily-operating-system-01.png",
     "category": "Scenarios"
@@ -247,6 +257,11 @@
   {
     "name": "Apd White Glove Inspection 01",
     "file": "scenarios/apd-white-glove-inspection-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Chatgpt Image Aug 13, 2026, 10 23 45 Pm",
+    "file": "scenarios/ChatGPT Image Aug 13, 2026, 10_23_45 PM.png",
     "category": "Scenarios"
   },
   {
