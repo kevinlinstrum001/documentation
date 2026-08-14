@@ -210,8 +210,18 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Continuous Evaluation 01",
+    "file": "scenarios/apd-continuous-evaluation-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Daily Operating System 01",
     "file": "scenarios/apd-daily-operating-system-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Foundational Lesson 01",
+    "file": "scenarios/apd-foundational-lesson-01.png",
     "category": "Scenarios"
   },
   {
@@ -220,8 +230,28 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Leadership System 01",
+    "file": "scenarios/apd-leadership-system-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Mop Storage 01",
+    "file": "scenarios/apd-mop-storage-01.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Morning Huddle 01",
     "file": "scenarios/apd-morning-huddle-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Paper Audit 01",
+    "file": "scenarios/apd-paper-audit-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Paper Limitations 01",
+    "file": "scenarios/apd-paper-limitations-01.png",
     "category": "Scenarios"
   },
   {
@@ -257,6 +287,11 @@
   {
     "name": "Apd White Glove Inspection 01",
     "file": "scenarios/apd-white-glove-inspection-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Workday Momentum 01",
+    "file": "scenarios/apd-workday-momentum-01.png",
     "category": "Scenarios"
   },
   {
