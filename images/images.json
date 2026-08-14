@@ -285,6 +285,11 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Uniform Onboarding 02",
+    "file": "scenarios/apd-uniform-onboarding-02.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd White Glove Inspection 01",
     "file": "scenarios/apd-white-glove-inspection-01.png",
     "category": "Scenarios"
