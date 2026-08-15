@@ -1,0 +1,3818 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "work-update",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "work-update-sidecar-template-3.0-draft.json",
+    "previewMode": "work-update"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [
+          "Consider an explicit session-entry-mode field for declared-before-work, reconstructed-during-work, reconstructed-after-work, and resumed-existing-session.",
+          "Consider explicit formalization-point and reconstruction-basis fields when Work Updates cover undeclared or emergent sessions."
+        ],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should session-entry mechanics remain only in workflow-run records, or should Work Update sidecars carry a compact session-entry classification for discovery and interpretation?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "work-summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation",
+    "filePath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+    "documentUrl": "",
+    "title": "From Architecture to First Project Definition — Comprehensive Klinswork Work Summary — August 15, 2026",
+    "headline": "Klinswork moves from architecture design to its first working Project Definition exemplar.",
+    "documentType": "milestone-work-update",
+    "createdTimestamp": "2026-08-15",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+    "url": "",
+    "sidecarFilePath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+    "summaryFilePath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "work-update-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "post-session comprehensive documentation",
+    "sourceSummaryPath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "workCoverage": {
+    "workStartedAt": null,
+    "workEndedAt": null,
+    "workDurationHours": null,
+    "coverageType": "reconstructed-work-session",
+    "coverageDescription": "Comprehensive reconstruction of Klinswork work performed on August 15, 2026. The session was undeclared at the start and became substantial architecture/documentation work. Exact start and end times were not formally recorded; the record is reconstructed from the conversation, created artifacts, repository state, architecture records, Viewer tests, and Resource Registry Activities.",
+    "coverageConfidence": "high"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Documentation",
+      "projectType": "Project",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "Maintain the information architecture that lets Klinswork define, discover, interpret, route, preserve, and resume work across Projects, Systems, Resources, and documentation.",
+      "projectPhase": "architecture reconciliation and first Project Definition exemplar",
+      "contributionType": "architecture, record-profile, discovery, Viewer, and Registry reconciliation",
+      "identificationBasis": "The source summary identifies Documentation as the primary cross-project undertaking and records architecture changes, Record Profile work, Viewer discovery, and Registry reconciliation.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Operations",
+        "relationshipType": "parent-project-context",
+        "relationshipDescription": "Operations is the parent Project for the operational Project family in which Inventory Management is being modeled.",
+        "impact": "The session reconciled the Operations → child Project → System hierarchy.",
+        "evidenceSectionAnchors": [
+          "major-ontology-correction-project-and-system-were-separated-again"
+        ],
+        "identificationBasis": "Current architecture described in the source summary.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory Management",
+        "relationshipType": "subject-project / exemplar",
+        "relationshipDescription": "Inventory Management was used as the first working Project Definition exemplar.",
+        "impact": "Produced Project Identity, README, Project Summary, Summary sidecar, and Inventory 3.0 System documentation.",
+        "evidenceSectionAnchors": [
+          "inventory-management-was-chosen-as-the-first-project-definition-exemplar",
+          "the-complete-inventory-management-exemplar-now-exists-physically"
+        ],
+        "identificationBasis": "Direct source-summary and repository evidence.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "RES-043",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "registry",
+        "relationshipDescription": "Provides stable Resource identity, current location/routing, and Activity-linked provenance.",
+        "impact": "Used for stale-link reconciliation and registration of the current Viewer manifest infrastructure."
+      },
+      {
+        "foundationId": "",
+        "name": "Record Profile Library",
+        "foundationType": "documentation architecture",
+        "relationshipDescription": "Provides reusable record-construction and interpretation contracts.",
+        "impact": "Expanded from sidecar-only thinking to document-sidecar, entity-record, and authoring-template families."
+      },
+      {
+        "foundationId": "RES-011",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "viewer / retrieval system",
+        "relationshipDescription": "Presents structured Klinswork documentation locally and online.",
+        "impact": "Migrated online static discovery to the source-aware manifest and exposed template-versus-instance preview behavior."
+      }
+    ],
+    "relationshipSummary": "Documentation was the primary Project performing the architecture and discovery work. Operations provided the operational Project hierarchy under review. Inventory Management served as the first Project Definition exemplar, with Inventory 3.0 documented as its principal known System."
+  },
+  "subject": {
+    "projectName": "Documentation",
+    "primaryApp": "Klinswork Documentation Viewer",
+    "mainFocus": "Project Definition, Record Profile architecture, source-aware documentation discovery, and Resource Registry reconciliation",
+    "description": "A reconstructed milestone work session that moved Klinswork from architecture design toward a working Project Definition exemplar, while reconciling Record Profile semantics, Viewer discovery, and Resource Registry routing.",
+    "topics": [
+      "Project Definition",
+      "Project Identity",
+      "Record Profiles",
+      "Entity Records",
+      "sidecars",
+      "Inventory Management",
+      "Inventory 3.0",
+      "Klinswork Documentation Viewer",
+      "Documentation Spaces",
+      "Resource Registry",
+      "Activities",
+      "source-aware discovery",
+      "architecture changelog",
+      "context routing"
+    ],
+    "keywords": [
+      "PROJ",
+      "SYS",
+      "RES",
+      "Record Profile Library",
+      "project-summary",
+      "system-summary",
+      "documentation-viewer-manifest",
+      "reconstructed work session"
+    ],
+    "appsAffected": [
+      "Klinswork Documentation Viewer"
+    ],
+    "systemsAffected": [
+      "Klinswork Documentation Viewer",
+      "Inventory 3.0"
+    ],
+    "componentsAffected": [
+      "Definitions",
+      "Architecture Changelog",
+      "Record Profile Library",
+      "Record Profile Registry",
+      "Project Identity profile",
+      "Inventory Management Project Definition",
+      "Documentation Viewer source registry",
+      "Documentation Viewer manifest builder",
+      "Documentation Viewer manifest",
+      "Resource Registry Resources tab",
+      "Resource Registry Activities tab"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The session did not begin as a formally declared work session. Work emerged from continuing the foundations needed to make future structured sessions meaningful, then expanded into substantial architecture, documentation, Viewer, and Registry work.",
+    "initialUnderstanding": "The prior weekend had established Resource identity, Activities, Startup/context-routing direction, and a transitional Project/System model, but formal Project Definition had not yet been proven against a real Project.",
+    "intendedOutcome": "No single prospective outcome was formally declared at session start. Retrospectively, the work converged on proving the first Project Definition exemplar and reconciling the documentation infrastructure needed to discover and route it.",
+    "approach": "Reconcile ontology first; define record-family semantics; create a narrow Project Identity profile; instantiate Inventory Management; complete Project and System narrative/sidecar layers; test source-aware discovery in the Viewer; then reconcile stale Registry routing with Activity history.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Ontology reconciliation",
+        "description": "Separated Parent/Child Project relationships from System level and reclassified Inventory Management and Task Assignment and Tracking as Projects, with Inventory 3.0 and Work Queue as Systems.",
+        "result": "A more durable Project → System hierarchy."
+      },
+      {
+        "sequence": 2,
+        "title": "Record Profile architecture",
+        "description": "Formalized Record Profile, Record Profile Library, Profile Template, Sidecar, Entity Record, Record Profile Registry, Schema Roadmap, and Authoring Template.",
+        "result": "Structured record types gained explicit semantic roles and authority boundaries."
+      },
+      {
+        "sequence": 3,
+        "title": "Project Identity profile",
+        "description": "Designed a deliberately narrow Entity Record profile for stable Project identity facts and left permanent Project ID allocation unresolved.",
+        "result": "Project identity became separable from name, path, hierarchy, Systems, Resources, and lifecycle."
+      },
+      {
+        "sequence": 4,
+        "title": "Inventory Management Project Definition",
+        "description": "Created the first Project Identity instance, local README, Project Summary, and Project Summary sidecar.",
+        "result": "The Project Definition architecture became a real exemplar."
+      },
+      {
+        "sequence": 5,
+        "title": "Inventory 3.0 documentation layer",
+        "description": "Completed System-local README, System Summary, and System Summary sidecar without creating System Identity.",
+        "result": "System meaning was documented while System Identity remained evidence-driven and deferred."
+      },
+      {
+        "sequence": 6,
+        "title": "Source-aware discovery",
+        "description": "Used Documentation Spaces and the source-aware manifest pipeline to discover Project and System sidecars.",
+        "result": "Projects source successfully reported two records."
+      },
+      {
+        "sequence": 7,
+        "title": "Local launcher reconciliation",
+        "description": "Updated the Windows batch launcher to refresh the source-aware manifest before launching the local Viewer and diagnosed a trailing-backslash quoting defect.",
+        "result": "Manifest refresh succeeded; launcher path normalization was identified as the fix."
+      },
+      {
+        "sequence": 8,
+        "title": "Online Viewer migration",
+        "description": "Updated the online static Viewer from legacy json-manifest/files[] discovery to documentation-viewer-manifest/records[] with manifestRelativePath routing.",
+        "result": "The online Viewer displayed the source-aware Projects tree."
+      },
+      {
+        "sequence": 9,
+        "title": "PST-SP template discovery",
+        "description": "Observed that a Record Profile template triggered the rich PST-SP subject preview even though the template's content fields were blank.",
+        "result": "Identified the need to distinguish Profile Templates from instantiated records in Viewer behavior."
+      },
+      {
+        "sequence": 10,
+        "title": "Resource Registry reconciliation",
+        "description": "Audited stale work-update-catalog paths, preserved legacy Resource identity where appropriate, registered the new source-aware Viewer infrastructure, and appended matching Activities.",
+        "result": "Current Resources no longer contain stale work-update-catalog paths while historical changes remain preserved."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "The first revised Windows launcher passed a Viewer-root path ending with a literal quote.",
+        "effect": "The source-aware manifest refreshed successfully, but the local Viewer failed to start against the malformed folder argument.",
+        "resolution": "Normalize VIEWER_ROOT and DOCUMENTATION_ROOT with `for %%I in (...) do set ...=%%~fI` so the paths do not end in a trailing backslash.",
+        "status": "resolved in launcher design; local end-to-end retest remains part of later convergence work"
+      },
+      {
+        "problem": "The online Viewer still used legacy `json-manifest.json` and expected `files[]`.",
+        "effect": "The published Viewer could not consume the new multi-source Documentation Spaces architecture.",
+        "resolution": "Update static mode to `documentation-viewer-manifest.json`, prefer `records[]`, use `manifestRelativePath` for fetch routing, and retain `files[]` as compatibility fallback.",
+        "status": "resolved; online source-aware Viewer observed working"
+      },
+      {
+        "problem": "The PST-SP Record Profile template launched the specialized PST-SP content preview and appeared empty.",
+        "effect": "A profile template looked like a broken content record.",
+        "resolution": "Diagnose the selected file as a template rather than an instantiated PST-SP sidecar; identify a future Record Profile / Template preview requirement.",
+        "status": "diagnosed; Viewer enhancement remains open"
+      },
+      {
+        "problem": "Resource Registry rows still contained obsolete `documents/work-update-catalog` paths and some stale descriptions.",
+        "effect": "Current routing and architecture descriptions no longer matched repository reality.",
+        "resolution": "Reconcile current paths/descriptions, preserve legacy manifest/builder identities, register new v2 infrastructure separately, and append Activities.",
+        "status": "resolved for the audited current Resource rows"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Pass `%~dp0` directly as a quoted Viewer-root argument after assigning it unchanged to VIEWER_ROOT.",
+        "whyItWasTried": "It is a natural Windows batch idiom for the directory containing the launcher.",
+        "whyItDidNotWork": "The trailing backslash interacted with quoting and caused the closing quote to become part of the Python folder argument.",
+        "whatWasLearned": "Normalize directory paths before passing them as quoted command arguments."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "Project/System hierarchy corrected",
+        "description": "Inventory Management became a Project and Inventory 3.0 its System rather than perpetuating the previous transitional System/Application model.",
+        "effectOnDirection": "Allowed Project Identity and Project Definition to be modeled at the correct level."
+      },
+      {
+        "title": "Sidecar and Entity Record separated",
+        "description": "A sidecar was fixed as a machine-readable companion to a human-readable source, while Project Identity became an Entity Record.",
+        "effectOnDirection": "Prevented arbitrary JSON records from being forced into sidecar semantics."
+      },
+      {
+        "title": "First Project Definition exemplar completed",
+        "description": "Inventory Management gained identity, orientation, narrative, structured companion, and nested System documentation.",
+        "effectOnDirection": "Architecture moved from design to evidence-generating use."
+      },
+      {
+        "title": "Source-aware Viewer discovered Project records",
+        "description": "The new Projects Documentation Space produced two visible records in the manifest/online Viewer.",
+        "effectOnDirection": "Discovery became a real end-to-end architecture test rather than a repository convention."
+      },
+      {
+        "title": "Registry migration preserved identity while changing location",
+        "description": "Stale paths were reconciled without discarding existing Resource IDs, while new v2 artifacts received distinct Resource identities.",
+        "effectOnDirection": "Validated the Resource identity-versus-location principle through actual migration."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Treat Parent Project and Child Project as the same entity type: Project.",
+        "reason": "Hierarchy is a relationship and should not be encoded as a separate identity type.",
+        "alternativesConsidered": [
+          "Keep Inventory Management and Task Assignment and Tracking as Systems under one Housekeeping Operations Project."
+        ],
+        "consequences": [
+          "Inventory Management becomes a Project.",
+          "Inventory 3.0 becomes a System.",
+          "Work Queue becomes a System."
+        ]
+      },
+      {
+        "decision": "Define Sidecar narrowly and introduce Entity Record as a separate Record Profile family.",
+        "reason": "A structured companion document and a canonical entity record have different authority roles.",
+        "alternativesConsidered": [
+          "Use sidecar as a generic label for all structured JSON records."
+        ],
+        "consequences": [
+          "Project Identity lives outside sidecars.",
+          "Viewer discovery must learn Entity Records explicitly."
+        ]
+      },
+      {
+        "decision": "Leave Project IDs unassigned in the first exemplar.",
+        "reason": "Project Registry / Project Identity allocation authority is not yet settled.",
+        "alternativesConsidered": [
+          "Assign candidate PROJ-### values immediately."
+        ],
+        "consequences": [
+          "Project Identity can be tested without premature global ID commitments."
+        ]
+      },
+      {
+        "decision": "Do not create System Identity yet.",
+        "reason": "The Project model should be proven before duplicating its assumptions at System level.",
+        "alternativesConsidered": [
+          "Create a System Identity profile in parallel with Project Identity."
+        ],
+        "consequences": [
+          "Inventory 3.0 is richly documented through README + System Summary + sidecar while SYS-### remains deferred."
+        ]
+      },
+      {
+        "decision": "Preserve legacy Viewer manifest/builder Resources and register source-aware v2 infrastructure separately.",
+        "reason": "The new manifest architecture is materially distinct, while legacy Resources remain historically identifiable.",
+        "alternativesConsidered": [
+          "Repurpose RES-020 and RES-021 for the new files."
+        ],
+        "consequences": [
+          "RES-020/021 become explicitly legacy; RES-044/045/046 represent the current source-aware infrastructure."
+        ]
+      }
+    ],
+    "methodEstablished": "Use exemplar-first architecture: reconcile semantic type and authority, instantiate one real Project Definition, test discovery and Viewer behavior, preserve failures and open questions, and only then derive reusable schemas/templates.",
+    "result": "Klinswork now has its first working Project Definition exemplar for Inventory Management, a non-premature Inventory 3.0 System documentation layer, a source-aware online Documentation Viewer, and a reconciled Resource Registry whose current routes are separated from historical Activities.",
+    "lessonsLearned": [
+      "Identity is stronger when it excludes mutable hierarchy, paths, Systems, Resources, and lifecycle facts.",
+      "A sidecar should remain a companion to a human-readable source; Entity Records need their own profile family.",
+      "Exemplar use reveals architecture requirements that are difficult to see from abstract schema design alone.",
+      "Discovery policy should be source-aware and configuration-driven rather than coupled to one physical folder root.",
+      "Stable Resource identity makes repository migrations historically intelligible.",
+      "Record Profile templates require Viewer behavior distinct from instantiated subject records.",
+      "The work-session structure becomes more meaningful as Project identity, summaries, routing, and discovery foundations become real."
+    ],
+    "directionChange": "The Documentation effort shifted from designing Project/System record architecture in the abstract toward proving it with Inventory Management, then using the resulting records to drive discovery, Viewer, and Registry reconciliation tests.",
+    "narrativeSummary": "An undeclared weekend session evolved into a major Klinswork architecture milestone. The work corrected the Project/System hierarchy, formalized Record Profile families, created the first Project Identity profile and Inventory Management Project Definition exemplar, completed Inventory 3.0 System documentation without premature System Identity, migrated the online Documentation Viewer to source-aware discovery, diagnosed a template-versus-instance preview issue, and reconciled stale Resource Registry paths with preserved Activity history."
+  },
+  "projectDelta": {
+    "previousState": "Klinswork had a strong but transitional architecture from the August 8–9 weekend: stable Resource IDs, Activities, Startup/context-routing direction, high-level Project/System thinking, Viewer/manifests, and a planned Project/System-record pilot. Project Identity, Record Profile families beyond sidecars, a proven Project Definition exemplar, source-aware online Viewer discovery, and fully reconciled current Viewer Registry routing were not yet complete.",
+    "priorOutstandingWork": [
+      {
+        "workItemId": "",
+        "title": "Formal Project/System record pilot",
+        "statusBefore": "open",
+        "statusAfter": "substantially completed at Project Definition / System Summary level",
+        "contribution": "Inventory Management became the first Project Definition exemplar, with Inventory 3.0 documented as its principal known System.",
+        "evidenceSectionAnchors": [
+          "inventory-management-was-chosen-as-the-first-project-definition-exemplar",
+          "the-complete-inventory-management-exemplar-now-exists-physically"
+        ],
+        "notes": "System Identity remains deliberately deferred."
+      },
+      {
+        "workItemId": "",
+        "title": "Reconcile Documentation architecture",
+        "statusBefore": "open / transitional",
+        "statusAfter": "materially advanced",
+        "contribution": "Documentation Spaces, Record Profile Library, source-aware discovery, Viewer roles, and context routing were reconciled.",
+        "evidenceSectionAnchors": [
+          "documentation-project-was-reconciled-around-current-architecture"
+        ],
+        "notes": ""
+      },
+      {
+        "workItemId": "",
+        "title": "Formalize stable Project/System identifiers",
+        "statusBefore": "open",
+        "statusAfter": "still open, now better constrained",
+        "contribution": "Project Identity profile explicitly supports unassigned IDs and records the authority questions blocking assignment.",
+        "evidenceSectionAnchors": [
+          "permanent-project-ids-remained-intentionally-unassigned",
+          "project-registry-authority-remained-deliberately-unresolved"
+        ],
+        "notes": "No PROJ-### or SYS-### values were invented."
+      },
+      {
+        "workItemId": "",
+        "title": "Reconcile online/local Viewer architecture",
+        "statusBefore": "open",
+        "statusAfter": "online substantially advanced; local still transitional",
+        "contribution": "Online Viewer now consumes the source-aware manifest; local launcher refreshes the v2 manifest but local Python runtime remains v1.6-era.",
+        "evidenceSectionAnchors": [
+          "online-viewer-was-upgraded-to-the-source-aware-manifest",
+          "the-batch-launcher-remains-a-transitional-local-runtime-bridge"
+        ],
+        "notes": ""
+      }
+    ],
+    "completedItems": [
+      {
+        "workItemId": "",
+        "title": "Project/System hierarchy reconciliation",
+        "description": "Reclassified Inventory Management and Task Assignment and Tracking as Projects, with Inventory 3.0 and Work Queue as Systems.",
+        "evidenceSectionAnchors": [
+          "major-ontology-correction-project-and-system-were-separated-again"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Record Profile taxonomy",
+        "description": "Formalized document-sidecar, entity-record, and authoring-template families.",
+        "evidenceSectionAnchors": [
+          "record-families-became-explicit"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Project Identity profile/template",
+        "description": "Created the first reusable Project Identity Entity Record template.",
+        "evidenceSectionAnchors": [
+          "the-first-project-identity-template-was-created"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory Management Project Identity instance",
+        "description": "Instantiated Project Identity with unassigned Project ID status.",
+        "evidenceSectionAnchors": [
+          "inventory-managementproject-identityjson-was-instantiated"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory Management Project-local README",
+        "description": "Created/reconciled local orientation and authority routing.",
+        "evidenceSectionAnchors": [
+          "inventory-management-readme-became-local-orientation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory Management Project Summary",
+        "description": "Created rich human-readable Project definition.",
+        "evidenceSectionAnchors": [
+          "project-summary-was-separated-from-project-identity"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory Management Project Summary sidecar",
+        "description": "Created generic-document structured companion to the Project Summary.",
+        "evidenceSectionAnchors": [
+          "project-summary-sidecar-was-created-as-a-real-sidecar"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory 3.0 System README",
+        "description": "Created System-local orientation while deferring System Identity.",
+        "evidenceSectionAnchors": [
+          "inventory-30-readme-became-system-local-orientation"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory 3.0 System Summary",
+        "description": "Created rich System interpretation with design/implementation/current-truth evidence distinctions.",
+        "evidenceSectionAnchors": [
+          "inventory-30-system-summary-preserved-design-evidence-carefully"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory 3.0 System Summary sidecar",
+        "description": "Created structured companion without implying System Identity.",
+        "evidenceSectionAnchors": [
+          "inventory-30-sidecar-was-created-without-implying-system-identity"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Source-aware online Viewer migration",
+        "description": "Updated static Viewer to documentation-viewer-manifest records[] discovery.",
+        "evidenceSectionAnchors": [
+          "online-viewer-was-upgraded-to-the-source-aware-manifest"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Projects Documentation Space discovery test",
+        "description": "Confirmed two Project-space sidecars were discovered and visible online.",
+        "evidenceSectionAnchors": [
+          "the-viewer-discovery-test-passed-an-important-milestone"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Resource Registry stale-path reconciliation",
+        "description": "Removed current work-update-catalog references from audited Resource rows and preserved migration history through Activities.",
+        "evidenceSectionAnchors": [
+          "stale-work-update-catalog-references-were-removed-from-current-resources"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Current Viewer infrastructure Resource registration",
+        "description": "Registered RES-044 through RES-046.",
+        "evidenceSectionAnchors": [
+          "new-source-aware-viewer-resources-were-registered"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Registry Activity migration record",
+        "description": "Appended ACT-0059 through ACT-0076.",
+        "evidenceSectionAnchors": [
+          "act-0059-through-act-0076-were-appended"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "",
+        "title": "Local Viewer source-aware convergence",
+        "completedPortion": "Batch launcher refreshes the source-aware manifest and path-normalization fix is defined.",
+        "remainingPortion": "Local Python viewer remains v1.6-era and has not been converted to the same multi-source runtime model as the online Viewer.",
+        "evidenceSectionAnchors": [
+          "the-batch-launcher-remains-a-transitional-local-runtime-bridge"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Project Definition discovery",
+        "completedPortion": "Project Summary and System Summary sidecars are discovered in the Projects source.",
+        "remainingPortion": "Project Identity Entity Record discovery remains unimplemented.",
+        "evidenceSectionAnchors": [
+          "project-identity-discovery-remains-a-separate-test"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Project Registry versus Project Identity authority",
+        "description": "Settle allocation/precedence for Project identity facts and permanent PROJ-### assignment.",
+        "reasonStillOpen": "The first exemplar intentionally avoided premature global authority decisions."
+      },
+      {
+        "workItemId": "",
+        "title": "System Identity profile and SYS-### allocation",
+        "description": "Determine stable System identity facts and allocation authority.",
+        "reasonStillOpen": "System Identity was deliberately deferred until the Project model is proven."
+      },
+      {
+        "workItemId": "",
+        "title": "Entity Record discovery",
+        "description": "Teach manifest/Viewer to discover `project-identity.json` as an Entity Record.",
+        "reasonStillOpen": "Current Projects discovery is sidecar-oriented."
+      },
+      {
+        "workItemId": "",
+        "title": "Record Profile template preview",
+        "description": "Distinguish Profile Templates from instantiated records in Viewer behavior.",
+        "reasonStillOpen": "PST-SP template test exposed the gap."
+      },
+      {
+        "workItemId": "",
+        "title": "Relationship Registry",
+        "description": "Formalize authoritative cross-entity relationship records and predicates.",
+        "reasonStillOpen": "Relationship authority remains intentionally separate from Project Identity."
+      },
+      {
+        "workItemId": "",
+        "title": "Inventory Resource reconciliation",
+        "description": "Map current app, workbook, source, deployment, datasets, SDS relationships, and shared Resources.",
+        "reasonStillOpen": "The documentation exemplar was completed before comprehensive live implementation reconciliation."
+      },
+      {
+        "workItemId": "",
+        "title": "Prospective structured work-session test",
+        "description": "Begin a future session with declared target, Startup, Project Identity, Summary, Registry resolution, and workflow.",
+        "reasonStillOpen": "The August 15 session was reconstructed after work rather than declared before it."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Record Profile template-versus-instance Viewer semantics",
+        "description": "A Profile Template should not automatically render as a fully instantiated subject record merely because it declares a preview mode.",
+        "source": "PST-SP Record Profile template online Viewer test."
+      },
+      {
+        "workItemId": "",
+        "title": "Entity Record discovery gap",
+        "description": "Source-aware Projects discovery must explicitly support Entity Records rather than treating all Project JSON as sidecars.",
+        "source": "Inventory Management Project Identity exemplar and Viewer discovery test."
+      },
+      {
+        "workItemId": "",
+        "title": "Legacy/current Viewer Resource distinction",
+        "description": "Legacy single-root manifest/builder and current source-aware manifest/builder are materially distinct Resources and should not share identity.",
+        "source": "Resource Registry stale-link reconciliation."
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "Permanent Project IDs",
+        "reasonDeferred": "Allocation authority is unresolved.",
+        "reconsiderAfter": "Project Identity / Project Registry authority decision."
+      },
+      {
+        "workItemId": "",
+        "title": "System Identity Entity Record",
+        "reasonDeferred": "Avoid propagating untested Project assumptions.",
+        "reconsiderAfter": "Project Definition discovery and cold-start tests."
+      },
+      {
+        "workItemId": "",
+        "title": "Reusable Project Definition template",
+        "reasonDeferred": "The first exemplar should be tested before generic requirements are frozen.",
+        "reconsiderAfter": "Entity Record discovery, Viewer, Resource, and cold-start validation."
+      }
+    ],
+    "supersededItems": [
+      {
+        "workItemId": "",
+        "title": "Inventory Management as an operational System with Inventory 3.0 as application",
+        "supersededBy": "Inventory Management Project → Inventory 3.0 System",
+        "reason": "The broader Inventory Management undertaking persists beyond one coherent implementation and therefore fits Project level better."
+      },
+      {
+        "workItemId": "",
+        "title": "Sidecar as a generic structured-record concept",
+        "supersededBy": "Record Profile families separating document-sidecar, entity-record, and authoring-template",
+        "reason": "Companion records and canonical entity records require different authority semantics."
+      }
+    ],
+    "resultingState": "Inventory Management is the first working Project Definition exemplar. Record Profile semantics distinguish sidecars from Entity Records. Inventory 3.0 is documented as a System without premature System Identity. The online Klinswork Documentation Viewer uses source-aware manifest discovery. Current Resource Registry routes are reconciled and the migration is preserved through Activities.",
+    "roadmapChangeSummary": "The next phase is no longer primarily to design Project Definition in the abstract. It is to test Entity Record discovery, Project/System Viewer distinction, Record Profile template presentation, Resource reconciliation, context-naive resumption, and then a prospectively declared work session before generalizing the Project Definition template.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "",
+        "title": "Regenerate and inspect source-aware discovery",
+        "description": "Verify Project/System sidecars, companion resolution, source IDs, archive state, and Viewer tree.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Add Entity Record discovery",
+        "description": "Discover `project-identity.json` as entity-record without misclassifying it as a sidecar.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Add Record Profile template-aware Viewer behavior",
+        "description": "Separate Profile Template preview from instantiated subject preview.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Reconcile current Inventory Resources",
+        "description": "Resolve app, data workbook, source, deployment, datasets, SDS, and shared Resource relationships.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "",
+        "title": "Perform context-naive Project resume test",
+        "description": "Use Project Identity, README, Summary, System context, Resource Registry, and workflow without conversational memory.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 6,
+        "workItemId": "",
+        "title": "Run a formally declared work session",
+        "description": "Use the new foundations prospectively and evaluate startup/resume/closure friction.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 7,
+        "workItemId": "",
+        "title": "Extract reusable Project Definition template",
+        "description": "Generalize only after the exemplar survives discovery, Viewer, Resource, and cold-start testing.",
+        "priority": "medium",
+        "status": "deferred-until-tests"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "This session was internal Klinswork architecture and documentation work. It created a more reliable way to define Projects and Systems, find their documentation, and preserve current Resource locations and historical changes.",
+      "operationalImpact": "No immediate external or supervisor action is required. The work strengthens internal organization, traceability, and future context recovery.",
+      "currentStatus": "Architecture milestone completed; several validation and discovery tests remain.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Permanent Project/System IDs remain unassigned.",
+        "System Identity is deliberately deferred.",
+        "Local Viewer runtime remains transitional.",
+        "Entity Record discovery and Profile Template preview remain open."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Continue architecture validation before generalizing the Project Definition template.",
+      "callouts": []
+    },
+    "general": {
+      "summary": "Klinswork now has a real Project Definition example for Inventory Management, clearer rules for different record types, a source-aware online documentation Viewer, and a cleaner Resource Registry.",
+      "keyPoints": [
+        "Inventory Management is now treated as a Project and Inventory 3.0 as its System.",
+        "Project Identity is separated from README, narrative Summary, sidecars, relationships, and Resources.",
+        "The Viewer now discovers Common, Projects, and Therapy Documentation Spaces through a source-aware manifest.",
+        "Registry paths were reconciled without erasing historical Resource identity."
+      ]
+    },
+    "technical": {
+      "summary": "The session introduced the first Project Identity Entity Record profile and instance, completed a Project/System documentation exemplar, migrated static Viewer discovery from `json-manifest.json/files[]` to `documentation-viewer-manifest.json/records[]`, and reconciled legacy/current Viewer Resources with Activity-preserved Registry history.",
+      "keyPoints": [
+        "Record Profile families: document-sidecar, entity-record, authoring-template.",
+        "Project Identity excludes mutable hierarchy, Resources, paths, deployments, lifecycle, and Systems from intrinsic identity.",
+        "Projects discovery currently finds Project/System sidecars but not Entity Records.",
+        "Online Viewer uses `manifestRelativePath` for source-aware static fetch routing.",
+        "RES-020/021 remain legacy; RES-044/045/046 represent the current source-aware manifest infrastructure."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Inventory Management is better represented as a Project than as the System itself.",
+      "Inventory 3.0 can be richly documented without prematurely freezing System Identity.",
+      "Project Definition benefits from separate identity, orientation, narrative, sidecar, System, and implementation-plan layers."
+    ],
+    "generalLessons": [
+      "Identity should exclude ordinary mutable context.",
+      "A sidecar is a companion record, not a generic label for structured JSON.",
+      "Exemplar-first architecture produces higher-quality schema decisions than abstract freezing.",
+      "Discovery should be source-aware and independent of one physical repository root.",
+      "Stable Resource identity plus append-oriented Activities makes migrations reconstructable.",
+      "Templates and instantiated records require distinct Viewer semantics.",
+      "Historical terminology should be preserved rather than silently rewritten to current ontology."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Semantic identity becoming entangled with physical location.",
+        "pattern": "Paths and folder structure drift as the repository evolves, while conceptual Resources/Projects remain continuous.",
+        "projectsObservedIn": [
+          "Documentation",
+          "Inventory Management"
+        ]
+      },
+      {
+        "problem": "Premature formalization.",
+        "pattern": "Assigning IDs or schemas before authority/boundary evidence is sufficient risks freezing the wrong model.",
+        "projectsObservedIn": [
+          "Documentation",
+          "Inventory Management"
+        ]
+      },
+      {
+        "problem": "Historical artifacts remaining useful after architecture changes.",
+        "pattern": "Legacy files need explicit compatibility/history roles instead of deletion or silent repurposing.",
+        "projectsObservedIn": [
+          "Documentation"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Project Definition architecture",
+        "description": "How Project Identity, README, Project Summary, sidecar, Systems, implementation plans, Resources, relationships, and Activities divide authority.",
+        "suggestedDestination": "Documentation Project / Project Definition reference",
+        "supportingSectionAnchors": [
+          "what-the-exemplar-proves-so-far",
+          "current-inventory-management-project-definition-map"
+        ]
+      },
+      {
+        "title": "Record Profile semantics",
+        "description": "Distinction among document-sidecar, entity-record, and authoring-template, including authority and Viewer implications.",
+        "suggestedDestination": "Record Profile Library",
+        "supportingSectionAnchors": [
+          "record-families-became-explicit",
+          "the-critical-sidecar-rule-was-formalized"
+        ]
+      },
+      {
+        "title": "Source-aware Viewer discovery",
+        "description": "Configuration-driven Documentation Spaces, manifest generation, source-aware record addressing, and Viewer fetch routing.",
+        "suggestedDestination": "Klinswork Documentation Viewer documentation",
+        "supportingSectionAnchors": [
+          "source-registry-became-a-first-class-viewer-artifact",
+          "viewer-record-address-became-source-aware"
+        ]
+      },
+      {
+        "title": "Registry migration with identity continuity",
+        "description": "How to update current Resource locations, preserve legacy/current distinctions, and append Activities instead of overwriting history.",
+        "suggestedDestination": "Resource Registry / Registry operations reference",
+        "supportingSectionAnchors": [
+          "stable-resource-identity-allowed-the-migration-to-be-historical-rather-than-destructive"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "identity != name != location != hierarchy != status != implementation",
+        "changeType": "confirmed and expanded",
+        "explanation": "Applied directly to Project Identity and Resource migration decisions."
+      },
+      {
+        "rule": "A sidecar is a machine-readable structured companion to a human-readable source.",
+        "changeType": "formalized",
+        "explanation": "Entity Records are now explicitly separate from sidecars."
+      },
+      {
+        "rule": "Preserve legacy identity when a Resource merely moves; create a new Resource when the artifact itself is materially distinct.",
+        "changeType": "confirmed through use",
+        "explanation": "Applied to legacy manifest/builder versus current source-aware Viewer infrastructure."
+      },
+      {
+        "rule": "Do not freeze a reusable schema before a real exemplar has been tested.",
+        "changeType": "confirmed",
+        "explanation": "System Identity and generic Project Definition template were deliberately deferred."
+      },
+      {
+        "rule": "Current routing should be reconciled while historical paths remain preserved in Activities or historical artifacts.",
+        "changeType": "confirmed",
+        "explanation": "Current Resource rows were cleaned while migration descriptions remained in Activity history."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "sec-001",
+      "title": "1. Executive summary",
+      "anchor": "1-executive-summary",
+      "contentSummary": "The August 8–9 weekend established the broad prerequisites for a durable Klinswork environment:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-002",
+      "title": "2. Scope and source discipline",
+      "anchor": "2-scope-and-source-discipline",
+      "contentSummary": "This summary follows the same evidence discipline established in the August 8–9 comprehensive record.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-003",
+      "title": "3. Starting position inherited from August 8–9",
+      "anchor": "3-starting-position-inherited-from-august-89",
+      "contentSummary": "The prior weekend ended with a much stronger Klinswork architecture, but several key pieces were still provisional.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-004",
+      "title": "4. Why another undeclared weekend work session happened",
+      "anchor": "4-why-another-undeclared-weekend-work-session-happened",
+      "contentSummary": "This is the second consecutive weekend in which substantial Klinswork work emerged without first being declared as a formal structured work session.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-005",
+      "title": "5. Major ontology correction — Project and System were separated again",
+      "anchor": "5-major-ontology-correction-project-and-system-were-separated-again",
+      "contentSummary": "One of the day's earliest important corrections concerned the hierarchy itself.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-006",
+      "title": "6. Identity was explicitly separated from hierarchy",
+      "anchor": "6-identity-was-explicitly-separated-from-hierarchy",
+      "contentSummary": "The ontology correction led to a stronger identity rule.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-007",
+      "title": "7. Permanent Project IDs remained intentionally unassigned",
+      "anchor": "7-permanent-project-ids-remained-intentionally-unassigned",
+      "contentSummary": "The day's architecture could have rushed to assign:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-008",
+      "title": "8. Project Registry authority remained deliberately unresolved",
+      "anchor": "8-project-registry-authority-remained-deliberately-unresolved",
+      "contentSummary": "A particularly important open question concerned the relationship between:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-009",
+      "title": "9. Architecture change control became concrete",
+      "anchor": "9-architecture-change-control-became-concrete",
+      "contentSummary": "The Meadows Housekeeping Projects Summary now includes Architecture Changelog entries documenting the day's architecture changes.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-010",
+      "title": "10. Definitions were expanded into controlled Record Profile vocabulary",
+      "anchor": "10-definitions-were-expanded-into-controlled-record-profile-vocabulary",
+      "contentSummary": "The Definitions tab received a major vocabulary extension.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-011",
+      "title": "11. The critical sidecar rule was formalized",
+      "anchor": "11-the-critical-sidecar-rule-was-formalized",
+      "contentSummary": "One of the day's most important semantic rules is:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-012",
+      "title": "12. Record families became explicit",
+      "anchor": "12-record-families-became-explicit",
+      "contentSummary": "The current general Record Profile family model is:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-013",
+      "title": "13. The Templates folder became the Record Profile Library",
+      "anchor": "13-the-templates-folder-became-the-record-profile-library",
+      "contentSummary": "The repository area formerly understood primarily as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-014",
+      "title": "14. Historical profile material was preserved rather than overwritten",
+      "anchor": "14-historical-profile-material-was-preserved-rather-than-overwritten",
+      "contentSummary": "The existing Sidecar Profile Registry was not silently erased.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-015",
+      "title": "15. Record Profile Registry evolved beyond sidecars",
+      "anchor": "15-record-profile-registry-evolved-beyond-sidecars",
+      "contentSummary": "The broader Record Profile Registry was designed to index more than sidecars.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-016",
+      "title": "16. `schemaRoadmap` became a profile-level convention",
+      "anchor": "16-schemaroadmap-became-a-profile-level-convention",
+      "contentSummary": "The session clarified that profile evolution should be represented explicitly.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-017",
+      "title": "17. Project Identity profile was designed as deliberately narrow",
+      "anchor": "17-project-identity-profile-was-designed-as-deliberately-narrow",
+      "contentSummary": "The Project Identity profile was not designed as a giant Project record.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-018",
+      "title": "18. Project Identity validation rules were made explicit",
+      "anchor": "18-project-identity-validation-rules-were-made-explicit",
+      "contentSummary": "The Project Identity template includes strong anti-inference rules.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-019",
+      "title": "19. Labels were separated from identity",
+      "anchor": "19-labels-were-separated-from-identity",
+      "contentSummary": "The Project Identity template includes:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-020",
+      "title": "20. Identity evidence was separated from identity",
+      "anchor": "20-identity-evidence-was-separated-from-identity",
+      "contentSummary": "The template includes an `identityEvidence` area.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-021",
+      "title": "21. The first Project Identity template was created",
+      "anchor": "21-the-first-project-identity-template-was-created",
+      "contentSummary": "The first reusable Project Identity template was created as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-022",
+      "title": "22. Inventory Management was chosen as the first Project Definition exemplar",
+      "anchor": "22-inventory-management-was-chosen-as-the-first-project-definition-exemplar",
+      "contentSummary": "Inventory Management was already the best-developed candidate.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-023",
+      "title": "23. `Inventory Management/project-identity.json` was instantiated",
+      "anchor": "23-inventory-managementproject-identityjson-was-instantiated",
+      "contentSummary": "The first Project Identity Entity Record was created:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-024",
+      "title": "24. Project Identity was placed at the Project root",
+      "anchor": "24-project-identity-was-placed-at-the-project-root",
+      "contentSummary": "The Project Identity Entity Record was deliberately placed here:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-025",
+      "title": "25. Inventory Management README became local orientation",
+      "anchor": "25-inventory-management-readme-became-local-orientation",
+      "contentSummary": "The Project README was created/reconciled as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-026",
+      "title": "26. Project Summary was separated from Project Identity",
+      "anchor": "26-project-summary-was-separated-from-project-identity",
+      "contentSummary": "The rich human-readable Project definition was created as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-027",
+      "title": "27. Inventory Management Project purpose was made explicit",
+      "anchor": "27-inventory-management-project-purpose-was-made-explicit",
+      "contentSummary": "The Project Summary defines the purpose of Inventory Management approximately as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-028",
+      "title": "28. Inventory Management scope and boundaries were documented",
+      "anchor": "28-inventory-management-scope-and-boundaries-were-documented",
+      "contentSummary": "The Project Summary identifies in-scope areas such as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-029",
+      "title": "29. Project Summary sidecar was created as a real sidecar",
+      "anchor": "29-project-summary-sidecar-was-created-as-a-real-sidecar",
+      "contentSummary": "The structured companion was created as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-030",
+      "title": "30. Generic document profile was used without pretending a specialized profile existed",
+      "anchor": "30-generic-document-profile-was-used-without-pretending-a-specialized-profile-existed",
+      "contentSummary": "No dedicated Project Summary sidecar profile had yet been defined.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-031",
+      "title": "31. Project Summary sidecar indexed the Project definition",
+      "anchor": "31-project-summary-sidecar-indexed-the-project-definition",
+      "contentSummary": "The Project Summary sidecar includes structured representations of:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-032",
+      "title": "32. Inventory 3.0 documentation layer was deliberately completed without System Identity",
+      "anchor": "32-inventory-30-documentation-layer-was-deliberately-completed-without-system-identity",
+      "contentSummary": "After completing the Project layer, work moved into:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-033",
+      "title": "33. Why System Identity was deferred",
+      "anchor": "33-why-system-identity-was-deferred",
+      "contentSummary": "The Project architecture had just been instantiated for the first time.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-034",
+      "title": "34. Inventory 3.0 README became System-local orientation",
+      "anchor": "34-inventory-30-readme-became-system-local-orientation",
+      "contentSummary": "The System README explains:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-035",
+      "title": "35. `system-summary.md` was clarified as different from `project-summary.md`",
+      "anchor": "35-system-summarymd-was-clarified-as-different-from-project-summarymd",
+      "contentSummary": "A useful discussion occurred around the purpose of:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-036",
+      "title": "36. Inventory 3.0 System Summary preserved design evidence carefully",
+      "anchor": "36-inventory-30-system-summary-preserved-design-evidence-carefully",
+      "contentSummary": "The Inventory 3.0 System Summary uses the historical roadmap as design evidence.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-037",
+      "title": "37. Inventory 3.0 historical implementation evidence was separated from roadmap intent",
+      "anchor": "37-inventory-30-historical-implementation-evidence-was-separated-from-roadmap-intent",
+      "contentSummary": "The System Summary also incorporates dated historical evidence showing that Inventory 3.0 was actually built and expanded.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-038",
+      "title": "38. Inventory 3.0 sidecar was created without implying System Identity",
+      "anchor": "38-inventory-30-sidecar-was-created-without-implying-system-identity",
+      "contentSummary": "The structured companion:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-039",
+      "title": "39. The complete Inventory Management exemplar now exists physically",
+      "anchor": "39-the-complete-inventory-management-exemplar-now-exists-physically",
+      "contentSummary": "The current repository tree confirms:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-040",
+      "title": "40. What the exemplar proves so far",
+      "anchor": "40-what-the-exemplar-proves-so-far",
+      "contentSummary": "The exemplar demonstrates that one Project can be described through coordinated records with different jobs:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-041",
+      "title": "41. Project Definition architecture is designed but not yet generalized",
+      "anchor": "41-project-definition-architecture-is-designed-but-not-yet-generalized",
+      "contentSummary": "The Inventory Management exemplar should not immediately be copied as a mandatory folder skeleton for every Project.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-042",
+      "title": "42. Documentation Project was reconciled around current architecture",
+      "anchor": "42-documentation-project-was-reconciled-around-current-architecture",
+      "contentSummary": "The Documentation tab of the Meadows Housekeeping Projects Summary underwent major reconciliation.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-043",
+      "title": "43. Documentation became explicitly self-describing",
+      "anchor": "43-documentation-became-explicitly-self-describing",
+      "contentSummary": "Documentation has a recursive property.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-044",
+      "title": "44. Fresh physical repository state became a formal requirement",
+      "anchor": "44-fresh-physical-repository-state-became-a-formal-requirement",
+      "contentSummary": "The architecture now distinguishes:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-045",
+      "title": "45. Documentation Spaces became explicit",
+      "anchor": "45-documentation-spaces-became-explicit",
+      "contentSummary": "The source-aware Viewer architecture now recognizes multiple Documentation Spaces.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-046",
+      "title": "46. Common and Projects discovery were separated to prevent duplicates",
+      "anchor": "46-common-and-projects-discovery-were-separated-to-prevent-duplicates",
+      "contentSummary": "The nested Projects directory is pruned from the Common source scan.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-047",
+      "title": "47. Source registry became a first-class Viewer artifact",
+      "anchor": "47-source-registry-became-a-first-class-viewer-artifact",
+      "contentSummary": "The current discovery chain is:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-048",
+      "title": "48. Viewer record address became source-aware",
+      "anchor": "48-viewer-record-address-became-source-aware",
+      "contentSummary": "The v2 discovery model effectively uses:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-049",
+      "title": "49. The local launcher was recognized as stale",
+      "anchor": "49-the-local-launcher-was-recognized-as-stale",
+      "contentSummary": "After Project/System records were added, attention returned to:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-050",
+      "title": "50. First launcher revision exposed a Windows quoting problem",
+      "anchor": "50-first-launcher-revision-exposed-a-windows-quoting-problem",
+      "contentSummary": "The initial revised batch command successfully ran the source-aware manifest builder.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-051",
+      "title": "51. Launcher paths were normalized",
+      "anchor": "51-launcher-paths-were-normalized",
+      "contentSummary": "The improved batch design used:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-052",
+      "title": "52. The batch launcher remains a transitional local-runtime bridge",
+      "anchor": "52-the-batch-launcher-remains-a-transitional-local-runtime-bridge",
+      "contentSummary": "The local Python Viewer is still v1.6-era code.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-053",
+      "title": "53. Online Viewer was still using the legacy manifest",
+      "anchor": "53-online-viewer-was-still-using-the-legacy-manifest",
+      "contentSummary": "The online `json-viewer.html` was then inspected.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-054",
+      "title": "54. Online Viewer was upgraded to the source-aware manifest",
+      "anchor": "54-online-viewer-was-upgraded-to-the-source-aware-manifest",
+      "contentSummary": "The updated online Viewer now uses:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-055",
+      "title": "55. Online Viewer branding was updated",
+      "anchor": "55-online-viewer-branding-was-updated",
+      "contentSummary": "The static Viewer was rebranded from:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-056",
+      "title": "56. The source-aware online Viewer worked",
+      "anchor": "56-the-source-aware-online-viewer-worked",
+      "contentSummary": "After publication, the online Viewer successfully displayed the new source-aware tree.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-057",
+      "title": "57. The Viewer discovery test passed an important milestone",
+      "anchor": "57-the-viewer-discovery-test-passed-an-important-milestone",
+      "contentSummary": "The manifest output had already reported:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-058",
+      "title": "58. Project Identity discovery remains a separate test",
+      "anchor": "58-project-identity-discovery-remains-a-separate-test",
+      "contentSummary": "The current Projects discovery mode is still sidecar-oriented.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-059",
+      "title": "59. PST-SP Viewer test exposed a profile-template/instance distinction",
+      "anchor": "59-pst-sp-viewer-test-exposed-a-profile-templateinstance-distinction",
+      "contentSummary": "The online Viewer test produced another valuable discovery.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-060",
+      "title": "60. Record Profile templates need different Viewer behavior from instantiated records",
+      "anchor": "60-record-profile-templates-need-different-viewer-behavior-from-instantiated-records",
+      "contentSummary": "The PST-SP test revealed a general Viewer requirement.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-061",
+      "title": "61. The Viewer is becoming more than a JSON tree browser",
+      "anchor": "61-the-viewer-is-becoming-more-than-a-json-tree-browser",
+      "contentSummary": "The day's tests reinforce the direction:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-062",
+      "title": "62. Resource Registry stale-link review followed the Viewer work",
+      "anchor": "62-resource-registry-stale-link-review-followed-the-viewer-work",
+      "contentSummary": "After the Viewer succeeded, attention shifted to the live Resource Registry.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-063",
+      "title": "63. Stable Resource identity allowed the migration to be historical rather than destructive",
+      "anchor": "63-stable-resource-identity-allowed-the-migration-to-be-historical-rather-than-destructive",
+      "contentSummary": "The migration followed:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-064",
+      "title": "64. `RES-011` Online JSON viewer was reconciled",
+      "anchor": "64-res-011-online-json-viewer-was-reconciled",
+      "contentSummary": "`RES-011` retained its stable Resource identity.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-065",
+      "title": "65. `RES-019` evolved from Work Update Catalog root to Viewer root",
+      "anchor": "65-res-019-evolved-from-work-update-catalog-root-to-viewer-root",
+      "contentSummary": "The old Resource was named:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-066",
+      "title": "66. Legacy manifest identity was preserved",
+      "anchor": "66-legacy-manifest-identity-was-preserved",
+      "contentSummary": "`RES-020` was not silently reassigned to the new source-aware manifest.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-067",
+      "title": "67. Legacy manifest builder identity was preserved",
+      "anchor": "67-legacy-manifest-builder-identity-was-preserved",
+      "contentSummary": "The same principle was applied to:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-068",
+      "title": "68. PST-SP sidecar moved across Documentation Spaces without losing Resource identity",
+      "anchor": "68-pst-sp-sidecar-moved-across-documentation-spaces-without-losing-resource-identity",
+      "contentSummary": "`RES-025` previously pointed into the old common sidecar directory.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-069",
+      "title": "69. `RES-041` Project documentation root was reconciled semantically",
+      "anchor": "69-res-041-project-documentation-root-was-reconciled-semantically",
+      "contentSummary": "The Project documentation root moved from:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-070",
+      "title": "70. `RES-041` LAST UPDATE column shift was repaired",
+      "anchor": "70-res-041-last-update-column-shift-was-repaired",
+      "contentSummary": "The stale-link review also exposed a spreadsheet defect.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-071",
+      "title": "71. `RES-042` Meadows Housekeeping Projects Summary description was reconciled",
+      "anchor": "71-res-042-meadows-housekeeping-projects-summary-description-was-reconciled",
+      "contentSummary": "The Registry description for the Meadows architecture document still contained the older transitional classification.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-072",
+      "title": "72. New source-aware Viewer Resources were registered",
+      "anchor": "72-new-source-aware-viewer-resources-were-registered",
+      "contentSummary": "Three new Resource identities were created.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-073",
+      "title": "73. Registry Activity continuity was deliberately preserved",
+      "anchor": "73-registry-activity-continuity-was-deliberately-preserved",
+      "contentSummary": "Before making the changes, earlier Activity entries were reviewed so the new descriptions would match the established style.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-074",
+      "title": "74. ACT-0059 through ACT-0076 were appended",
+      "anchor": "74-act-0059-through-act-0076-were-appended",
+      "contentSummary": "The cleanup produced a new Activity sequence.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-075",
+      "title": "75. Stale `work-update-catalog` references were removed from current Resources",
+      "anchor": "75-stale-work-update-catalog-references-were-removed-from-current-resources",
+      "contentSummary": "After the Registry writes, the Resources tab was searched for:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-076",
+      "title": "76. LAST UPDATE values now derive from the new Activities",
+      "anchor": "76-last-update-values-now-derive-from-the-new-activities",
+      "contentSummary": "The affected Resource rows now show:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-077",
+      "title": "77. The Resource Registry acted as an evolving system, not a bookmark list",
+      "anchor": "77-the-resource-registry-acted-as-an-evolving-system-not-a-bookmark-list",
+      "contentSummary": "The day's cleanup demonstrates the progression that began August 9.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-078",
+      "title": "78. The same event/state pattern now appears across Klinswork",
+      "anchor": "78-the-same-eventstate-pattern-now-appears-across-klinswork",
+      "contentSummary": "The Registry work reinforces a broader Klinswork pattern:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-079",
+      "title": "79. Current authority stack became clearer",
+      "anchor": "79-current-authority-stack-became-clearer",
+      "contentSummary": "The day's architecture can now express authority approximately as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-080",
+      "title": "80. The distinction between authority and presentation was reinforced",
+      "anchor": "80-the-distinction-between-authority-and-presentation-was-reinforced",
+      "contentSummary": "The online Viewer can now display Project and System records.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-081",
+      "title": "81. Current physical repository state now reflects the architecture better",
+      "anchor": "81-current-physical-repository-state-now-reflects-the-architecture-better",
+      "contentSummary": "The current tree includes:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-082",
+      "title": "82. Legacy and current Viewer generations now coexist intentionally",
+      "anchor": "82-legacy-and-current-viewer-generations-now-coexist-intentionally",
+      "contentSummary": "The architecture no longer needs to pretend that every older Viewer artifact disappeared.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-083",
+      "title": "83. Documentation Spaces are semantic, not merely directory labels",
+      "anchor": "83-documentation-spaces-are-semantic-not-merely-directory-labels",
+      "contentSummary": "The Common, Projects, and Therapy sources are more than convenient folder groupings.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-084",
+      "title": "84. Generic Common storage remains valid",
+      "anchor": "84-generic-common-storage-remains-valid",
+      "contentSummary": "The architecture also preserves a fallback rule.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-085",
+      "title": "85. Project/System discovery has now been tested with one nested exemplar",
+      "anchor": "85-projectsystem-discovery-has-now-been-tested-with-one-nested-exemplar",
+      "contentSummary": "The Inventory Management exemplar provides the first useful nested Projects test:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-086",
+      "title": "86. Project versus System should become a Viewer-level distinction",
+      "anchor": "86-project-versus-system-should-become-a-viewer-level-distinction",
+      "contentSummary": "The current generic Viewer tree can show both records.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-087",
+      "title": "87. Record Profile templates should become first-class Viewer objects",
+      "anchor": "87-record-profile-templates-should-become-first-class-viewer-objects",
+      "contentSummary": "The PST-SP template discovery suggests a broader Viewer enhancement.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-088",
+      "title": "88. Project Identity should eventually receive an Entity Record preview",
+      "anchor": "88-project-identity-should-eventually-receive-an-entity-record-preview",
+      "contentSummary": "The Project Identity profile already anticipates:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-089",
+      "title": "89. The first Project Definition exemplar exposed useful unresolved questions",
+      "anchor": "89-the-first-project-definition-exemplar-exposed-useful-unresolved-questions",
+      "contentSummary": "The exemplar made several questions more concrete.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-090",
+      "title": "90. The day did not formalize relationships prematurely",
+      "anchor": "90-the-day-did-not-formalize-relationships-prematurely",
+      "contentSummary": "The architecture recognizes likely future relationship records such as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-091",
+      "title": "91. Operational Environment remains outside the Project hierarchy",
+      "anchor": "91-operational-environment-remains-outside-the-project-hierarchy",
+      "contentSummary": "Meadows Housekeeping remains conceptually:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-092",
+      "title": "92. Resource identity remains global and reusable",
+      "anchor": "92-resource-identity-remains-global-and-reusable",
+      "contentSummary": "The day's Registry work reinforces:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-093",
+      "title": "93. Project/System hierarchy does not replace Resource relationships",
+      "anchor": "93-projectsystem-hierarchy-does-not-replace-resource-relationships",
+      "contentSummary": "A System can use a Resource without owning its identity.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-094",
+      "title": "94. Implementation plans retained a separate role",
+      "anchor": "94-implementation-plans-retained-a-separate-role",
+      "contentSummary": "The Inventory Management directory already contained:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-095",
+      "title": "95. The Project Definition resume-work sequence became concrete",
+      "anchor": "95-the-project-definition-resume-work-sequence-became-concrete",
+      "contentSummary": "The Inventory Management README and Summary now support a context-naive sequence approximately like:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-096",
+      "title": "96. Today's work strengthens the case for declared future sessions",
+      "anchor": "96-todays-work-strengthens-the-case-for-declared-future-sessions",
+      "contentSummary": "The original reason for postponing rigid session structure was practical.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-097",
+      "title": "97. But the work-session model still needs an end-to-end test",
+      "anchor": "97-but-the-work-session-model-still-needs-an-end-to-end-test",
+      "contentSummary": "Today's session was reconstructed after the fact.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-098",
+      "title": "98. Concrete capabilities gained today",
+      "anchor": "98-concrete-capabilities-gained-today",
+      "contentSummary": "By the end of August 15, Klinswork could support all of the following more clearly than before:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-099",
+      "title": "99. Artifacts materially created or completed today",
+      "anchor": "99-artifacts-materially-created-or-completed-today",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-100",
+      "title": "100. Existing artifacts whose role changed today",
+      "anchor": "100-existing-artifacts-whose-role-changed-today",
+      "contentSummary": "Some artifacts were not newly created but acquired clearer roles.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-101",
+      "title": "101. Items still incomplete after August 15",
+      "anchor": "101-items-still-incomplete-after-august-15",
+      "contentSummary": "The work is architecturally substantial but not finished.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-102",
+      "title": "102. Recommended next implementation sequence",
+      "anchor": "102-recommended-next-implementation-sequence",
+      "contentSummary": "The current architecture suggests the following sequence.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-103",
+      "title": "103. High-information architecture tests now available",
+      "anchor": "103-high-information-architecture-tests-now-available",
+      "contentSummary": "The following tests would produce especially useful evidence.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-104",
+      "title": "104. Architectural interpretation — Record Profiles solved a hidden type problem",
+      "anchor": "104-architectural-interpretation-record-profiles-solved-a-hidden-type-problem",
+      "contentSummary": "Earlier Documentation work had many structured JSON documents.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-105",
+      "title": "105. Architectural interpretation — Project identity became smaller and therefore stronger",
+      "anchor": "105-architectural-interpretation-project-identity-became-smaller-and-therefore-stronger",
+      "contentSummary": "A common failure in information systems is to make an identity record contain everything known about an entity.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-106",
+      "title": "106. Architectural interpretation — narrative remains necessary",
+      "anchor": "106-architectural-interpretation-narrative-remains-necessary",
+      "contentSummary": "The Project Identity record is machine-friendly.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-107",
+      "title": "107. Architectural interpretation — the first exemplar converted theory into constraints",
+      "anchor": "107-architectural-interpretation-the-first-exemplar-converted-theory-into-constraints",
+      "contentSummary": "Before Inventory Management, Project Definition questions were abstract.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-108",
+      "title": "108. Architectural interpretation — discovery is now separate from storage",
+      "anchor": "108-architectural-interpretation-discovery-is-now-separate-from-storage",
+      "contentSummary": "The source-aware Viewer architecture creates:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-109",
+      "title": "109. Architectural interpretation — Registry migration validated identity/location separation",
+      "anchor": "109-architectural-interpretation-registry-migration-validated-identitylocation-separation",
+      "contentSummary": "The stale-link cleanup is more important than it appears.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-110",
+      "title": "110. Architectural interpretation — legacy/current coexistence is a feature, not a defect",
+      "anchor": "110-architectural-interpretation-legacycurrent-coexistence-is-a-feature-not-a-defect",
+      "contentSummary": "Klinswork now visibly contains:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-111",
+      "title": "111. Architectural interpretation — current truth should be reconstructable",
+      "anchor": "111-architectural-interpretation-current-truth-should-be-reconstructable",
+      "contentSummary": "The ideal Klinswork state is increasingly:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-112",
+      "title": "112. Architectural interpretation — the work-session structure is becoming operationally meaningful",
+      "anchor": "112-architectural-interpretation-the-work-session-structure-is-becoming-operationally-meaningful",
+      "contentSummary": "The observation motivating this summary is important:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-113",
+      "title": "113. The recurring undeclared-session pattern should now become a test target",
+      "anchor": "113-the-recurring-undeclared-session-pattern-should-now-become-a-test-target",
+      "contentSummary": "Two weekends in a row produced meaningful work before formal declaration.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-114",
+      "title": "114. Current session reconstruction status",
+      "anchor": "114-current-session-reconstruction-status",
+      "contentSummary": "This August 15 summary is itself retrospective.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-115",
+      "title": "115. Potential workflow-run record for today",
+      "anchor": "115-potential-workflow-run-record-for-today",
+      "contentSummary": "If the session is later encoded as a workflow run, likely high-level fields include:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-116",
+      "title": "116. Current architecture map",
+      "anchor": "116-current-architecture-map",
+      "contentSummary": "The day's working architecture can be summarized as:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-117",
+      "title": "117. Current authority map",
+      "anchor": "117-current-authority-map",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-118",
+      "title": "118. Current Inventory Management Project Definition map",
+      "anchor": "118-current-inventory-management-project-definition-map",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-119",
+      "title": "119. Current Viewer architecture map",
+      "anchor": "119-current-viewer-architecture-map",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-120",
+      "title": "120. Current Resource Registry migration map",
+      "anchor": "120-current-resource-registry-migration-map",
+      "contentSummary": "For the new source-aware infrastructure:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-121",
+      "title": "121. Final assessment",
+      "anchor": "121-final-assessment",
+      "contentSummary": "August 15 produced a large amount of visible work.",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-122",
+      "title": "Appendix A — principal August 15 source artifacts",
+      "anchor": "appendix-a-principal-august-15-source-artifacts",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-123",
+      "title": "Appendix B — key architectural invariants",
+      "anchor": "appendix-b-key-architectural-invariants",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-124",
+      "title": "Appendix C — Project Definition exemplar",
+      "anchor": "appendix-c-project-definition-exemplar",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-125",
+      "title": "Appendix D — Record Profile model",
+      "anchor": "appendix-d-record-profile-model",
+      "contentSummary": "Future candidate:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-126",
+      "title": "Appendix E — Viewer generation map",
+      "anchor": "appendix-e-viewer-generation-map",
+      "contentSummary": "Legacy path:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-127",
+      "title": "Appendix F — Resource Registry changes",
+      "anchor": "appendix-f-resource-registry-changes",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-128",
+      "title": "Appendix G — Activity sequence added",
+      "anchor": "appendix-g-activity-sequence-added",
+      "contentSummary": "Timestamp family:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-129",
+      "title": "Appendix H — major unresolved architecture questions",
+      "anchor": "appendix-h-major-unresolved-architecture-questions",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-130",
+      "title": "Appendix I — recommended next cold-start test",
+      "anchor": "appendix-i-recommended-next-cold-start-test",
+      "contentSummary": "Success criterion:",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-131",
+      "title": "Appendix J — recommended next Viewer tests",
+      "anchor": "appendix-j-recommended-next-viewer-tests",
+      "contentSummary": "",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "sec-132",
+      "title": "Appendix K — one-sentence August 15 conclusion",
+      "anchor": "appendix-k-one-sentence-august-15-conclusion",
+      "contentSummary": "**On August 15, 2026, Klinswork moved from having an increasingly explicit architecture for Projects, Resources, documentation, and context restoration to actually instantiating that architecture in its first complete Project Definition exemplar, while simultaneously formalizing Record Profiles, separating Entity Records from sidecars, documenting Inventory 3.0 as a System without prematurely freezing System Identity, upgrading the Klinswork Documentation Viewer to source-aware discovery, and reconciling the Resource Registry so stable identities, current locations, and historical changes remain distinguishable.**",
+      "narrativeRole": "source-summary section",
+      "projectRelevance": {
+        "primaryProjectContribution": "Documents the August 15 Klinswork architecture/work-session reconstruction.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "GitHub",
+      "GitHub Pages",
+      "Windows",
+      "Google Docs",
+      "Google Sheets",
+      "Google Apps Script"
+    ],
+    "apps": [
+      "Klinswork Documentation Viewer",
+      "Inventory 3.0"
+    ],
+    "scripts": [
+      "documentation-viewer-manifest.py",
+      "build_repository_tree.py",
+      "manifest.py",
+      "json-viewer-v1.6.0.py",
+      "open-json-viewer-v1.6.0.bat"
+    ],
+    "languages": [
+      "JSON",
+      "Markdown",
+      "Python",
+      "HTML",
+      "JavaScript",
+      "Windows Batch"
+    ],
+    "services": [
+      "GitHub Pages",
+      "Google Drive"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Google Sheets"
+    ],
+    "files": [
+      "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+      "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+      "project-identity-template-1.0-draft.json",
+      "project-identity.json",
+      "project-summary.md",
+      "project-summary-sidecar.json",
+      "system-summary.md",
+      "system-summary-sidecar.json",
+      "documentation-viewer-sources.json",
+      "documentation-viewer-manifest.py",
+      "documentation-viewer-manifest.json",
+      "json-viewer.html",
+      "json-manifest.json",
+      "manifest.py"
+    ],
+    "integrations": [
+      "Documentation Viewer source registry → manifest builder",
+      "manifest builder → generated source-aware manifest",
+      "source-aware manifest → online Viewer",
+      "Resource Registry Resources → Activities-derived LAST UPDATE"
+    ],
+    "apis": [],
+    "versions": [
+      "Klinswork Documentation Viewer 2.0-draft",
+      "Local Python JSON Viewer v1.6.0",
+      "Work Update Sidecar schema 3.0-draft",
+      "Project Identity profile 1.0-draft"
+    ],
+    "tests": [
+      {
+        "name": "Source-aware manifest refresh",
+        "type": "discovery / JSON validation",
+        "result": "69 records; 69 valid JSON; 0 invalid JSON; sources reported as common 66, projects 2, therapy 1.",
+        "notes": "One generated snapshot during the August 15 Viewer test.",
+        "statusBasis": "Console output captured during launcher/manifest test and preserved in the source summary."
+      },
+      {
+        "name": "Projects Documentation Space discovery",
+        "type": "end-to-end Viewer discovery",
+        "result": "Project Summary and Inventory 3.0 System Summary sidecars appeared in the online source-aware Viewer tree.",
+        "notes": "",
+        "statusBasis": "Observed online Viewer behavior recorded in the source summary."
+      },
+      {
+        "name": "Current Resource stale-path scan",
+        "type": "Registry reconciliation",
+        "result": "0 current Resource-row matches for `work-update-catalog` after cleanup.",
+        "notes": "Historical Activities intentionally retain former path language.",
+        "statusBasis": "Post-write Registry scan recorded in the source summary."
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "pass with open architectural gaps",
+      "notes": [
+        "Generated source summary exists and is the narrative authority for this sidecar.",
+        "Project/System sidecars were discovered successfully.",
+        "Entity Record discovery remains pending.",
+        "Record Profile template preview remains pending.",
+        "Local Python Viewer remains transitional."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "local-generated-artifact; repository publication not yet confirmed",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "From Architecture to First Project Definition",
+    "listingDescription": "Comprehensive August 15, 2026 Klinswork milestone work summary covering Project Definition, Record Profiles, Viewer discovery, and Registry reconciliation.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+    "sourceConversationReference": "ChatGPT conversation — August 15, 2026",
+    "sourceFiles": [
+      "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md",
+      "work-update-sidecar-template-3.0(1).json",
+      "repository-tree(20260815-190935).txt"
+    ],
+    "generatedBy": "OpenAI ChatGPT GPT-5.6 Sol",
+    "generatedTimestamp": "2026-08-15T15:36:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-unreviewed",
+    "interpretationNotes": [
+      "The source Summary is authoritative for the narrative interpretation represented by this sidecar.",
+      "The work session was undeclared at the start and is represented here as a reconstructed work session rather than a prospectively declared workflow run.",
+      "Exact session start/end times were not formally recorded; coverage times remain null.",
+      "Permanent Project and System identifiers were intentionally not invented.",
+      "System Identity remains deliberately deferred.",
+      "The Work Update profile is used because the source primarily records work performed, decisions, results, and project change over a period."
+    ],
+    "unresolvedQuestions": [
+      "Which artifact allocates and has precedence for permanent Project IDs: Project Registry, Project Identity Entity Record, or another controlled process?",
+      "How should Entity Records be discovered by the source-aware manifest without being treated as sidecars?",
+      "How should the Viewer distinguish Record Profile templates from instantiated records?",
+      "When should System Identity and SYS-### allocation be formalized?",
+      "Which files and records should become mandatory in the reusable Project Definition template?",
+      "How should the local Python Viewer converge with the source-aware online Viewer architecture?",
+      "Should Work Update sidecars eventually carry a compact session-entry-mode field, or should that remain exclusively in workflow-run records?"
+    ]
+  }
+}
