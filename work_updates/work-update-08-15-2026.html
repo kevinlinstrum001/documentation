@@ -1,0 +1,4636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Klinswork work update for August 15, 2026 covering Project Definition, Record Profile architecture, Project Identity, Inventory Management and Inventory 3.0 documentation, source-aware Klinswork Documentation Viewer discovery, and Resource Registry reconciliation.">
+  <meta name="author" content="Kevin Linstrum">
+  <meta name="document-id" content="work-update-2026-08-15-project-definition-viewer-reconciliation">
+  <title>From Architecture to First Project Definition — Klinswork Work Update — August 15, 2026</title>
+  <style>
+    :root {
+      --ink: #1c2735;
+      --muted: #5d6875;
+      --paper: #ffffff;
+      --page: #eef2f6;
+      --navy: #17324d;
+      --blue: #2f628f;
+      --blue-soft: #eaf2f9;
+      --line: #d6dde5;
+      --gold: #9a7419;
+      --gold-border: #c9a84d;
+      --gold-paper: #fff8dc;
+      --gold-ink: #382b0b;
+      --green: #266148;
+      --green-soft: #edf7f1;
+      --shadow: 0 16px 45px rgba(21, 41, 62, 0.10);
+      --radius: 16px;
+      --content-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 1.25rem;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(47, 98, 143, 0.09), transparent 34rem),
+        var(--page);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: 0.18em;
+      text-decoration-thickness: 0.08em;
+    }
+
+    a:hover {
+      color: var(--navy);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #3478b5;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 10;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 0.5rem;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-header {
+      color: #fff;
+      background:
+        linear-gradient(132deg, rgba(23, 50, 77, 0.97), rgba(39, 78, 111, 0.94)),
+        var(--navy);
+      border-bottom: 5px solid var(--gold-border);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 4.4rem 0 3.8rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+      color: #d7e7f5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.45rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    .dek {
+      max-width: 800px;
+      margin: 1.35rem 0 0;
+      color: #e6eef5;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.55;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.6rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.35rem 0.75rem;
+      color: #eef7ff;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(calc(100% - 2rem), var(--content-width));
+      margin: 0 auto;
+      padding: 2.2rem 0 5rem;
+    }
+
+    .bootstrap-banner {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.2rem;
+      background: var(--blue-soft);
+      border: 1px solid #b9cfe1;
+      border-left: 6px solid var(--blue);
+      border-radius: 12px;
+    }
+
+    .bootstrap-banner strong {
+      color: var(--navy);
+    }
+
+    .supervisor-path-intro {
+      margin: 0 0 1.5rem;
+      padding: 1.25rem 1.4rem;
+      color: var(--gold-ink);
+      background: linear-gradient(145deg, #fff9e3, #fff5c9);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(80, 60, 10, 0.08);
+    }
+
+    .supervisor-path-intro h2 {
+      margin: 0 0 0.35rem;
+      color: #5b430c;
+      font-size: 1.25rem;
+    }
+
+    .supervisor-path-intro p {
+      margin: 0;
+    }
+
+    .toc {
+      margin: 0 0 1.8rem;
+      padding: 1.25rem 1.4rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toc h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .toc ol {
+      columns: 2 280px;
+      column-gap: 2.2rem;
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .toc li {
+      break-inside: avoid;
+      margin: 0.22rem 0;
+    }
+
+    .content-section {
+      margin: 1.35rem 0;
+      padding: clamp(1.35rem, 3vw, 2.3rem);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .content-section > h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.65rem);
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    .section-eyebrow {
+      margin: 0 0 0.35rem;
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .section-body {
+      margin-top: 1.25rem;
+    }
+
+    .section-body h3 {
+      margin: 2rem 0 0.55rem;
+      color: var(--navy);
+      font-size: 1.35rem;
+      line-height: 1.28;
+    }
+
+    .section-body h4 {
+      margin: 1.5rem 0 0.4rem;
+      color: #314d66;
+      font-size: 1.08rem;
+    }
+
+    .section-body p {
+      margin: 0.8rem 0;
+    }
+
+    .section-body ul,
+    .section-body ol {
+      padding-left: 1.35rem;
+    }
+
+    .section-body li {
+      margin: 0.36rem 0;
+    }
+
+    .section-body blockquote {
+      margin: 1.25rem 0;
+      padding: 0.8rem 1.15rem;
+      color: #3e5366;
+      background: #f3f7fa;
+      border-left: 5px solid #8fb3cf;
+    }
+
+    code {
+      padding: 0.12em 0.32em;
+      color: #17324d;
+      background: #edf3f8;
+      border: 1px solid #d8e3ec;
+      border-radius: 0.28rem;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.91em;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 1rem 1.1rem;
+      color: #edf6ff;
+      background: #172a3a;
+      border-radius: 10px;
+    }
+
+    pre code {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+      border: 0;
+    }
+
+    .supervisor-callout {
+      margin: 1.35rem 0;
+      padding: clamp(1.3rem, 3vw, 2rem);
+      color: var(--gold-ink);
+      background:
+        linear-gradient(145deg, rgba(255, 252, 234, 0.96), rgba(255, 245, 202, 0.96)),
+        var(--gold-paper);
+      border: 1px solid var(--gold-border);
+      border-left: 8px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(72, 55, 12, 0.10);
+    }
+
+    .supervisor-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+
+    .supervisor-label {
+      margin: 0;
+      color: #73540d;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .callout-type {
+      padding: 0.18rem 0.55rem;
+      color: #5c4208;
+      background: rgba(154, 116, 25, 0.10);
+      border: 1px solid rgba(154, 116, 25, 0.35);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .supervisor-callout h2 {
+      margin: 0.55rem 0 0.45rem;
+      color: #4d390b;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      line-height: 1.18;
+    }
+
+    .supervisor-callout p {
+      max-width: 850px;
+      margin: 0.6rem 0;
+      font-size: 1.04rem;
+    }
+
+    .supervisor-navigation {
+      margin-top: 1.05rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(114, 83, 13, 0.25);
+    }
+
+    .supervisor-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #5e450c;
+      font-weight: 850;
+      text-decoration-thickness: 2px;
+    }
+
+    .hand {
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .bootstrap-next-steps {
+      border-color: #b9d7c7;
+    }
+
+    .bootstrap-note {
+      margin-top: 1.1rem;
+      padding: 0.9rem 1rem;
+      color: #244c3b;
+      background: var(--green-soft);
+      border: 1px solid #bad8c7;
+      border-left: 5px solid var(--green);
+      border-radius: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      padding: 0.7rem;
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--navy);
+      background: #f2f6f9;
+    }
+
+    .page-footer {
+      margin-top: 2rem;
+      padding: 1.4rem 0 0;
+      color: var(--muted);
+      border-top: 1px solid #cbd4dd;
+      font-size: 0.88rem;
+    }
+
+    .page-footer p {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 16px;
+      }
+
+      .header-inner {
+        padding: 3.2rem 0 2.8rem;
+      }
+
+      .page {
+        width: min(calc(100% - 1rem), var(--content-width));
+      }
+
+      .content-section,
+      .supervisor-callout,
+      .toc,
+      .supervisor-path-intro {
+        border-radius: 12px;
+      }
+
+      .toc ol {
+        columns: 1;
+      }
+    }
+
+    @media print {
+      :root {
+        --page: #fff;
+        --shadow: none;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11pt;
+      }
+
+      .site-header {
+        color: #000;
+        background: #fff;
+        border-bottom: 2px solid #9a7419;
+      }
+
+      .kicker, .dek {
+        color: #333;
+      }
+
+      .meta-chip {
+        color: #222;
+        background: #fff;
+        border-color: #aaa;
+      }
+
+      .page {
+        width: 100%;
+        padding-top: 1rem;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .content-section,
+      .supervisor-callout {
+        break-inside: avoid-page;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .supervisor-navigation {
+        display: none;
+      }
+    }
+  
+    .section-body h5 {
+      margin: 1.25rem 0 0.35rem;
+      color: #466078;
+      font-size: 0.98rem;
+      line-height: 1.3;
+    }
+
+    .section-body hr {
+      margin: 2rem 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .architecture-note {
+      margin: 1.15rem 0;
+      padding: 1rem 1.15rem;
+      background: #f5f8fb;
+      border: 1px solid #cfdbe5;
+      border-left: 5px solid var(--blue);
+      border-radius: 10px;
+    }
+
+    .architecture-note strong {
+      color: var(--navy);
+    }
+
+    .summary-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0 0;
+    }
+
+    .summary-stat {
+      padding: 0.85rem 1rem;
+      background: #f7fafc;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .summary-stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .summary-stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+</style>
+</head>
+<body id="document-top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="kicker">Klinswork · Work Update · August 15, 2026</p>
+      <h1>From Architecture to First Project Definition</h1>
+      <p class="dek">
+        An undeclared Saturday work session became a major Klinswork architecture milestone:
+        Record Profiles and Project Identity were formalized, Inventory Management became the first
+        complete Project Definition exemplar, Inventory 3.0 received a bounded System documentation
+        layer, the online Documentation Viewer became source-aware, and stale Registry routing was reconciled.
+      </p>
+      <div class="meta-row" aria-label="Document metadata">
+        <span class="meta-chip">Reconstructed work session</span>
+        <span class="meta-chip">First Project Definition exemplar</span>
+        <span class="meta-chip">Klinswork Documentation Viewer 2.0-draft</span>
+        <span class="meta-chip">Resource Registry reconciliation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="main-content">
+    
+<div class="bootstrap-banner" role="note">
+  <strong>Session reconstruction note:</strong>
+  This update covers work materially completed or reconciled on Saturday, August 15, 2026.
+  The session was not formally declared at the start. That chronology is preserved intentionally:
+  the work emerged while Klinswork was still building the Project identity, authority, discovery,
+  and routing foundations that make future structured work sessions meaningful.
+</div>
+
+    
+<section class="supervisor-path-intro" aria-labelledby="reading-path-title">
+  <h2 id="reading-path-title">Quick reading path</h2>
+  <p>
+    This document contains five gold milestone notes. Follow the <strong>pointing-hand links</strong>
+    for a short architecture-and-outcome path, or continue through the complete work record below.
+  </p>
+</section>
+
+
+    <nav class="toc" aria-labelledby="contents-title">
+      <h2 id="contents-title">Contents</h2>
+      <ol>
+        <li><a href="#executive-summary">Executive Summary, Source Discipline, Starting Position, and Session Entry</a></li>
+<li><a href="#ontology-identity">Project / System Reconciliation, Identity, and Architecture Change Control</a></li>
+<li><a href="#record-profiles">Record Profiles, Sidecars, Entity Records, and Project Identity</a></li>
+<li><a href="#project-definition">Inventory Management Project Definition</a></li>
+<li><a href="#inventory-system">Inventory 3.0 — System Documentation Without Premature System Identity</a></li>
+<li><a href="#documentation-spaces">Documentation Project, Documentation Spaces, and Source-Aware Discovery</a></li>
+<li><a href="#viewer-migration">Local Launcher, Online Viewer Migration, and PST-SP Preview Discovery</a></li>
+<li><a href="#registry-reconciliation">Resource Registry Reconciliation and Activity History</a></li>
+<li><a href="#authority-model">Authority, Relationships, Resource Semantics, and Work-Session Readiness</a></li>
+<li><a href="#capabilities-next">Capabilities Gained, Artifacts, Incomplete Work, and Next Tests</a></li>
+<li><a href="#architectural-meaning">Interpretation of the August 15 Work</a></li>
+<li><a href="#current-maps">Current Architecture Maps and Final Assessment</a></li>
+<li><a href="#appendices">Appendices — Source Artifacts, Invariants, Maps, Changes, and Test Plans</a></li>
+      </ol>
+      
+<div class="summary-stat-grid" aria-label="Session snapshot">
+  <div class="summary-stat"><strong>1</strong><span>first Project Definition exemplar</span></div>
+  <div class="summary-stat"><strong>3</strong><span>Documentation Spaces in source-aware discovery</span></div>
+  <div class="summary-stat"><strong>69 / 69</strong><span>valid JSON records in the Viewer manifest test</span></div>
+  <div class="summary-stat"><strong>18</strong><span>Registry Activities appended (ACT-0059–ACT-0076)</span></div>
+</div>
+
+    </nav>
+
+    
+<section class="content-section" id="executive-summary" aria-labelledby="executive-summary-title">
+  <p class="section-eyebrow">What changed</p>
+  <h2 id="executive-summary-title">Executive Summary, Source Discipline, Starting Position, and Session Entry</h2>
+  <div class="section-body">
+    <h3>1. Executive summary</h3>
+<p>The August 8–9 weekend established the broad prerequisites for a durable Klinswork environment:</p>
+<ul>
+<li>stable Resource identity;</li>
+<li>Resource Registry routing;</li>
+<li>Activities-based provenance;</li>
+<li>repository orientation;</li>
+<li>Startup;</li>
+<li>progressive context loading;</li>
+<li>semantic context requirements;</li>
+<li>controlled terminology;</li>
+<li>high-level operational architecture;</li>
+<li>distinction among Projects, Systems, Applications, Resources, and environments;</li>
+<li>explicit uncertainty;</li>
+<li>preservation of historical terminology;</li>
+<li>a direction toward formal Project/System records.</li>
+</ul>
+<p>But the earlier weekend still stopped short of a proven Project Definition.</p>
+<p>The architecture knew that Project records were needed.</p>
+<p>It did not yet know exactly how those records should be divided among:</p>
+<ul>
+<li>intrinsic identity;</li>
+<li>local orientation;</li>
+<li>human-readable narrative;</li>
+<li>machine-readable structured companions;</li>
+<li>relationships;</li>
+<li>Resources;</li>
+<li>System documentation;</li>
+<li>implementation plans;</li>
+<li>discovery;</li>
+<li>Viewer behavior.</li>
+</ul>
+<p>August 15 attacked that unresolved layer directly.</p>
+<p>The day's central sequence was:</p>
+<pre><code class="language-text">reconcile ontology
+    ↓
+formalize record families
+    ↓
+separate Entity Records from sidecars
+    ↓
+define Project Identity profile
+    ↓
+build Project Identity template
+    ↓
+instantiate Inventory Management Project identity
+    ↓
+create Project-local orientation
+    ↓
+create human-readable Project Summary
+    ↓
+create Project Summary sidecar
+    ↓
+document principal System: Inventory 3.0
+    ↓
+test source-aware discovery
+    ↓
+upgrade Viewer path
+    ↓
+reconcile Resource Registry
+</code></pre>
+<p>By the end of the session, the current repository physically contained:</p>
+<pre><code class="language-text">Inventory Management/
+├── implementation-plans/
+│   ├── implementation-plan.md
+│   └── README.md
+├── sidecars/
+│   └── project-summary-sidecar.json
+├── summaries/
+│   └── project-summary.md
+├── systems/
+│   └── Inventory 3.0/
+│       ├── sidecars/
+│       │   └── system-summary-sidecar.json
+│       ├── summaries/
+│       │   └── system-summary.md
+│       └── README.md
+├── project-identity.json
+└── README.md
+</code></pre>
+<p>This is the first time the Klinswork Project Definition architecture existed as a coherent real example rather than only as a conceptual target.</p>
+<p>A second major result was the Documentation Viewer transition.</p>
+<p>The online Viewer now uses:</p>
+<pre><code class="language-text">documentation-viewer-sources.json
+        ↓
+documentation-viewer-manifest.py
+        ↓
+documentation-viewer-manifest.json
+        ↓
+json-viewer.html
+</code></pre>
+<p>instead of depending solely on the legacy single-root:</p>
+<pre><code class="language-text">manifest.py
+    ↓
+json-manifest.json
+</code></pre>
+<p>The new manifest successfully discovered records from:</p>
+<pre><code class="language-text">common
+projects
+therapy
+</code></pre>
+<p>and, during testing, reported the two newly added Project-space sidecars.</p>
+<p>The session closed with a Registry reconciliation that preserved stable Resource identity while updating stale physical locations and recording every material change in Activities.</p>
+<p>This is a direct realization of the identity-versus-location principle established the prior weekend.</p>
+<hr />
+
+<h3>2. Scope and source discipline</h3>
+<p>This summary follows the same evidence discipline established in the August 8–9 comprehensive record.</p>
+<p>It distinguishes:</p>
+<pre><code class="language-text">current architecture records
+historical baseline
+repository evidence
+Registry evidence
+conversation reconstruction
+planning evidence
+implementation evidence
+current verified behavior
+</code></pre>
+<p>rather than collapsing them into one undifferentiated narrative.</p>
+<h4>2.1 Prior-weekend baseline</h4>
+<p>The principal baseline is:</p>
+<pre><code class="language-text">summary-2026-08-08-09-klinswork-weekend-architecture.md
+</code></pre>
+<p>That summary is important for two reasons.</p>
+<p>First, it records the architectural state from which today's work began.</p>
+<p>Second, it already established the rule that an undeclared work session should be reconstructed honestly rather than rewritten as though its final architecture had been prospectively planned.</p>
+<p>Today's summary continues that rule.</p>
+<h4>2.2 Current architecture records</h4>
+<p>The strongest architecture sources from August 15 include:</p>
+<ul>
+<li><strong>Meadows Housekeeping Projects Summary</strong>;</li>
+<li>Definitions tab;</li>
+<li>Documentation tab;</li>
+<li>Architecture Changelog;</li>
+<li>Record Profile Library files;</li>
+<li>Record Profile Registry;</li>
+<li>Project Identity template;</li>
+<li>Inventory Management Project Definition files;</li>
+<li>current repository tree;</li>
+<li>current Documentation Viewer source registry and generated manifest;</li>
+<li>current Resource Registry Resources and Activities.</li>
+</ul>
+<h4>2.3 Repository evidence</h4>
+<p>The current repository tree is treated as physical evidence.</p>
+<p>It answers:</p>
+<blockquote>
+<p>What is physically present in the repository at the time the tree was generated?</p>
+</blockquote>
+<p>It does not, by itself, answer:</p>
+<ul>
+<li>which record is authoritative;</li>
+<li>which entity owns a fact;</li>
+<li>whether a file is historical or current;</li>
+<li>whether a path constitutes identity;</li>
+<li>whether one file semantically belongs to another Project.</li>
+</ul>
+<p>That distinction remains fundamental.</p>
+<h4>2.4 Registry evidence</h4>
+<p>The live Resource Registry is the current authority used here for:</p>
+<ul>
+<li>Resource IDs;</li>
+<li>current registered locations;</li>
+<li>descriptions;</li>
+<li>Resource Type;</li>
+<li>Activity history represented in the Registry;</li>
+<li>evidence-derived LAST UPDATE values.</li>
+</ul>
+<p>The Registry is not treated as the authority for every fact contained in the Resources it routes to.</p>
+<h4>2.5 Conversation-reconstructed details</h4>
+<p>Some sequencing details are reconstructed from the August 15 conversation.</p>
+<p>These include:</p>
+<ul>
+<li>the exact order in which Project Definition artifacts were created;</li>
+<li>the discussion leading to Project Summary versus System Summary;</li>
+<li>the batch-launcher error;</li>
+<li>the online Viewer test;</li>
+<li>the PST-SP Record Profile template preview discovery;</li>
+<li>the decision to perform Registry cleanup after the Viewer test.</li>
+</ul>
+<p>Where exact timestamps were not independently recorded, this summary does not invent them.</p>
+<h4>2.6 Planning evidence versus implementation evidence</h4>
+<p>Historical plans and roadmaps remain planning evidence unless execution is separately established.</p>
+<p>This matters especially for Inventory 3.0.</p>
+<p>The System Summary deliberately distinguishes:</p>
+<pre><code class="language-text">roadmap / design requirement
+        ≠
+historically implemented feature
+        ≠
+current live implementation truth
+</code></pre>
+<h4>2.7 Chronology caveat</h4>
+<p>The final architecture visible at the end of the day was not known in complete form at the beginning of the day.</p>
+<p>The summary therefore preserves:</p>
+<pre><code class="language-text">what was already true
+what was discovered
+what was decided
+what was created
+what was tested
+what was revised
+what remains unresolved
+</code></pre>
+<p>without pretending that the final result was a pre-approved session plan.</p>
+<hr />
+
+<h3>3. Starting position inherited from August 8–9</h3>
+<p>The prior weekend ended with a much stronger Klinswork architecture, but several key pieces were still provisional.</p>
+<p>The environment had established or substantially advanced:</p>
+<ul>
+<li>Documentation as a recursive cross-project undertaking;</li>
+<li>a Resource Registry;</li>
+<li>stable <code>RES-###</code> identifiers;</li>
+<li>Activities as provenance;</li>
+<li><code>RES-000 — CHATGPT — READ THIS FIRST</code>;</li>
+<li>Startup as a bootstrap concept;</li>
+<li>semantic context requirements;</li>
+<li>Registry-based Resource Resolution;</li>
+<li>a working project/system architecture;</li>
+<li>a Meadows high-level architecture document;</li>
+<li>Viewer and manifest concepts;</li>
+<li>project/system record direction;</li>
+<li>open determinations;</li>
+<li>historical-era preservation.</li>
+</ul>
+<p>The prior weekend also explicitly identified Project/System records as a next major test.</p>
+<p>Inventory Management was already recognized as a high-information-value exemplar because it had:</p>
+<ul>
+<li>real operational meaning;</li>
+<li>digital implementation;</li>
+<li>paper/non-digital relationships;</li>
+<li>historical data;</li>
+<li>application history;</li>
+<li>Resource relationships;</li>
+<li>previous documentation;</li>
+<li>current questions;</li>
+<li>cross-system integrations.</li>
+</ul>
+<p>But the earlier ontology was still transitional.</p>
+<p>The August 8–9 comprehensive summary described approximately:</p>
+<pre><code class="language-text">Housekeeping Operations
+    ↓
+Inventory Management          [system]
+    ↓
+Inventory 3.0                 [application / implementation]
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">Task Assignment and Tracking  [system]
+    ↓
+Work Queue                    [application]
+</code></pre>
+<p>By August 15, that model required another correction.</p>
+<p>The architecture had become strong enough to recognize that Inventory Management and Task Assignment and Tracking were not merely operational systems inside one giant project.</p>
+<p>They were substantial Project-level bodies of work in their own right.</p>
+<p>Today's session therefore began from a strong but still transitional ontology.</p>
+<hr />
+
+<h3>4. Why another undeclared weekend work session happened</h3>
+<p>This is the second consecutive weekend in which substantial Klinswork work emerged without first being declared as a formal structured work session.</p>
+<p>That recurrence deserves explanation.</p>
+<p>The most immediate explanation is architectural.</p>
+<p>The intended structured work-session model depends on foundations such as:</p>
+<pre><code class="language-text">Startup
+    ↓
+identify current Project / System / work target
+    ↓
+resolve identity
+    ↓
+load local orientation
+    ↓
+load current human-readable definition
+    ↓
+resolve relationships
+    ↓
+resolve Resources
+    ↓
+load applicable workflow
+    ↓
+load implementation plan / run state
+    ↓
+perform work
+</code></pre>
+<p>But many of those records and routing rules were precisely what the session was still constructing.</p>
+<p>This creates a bootstrap problem.</p>
+<p>A session cannot fully rely on:</p>
+<pre><code class="language-text">Project Identity
+Project Summary
+System Summary
+Record Profiles
+source-aware discovery
+Registry routing
+</code></pre>
+<p>before those things exist.</p>
+<p>Therefore today's undeclared entry was not simply failure to use the architecture.</p>
+<p>It was partly the final stage of building the architecture needed to make future use meaningful.</p>
+<p>At the same time, today's work changes the justification going forward.</p>
+<p>At the beginning of the day:</p>
+<pre><code class="language-text">the foundations were incomplete
+</code></pre>
+<p>By the end of the day:</p>
+<pre><code class="language-text">one Project Definition exemplar exists
+source-aware discovery exists
+Viewer support exists
+Registry routing is cleaner
+</code></pre>
+<p>That means the next real work session can be a stronger test of the declared-session model.</p>
+<p>The progression across two weekends is therefore:</p>
+<pre><code class="language-text">AUGUST 8–9
+    discover the foundations required
+    for restorable work context
+
+AUGUST 15
+    instantiate and test
+    a large portion of those foundations
+
+NEXT
+    use the foundations prospectively
+    in a declared work session
+</code></pre>
+<p>This should become an explicit evaluation criterion.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="milestone-note-1" aria-labelledby="milestone-note-1-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Milestone reading path · 1 of 5</p>
+    <span class="callout-type">Session meaning</span>
+  </div>
+  <h2 id="milestone-note-1-title">This was an undeclared work session because the session infrastructure itself was still being built</h2>
+  <p>The work began as architecture clarification rather than a declared run. By the end of the day, Project Identity, Project Summaries, System documentation, source-aware discovery, and cleaner Registry routing made the next formally declared work session substantially more meaningful.</p>
+  <nav class="supervisor-navigation" aria-label="Milestone reading path">
+    <a class="supervisor-next" href="#milestone-note-2"><span class="hand" aria-hidden="true">☞</span><span>Next milestone note: The identity architecture</span></a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="ontology-identity" aria-labelledby="ontology-identity-title">
+  <p class="section-eyebrow">Semantic architecture</p>
+  <h2 id="ontology-identity-title">Project / System Reconciliation, Identity, and Architecture Change Control</h2>
+  <div class="section-body">
+    <h3>5. Major ontology correction — Project and System were separated again</h3>
+<p>One of the day's earliest important corrections concerned the hierarchy itself.</p>
+<p>The working Klinswork hierarchy became:</p>
+<pre><code class="language-text">KLINSWORK
+    ↓
+Project
+    ↓
+Child Project
+    ↓
+System
+    ↓
+Resource
+</code></pre>
+<p>where Parent Project and Child Project are not different entity types.</p>
+<p>They are both Projects.</p>
+<p>The parent/child distinction is a relationship.</p>
+<p>The current Operations family became:</p>
+<pre><code class="language-text">Klinswork
+├── Operations                         [Project]
+│   ├── Inventory Management           [Project]
+│   │   └── Inventory 3.0              [System]
+│   ├── Scheduling                     [Project]
+│   │   └── systems pending reconciliation
+│   ├── Task Assignment and Tracking   [Project]
+│   │   └── Work Queue                 [System]
+│   └── Employee Achievements          [provisional Project candidate]
+└── Documentation                      [separate cross-project Project]
+</code></pre>
+<p>This is a significant correction from the previous weekend's transitional model.</p>
+<h4>5.1 Why Inventory Management became a Project</h4>
+<p>Inventory Management is not merely one implemented mechanism.</p>
+<p>It represents a durable body of work involving:</p>
+<ul>
+<li>operational function;</li>
+<li>current implementation;</li>
+<li>history;</li>
+<li>decisions;</li>
+<li>Resources;</li>
+<li>documentation;</li>
+<li>changes;</li>
+<li>future work;</li>
+<li>unresolved questions;</li>
+<li>relationships to other Projects;</li>
+<li>potentially multiple Systems over time.</li>
+</ul>
+<p>That makes it more naturally Project-level.</p>
+<h4>5.2 Why Inventory 3.0 became a System</h4>
+<p>Inventory 3.0 is a coherent implemented mechanism within the broader Inventory Management undertaking.</p>
+<p>It can therefore be described as a System without making it identical to the Project.</p>
+<h4>5.3 Why Work Queue became a System</h4>
+<p>The same logic applies to:</p>
+<pre><code class="language-text">Task Assignment and Tracking
+    = Project
+
+Work Queue
+    = System
+</code></pre>
+<p>This creates a more durable hierarchy.</p>
+<p>The Project can survive implementation replacement.</p>
+<p>The System can evolve independently of the Project's broader purpose.</p>
+<h4>5.4 Operational Function remains separate</h4>
+<p>The architecture also preserved:</p>
+<pre><code class="language-text">Operational Function
+    = real-world function independent of implementation
+</code></pre>
+<p>This prevents Project and System from absorbing the underlying operational reality.</p>
+<p>For Inventory Management, the operational function includes inventory control whether performed through:</p>
+<ul>
+<li>software;</li>
+<li>paper;</li>
+<li>physical counts;</li>
+<li>supervisor practice;</li>
+<li>manual correction;</li>
+<li>other future mechanisms.</li>
+</ul>
+<hr />
+
+<h3>6. Identity was explicitly separated from hierarchy</h3>
+<p>The ontology correction led to a stronger identity rule.</p>
+<p>The session adopted the invariant:</p>
+<pre><code class="language-text">identity != name
+identity != location
+identity != hierarchy
+identity != status
+identity != implementation
+</code></pre>
+<p>For Projects specifically:</p>
+<pre><code class="language-text">Project identity
+    != Project name
+    != repository path
+    != parent Project
+    != child Projects
+    != System
+    != application
+    != Resource
+    != deployment
+    != lifecycle state
+</code></pre>
+<p>This was not merely philosophical.</p>
+<p>It directly affected:</p>
+<ul>
+<li>Project ID design;</li>
+<li>Project Identity template fields;</li>
+<li>Inventory Management record placement;</li>
+<li>relationship modeling;</li>
+<li>Registry design;</li>
+<li>README language;</li>
+<li>sidecar scope;</li>
+<li>Viewer interpretation.</li>
+</ul>
+<p>The practical consequence is:</p>
+<pre><code class="language-text">rename Project
+    ≠ new Project
+
+move Project folder
+    ≠ new Project
+
+change parent
+    ≠ new Project
+
+replace System
+    ≠ new Project
+
+replace deployment
+    ≠ new Project
+</code></pre>
+<p>That is the foundation for durable <code>PROJ-###</code> identity.</p>
+<hr />
+
+<h3>7. Permanent Project IDs remained intentionally unassigned</h3>
+<p>The day's architecture could have rushed to assign:</p>
+<pre><code class="language-text">PROJ-001
+PROJ-002
+...
+</code></pre>
+<p>It deliberately did not.</p>
+<p>The Inventory Management Project Identity record therefore contains:</p>
+<pre><code class="language-text">projectId: &quot;&quot;
+projectIdAssignmentStatus: unassigned
+</code></pre>
+<p>This is an explicit state.</p>
+<p>It is not missing data to be casually filled.</p>
+<p>The reason is that several authority questions remain open:</p>
+<ul>
+<li>Who allocates <code>PROJ-###</code> values?</li>
+<li>Is the Project Registry the allocator?</li>
+<li>Is the Project Identity Entity Record the identity master?</li>
+<li>What happens if those sources disagree?</li>
+<li>Does the Entity Record itself need a record ID distinct from the Project ID?</li>
+</ul>
+<p>The session treated visible uncertainty as preferable to premature stability.</p>
+<hr />
+
+<h3>8. Project Registry authority remained deliberately unresolved</h3>
+<p>A particularly important open question concerned the relationship between:</p>
+<pre><code class="language-text">Project Identity Entity Record
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">Project Registry
+</code></pre>
+<p>The architecture currently gives the Project Identity record a narrow intended authority:</p>
+<blockquote>
+<p>stable Project identity facts explicitly assigned to the profile.</p>
+</blockquote>
+<p>The Project Registry is still expected to support:</p>
+<ul>
+<li>registration;</li>
+<li>global indexing;</li>
+<li>routing;</li>
+<li>possibly Project-ID allocation.</li>
+</ul>
+<p>But the exact conflict/precedence model is not frozen.</p>
+<p>This is recorded as an open architecture question rather than being silently decided inside the first template.</p>
+<p>That restraint matters because the first exemplar should test the architecture rather than force every unresolved global issue into Inventory Management.</p>
+<hr />
+
+<h3>9. Architecture change control became concrete</h3>
+<p>The Meadows Housekeeping Projects Summary now includes Architecture Changelog entries documenting the day's architecture changes.</p>
+<h4>ARCH-001 — Project Identity Vocabulary Reconciliation</h4>
+<p>Status:</p>
+<pre><code class="language-text">Applied
+</code></pre>
+<p>Purpose:</p>
+<ul>
+<li>reconcile Parent Project → Child Project → System → Resource;</li>
+<li>preserve Operational Function separately;</li>
+<li>correct transitional terminology;</li>
+<li>avoid assigning permanent Project/System IDs prematurely.</li>
+</ul>
+<p>The visible date is August 15, 2026.</p>
+<h4>ARCH-002 — Record Profile Taxonomy and Library Reclassification</h4>
+<p>Timestamp:</p>
+<pre><code class="language-text">2026-08-15T11:41:00-06:00
+</code></pre>
+<p>This change formalized:</p>
+<ul>
+<li>Record Profile;</li>
+<li>Record Profile Library;</li>
+<li>Profile Template;</li>
+<li>Sidecar;</li>
+<li>Entity Record;</li>
+<li>Record Profile Registry direction;</li>
+<li><code>schemaRoadmap</code>;</li>
+<li>authority boundaries.</li>
+</ul>
+<h4>ARCH-003 — Documentation Project Architecture, Discovery, and Context-Routing Reconciliation</h4>
+<p>Timestamp:</p>
+<pre><code class="language-text">2026-08-15T12:02:00-06:00
+</code></pre>
+<p>This change reconciled:</p>
+<ul>
+<li>Documentation tab architecture;</li>
+<li>Documentation Spaces;</li>
+<li>Record Profile Library;</li>
+<li>v2 discovery;</li>
+<li>catalogs;</li>
+<li>downstream publication;</li>
+<li>Startup progression;</li>
+<li>current tree generation;</li>
+<li>Resource Registry routing;</li>
+<li>Viewer responsibilities.</li>
+</ul>
+<p>These changelog entries are significant because Documentation is recursive.</p>
+<p>The method used to define Documentation must itself become part of the Documentation historical record.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="record-profiles" aria-labelledby="record-profiles-title">
+  <p class="section-eyebrow">Record architecture</p>
+  <h2 id="record-profiles-title">Record Profiles, Sidecars, Entity Records, and Project Identity</h2>
+  <div class="section-body">
+    <h3>10. Definitions were expanded into controlled Record Profile vocabulary</h3>
+<p>The Definitions tab received a major vocabulary extension.</p>
+<p>New or reconciled controlled concepts include:</p>
+<h4>Record Profile</h4>
+<p>A reusable semantic definition for one recognized Klinswork record family.</p>
+<p>A Record Profile defines things such as:</p>
+<ul>
+<li>purpose;</li>
+<li>authority boundaries;</li>
+<li>structural expectations;</li>
+<li>interpretation rules;</li>
+<li>validation expectations;</li>
+<li>versioning;</li>
+<li>Viewer behavior where applicable.</li>
+</ul>
+<h4>Record Profile Library</h4>
+<p>The authoritative collection of reusable Record Profile definitions, construction templates, compatibility material, and related registry information.</p>
+<h4>Profile Template</h4>
+<p>A concrete reusable file expressing a Record Profile.</p>
+<h4>Sidecar</h4>
+<p>A machine-readable structured companion to a human-readable source document.</p>
+<p>The human-readable source remains authoritative for the document itself.</p>
+<p>A sidecar does <strong>not</strong> become the identity record of an entity merely because it references that entity.</p>
+<h4>Entity Record</h4>
+<p>A canonical structured record that directly identifies or describes a Klinswork entity rather than serving as a companion to another document.</p>
+<p>Project Identity is the first implemented example.</p>
+<h4>Record Profile Registry</h4>
+<p>A structured index intended to identify recognized Record Profiles and connect them to:</p>
+<ul>
+<li>purpose;</li>
+<li>record family;</li>
+<li>version;</li>
+<li>template;</li>
+<li>compatibility information;</li>
+<li>Viewer interpretation behavior.</li>
+</ul>
+<h4>Schema Roadmap</h4>
+<p>The part of a Record Profile that records intended evolution of the profile itself.</p>
+<p>It is explicitly separate from future work on the subject represented by an instance.</p>
+<h4>Authoring Template</h4>
+<p>A reusable template guiding creation of an authoritative human-readable source rather than a machine-readable sidecar.</p>
+<p>These definitions resolved an ambiguity that had been present in earlier Documentation work.</p>
+<hr />
+
+<h3>11. The critical sidecar rule was formalized</h3>
+<p>One of the day's most important semantic rules is:</p>
+<blockquote>
+<p><strong>A sidecar is always a machine-readable structured companion to a human-readable source.</strong></p>
+</blockquote>
+<p>Therefore:</p>
+<pre><code class="language-text">sidecar
+    != arbitrary JSON record
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">entity record
+    != sidecar
+</code></pre>
+<p>This rule prevents a dangerous collapse.</p>
+<p>Before this distinction, any structured JSON associated with a Project could easily be called a sidecar.</p>
+<p>That would make it impossible to distinguish:</p>
+<pre><code class="language-text">&quot;this JSON describes another document&quot;
+</code></pre>
+<p>from:</p>
+<pre><code class="language-text">&quot;this JSON is itself the canonical entity record&quot;
+</code></pre>
+<p>The first Project Definition exemplar was intentionally built to enforce this distinction.</p>
+<hr />
+
+<h3>12. Record families became explicit</h3>
+<p>The current general Record Profile family model is:</p>
+<pre><code class="language-text">document-sidecar
+entity-record
+authoring-template
+</code></pre>
+<p>This is a major conceptual advance over the earlier Sidecar Profile Registry.</p>
+<p>It means the profile system is no longer limited to describing companion JSON.</p>
+<p>It can also describe:</p>
+<ul>
+<li>direct entity records;</li>
+<li>human-readable source templates.</li>
+</ul>
+<p>This gives the Documentation architecture a more coherent type system.</p>
+<hr />
+
+<h3>13. The Templates folder became the Record Profile Library</h3>
+<p>The repository area formerly understood primarily as:</p>
+<pre><code class="language-text">templates/
+</code></pre>
+<p>was reclassified semantically as:</p>
+<pre><code class="language-text">Record Profile Library/
+</code></pre>
+<p>The current repository tree shows:</p>
+<pre><code class="language-text">Record Profile Library/
+├── archive/
+├── document-sidecar-base-template-3.0.json
+├── generic-document-sidecar-template-3.0.json
+├── implementation-plan-sidecar-template-3.1-draft.json
+├── lesson-reference-sidecar-template-3.0.json
+├── project-identity-template-1.0-draft.json
+├── pst-sp-study-guide-sidecar-template-1.0.json
+├── README.md
+├── record-profile-registry-1.0.json
+├── summary-md-template.json
+├── work-update-sidecar-template-3.0.json
+└── workflow-specification-sidecar-template-3.0.json
+</code></pre>
+<p>This physical structure now reflects the broader semantic role.</p>
+<p>The library contains:</p>
+<ul>
+<li>sidecar profiles;</li>
+<li>Entity Record profiles;</li>
+<li>authoring templates;</li>
+<li>compatibility/history material;</li>
+<li>profile registry material.</li>
+</ul>
+<hr />
+
+<h3>14. Historical profile material was preserved rather than overwritten</h3>
+<p>The existing Sidecar Profile Registry was not silently erased.</p>
+<p>Historical versions remain under the Record Profile Library archive.</p>
+<p>This supports the broader Klinswork historical rule:</p>
+<pre><code class="language-text">current architecture
+    should not rewrite
+historical architecture
+    as though the current model always existed
+</code></pre>
+<p>Instead:</p>
+<pre><code class="language-text">historical registry
+    preserved
+        ↓
+broader Record Profile Registry
+    introduced
+        ↓
+compatibility relationship
+    documented
+</code></pre>
+<p>This is the same identity/history discipline used elsewhere in Klinswork.</p>
+<hr />
+
+<h3>15. Record Profile Registry evolved beyond sidecars</h3>
+<p>The broader Record Profile Registry was designed to index more than sidecars.</p>
+<p>Its conceptual families became:</p>
+<pre><code class="language-text">document-sidecar
+entity-record
+authoring-template
+</code></pre>
+<p>The registry includes existing or current profiles such as:</p>
+<ul>
+<li>work-update;</li>
+<li>implementation-plan;</li>
+<li>lesson-reference;</li>
+<li>workflow-specification;</li>
+<li>generic-document;</li>
+<li>PST-SP study guide;</li>
+<li>summary Markdown authoring template.</li>
+</ul>
+<p>It also anticipates:</p>
+<ul>
+<li>Project Identity;</li>
+<li>later System Identity.</li>
+</ul>
+<p>The Project Identity profile was treated as a new Entity Record profile rather than forcing it into the document-sidecar family.</p>
+<p>This is one of the strongest examples of the architecture resisting a convenient but semantically incorrect shortcut.</p>
+<hr />
+
+<h3>16. `schemaRoadmap` became a profile-level convention</h3>
+<p>The session clarified that profile evolution should be represented explicitly.</p>
+<p>The top-level:</p>
+<pre><code class="language-text">schemaRoadmap
+</code></pre>
+<p>can preserve:</p>
+<ul>
+<li>planned additions;</li>
+<li>planned changes;</li>
+<li>deprecations;</li>
+<li>migration notes;</li>
+<li>compatibility concerns;</li>
+<li>open profile-design questions.</li>
+</ul>
+<p>The critical distinction is:</p>
+<pre><code class="language-text">schema roadmap
+    = future work on the record/profile structure
+
+subject roadmap
+    = future work on the Project/System/document itself
+</code></pre>
+<p>Those are not the same thing.</p>
+<hr />
+
+<h3>17. Project Identity profile was designed as deliberately narrow</h3>
+<p>The Project Identity profile was not designed as a giant Project record.</p>
+<p>Its narrowness is intentional.</p>
+<p>The profile includes areas for:</p>
+<ul>
+<li>profile metadata;</li>
+<li>schema roadmap;</li>
+<li>record state;</li>
+<li>intrinsic identity;</li>
+<li>labels;</li>
+<li>identity evidence;</li>
+<li>registration coordination;</li>
+<li>provenance;</li>
+<li>validation;</li>
+<li>Viewer interpretation;</li>
+<li>template checks.</li>
+</ul>
+<p>The intrinsic identity block intentionally excludes:</p>
+<ul>
+<li>parent Project;</li>
+<li>child Projects;</li>
+<li>Systems;</li>
+<li>Applications;</li>
+<li>Resources;</li>
+<li>operational environment;</li>
+<li>dependencies;</li>
+<li>integrations;</li>
+<li>repository path;</li>
+<li>file path;</li>
+<li>URL;</li>
+<li>deployment URL;</li>
+<li>lifecycle status;</li>
+<li>Project phase;</li>
+<li>implementation status;</li>
+<li>current version.</li>
+</ul>
+<p>This is one of the day's most important architecture decisions.</p>
+<hr />
+
+<h3>18. Project Identity validation rules were made explicit</h3>
+<p>The Project Identity template includes strong anti-inference rules.</p>
+<p>A Project ID must not be inferred from:</p>
+<ul>
+<li>Project name;</li>
+<li>folder path;</li>
+<li>historical numbering;</li>
+<li>parent relationship;</li>
+<li>current System;</li>
+<li>current application;</li>
+<li>spreadsheet;</li>
+<li>deployment;</li>
+<li>Resource.</li>
+</ul>
+<p>The profile also rejects encoding hierarchy into the Project ID.</p>
+<p>That preserves future flexibility.</p>
+<hr />
+
+<h3>19. Labels were separated from identity</h3>
+<p>The Project Identity template includes:</p>
+<pre><code class="language-text">labels:
+    canonicalName
+    aliases
+</code></pre>
+<p>but explicitly treats labels as useful resolution data rather than the identity itself.</p>
+<p>This makes renaming conceptually safe.</p>
+<p>The exact long-term authority for canonical name and alias history remains open.</p>
+<p>That uncertainty is recorded in the profile roadmap.</p>
+<hr />
+
+<h3>20. Identity evidence was separated from identity</h3>
+<p>The template includes an <code>identityEvidence</code> area.</p>
+<p>This can preserve:</p>
+<ul>
+<li>identification basis;</li>
+<li>confidence;</li>
+<li>evidence references;</li>
+<li>architecture decision references;</li>
+<li>Activity references;</li>
+<li>notes.</li>
+</ul>
+<p>But the evidence is not itself the identity.</p>
+<p>A Project can be identified because several documents and decisions support the interpretation.</p>
+<p>Those sources do not become the Project merely because they support it.</p>
+<hr />
+
+<h3>21. The first Project Identity template was created</h3>
+<p>The first reusable Project Identity template was created as:</p>
+<pre><code class="language-text">project-identity-template-1.0-draft.json
+</code></pre>
+<p>The current repository tree confirms that it is now present in the Record Profile Library.</p>
+<p>The template is generic.</p>
+<p>It deliberately avoids Inventory-specific fields.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="milestone-note-2" aria-labelledby="milestone-note-2-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Milestone reading path · 2 of 5</p>
+    <span class="callout-type">Architecture</span>
+  </div>
+  <h2 id="milestone-note-2-title">Project Identity became smaller—and therefore more durable</h2>
+  <p>Identity was separated from name, path, hierarchy, lifecycle, Systems, Resources, and deployment. Sidecars were fixed as companions to human-readable documents, while Entity Records became a separate record family for direct canonical entity identity.</p>
+  <nav class="supervisor-navigation" aria-label="Milestone reading path">
+    <a class="supervisor-next" href="#milestone-note-3"><span class="hand" aria-hidden="true">☞</span><span>Next milestone note: The first Project Definition exemplar</span></a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="project-definition" aria-labelledby="project-definition-title">
+  <p class="section-eyebrow">First Project exemplar</p>
+  <h2 id="project-definition-title">Inventory Management Project Definition</h2>
+  <div class="section-body">
+    <h3>22. Inventory Management was chosen as the first Project Definition exemplar</h3>
+<p>Inventory Management was already the best-developed candidate.</p>
+<p>It had:</p>
+<ul>
+<li>existing operational meaning;</li>
+<li>Inventory 3.0 implementation history;</li>
+<li>an implementation plan;</li>
+<li>data Resources;</li>
+<li>current application Resources;</li>
+<li>previous system-level documentation;</li>
+<li>cross-system relationships;</li>
+<li>historical records;</li>
+<li>open questions;</li>
+<li>enough complexity to expose weak architecture.</li>
+</ul>
+<p>That makes it useful as an exemplar.</p>
+<hr />
+
+<h3>23. `Inventory Management/project-identity.json` was instantiated</h3>
+<p>The first Project Identity Entity Record was created:</p>
+<pre><code class="language-text">Inventory Management/project-identity.json
+</code></pre>
+<p>Its key identity state is:</p>
+<pre><code class="language-text">entityType: project
+projectId: &quot;&quot;
+projectIdAssignmentStatus: unassigned
+canonicalName: Inventory Management
+</code></pre>
+<p>The record includes an identity continuity statement asserting that Inventory Management remains the same Project across ordinary changes of:</p>
+<ul>
+<li>name;</li>
+<li>repository location;</li>
+<li>hierarchy;</li>
+<li>System implementation;</li>
+<li>Resources;</li>
+<li>deployment;</li>
+<li>lifecycle;</li>
+<li>operational context.</li>
+</ul>
+<p>It does not place mutable relationships inside intrinsic identity.</p>
+<hr />
+
+<h3>24. Project Identity was placed at the Project root</h3>
+<p>The Project Identity Entity Record was deliberately placed here:</p>
+<pre><code class="language-text">Inventory Management/
+└── project-identity.json
+</code></pre>
+<p>not here:</p>
+<pre><code class="language-text">Inventory Management/
+└── sidecars/
+    └── project-identity.json
+</code></pre>
+<p>The reason is semantic.</p>
+<p><code>project-identity.json</code> directly represents the Project.</p>
+<p>It is not the structured companion to another document.</p>
+<hr />
+
+<h3>25. Inventory Management README became local orientation</h3>
+<p>The Project README was created/reconciled as:</p>
+<pre><code class="language-text">Inventory Management/README.md
+</code></pre>
+<p>Its role is not to be the master authority for every Project fact.</p>
+<p>Its role is local orientation.</p>
+<p>The governing principle is:</p>
+<blockquote>
+<p>Use the README for orientation. Follow it to the record that owns the fact you need.</p>
+</blockquote>
+<p>The README explains:</p>
+<ul>
+<li>what Project this directory represents;</li>
+<li>Project/System distinction;</li>
+<li>local file roles;</li>
+<li>authority routing;</li>
+<li>current directory structure;</li>
+<li>where implementation plans live;</li>
+<li>principal known System;</li>
+<li>how to resume work;</li>
+<li>what remains unresolved;</li>
+<li>the exemplar's current completion state.</li>
+</ul>
+<hr />
+
+<h3>26. Project Summary was separated from Project Identity</h3>
+<p>The rich human-readable Project definition was created as:</p>
+<pre><code class="language-text">summaries/project-summary.md
+</code></pre>
+<p>This is where explanatory Project meaning belongs.</p>
+<p>It contains:</p>
+<ul>
+<li>purpose;</li>
+<li>operational function;</li>
+<li>scope;</li>
+<li>boundaries;</li>
+<li>current state;</li>
+<li>principal System;</li>
+<li>Resource context;</li>
+<li>history;</li>
+<li>relationships in narrative form;</li>
+<li>implementation-plan role;</li>
+<li>resume-work sequence;</li>
+<li>unresolved questions;</li>
+<li>next work.</li>
+</ul>
+<p>This division produces:</p>
+<pre><code class="language-text">project-identity.json
+    = narrow intrinsic identity
+
+README.md
+    = local orientation
+
+project-summary.md
+    = rich human-readable Project definition
+</code></pre>
+<hr />
+
+<h3>27. Inventory Management Project purpose was made explicit</h3>
+<p>The Project Summary defines the purpose of Inventory Management approximately as:</p>
+<blockquote>
+<p>preserve and improve reliable knowledge and operational control of inventory.</p>
+</blockquote>
+<p>The Project exists so inventory can be:</p>
+<ul>
+<li>identified;</li>
+<li>located;</li>
+<li>counted;</li>
+<li>changed;</li>
+<li>traced;</li>
+<li>verified;</li>
+<li>used for operational decisions.</li>
+</ul>
+<p>The Project is explicitly not reduced to one application.</p>
+<p>Its durable operational chain is represented as:</p>
+<pre><code class="language-text">physical supplies
+        ↓
+identified products
+        ↓
+identified locations
+        ↓
+known or reconciled quantity/state
+        ↓
+controlled inventory events
+        ↓
+preserved history
+        ↓
+verification
+        ↓
+operational decisions
+</code></pre>
+<hr />
+
+<h3>28. Inventory Management scope and boundaries were documented</h3>
+<p>The Project Summary identifies in-scope areas such as:</p>
+<ul>
+<li>inventory state;</li>
+<li>inventory events;</li>
+<li>product reference data;</li>
+<li>location reference data;</li>
+<li>current quantities;</li>
+<li>opening balances;</li>
+<li>receiving;</li>
+<li>use;</li>
+<li>corrections;</li>
+<li>transfers;</li>
+<li>event history;</li>
+<li>reconciliation;</li>
+<li>SDS relationships;</li>
+<li>interfaces;</li>
+<li>validation;</li>
+<li>data integrity;</li>
+<li>reporting;</li>
+<li>documentation.</li>
+</ul>
+<p>It also explicitly separates neighboring concerns.</p>
+<h4>Scheduling</h4>
+<p>Scheduling owns temporal/person/place assignment.</p>
+<p>Inventory Management owns inventory state.</p>
+<h4>Task Assignment and Tracking</h4>
+<p>A task can cause inventory effects.</p>
+<p>The task lifecycle belongs to Task Assignment and Tracking.</p>
+<p>The resulting inventory-state effect belongs to Inventory Management.</p>
+<h4>Documentation</h4>
+<p>Documentation supplies infrastructure for describing the Project.</p>
+<p>It does not become the owner of inventory truth.</p>
+<h4>Meadows Housekeeping</h4>
+<p>Meadows Housekeeping is the primary current operational environment.</p>
+<p>It is not the Project identity.</p>
+<h4>Inventory 3.0</h4>
+<p>Inventory 3.0 is the principal known System.</p>
+<p>It is not the Project.</p>
+<hr />
+
+<h3>29. Project Summary sidecar was created as a real sidecar</h3>
+<p>The structured companion was created as:</p>
+<pre><code class="language-text">sidecars/project-summary-sidecar.json
+</code></pre>
+<p>Its companion is:</p>
+<pre><code class="language-text">../summaries/project-summary.md
+</code></pre>
+<p>This sidecar is intentionally not a Project Identity record.</p>
+<p>It structures the human-readable Summary for:</p>
+<ul>
+<li>discovery;</li>
+<li>Viewer presentation;</li>
+<li>topics;</li>
+<li>sections;</li>
+<li>key points;</li>
+<li>concepts;</li>
+<li>recommendations;</li>
+<li>open questions;</li>
+<li>technical validation;</li>
+<li>provenance.</li>
+</ul>
+<p>The Markdown Project Summary remains authoritative for the narrative interpretation expressed there.</p>
+<hr />
+
+<h3>30. Generic document profile was used without pretending a specialized profile existed</h3>
+<p>No dedicated Project Summary sidecar profile had yet been defined.</p>
+<p>Therefore the Project Summary sidecar used the recognized:</p>
+<pre><code class="language-text">generic-document
+</code></pre>
+<p>profile.</p>
+<p>This was a disciplined choice.</p>
+<p>The architecture did not invent a profile merely because a more specific name would have been convenient.</p>
+<p>The sidecar records the open question:</p>
+<blockquote>
+<p>Should Project Summary documents receive a dedicated document-sidecar profile?</p>
+</blockquote>
+<hr />
+
+<h3>31. Project Summary sidecar indexed the Project definition</h3>
+<p>The Project Summary sidecar includes structured representations of:</p>
+<ul>
+<li>Project subject;</li>
+<li>parent/current relationships as context;</li>
+<li>principal System;</li>
+<li>purpose;</li>
+<li>scope;</li>
+<li>key points;</li>
+<li>concepts;</li>
+<li>recommendations;</li>
+<li>unresolved questions;</li>
+<li>audience views;</li>
+<li>technical validation;</li>
+<li>sections;</li>
+<li>provenance.</li>
+</ul>
+<p>It keeps:</p>
+<pre><code class="language-text">projectId: &quot;&quot;
+</code></pre>
+<p>rather than inventing an identifier.</p>
+<p>It references the Project Identity record separately.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="inventory-system" aria-labelledby="inventory-system-title">
+  <p class="section-eyebrow">System documentation</p>
+  <h2 id="inventory-system-title">Inventory 3.0 — System Documentation Without Premature System Identity</h2>
+  <div class="section-body">
+    <h3>32. Inventory 3.0 documentation layer was deliberately completed without System Identity</h3>
+<p>After completing the Project layer, work moved into:</p>
+<pre><code class="language-text">Inventory Management/
+└── systems/
+    └── Inventory 3.0/
+</code></pre>
+<p>The deliberate target was:</p>
+<pre><code class="language-text">Inventory 3.0/
+├── README.md
+├── summaries/
+│   └── system-summary.md
+└── sidecars/
+    └── system-summary-sidecar.json
+</code></pre>
+<p>No:</p>
+<pre><code class="language-text">system-identity.json
+</code></pre>
+<p>was created.</p>
+<p>No:</p>
+<pre><code class="language-text">SYS-###
+</code></pre>
+<p>was assigned.</p>
+<p>This was not incompleteness.</p>
+<p>It was a methodological choice.</p>
+<hr />
+
+<h3>33. Why System Identity was deferred</h3>
+<p>The Project architecture had just been instantiated for the first time.</p>
+<p>Immediately copying it into a System Identity schema would risk propagating untested assumptions.</p>
+<p>Instead, the System documentation layer was used to answer:</p>
+<ul>
+<li>Can System meaning be documented without a System Entity Record?</li>
+<li>Which facts appear stable?</li>
+<li>Which facts are implementation-specific?</li>
+<li>Does the version-bearing name <code>Inventory 3.0</code> create continuity questions?</li>
+<li>Which Resources belong to the System versus being shared?</li>
+<li>How should Viewer presentation differ between a System Summary and a future System Identity record?</li>
+</ul>
+<p>This lets the exemplar generate evidence before the System Identity schema is frozen.</p>
+<hr />
+
+<h3>34. Inventory 3.0 README became System-local orientation</h3>
+<p>The System README explains:</p>
+<ul>
+<li>what Inventory 3.0 is;</li>
+<li>that it belongs to Inventory Management;</li>
+<li>why no System Identity record exists;</li>
+<li>what local files do;</li>
+<li>what evidence supports the current interpretation;</li>
+<li>how to distinguish historical design from live implementation truth;</li>
+<li>where Project-level implementation plans live;</li>
+<li>how to resume System work;</li>
+<li>unresolved questions.</li>
+</ul>
+<p>Its local authority role mirrors the Project README.</p>
+<hr />
+
+<h3>35. `system-summary.md` was clarified as different from `project-summary.md`</h3>
+<p>A useful discussion occurred around the purpose of:</p>
+<pre><code class="language-text">project-summary.md
+</code></pre>
+<p>versus:</p>
+<pre><code class="language-text">system-summary.md
+</code></pre>
+<p>The distinction became:</p>
+<pre><code class="language-text">project-summary.md
+    answers:
+    What undertaking are we maintaining and why?
+
+system-summary.md
+    answers:
+    What coherent implemented mechanism serves that undertaking?
+</code></pre>
+<p>For Inventory Management:</p>
+<pre><code class="language-text">Project Summary
+    purpose
+    operational function
+    scope
+    boundaries
+    current Project state
+    principal System
+    Project Resources
+    Project history
+    Project open questions
+</code></pre>
+<p>For Inventory 3.0:</p>
+<pre><code class="language-text">System Summary
+    System purpose
+    System boundary
+    architecture
+    components
+    datastore
+    event model
+    interfaces
+    validation
+    System Resources
+    implementation history
+    current implementation uncertainty
+    System open questions
+</code></pre>
+<hr />
+
+<h3>36. Inventory 3.0 System Summary preserved design evidence carefully</h3>
+<p>The Inventory 3.0 System Summary uses the historical roadmap as design evidence.</p>
+<p>It records the architecture baseline:</p>
+<pre><code class="language-text">mobile or desktop browser
+        ↓
+Apps Script HTML interface
+        ↓
+Apps Script inventory services
+        ↓
+Google Sheets datastore
+</code></pre>
+<p>It records the historical sheet model:</p>
+<pre><code class="language-text">Products
+SDS
+Locations
+Current Inventory
+Inventory Events
+Inv2_Archive
+</code></pre>
+<p>It records event types such as:</p>
+<pre><code class="language-text">OPENING_BALANCE
+RECEIVED
+USED
+CORRECTION_INCREASE
+CORRECTION_DECREASE
+TRANSFER
+</code></pre>
+<p>But it does not claim that every roadmap item was implemented or that every planned test passed.</p>
+<hr />
+
+<h3>37. Inventory 3.0 historical implementation evidence was separated from roadmap intent</h3>
+<p>The System Summary also incorporates dated historical evidence showing that Inventory 3.0 was actually built and expanded.</p>
+<p>Historical July records support use of:</p>
+<ul>
+<li>Google Apps Script;</li>
+<li>Google Sheets;</li>
+<li>JavaScript;</li>
+<li>HTML;</li>
+<li>CSS;</li>
+<li>inventory browsing;</li>
+<li>product pages;</li>
+<li>product filtering;</li>
+<li>SDS links.</li>
+</ul>
+<p>Later planning records support the existence of an:</p>
+<pre><code class="language-text">Inventory 3.0 SDS Registry Rebuild and App Integration
+</code></pre>
+<p>plan.</p>
+<p>But that plan remains planning evidence unless execution is separately established.</p>
+<p>The Summary therefore preserves three levels:</p>
+<pre><code class="language-text">historical roadmap intent
+historical implementation evidence
+current live truth
+</code></pre>
+<hr />
+
+<h3>38. Inventory 3.0 sidecar was created without implying System Identity</h3>
+<p>The structured companion:</p>
+<pre><code class="language-text">sidecars/system-summary-sidecar.json
+</code></pre>
+<p>uses the recognized <code>generic-document</code> profile.</p>
+<p>Its document type is:</p>
+<pre><code class="language-text">system-summary
+</code></pre>
+<p>It structures:</p>
+<ul>
+<li>System role;</li>
+<li>Project context;</li>
+<li>architecture baseline;</li>
+<li>data model;</li>
+<li>event model;</li>
+<li>Resources;</li>
+<li>historical evidence;</li>
+<li>current-state limitations;</li>
+<li>open questions;</li>
+<li>next work.</li>
+</ul>
+<p>It explicitly states that it is not a System Identity Entity Record.</p>
+<hr />
+
+<h3>39. The complete Inventory Management exemplar now exists physically</h3>
+<p>The current repository tree confirms:</p>
+<pre><code class="language-text">Inventory Management/
+├── implementation-plans/
+│   ├── implementation-plan.md
+│   └── README.md
+├── sidecars/
+│   └── project-summary-sidecar.json
+├── summaries/
+│   └── project-summary.md
+├── systems/
+│   └── Inventory 3.0/
+│       ├── sidecars/
+│       │   └── system-summary-sidecar.json
+│       ├── summaries/
+│       │   └── system-summary.md
+│       └── README.md
+├── project-identity.json
+└── README.md
+</code></pre>
+<p>This is a major milestone.</p>
+<p>The architecture is now observable through real files.</p>
+<hr />
+
+<h3>40. What the exemplar proves so far</h3>
+<p>The exemplar demonstrates that one Project can be described through coordinated records with different jobs:</p>
+<pre><code class="language-text">Project identity
+    → project-identity.json
+
+local orientation
+    → README.md
+
+human-readable Project definition
+    → summaries/project-summary.md
+
+machine-readable Project Summary interpretation
+    → sidecars/project-summary-sidecar.json
+
+principal System context
+    → systems/Inventory 3.0/
+
+bounded intended work
+    → implementation-plans/
+
+Resource routing
+    → Resource Registry
+
+relationships
+    → future/formal relationship authority
+
+history/provenance
+    → Activities + preserved historical records
+</code></pre>
+<p>No single file has to become the universal source of truth.</p>
+<hr />
+
+<h3>41. Project Definition architecture is designed but not yet generalized</h3>
+<p>The Inventory Management exemplar should not immediately be copied as a mandatory folder skeleton for every Project.</p>
+<p>The correct sequence remains:</p>
+<pre><code class="language-text">build exemplar
+    ↓
+test discovery
+    ↓
+test Viewer
+    ↓
+test context-naive resume
+    ↓
+identify failures
+    ↓
+revise profiles
+    ↓
+extract genuinely reusable structure
+</code></pre>
+<p>Therefore:</p>
+<blockquote>
+<p>Project Definition architecture is largely designed; the reusable Project Definition template is not yet proven.</p>
+</blockquote>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="milestone-note-3" aria-labelledby="milestone-note-3-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Milestone reading path · 3 of 5</p>
+    <span class="callout-type">Outcome</span>
+  </div>
+  <h2 id="milestone-note-3-title">Inventory Management became the first working Project Definition exemplar</h2>
+  <p>The Project now has a Project Identity Entity Record, local README, rich Project Summary, Summary sidecar, implementation-plan area, and a nested Inventory 3.0 System documentation layer. System Identity was intentionally deferred until the Project model is proven.</p>
+  <nav class="supervisor-navigation" aria-label="Milestone reading path">
+    <a class="supervisor-next" href="#milestone-note-4"><span class="hand" aria-hidden="true">☞</span><span>Next milestone note: Source-aware Viewer discovery</span></a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="documentation-spaces" aria-labelledby="documentation-spaces-title">
+  <p class="section-eyebrow">Discovery architecture</p>
+  <h2 id="documentation-spaces-title">Documentation Project, Documentation Spaces, and Source-Aware Discovery</h2>
+  <div class="section-body">
+    <h3>42. Documentation Project was reconciled around current architecture</h3>
+<p>The Documentation tab of the Meadows Housekeeping Projects Summary underwent major reconciliation.</p>
+<p>Its opening now explicitly identifies Documentation as a cross-project Klinswork Project.</p>
+<p>Its scope includes:</p>
+<ul>
+<li>controlled vocabulary;</li>
+<li>architecture change control;</li>
+<li>Record Profile Library;</li>
+<li>Entity Records;</li>
+<li>human-readable sources;</li>
+<li>sidecars;</li>
+<li>registries;</li>
+<li>Documentation Spaces;</li>
+<li>source registry;</li>
+<li>generated manifests;</li>
+<li>catalogs;</li>
+<li>Viewer;</li>
+<li>downstream HTML/graphics;</li>
+<li>Startup;</li>
+<li>workflow-driven context routing.</li>
+</ul>
+<p>The current conceptual structure is:</p>
+<pre><code class="language-text">Documentation Project
+├── Controlled vocabulary / ontology
+├── Architecture Changelog
+├── Open Determinations
+├── Record Profile Library
+├── Entity Records
+├── Human-readable source documents
+│       ↕
+│   structured sidecars
+├── Registries
+├── Documentation Spaces
+├── source registry
+├── generated manifests
+├── catalogs / aggregate discovery records
+├── Klinswork Documentation Viewer
+├── downstream HTML / graphics / explanatory products
+└── Startup + workflow-driven progressive context routing
+</code></pre>
+<hr />
+
+<h3>43. Documentation became explicitly self-describing</h3>
+<p>Documentation has a recursive property.</p>
+<p>It contains the systems used to document Documentation itself.</p>
+<p>The day's architecture therefore emphasizes:</p>
+<ul>
+<li>versioned methodology;</li>
+<li>changelog history;</li>
+<li>Record Profiles;</li>
+<li>authority boundaries;</li>
+<li>source-aware discovery;</li>
+<li>preserved bootstrap artifacts.</li>
+</ul>
+<p>The recursion is controlled through explicit versions and provenance.</p>
+<hr />
+
+<h3>44. Fresh physical repository state became a formal requirement</h3>
+<p>The architecture now distinguishes:</p>
+<pre><code class="language-text">semantic architecture
+</code></pre>
+<p>from:</p>
+<pre><code class="language-text">current physical tree
+</code></pre>
+<p>When current physical structure matters, the intended path is:</p>
+<pre><code class="language-text">current repository structure required
+        ↓
+Resource Registry resolves tree-generation Resource
+        ↓
+run build_repository_tree.py
+        ↓
+consume fresh repository-tree output
+        ↓
+treat tree as physical evidence
+</code></pre>
+<p>The tree does not become semantic authority.</p>
+<hr />
+
+<h3>45. Documentation Spaces became explicit</h3>
+<p>The source-aware Viewer architecture now recognizes multiple Documentation Spaces.</p>
+<p>Current configured spaces include:</p>
+<pre><code class="language-text">common
+    Common Documentation
+    root:
+    documents/Klinswork Documentation Viewer
+
+projects
+    Projects
+    root:
+    documents/Klinswork Documentation Viewer/projects
+
+therapy
+    Therapy Component Library
+    root:
+    documents/therapy-documentation-work/therapy-component-library
+</code></pre>
+<p>This solves a long-standing discovery problem.</p>
+<hr />
+
+<h3>46. Common and Projects discovery were separated to prevent duplicates</h3>
+<p>The nested Projects directory is pruned from the Common source scan.</p>
+<p>Without pruning:</p>
+<pre><code class="language-text">Common scan
+    finds projects/
+        +
+Projects scan
+    finds same records
+</code></pre>
+<p>would create duplicates.</p>
+<p>The source registry therefore makes discovery rules explicit.</p>
+<hr />
+
+<h3>47. Source registry became a first-class Viewer artifact</h3>
+<p>The current discovery chain is:</p>
+<pre><code class="language-text">documentation/documentation-viewer-sources.json
+        ↓
+documentation/documentation-viewer-manifest.py
+        ↓
+documentation/documents/Klinswork Documentation Viewer/
+    documentation-viewer-manifest.json
+        ↓
+json-viewer.html
+</code></pre>
+<p>The source registry defines:</p>
+<ul>
+<li>source IDs;</li>
+<li>labels;</li>
+<li>roots;</li>
+<li>discovery modes;</li>
+<li>pruning;</li>
+<li>exclusions.</li>
+</ul>
+<p>This moves discovery policy out of Viewer code and into a structured source configuration.</p>
+<hr />
+
+<h3>48. Viewer record address became source-aware</h3>
+<p>The v2 discovery model effectively uses:</p>
+<pre><code class="language-text">(sourceId, path)
+</code></pre>
+<p>as a record address.</p>
+<p>This allows identical relative paths to exist in different Documentation Spaces without becoming ambiguous.</p>
+<p>It also allows the Viewer to present a unified tree while preserving source identity.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="viewer-migration" aria-labelledby="viewer-migration-title">
+  <p class="section-eyebrow">Viewer implementation</p>
+  <h2 id="viewer-migration-title">Local Launcher, Online Viewer Migration, and PST-SP Preview Discovery</h2>
+  <div class="section-body">
+    <h3>49. The local launcher was recognized as stale</h3>
+<p>After Project/System records were added, attention returned to:</p>
+<pre><code class="language-text">open-json-viewer-v1.6.0.bat
+</code></pre>
+<p>The batch file still launched the local Viewer.</p>
+<p>But the architecture had changed.</p>
+<p>The launcher needed to:</p>
+<ol>
+<li>locate the Documentation root;</li>
+<li>refresh the source-aware manifest;</li>
+<li>launch the local Python Viewer.</li>
+</ol>
+<p>A transitional launcher was therefore designed.</p>
+<hr />
+
+<h3>50. First launcher revision exposed a Windows quoting problem</h3>
+<p>The initial revised batch command successfully ran the source-aware manifest builder.</p>
+<p>The console showed:</p>
+<pre><code class="language-text">Records:      69
+Valid JSON:   69
+Invalid JSON: 0
+Archived:     14
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">common:   66 records
+projects: 2 records
+therapy:   1 record
+</code></pre>
+<p>This was important.</p>
+<p>The manifest refresh itself succeeded.</p>
+<p>The failure occurred only when the local Viewer launched.</p>
+<p>The error path ended with a literal quote:</p>
+<pre><code class="language-text">...\Klinswork Documentation Viewer&quot;
+</code></pre>
+<p>The cause was <code>%~dp0</code> ending in a backslash and interacting badly with the quoted <code>--folder</code> argument.</p>
+<p>This was diagnosed from the visible command output rather than guessed.</p>
+
+<h3>51. Launcher paths were normalized</h3>
+<p>The improved batch design used:</p>
+<pre><code class="language-bat">for %%I in (&quot;%~dp0.&quot;) do set &quot;VIEWER_ROOT=%%~fI&quot;
+for %%I in (&quot;%~dp0..\..&quot;) do set &quot;DOCUMENTATION_ROOT=%%~fI&quot;
+</code></pre>
+<p>This normalizes the directory paths without a trailing slash.</p>
+<p>The resulting path becomes:</p>
+<pre><code class="language-text">C:\...\documentation\documents\Klinswork Documentation Viewer
+</code></pre>
+<p>rather than:</p>
+<pre><code class="language-text">C:\...\documentation\documents\Klinswork Documentation Viewer\
+</code></pre>
+<p>The launcher remains physically in the Viewer root.</p>
+<p>That location is intentional.</p>
+<hr />
+
+<h3>52. The batch launcher remains a transitional local-runtime bridge</h3>
+<p>The local Python Viewer is still v1.6-era code.</p>
+<p>Therefore refreshing the v2 manifest does not automatically make the local Python runtime source-aware.</p>
+<p>The launcher currently bridges two generations:</p>
+<pre><code class="language-text">launcher
+    refreshes source-aware v2 manifest
+        +
+    launches legacy/local Python Viewer
+</code></pre>
+<p>This is acceptable as a transitional state as long as the distinction is explicit.</p>
+<hr />
+
+<h3>53. Online Viewer was still using the legacy manifest</h3>
+<p>The online <code>json-viewer.html</code> was then inspected.</p>
+<p>Its static GitHub Pages mode still loaded:</p>
+<pre><code class="language-text">json-manifest.json
+</code></pre>
+<p>and expected:</p>
+<pre><code class="language-text">files[]
+</code></pre>
+<p>That meant the online Viewer had not yet been upgraded to the new source-aware discovery architecture.</p>
+<p>This was the next obvious reconciliation target.</p>
+<hr />
+
+<h3>54. Online Viewer was upgraded to the source-aware manifest</h3>
+<p>The updated online Viewer now uses:</p>
+<pre><code class="language-text">documentation-viewer-manifest.json
+</code></pre>
+<p>and primarily reads:</p>
+<pre><code class="language-text">records[]
+</code></pre>
+<p>The Viewer also retains legacy:</p>
+<pre><code class="language-text">files[]
+</code></pre>
+<p>fallback compatibility.</p>
+<p>For source-aware records, it uses:</p>
+<pre><code class="language-text">manifestRelativePath
+</code></pre>
+<p>for fetch routing.</p>
+<p>This prevents the display path from being confused with the actual relative fetch path.</p>
+<hr />
+
+<h3>55. Online Viewer branding was updated</h3>
+<p>The static Viewer was rebranded from:</p>
+<pre><code class="language-text">Local JSON Explorer
+</code></pre>
+<p>toward the formal product name:</p>
+<pre><code class="language-text">Klinswork Documentation Viewer
+</code></pre>
+<p>The online runtime identifies itself as:</p>
+<pre><code class="language-text">2.0-draft
+GitHub Pages
+source-aware manifest
+</code></pre>
+<p>This better reflects its current role.</p>
+<hr />
+
+<h3>56. The source-aware online Viewer worked</h3>
+<p>After publication, the online Viewer successfully displayed the new source-aware tree.</p>
+<p>The visible tree included:</p>
+<pre><code class="language-text">projects
+└── operations
+    └── Inventory Management
+        ├── sidecars
+        │   └── project-summary-sidecar.json
+        └── systems
+            └── Inventory 3.0
+                └── sidecars
+                    └── system-summary-sidecar.json
+</code></pre>
+<p>This is the first direct UI proof that the Inventory Management exemplar can be discovered through the Projects Documentation Space.</p>
+<hr />
+
+<h3>57. The Viewer discovery test passed an important milestone</h3>
+<p>The manifest output had already reported:</p>
+<pre><code class="language-text">projects: 2 records
+</code></pre>
+<p>The online tree made those records visible.</p>
+<p>Those two records correspond to the newly added:</p>
+<pre><code class="language-text">project-summary-sidecar.json
+system-summary-sidecar.json
+</code></pre>
+<p>This is a significant checkpoint.</p>
+<p>The architecture did not merely create files in the right directory.</p>
+<p>The source-aware discovery layer found them.</p>
+<hr />
+
+<h3>58. Project Identity discovery remains a separate test</h3>
+<p>The current Projects discovery mode is still sidecar-oriented.</p>
+<p>Therefore:</p>
+<pre><code class="language-text">project-identity.json
+</code></pre>
+<p>requires deliberate Entity Record discovery support.</p>
+<p>The architecture explicitly rejects a shortcut such as:</p>
+<blockquote>
+<p>put Project Identity in the sidecars directory so the existing scanner will find it.</p>
+</blockquote>
+<p>That would make physical convenience corrupt semantic type.</p>
+<p>The correct future work is:</p>
+<pre><code class="language-text">teach discovery about Entity Records
+</code></pre>
+<p>not:</p>
+<pre><code class="language-text">mislabel Entity Records as sidecars
+</code></pre>
+<hr />
+
+<h3>59. PST-SP Viewer test exposed a profile-template/instance distinction</h3>
+<p>The online Viewer test produced another valuable discovery.</p>
+<p>The selected file was:</p>
+<pre><code class="language-text">Record Profile Library/
+└── pst-sp-study-guide-sidecar-template-1.0.json
+</code></pre>
+<p>The Viewer correctly saw:</p>
+<pre><code class="language-text">previewMode: pst-sp-study-guide
+</code></pre>
+<p>and launched the specialized PST-SP preview.</p>
+<p>But because the selected file was a <strong>template</strong>, not an instantiated PST-SP study-guide record, the preview showed:</p>
+<pre><code class="language-text">Untitled document
+Untitled record
+</code></pre>
+<p>and very little content.</p>
+<p>This was initially easy to interpret as a broken PST-SP renderer.</p>
+<p>The real issue was more subtle.</p>
+<hr />
+
+<h3>60. Record Profile templates need different Viewer behavior from instantiated records</h3>
+<p>The PST-SP test revealed a general Viewer requirement.</p>
+<p>Current behavior:</p>
+<pre><code class="language-text">Record Profile template
+    carries previewMode
+        ↓
+Viewer invokes rich subject preview
+</code></pre>
+<p>Better behavior:</p>
+<pre><code class="language-text">instantiated PST-SP sidecar
+    → rich PST-SP subject preview
+
+PST-SP Record Profile template
+    → Record Profile / Template preview
+</code></pre>
+<p>A Record Profile template preview should likely emphasize:</p>
+<ul>
+<li>profile ID;</li>
+<li>version;</li>
+<li>record family;</li>
+<li>intended preview mode;</li>
+<li>schema roadmap;</li>
+<li>template fields;</li>
+<li>construction guidance;</li>
+<li>blank operational fields;</li>
+<li>compatibility.</li>
+</ul>
+<p>This is an excellent example of an exemplar revealing a missing semantic layer.</p>
+<hr />
+
+<h3>61. The Viewer is becoming more than a JSON tree browser</h3>
+<p>The day's tests reinforce the direction:</p>
+<pre><code class="language-text">generic structured inspector
+    +
+record-family recognition
+    +
+specialized previews
+    +
+source-aware discovery
+    +
+authority-aware interpretation
+</code></pre>
+<p>The Viewer is becoming a documentation portal rather than merely a JSON explorer.</p>
+<p>That makes correct record typing increasingly important.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="milestone-note-4" aria-labelledby="milestone-note-4-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Milestone reading path · 4 of 5</p>
+    <span class="callout-type">Viewer milestone</span>
+  </div>
+  <h2 id="milestone-note-4-title">The online Klinswork Documentation Viewer became source-aware</h2>
+  <p>The Viewer now consumes the multi-source Documentation Viewer manifest and successfully exposed the new Project/System sidecars. The same test also revealed an important next requirement: Profile Templates must be presented differently from instantiated records.</p>
+  <nav class="supervisor-navigation" aria-label="Milestone reading path">
+    <a class="supervisor-next" href="#milestone-note-5"><span class="hand" aria-hidden="true">☞</span><span>Next milestone note: What should happen next</span></a>
+  </nav>
+</aside>
+
+
+<section class="content-section" id="registry-reconciliation" aria-labelledby="registry-reconciliation-title">
+  <p class="section-eyebrow">Identity and provenance</p>
+  <h2 id="registry-reconciliation-title">Resource Registry Reconciliation and Activity History</h2>
+  <div class="section-body">
+    <h3>62. Resource Registry stale-link review followed the Viewer work</h3>
+<p>After the Viewer succeeded, attention shifted to the live Resource Registry.</p>
+<p>A search identified a cluster of stale references still using:</p>
+<pre><code class="language-text">documents/work-update-catalog
+</code></pre>
+<p>even though the current repository area is:</p>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer
+</code></pre>
+<p>The stale cluster included:</p>
+<ul>
+<li>Viewer;</li>
+<li>catalogs;</li>
+<li>root;</li>
+<li>legacy manifest;</li>
+<li>legacy manifest builder;</li>
+<li>documentation sidecars;</li>
+<li>therapy sidecar;</li>
+<li>project documentation root.</li>
+</ul>
+<p>This was exactly the kind of problem the Resource Registry was built to solve.</p>
+<hr />
+
+<h3>63. Stable Resource identity allowed the migration to be historical rather than destructive</h3>
+<p>The migration followed:</p>
+<pre><code class="language-text">resource identity != location
+</code></pre>
+<p>Instead of creating entirely new Resource IDs for everything that moved, the cleanup asked:</p>
+<blockquote>
+<p>Is this the same conceptual Resource at a new location, or is this a distinct new Resource?</p>
+</blockquote>
+<p>That produced two classes.</p>
+<h4>Same Resource, new current location</h4>
+<p>Examples:</p>
+<ul>
+<li>Online Viewer;</li>
+<li>chemical catalog;</li>
+<li>document catalog;</li>
+<li>lesson catalog;</li>
+<li>workflow sidecar;</li>
+<li>lesson sidecars;</li>
+<li>Project documentation root;</li>
+<li>PST-SP sidecar.</li>
+</ul>
+<h4>Distinct new Resources</h4>
+<p>Examples:</p>
+<ul>
+<li>source-aware Documentation Viewer manifest;</li>
+<li>source-aware manifest builder;</li>
+<li>Viewer source registry.</li>
+</ul>
+<p>The legacy single-root manifest and builder were preserved as their original Resource identities.</p>
+<hr />
+
+<h3>64. `RES-011` Online JSON viewer was reconciled</h3>
+<p><code>RES-011</code> retained its stable Resource identity.</p>
+<p>Its current location became:</p>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/json-viewer.html
+</code></pre>
+<p>Its description was updated from:</p>
+<pre><code class="language-text">Local JSON Explorer v1.6.1
+json-manifest.json
+</code></pre>
+<p>to the current:</p>
+<pre><code class="language-text">Klinswork Documentation Viewer 2.0-draft
+source-aware documentation-viewer-manifest.json
+GitHub Pages static mode
+</code></pre>
+<p>Local Python compatibility remains part of the environment.</p>
+<hr />
+
+<h3>65. `RES-019` evolved from Work Update Catalog root to Viewer root</h3>
+<p>The old Resource was named:</p>
+<pre><code class="language-text">Work Update Catalog root
+</code></pre>
+<p>The directory had evolved substantially.</p>
+<p>Instead of deleting and replacing the Resource, the session preserved identity continuity and renamed it:</p>
+<pre><code class="language-text">Klinswork Documentation Viewer root
+</code></pre>
+<p>Its description now reflects:</p>
+<ul>
+<li>common documentation;</li>
+<li>catalogs;</li>
+<li>Record Profile Library;</li>
+<li>sidecars;</li>
+<li>summaries;</li>
+<li>tools;</li>
+<li>workflows;</li>
+<li>nested Projects Documentation Space;</li>
+<li>Viewer artifacts.</li>
+</ul>
+<p>This is a good demonstration of a Resource changing role without losing history.</p>
+<hr />
+
+<h3>66. Legacy manifest identity was preserved</h3>
+<p><code>RES-020</code> was not silently reassigned to the new source-aware manifest.</p>
+<p>It became:</p>
+<pre><code class="language-text">RES-020 — Legacy JSON manifest
+</code></pre>
+<p>and now points to:</p>
+<pre><code class="language-text">Klinswork Documentation Viewer/json-manifest.json
+</code></pre>
+<p>Its description explicitly says it is retained for v1.x compatibility.</p>
+<p>This preserves historical identity.</p>
+<hr />
+
+<h3>67. Legacy manifest builder identity was preserved</h3>
+<p>The same principle was applied to:</p>
+<pre><code class="language-text">RES-021
+</code></pre>
+<p>which became:</p>
+<pre><code class="language-text">Legacy JSON manifest builder (manifest.py)
+</code></pre>
+<p>It remains associated with:</p>
+<pre><code class="language-text">json-manifest.json
+</code></pre>
+<p>and the v1.x discovery path.</p>
+<p>The new source-aware builder received a new Resource ID.</p>
+<hr />
+
+<h3>68. PST-SP sidecar moved across Documentation Spaces without losing Resource identity</h3>
+<p><code>RES-025</code> previously pointed into the old common sidecar directory.</p>
+<p>Its current location is now under:</p>
+<pre><code class="language-text">documents/
+└── therapy-documentation-work/
+    └── therapy-component-library/
+        └── sidecars/
+            └── pst-sp/
+                └── pst-sp-veteran-study-guide-sidecar.json
+</code></pre>
+<p>The Resource ID remained stable.</p>
+<p>This demonstrates that a Resource can move not only between directories but between Documentation Spaces without becoming a new Resource.</p>
+<hr />
+
+<h3>69. `RES-041` Project documentation root was reconciled semantically</h3>
+<p>The Project documentation root moved from:</p>
+<pre><code class="language-text">documents/work-update-catalog/projects/
+</code></pre>
+<p>to:</p>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/
+</code></pre>
+<p>But the change was not only a path update.</p>
+<p>Its description was rewritten around the current Project Definition architecture:</p>
+<pre><code class="language-text">Project Identity Entity Record
+local README
+Project Summary
+summary sidecar
+System documentation
+implementation plans
+</code></pre>
+<p>with relationships and mutable Resource locations kept outside intrinsic identity.</p>
+<p>This is substantially more accurate than the earlier description of one highest-level Markdown Project document.</p>
+<hr />
+
+<h3>70. `RES-041` LAST UPDATE column shift was repaired</h3>
+<p>The stale-link review also exposed a spreadsheet defect.</p>
+<p>The <code>LAST UPDATE</code> formula for <code>RES-041</code> had been shifted into the Metadata Reference column.</p>
+<p>The cleanup moved it back to column H.</p>
+<p>The restored formula now derives the date from Activity history like the other Resource rows.</p>
+<p>This is a small but important data-integrity repair.</p>
+<hr />
+
+<h3>71. `RES-042` Meadows Housekeeping Projects Summary description was reconciled</h3>
+<p>The Registry description for the Meadows architecture document still contained the older transitional classification.</p>
+<p>It was updated to the August 15 model:</p>
+<pre><code class="language-text">Operations
+    = parent Project
+
+Inventory Management
+Scheduling
+Task Assignment and Tracking
+    = child Projects
+
+Employee Achievements
+    = provisional Project candidate
+
+Inventory 3.0
+Work Queue
+    = Systems
+
+Documentation
+    = separate cross-project Project
+</code></pre>
+<p>This aligns the Resource Registry description with the controlled vocabulary established in ARCH-001 / ACT-0058.</p>
+<hr />
+
+<h3>72. New source-aware Viewer Resources were registered</h3>
+<p>Three new Resource identities were created.</p>
+<h4>RES-044 — Klinswork Documentation Viewer manifest</h4>
+<p>Role:</p>
+<ul>
+<li>current source-aware generated manifest;</li>
+<li>Documentation Spaces;</li>
+<li>record discovery;</li>
+<li>source-aware fetch routing;</li>
+<li>companion resolution;</li>
+<li>archive state;</li>
+<li>preview metadata.</li>
+</ul>
+<h4>RES-045 — Documentation Viewer manifest builder</h4>
+<p>Role:</p>
+<ul>
+<li>current source-aware builder;</li>
+<li>reads source registry;</li>
+<li>scans configured Documentation Spaces;</li>
+<li>resolves metadata and companions;</li>
+<li>writes Viewer-home manifest.</li>
+</ul>
+<h4>RES-046 — Documentation Viewer source registry</h4>
+<p>Role:</p>
+<ul>
+<li>structured source configuration;</li>
+<li>Common;</li>
+<li>Projects;</li>
+<li>Therapy;</li>
+<li>source roots;</li>
+<li>discovery modes;</li>
+<li>pruning/exclusion behavior.</li>
+</ul>
+<p>This keeps new architecture separate from legacy v1.x Resources.</p>
+<hr />
+
+<h3>73. Registry Activity continuity was deliberately preserved</h3>
+<p>Before making the changes, earlier Activity entries were reviewed so the new descriptions would match the established style.</p>
+<p>Existing entries use a continuity-oriented pattern:</p>
+<pre><code class="language-text">what changed
+why it changed
+what identity was preserved
+what architecture principle the change supports
+</code></pre>
+<p>The new entries follow that pattern.</p>
+<hr />
+
+<h3>74. ACT-0059 through ACT-0076 were appended</h3>
+<p>The cleanup produced a new Activity sequence.</p>
+<p>All were timestamped:</p>
+<pre><code class="language-text">2026-08-15T15:05:00-06:00
+</code></pre>
+<p>The entries are:</p>
+<pre><code class="language-text">ACT-0059  RES-011  Online Viewer endpoint and discovery model reconciled
+ACT-0060  RES-018  Catalog location reconciled
+ACT-0061  RES-019  Documentation root identity and location reconciled
+ACT-0062  RES-020  Legacy manifest role clarified
+ACT-0063  RES-021  Legacy manifest builder role clarified
+ACT-0064  RES-022  Documentation catalog location reconciled
+ACT-0065  RES-023  Lesson catalog location reconciled
+ACT-0066  RES-024  Documentation Workflow sidecar location reconciled
+ACT-0067  RES-025  PST-SP sidecar Documentation Space reconciled
+ACT-0068  RES-026  Inventory SDS plan sidecar location reconciled
+ACT-0069  RES-027  Controlled Information Spaces sidecar location reconciled
+ACT-0070  RES-028  Organizational Memory sidecar location reconciled
+ACT-0071  RES-029  Housekeeping Information Translation sidecar location reconciled
+ACT-0072  RES-041  Project documentation root and Project Definition role reconciled
+ACT-0073  RES-042  Architecture-summary registry description reconciled
+ACT-0074  RES-044  Source-aware Documentation Viewer manifest registered
+ACT-0075  RES-045  Source-aware Documentation Viewer manifest builder registered
+ACT-0076  RES-046  Documentation Viewer source registry registered
+</code></pre>
+<p>This is a substantial provenance record for one migration pass.</p>
+<hr />
+
+<h3>75. Stale `work-update-catalog` references were removed from current Resources</h3>
+<p>After the Registry writes, the Resources tab was searched for:</p>
+<pre><code class="language-text">work-update-catalog
+</code></pre>
+<p>The result was:</p>
+<pre><code class="language-text">0 matching current Resource rows
+</code></pre>
+<p>Historical Activity descriptions still preserve the old paths where relevant.</p>
+<p>That is the correct state:</p>
+<pre><code class="language-text">current Resources
+    → current locations
+
+Activities
+    → historical change
+</code></pre>
+<p>The migration therefore updated current routing without deleting history.</p>
+<hr />
+
+<h3>76. LAST UPDATE values now derive from the new Activities</h3>
+<p>The affected Resource rows now show:</p>
+<pre><code class="language-text">2026-08-15
+</code></pre>
+<p>through their Activity-based formulas.</p>
+<p>This is exactly the event-to-state pattern established the previous weekend:</p>
+<pre><code class="language-text">Activity history
+    ↓
+latest relevant timestamp
+    ↓
+Resources.LAST UPDATE
+</code></pre>
+<p>The Registry architecture therefore validated itself through real use.</p>
+<hr />
+
+<h3>77. The Resource Registry acted as an evolving system, not a bookmark list</h3>
+<p>The day's cleanup demonstrates the progression that began August 9.</p>
+<p>A simple bookmark list would have required:</p>
+<pre><code class="language-text">replace old URLs with new URLs
+</code></pre>
+<p>The actual Registry workflow preserved:</p>
+<ul>
+<li>stable Resource ID;</li>
+<li>current location;</li>
+<li>semantic role;</li>
+<li>legacy/current distinction;</li>
+<li>migration history;</li>
+<li>Activity;</li>
+<li>derived last-update date.</li>
+</ul>
+<p>That is a substantially stronger information model.</p>
+<hr />
+
+<h3>78. The same event/state pattern now appears across Klinswork</h3>
+<p>The Registry work reinforces a broader Klinswork pattern:</p>
+<pre><code class="language-text">Inventory Events
+    explain inventory state
+
+Task Activity
+    explains task state
+
+Inventory Holder Events
+    explain holder state
+
+Registry Activities
+    explain Resource state
+
+Architecture Changelog
+    explains architecture state
+</code></pre>
+<p>This recurring pattern is one of Klinswork's strongest emerging design principles.</p>
+<p>State is more trustworthy when its transitions are preserved.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="authority-model" aria-labelledby="authority-model-title">
+  <p class="section-eyebrow">Current model</p>
+  <h2 id="authority-model-title">Authority, Relationships, Resource Semantics, and Work-Session Readiness</h2>
+  <div class="section-body">
+    <h3>79. Current authority stack became clearer</h3>
+<p>The day's architecture can now express authority approximately as:</p>
+<pre><code class="language-text">Definitions
+    authority for controlled vocabulary
+
+Architecture Changelog
+    authority for applied architecture-change record
+
+Open Determinations
+    authority for unresolved architecture questions represented there
+
+Project Identity Entity Record
+    intended authority for stable intrinsic Project identity facts assigned to profile
+
+Project Summary
+    human-readable explanatory authority for Project purpose/scope/boundaries/current interpretation
+
+Project Summary sidecar
+    structured companion to Project Summary
+
+System Summary
+    human-readable explanatory authority for current System interpretation expressed there
+
+System Summary sidecar
+    structured companion to System Summary
+
+Resource Registry
+    authority for registered Resource identity/current location/routing
+
+Activities
+    authority for Registry change events represented there
+
+Record Profile Library
+    authority for recognized record construction/interpretation contracts
+
+source registry
+    authority for configured Viewer discovery sources
+
+generated manifest
+    generated discovery snapshot
+
+Viewer
+    presentation/retrieval layer
+</code></pre>
+<p>No single layer owns everything.</p>
+<hr />
+
+<h3>80. The distinction between authority and presentation was reinforced</h3>
+<p>The online Viewer can now display Project and System records.</p>
+<p>That does not make the Viewer authoritative for their content.</p>
+<p>Similarly:</p>
+<pre><code class="language-text">manifest discovers record
+    ≠
+manifest becomes authority for record meaning
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">sidecar structures Summary
+    ≠
+sidecar replaces Summary
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">README routes reader
+    ≠
+README owns every fact
+</code></pre>
+<p>This division of responsibility is becoming one of the defining characteristics of the Documentation Project.</p>
+<hr />
+
+<h3>81. Current physical repository state now reflects the architecture better</h3>
+<p>The current tree includes:</p>
+<pre><code class="language-text">Klinswork Documentation Viewer/
+├── catalogs/
+├── projects/
+├── Record Profile Library/
+├── sidecars/
+├── summaries/
+├── tools/
+├── workflows/
+├── documentation-viewer-manifest.json
+├── json-manifest.json
+├── json-viewer-original.html
+├── json-viewer.html
+├── manifest.py
+└── open-json-viewer-v1.6.0.bat
+</code></pre>
+<p>At the Documentation root, the current tree also includes:</p>
+<pre><code class="language-text">build_repository_tree.py
+documentation-viewer-manifest.json
+documentation-viewer-manifest.py
+documentation-viewer-sources.json
+</code></pre>
+<p>The physical structure now visibly preserves both:</p>
+<ul>
+<li>legacy single-root Viewer infrastructure;</li>
+<li>current source-aware Viewer infrastructure.</li>
+</ul>
+<hr />
+
+<h3>82. Legacy and current Viewer generations now coexist intentionally</h3>
+<p>The architecture no longer needs to pretend that every older Viewer artifact disappeared.</p>
+<p>Current model:</p>
+<pre><code class="language-text">LEGACY / COMPATIBILITY
+
+manifest.py
+    ↓
+json-manifest.json
+    ↓
+v1.x local/static behavior
+
+
+CURRENT SOURCE-AWARE
+
+documentation-viewer-sources.json
+    ↓
+documentation-viewer-manifest.py
+    ↓
+documentation-viewer-manifest.json
+    ↓
+Klinswork Documentation Viewer 2.0-draft
+</code></pre>
+<p>Preserving both makes migration inspectable.</p>
+<hr />
+
+<h3>83. Documentation Spaces are semantic, not merely directory labels</h3>
+<p>The Common, Projects, and Therapy sources are more than convenient folder groupings.</p>
+<p>They encode different discovery roles.</p>
+<p>For example:</p>
+<pre><code class="language-text">Projects
+    discovers project-local structured documentation
+
+Therapy
+    discovers therapy-component structured records
+
+Common
+    discovers shared/general Documentation records
+</code></pre>
+<p>This means a record's discovery context can carry meaning beyond its raw path.</p>
+<hr />
+
+<h3>84. Generic Common storage remains valid</h3>
+<p>The architecture also preserves a fallback rule.</p>
+<p>If a document does not clearly belong to one established specialized Documentation Space:</p>
+<pre><code class="language-text">store source + sidecar in Common
+</code></pre>
+<p>This prevents the source taxonomy from becoming a forced classification system.</p>
+<p>A new Documentation Space should be justified by real recurring structure.</p>
+<hr />
+
+<h3>85. Project/System discovery has now been tested with one nested exemplar</h3>
+<p>The Inventory Management exemplar provides the first useful nested Projects test:</p>
+<pre><code class="language-text">Projects
+└── operations
+    └── Inventory Management
+        ├── Project Summary sidecar
+        └── systems
+            └── Inventory 3.0
+                └── System Summary sidecar
+</code></pre>
+<p>The Viewer successfully represents the nested physical path.</p>
+<p>The next challenge is semantic differentiation in the presentation layer.</p>
+<hr />
+
+<h3>86. Project versus System should become a Viewer-level distinction</h3>
+<p>The current generic Viewer tree can show both records.</p>
+<p>Future richer presentation should understand that:</p>
+<pre><code class="language-text">Inventory Management
+    = Project
+
+Inventory 3.0
+    = System
+</code></pre>
+<p>without relying only on folder names.</p>
+<p>This may eventually come from:</p>
+<ul>
+<li>documentType;</li>
+<li>subject metadata;</li>
+<li>Entity Record links;</li>
+<li>relationship data;</li>
+<li>Record Profile metadata.</li>
+</ul>
+<p>The current exemplar gives the Viewer real data against which to design that behavior.</p>
+<hr />
+
+<h3>87. Record Profile templates should become first-class Viewer objects</h3>
+<p>The PST-SP template discovery suggests a broader Viewer enhancement.</p>
+<p>A Record Profile template is not merely a blank instance.</p>
+<p>It has its own useful information:</p>
+<ul>
+<li>profile purpose;</li>
+<li>record family;</li>
+<li>profile version;</li>
+<li>base profile;</li>
+<li>schema roadmap;</li>
+<li>validation rules;</li>
+<li>construction rules;</li>
+<li>intended Viewer mode;</li>
+<li>compatibility.</li>
+</ul>
+<p>A specialized Record Profile preview could therefore be highly useful.</p>
+<p>This is likely preferable to pretending the template is a subject record.</p>
+<hr />
+
+<h3>88. Project Identity should eventually receive an Entity Record preview</h3>
+<p>The Project Identity profile already anticipates:</p>
+<pre><code class="language-text">previewMode: entity-identity
+</code></pre>
+<p>A future Viewer should likely show fields such as:</p>
+<ul>
+<li>canonical name;</li>
+<li>Project ID;</li>
+<li>assignment status;</li>
+<li>entity type;</li>
+<li>record status;</li>
+<li>aliases;</li>
+<li>identification basis;</li>
+<li>confidence;</li>
+<li>provenance.</li>
+</ul>
+<p>This would give Entity Records a distinct presentation path.</p>
+<p>Again, that should be implemented explicitly rather than by sidecar disguise.</p>
+<hr />
+
+<h3>89. The first Project Definition exemplar exposed useful unresolved questions</h3>
+<p>The exemplar made several questions more concrete.</p>
+<h4>Project Identity</h4>
+<ul>
+<li>Project Registry precedence?</li>
+<li>ID allocator?</li>
+<li>Entity Record ID distinct from Project ID?</li>
+<li>label history?</li>
+<li>merge/split/reclassification representation?</li>
+</ul>
+<h4>Project Summary</h4>
+<ul>
+<li>dedicated Project Summary sidecar profile?</li>
+<li>required versus optional Project Summary sections?</li>
+</ul>
+<h4>System layer</h4>
+<ul>
+<li>what stable System facts deserve Entity Record status?</li>
+<li>is <code>Inventory 3.0</code> version-bearing identity?</li>
+<li>System continuity rules?</li>
+<li><code>SYS-###</code> allocation?</li>
+</ul>
+<h4>Discovery</h4>
+<ul>
+<li>explicit Entity Record discovery?</li>
+<li>Project/System type-aware Viewer grouping?</li>
+<li>Record Profile template preview?</li>
+</ul>
+<h4>Resources</h4>
+<ul>
+<li>which current Inventory Resources map to which <code>RES-###</code> values?</li>
+<li>which Resources are shared?</li>
+<li>what live source/deployment is current?</li>
+</ul>
+<p>The exemplar therefore did what an exemplar should do: it revealed design questions through use.</p>
+<hr />
+
+<h3>90. The day did not formalize relationships prematurely</h3>
+<p>The architecture recognizes likely future relationship records such as:</p>
+<pre><code class="language-text">parent_project
+contains_system
+operates_in
+uses_resource
+shares_resource_with
+integrates_with
+depends_on
+produces
+documents
+supports
+derived_from
+supersedes
+governed_by
+</code></pre>
+<p>But these were not manually duplicated across the new Project Identity record.</p>
+<p>The current direction remains:</p>
+<pre><code class="language-text">one authoritative relationship fact
+    ↓
+multiple generated views
+</code></pre>
+<p>rather than manually maintaining forward and inverse relationships in many files.</p>
+<hr />
+
+<h3>91. Operational Environment remains outside the Project hierarchy</h3>
+<p>Meadows Housekeeping remains conceptually:</p>
+<pre><code class="language-text">Operational Environment
+</code></pre>
+<p>not:</p>
+<pre><code class="language-text">Project child
+</code></pre>
+<p>This allows:</p>
+<pre><code class="language-text">Inventory Management
+    operates_in
+Meadows Housekeeping
+</code></pre>
+<p>without making the environment part of intrinsic Project identity.</p>
+<p>The candidate environment identifier remains unfrozen.</p>
+<hr />
+
+<h3>92. Resource identity remains global and reusable</h3>
+<p>The day's Registry work reinforces:</p>
+<pre><code class="language-text">register shared Resource once
+        ↓
+assign stable RES-###
+        ↓
+relate outward
+        ↓
+update location centrally
+</code></pre>
+<p>This prevents one physical file from acquiring multiple pseudo-identities merely because several Projects use it.</p>
+<p>The Therapy PST-SP move is a particularly strong example.</p>
+<hr />
+
+<h3>93. Project/System hierarchy does not replace Resource relationships</h3>
+<p>A System can use a Resource without owning its identity.</p>
+<p>A Project can use a shared Resource without copying its Resource record.</p>
+<p>A Viewer can present a Resource without becoming its authority.</p>
+<p>This architecture supports many-to-many relationships naturally.</p>
+<hr />
+
+<h3>94. Implementation plans retained a separate role</h3>
+<p>The Inventory Management directory already contained:</p>
+<pre><code class="language-text">implementation-plans/
+├── implementation-plan.md
+└── README.md
+</code></pre>
+<p>The Project Definition work preserved their role as:</p>
+<pre><code class="language-text">bounded intended work
+</code></pre>
+<p>not:</p>
+<pre><code class="language-text">Project definition
+</code></pre>
+<p>and not:</p>
+<pre><code class="language-text">execution evidence
+</code></pre>
+<p>The distinction remains:</p>
+<pre><code class="language-text">workflow specification
+    = reusable method
+
+implementation plan
+    = intended bounded work
+
+workflow run / execution evidence
+    = what occurred
+
+Project/System Summary
+    = explanatory interpretation
+</code></pre>
+<hr />
+
+<h3>95. The Project Definition resume-work sequence became concrete</h3>
+<p>The Inventory Management README and Summary now support a context-naive sequence approximately like:</p>
+<pre><code class="language-text">work begins
+    ↓
+Project Identity
+    ↓
+Project README
+    ↓
+Project Summary
+    ↓
+Summary sidecar if useful
+    ↓
+relationships
+    ↓
+System context if needed
+    ↓
+Resource Registry
+    ↓
+fresh physical state if needed
+    ↓
+workflow
+    ↓
+implementation plan / run state
+    ↓
+recent Activities
+    ↓
+Open Determinations
+    ↓
+deeper history on demand
+</code></pre>
+<p>This is the architectural foundation the prior weekend was working toward.</p>
+<hr />
+
+<h3>96. Today&#x27;s work strengthens the case for declared future sessions</h3>
+<p>The original reason for postponing rigid session structure was practical.</p>
+<p>A structured session without reliable identity/routing records would still depend heavily on conversational memory.</p>
+<p>Today's work reduces that dependency.</p>
+<p>A future declared session can now say:</p>
+<pre><code class="language-text">target Project:
+    Inventory Management
+
+load:
+    project-identity.json
+    README.md
+    project-summary.md
+
+target System if needed:
+    Inventory 3.0
+
+resolve Resources:
+    Resource Registry
+
+discover documentation:
+    source-aware Viewer
+</code></pre>
+<p>This is far more meaningful than a workflow declaration made against vague or unstable project context.</p>
+<hr />
+
+<h3>97. But the work-session model still needs an end-to-end test</h3>
+<p>Today's session was reconstructed after the fact.</p>
+<p>The next high-value test is prospective.</p>
+<p>A new session should intentionally begin with:</p>
+<pre><code class="language-text">declared work target
+Startup
+Project Identity
+README
+Project Summary
+System context
+Registry resolution
+workflow selection
+implementation plan
+</code></pre>
+<p>and then preserve:</p>
+<ul>
+<li>execution history;</li>
+<li>decisions;</li>
+<li>evidence;</li>
+<li>outputs;</li>
+<li>reconciliation;</li>
+<li>closure.</li>
+</ul>
+<p>This will test whether the infrastructure now reduces cognitive and procedural friction rather than merely documenting it.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="capabilities-next" aria-labelledby="capabilities-next-title">
+  <p class="section-eyebrow">Resulting state</p>
+  <h2 id="capabilities-next-title">Capabilities Gained, Artifacts, Incomplete Work, and Next Tests</h2>
+  <div class="section-body">
+    <h3>98. Concrete capabilities gained today</h3>
+<p>By the end of August 15, Klinswork could support all of the following more clearly than before:</p>
+<ul>
+<li>Project as a stable entity independent of name/location/hierarchy;</li>
+<li>Project Identity Entity Records;</li>
+<li>explicit unassigned Project-ID state;</li>
+<li>Record Profiles beyond sidecars;</li>
+<li>Record Profile Registry across multiple record families;</li>
+<li>Record Profile Library;</li>
+<li>Entity Record versus sidecar distinction;</li>
+<li>authoring-template distinction;</li>
+<li>profile-level schema roadmaps;</li>
+<li>local Project orientation;</li>
+<li>rich Project Summary;</li>
+<li>machine-readable Project Summary companion;</li>
+<li>System documentation without System Identity;</li>
+<li>Project versus System Summary separation;</li>
+<li>source-aware Documentation Spaces;</li>
+<li>source registry;</li>
+<li>source-aware generated manifest;</li>
+<li>multi-source online Viewer;</li>
+<li>nested Project/System sidecar discovery;</li>
+<li>preservation of legacy Viewer manifests/builders;</li>
+<li>Registry-based migration of stale Resource locations;</li>
+<li>Activity-preserved Resource history;</li>
+<li>current Viewer infrastructure Resource registration;</li>
+<li>stronger context-naive Project resume path;</li>
+<li>concrete test data for future Entity Record discovery;</li>
+<li>concrete test data for future Record Profile template preview;</li>
+<li>stronger foundation for future formal Project Registry work.</li>
+</ul>
+<hr />
+
+<h3>99. Artifacts materially created or completed today</h3>
+<h4>Architecture / Google Doc</h4>
+<ul>
+<li>controlled Definitions updates;</li>
+<li>ARCH-001;</li>
+<li>ARCH-002;</li>
+<li>ARCH-003;</li>
+<li>major Documentation tab reconciliation;</li>
+<li>Record Profile Library tab creation / architecture direction;</li>
+<li>current Project/System terminology reconciliation.</li>
+</ul>
+<h4>Record Profile Library</h4>
+<ul>
+<li>broader Record Profile taxonomy;</li>
+<li>Record Profile Library README direction;</li>
+<li>Record Profile Registry evolution;</li>
+<li><code>project-identity-template-1.0-draft.json</code>;</li>
+<li>current repository presence of <code>record-profile-registry-1.0.json</code>.</li>
+</ul>
+<h4>Inventory Management Project Definition</h4>
+<ul>
+<li><code>project-identity.json</code>;</li>
+<li><code>README.md</code>;</li>
+<li><code>summaries/project-summary.md</code>;</li>
+<li><code>sidecars/project-summary-sidecar.json</code>.</li>
+</ul>
+<h4>Inventory 3.0 System documentation</h4>
+<ul>
+<li><code>README.md</code>;</li>
+<li><code>summaries/system-summary.md</code>;</li>
+<li><code>sidecars/system-summary-sidecar.json</code>.</li>
+</ul>
+<h4>Viewer / discovery</h4>
+<ul>
+<li>source-aware Viewer manifest use in online Viewer;</li>
+<li>updated online <code>json-viewer.html</code>;</li>
+<li>revised local batch-launcher design;</li>
+<li>source-aware manifest refresh test;</li>
+<li>successful Project-source discovery;</li>
+<li>PST-SP Record Profile template behavior diagnosis.</li>
+</ul>
+<h4>Resource Registry</h4>
+<ul>
+<li>stale Viewer/catalog/sidecar/project paths reconciled;</li>
+<li>RES-019 renamed/reinterpreted;</li>
+<li>RES-020 legacy role clarified;</li>
+<li>RES-021 legacy role clarified;</li>
+<li>RES-025 Therapy Documentation Space location reconciled;</li>
+<li>RES-041 Project documentation root reconciled;</li>
+<li>RES-041 LAST UPDATE formula repaired;</li>
+<li>RES-042 architecture description reconciled;</li>
+<li>RES-044 added;</li>
+<li>RES-045 added;</li>
+<li>RES-046 added;</li>
+<li>ACT-0059 through ACT-0076 appended.</li>
+</ul>
+<hr />
+
+<h3>100. Existing artifacts whose role changed today</h3>
+<p>Some artifacts were not newly created but acquired clearer roles.</p>
+<h4><code>json-manifest.json</code></h4>
+<p>Now explicitly legacy/single-root compatibility.</p>
+<h4><code>manifest.py</code></h4>
+<p>Now explicitly legacy/single-root compatibility.</p>
+<h4><code>json-viewer.html</code></h4>
+<p>Now current source-aware online Viewer.</p>
+<h4><code>projects/</code></h4>
+<p>Now explicitly the Projects Documentation Space and Project Definition home.</p>
+<h4><code>Record Profile Library/</code></h4>
+<p>Now explicitly profile authority rather than a miscellaneous templates folder.</p>
+<h4>Inventory Management directory</h4>
+<p>Now first complete Project Definition exemplar.</p>
+<h4>Inventory 3.0 directory</h4>
+<p>Now System documentation layer without premature Entity Identity.</p>
+
+<h3>101. Items still incomplete after August 15</h3>
+<p>The work is architecturally substantial but not finished.</p>
+<h4>Project Identity</h4>
+<p>Still needed:</p>
+<ul>
+<li>settle Project Registry versus Project Identity authority precedence;</li>
+<li>settle permanent <code>PROJ-###</code> allocation procedure;</li>
+<li>decide whether Entity Records receive separate record IDs;</li>
+<li>decide canonical name/alias-history authority;</li>
+<li>promote the profile from draft only after exemplar testing.</li>
+</ul>
+<h4>Project Definition</h4>
+<p>Still needed:</p>
+<ul>
+<li>test the full exemplar through discovery;</li>
+<li>test Entity Record discovery;</li>
+<li>test context-naive resume;</li>
+<li>derive reusable Project Definition template;</li>
+<li>identify which folders/records are mandatory versus optional.</li>
+</ul>
+<h4>System Identity</h4>
+<p>Still needed:</p>
+<ul>
+<li>determine stable System identity fields;</li>
+<li>determine <code>SYS-###</code> allocation authority;</li>
+<li>reconcile Inventory 3.0 continuity/version naming;</li>
+<li>build System Identity only after Project model is proven.</li>
+</ul>
+<h4>Relationship architecture</h4>
+<p>Still needed:</p>
+<ul>
+<li>formal Relationship Registry;</li>
+<li>controlled predicates;</li>
+<li>relationship provenance/effective dates;</li>
+<li>generated inverse views.</li>
+</ul>
+<h4>Resource reconciliation</h4>
+<p>Still needed:</p>
+<ul>
+<li>map Inventory Management / Inventory 3.0 implementation Resources comprehensively;</li>
+<li>verify live source;</li>
+<li>verify live datastore;</li>
+<li>verify current deployment;</li>
+<li>identify shared Resources;</li>
+<li>register the current repository-tree generator if not already registered.</li>
+</ul>
+<h4>Viewer</h4>
+<p>Still needed:</p>
+<ul>
+<li>Entity Record discovery;</li>
+<li>Entity Identity preview;</li>
+<li>Record Profile template preview;</li>
+<li>explicit Project/System distinction;</li>
+<li>reconcile local Python Viewer with v2 source-aware model;</li>
+<li>possibly retire or archive more v1.x transitional artifacts after proof.</li>
+</ul>
+<h4>Registry</h4>
+<p>Still needed:</p>
+<ul>
+<li>controlled write path through RES-040;</li>
+<li>automated Resource update + Activity append;</li>
+<li>continued metadata-reference enrichment;</li>
+<li>formal Resource version/supersession rules.</li>
+</ul>
+<h4>Startup / work session</h4>
+<p>Still needed:</p>
+<ul>
+<li>prospective end-to-end test;</li>
+<li>controlled Startup tab population;</li>
+<li>workflow routing against actual Project Definition;</li>
+<li>run record using the reconstructed/prospective distinction.</li>
+</ul>
+<hr />
+
+<h3>102. Recommended next implementation sequence</h3>
+<p>The current architecture suggests the following sequence.</p>
+<h4>First — freeze nothing unnecessarily</h4>
+<p>Continue using:</p>
+<pre><code class="language-text">projectId: unassigned
+System Identity: deferred
+relationships: unresolved where not formalized
+</code></pre>
+<p>until the next tests provide evidence.</p>
+<h4>Second — regenerate and inspect discovery</h4>
+<p>Confirm:</p>
+<ul>
+<li>Project Summary sidecar;</li>
+<li>System Summary sidecar;</li>
+<li>companion resolution;</li>
+<li>source IDs;</li>
+<li>archive state;</li>
+<li>Viewer tree.</li>
+</ul>
+<h4>Third — add explicit Entity Record discovery</h4>
+<p>Teach the manifest/Viewer architecture how to discover:</p>
+<pre><code class="language-text">project-identity.json
+</code></pre>
+<p>as an Entity Record.</p>
+<p>Do not classify it as a sidecar.</p>
+<h4>Fourth — add Record Profile template-aware presentation</h4>
+<p>Teach the Viewer to distinguish:</p>
+<pre><code class="language-text">Record Profile template
+</code></pre>
+<p>from:</p>
+<pre><code class="language-text">instantiated subject record
+</code></pre>
+<h4>Fifth — reconcile Inventory Resources</h4>
+<p>Resolve current:</p>
+<ul>
+<li>Inventory app;</li>
+<li>data workbook;</li>
+<li>source project;</li>
+<li>deployment;</li>
+<li>relevant datasets;</li>
+<li>SDS relationships;</li>
+<li>implementation-plan Resources.</li>
+</ul>
+<h4>Sixth — perform context-naive resume test</h4>
+<p>Start a fresh session and use:</p>
+<pre><code class="language-text">Project Identity
+README
+Project Summary
+System Summary
+Resource Registry
+workflow
+</code></pre>
+<p>without relying on retained conversational memory.</p>
+<h4>Seventh — run a formally declared work session</h4>
+<p>Use the new foundations prospectively.</p>
+<h4>Eighth — only then extract reusable Project Definition template</h4>
+<p>Do not generalize from filenames alone.</p>
+<p>Generalize from what actually worked.</p>
+<hr />
+
+<h3>103. High-information architecture tests now available</h3>
+<p>The following tests would produce especially useful evidence.</p>
+<h4>Test 1 — Entity Record discovery</h4>
+<p>Expected:</p>
+<pre><code class="language-text">project-identity.json
+    discovered as entity-record
+    not sidecar
+</code></pre>
+<h4>Test 2 — Project/System Viewer distinction</h4>
+<p>Expected:</p>
+<pre><code class="language-text">Inventory Management
+    presented as Project context
+
+Inventory 3.0
+    presented as System context
+</code></pre>
+<h4>Test 3 — Record Profile template preview</h4>
+<p>Expected:</p>
+<pre><code class="language-text">pst-sp-study-guide-sidecar-template-1.0.json
+    → Record Profile Template preview
+
+actual PST-SP study-guide sidecar
+    → rich PST-SP preview
+</code></pre>
+<h4>Test 4 — cold-start Project resume</h4>
+<p>Expected:</p>
+<pre><code class="language-text">fresh session
+    → Project Identity
+    → README
+    → Project Summary
+    → Resource resolution
+    → System context
+</code></pre>
+<h4>Test 5 — Registry controlled write</h4>
+<p>Expected:</p>
+<pre><code class="language-text">submit Resource change
+    ↓
+validate
+    ↓
+update Resource
+    ↓
+append Activity
+    ↓
+LAST UPDATE changes
+</code></pre>
+<h4>Test 6 — System Identity design review</h4>
+<p>Expected:</p>
+<p>Use Inventory 3.0 documentation to determine which facts are truly stable enough for a System Identity Entity Record.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<aside class="supervisor-callout" id="milestone-note-5" aria-labelledby="milestone-note-5-title">
+  <div class="supervisor-heading">
+    <p class="supervisor-label">Milestone reading path · 5 of 5</p>
+    <span class="callout-type">Next step</span>
+  </div>
+  <h2 id="milestone-note-5-title">The next test is prospective use, not another round of abstract architecture</h2>
+  <p>Entity Record discovery, Profile Template presentation, Inventory Resource reconciliation, and a context-naive resume test should come next. After those tests, Klinswork can run a formally declared work session and determine which parts of the Inventory Management exemplar genuinely belong in a reusable Project Definition template.</p>
+</aside>
+
+
+<section class="content-section" id="architectural-meaning" aria-labelledby="architectural-meaning-title">
+  <p class="section-eyebrow">Architectural meaning</p>
+  <h2 id="architectural-meaning-title">Interpretation of the August 15 Work</h2>
+  <div class="section-body">
+    <h3>104. Architectural interpretation — Record Profiles solved a hidden type problem</h3>
+<p>Earlier Documentation work had many structured JSON documents.</p>
+<p>The hidden problem was that they did not all represent the same kind of thing.</p>
+<p>Some JSON files are:</p>
+<pre><code class="language-text">companions to documents
+</code></pre>
+<p>Some are:</p>
+<pre><code class="language-text">catalogs
+</code></pre>
+<p>Some are:</p>
+<pre><code class="language-text">manifests
+</code></pre>
+<p>Some are:</p>
+<pre><code class="language-text">workflow records
+</code></pre>
+<p>Some need to become:</p>
+<pre><code class="language-text">entity records
+</code></pre>
+<p>Treating all of them as sidecars would have produced a shallow architecture.</p>
+<p>The Record Profile family model gives Klinswork a way to say:</p>
+<pre><code class="language-text">what kind of record is this?
+what authority does it have?
+what does it accompany?
+how should it validate?
+how should the Viewer interpret it?
+</code></pre>
+<p>That is a foundational improvement.</p>
+<hr />
+
+<h3>105. Architectural interpretation — Project identity became smaller and therefore stronger</h3>
+<p>A common failure in information systems is to make an identity record contain everything known about an entity.</p>
+<p>That creates fragility.</p>
+<p>Today's Project Identity profile took the opposite approach.</p>
+<p>It deliberately became small.</p>
+<p>By excluding:</p>
+<ul>
+<li>hierarchy;</li>
+<li>paths;</li>
+<li>Resources;</li>
+<li>Systems;</li>
+<li>deployment;</li>
+<li>lifecycle;</li>
+<li>implementation;</li>
+</ul>
+<p>the record can remain stable while the Project changes.</p>
+<p>The richer changing meaning is preserved elsewhere.</p>
+<p>This makes the identity record more durable precisely because it contains less.</p>
+<hr />
+
+<h3>106. Architectural interpretation — narrative remains necessary</h3>
+<p>The Project Identity record is machine-friendly.</p>
+<p>But it cannot explain:</p>
+<ul>
+<li>why Inventory Management exists;</li>
+<li>what its operational function means;</li>
+<li>why Task Assignment is outside its boundary;</li>
+<li>why Inventory 3.0 is a System rather than the Project;</li>
+<li>how history evolved;</li>
+<li>what remains unresolved.</li>
+</ul>
+<p>That requires narrative.</p>
+<p>Therefore:</p>
+<pre><code class="language-text">structured identity
+    +
+human-readable interpretation
+    +
+machine-readable companion
+</code></pre>
+<p>is stronger than any one layer alone.</p>
+<hr />
+
+<h3>107. Architectural interpretation — the first exemplar converted theory into constraints</h3>
+<p>Before Inventory Management, Project Definition questions were abstract.</p>
+<p>After Inventory Management, the architecture has concrete failure modes.</p>
+<p>Examples:</p>
+<ul>
+<li>Where does Project Identity physically live?</li>
+<li>What if Viewer scans only sidecars?</li>
+<li>What belongs in Project Summary versus Identity?</li>
+<li>What belongs in System Summary versus Project Summary?</li>
+<li>What does a sidecar profile need?</li>
+<li>Which Resource paths are stale?</li>
+<li>What happens when Project/System records are nested?</li>
+</ul>
+<p>That is why exemplar work is so valuable.</p>
+<p>It turns philosophical architecture into testable requirements.</p>
+<hr />
+
+<h3>108. Architectural interpretation — discovery is now separate from storage</h3>
+<p>The source-aware Viewer architecture creates:</p>
+<pre><code class="language-text">record storage
+    !=
+record discovery
+</code></pre>
+<p>A record may live in:</p>
+<ul>
+<li>Common;</li>
+<li>Projects;</li>
+<li>Therapy;</li>
+<li>another future Documentation Space.</li>
+</ul>
+<p>The Viewer can still present a unified browsing environment.</p>
+<p>This is a major scalability improvement.</p>
+<hr />
+
+<h3>109. Architectural interpretation — Registry migration validated identity/location separation</h3>
+<p>The stale-link cleanup is more important than it appears.</p>
+<p>The Resource Registry was explicitly designed so:</p>
+<pre><code class="language-text">Resource identity != Resource location
+</code></pre>
+<p>Today, a real repository rename/migration was reconciled.</p>
+<p>The Registry was able to preserve:</p>
+<pre><code class="language-text">RES-011
+RES-018
+RES-019
+...
+</code></pre>
+<p>while updating paths.</p>
+<p>That is empirical validation of the design principle.</p>
+<hr />
+
+<h3>110. Architectural interpretation — legacy/current coexistence is a feature, not a defect</h3>
+<p>Klinswork now visibly contains:</p>
+<pre><code class="language-text">legacy manifest
+current source-aware manifest
+
+legacy builder
+current source-aware builder
+
+older profile registry
+current Record Profile Registry
+
+historical ontology
+current ontology
+</code></pre>
+<p>This may look untidy if viewed only as a folder tree.</p>
+<p>But from a historical/provenance perspective it is useful.</p>
+<p>The system can explain:</p>
+<ul>
+<li>what came first;</li>
+<li>what replaced what;</li>
+<li>what remains for compatibility;</li>
+<li>what is current.</li>
+</ul>
+<p>The goal is not zero historical residue.</p>
+<p>The goal is intelligible historical residue.</p>
+<hr />
+
+<h3>111. Architectural interpretation — current truth should be reconstructable</h3>
+<p>The ideal Klinswork state is increasingly:</p>
+<pre><code class="language-text">current state
+    can be reconstructed from
+identity + relationships + resources + events + documentation + provenance
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-text">current Resource location
+    ← Resource Registry + Activities
+
+current architecture interpretation
+    ← Definitions + Architecture Changelog + current summaries
+
+current Project identity
+    ← Project Identity record
+
+current documentation discovery
+    ← source registry + generated manifest
+
+current Project meaning
+    ← Project Summary
+</code></pre>
+<p>This is stronger than relying on one monolithic master file.</p>
+<hr />
+
+<h3>112. Architectural interpretation — the work-session structure is becoming operationally meaningful</h3>
+<p>The observation motivating this summary is important:</p>
+<blockquote>
+<p>We are still building the foundations that make work-session structures meaningful.</p>
+</blockquote>
+<p>That is supported by the actual architecture.</p>
+<p>A work-session structure becomes useful when it can reference stable things.</p>
+<p>For example:</p>
+<pre><code class="language-text">Work target:
+    Inventory Management
+
+Identity:
+    project-identity.json
+
+Orientation:
+    README.md
+
+Current Project interpretation:
+    project-summary.md
+
+Principal System:
+    Inventory 3.0
+
+Resource routing:
+    RES-###
+
+Workflow:
+    registered workflow
+
+Implementation plan:
+    known Project-local plan
+</code></pre>
+<p>Without those anchors, a session plan is mostly prose.</p>
+<p>With them, it can become executable context routing.</p>
+<hr />
+
+<h3>113. The recurring undeclared-session pattern should now become a test target</h3>
+<p>Two weekends in a row produced meaningful work before formal declaration.</p>
+<p>The correct response is not merely:</p>
+<pre><code class="language-text">remember to declare next time
+</code></pre>
+<p>The stronger response is:</p>
+<pre><code class="language-text">make declaration easier
+make Startup smaller
+make Project resolution obvious
+make resume context discoverable
+make workflow selection natural
+</code></pre>
+<p>Then test whether the structured process is actually easier than ad hoc work.</p>
+<p>If it is not, the process needs revision.</p>
+<p>The user should not have to fight the Documentation system in order to document work.</p>
+<hr />
+
+<h3>114. Current session reconstruction status</h3>
+<p>This August 15 summary is itself retrospective.</p>
+<p>Therefore:</p>
+<pre><code class="language-text">entry mode:
+    reconstructed after work
+</code></pre>
+<p>The summary should not be treated as evidence that the session had a prospective plan matching today's final scope.</p>
+<p>A later workflow-run record could use:</p>
+<pre><code class="language-text">reconstructed-after-work
+</code></pre>
+<p>and explicitly identify:</p>
+<ul>
+<li>what happened before formalization;</li>
+<li>what decisions emerged;</li>
+<li>what artifacts resulted;</li>
+<li>what remained intentionally planned afterward.</li>
+</ul>
+<p>This is exactly the scenario the workflow-run 3.1 draft was designed to represent.</p>
+<hr />
+
+<h3>115. Potential workflow-run record for today</h3>
+<p>If the session is later encoded as a workflow run, likely high-level fields include:</p>
+<pre><code class="language-text">run date:
+    2026-08-15
+
+entry mode:
+    reconstructed after work
+
+primary Project:
+    Documentation
+
+material subject Projects:
+    Operations
+    Inventory Management
+
+principal Systems:
+    Inventory 3.0
+    Klinswork Documentation Viewer
+
+major outcomes:
+    Record Profile architecture
+    Project Identity profile
+    first Project Definition exemplar
+    source-aware Viewer
+    Registry reconciliation
+
+closure state:
+    documentation summary created
+    additional discovery tests remain
+</code></pre>
+<p>The exact run schema should be applied from its current template rather than reconstructed casually inside this Summary.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="current-maps" aria-labelledby="current-maps-title">
+  <p class="section-eyebrow">Current architecture</p>
+  <h2 id="current-maps-title">Current Architecture Maps and Final Assessment</h2>
+  <div class="section-body">
+    <h3>116. Current architecture map</h3>
+<p>The day's working architecture can be summarized as:</p>
+<pre><code class="language-text">KLINSWORK
+│
+├── Documentation Project
+│   │
+│   ├── Definitions
+│   ├── Architecture Changelog
+│   ├── Open Determinations
+│   │
+│   ├── Record Profile Library
+│   │   ├── document-sidecar profiles
+│   │   ├── entity-record profiles
+│   │   ├── authoring templates
+│   │   └── Record Profile Registry
+│   │
+│   ├── Entity Records
+│   │   └── Project Identity records
+│   │
+│   ├── Human-readable documents
+│   │   ├── READMEs
+│   │   ├── Project Summaries
+│   │   └── System Summaries
+│   │
+│   ├── Sidecars
+│   ├── Registries
+│   ├── Documentation Spaces
+│   │   ├── Common
+│   │   ├── Projects
+│   │   └── Therapy
+│   │
+│   ├── source registry
+│   ├── manifest builder
+│   ├── generated manifest
+│   ├── Klinswork Documentation Viewer
+│   └── Startup / workflow context routing
+│
+└── Operations Project
+    │
+    ├── Inventory Management Project
+    │   ├── Project Identity
+    │   ├── Project README
+    │   ├── Project Summary
+    │   ├── Project Summary sidecar
+    │   ├── implementation plans
+    │   └── Inventory 3.0 System
+    │       ├── README
+    │       ├── System Summary
+    │       └── System Summary sidecar
+    │
+    ├── Scheduling Project
+    ├── Task Assignment and Tracking Project
+    │   └── Work Queue System
+    └── Employee Achievements
+        [provisional Project candidate]
+</code></pre>
+<hr />
+
+<h3>117. Current authority map</h3>
+<pre><code class="language-text">Question:
+    What does &quot;Project&quot; mean?
+Authority:
+    Definitions
+
+Question:
+    What architecture change was applied?
+Authority:
+    Architecture Changelog
+
+Question:
+    What stable intrinsic entity is this?
+Authority:
+    Project Identity Entity Record
+
+Question:
+    What is this Project for?
+Authority:
+    Project Summary
+
+Question:
+    Where do I start locally?
+Authority:
+    README
+
+Question:
+    How is the Summary structured for machines?
+Authority:
+    Summary sidecar
+
+Question:
+    Where is a Resource now?
+Authority:
+    Resource Registry
+
+Question:
+    Why did a Resource location change?
+Authority:
+    Activities
+
+Question:
+    What records should Viewer scan?
+Authority:
+    Documentation Viewer source registry
+
+Question:
+    What did the current discovery scan find?
+Authority:
+    generated Documentation Viewer manifest
+
+Question:
+    How should records be presented?
+Authority:
+    Viewer logic, constrained by Record Profiles and source authority
+</code></pre>
+<hr />
+
+<h3>118. Current Inventory Management Project Definition map</h3>
+<pre><code class="language-text">Inventory Management/
+│
+├── project-identity.json
+│   role:
+│       stable intrinsic Project identity
+│
+├── README.md
+│   role:
+│       local orientation / navigation
+│
+├── summaries/
+│   └── project-summary.md
+│       role:
+│           rich human-readable Project definition
+│
+├── sidecars/
+│   └── project-summary-sidecar.json
+│       role:
+│           machine-readable companion to Project Summary
+│
+├── systems/
+│   └── Inventory 3.0/
+│       ├── README.md
+│       │   role:
+│       │       System-local orientation
+│       │
+│       ├── summaries/
+│       │   └── system-summary.md
+│       │       role:
+│       │           rich System interpretation
+│       │
+│       └── sidecars/
+│           └── system-summary-sidecar.json
+│               role:
+│                   machine-readable companion
+│
+└── implementation-plans/
+    ├── README.md
+    └── implementation-plan.md
+        role:
+            bounded intended work
+</code></pre>
+<hr />
+
+<h3>119. Current Viewer architecture map</h3>
+<pre><code class="language-text">documentation-viewer-sources.json
+    answers:
+        Where should discovery look?
+        What is each source called?
+        What discovery mode applies?
+
+        ↓
+
+documentation-viewer-manifest.py
+    answers:
+        How is discovery performed?
+        How are companions resolved?
+        How are records normalized?
+
+        ↓
+
+documentation-viewer-manifest.json
+    answers:
+        What did the latest scan find?
+        What source owns each discovered address?
+        What relative fetch path should be used?
+
+        ↓
+
+json-viewer.html
+    answers:
+        How should the user browse and inspect discovered records?
+
+        ↓
+
+specialized preview logic
+    answers:
+        How should recognized record families be presented?
+</code></pre>
+<hr />
+
+<h3>120. Current Resource Registry migration map</h3>
+<pre><code class="language-text">OLD CURRENT PATHS
+documents/work-update-catalog/...
+
+        ↓
+
+Resource identity preserved where appropriate
+
+        ↓
+
+NEW CURRENT PATHS
+documents/Klinswork Documentation Viewer/...
+documents/therapy-documentation-work/...
+
+        ↓
+
+Activities record transition
+
+        ↓
+
+LAST UPDATE derived from Activities
+</code></pre>
+<p>For the new source-aware infrastructure:</p>
+<pre><code class="language-text">legacy Resource preserved
+        +
+new Resource identity assigned
+</code></pre>
+<p>rather than overwriting the legacy Resource.</p>
+<hr />
+
+<h3>121. Final assessment</h3>
+<p>August 15 produced a large amount of visible work.</p>
+<p>But, as with the prior weekend, its importance is better measured by structural dependencies resolved.</p>
+<p>Before today's work:</p>
+<ul>
+<li>Project/System ontology was still transitional;</li>
+<li>sidecar terminology still risked covering too many record types;</li>
+<li>Project Identity did not exist as a proven record;</li>
+<li>Project Definition had not been instantiated;</li>
+<li>Inventory 3.0 System documentation was not locally complete;</li>
+<li>online Viewer discovery remained tied to a legacy single-root manifest;</li>
+<li>Projects Documentation Space had no proven Project/System exemplar records;</li>
+<li>Resource Registry still contained stale work-update-catalog routing;</li>
+<li>new source-aware Viewer infrastructure was not registered.</li>
+</ul>
+<p>After today's work:</p>
+<ul>
+<li>Inventory Management is modeled as a Project;</li>
+<li>Inventory 3.0 is modeled as its principal known System;</li>
+<li>Record Profile is the general record-definition concept;</li>
+<li>Sidecar and Entity Record are distinct;</li>
+<li>Project Identity has a reusable profile/template;</li>
+<li>Inventory Management has a real Project Identity record;</li>
+<li>the Project has local orientation;</li>
+<li>the Project has a rich human-readable Summary;</li>
+<li>the Summary has a structured sidecar;</li>
+<li>Inventory 3.0 has a complete non-identity System documentation layer;</li>
+<li>the source-aware manifest discovers the Project/System sidecars;</li>
+<li>the online Viewer consumes the source-aware manifest;</li>
+<li>a new Viewer semantic problem was discovered through real Record Profile use;</li>
+<li>stale current Registry paths were reconciled;</li>
+<li>legacy Viewer infrastructure was preserved as legacy rather than overwritten;</li>
+<li>new source-aware Viewer infrastructure received separate Resource identities;</li>
+<li>the migration is preserved through Activities.</li>
+</ul>
+<p>The shift can be summarized as:</p>
+<pre><code class="language-text">BEFORE
+
+architecture capable of describing
+what formal Project/System records should eventually become
+
+        ↓
+
+AUGUST 15
+
+Record Profiles
+Project Identity
+Inventory Management exemplar
+System documentation
+source-aware discovery
+Viewer migration
+Registry reconciliation
+
+        ↓
+
+AFTER
+
+an emerging Project Definition system
+that can be tested through real records,
+real discovery,
+real routing,
+and real historical change
+</code></pre>
+<p>The day therefore marks a credible transition from:</p>
+<blockquote>
+<p><strong>designing the structures needed for durable work context</strong></p>
+</blockquote>
+<p>to:</p>
+<blockquote>
+<p><strong>using those structures to represent and discover a real Project.</strong></p>
+</blockquote>
+<p>The work-session foundations are not finished.</p>
+<p>But they are now much more than conceptual.</p>
+<p>The next challenge is to use them prospectively.</p>
+<hr />
+
+  </div>
+</section>
+
+
+<section class="content-section" id="appendices" aria-labelledby="appendices-title">
+  <p class="section-eyebrow">Reference material</p>
+  <h2 id="appendices-title">Appendices — Source Artifacts, Invariants, Maps, Changes, and Test Plans</h2>
+  <div class="section-body">
+    <h3>Appendix A — principal August 15 source artifacts</h3>
+<h4>Prior baseline</h4>
+<ol>
+<li><code>summary-2026-08-08-09-klinswork-weekend-architecture.md</code><ul>
+<li>comprehensive prior-weekend architecture record;</li>
+<li>establishes the historical baseline and undeclared-session reconstruction principle.</li>
+</ul>
+</li>
+</ol>
+<h4>Meadows Housekeeping Projects Summary</h4>
+<ol start="2">
+<li><p>Definitions tab</p>
+<ul>
+<li>controlled vocabulary;</li>
+<li>Record Profile terms;</li>
+<li>Sidecar / Entity Record distinction.</li>
+</ul>
+</li>
+<li><p>Architecture Changelog</p>
+<ul>
+<li>ARCH-001;</li>
+<li>ARCH-002;</li>
+<li>ARCH-003.</li>
+</ul>
+</li>
+<li><p>Documentation tab</p>
+<ul>
+<li>Documentation Project architecture;</li>
+<li>Documentation Spaces;</li>
+<li>Record Profile Library;</li>
+<li>discovery;</li>
+<li>Viewer;</li>
+<li>Startup/context routing.</li>
+</ul>
+</li>
+<li><p>Record Profile Library tab</p>
+<ul>
+<li>current human-readable companion area;</li>
+<li>still subject to further population/reconciliation.</li>
+</ul>
+</li>
+</ol>
+<h4>Record Profile Library</h4>
+<ol start="6">
+<li><p><code>README.md</code></p>
+</li>
+<li><p><code>record-profile-registry-1.0.json</code></p>
+</li>
+<li><p><code>project-identity-template-1.0-draft.json</code></p>
+</li>
+<li><p><code>generic-document-sidecar-template-3.0.json</code></p>
+</li>
+<li><p><code>document-sidecar-base-template-3.0.json</code></p>
+</li>
+<li><p>current sidecar profiles and authoring templates.</p>
+</li>
+</ol>
+<h4>Inventory Management</h4>
+<ol start="12">
+<li><p><code>project-identity.json</code></p>
+</li>
+<li><p><code>README.md</code></p>
+</li>
+<li><p><code>summaries/project-summary.md</code></p>
+</li>
+<li><p><code>sidecars/project-summary-sidecar.json</code></p>
+</li>
+<li><p><code>implementation-plans/implementation-plan.md</code></p>
+</li>
+</ol>
+<h4>Inventory 3.0</h4>
+<ol start="17">
+<li><p><code>systems/Inventory 3.0/README.md</code></p>
+</li>
+<li><p><code>systems/Inventory 3.0/summaries/system-summary.md</code></p>
+</li>
+<li><p><code>systems/Inventory 3.0/sidecars/system-summary-sidecar.json</code></p>
+</li>
+</ol>
+<h4>Viewer / discovery</h4>
+<ol start="20">
+<li><p><code>documentation-viewer-sources.json</code></p>
+</li>
+<li><p><code>documentation-viewer-manifest.py</code></p>
+</li>
+<li><p>Viewer-home <code>documentation-viewer-manifest.json</code></p>
+</li>
+<li><p>legacy <code>manifest.py</code></p>
+</li>
+<li><p>legacy <code>json-manifest.json</code></p>
+</li>
+<li><p><code>json-viewer.html</code></p>
+</li>
+<li><p><code>tools/json-viewer-v1.6.0.py</code></p>
+</li>
+<li><p><code>open-json-viewer-v1.6.0.bat</code></p>
+</li>
+</ol>
+<h4>Resource Registry</h4>
+<ol start="28">
+<li><p>Resources tab</p>
+</li>
+<li><p>Activities tab</p>
+</li>
+<li><p>RES-011</p>
+</li>
+<li><p>RES-018 through RES-029</p>
+</li>
+<li><p>RES-041</p>
+</li>
+<li><p>RES-042</p>
+</li>
+<li><p>RES-044</p>
+</li>
+<li><p>RES-045</p>
+</li>
+<li><p>RES-046</p>
+</li>
+<li><p>ACT-0059 through ACT-0076</p>
+</li>
+</ol>
+<h4>Physical-state evidence</h4>
+<ol start="38">
+<li>current repository tree generated August 15, 2026.</li>
+</ol>
+<hr />
+
+<h3>Appendix B — key architectural invariants</h3>
+<pre><code class="language-text">Project identity
+    != Project name
+
+Project identity
+    != repository location
+
+Project identity
+    != hierarchy
+
+Project identity
+    != lifecycle
+
+Project identity
+    != System
+
+Project identity
+    != Application
+
+Project identity
+    != Resource
+
+Project identity
+    != deployment
+</code></pre>
+<pre><code class="language-text">Resource identity
+    != Resource location
+</code></pre>
+<pre><code class="language-text">sidecar
+    = machine-readable companion to a human-readable source
+</code></pre>
+<pre><code class="language-text">Entity Record
+    = direct structured record of an entity
+</code></pre>
+<pre><code class="language-text">README
+    = local orientation
+</code></pre>
+<pre><code class="language-text">Summary
+    = rich human-readable interpretation
+</code></pre>
+<pre><code class="language-text">manifest
+    = generated discovery snapshot
+</code></pre>
+<pre><code class="language-text">Viewer
+    = presentation / retrieval layer
+</code></pre>
+<pre><code class="language-text">plan
+    != execution evidence
+</code></pre>
+<pre><code class="language-text">historical terminology
+    should not be rewritten
+    merely to match current ontology
+</code></pre>
+<hr />
+
+<h3>Appendix C — Project Definition exemplar</h3>
+<pre><code class="language-text">Inventory Management/
+├── project-identity.json
+│   └── Entity Record
+│
+├── README.md
+│   └── local orientation
+│
+├── summaries/
+│   └── project-summary.md
+│       └── rich Project definition
+│
+├── sidecars/
+│   └── project-summary-sidecar.json
+│       └── structured companion
+│
+├── systems/
+│   └── Inventory 3.0/
+│       ├── README.md
+│       ├── summaries/
+│       │   └── system-summary.md
+│       └── sidecars/
+│           └── system-summary-sidecar.json
+│
+└── implementation-plans/
+    ├── README.md
+    └── implementation-plan.md
+</code></pre>
+<hr />
+
+<h3>Appendix D — Record Profile model</h3>
+<pre><code class="language-text">Record Profile Library
+│
+├── record family: document-sidecar
+│   ├── generic-document
+│   ├── work-update
+│   ├── implementation-plan
+│   ├── lesson-reference
+│   ├── workflow-specification
+│   └── pst-sp-study-guide
+│
+├── record family: entity-record
+│   └── project-identity
+│
+└── record family: authoring-template
+    └── summary Markdown
+</code></pre>
+<p>Future candidate:</p>
+<pre><code class="language-text">entity-record
+    └── system-identity
+</code></pre>
+<p>only after Project exemplar evidence is sufficient.</p>
+<hr />
+
+<h3>Appendix E — Viewer generation map</h3>
+<pre><code class="language-text">documentation-viewer-sources.json
+        ↓
+documentation-viewer-manifest.py
+        ↓
+documentation-viewer-manifest.json
+        ↓
+json-viewer.html
+</code></pre>
+<p>Legacy path:</p>
+<pre><code class="language-text">manifest.py
+        ↓
+json-manifest.json
+</code></pre>
+<p>Current policy:</p>
+<pre><code class="language-text">preserve legacy identity
+register current v2 resources separately
+</code></pre>
+<hr />
+
+<h3>Appendix F — Resource Registry changes</h3>
+<pre><code class="language-text">RES-011
+    Online Viewer path + description reconciled
+
+RES-018
+    Chemical Product Catalog path reconciled
+
+RES-019
+    Work Update Catalog root
+        ↓ evolved to
+    Klinswork Documentation Viewer root
+
+RES-020
+    legacy JSON manifest clarified
+
+RES-021
+    legacy manifest builder clarified
+
+RES-022
+    Documentation Catalog path reconciled
+
+RES-023
+    Lesson Catalog path reconciled
+
+RES-024
+    Documentation Workflow Sidecar path reconciled
+
+RES-025
+    PST-SP sidecar moved to Therapy Documentation Space
+
+RES-026
+    Inventory SDS plan sidecar path reconciled
+
+RES-027
+    Controlled Information Spaces sidecar path reconciled
+
+RES-028
+    Organizational Memory sidecar path reconciled
+
+RES-029
+    Housekeeping Information Translation sidecar path reconciled
+
+RES-041
+    Projects Documentation Space path/description reconciled
+    LAST UPDATE formula repaired
+
+RES-042
+    Meadows architecture description reconciled
+
+RES-044
+    current source-aware Viewer manifest registered
+
+RES-045
+    current source-aware Viewer manifest builder registered
+
+RES-046
+    Viewer source registry registered
+</code></pre>
+<hr />
+
+<h3>Appendix G — Activity sequence added</h3>
+<pre><code class="language-text">ACT-0059  RES-011
+ACT-0060  RES-018
+ACT-0061  RES-019
+ACT-0062  RES-020
+ACT-0063  RES-021
+ACT-0064  RES-022
+ACT-0065  RES-023
+ACT-0066  RES-024
+ACT-0067  RES-025
+ACT-0068  RES-026
+ACT-0069  RES-027
+ACT-0070  RES-028
+ACT-0071  RES-029
+ACT-0072  RES-041
+ACT-0073  RES-042
+ACT-0074  RES-044
+ACT-0075  RES-045
+ACT-0076  RES-046
+</code></pre>
+<p>Timestamp family:</p>
+<pre><code class="language-text">2026-08-15T15:05:00-06:00
+</code></pre>
+<hr />
+
+<h3>Appendix H — major unresolved architecture questions</h3>
+<h4>Project Identity</h4>
+<ul>
+<li>Who allocates Project IDs?</li>
+<li>What is Project Registry authority?</li>
+<li>What if Registry and Entity Record disagree?</li>
+<li>Does Entity Record need a separate record ID?</li>
+<li>Where does name history live?</li>
+</ul>
+<h4>System Identity</h4>
+<ul>
+<li>What stable facts define a System?</li>
+<li>Does Inventory 3.0 receive <code>SYS-###</code>?</li>
+<li>Is the version number identity-bearing?</li>
+<li>What counts as successor System?</li>
+</ul>
+<h4>Relationships</h4>
+<ul>
+<li>Relationship Registry schema?</li>
+<li>controlled predicates?</li>
+<li>effective dates?</li>
+<li>confidence?</li>
+<li>generated inverse relationships?</li>
+</ul>
+<h4>Viewer</h4>
+<ul>
+<li>Entity Record discovery?</li>
+<li>Entity Identity preview?</li>
+<li>Record Profile template preview?</li>
+<li>Project/System distinction?</li>
+<li>local v2 convergence?</li>
+</ul>
+<h4>Project Definition</h4>
+<ul>
+<li>minimum required records?</li>
+<li>mandatory folder skeleton?</li>
+<li>generic versus Inventory-specific fields?</li>
+<li>template extraction criteria?</li>
+</ul>
+<h4>Resources</h4>
+<ul>
+<li>complete Inventory Resource map?</li>
+<li>current source/deployment?</li>
+<li>shared Resource relationships?</li>
+<li>tree-generator registration?</li>
+</ul>
+<h4>Work sessions</h4>
+<ul>
+<li>prospective Startup test?</li>
+<li>workflow-run creation?</li>
+<li>closure process?</li>
+<li>session resumption measurement?</li>
+</ul>
+<hr />
+
+<h3>Appendix I — recommended next cold-start test</h3>
+<pre><code class="language-text">1. Begin context-naive session.
+
+2. Establish:
+   Documentation Project context.
+
+3. Select:
+   Inventory Management Project.
+
+4. Load:
+   project-identity.json.
+
+5. Load:
+   Inventory Management/README.md.
+
+6. Load:
+   Project Summary.
+
+7. Resolve:
+   Inventory 3.0 System context if required.
+
+8. Resolve:
+   live Resources through Resource Registry.
+
+9. Refresh:
+   repository tree only if physical structure matters.
+
+10. Load:
+    applicable workflow.
+
+11. Load:
+    implementation plan / run state.
+
+12. Load:
+    recent Activities and Open Determinations.
+
+13. Perform:
+    one bounded task.
+
+14. Preserve:
+    execution evidence.
+
+15. Close:
+    summary / sidecar / Activity / architecture change
+    only where actually required.
+</code></pre>
+<p>Success criterion:</p>
+<blockquote>
+<p>The session can perform useful work without reconstructing the Project from conversational memory.</p>
+</blockquote>
+<hr />
+
+<h3>Appendix J — recommended next Viewer tests</h3>
+<h4>Entity Record</h4>
+<pre><code class="language-text">select project-identity.json
+    ↓
+Viewer recognizes:
+    entity-record
+    project-identity
+</code></pre>
+<h4>Project Summary</h4>
+<pre><code class="language-text">select project-summary-sidecar.json
+    ↓
+Viewer recognizes:
+    document-sidecar
+    subject type: Project
+    companion Markdown
+</code></pre>
+<h4>System Summary</h4>
+<pre><code class="language-text">select system-summary-sidecar.json
+    ↓
+Viewer recognizes:
+    document-sidecar
+    subject type: System
+    companion Markdown
+</code></pre>
+<h4>Record Profile template</h4>
+<pre><code class="language-text">select pst-sp-study-guide-sidecar-template-1.0.json
+    ↓
+Viewer recognizes:
+    Profile Template
+    not instantiated PST-SP record
+</code></pre>
+<h4>Instantiated PST-SP record</h4>
+<pre><code class="language-text">select actual PST-SP study-guide sidecar
+    ↓
+Viewer launches rich PST-SP preview
+</code></pre>
+<hr />
+
+<h3>Appendix K — one-sentence August 15 conclusion</h3>
+<p><strong>On August 15, 2026, Klinswork moved from having an increasingly explicit architecture for Projects, Resources, documentation, and context restoration to actually instantiating that architecture in its first complete Project Definition exemplar, while simultaneously formalizing Record Profiles, separating Entity Records from sidecars, documenting Inventory 3.0 as a System without prematurely freezing System Identity, upgrading the Klinswork Documentation Viewer to source-aware discovery, and reconciling the Resource Registry so stable identities, current locations, and historical changes remain distinguishable.</strong></p>
+
+  </div>
+</section>
+
+
+    <footer class="page-footer">
+      <p><strong>Document ID:</strong> work-update-2026-08-15-project-definition-viewer-reconciliation</p>
+      <p><strong>Source:</strong> summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation.md</p>
+      <p><strong>Coverage:</strong> August 15, 2026</p>
+      <p><strong>Session entry:</strong> Reconstructed after work; undeclared at start</p>
+      <p><strong>Architecture status:</strong> First Project Definition exemplar complete as a documentation package; Entity Record discovery, System Identity, relationship authority, and prospective work-session testing remain open</p>
+    </footer>
+  </main>
+</body>
+</html>

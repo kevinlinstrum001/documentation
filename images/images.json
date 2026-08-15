@@ -265,6 +265,21 @@
     "category": "Scenarios"
   },
   {
+    "name": "Apd Sup Profile 01",
+    "file": "scenarios/apd-sup-profile-01.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Sup Profile 02",
+    "file": "scenarios/apd-sup-profile-02.png",
+    "category": "Scenarios"
+  },
+  {
+    "name": "Apd Sup Qr",
+    "file": "scenarios/apd-sup-qr.png",
+    "category": "Scenarios"
+  },
+  {
     "name": "Apd Supervisor Overview 01",
     "file": "scenarios/apd-supervisor-overview-01.png",
     "category": "Scenarios"
@@ -290,11 +305,6 @@
     "category": "Scenarios"
   },
   {
-    "name": "Apd Uniform Onboarding 02",
-    "file": "scenarios/apd-uniform-onboarding-02.png",
-    "category": "Scenarios"
-  },
-  {
     "name": "Apd White Glove Inspection 01",
     "file": "scenarios/apd-white-glove-inspection-01.png",
     "category": "Scenarios"
@@ -302,11 +312,6 @@
   {
     "name": "Apd Workday Momentum 01",
     "file": "scenarios/apd-workday-momentum-01.png",
-    "category": "Scenarios"
-  },
-  {
-    "name": "Chatgpt Image Aug 13, 2026, 10 23 45 Pm",
-    "file": "scenarios/ChatGPT Image Aug 13, 2026, 10_23_45 PM.png",
     "category": "Scenarios"
   },
   {
@@ -547,6 +552,11 @@
   {
     "name": "Work Update 07 26 2026",
     "file": "work-updates/work-update-07-26-2026.png",
+    "category": "Work Updates"
+  },
+  {
+    "name": "Work Update 08 15 2026",
+    "file": "work-updates/work-update-08-15-2026.png",
     "category": "Work Updates"
   },
   {
