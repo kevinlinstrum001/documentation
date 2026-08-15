@@ -10,7 +10,7 @@
     "rootName": "documentation",
     "rootPath": ".",
     "viewerRootPath": "documents/Klinswork Documentation Viewer",
-    "generatedTimestamp": "2026-08-15T20:54:05Z"
+    "generatedTimestamp": "2026-08-15T21:45:20Z"
   },
   "sources": [
     {
@@ -39,19 +39,19 @@
     }
   ],
   "summary": {
-    "recordCount": 69,
-    "validJsonCount": 69,
+    "recordCount": 70,
+    "validJsonCount": 70,
     "invalidJsonCount": 0,
     "archivedRecordCount": 14,
     "sourceCounts": {
-      "common": 66,
+      "common": 67,
       "projects": 2,
       "therapy": 1
     },
     "companionCounts": {
       "resolved": 0,
       "inferred": 2,
-      "undeclared": 36,
+      "undeclared": 37,
       "missing": 0,
       "invalid": 0
     },
@@ -65,7 +65,7 @@
       "lesson-reference": 7,
       "project-identity": 1,
       "pst-sp-study-guide": 2,
-      "work-update": 12,
+      "work-update": 13,
       "workflow-run": 2,
       "workflow-specification": 4
     },
@@ -1237,6 +1237,50 @@
       "previewMode": "workflow-run",
       "identityRefs": {
         "documentId": "workflow-run-2026-08-09-documentation-registry-bootstrap"
+      },
+      "companionDocument": {
+        "status": "undeclared",
+        "resolutionMethod": "none",
+        "declaredPath": "",
+        "format": "",
+        "exists": false
+      }
+    },
+    {
+      "sourceId": "common",
+      "name": "summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+      "path": "sidecars/work-update-sidecars/summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+      "folder": "sidecars/work-update-sidecars",
+      "documentationPath": "documents/Klinswork Documentation Viewer/sidecars/work-update-sidecars/summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+      "manifestRelativePath": "sidecars/work-update-sidecars/summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation-sidecar-3.0-draft.json",
+      "size": 158434,
+      "modifiedTimestamp": "2026-08-15T21:38:46Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "From Architecture to First Project Definition — Comprehensive Klinswork Work Summary — August 15, 2026",
+      "description": "Comprehensive August 15, 2026 Klinswork milestone work summary covering Project Definition, Record Profiles, Viewer discovery, and Registry reconciliation.",
+      "recordType": "work-update",
+      "status": "local-generated-artifact; repository publication not yet confirmed",
+      "documentDate": "2026-08-15",
+      "topics": [
+        "Project Definition",
+        "Project Identity",
+        "Record Profiles",
+        "Entity Records",
+        "sidecars",
+        "Inventory Management",
+        "Inventory 3.0",
+        "Klinswork Documentation Viewer",
+        "Documentation Spaces",
+        "Resource Registry",
+        "Activities",
+        "source-aware discovery"
+      ],
+      "schemaVersion": "3.0-draft",
+      "previewMode": "work-update",
+      "identityRefs": {
+        "documentId": "work-summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation"
       },
       "companionDocument": {
         "status": "undeclared",
