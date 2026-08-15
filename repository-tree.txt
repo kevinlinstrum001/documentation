@@ -228,16 +228,28 @@ documentation/
 │   │   └── IMG_20241218_170541.jpg
 │   ├── scenarios/
 │   │   ├── apd-chain-of-command-01.png
+│   │   ├── apd-closet-restocking-01.png
+│   │   ├── apd-continuous-evaluation-01.png
 │   │   ├── apd-daily-operating-system-01.png
+│   │   ├── apd-foundational-lesson-01.png
 │   │   ├── apd-friendly-correction-01.png
+│   │   ├── apd-leadership-system-01.png
+│   │   ├── apd-mop-storage-01.png
 │   │   ├── apd-morning-huddle-01.png
+│   │   ├── apd-paper-audit-01.png
+│   │   ├── apd-paper-limitations-01.png
 │   │   ├── apd-specific-praise-01.png
 │   │   ├── apd-standardized-closet-01.png
+│   │   ├── apd-sup-profile-01.png
+│   │   ├── apd-sup-profile-02.png
+│   │   ├── apd-sup-qr.png
 │   │   ├── apd-supervisor-overview-01.png
 │   │   ├── apd-supervisor-overview-02.png
+│   │   ├── apd-supervisor-overview-original.png
 │   │   ├── apd-supervisor-rounds-01.png
 │   │   ├── apd-uniform-onboarding-01.png
-│   │   └── apd-white-glove-inspection-01.png
+│   │   ├── apd-white-glove-inspection-01.png
+│   │   └── apd-workday-momentum-01.png
 │   ├── web-apps/
 │   │   ├── lessons/
 │   │   │   ├── transparent-system-01.png
