@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0-draft",
+  "description": "Registered documentation spaces for Klinswork Documentation Viewer. Paths are relative to the documentation/ root.",
+  "sources": [
+    {
+      "sourceId": "common",
+      "label": "Common Documentation",
+      "rootPath": "documents/Klinswork Documentation Viewer",
+      "discoveryMode": "all-json"
+    },
+    {
+      "sourceId": "projects",
+      "label": "Projects",
+      "rootPath": "documents/Klinswork Documentation Viewer/projects",
+      "discoveryMode": "sidecars"
+    },
+    {
+      "sourceId": "therapy",
+      "label": "Therapy Component Library",
+      "rootPath": "documents/therapy-documentation-work/therapy-component-library",
+      "discoveryMode": "sidecars"
+    }
+  ]
+}

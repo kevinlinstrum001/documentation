@@ -1,0 +1,306 @@
+{
+  "_meta": {
+    "recordType": "record-profile-registry",
+    "status": "draft",
+    "purpose": "Machine-readable registry for recognized Klinswork Record Profiles across document-sidecar, entity-record, and authoring-template families.",
+    "authorityRule": "This registry is authoritative for profile registration, family classification, template routing, and registry-level selection guidance. It does not replace the individual profile template, the human-readable source document, a canonical Entity Record, the Project/System/Resource registries, relationship authority, or execution evidence.",
+    "evolvedFrom": {
+      "file": "sidecar-profile-registry-1.0.json",
+      "registryId": "klinswork-sidecar-profile-registry",
+      "schemaVersion": "1.0",
+      "migrationRule": "Preserve the 1.0 Sidecar Profile Registry as historical compatibility evidence. Do not silently rewrite historical records to claim they used this broader registry."
+    }
+  },
+  "schemaVersion": "1.0-draft",
+  "registry": {
+    "registryId": "klinswork-record-profile-registry",
+    "title": "Klinswork Record Profile Registry",
+    "description": "Registers reusable Klinswork Record Profiles and routes record purposes to the appropriate profile/template while preserving family-specific authority semantics.",
+    "canonicalLibraryPath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/",
+    "fallbackByFamily": {
+      "document-sidecar": "generic-document",
+      "entity-record": null,
+      "authoring-template": null
+    }
+  },
+  "recordFamilies": {
+    "document-sidecar": {
+      "definition": "Machine-readable structured companion to a human-readable source document.",
+      "authorityRule": "The human-readable source remains authoritative for the document itself; the sidecar is its structured interpretation.",
+      "defaultBaseTemplate": "document-sidecar-base-template-3.0.json",
+      "viewerUse": "May provide type-aware structured preview without changing source authority."
+    },
+    "entity-record": {
+      "definition": "Structured record whose subject is the Klinswork entity itself rather than another document.",
+      "authorityRule": "An instantiated Entity Record may carry canonical identity authority only for the stable facts explicitly assigned to that record profile. Mutable hierarchy, location, lifecycle, Systems, Resources, and deployments remain separate unless explicitly governed.",
+      "defaultBaseTemplate": null,
+      "viewerUse": "May provide an entity-oriented view without turning presentation into authority."
+    },
+    "authoring-template": {
+      "definition": "Reusable template or construction guide for an authoritative human-readable source document.",
+      "authorityRule": "The template guides construction; the instantiated human-readable document carries the authority assigned to that document family.",
+      "defaultBaseTemplate": null,
+      "viewerUse": "Normally construction-oriented rather than a sidecar preview contract."
+    }
+  },
+  "profiles": [
+    {
+      "profileId": "work-update",
+      "recordFamily": "document-sidecar",
+      "profileType": "work-update",
+      "templateFile": "work-update-sidecar-template-3.0.json",
+      "previewMode": "work-update",
+      "status": "active",
+      "documentTypes": [
+        "work-update",
+        "milestone-work-update",
+        "daily-work-update"
+      ],
+      "requiredProfileBlocks": [
+        "workCoverage",
+        "narrative",
+        "projectDelta"
+      ],
+      "selectionRule": "Use when the human-readable document primarily records work performed, progress, decisions, results, and Project/System change over a period."
+    },
+    {
+      "profileId": "implementation-plan",
+      "recordFamily": "document-sidecar",
+      "profileType": "implementation-plan",
+      "templateFile": "implementation-plan-sidecar-template-3.1-draft.json",
+      "previewMode": "implementation-plan",
+      "status": "draft-active",
+      "documentTypes": [
+        "implementation-plan",
+        "roadmap",
+        "migration-plan",
+        "test-plan"
+      ],
+      "requiredProfileBlocks": [
+        "planContext",
+        "targetState",
+        "implementationStages",
+        "acceptanceCriteria",
+        "plannedTests",
+        "implementationOrder"
+      ],
+      "selectionRule": "Use when the human-readable document primarily defines intended stages, dependencies, risks, tests, gates, acceptance criteria, and bounded implementation work."
+    },
+    {
+      "profileId": "lesson-reference",
+      "recordFamily": "document-sidecar",
+      "profileType": "lesson-reference",
+      "templateFile": "lesson-reference-sidecar-template-3.0.json",
+      "previewMode": "lesson-reference",
+      "status": "active",
+      "documentTypes": [
+        "lesson",
+        "reference",
+        "guide",
+        "procedure",
+        "training-document"
+      ],
+      "requiredProfileBlocks": [
+        "learningContext",
+        "learningObjectives",
+        "principles",
+        "concepts"
+      ],
+      "selectionRule": "Use when the human-readable document primarily teaches, explains, demonstrates, or preserves reusable guidance."
+    },
+    {
+      "profileId": "workflow-specification",
+      "recordFamily": "document-sidecar",
+      "profileType": "workflow-specification",
+      "templateFile": "workflow-specification-sidecar-template-3.0.json",
+      "previewMode": "workflow-specification",
+      "status": "active",
+      "documentTypes": [
+        "workflow-specification",
+        "process-specification",
+        "procedure-system",
+        "lifecycle-specification",
+        "state-machine-specification"
+      ],
+      "requiredProfileBlocks": [
+        "workflowIdentity",
+        "artifactModel",
+        "stateModel",
+        "phases",
+        "steps",
+        "validationModel",
+        "closureModel"
+      ],
+      "selectionRule": "Use when the human-readable document is the authoritative reusable definition of a controlled process, including states, phases, ordered steps, artifact authority, validation, human review, automation boundaries, and closure."
+    },
+    {
+      "profileId": "generic-document",
+      "recordFamily": "document-sidecar",
+      "profileType": "generic-document",
+      "templateFile": "generic-document-sidecar-template-3.0.json",
+      "previewMode": "generic-document",
+      "status": "active",
+      "documentTypes": [
+        "generic-document",
+        "report",
+        "specification",
+        "policy",
+        "memo",
+        "overview"
+      ],
+      "requiredProfileBlocks": [
+        "documentSummary",
+        "keyPoints"
+      ],
+      "selectionRule": "Use when no specialized document-sidecar profile describes the source document's main purpose."
+    },
+    {
+      "profileId": "pst-sp-study-guide",
+      "recordFamily": "document-sidecar",
+      "profileType": "pst-sp-study-guide",
+      "templateFile": "pst-sp-study-guide-sidecar-template-1.0.json",
+      "previewMode": "generic-document",
+      "status": "active-specialized",
+      "documentTypes": [
+        "pst-sp-study-guide"
+      ],
+      "requiredProfileBlocks": [],
+      "selectionRule": "Use for the specialized PST-SP study-guide record family when that profile's domain-specific structure is required."
+    },
+    {
+      "profileId": "summary-markdown",
+      "recordFamily": "authoring-template",
+      "profileType": "summary-markdown",
+      "templateFile": "summary-md-template.json",
+      "previewMode": null,
+      "status": "active",
+      "documentTypes": [
+        "summary",
+        "project-summary",
+        "system-summary",
+        "work-summary"
+      ],
+      "requiredProfileBlocks": [],
+      "selectionRule": "Use when constructing a durable human-readable Markdown summary that will serve as the narrative source for structured companions and downstream publication products."
+    }
+  ],
+  "plannedProfiles": [
+    {
+      "profileId": "project-identity",
+      "recordFamily": "entity-record",
+      "profileType": "project-identity",
+      "plannedTemplateFile": "project-identity-template-1.0-draft.json",
+      "previewMode": "entity-identity",
+      "status": "planned",
+      "availability": "not-yet-created",
+      "selectionRule": "Use for the canonical structured Project Identity Entity Record after the Project Identity profile is defined and formally accepted.",
+      "constraints": [
+        "Do not invent PROJ-### identifiers.",
+        "Do not encode parent Project, repository path, lifecycle state, Systems, Resources, or deployment as intrinsic identity.",
+        "Resolve authority overlap with the Project Registry before freezing the profile."
+      ]
+    },
+    {
+      "profileId": "system-identity",
+      "recordFamily": "entity-record",
+      "profileType": "system-identity",
+      "plannedTemplateFile": "system-identity-template-1.0-draft.json",
+      "previewMode": "entity-identity",
+      "status": "deferred",
+      "availability": "not-yet-created",
+      "selectionRule": "Deferred until the Project Identity model is proven and System boundaries receive their own reconciliation."
+    }
+  ],
+  "selectionPrinciples": [
+    "Choose the Record Profile from semantic purpose, not filename, folder name, or visual design.",
+    "Choose the record family before choosing the specific profile.",
+    "A document-sidecar always describes a human-readable source document; it is not an Entity Record.",
+    "An Entity Record represents an entity directly and must not acquire mutable hierarchy or location as intrinsic identity.",
+    "Use workflow-specification for reusable process authority; use implementation-plan for one intended body of work performed under a workflow.",
+    "Keep document.documentType specific to the human-readable source document.",
+    "Use profile/profileType fields to identify the structured profile and support Viewer interpretation.",
+    "Use plannedTests for tests described but not performed.",
+    "Use execution/test evidence fields only for tests actually reported or executed.",
+    "Unknown stable IDs remain blank or explicitly unresolved; do not infer them from names or paths.",
+    "Catalogs, manifests, and Viewers are discovery/presentation products and do not become source authority by copying or displaying profile fields."
+  ],
+  "validationRules": [
+    "Every registered profile must declare recordFamily, profileType, template file, status, and selection rule.",
+    "Every recordFamily referenced by a profile must exist in recordFamilies.",
+    "Active profiles must reference a template that exists in the Record Profile Library.",
+    "Planned or deferred profiles must not be treated as constructible until their template exists and status changes.",
+    "document-sidecar profiles must preserve human-readable-source authority.",
+    "entity-record profiles must declare their identity authority boundaries explicitly.",
+    "authoring-template profiles must not be interpreted as instantiated source records.",
+    "The registry must not infer Project/System/Resource identity or relationships from repository paths."
+  ],
+  "compatibility": {
+    "legacyRegistry": "sidecar-profile-registry-1.0.json",
+    "policy": [
+      "Preserve the legacy Sidecar Profile Registry as historical compatibility evidence.",
+      "Existing sidecars remain valid under the profile/registry version they actually used unless deliberately migrated.",
+      "Do not retroactively stamp historical sidecars with this Record Profile Registry.",
+      "Migration may update routing metadata while preserving historical profile identity and provenance.",
+      "Repository-folder renaming does not itself change profile identity."
+    ],
+    "knownTemplateReferenceReconciliation": [
+      {
+        "legacyReference": "document-sidecar-base-template-3.0-draft.json",
+        "currentReference": "document-sidecar-base-template-3.0.json"
+      },
+      {
+        "legacyReference": "work-update-sidecar-template-3.0-draft.json",
+        "currentReference": "work-update-sidecar-template-3.0.json"
+      },
+      {
+        "legacyReference": "implementation-plan-sidecar-template-3.0-draft.json",
+        "currentReference": "implementation-plan-sidecar-template-3.1-draft.json"
+      },
+      {
+        "legacyReference": "lesson-reference-sidecar-template-3.0-draft.json",
+        "currentReference": "lesson-reference-sidecar-template-3.0.json"
+      },
+      {
+        "legacyReference": "workflow-specification-sidecar-template-3.0-draft.json",
+        "currentReference": "workflow-specification-sidecar-template-3.0.json"
+      },
+      {
+        "legacyReference": "generic-document-sidecar-template-3.0-draft.json",
+        "currentReference": "generic-document-sidecar-template-3.0.json"
+      }
+    ]
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.0",
+        "status": "planned",
+        "additions": [
+          "accepted Project Identity profile registration",
+          "machine-checkable profile validation rules",
+          "Viewer field-priority maps by record family",
+          "explicit compatibility declarations between profile versions and Viewer versions",
+          "migration mappings from legacy Sidecar Profile Registry entries"
+        ],
+        "changes": [
+          "confirm whether profileId requires a permanent registry namespace",
+          "confirm canonical preview modes for Entity Records and specialized domain profiles",
+          "confirm how authoring-template records are presented or suppressed in Viewer discovery"
+        ],
+        "deprecations": [],
+        "migrationNotes": [
+          "Keep sidecar-profile-registry-1.0.json as historical evidence.",
+          "Do not migrate historical sidecars merely to make them appear current.",
+          "When a template filename changed, reconcile the registry reference without rewriting the historical record that originally used the old template."
+        ],
+        "openQuestions": [
+          "Should Record Profiles receive their own stable opaque identifiers?",
+          "Should the Record Profile Registry itself be a registered Resource?",
+          "Should plannedProfiles remain in this registry or move to profile-specific schemaRoadmap/Open Determination records after initial bootstrap?",
+          "What exact conflict-resolution rule governs Project Registry versus project-identity.json for overlapping identity facts?"
+        ]
+      }
+    ]
+  }
+}

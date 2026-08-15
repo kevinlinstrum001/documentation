@@ -25,6 +25,138 @@ documentation/
 │   │   ├── locations-viewer.html
 │   │   ├── relative-paths-appScript.html
 │   │   └── the_ship_that_remembers_lesson.html
+│   ├── Klinswork Documentation Viewer/
+│   │   ├── archived/
+│   │   │   ├── document-sidecar-template-1.0.json
+│   │   │   ├── document-sidecar-template-1.1.json
+│   │   │   ├── documentation-workflow-1.0.json
+│   │   │   ├── json-viewer-2.html
+│   │   │   ├── json-viewer-diagnostics-v1.1.0.txt
+│   │   │   ├── json-viewer-original.html
+│   │   │   ├── klinswork-document-catalog-002.json
+│   │   │   ├── klinswork-document-catalog-003.json
+│   │   │   ├── klinswork-document-catalog-004.json
+│   │   │   ├── open-json-viewer-v1.2.0.bat
+│   │   │   ├── open-json-viewer-v1.3.0.bat
+│   │   │   └── open-json-viewer-v1.4.0.bat
+│   │   ├── catalogs/
+│   │   │   ├── archived/
+│   │   │   │   ├── klinswork-chemical-product-catalog-shell-1.0.json
+│   │   │   │   ├── klinswork-document-catalog-005.json
+│   │   │   │   ├── klinswork-document-catalog-006-v1.json
+│   │   │   │   └── klinswork-document-catalog-006-v2.json
+│   │   │   ├── klinswork-chemical-product-catalog-001.json
+│   │   │   ├── klinswork-document-catalog-005-metadata.json
+│   │   │   ├── klinswork-document-catalog-006.json
+│   │   │   ├── klinswork-document-catalog-007.json
+│   │   │   └── klinswork-lesson-catalog-001.json
+│   │   ├── projects/
+│   │   │   ├── operations/
+│   │   │   │   ├── Inventory Management/
+│   │   │   │   │   ├── implementation-plans/
+│   │   │   │   │   │   ├── implementation-plan.md
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── sidecars/
+│   │   │   │   │   │   └── project-summary-sidecar.json
+│   │   │   │   │   ├── summaries/
+│   │   │   │   │   │   └── project-summary.md
+│   │   │   │   │   ├── systems/
+│   │   │   │   │   │   └── Inventory 3.0/
+│   │   │   │   │   │       ├── sidecars/
+│   │   │   │   │   │       │   └── system-summary-sidecar.json
+│   │   │   │   │   │       ├── summaries/
+│   │   │   │   │   │       │   └── system-summary.md
+│   │   │   │   │   │       └── README.md
+│   │   │   │   │   ├── project-identity.json
+│   │   │   │   │   └── README.md
+│   │   │   │   └── README.md
+│   │   │   ├── plan.md
+│   │   │   └── projects_README.md
+│   │   ├── Record Profile Library/
+│   │   │   ├── archive/
+│   │   │   │   ├── document-sidecar-template-2.0.json
+│   │   │   │   ├── implementation-plan-sidecar-template-3.0.json
+│   │   │   │   ├── sidecar-profile-registry-1.0-original.json
+│   │   │   │   ├── sidecar-profile-registry-1.0.json
+│   │   │   │   ├── sidecar-profile-system-readme-updated.md
+│   │   │   │   └── sidecar-profile-system-readme.md
+│   │   │   ├── document-sidecar-base-template-3.0.json
+│   │   │   ├── generic-document-sidecar-template-3.0.json
+│   │   │   ├── implementation-plan-sidecar-template-3.1-draft.json
+│   │   │   ├── lesson-reference-sidecar-template-3.0.json
+│   │   │   ├── project-identity-template-1.0-draft.json
+│   │   │   ├── pst-sp-study-guide-sidecar-template-1.0.json
+│   │   │   ├── README.md
+│   │   │   ├── record-profile-registry-1.0.json
+│   │   │   ├── summary-md-template.json
+│   │   │   ├── work-update-sidecar-template-3.0.json
+│   │   │   └── workflow-specification-sidecar-template-3.0.json
+│   │   ├── sidecars/
+│   │   │   ├── implementation-plans/
+│   │   │   │   └── implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json
+│   │   │   ├── lessons/
+│   │   │   │   ├── controlled-information-spaces-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── digital-office-metaphor-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── filing-cabinet-and-database-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── from-messages-to-organizational-memory-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── housekeeping-information-translation-lesson-sidecar-3.0-draft.json
+│   │   │   │   ├── routing-from-viewer-lesson-sidecar-2.0.json
+│   │   │   │   └── the-ship-that-remembers-lesson-sidecar-3.0-draft.json
+│   │   │   ├── sds/
+│   │   │   │   ├── klinswork-chemical-product-entry-001-oxivir-five-16.json
+│   │   │   │   ├── klinswork-chemical-product-entry-002-crew-bathroom-cleaner-scale-remover.json
+│   │   │   │   ├── klinswork-chemical-product-entry-003-breakdown-xc-odor-eliminator-cleaner.json
+│   │   │   │   ├── klinswork-chemical-product-entry-004-prominence-heavy-duty-floor-cleaner.json
+│   │   │   │   ├── klinswork-chemical-product-entry-005-clorox-urine-remover-31415-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-006-tough-guy-23-percent-hydrochloric-bowl-cleaner-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-007-timemist-citrus-air-freshener-rev2.json
+│   │   │   │   ├── klinswork-chemical-product-entry-008-nmci-glass-cleaner-51-ccgc.json
+│   │   │   │   ├── klinswork-chemical-product-entry-009-purell-advanced-hand-sanitizer-fragrance-free-foam.json
+│   │   │   │   ├── klinswork-chemical-product-entry-010-purell-healthy-soap-8385-02.json
+│   │   │   │   ├── klinswork-chemical-product-entry-011-big-d-d-vour-absorbent-powder.json
+│   │   │   │   └── klinswork-chemical-product-entry-012-mckesson-premium-hand-sanitizer-with-aloe.json
+│   │   │   ├── work-update-sidecars/
+│   │   │   │   ├── meadows-housekeeping-work-completed-sidecar-3.0-draft.json
+│   │   │   │   ├── work-update-07-16-2026-02-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-16-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-19-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-21-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-23-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-25-2026-phase-2-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-25-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-26-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-07-30-2026-sidecar-2.0.json
+│   │   │   │   ├── work-update-08-01-2026-sidecar-2.0.json
+│   │   │   │   ├── workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json
+│   │   │   │   └── wu001-sidecar-2.0.json
+│   │   │   ├── documentation-workflow-sidecar-3.0-draft.json
+│   │   │   └── nmbhi-first-supervisor-profile-sidecar-3.0-draft.json
+│   │   ├── summaries/
+│   │   │   ├── 2026-08-08-pst-sp-clinical-handout-systems-investigation-summary.md
+│   │   │   ├── documentation-morning-session-summary-2026-08-04.md
+│   │   │   ├── summary-2026-08-01-documentation-catalog-bootstrap.md
+│   │   │   ├── summary-2026-08-01-documentation-system-bootstrap-revised.md
+│   │   │   ├── summary-2026-08-01-documentation-workflow-bootstrap.md
+│   │   │   ├── summary-2026-08-08-09-klinswork-weekend-architecture.md
+│   │   │   └── summary-2026-08-09-documentation-resource-registry-startup.md
+│   │   ├── tools/
+│   │   │   ├── archived/
+│   │   │   │   ├── json-viewer-v1.2.0.py
+│   │   │   │   ├── json-viewer-v1.3.0.py
+│   │   │   │   ├── json-viewer-v1.4.0.py
+│   │   │   │   └── json-viewer-v1.5.0.py
+│   │   │   ├── json-viewer-system-readme.md
+│   │   │   ├── json-viewer-v1.6.0-upgrade-readme.md
+│   │   │   └── json-viewer-v1.6.0.py
+│   │   ├── workflows/
+│   │   │   ├── documentation-workflow.json
+│   │   │   ├── upgrade-08-09-2026.md
+│   │   │   └── workflow-run-sidecar-template-3.1-draft.json
+│   │   ├── documentation-viewer-manifest.json
+│   │   ├── json-manifest.json
+│   │   ├── json-viewer.html
+│   │   ├── manifest.py
+│   │   └── open-json-viewer-v1.6.0.bat
 │   ├── personal/
 │   │   └── rose-proposal-floor-upgrade.html
 │   ├── therapy-documentation-work/
@@ -58,126 +190,14 @@ documentation/
 │   │   │       ├── wet/
 │   │   │       └── source-urls.txt
 │   │   └── create-therapy-library.py
-│   ├── work-narrative/
-│   │   ├── Narrative Document/
-│   │   │   ├── index.html
-│   │   │   └── work-queue-ecosystem.docx
-│   │   ├── apd-narrative-supervisor.md
-│   │   ├── nmbhi-first-supervisor-profile-image-prompts.md
-│   │   ├── nmbhi-first-supervisor-profile.html
-│   │   └── transparent-system.html
-│   └── work-update-catalog/
-│       ├── archived/
-│       │   ├── document-sidecar-template-1.0.json
-│       │   ├── document-sidecar-template-1.1.json
-│       │   ├── documentation-workflow-1.0.json
-│       │   ├── json-viewer-diagnostics-v1.1.0.txt
-│       │   ├── klinswork-document-catalog-002.json
-│       │   ├── klinswork-document-catalog-003.json
-│       │   ├── klinswork-document-catalog-004.json
-│       │   ├── open-json-viewer-v1.2.0.bat
-│       │   ├── open-json-viewer-v1.3.0.bat
-│       │   └── open-json-viewer-v1.4.0.bat
-│       ├── catalogs/
-│       │   ├── archived/
-│       │   │   ├── klinswork-chemical-product-catalog-shell-1.0.json
-│       │   │   ├── klinswork-document-catalog-005.json
-│       │   │   ├── klinswork-document-catalog-006-v1.json
-│       │   │   └── klinswork-document-catalog-006-v2.json
-│       │   ├── klinswork-chemical-product-catalog-001.json
-│       │   ├── klinswork-document-catalog-005-metadata.json
-│       │   ├── klinswork-document-catalog-006.json
-│       │   ├── klinswork-document-catalog-007.json
-│       │   └── klinswork-lesson-catalog-001.json
-│       ├── projects/
-│       │   ├── inventory-app/
-│       │   │   └── implementation-plans/
-│       │   │       ├── implementation-plan.md
-│       │   │       └── README.md
-│       │   └── work-queue-system/
-│       │       └── README.md
-│       ├── sidecars/
-│       │   ├── implementation-plans/
-│       │   │   └── implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json
-│       │   ├── lessons/
-│       │   │   ├── controlled-information-spaces-lesson-sidecar-3.0-draft.json
-│       │   │   ├── digital-office-metaphor-lesson-sidecar-3.0-draft.json
-│       │   │   ├── filing-cabinet-and-database-lesson-sidecar-3.0-draft.json
-│       │   │   ├── from-messages-to-organizational-memory-lesson-sidecar-3.0-draft.json
-│       │   │   ├── housekeeping-information-translation-lesson-sidecar-3.0-draft.json
-│       │   │   ├── routing-from-viewer-lesson-sidecar-2.0.json
-│       │   │   └── the-ship-that-remembers-lesson-sidecar-3.0-draft.json
-│       │   ├── sds/
-│       │   │   ├── klinswork-chemical-product-entry-001-oxivir-five-16.json
-│       │   │   ├── klinswork-chemical-product-entry-002-crew-bathroom-cleaner-scale-remover.json
-│       │   │   ├── klinswork-chemical-product-entry-003-breakdown-xc-odor-eliminator-cleaner.json
-│       │   │   ├── klinswork-chemical-product-entry-004-prominence-heavy-duty-floor-cleaner.json
-│       │   │   ├── klinswork-chemical-product-entry-005-clorox-urine-remover-31415-rev2.json
-│       │   │   ├── klinswork-chemical-product-entry-006-tough-guy-23-percent-hydrochloric-bowl-cleaner-rev2.json
-│       │   │   ├── klinswork-chemical-product-entry-007-timemist-citrus-air-freshener-rev2.json
-│       │   │   ├── klinswork-chemical-product-entry-008-nmci-glass-cleaner-51-ccgc.json
-│       │   │   ├── klinswork-chemical-product-entry-009-purell-advanced-hand-sanitizer-fragrance-free-foam.json
-│       │   │   ├── klinswork-chemical-product-entry-010-purell-healthy-soap-8385-02.json
-│       │   │   ├── klinswork-chemical-product-entry-011-big-d-d-vour-absorbent-powder.json
-│       │   │   └── klinswork-chemical-product-entry-012-mckesson-premium-hand-sanitizer-with-aloe.json
-│       │   ├── work-update-sidecars/
-│       │   │   ├── meadows-housekeeping-work-completed-sidecar-3.0-draft.json
-│       │   │   ├── work-update-07-16-2026-02-sidecar-2.0.json
-│       │   │   ├── work-update-07-16-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-19-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-21-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-23-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-25-2026-phase-2-sidecar-2.0.json
-│       │   │   ├── work-update-07-25-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-26-2026-sidecar-2.0.json
-│       │   │   ├── work-update-07-30-2026-sidecar-2.0.json
-│       │   │   ├── work-update-08-01-2026-sidecar-2.0.json
-│       │   │   ├── workflow-run-2026-08-09-documentation-registry-bootstrap-draft.json
-│       │   │   └── wu001-sidecar-2.0.json
-│       │   ├── documentation-workflow-sidecar-3.0-draft.json
-│       │   └── nmbhi-first-supervisor-profile-sidecar-3.0-draft.json
-│       ├── summaries/
-│       │   ├── 2026-08-08-pst-sp-clinical-handout-systems-investigation-summary.md
-│       │   ├── documentation-morning-session-summary-2026-08-04.md
-│       │   ├── summary-2026-08-01-documentation-catalog-bootstrap.md
-│       │   ├── summary-2026-08-01-documentation-system-bootstrap-revised.md
-│       │   ├── summary-2026-08-01-documentation-workflow-bootstrap.md
-│       │   ├── summary-2026-08-08-09-klinswork-weekend-architecture.md
-│       │   └── summary-2026-08-09-documentation-resource-registry-startup.md
-│       ├── templates/
-│       │   ├── archive/
-│       │   │   ├── document-sidecar-template-2.0.json
-│       │   │   ├── implementation-plan-sidecar-template-3.0.json
-│       │   │   └── sidecar-profile-registry-1.0.json
-│       │   ├── document-sidecar-base-template-3.0.json
-│       │   ├── generic-document-sidecar-template-3.0.json
-│       │   ├── implementation-plan-sidecar-template-3.1-draft.json
-│       │   ├── lesson-reference-sidecar-template-3.0.json
-│       │   ├── pst-sp-study-guide-sidecar-template-1.0.json
-│       │   ├── sidecar-profile-registry-1.0.json
-│       │   ├── sidecar-profile-system-readme-updated.md
-│       │   ├── sidecar-profile-system-readme.md
-│       │   ├── summary-md-template.json
-│       │   ├── work-update-sidecar-template-3.0.json
-│       │   └── workflow-specification-sidecar-template-3.0.json
-│       ├── tools/
-│       │   ├── archived/
-│       │   │   ├── json-viewer-v1.2.0.py
-│       │   │   ├── json-viewer-v1.3.0.py
-│       │   │   ├── json-viewer-v1.4.0.py
-│       │   │   └── json-viewer-v1.5.0.py
-│       │   ├── json-viewer-system-readme.md
-│       │   ├── json-viewer-v1.6.0-upgrade-readme.md
-│       │   └── json-viewer-v1.6.0.py
-│       ├── workflows/
-│       │   ├── documentation-workflow.json
-│       │   ├── upgrade-08-09-2026.md
-│       │   └── workflow-run-sidecar-template-3.1-draft.json
-│       ├── json-manifest.json
-│       ├── json-viewer-original.html
-│       ├── json-viewer.html
-│       ├── manifest.py
-│       └── open-json-viewer-v1.6.0.bat
+│   └── work-narrative/
+│       ├── Narrative Document/
+│       │   ├── index.html
+│       │   └── work-queue-ecosystem.docx
+│       ├── apd-narrative-supervisor.md
+│       ├── nmbhi-first-supervisor-profile-image-prompts.md
+│       ├── nmbhi-first-supervisor-profile.html
+│       └── transparent-system.html
 ├── images/
 │   ├── banners/
 │   │   ├── general-announcement.png
@@ -320,6 +340,9 @@ documentation/
 │   └── wu001.html
 ├── apple-touch-icon.png
 ├── build_repository_tree.py
+├── documentation-viewer-manifest.json
+├── documentation-viewer-manifest.py
+├── documentation-viewer-sources.json
 ├── favicon-16x16.png
 ├── favicon-32x32.png
 ├── favicon.ico

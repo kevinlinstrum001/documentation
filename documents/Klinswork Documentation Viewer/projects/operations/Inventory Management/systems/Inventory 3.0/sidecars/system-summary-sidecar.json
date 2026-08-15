@@ -1,0 +1,1059 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "generic-document-sidecar-template-3.0.json",
+    "previewMode": "generic-document"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should System Summary documents receive a dedicated document-sidecar profile?",
+          "What Viewer fields should distinguish a System Summary from a future System Identity Entity Record?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "../summaries/system-summary.md",
+    "documentUrl": "",
+    "title": "Inventory 3.0 — System Summary",
+    "headline": "Human-readable definition and current interpretation of the Inventory 3.0 System",
+    "documentType": "system-summary",
+    "createdTimestamp": "2026-08-15T13:02:00-06:00",
+    "updatedTimestamp": "2026-08-15T13:02:00-06:00"
+  },
+  "metadata": {
+    "filePath": "../summaries/system-summary.md",
+    "url": "",
+    "sidecarFilePath": "system-summary-sidecar.json",
+    "summaryFilePath": "../summaries/system-summary.md",
+    "repositoryPath": "documentation/documents/Klinswork Documentation Viewer/projects/operations/Inventory Management/systems/Inventory 3.0/",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/generic-document-sidecar-template-3.0.json",
+    "baseTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/document-sidecar-base-template-3.0.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "project-definition-exemplar-system-layer",
+    "sourceSummaryPath": "../summaries/system-summary.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory Management",
+      "projectType": "project",
+      "parentProjectId": "",
+      "parentProjectName": "Operations",
+      "projectRecordPath": "../../../project-identity.json",
+      "projectGoal": "Preserve and improve reliable knowledge and operational control of inventory.",
+      "projectPhase": "Project Definition exemplar — System documentation layer",
+      "contributionType": "principal System documentation",
+      "identificationBasis": "Inventory Management Project Summary and current Project-definition records.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "documentation-infrastructure",
+        "relationshipDescription": "Provides Record Profiles, sidecars, manifest/Viewer infrastructure, and context-routing conventions used to document Inventory 3.0.",
+        "impact": "Supports System discovery and interpretation without becoming authority for live inventory state.",
+        "evidenceSectionAnchors": [
+          "document-purpose-and-authority",
+          "boundaries"
+        ],
+        "identificationBasis": "Inventory Management Project documentation.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "resource-identity-and-routing-authority",
+        "relationshipDescription": "Intended authority for current Resource identity, location, and routing.",
+        "impact": "Allows mutable Apps Script, datastore, deployment, and documentation locations to change without becoming System identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Meadows Housekeeping",
+        "foundationType": "operational-environment",
+        "relationshipDescription": "Primary current operational environment of the Inventory Management Project.",
+        "impact": "Supplies the practical context for inventory products, locations, and use."
+      }
+    ],
+    "relationshipSummary": "Inventory 3.0 is documented as the principal known System of the Inventory Management Project. Its implementation Resources and operational environment are contextual relationships and are not being formalized as intrinsic System identity in this step."
+  },
+  "subject": {
+    "projectName": "Inventory Management",
+    "primaryApp": "",
+    "mainFocus": "Describe Inventory 3.0 as a coherent inventory-management System, preserve its design and implementation evidence, bound current-state claims, and support future work without creating a System Identity Entity Record.",
+    "description": "System Summary for Inventory 3.0 covering its role in the Inventory Management Project, architecture baseline, data/event model, write protection, history, SDS integration, historical implementation evidence, Resources, current-state limits, unresolved questions, and next work.",
+    "topics": [
+      "Inventory 3.0",
+      "Inventory Management",
+      "System documentation",
+      "Google Apps Script",
+      "Google Sheets",
+      "inventory events",
+      "current inventory",
+      "product data",
+      "location data",
+      "SDS integration",
+      "mobile interface",
+      "inventory history",
+      "System boundary",
+      "Project Definition"
+    ],
+    "keywords": [
+      "Inventory 3.0",
+      "Inventory-3.0",
+      "Products",
+      "Locations",
+      "Current Inventory",
+      "Inventory Events",
+      "Inv2_Archive",
+      "OPENING_BALANCE",
+      "RECEIVED",
+      "USED",
+      "CORRECTION_INCREASE",
+      "CORRECTION_DECREASE",
+      "TRANSFER",
+      "Apps Script",
+      "Google Sheets"
+    ],
+    "appsAffected": [],
+    "systemsAffected": [
+      "Inventory 3.0"
+    ],
+    "componentsAffected": [
+      "Apps Script HTML interface",
+      "Apps Script inventory services",
+      "Google Sheets datastore",
+      "product records",
+      "location records",
+      "current inventory",
+      "inventory events",
+      "SDS integration"
+    ]
+  },
+  "documentSummary": {
+    "purpose": "Provide a rich human-readable System definition for Inventory 3.0 without prematurely formalizing System Identity.",
+    "scope": "System role, architecture baseline, datastore/data model, inventory events/actions, write protection, history, SDS integration, interface principles, administration/reporting plans, historical implementation evidence, Resources, current-state limits, unresolved questions, and next work.",
+    "summary": "Inventory 3.0 is the principal known System serving the Inventory Management Project. Historical design records describe a mobile-friendly Google Apps Script web application using Google Sheets, event-based inventory changes, current-inventory state, product/location/SDS reference data, validation, history, and later administration/reporting. Historical July 2026 records show the System was actually built and expanded. This documentation step intentionally does not create system-identity.json or assign a SYS-###, and it does not treat historical plans as proof of current live behavior.",
+    "intendedAudience": [
+      "future Klinswork work sessions",
+      "Inventory Management maintainers",
+      "documentation tools and Viewer",
+      "technical reviewers"
+    ],
+    "status": "current-working-system-definition",
+    "confidence": "high for source-grounded semantic and historical interpretation; live implementation state requires current verification"
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "Inventory 3.0 is a System, not the Project",
+      "description": "Inventory 3.0 is the principal known System inside the Inventory Management Project; the two are semantically distinct.",
+      "evidenceSectionAnchors": [
+        "relationship-to-the-inventory-management-project"
+      ]
+    },
+    {
+      "sequence": 2,
+      "title": "System Identity is intentionally deferred",
+      "description": "No system-identity.json or permanent SYS-### is created in this step.",
+      "evidenceSectionAnchors": [
+        "why-system-identity-is-deferred"
+      ]
+    },
+    {
+      "sequence": 3,
+      "title": "Architecture baseline is Apps Script plus Google Sheets",
+      "description": "The historical roadmap defines a browser → Apps Script HTML interface → Apps Script inventory services → Google Sheets datastore architecture.",
+      "evidenceSectionAnchors": [
+        "architecture-baseline"
+      ]
+    },
+    {
+      "sequence": 4,
+      "title": "Inventory changes are event-oriented",
+      "description": "The design couples inventory-state changes with event records and prohibits direct Current Inventory changes without an event.",
+      "evidenceSectionAnchors": [
+        "datastore-and-data-model",
+        "inventory-actions-and-event-model"
+      ]
+    },
+    {
+      "sequence": 5,
+      "title": "Inventory 2.0 history is separated",
+      "description": "The roadmap preserves Inventory 2.0 history in Inv2_Archive while establishing new Inventory 3.0 state from verified physical counts.",
+      "evidenceSectionAnchors": [
+        "history-and-audit-model",
+        "historical-implementation-evidence"
+      ]
+    },
+    {
+      "sequence": 6,
+      "title": "Historical work shows implementation beyond the roadmap",
+      "description": "July 2026 records describe actual Inventory 3.0 construction, product pages/filtering, and SDS integration.",
+      "evidenceSectionAnchors": [
+        "historical-implementation-evidence"
+      ]
+    },
+    {
+      "sequence": 7,
+      "title": "Historical evidence is not live-state authority",
+      "description": "Current deployment, source, schema, quantities, version, and tests require current verification.",
+      "evidenceSectionAnchors": [
+        "current-state"
+      ]
+    },
+    {
+      "sequence": 8,
+      "title": "Resources remain separate from System identity",
+      "description": "Apps Script projects, workbooks, deployments, source files, datasets, and documentation should resolve through Resource authority rather than be treated as intrinsic System identity.",
+      "evidenceSectionAnchors": [
+        "resources-and-implementation-artifacts",
+        "boundaries"
+      ]
+    },
+    {
+      "sequence": 9,
+      "title": "Next test is discovery and Viewer differentiation",
+      "description": "The Project Definition exemplar must now prove that Project and System records are discovered and presented distinctly.",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "inventory-3-system",
+      "name": "Inventory 3.0",
+      "definition": "Principal known System used to implement the Inventory Management Project.",
+      "relationships": [
+        "serves Inventory Management",
+        "uses implementation Resources",
+        "operates in the Meadows Housekeeping context"
+      ],
+      "evidenceSectionAnchors": [
+        "relationship-to-the-inventory-management-project",
+        "system-purpose"
+      ]
+    },
+    {
+      "conceptId": "event-oriented-inventory",
+      "name": "Event-oriented inventory state",
+      "definition": "Inventory state changes are designed to be accompanied by explicit Inventory Events rather than silent direct quantity edits.",
+      "relationships": [
+        "Current Inventory",
+        "Inventory Events",
+        "write protection",
+        "history/audit"
+      ],
+      "evidenceSectionAnchors": [
+        "datastore-and-data-model",
+        "inventory-actions-and-event-model",
+        "write-protection-and-integrity"
+      ]
+    },
+    {
+      "conceptId": "system-identity-deferred",
+      "name": "Deferred System Identity",
+      "definition": "System meaning is documented now while stable System Identity fields and SYS-### allocation remain intentionally unformalized.",
+      "relationships": [
+        "Project Definition exemplar",
+        "future System Identity schema"
+      ],
+      "evidenceSectionAnchors": [
+        "why-system-identity-is-deferred"
+      ]
+    },
+    {
+      "conceptId": "historical-vs-live",
+      "name": "Historical evidence versus live truth",
+      "definition": "Roadmaps and work updates establish historical design or implementation state but do not automatically establish the current live deployment.",
+      "relationships": [
+        "roadmap",
+        "work updates",
+        "live source",
+        "Resource Registry"
+      ],
+      "evidenceSectionAnchors": [
+        "historical-implementation-evidence",
+        "current-state"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "SYS-NEXT-001",
+      "title": "Regenerate Viewer manifest",
+      "description": "Regenerate the Klinswork Documentation Viewer manifest after adding the System Summary sidecar.",
+      "reason": "Discovery must be tested before the exemplar is considered proven.",
+      "priority": "next",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "SYS-NEXT-002",
+      "title": "Verify Project/System differentiation",
+      "description": "Confirm that the Viewer distinguishes Inventory Management Project records from Inventory 3.0 System records.",
+      "reason": "The System layer is meant to test semantic separation without a System Identity record.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "SYS-NEXT-003",
+      "title": "Reconcile live Resources",
+      "description": "Resolve the current Apps Script source, datastore, deployment, and other implementation Resources through the Resource Registry and live evidence.",
+      "reason": "Historical records are insufficient for current operational routing.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "resources-and-implementation-artifacts",
+        "current-state"
+      ]
+    }
+  ],
+  "openQuestions": [
+    {
+      "questionId": "SYS-OQ-001",
+      "question": "What stable facts belong in a future System Identity record?",
+      "reasonOpen": "System Identity schema is intentionally deferred.",
+      "nextStep": "Use the completed exemplar and Viewer tests to determine the minimum stable identity facts."
+    },
+    {
+      "questionId": "SYS-OQ-002",
+      "question": "Does Inventory 3.0 receive a permanent SYS-###?",
+      "reasonOpen": "No System ID allocation authority has been applied here.",
+      "nextStep": "Define System Registry/allocation rules after the Project model is proven."
+    },
+    {
+      "questionId": "SYS-OQ-003",
+      "question": "Is the 3.0 version label part of stable System identity?",
+      "reasonOpen": "The current name may be version-bearing implementation terminology.",
+      "nextStep": "Reconcile System continuity across Inventory versions before freezing canonical identity."
+    },
+    {
+      "questionId": "SYS-OQ-004",
+      "question": "What Apps Script source, datastore, and deployment are current?",
+      "reasonOpen": "Historical records identify earlier implementation resources but this step did not reverify live routing.",
+      "nextStep": "Resolve current Resources through the Resource Registry and live implementation."
+    },
+    {
+      "questionId": "SYS-OQ-005",
+      "question": "Which roadmap phases and tests were actually completed?",
+      "reasonOpen": "Roadmap verification boxes are planning evidence, not execution evidence.",
+      "nextStep": "Compare roadmap items with work updates, source, test records, and Activities."
+    },
+    {
+      "questionId": "SYS-OQ-006",
+      "question": "What is the current SDS-registry implementation state?",
+      "reasonOpen": "A later SDS Registry rebuild plan exists, but completion is not established by the planning record alone.",
+      "nextStep": "Inspect execution evidence and current Inventory 3.0/SDS sources."
+    },
+    {
+      "questionId": "SYS-OQ-007",
+      "question": "Which implementation artifacts are Inventory 3.0 Resources versus shared Resources?",
+      "reasonOpen": "Resource relationships have not been fully reconciled.",
+      "nextStep": "Review Resource Registry and formalize relationships."
+    },
+    {
+      "questionId": "SYS-OQ-008",
+      "question": "How should the Viewer distinguish this System Summary from a future System Identity Entity Record?",
+      "reasonOpen": "System Identity and Entity Record discovery behavior are not yet designed.",
+      "nextStep": "Test current summary discovery first, then define future identity presentation behavior."
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Inventory 3.0 is the working inventory System inside the broader Inventory Management Project. This documentation records what the System is and what historical sources say it was designed and built to do, without claiming that every old plan still describes the live system.",
+      "operationalImpact": "Separating Project, System, Resources, and historical evidence makes future inventory work easier to resume and reduces the risk of changing the wrong artifact based on stale documentation.",
+      "currentStatus": "The System documentation layer now has a README, System Summary, and structured sidecar. A formal System Identity record is intentionally deferred.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Current deployment/source/datastore were not reverified in this documentation step.",
+        "Permanent System ID and final System boundary remain unresolved."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Test documentation discovery and then reconcile live implementation Resources.",
+      "callouts": []
+    },
+    "general": {
+      "summary": "Inventory 3.0 is the principal known System serving the Inventory Management Project. Its historical design is an event-oriented, mobile-friendly Apps Script/Google Sheets inventory application. The current documentation preserves historical implementation evidence while explicitly separating it from current live-state verification.",
+      "keyPoints": [
+        "System, Project, and Resources are distinct.",
+        "No System Identity Entity Record is created yet.",
+        "Roadmap statements remain planning/design evidence unless execution is established.",
+        "Current implementation Resources must be reverified before consequential changes."
+      ]
+    },
+    "technical": {
+      "summary": "This sidecar structures the Inventory 3.0 System Summary using the recognized generic-document sidecar profile. It represents a document about a System, not a System Identity Entity Record.",
+      "keyPoints": [
+        "profileType: generic-document",
+        "documentType: system-summary",
+        "source: ../summaries/system-summary.md",
+        "parent Project: Inventory Management",
+        "SYS-### intentionally unassigned",
+        "current live implementation not fully reverified"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "A System can be documented richly without prematurely defining System Identity.",
+      "Historical roadmap and implementation evidence should be kept in separate epistemic categories.",
+      "Inventory 3.0's event-oriented design provides a useful boundary between current state and historical change."
+    ],
+    "generalLessons": [
+      "Version-bearing System names require continuity analysis before they become stable identity.",
+      "Mutable deployments and datastores should not become intrinsic System identity.",
+      "Unchecked roadmap verification items must not be rewritten as completed tests."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Historical application records can be mistaken for current System truth.",
+        "pattern": "Roadmaps, URLs, app versions, and source-file names remain readable long after implementation changes.",
+        "projectsObservedIn": [
+          "Inventory Management"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Documenting a System before System Identity exists",
+        "description": "Pattern for README + human-readable System Summary + document sidecar while deferring Entity Record design.",
+        "suggestedDestination": "Klinswork Documentation / Project Definition guidance",
+        "supportingSectionAnchors": [
+          "why-system-identity-is-deferred",
+          "current-state",
+          "next-work"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Plans are not execution evidence.",
+        "changeType": "confirmed",
+        "explanation": "Inventory 3.0 roadmap checklists remain design/testing intent unless supported by execution evidence."
+      },
+      {
+        "rule": "System Resources and mutable locations stay outside intrinsic identity.",
+        "changeType": "confirmed",
+        "explanation": "The System Summary records implementation context without creating a System Identity record from paths, workbook IDs, or deployments."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "SYS-SEC-01",
+      "title": "Document purpose and authority",
+      "anchor": "document-purpose-and-authority",
+      "contentSummary": "Defines the System Summary's explanatory role and its authority limits.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the System Summary's explanatory role and its authority limits.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-02",
+      "title": "Relationship to the Inventory Management Project",
+      "anchor": "relationship-to-the-inventory-management-project",
+      "contentSummary": "Places Inventory 3.0 as the principal known System inside the Inventory Management Project.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Places Inventory 3.0 as the principal known System inside the Inventory Management Project.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-03",
+      "title": "Why System Identity is deferred",
+      "anchor": "why-system-identity-is-deferred",
+      "contentSummary": "Explains why no System Identity record or SYS-### is created in this step.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Explains why no System Identity record or SYS-### is created in this step.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Documenting a System before System Identity exists"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-04",
+      "title": "System purpose",
+      "anchor": "system-purpose",
+      "contentSummary": "Defines Inventory 3.0 as the coherent mechanism for controlled inventory state and history.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines Inventory 3.0 as the coherent mechanism for controlled inventory state and history.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level System purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-05",
+      "title": "Architecture baseline",
+      "anchor": "architecture-baseline",
+      "contentSummary": "Preserves the historical Apps Script / Google Sheets implementation model and its evidence status.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves the historical Apps Script / Google Sheets implementation model and its evidence status.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-06",
+      "title": "Datastore and data model",
+      "anchor": "datastore-and-data-model",
+      "contentSummary": "Describes the historical Inventory-3.0 workbook model, tables, fields, and design rules.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes the historical Inventory-3.0 workbook model, tables, fields, and design rules.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-07",
+      "title": "Inventory actions and event model",
+      "anchor": "inventory-actions-and-event-model",
+      "contentSummary": "Describes opening balance, receive, use, correction, transfer, and corresponding event semantics.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes opening balance, receive, use, correction, transfer, and corresponding event semantics.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-08",
+      "title": "Write protection and integrity",
+      "anchor": "write-protection-and-integrity",
+      "contentSummary": "Describes the roadmap's lock/validate/event/update model and intended protections.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes the roadmap's lock/validate/event/update model and intended protections.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-09",
+      "title": "History and audit model",
+      "anchor": "history-and-audit-model",
+      "contentSummary": "Describes reviewable inventory history and separation of Inventory 2.0 archive history.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes reviewable inventory history and separation of Inventory 2.0 archive history.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-10",
+      "title": "SDS integration",
+      "anchor": "sds-integration",
+      "contentSummary": "Describes planned and historically implemented SDS access while bounding current-state claims.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes planned and historically implemented SDS access while bounding current-state claims.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-11",
+      "title": "User interface and usability",
+      "anchor": "user-interface-and-usability",
+      "contentSummary": "Preserves mobile-first and direct-feedback design principles and historical UI evidence.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves mobile-first and direct-feedback design principles and historical UI evidence.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-12",
+      "title": "Administration and reporting",
+      "anchor": "administration-and-reporting",
+      "contentSummary": "Lists later planned administrative and reporting capabilities without claiming completion.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Lists later planned administrative and reporting capabilities without claiming completion.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-13",
+      "title": "Historical implementation evidence",
+      "anchor": "historical-implementation-evidence",
+      "contentSummary": "Separates roadmap intent from dated evidence that Inventory 3.0 was actually built and expanded.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates roadmap intent from dated evidence that Inventory 3.0 was actually built and expanded.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-14",
+      "title": "Resources and implementation artifacts",
+      "anchor": "resources-and-implementation-artifacts",
+      "contentSummary": "Categorizes implementation Resources while directing current routing to the Resource Registry.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Categorizes implementation Resources while directing current routing to the Resource Registry.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-15",
+      "title": "Current state",
+      "anchor": "current-state",
+      "contentSummary": "Separates semantic certainty, historical implementation evidence, live-state uncertainty, and documentation state.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates semantic certainty, historical implementation evidence, live-state uncertainty, and documentation state.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level System purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-16",
+      "title": "Boundaries",
+      "anchor": "boundaries",
+      "contentSummary": "Separates Inventory 3.0 from Project identity, datastore, deployment, shared SDS/Location resources, Tool Center, and Inventory 2.0.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates Inventory 3.0 from Project identity, datastore, deployment, shared SDS/Location resources, Tool Center, and Inventory 2.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-17",
+      "title": "Resume-work procedure",
+      "anchor": "resume-work-procedure",
+      "contentSummary": "Defines progressive System-level context loading and live-state verification.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines progressive System-level context loading and live-state verification.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-18",
+      "title": "Unresolved questions",
+      "anchor": "unresolved-questions",
+      "contentSummary": "Preserves open questions about identity, continuity, Resources, implementation, tests, and Viewer behavior.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves open questions about identity, continuity, Resources, implementation, tests, and Viewer behavior.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-19",
+      "title": "Next work",
+      "anchor": "next-work",
+      "contentSummary": "Moves the exemplar to manifest/discovery/Viewer testing and Resource reconciliation.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Moves the exemplar to manifest/discovery/Viewer testing and Resource reconciliation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level System purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SYS-SEC-20",
+      "title": "Source and interpretation notes",
+      "anchor": "source-and-interpretation-notes",
+      "contentSummary": "Defines the evidence classes and interpretation rules used to construct the System Summary.",
+      "narrativeRole": "System definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the evidence classes and interpretation rules used to construct the System Summary.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "browser-based web interface"
+    ],
+    "apps": [
+      "Inventory 3.0"
+    ],
+    "scripts": [
+      "Config.gs (historical evidence)",
+      "DataService.gs (historical evidence)",
+      "InventoryService.gs (historical evidence)",
+      "Validation.gs (historical evidence)",
+      "Scripts.html (historical evidence)"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script HTML Service",
+      "Google Sheets"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Inventory-3.0 Google Sheets workbook (historical design/implementation evidence)"
+    ],
+    "files": [
+      "../README.md",
+      "../summaries/system-summary.md",
+      "system-summary-sidecar.json",
+      "../../../summaries/project-summary.md",
+      "../../../sidecars/project-summary-sidecar.json"
+    ],
+    "integrations": [
+      "product pages",
+      "inventory browser",
+      "SDS links",
+      "Google Sites / Tool Center launch surfaces (historical evidence)"
+    ],
+    "apis": [
+      "google.script.run",
+      "Apps Script service URL/routing APIs (historical evidence)"
+    ],
+    "versions": [
+      "Inventory 3.0"
+    ],
+    "tests": [
+      {
+        "name": "Sidecar JSON parse",
+        "type": "structural validation",
+        "result": "passed",
+        "notes": "Generated System Summary sidecar parses as valid JSON.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Companion path resolution",
+        "type": "local documentation validation",
+        "result": "passed",
+        "notes": "../summaries/system-summary.md resolves to the generated human-readable System Summary.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "No premature System ID",
+        "type": "authority-boundary validation",
+        "result": "passed",
+        "notes": "No SYS-### value or System Identity Entity Record was created.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Roadmap completion inference",
+        "type": "evidence-boundary validation",
+        "result": "passed",
+        "notes": "Unchecked roadmap verification items were not converted into claims of completed testing.",
+        "statusBasis": "validated during generation"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed-with-known-open-architecture-items",
+      "notes": [
+        "System Summary remains the human-readable explanatory source.",
+        "Sidecar uses generic-document because no dedicated System Summary sidecar profile exists.",
+        "No System Identity Entity Record is implied.",
+        "Current live implementation remains to be reverified.",
+        "Viewer/manifest discovery remains to be tested."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "not-published",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Inventory 3.0 — System Summary",
+    "listingDescription": "System definition for Inventory 3.0, preserving design and implementation evidence while deferring formal System Identity.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "../summaries/system-summary.md",
+    "sourceConversationReference": "",
+    "sourceFiles": [
+      "../summaries/system-summary.md",
+      "../../../summaries/project-summary.md",
+      "../../../sidecars/project-summary-sidecar.json",
+      "inventory-3-roadmap.md — historical design/planning source",
+      "July 2026 Inventory 3.0 work-update/catalog records — historical implementation evidence",
+      "Inventory 3.0 SDS Registry Rebuild and App Integration — historical implementation-plan evidence"
+    ],
+    "generatedBy": "ChatGPT (GPT-5.6 Sol)",
+    "generatedTimestamp": "2026-08-15T13:02:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-unreviewed",
+    "interpretationNotes": [
+      "This is a document sidecar for system-summary.md, not a System Identity Entity Record.",
+      "No permanent SYS-### is assigned.",
+      "Historical roadmap statements are represented as design/planning evidence unless separately supported by dated implementation evidence.",
+      "Historical work updates establish dated implementation facts but not necessarily the current live state.",
+      "Current Resource routing should be resolved through the Resource Registry and live implementation evidence."
+    ],
+    "unresolvedQuestions": [
+      "What stable facts belong in a future System Identity record?",
+      "Does Inventory 3.0 receive a permanent SYS-###?",
+      "Is the 3.0 version label part of stable System identity?",
+      "What Apps Script source, datastore, and deployment are current?",
+      "Which roadmap phases and tests were actually completed?",
+      "What is the current SDS-registry implementation state?",
+      "Which implementation artifacts are Inventory 3.0 Resources versus shared Resources?",
+      "How should the Viewer distinguish this System Summary from a future System Identity Entity Record?"
+    ]
+  }
+}

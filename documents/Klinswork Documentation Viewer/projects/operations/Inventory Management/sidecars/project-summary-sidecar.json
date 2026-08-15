@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "generic-document-sidecar-template-3.0.json",
+    "previewMode": "generic-document"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should Project Summary documents receive a dedicated document-sidecar profile instead of using generic-document?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "../summaries/project-summary.md",
+    "documentUrl": "",
+    "title": "Inventory Management — Project Summary",
+    "headline": "Human-readable definition and current interpretation of the Inventory Management Project",
+    "documentType": "project-summary",
+    "createdTimestamp": "2026-08-15T12:55:00-06:00",
+    "updatedTimestamp": "2026-08-15T12:58:00-06:00"
+  },
+  "metadata": {
+    "filePath": "../summaries/project-summary.md",
+    "url": "",
+    "sidecarFilePath": "project-summary-sidecar.json",
+    "summaryFilePath": "../summaries/project-summary.md",
+    "repositoryPath": "documentation/documents/Klinswork Documentation Viewer/projects/operations/Inventory Management/",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/generic-document-sidecar-template-3.0.json",
+    "baseTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/document-sidecar-base-template-3.0.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "project-definition-exemplar",
+    "sourceSummaryPath": "../summaries/project-summary.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory Management",
+      "projectType": "project",
+      "parentProjectId": "",
+      "parentProjectName": "Operations",
+      "projectRecordPath": "../project-identity.json",
+      "projectGoal": "Preserve and improve reliable knowledge and operational control of inventory.",
+      "projectPhase": "Project-definition exemplar and architecture reconciliation",
+      "contributionType": "canonical Project definition / current interpretation",
+      "identificationBasis": "Inventory Management Project Identity Entity Record and current Project Summary.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Operations",
+        "relationshipType": "parent-project-current-model",
+        "relationshipDescription": "Inventory Management is currently modeled as a child Project of Operations; the formal relationship record/predicate remains pending.",
+        "impact": "Provides organizational context and navigation without becoming intrinsic Project identity.",
+        "evidenceSectionAnchors": [
+          "relationship-to-operations"
+        ],
+        "identificationBasis": "Current Project Summary and Project-local README.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Task Assignment and Tracking",
+        "relationshipType": "operational-integration-boundary",
+        "relationshipDescription": "Task completion may produce an inventory-related request or effect while Inventory Management retains authority for the resulting inventory-state effect.",
+        "impact": "Clarifies ownership at the task-to-inventory boundary.",
+        "evidenceSectionAnchors": [
+          "project-boundaries"
+        ],
+        "identificationBasis": "Current Project Summary boundary narrative.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "infrastructure-support",
+        "relationshipDescription": "Documentation supplies Record Profiles, summaries, sidecars, manifests, Viewer infrastructure, workflows, and context-routing mechanisms used to describe Inventory Management.",
+        "impact": "Supports discovery and interpretation without acquiring inventory-state authority.",
+        "evidenceSectionAnchors": [
+          "relationship-to-documentation"
+        ],
+        "identificationBasis": "Current Project Summary.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Meadows Housekeeping",
+        "foundationType": "operational-environment",
+        "relationshipDescription": "Primary current operational environment associated with Inventory Management.",
+        "impact": "Provides practical context for products, supplies, locations, and inventory activity without becoming Project identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "resource-identity-and-routing-authority",
+        "relationshipDescription": "Resolves registered Resource identity, current location, and routing metadata.",
+        "impact": "Prevents mutable paths and URLs from being treated as Project identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "documentation-discovery-and-presentation-infrastructure",
+        "relationshipDescription": "Discovers and presents registered documentation records.",
+        "impact": "Supports retrieval while preserving source authority."
+      }
+    ],
+    "relationshipSummary": "Inventory Management is currently modeled under Operations, implemented principally through Inventory 3.0, applied in Meadows Housekeeping, and documented through the separate Documentation Project. These are contextual relationships, not intrinsic Project identity."
+  },
+  "subject": {
+    "projectName": "Inventory Management",
+    "primaryApp": "",
+    "mainFocus": "Durable Project definition for inventory-state management independent of any one application, datastore, deployment, or repository location.",
+    "description": "Defines Inventory Management as the durable Klinswork Project responsible for reliable inventory knowledge and control, including purpose, operational function, scope, boundaries, principal System, Resource context, current state, history, authority routing, unresolved questions, and next work.",
+    "topics": [
+      "inventory management",
+      "Project definition",
+      "Project identity",
+      "inventory state",
+      "inventory events",
+      "inventory reconciliation",
+      "Project boundaries",
+      "Resource authority",
+      "System context",
+      "documentation architecture",
+      "context routing"
+    ],
+    "keywords": [
+      "Inventory Management",
+      "Inventory 3.0",
+      "project-identity.json",
+      "project-summary.md",
+      "Project Definition",
+      "Record Profile",
+      "Entity Record",
+      "Resource Registry",
+      "Klinswork Documentation Viewer"
+    ],
+    "appsAffected": [],
+    "systemsAffected": [
+      "Inventory 3.0"
+    ],
+    "componentsAffected": [
+      "Project Identity record",
+      "Project README",
+      "Project Summary",
+      "Project Summary sidecar",
+      "Project documentation space"
+    ]
+  },
+  "documentSummary": {
+    "purpose": "Provide the authoritative human-readable Project definition and current interpretation for Inventory Management while keeping intrinsic identity, Resource routing, relationships, implementation truth, and execution evidence with their own authorities.",
+    "scope": "Project purpose, operational function, scope, boundaries, principal System context, Resource classes and authority rules, current Project-definition state, historical framing, resume-work guidance, unresolved questions, and next work.",
+    "summary": "Inventory Management is a Klinswork Project concerned with reliable knowledge and operational control of inventory. Its principal known System is Inventory 3.0. The Project is defined independently of its current name, hierarchy, repository location, application, datastore, Resource set, deployment, or operational environment. The current exemplar now includes a Project Identity record, local README, human-readable Project Summary, and this structured companion sidecar; System-local documentation, discovery testing, Viewer testing, Resource reconciliation, and final reusable Project Definition extraction remain.",
+    "intendedAudience": [
+      "future Klinswork work sessions",
+      "project maintainers",
+      "documentation tools and Viewer",
+      "technical reviewers"
+    ],
+    "status": "current-working-project-definition",
+    "confidence": "high for documented Project-definition facts; current implementation state remains only partially reverified"
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "Inventory Management is the Project",
+      "description": "Inventory Management is the durable Project identity; Inventory 3.0 is the principal known System, not a synonym for the Project.",
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "principal-known-system-inventory-30"
+      ]
+    },
+    {
+      "sequence": 2,
+      "title": "Project ID remains unassigned",
+      "description": "The permanent PROJ-### value is intentionally blank until formal allocation; names, folders, relationships, and historical numbering must not be used to invent one.",
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "current-state"
+      ]
+    },
+    {
+      "sequence": 3,
+      "title": "Operational function is inventory-state control",
+      "description": "The Project covers identification, state establishment, controlled state change, event history, verification, and operational use of inventory information.",
+      "evidenceSectionAnchors": [
+        "purpose",
+        "operational-function"
+      ]
+    },
+    {
+      "sequence": 4,
+      "title": "Boundaries are functional",
+      "description": "Scheduling, Task Assignment and Tracking, Documentation, Meadows Housekeeping, and Inventory 3.0 remain distinct even when they are related to Inventory Management.",
+      "evidenceSectionAnchors": [
+        "project-boundaries"
+      ]
+    },
+    {
+      "sequence": 5,
+      "title": "Resource identity is separate from Project identity",
+      "description": "Applications, workbooks, scripts, datasets, deployments, SDS records, and documentation artifacts are Resources or related artifacts whose current routing belongs in the Resource Registry.",
+      "evidenceSectionAnchors": [
+        "resources"
+      ]
+    },
+    {
+      "sequence": 6,
+      "title": "Current implementation claims remain bounded",
+      "description": "The Project Summary does not claim current deployment behavior, live quantities, schemas, or successful tests without current implementation and execution evidence.",
+      "evidenceSectionAnchors": [
+        "current-state"
+      ]
+    },
+    {
+      "sequence": 7,
+      "title": "Project Definition exemplar is now layered",
+      "description": "The exemplar now separates identity, orientation, narrative Project definition, and machine-readable summary interpretation into different records with different authority roles.",
+      "evidenceSectionAnchors": [
+        "current-records-and-authority-routing",
+        "project-definition-exemplar-role"
+      ]
+    },
+    {
+      "sequence": 8,
+      "title": "Historical terminology is preserved",
+      "description": "Earlier records may use application-centered or System-centered terminology and should remain as evidence rather than being silently rewritten.",
+      "evidenceSectionAnchors": [
+        "history-and-architectural-evolution"
+      ]
+    },
+    {
+      "sequence": 9,
+      "title": "Resume work progressively",
+      "description": "Future sessions should load Project Identity, README, Project Summary, relevant System context, Registry-resolved Resources, workflow state, Activities, and deeper history only as needed.",
+      "evidenceSectionAnchors": [
+        "how-to-resume-work"
+      ]
+    },
+    {
+      "sequence": 10,
+      "title": "Next layer is Inventory 3.0 documentation",
+      "description": "The next concrete work is the Inventory 3.0 README, System Summary, and companion sidecar, followed by manifest and Viewer verification.",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "project",
+      "name": "Inventory Management Project",
+      "definition": "The durable undertaking responsible for the inventory-management operational function.",
+      "relationships": [
+        "principal System: Inventory 3.0",
+        "current parent model: Operations",
+        "current operational environment: Meadows Housekeeping"
+      ],
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "purpose"
+      ]
+    },
+    {
+      "conceptId": "system",
+      "name": "Inventory 3.0",
+      "definition": "The principal known System presently used to implement the Inventory Management Project.",
+      "relationships": [
+        "implements/supports Inventory Management; formal relationship record pending"
+      ],
+      "evidenceSectionAnchors": [
+        "principal-known-system-inventory-30"
+      ]
+    },
+    {
+      "conceptId": "project-identity",
+      "name": "Project identity separation",
+      "definition": "Project identity remains distinct from name, location, hierarchy, System, application, Resource, environment, deployment, lifecycle, and implementation.",
+      "relationships": [
+        "canonical identity facts are assigned to project-identity.json"
+      ],
+      "evidenceSectionAnchors": [
+        "project-identity-context"
+      ]
+    },
+    {
+      "conceptId": "resource-authority",
+      "name": "Resource authority",
+      "definition": "Stable Resource identity and current location/routing are resolved through the Resource Registry rather than Project identity.",
+      "relationships": [
+        "Project/System relationships to Resources remain separate cross-entity facts"
+      ],
+      "evidenceSectionAnchors": [
+        "resources"
+      ]
+    },
+    {
+      "conceptId": "project-definition",
+      "name": "Project Definition",
+      "definition": "A coordinated record set whose distinct authority roles together make a Project understandable, discoverable, resumable, and reusable.",
+      "relationships": [
+        "Entity Record",
+        "README",
+        "Project Summary",
+        "sidecar",
+        "System documentation",
+        "implementation plans"
+      ],
+      "evidenceSectionAnchors": [
+        "project-definition-exemplar-role",
+        "resulting-project-state"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "NEXT-001",
+      "title": "Create Inventory 3.0 local README",
+      "description": "Create the System-local orientation document under systems/Inventory 3.0/.",
+      "reason": "The Project layer now needs the principal System context to continue the exemplar.",
+      "priority": "next",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-002",
+      "title": "Create Inventory 3.0 System Summary and sidecar",
+      "description": "Define the human-readable System interpretation and its structured companion without prematurely assigning a SYS-### value.",
+      "reason": "Completes the non-identity System documentation layer needed for the Project exemplar.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "principal-known-system-inventory-30",
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-003",
+      "title": "Test discovery and Viewer behavior",
+      "description": "Regenerate the Klinswork Documentation Viewer manifest and verify Project Summary companion resolution and Entity Record handling.",
+      "reason": "The architecture is not proven until the records are correctly discovered and interpreted.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "how-to-resume-work",
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-004",
+      "title": "Reconcile Resource Registry references",
+      "description": "Resolve current Inventory Management and Inventory 3.0 Resource IDs, paths, deployments, and authoritative routing before automated Startup depends on them.",
+      "reason": "The Project Summary intentionally avoids inventing Resource identities or mutable locations.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "resources",
+        "unresolved-questions"
+      ]
+    }
+  ],
+  "openQuestions": [
+    {
+      "questionId": "OQ-001",
+      "question": "What permanent PROJ-### value will be allocated to Inventory Management?",
+      "reasonOpen": "Formal Project ID allocation has not occurred.",
+      "nextStep": "Resolve through the formal Project Registry allocation procedure."
+    },
+    {
+      "questionId": "OQ-002",
+      "question": "What exact precedence/reconciliation rule applies if the Project Registry and project-identity.json disagree?",
+      "reasonOpen": "Authority overlap is not yet frozen.",
+      "nextStep": "Resolve as an architecture determination before Project Identity profile 1.0."
+    },
+    {
+      "questionId": "OQ-003",
+      "question": "What controlled predicate represents the Operations → Inventory Management relationship?",
+      "reasonOpen": "Relationship Registry vocabulary is not finalized.",
+      "nextStep": "Define the formal relationship schema/predicate."
+    },
+    {
+      "questionId": "OQ-004",
+      "question": "What permanent SYS-### value, if any, will be allocated to Inventory 3.0?",
+      "reasonOpen": "System Identity work is intentionally deferred.",
+      "nextStep": "Prove the Project model first, then reconcile System Identity."
+    },
+    {
+      "questionId": "OQ-005",
+      "question": "Which current Inventory Management Resources already have valid RES-### identities?",
+      "reasonOpen": "A complete reconciled Resource membership list is not established in the source.",
+      "nextStep": "Review and reconcile the Resource Registry."
+    },
+    {
+      "questionId": "OQ-006",
+      "question": "How should the Klinswork Documentation Viewer discover Entity Records?",
+      "reasonOpen": "Current Project-space discovery is still sidecar-oriented.",
+      "nextStep": "Regenerate/test the v2 manifest and design explicit Entity Record discovery."
+    },
+    {
+      "questionId": "OQ-007",
+      "question": "Should every Project use the same mandatory folder skeleton?",
+      "reasonOpen": "The exemplar has not yet been generalized.",
+      "nextStep": "Complete this exemplar, then extract only genuinely reusable structure."
+    },
+    {
+      "questionId": "OQ-008",
+      "question": "What is the fully reconciled chronology and current implementation state of Inventory Management / Inventory 3.0?",
+      "reasonOpen": "This Project Summary is not a complete operational-history or live-implementation verification.",
+      "nextStep": "Inspect historical records, current source, data stores, deployment evidence, tests, and Activities."
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Inventory Management is being formalized as a durable Project separate from the Inventory 3.0 System and from any one spreadsheet, app, or deployment.",
+      "operationalImpact": "The architecture makes it easier to preserve inventory knowledge and resume technical work without confusing current implementation details with Project identity.",
+      "currentStatus": "Project Identity, README, Project Summary, and this summary sidecar now exist; System-local documentation and discovery/Viewer testing remain.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Permanent Project/System IDs are not yet assigned.",
+        "Current Inventory 3.0 deployment behavior and live data were not reverified by this Project Summary."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Complete the Inventory 3.0 System documentation layer and test documentation discovery.",
+      "callouts": []
+    },
+    "general": {
+      "summary": "Inventory Management is the durable Klinswork Project for reliable inventory knowledge and control. Inventory 3.0 is its principal known System. The Project definition now separates intrinsic identity, orientation, narrative interpretation, and machine-readable metadata.",
+      "keyPoints": [
+        "Project identity is independent of implementation and location.",
+        "Permanent Project and System IDs remain intentionally unassigned.",
+        "Resources and relationships retain separate authorities.",
+        "The next work is System documentation and Viewer/discovery testing."
+      ]
+    },
+    "technical": {
+      "summary": "This sidecar structures the Inventory Management Project Summary using the generic-document 3.0-draft sidecar schema. It preserves the Markdown source as narrative authority and references project-identity.json separately as the Project Identity Entity Record.",
+      "keyPoints": [
+        "profileType: generic-document",
+        "documentType: project-summary",
+        "source: ../summaries/project-summary.md",
+        "Project ID remains blank/unassigned",
+        "Inventory 3.0 SYS-### remains unassigned",
+        "Entity Record discovery remains a pending Viewer concern"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "A Project Definition works better as coordinated records with distinct authorities than as one oversized record.",
+      "Inventory Management can be defined durably without assigning a premature PROJ-### value.",
+      "Inventory 3.0 can be described as the principal System without making System identity intrinsic Project identity."
+    ],
+    "generalLessons": [
+      "Entity Records and document sidecars require different authority semantics.",
+      "Repository locality helps navigation but should not define semantic identity.",
+      "Machine-readable companions should preserve, not replace, human-readable narrative authority."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Application-centered naming can collapse Project, System, application, Resource, and deployment into one concept.",
+        "pattern": "Historical documentation often organizes around the most visible implementation artifact.",
+        "projectsObservedIn": [
+          "Inventory Management"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Project Definition authority pattern",
+        "description": "Explain the coordinated roles of Project Identity, README, Project Summary, sidecar, relationships, Resource Registry, and System documentation.",
+        "suggestedDestination": "Klinswork Documentation / Project Definition guidance",
+        "supportingSectionAnchors": [
+          "document-purpose-and-authority",
+          "project-definition-exemplar-role",
+          "resulting-project-state"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Sidecars remain machine-readable companions to human-readable sources.",
+        "changeType": "confirmed",
+        "explanation": "The Project Summary sidecar structures project-summary.md but does not replace its narrative authority or project-identity.json."
+      },
+      {
+        "rule": "Identity is independent of location and hierarchy.",
+        "changeType": "confirmed",
+        "explanation": "The Project Summary explicitly preserves relationship and repository facts outside intrinsic Project identity."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "SEC-01",
+      "title": "Document purpose and authority",
+      "anchor": "document-purpose-and-authority",
+      "contentSummary": "Defines this Markdown file as the human-readable explanatory authority for Project purpose, scope, boundaries, current interpretation, historical framing, and unresolved Project-definition questions, while routing other facts to their proper authorities.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines this Markdown file as the human-readable explanatory authority for Project purpose, scope, boundaries, current interpretation, historical framing, and unresolved Project-definition questions, while routing other facts to their proper authorities.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Project Definition authority pattern"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-02",
+      "title": "Project identity context",
+      "anchor": "project-identity-context",
+      "contentSummary": "Explains Inventory Management as a Project whose permanent ID is deliberately unassigned and whose identity is independent of names, locations, hierarchy, Systems, Resources, deployment, lifecycle, and implementation.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Explains Inventory Management as a Project whose permanent ID is deliberately unassigned and whose identity is independent of names, locations, hierarchy, Systems, Resources, deployment, lifecycle, and implementation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-03",
+      "title": "Purpose",
+      "anchor": "purpose",
+      "contentSummary": "Defines the durable objective: reliable knowledge and operational control of inventory.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the durable objective: reliable knowledge and operational control of inventory.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-04",
+      "title": "Operational function",
+      "anchor": "operational-function",
+      "contentSummary": "Models identification, state establishment, controlled state changes, event history, verification, and operational use of inventory information.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Models identification, state establishment, controlled state changes, event history, verification, and operational use of inventory information.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-05",
+      "title": "Scope",
+      "anchor": "scope",
+      "contentSummary": "Defines current in-scope inventory state, events, reference data, integrity, interfaces/tools, and documentation, while identifying adjacent work that is not automatically part of the Project.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines current in-scope inventory state, events, reference data, integrity, interfaces/tools, and documentation, while identifying adjacent work that is not automatically part of the Project.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-06",
+      "title": "Project boundaries",
+      "anchor": "project-boundaries",
+      "contentSummary": "Separates Inventory Management from Scheduling, Task Assignment and Tracking, Documentation, Meadows Housekeeping, and Inventory 3.0.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates Inventory Management from Scheduling, Task Assignment and Tracking, Documentation, Meadows Housekeeping, and Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-07",
+      "title": "Principal known System — Inventory 3.0",
+      "anchor": "principal-known-system-inventory-30",
+      "contentSummary": "Identifies Inventory 3.0 as the principal known implementation System and records what is known versus still unformalized.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Identifies Inventory 3.0 as the principal known implementation System and records what is known versus still unformalized.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-08",
+      "title": "Resources",
+      "anchor": "resources",
+      "contentSummary": "Describes Resource classes and the rule that Resource identity/location belongs in the Resource Registry rather than Project identity.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes Resource classes and the rule that Resource identity/location belongs in the Resource Registry rather than Project identity.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-09",
+      "title": "Current state",
+      "anchor": "current-state",
+      "contentSummary": "Separates operational/implementation state from Project-definition state and records what is completed versus pending.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Separates operational/implementation state from Project-definition state and records what is completed versus pending.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-10",
+      "title": "Current records and authority routing",
+      "anchor": "current-records-and-authority-routing",
+      "contentSummary": "Describes the roles and status of project-identity.json, README.md, project-summary.md, its sidecar, Inventory 3.0 documentation, and implementation plans.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes the roles and status of project-identity.json, README.md, project-summary.md, its sidecar, Inventory 3.0 documentation, and implementation plans.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-11",
+      "title": "History and architectural evolution",
+      "anchor": "history-and-architectural-evolution",
+      "contentSummary": "Preserves earlier application-centered terminology and records the transition to Project/System separation and the first Project Identity exemplar.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves earlier application-centered terminology and records the transition to Project/System separation and the first Project Identity exemplar.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-12",
+      "title": "Relationship to Operations",
+      "anchor": "relationship-to-operations",
+      "contentSummary": "Records the current parent-project model while keeping hierarchy outside intrinsic Project identity.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Records the current parent-project model while keeping hierarchy outside intrinsic Project identity.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-13",
+      "title": "Relationship to Meadows Housekeeping",
+      "anchor": "relationship-to-meadows-housekeeping",
+      "contentSummary": "Describes Meadows Housekeeping as the primary current operational environment rather than Project identity.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Describes Meadows Housekeeping as the primary current operational environment rather than Project identity.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-14",
+      "title": "Relationship to Documentation",
+      "anchor": "relationship-to-documentation",
+      "contentSummary": "Explains how the separate Documentation Project supplies infrastructure without acquiring inventory-state authority.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Explains how the separate Documentation Project supplies infrastructure without acquiring inventory-state authority.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-15",
+      "title": "Implementation plans",
+      "anchor": "implementation-plans",
+      "contentSummary": "Locates bounded intended work under implementation-plans/ and distinguishes plan, workflow, execution evidence, and historical summary.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Locates bounded intended work under implementation-plans/ and distinguishes plan, workflow, execution evidence, and historical summary.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-16",
+      "title": "How to resume work",
+      "anchor": "how-to-resume-work",
+      "contentSummary": "Defines progressive context loading from Project Identity through README, Project Summary, System, Resources, workflows, Activities, Open Determinations, and historical evidence.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines progressive context loading from Project Identity through README, Project Summary, System, Resources, workflows, Activities, Open Determinations, and historical evidence.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-17",
+      "title": "Project Definition exemplar role",
+      "anchor": "project-definition-exemplar-role",
+      "contentSummary": "Defines the criteria by which Inventory Management tests the reusable Klinswork Project Definition architecture.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines the criteria by which Inventory Management tests the reusable Klinswork Project Definition architecture.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Project Definition authority pattern"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-18",
+      "title": "Unresolved questions",
+      "anchor": "unresolved-questions",
+      "contentSummary": "Preserves open questions about identity/registry, relationships, System identity, Resources, Viewer/discovery, Project template, and operational history.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Preserves open questions about identity/registry, relationships, System identity, Resources, Viewer/discovery, Project template, and operational history.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-19",
+      "title": "Next work",
+      "anchor": "next-work",
+      "contentSummary": "Sets the next work as Inventory 3.0 System documentation followed by manifest, discovery, Viewer, Resource, and context-loading tests.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Sets the next work as Inventory 3.0 System documentation followed by manifest, discovery, Viewer, Resource, and context-loading tests.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Provides high-level purpose, status, or next-step context."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-20",
+      "title": "Resulting Project state",
+      "anchor": "resulting-project-state",
+      "contentSummary": "Shows the layered Project-definition structure and the authority role of each layer.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Shows the layered Project-definition structure and the authority role of each layer.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Project Definition authority pattern"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-21",
+      "title": "Source and interpretation notes",
+      "anchor": "source-and-interpretation-notes",
+      "contentSummary": "States the source basis and explicitly lists facts this Summary does not claim.",
+      "narrativeRole": "Project definition / current interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "States the source basis and explicitly lists facts this Summary does not claim.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Markdown",
+      "JSON"
+    ],
+    "apps": [
+      "Klinswork Documentation Viewer"
+    ],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [
+      "../project-identity.json",
+      "../README.md",
+      "../summaries/project-summary.md",
+      "project-summary-sidecar.json"
+    ],
+    "integrations": [
+      "Klinswork Record Profile Library",
+      "Klinswork Documentation Viewer discovery/manifest pipeline",
+      "Klinswork Resource Registry"
+    ],
+    "apis": [],
+    "versions": [
+      "generic-document sidecar schema 3.0-draft",
+      "generic-document profile 1.0",
+      "project-identity profile 1.0-draft"
+    ],
+    "tests": [
+      {
+        "name": "JSON parse",
+        "type": "structural validation",
+        "result": "passed",
+        "notes": "Generated sidecar parses as valid JSON.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Companion path resolution",
+        "type": "local file validation",
+        "result": "passed",
+        "notes": "../summaries/project-summary.md exists relative to the sidecar directory in the generated artifact tree.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "No invented Project ID",
+        "type": "authority-boundary validation",
+        "result": "passed",
+        "notes": "projectContext.primaryProject.projectId remains blank because no permanent PROJ-### value has been allocated.",
+        "statusBasis": "validated against project-identity.json"
+      },
+      {
+        "name": "Entity Record separation",
+        "type": "authority-boundary validation",
+        "result": "passed",
+        "notes": "The sidecar references ../project-identity.json but does not represent itself as a Project Identity Entity Record.",
+        "statusBasis": "validated during generation"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "passed-with-known-open-architecture-items",
+      "notes": [
+        "Sidecar conforms to the recognized generic-document profile shape.",
+        "Project Summary remains the narrative authority.",
+        "Project ID remains unassigned.",
+        "A dedicated Project Summary sidecar profile does not yet exist.",
+        "Viewer/manifest discovery has not yet been rerun."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "not-published",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Inventory Management — Project Summary",
+    "listingDescription": "Durable Project definition for Inventory Management, separating Project identity from Inventory 3.0, Resources, relationships, and implementation details.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "../summaries/project-summary.md",
+    "sourceConversationReference": "",
+    "sourceFiles": [
+      "../summaries/project-summary.md",
+      "../project-identity.json",
+      "../README.md",
+      "generic-document-sidecar-template-3.0.json"
+    ],
+    "generatedBy": "ChatGPT (GPT-5.6 Sol)",
+    "generatedTimestamp": "2026-08-15T12:58:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-unreviewed",
+    "interpretationNotes": [
+      "This record is a machine-readable companion to project-summary.md; the Markdown source remains authoritative for its narrative and Project interpretation.",
+      "project-identity.json remains the separate Project Identity Entity Record.",
+      "The generic-document profile is used because the Record Profile Registry does not yet define a dedicated Project Summary document-sidecar profile.",
+      "Parent Project, principal System, operational environment, and Resources are represented here as contextual/relationship information rather than intrinsic Project identity.",
+      "Operational implementation claims remain bounded to what the source Summary supports and have not been independently reverified here."
+    ],
+    "unresolvedQuestions": [
+      "What permanent PROJ-### value will be allocated to Inventory Management?",
+      "What exact precedence/reconciliation rule applies if the Project Registry and project-identity.json disagree?",
+      "What controlled predicate represents the Operations → Inventory Management relationship?",
+      "What permanent SYS-### value, if any, will be allocated to Inventory 3.0?",
+      "Which current Inventory Management Resources already have valid RES-### identities?",
+      "How should the Klinswork Documentation Viewer discover Entity Records?",
+      "Should every Project use the same mandatory folder skeleton?",
+      "What is the fully reconciled chronology and current implementation state of Inventory Management / Inventory 3.0?"
+    ]
+  }
+}
