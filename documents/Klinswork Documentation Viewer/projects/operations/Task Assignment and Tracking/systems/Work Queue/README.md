@@ -12,7 +12,8 @@
 | **System Roadmap** | `summaries/work-queue-roadmap.md` — current |
 | **System Roadmap sidecar** | `sidecars/work-queue-roadmap-sidecar.json` — current |
 | **Technical documentation Resource** | `RES-047` — Work Queue app technical manual |
-| **Documentation status** | System-local README, current-state System Summary/sidecar, and future-state roadmap/sidecar are present; discovery and companion validation completed in WORK-0001 |
+| **Documentation status** | System-local README, current-state System Summary/sidecar, and future-state roadmap/sidecar are present; discovery, companion, Viewer, and context-naive resume validation completed in `WORK-0001` |
+| **Completed Work Unit** | `WORK-0001` — completed and closed 2026-08-16; closure recorded by `WUA-0010` |
 | **Last reconciled** | 2026-08-16 |
 
 ---
@@ -1151,14 +1152,22 @@ current-state and future-state Viewer semantics validated together
 context-naive resume routing validated
 ```
 
-### Remaining in WORK-0001
+### WORK-0001 closure
+
+`WORK-0001 — Task Assignment and Tracking — Initial Project Definition` is **completed and closed**.
 
 ```text
-reconcile creation-time status annotations in current human-readable documents
-finish the formal Work Implementation Session record
-review the WORK-0001 completion rule
-close the session and Work Unit if the completion rule remains satisfied
+status      completed
+readiness   closed
+completed   2026-08-16
+closure     WUA-0010
 ```
+
+The Work Unit completion rule was satisfied after the Project/System definition package, discovery and companion validation, Viewer/current-versus-future semantics, context-naive resume routing, Registry/Resource reconciliation, architecture reconciliation, creation-time status cleanup, and formal session closure were completed.
+
+The **Work Unit Registry** is the authority for the current completed/closed state. `WUA-0010` preserves the material closure event in Work Unit Activities.
+
+Do not reopen or extend `WORK-0001` merely because later Work Queue work is related to the same Project or System.
 
 ### Deliberately deferred
 
@@ -1176,7 +1185,7 @@ universal reusable System Definition template extraction
 
 ## 20. Next work
 
-The Work Queue System-definition package for WORK-0001 is complete and validated:
+The Work Queue System-definition package created and validated through `WORK-0001` is complete:
 
 ```text
 README.md
@@ -1186,11 +1195,37 @@ summaries/work-queue-roadmap.md
 sidecars/work-queue-roadmap-sidecar.json
 ```
 
-No additional Work Queue System-definition artifact is required before closing the current Project Definition Work Unit.
+`WORK-0001` is closed. No further work should be silently added to that Work Unit.
 
-The immediate WORK-0001 work is closure-oriented: reconcile remaining creation-time status annotations, finish the formal Work Implementation Session record, review the Work Unit completion rule, and close the session/Work Unit if the rule remains satisfied.
+The next Work Queue effort should begin by identifying the question being answered:
 
-Future Work Queue feature development should be selected from the System Roadmap through bounded Work Units rather than being silently folded into this Project Definition session.
+```text
+current implementation question
+        ↓
+System Summary
+        ↓
+Resource Registry
+        ↓
+authoritative current source / datastore / deployment
+        ↓
+fresh verification
+
+future capability question
+        ↓
+System Roadmap
+        ↓
+bounded candidate outcome
+        ↓
+new Work Unit allocated by the Registry
+        ↓
+implementation plan when selected
+```
+
+Current documentation still deliberately leaves important implementation questions unresolved, including the authoritative live Apps Script source/deployment, current-user identity, exact task-state behavior, permission enforcement, complete Inventory transaction propagation, Scheduling runtime integration, and current regression-test status.
+
+Those questions should be resolved from current implementation evidence when relevant rather than by reopening `WORK-0001` or treating roadmap intent as implementation truth.
+
+Future Work Queue feature development should therefore be selected from the System Roadmap and registered as separate bounded Work Units.
 
 ---
 
