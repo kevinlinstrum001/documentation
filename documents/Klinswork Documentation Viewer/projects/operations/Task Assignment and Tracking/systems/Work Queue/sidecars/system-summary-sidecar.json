@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "generic-document-sidecar-template-3.0.json",
+    "previewMode": "generic-document"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should System Summary documents receive a dedicated document-sidecar profile?",
+          "What Viewer fields should distinguish a System Summary from a future System Identity Entity Record?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "../summaries/system-summary.md",
+    "documentUrl": "",
+    "title": "Work Queue — System Summary",
+    "headline": "Human-readable definition and current interpretation of the Work Queue System",
+    "documentType": "system-summary",
+    "createdTimestamp": "2026-08-16T09:26:00-06:00",
+    "updatedTimestamp": "2026-08-16T09:38:00-06:00"
+  },
+  "companionDocument": {
+    "path": "../summaries/system-summary.md",
+    "format": "markdown"
+  },
+  "metadata": {
+    "filePath": "../summaries/system-summary.md",
+    "url": "",
+    "sidecarFilePath": "system-summary-sidecar.json",
+    "summaryFilePath": "../summaries/system-summary.md",
+    "repositoryPath": "documentation/documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/generic-document-sidecar-template-3.0.json",
+    "baseTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/document-sidecar-base-template-3.0.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "second-project-definition-exemplar-system-layer",
+    "sourceSummaryPath": "../summaries/system-summary.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Task Assignment and Tracking",
+      "projectType": "project",
+      "parentProjectId": "",
+      "parentProjectName": "Operations",
+      "projectRecordPath": "../../../project-identity.json",
+      "projectGoal": "Preserve and improve reliable operational knowledge and control of discrete work.",
+      "projectPhase": "Second Project Definition exemplar — Work Queue System documentation layer",
+      "contributionType": "principal System current-state documentation",
+      "identificationBasis": "Task Assignment and Tracking Project Identity, Project Summary, Work Queue README, and current Registry/data evidence.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Operations",
+        "relationshipType": "parent-project-current-model",
+        "relationshipDescription": "Task Assignment and Tracking is currently modeled as a child Project of Operations.",
+        "impact": "Provides current hierarchy/context without becoming intrinsic Work Queue System identity.",
+        "evidenceSectionAnchors": [
+          "relationship-to-the-task-assignment-and-tracking-project"
+        ],
+        "identificationBasis": "Current Project-definition records.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Scheduling",
+        "relationshipType": "schedule-context-boundary",
+        "relationshipDescription": "Scheduling may supply who/where/when context while Work Queue preserves actual task assignment and performance history.",
+        "impact": "Schedule context may inform task routing without becoming task-history authority.",
+        "evidenceSectionAnchors": [
+          "integration-boundaries"
+        ],
+        "identificationBasis": "System Summary and Work Queue roadmap boundary.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory Management",
+        "relationshipType": "inventory-integration-boundary",
+        "relationshipDescription": "Work Queue may cause inventory-related effects while Inventory Management retains authority for inventory-state and transaction meaning.",
+        "impact": "Preserves task lifecycle authority separately from inventory-state authority.",
+        "evidenceSectionAnchors": [
+          "inventory-relationship",
+          "integration-boundaries"
+        ],
+        "identificationBasis": "System Summary and technical-manual evidence.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "documentation-infrastructure",
+        "relationshipDescription": "Documentation provides summaries, sidecars, profiles, manifests, Viewer discovery, implementation plans, and preservation mechanisms.",
+        "impact": "Supports Work Queue interpretation and discovery without becoming operational task-state authority.",
+        "evidenceSectionAnchors": [
+          "document-purpose-and-authority",
+          "integration-boundaries"
+        ],
+        "identificationBasis": "Current Project/System documentation architecture.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "RES-013",
+        "name": "Employees workbook",
+        "foundationType": "shared-employee-personnel-and-assignment-context",
+        "relationshipDescription": "Separate current employee/personnel source with Employees, Assignments, and Weekly_Schedule sheets and stable EMP-### identities.",
+        "impact": "Allows Work Queue to reference stable assignee identity without becoming personnel authority."
+      },
+      {
+        "foundationId": "RES-010",
+        "name": "Building Map / Klinswork_Locations",
+        "foundationType": "shared-location-identity-authority",
+        "relationshipDescription": "Provides canonical physical Location IDs and descriptive context used by Work Queue and other operational Systems.",
+        "impact": "Enables stable task locations and cross-System location relationships without duplicating a private Work Queue location master."
+      },
+      {
+        "foundationId": "RES-043",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "resource-identity-and-routing-authority",
+        "relationshipDescription": "Provides stable Resource IDs and current Resource locations/routing.",
+        "impact": "Allows application, workbook, dataset, documentation, and deployment locations to change without becoming System identity."
+      },
+      {
+        "foundationId": "RES-011",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "documentation-discovery-and-presentation-infrastructure",
+        "relationshipDescription": "Discovers and presents structured documentation records and companions.",
+        "impact": "Supports retrieval/presentation while preserving the Markdown System Summary as human-readable authority."
+      }
+    ],
+    "relationshipSummary": "Work Queue is the principal known System of Task Assignment and Tracking. It consumes shared employee/personnel and location Resources, integrates partially with Inventory Management, may consume Scheduling context, and is documented through the separate Documentation Project. These relationships remain separate from intrinsic System identity."
+  },
+  "subject": {
+    "projectName": "Task Assignment and Tracking",
+    "primaryApp": "Work Queue",
+    "mainFocus": "Current evidence-based definition of Work Queue as the coherent System serving Task Assignment and Tracking without creating a System Identity Entity Record.",
+    "description": "System Summary for Work Queue covering current architecture, operational datastore, task model, activity history, templates, settings, location mapping, shared employee/personnel data, shared Locations, Inventory integration, Resources, evidence boundaries, limitations, unresolved questions, and next work.",
+    "topics": [
+      "Work Queue",
+      "Task Assignment and Tracking",
+      "System documentation",
+      "Google Apps Script",
+      "Google Sheets",
+      "task lifecycle",
+      "task assignment",
+      "Task_Activity",
+      "Task_Templates",
+      "Settings",
+      "Location_Task_Map",
+      "Employees workbook",
+      "stable Employee ID",
+      "Locations",
+      "Inventory integration",
+      "Resource Registry",
+      "System boundary",
+      "current-state evidence",
+      "roadmap boundary"
+    ],
+    "keywords": [
+      "Work Queue",
+      "RES-002",
+      "RES-003",
+      "RES-010",
+      "RES-012",
+      "RES-013",
+      "RES-014",
+      "RES-047",
+      "Tasks",
+      "Task_Activity",
+      "Task_Templates",
+      "Settings",
+      "Location_Task_Map",
+      "Assigned Employee ID",
+      "EMP-###",
+      "Location ID",
+      "Inventory_Holder_Event",
+      "Apps Script",
+      "Google Sheets"
+    ],
+    "appsAffected": [
+      "Work Queue"
+    ],
+    "systemsAffected": [
+      "Work Queue"
+    ],
+    "componentsAffected": [
+      "Apps Script web application",
+      "Work Queue operational datastore",
+      "Tasks",
+      "Task_Activity",
+      "Task_Templates",
+      "Settings",
+      "Location_Task_Map",
+      "Employees workbook",
+      "Klinswork_Locations",
+      "Inventory integration"
+    ]
+  },
+  "documentSummary": {
+    "purpose": "Provide the current human-readable System definition for Work Queue while keeping System Identity, Project identity, Resource routing, roadmap intent, historical evidence, and detailed runtime verification with their appropriate authorities.",
+    "scope": "System role and boundary; current registered architecture; Work Queue operational datastore; task, activity, template, settings, and location-mapping models; employee/personnel source; shared Locations; Inventory relationship; Resources; evidence reconciliation; current limitations; history; current state; unresolved questions; and next validation work.",
+    "summary": "Work Queue is the principal known System serving the Task Assignment and Tracking Project. Current Registry and Google Sheets evidence confirms a registered Apps Script application, a primary Work Queue operational datastore with Tasks, Task_Templates, Settings, Task_Activity, and Location_Task_Map sheets, a separate RES-013 Employees workbook with stable EMP-### identities and assignment/schedule context, and a shared canonical Locations workbook. The System also has partial Inventory integration. Detailed Apps Script source/deployment behavior was not freshly inspected, so current runtime claims remain bounded. No System Identity Entity Record or permanent System ID is created.",
+    "intendedAudience": [
+      "future Klinswork work sessions",
+      "Task Assignment and Tracking maintainers",
+      "Work Queue maintainers",
+      "documentation tools and Viewer",
+      "technical reviewers"
+    ],
+    "status": "current-working-system-definition",
+    "confidence": "high for semantic placement, current Registry routing, current datastore/shared-data structures, and resolved employee Resource location; medium for detailed runtime behavior not freshly source-code verified"
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "Work Queue is the System, not the Project",
+      "description": "Work Queue is the principal known System serving Task Assignment and Tracking; the Project and System remain semantically distinct.",
+      "evidenceSectionAnchors": [
+        "relationship-to-the-task-assignment-and-tracking-project"
+      ]
+    },
+    {
+      "sequence": 2,
+      "title": "System Identity is intentionally deferred",
+      "description": "No system-identity.json or permanent System ID is created in this Project Definition pass.",
+      "evidenceSectionAnchors": [
+        "why-system-identity-remains-deferred"
+      ]
+    },
+    {
+      "sequence": 3,
+      "title": "Current Work Queue operational datastore is directly verified",
+      "description": "RES-003 currently contains Tasks, Task_Templates, Settings, Task_Activity, and Location_Task_Map.",
+      "evidenceSectionAnchors": [
+        "current-work-queue-operational-datastore"
+      ]
+    },
+    {
+      "sequence": 4,
+      "title": "Work Queue preserves both current task state and task activity history",
+      "description": "The current datastore contains task-state rows and a separate Task_Activity event/history model.",
+      "evidenceSectionAnchors": [
+        "current-tasks-model",
+        "current-task-activity-history-model"
+      ]
+    },
+    {
+      "sequence": 5,
+      "title": "Employee/personnel source is a separate registered Resource",
+      "description": "RES-013 now correctly routes to the separate Employees workbook, which contains Employees, Assignments, and Weekly_Schedule and uses stable EMP-### identities.",
+      "evidenceSectionAnchors": [
+        "employee-personnel-relationship",
+        "evidence-reconciliation-and-current-uncertainty"
+      ]
+    },
+    {
+      "sequence": 6,
+      "title": "Locations are shared authority, not Work Queue-owned identity",
+      "description": "Work Queue consumes canonical stable Location IDs from the shared Klinswork_Locations source and keeps Work Queue-specific template mapping separately.",
+      "evidenceSectionAnchors": [
+        "shared-locations-building-map-relationship",
+        "current-location-to-task-mapping"
+      ]
+    },
+    {
+      "sequence": 7,
+      "title": "Inventory integration is real but incomplete",
+      "description": "Current task/template fields and technical documentation support holder-aware completion and Inventory_Holder_Event integration, while full source-cart decrement/destination propagation is not established as current behavior.",
+      "evidenceSectionAnchors": [
+        "inventory-relationship"
+      ]
+    },
+    {
+      "sequence": 8,
+      "title": "Current evidence and roadmap intent remain separate",
+      "description": "The System Summary records what current evidence supports; the Work Queue roadmap describes intended mature capability.",
+      "evidenceSectionAnchors": [
+        "roadmap-boundary",
+        "current-application-behavior-supported-by-evidence"
+      ]
+    },
+    {
+      "sequence": 9,
+      "title": "RES-013 location was reconciled without changing Resource identity",
+      "description": "The stale Work Queue-workbook location was corrected to the separate Employees workbook and recorded through ACT-0081.",
+      "evidenceSectionAnchors": [
+        "evidence-reconciliation-and-current-uncertainty",
+        "system-resources"
+      ]
+    },
+    {
+      "sequence": 10,
+      "title": "Detailed runtime behavior still requires current source/deployment evidence",
+      "description": "The active Apps Script source, authentication, permissions, exact employee loading path, holder-event code, deployment version, and complete test state were not freshly inspected.",
+      "evidenceSectionAnchors": [
+        "evidence-reconciliation-and-current-uncertainty",
+        "current-state"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "work-queue-system",
+      "name": "Work Queue",
+      "definition": "The coherent operational System that currently serves the Task Assignment and Tracking Project.",
+      "relationships": [
+        "principal System of Task Assignment and Tracking",
+        "implemented through registered application/data Resources",
+        "consumes shared employee and location context",
+        "partially integrates with Inventory Management"
+      ],
+      "evidenceSectionAnchors": [
+        "system-purpose",
+        "current-architecture-baseline"
+      ]
+    },
+    {
+      "conceptId": "task-state-plus-history",
+      "name": "Task state plus event history",
+      "definition": "Work Queue preserves current task records in Tasks while also storing append-oriented task events in Task_Activity.",
+      "relationships": [
+        "Tasks",
+        "Task_Activity",
+        "status transition",
+        "audit/history"
+      ],
+      "evidenceSectionAnchors": [
+        "current-tasks-model",
+        "current-task-activity-history-model"
+      ]
+    },
+    {
+      "conceptId": "shared-employee-source",
+      "name": "Shared employee/personnel source",
+      "definition": "RES-013 is the separate Employees workbook providing stable employee identity and assignment/schedule context used by Work Queue.",
+      "relationships": [
+        "Assigned Employee ID",
+        "EMP-###",
+        "Assignments",
+        "Weekly_Schedule"
+      ],
+      "evidenceSectionAnchors": [
+        "employee-personnel-relationship"
+      ]
+    },
+    {
+      "conceptId": "shared-location-source",
+      "name": "Shared canonical Locations",
+      "definition": "Klinswork_Locations provides canonical physical Location IDs and descriptive context used across operational Systems.",
+      "relationships": [
+        "RES-010",
+        "RES-014",
+        "Location ID",
+        "Location_Task_Map"
+      ],
+      "evidenceSectionAnchors": [
+        "shared-locations-building-map-relationship"
+      ]
+    },
+    {
+      "conceptId": "partial-inventory-integration",
+      "name": "Partial Inventory integration",
+      "definition": "Work Queue includes holder-aware completion structures and documented holder-event creation, while complete inventory transfer propagation remains unverified/incomplete.",
+      "relationships": [
+        "Related Holder ID",
+        "Related Holder Event ID",
+        "Inventory_Holder_Event",
+        "Inventory Management"
+      ],
+      "evidenceSectionAnchors": [
+        "inventory-relationship"
+      ]
+    },
+    {
+      "conceptId": "resource-identity-continuity",
+      "name": "Resource identity versus location",
+      "definition": "A registered Resource can retain its stable Resource ID while its current physical location is corrected or changed.",
+      "relationships": [
+        "RES-013",
+        "ACT-0081",
+        "Resource Registry"
+      ],
+      "evidenceSectionAnchors": [
+        "evidence-reconciliation-and-current-uncertainty",
+        "governing-interpretation"
+      ]
+    },
+    {
+      "conceptId": "system-identity-deferred",
+      "name": "Deferred System Identity",
+      "definition": "Work Queue's meaning is documented now while formal intrinsic System identity and permanent System ID assignment remain intentionally deferred.",
+      "relationships": [
+        "Project Definition exemplar",
+        "future System Identity schema"
+      ],
+      "evidenceSectionAnchors": [
+        "why-system-identity-remains-deferred"
+      ]
+    },
+    {
+      "conceptId": "current-vs-roadmap",
+      "name": "Current System truth versus roadmap intent",
+      "definition": "Current evidence establishes present structures/behavior; the roadmap establishes desired future capability and cannot be treated as completion evidence.",
+      "relationships": [
+        "System Summary",
+        "Work Queue roadmap",
+        "implementation evidence"
+      ],
+      "evidenceSectionAnchors": [
+        "roadmap-boundary"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "SYS-NEXT-001",
+      "title": "Install and validate the System Summary sidecar",
+      "description": "Place this sidecar at systems/Work Queue/sidecars/system-summary-sidecar.json and validate its companion relationship to ../summaries/system-summary.md.",
+      "reason": "The Work Queue System-definition package requires a machine-readable companion before Viewer/discovery validation.",
+      "priority": "next",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "SYS-NEXT-002",
+      "title": "Regenerate the Documentation Viewer manifest",
+      "description": "Regenerate documentation-viewer-manifest.json after the sidecar is installed.",
+      "reason": "Source-aware discovery must include the new System Summary record before the System-definition stage is considered validated.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "SYS-NEXT-003",
+      "title": "Verify current-state versus roadmap presentation",
+      "description": "Confirm the Viewer presents Work Queue System Summary and Work Queue roadmap as distinct current-state and future-state records.",
+      "reason": "The second exemplar is explicitly testing the semantic separation between present System interpretation and planned System direction.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "roadmap-boundary",
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "SYS-NEXT-004",
+      "title": "Inspect current Apps Script source when runtime detail becomes consequential",
+      "description": "Resolve the active source/deployment and verify authentication, permissions, employee loading, transition validation, Inventory-event writes, and current test state before making detailed runtime claims or consequential changes.",
+      "reason": "Current Registry/data evidence is strong for structure but not a substitute for source/executable verification of runtime behavior.",
+      "priority": "after-documentation-validation",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "evidence-reconciliation-and-current-uncertainty",
+        "current-state"
+      ]
+    }
+  ],
+  "openQuestions": [
+    {
+      "questionId": "SYS-OQ-001",
+      "question": "What stable facts belong in a future Work Queue System Identity record?",
+      "reasonOpen": "System Identity schema is intentionally deferred.",
+      "nextStep": "Use the completed second exemplar and Viewer/resume tests to define minimum stable System identity facts."
+    },
+    {
+      "questionId": "SYS-OQ-002",
+      "question": "What permanent System ID, if any, should Work Queue receive?",
+      "reasonOpen": "No formal System ID allocation has been applied.",
+      "nextStep": "Define System Registry/allocation rules before assigning any permanent identifier."
+    },
+    {
+      "questionId": "SYS-OQ-003",
+      "question": "What exact boundary separates Work Queue System from the Apps Script application and Google Sheets datastores?",
+      "reasonOpen": "The current working System boundary is practical rather than formalized through a System Identity/relationship authority.",
+      "nextStep": "Compare implementation continuity and shared Resource relationships after the exemplar is validated."
+    },
+    {
+      "questionId": "SYS-OQ-004",
+      "question": "What Apps Script source project and deployment are currently authoritative?",
+      "reasonOpen": "The Registry identifies the current app URL but active source/deployment code was not directly inspected.",
+      "nextStep": "Resolve the current Apps Script project/deployment and inspect it when runtime verification is required."
+    },
+    {
+      "questionId": "SYS-OQ-005",
+      "question": "What exact current-user authentication and permission model is enforced?",
+      "reasonOpen": "Creator/actor values exist in data, but authentication/authorization implementation was not freshly source-verified.",
+      "nextStep": "Inspect active Apps Script authentication and server-side permission checks."
+    },
+    {
+      "questionId": "SYS-OQ-006",
+      "question": "How does the current deployed app load and use RES-013 employee/personnel data?",
+      "reasonOpen": "The physical source is resolved, but the exact runtime loading path was not freshly inspected.",
+      "nextStep": "Trace employee-loading logic in the active Apps Script source."
+    },
+    {
+      "questionId": "SYS-OQ-007",
+      "question": "What is the exact current allowed task-state vocabulary and transition model?",
+      "reasonOpen": "Pending, In Progress, and Completed are observed, but a complete controlled state machine has not been verified.",
+      "nextStep": "Compare app validation/source logic with Tasks and Task_Activity history."
+    },
+    {
+      "questionId": "SYS-OQ-008",
+      "question": "Which task changes are guaranteed to append Task_Activity events?",
+      "reasonOpen": "Creation, notes, start, and completion are observed; assignment/reassignment and other changes require verification.",
+      "nextStep": "Inspect active source and representative task histories."
+    },
+    {
+      "questionId": "SYS-OQ-009",
+      "question": "What current code creates Inventory_Holder_Event and how are failures/duplicates handled?",
+      "reasonOpen": "Technical documentation and data structures support integration, but current code path and atomicity were not inspected.",
+      "nextStep": "Inspect Work Queue and Inventory integration code and test fault cases."
+    },
+    {
+      "questionId": "SYS-OQ-010",
+      "question": "What is the exact future contract for full Inventory transaction propagation?",
+      "reasonOpen": "Source-cart decrement, destination increment, deduplication, reversal, and reconciliation remain incomplete/planned.",
+      "nextStep": "Bound a later Work Unit under the Inventory integration roadmap area."
+    },
+    {
+      "questionId": "SYS-OQ-011",
+      "question": "Is RES-010 the final shared location authority and how should RES-014 be modeled relative to it?",
+      "reasonOpen": "Current routing is clear, but final shared-resource relationship semantics remain open.",
+      "nextStep": "Reconcile shared location Resource/relationship modeling."
+    },
+    {
+      "questionId": "SYS-OQ-012",
+      "question": "Is APP_VERSION = 2 intentionally different from the Work Queue 2.1 Test Data workbook label?",
+      "reasonOpen": "The current data exposes both labels without an explicit versioning rule.",
+      "nextStep": "Inspect versioning convention in current source/documentation."
+    },
+    {
+      "questionId": "SYS-OQ-013",
+      "question": "How should Scheduling assignments/Weekly_Schedule inform Work Queue without becoming task-history authority?",
+      "reasonOpen": "The shared employee workbook contains schedule context, but mature integration is roadmap work.",
+      "nextStep": "Define the cross-System integration contract before implementation."
+    },
+    {
+      "questionId": "SYS-OQ-014",
+      "question": "How should the Viewer distinguish a System Summary from a System Roadmap and a future System Identity Entity Record?",
+      "reasonOpen": "Current profile is generic-document and formal System Identity presentation is not yet defined.",
+      "nextStep": "Validate current Summary/Roadmap discovery first, then use the exemplar result to define specialized presentation/profile needs."
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Work Queue is the System used to organize and preserve discrete work inside the Task Assignment and Tracking Project. Current data confirms task, history, template, location, employee-reference, and partial Inventory structures, while more advanced roadmap capabilities remain planned or incomplete.",
+      "operationalImpact": "Separating the System from its app, workbooks, shared employee/location data, Inventory effects, and roadmap makes current capability easier to understand and reduces the risk of treating stale or planned behavior as live truth.",
+      "currentStatus": "Work Queue now has a local README and current-state System Summary. The employee Resource pointer has been corrected. This sidecar completes the local document pair pending manifest/Viewer validation.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Detailed current Apps Script source/deployment behavior has not been comprehensively reverified.",
+        "Full Inventory transaction propagation and mature Scheduling/role/dashboard workflows remain incomplete or unverified.",
+        "Permanent System identity and System ID remain intentionally deferred."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Validate the System Summary sidecar through the Documentation Viewer manifest and Viewer."
+    },
+    "general": {
+      "summary": "Work Queue is the principal System serving Task Assignment and Tracking. Current registered data confirms a task datastore, event history, templates, settings, location mapping, a separate stable employee/personnel source, and shared canonical Locations. The roadmap remains a separate future-state record.",
+      "keyPoints": [
+        "Project, System, application, datastore, and shared Resources are distinct.",
+        "No permanent System ID is assigned.",
+        "RES-013 now correctly points to the separate Employees workbook.",
+        "Task_Activity provides event-oriented history in addition to current Tasks rows.",
+        "Inventory integration exists but full transaction propagation is not established as current behavior."
+      ]
+    },
+    "technical": {
+      "summary": "This sidecar structures the Work Queue System Summary using the recognized generic-document profile. It is a document about the Work Queue System, not a System Identity Entity Record.",
+      "keyPoints": [
+        "profileType: generic-document",
+        "documentType: system-summary",
+        "companion: ../summaries/system-summary.md",
+        "parent Project: Task Assignment and Tracking",
+        "permanent System ID intentionally unassigned",
+        "current Registry/data structures directly verified",
+        "runtime source/deployment details remain bounded where not freshly inspected"
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecific": [
+      "Work Queue is the principal known System of Task Assignment and Tracking and remains distinct from the Project itself.",
+      "Current Work Queue operational data is concentrated in RES-003 while employee/personnel data is now correctly resolved through separate RES-013.",
+      "Task state and task activity history coexist as separate current data structures.",
+      "Canonical physical Locations are shared and Work Queue-specific location-to-template mapping remains local.",
+      "Work Queue's Inventory relationship is implemented partially and must preserve the authority boundary with Inventory Management.",
+      "ACT-0081 preserves provenance for the RES-013 location correction."
+    ],
+    "reusable": [
+      "A System Summary can reconcile current Registry/data evidence without becoming System Identity.",
+      "Resource location corrections should preserve stable Resource identity and record provenance rather than redefining the owning Project/System.",
+      "Current-state System documentation and roadmaps should remain separate records with different authority roles.",
+      "Shared personnel and location data should be consumed through stable identities instead of duplicated into System identity.",
+      "Evidence conflicts should be resolved explicitly and then reclassified from current uncertainty into provenance/history."
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "sec-001",
+      "title": "1. Document purpose and authority",
+      "anchor": "document-purpose-and-authority",
+      "contentSummary": "Defines the System Summary as the human-readable authority for the current Work Queue System interpretation while preserving separate authority for Project identity, Resources, roadmap direction, implementation evidence, and work history."
+    },
+    {
+      "sectionId": "sec-002",
+      "title": "2. Relationship to the Task Assignment and Tracking Project",
+      "anchor": "relationship-to-the-task-assignment-and-tracking-project",
+      "contentSummary": "Places Work Queue as the principal known System inside Task Assignment and Tracking and separates the System from the Project, application, datastore, deployment, and other implementation surfaces."
+    },
+    {
+      "sectionId": "sec-003",
+      "title": "3. Why System Identity remains deferred",
+      "anchor": "why-system-identity-remains-deferred",
+      "contentSummary": "Explains why no System Identity Entity Record or permanent System ID is created in this Project Definition pass and records the questions that must be answered before System Identity is formalized."
+    },
+    {
+      "sectionId": "sec-004",
+      "title": "4. System purpose",
+      "anchor": "system-purpose",
+      "contentSummary": "Defines Work Queue's current System purpose as the operational mechanism connecting discrete work, structured context, responsibility, state change, completion, history, and downstream effects."
+    },
+    {
+      "sectionId": "sec-005",
+      "title": "5. Current architecture baseline",
+      "anchor": "current-architecture-baseline",
+      "contentSummary": "Describes the current registered architecture as an Apps Script application over the Work Queue operational datastore plus shared employee, location, Inventory, documentation, and other contextual Resources."
+    },
+    {
+      "sectionId": "sec-006",
+      "title": "6. Current Work Queue operational datastore",
+      "anchor": "current-work-queue-operational-datastore",
+      "contentSummary": "Identifies RES-003 as the primary Work Queue operational datastore, lists its current sheets, and distinguishes it from the separate RES-013 employee/personnel source."
+    },
+    {
+      "sectionId": "sec-007",
+      "title": "7. Current Tasks model",
+      "anchor": "current-tasks-model",
+      "contentSummary": "Documents the current Tasks schema including task identity, creator, status, priority, category, locations, assignee label and stable employee ID, timestamps, completion data, archival state, templates, and holder-related fields."
+    },
+    {
+      "sectionId": "sec-008",
+      "title": "8. Current Task Activity / history model",
+      "anchor": "current-task-activity-history-model",
+      "contentSummary": "Documents the Task_Activity event/history model and observed activity types while preserving open questions about completeness, edit behavior, and reconciliation with current task state."
+    },
+    {
+      "sectionId": "sec-009",
+      "title": "9. Current task templates",
+      "anchor": "current-task-templates",
+      "contentSummary": "Documents Task_Templates as a current configuration layer for recurring task semantics and holder/inventory-aware completion metadata."
+    },
+    {
+      "sectionId": "sec-010",
+      "title": "10. Current settings / configuration",
+      "anchor": "current-settings-configuration",
+      "contentSummary": "Documents current data-configured Settings including APP_VERSION, default priority, completion-note requirement, notification setting, and location cache duration."
+    },
+    {
+      "sectionId": "sec-011",
+      "title": "11. Current location-to-task mapping",
+      "anchor": "current-location-to-task-mapping",
+      "contentSummary": "Documents Location_Task_Map as the Work Queue-specific mapping from location types/areas to applicable task templates."
+    },
+    {
+      "sectionId": "sec-012",
+      "title": "12. Shared Locations / Building Map relationship",
+      "anchor": "shared-locations-building-map-relationship",
+      "contentSummary": "Documents the current shared Klinswork_Locations source and the boundary between canonical physical location identity and Work Queue-specific location behavior."
+    },
+    {
+      "sectionId": "sec-013",
+      "title": "13. Employee / personnel relationship",
+      "anchor": "employee-personnel-relationship",
+      "contentSummary": "Documents the resolved RES-013 employee/personnel source, stable EMP-### identities, assignment/schedule context, technical-manual alignment, and Work Queue's boundary from personnel authority."
+    },
+    {
+      "sectionId": "sec-014",
+      "title": "14. Inventory relationship",
+      "anchor": "inventory-relationship",
+      "contentSummary": "Documents the partial but real Inventory relationship, holder-related task/template fields, technical-manual evidence for Inventory_Holder_Event creation, test/fault evidence, and the authority boundary with Inventory Management."
+    },
+    {
+      "sectionId": "sec-015",
+      "title": "15. Current application behavior supported by evidence",
+      "anchor": "current-application-behavior-supported-by-evidence",
+      "contentSummary": "Separates high-confidence current registered/data structures, behavior visible in task/activity history, and behavior supported by the technical manual but not freshly source-code verified."
+    },
+    {
+      "sectionId": "sec-016",
+      "title": "16. Evidence reconciliation and current uncertainty",
+      "anchor": "evidence-reconciliation-and-current-uncertainty",
+      "contentSummary": "Records resolved and remaining evidence issues, including the resolved employee-source location, version-label ambiguity, uninspected Apps Script source/deployment behavior, incomplete full Inventory propagation, and roadmap-evidence limits."
+    },
+    {
+      "sectionId": "sec-017",
+      "title": "17. Roadmap boundary",
+      "anchor": "roadmap-boundary",
+      "contentSummary": "Maintains the boundary between the current-state System Summary and the future-state Work Queue roadmap and identifies partial foundations that must not be mistaken for complete roadmap capabilities."
+    },
+    {
+      "sectionId": "sec-018",
+      "title": "18. Current known limitations",
+      "anchor": "current-known-limitations",
+      "contentSummary": "Lists current known System limitations and distinguishes resolved Resource routing from still-unverified runtime and maturity behavior."
+    },
+    {
+      "sectionId": "sec-019",
+      "title": "19. System Resources",
+      "anchor": "system-resources",
+      "contentSummary": "Indexes directly relevant Resource Registry identities including the Work Queue app, datastore, tasks, employee dataset, shared locations, and technical manual."
+    },
+    {
+      "sectionId": "sec-020",
+      "title": "20. Integration boundaries",
+      "anchor": "integration-boundaries",
+      "contentSummary": "Describes current integration boundaries with Scheduling, employee/personnel authority, Building Map / Locations, Inventory Management, and Documentation."
+    },
+    {
+      "sectionId": "sec-021",
+      "title": "21. Historical interpretation",
+      "anchor": "historical-interpretation",
+      "contentSummary": "Defines how historical Tasker/Work Queue terminology and implementation evidence should be preserved without silently converting dated truth into current truth."
+    },
+    {
+      "sectionId": "sec-022",
+      "title": "22. Current state",
+      "anchor": "current-state",
+      "contentSummary": "Summarizes the current semantic, Registry, data, runtime-confidence, and documentation state of Work Queue."
+    },
+    {
+      "sectionId": "sec-023",
+      "title": "23. Unresolved questions",
+      "anchor": "unresolved-questions",
+      "contentSummary": "Collects unresolved System questions across identity, source/deployment, personnel integration, task lifecycle, Inventory, Locations, templates/configuration, history/reporting, and Documentation Viewer behavior."
+    },
+    {
+      "sectionId": "sec-024",
+      "title": "24. Next work",
+      "anchor": "next-work",
+      "contentSummary": "Defines creation and validation of the System Summary sidecar as the immediate next step, followed by manifest/Viewer validation, context-naive resume testing, and material Work Unit history."
+    },
+    {
+      "sectionId": "sec-025",
+      "title": "25. Source and evidence basis",
+      "anchor": "source-and-evidence-basis",
+      "contentSummary": "Records the source/evidence basis and interpretation rules used for the current System Summary, including current Registry, Work Queue data, Employees data, Locations data, technical manual, and roadmap evidence."
+    },
+    {
+      "sectionId": "sec-026",
+      "title": "26. Governing interpretation",
+      "anchor": "governing-interpretation",
+      "contentSummary": "Restates the governing System interpretation and the separation among Project, System, application, operational datastore, shared employee and location Resources, integrations, current evidence, roadmap intent, and System Identity."
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Apps Script",
+      "Google Sheets",
+      "browser-based web application"
+    ],
+    "apps": [
+      "Work Queue"
+    ],
+    "scripts": [],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "services": [
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Drive"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      {
+        "resourceId": "RES-003",
+        "name": "Work Queue app data sheet",
+        "workbookTitle": "Work Queue 2.1 Test Data",
+        "workbookId": "1kXeImVoPdRp5THB30K-g5zW-2VPBIsTPM0o4BFWK4-w",
+        "role": "primary Work Queue operational task/configuration/history datastore",
+        "verifiedSheets": [
+          "Tasks",
+          "Task_Templates",
+          "Settings",
+          "Task_Activity",
+          "Location_Task_Map"
+        ]
+      },
+      {
+        "resourceId": "RES-013",
+        "name": "Work Queue Employees dataset",
+        "workbookTitle": "Employees",
+        "workbookId": "1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo",
+        "role": "shared employee/personnel and assignment/schedule context",
+        "verifiedSheets": [
+          "Employees",
+          "Assignments",
+          "Weekly_Schedule"
+        ]
+      },
+      {
+        "resourceId": "RES-010",
+        "name": "Building Map (Locations sheet)",
+        "workbookTitle": "Klinswork_Locations",
+        "workbookId": "1hAH9rUrpAUJU9TwR2SSGkIx5pql939JA-_msBJkW1B4",
+        "role": "shared canonical physical location source",
+        "verifiedSheets": [
+          "Locations"
+        ]
+      }
+    ],
+    "files": [
+      "../README.md",
+      "../summaries/system-summary.md",
+      "system-summary-sidecar.json",
+      "../summaries/work-queue-roadmap.md",
+      "work-queue-roadmap-sidecar.json",
+      "../../../summaries/project-summary.md",
+      "../../../sidecars/project-summary-sidecar.json"
+    ],
+    "integrations": [
+      "Work Queue ↔ RES-013 Employees workbook",
+      "Work Queue ↔ shared Klinswork_Locations",
+      "Work Queue ↔ Inventory Management / Inventory holder events",
+      "Work Queue ↔ Scheduling context (partial/planned maturity)",
+      "Work Queue System Summary ↔ Documentation Viewer"
+    ],
+    "apis": [
+      "Google Apps Script web application interface (registered current application; source not freshly inspected)"
+    ],
+    "versions": [
+      "Work Queue 2.1 Test Data (workbook label)",
+      "APP_VERSION = 2 (current Settings value)"
+    ],
+    "resourceReferences": [
+      {
+        "resourceId": "RES-002",
+        "name": "Work Queue app",
+        "resourceType": "APPLICATION",
+        "relationship": "visible application Resource"
+      },
+      {
+        "resourceId": "RES-003",
+        "name": "Work Queue app data sheet",
+        "resourceType": "DATA STORE",
+        "relationship": "primary operational datastore"
+      },
+      {
+        "resourceId": "RES-010",
+        "name": "Building Map (Locations sheet)",
+        "resourceType": "DATA STORE",
+        "relationship": "shared canonical location source"
+      },
+      {
+        "resourceId": "RES-012",
+        "name": "Work Queue Tasks dataset",
+        "resourceType": "DATASET",
+        "relationship": "task records"
+      },
+      {
+        "resourceId": "RES-013",
+        "name": "Work Queue Employees dataset",
+        "resourceType": "DATASET",
+        "relationship": "shared employee/personnel source; location reconciled by ACT-0081"
+      },
+      {
+        "resourceId": "RES-014",
+        "name": "Work Queue Locations reference",
+        "resourceType": "DATASET",
+        "relationship": "Work Queue location reference to shared location data"
+      },
+      {
+        "resourceId": "RES-047",
+        "name": "Work Queue app technical manual",
+        "resourceType": "DOCUMENT",
+        "relationship": "dated System architecture/operations reference"
+      }
+    ],
+    "tests": [
+      {
+        "name": "Sidecar JSON parse",
+        "type": "structural validation",
+        "result": "passed",
+        "notes": "Generated Work Queue System Summary sidecar parses as valid JSON.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Companion path local resolution",
+        "type": "local documentation validation",
+        "result": "passed",
+        "notes": "../summaries/system-summary.md resolves from the intended sidecars directory to the local generated human-readable System Summary.",
+        "statusBasis": "validated against local artifact placement model"
+      },
+      {
+        "name": "No premature System ID",
+        "type": "authority-boundary validation",
+        "result": "passed",
+        "notes": "No permanent System identifier or System Identity Entity Record was created.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Project/System distinction",
+        "type": "semantic validation",
+        "result": "passed",
+        "notes": "Task Assignment and Tracking remains the Project; Work Queue is represented as its principal known System.",
+        "statusBasis": "validated against current Project/System documentation"
+      },
+      {
+        "name": "RES-013 current-location reconciliation",
+        "type": "resource validation",
+        "result": "passed",
+        "notes": "Sidecar represents RES-013 as the separate Employees workbook after Registry correction ACT-0081.",
+        "statusBasis": "validated against current Registry correction and direct workbook inspection"
+      },
+      {
+        "name": "Roadmap/current-state separation",
+        "type": "evidence-boundary validation",
+        "result": "passed",
+        "notes": "Planned roadmap capabilities are not represented as implemented current behavior merely because they appear in the roadmap.",
+        "statusBasis": "validated during generation"
+      },
+      {
+        "name": "Viewer/manifest discovery",
+        "type": "repository/publication validation",
+        "result": "",
+        "notes": "Pending installation in repository, manifest regeneration, and Viewer inspection.",
+        "statusBasis": "not yet executed"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "local-generation-passed-repository-viewer-validation-pending",
+      "notes": [
+        "System Summary remains the human-readable explanatory authority.",
+        "Sidecar uses generic-document because no dedicated System Summary sidecar profile currently exists.",
+        "No System Identity Entity Record or permanent System ID is implied.",
+        "RES-013 is represented from its corrected current Registry state.",
+        "Detailed runtime behavior remains bounded where current Apps Script source/deployment was not freshly inspected.",
+        "Repository companion resolution, generated-manifest discovery, and Viewer presentation remain to be tested after sync."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "not-published",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Work Queue — System Summary",
+    "listingDescription": "Current evidence-based System definition for Work Queue, including task/history data, shared employee and location Resources, partial Inventory integration, and explicit separation from roadmap intent and formal System Identity.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "../summaries/system-summary.md",
+    "sourceConversationReference": "",
+    "sourceFiles": [
+      "../summaries/system-summary.md",
+      "../README.md",
+      "../summaries/work-queue-roadmap.md",
+      "work-queue-roadmap-sidecar.json",
+      "../../../summaries/project-summary.md",
+      "../../../sidecars/project-summary-sidecar.json",
+      "RES-047 — Work Queue app technical manual",
+      "RES-003 — Work Queue app data sheet",
+      "RES-013 — Work Queue Employees dataset",
+      "RES-010 / RES-014 — shared Locations evidence",
+      "ACT-0081 — Employee dataset location reconciled",
+      "Inventory 3.0 system-summary-sidecar.json — structural reference exemplar",
+      "generic-document-sidecar-template-3.0.json"
+    ],
+    "generatedBy": "ChatGPT (GPT-5.6 Sol)",
+    "generatedTimestamp": "2026-08-16T09:50:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-local-validation-passed-repository-viewer-validation-pending",
+    "interpretationNotes": [
+      "This record is a machine-readable companion to ../summaries/system-summary.md; the Markdown source remains authoritative for the current Work Queue System interpretation expressed there.",
+      "The generic-document profile is used because the current Record Profile architecture has no dedicated System Summary sidecar profile.",
+      "No permanent System ID or System Identity Entity Record is created.",
+      "Task Assignment and Tracking remains the Project; Work Queue remains the principal known System.",
+      "Current Resource identity/routing comes from the Resource Registry, including the corrected RES-013 employee dataset location.",
+      "ACT-0081 preserves the material Resource-location reconciliation that corrected RES-013 without changing Resource identity.",
+      "Direct current data reads establish the visible Work Queue, Employees, and Locations workbook structures represented here.",
+      "Technical-manual statements that exceed directly inspected current data remain technical-document evidence rather than fresh executable/source verification.",
+      "Roadmap capabilities remain future/planning evidence unless current implementation evidence independently establishes them.",
+      "The sidecar does not claim repository companion resolution, generated-manifest discovery, or Viewer presentation until those tests are actually run."
+    ],
+    "unresolvedQuestions": [
+      "What stable facts belong in a future Work Queue System Identity record?",
+      "What permanent System ID, if any, should Work Queue receive?",
+      "What Apps Script source project and deployment are currently authoritative?",
+      "What exact authentication/current-user and permission model is enforced?",
+      "How does the current deployed app load RES-013 employee/personnel data?",
+      "What is the exact current task-state and transition model?",
+      "Which task changes are guaranteed to append Task_Activity events?",
+      "What exact code and atomicity rules govern Inventory_Holder_Event creation?",
+      "How should shared Scheduling, personnel, and location context integrate without displacing task-history authority?",
+      "How should the Viewer distinguish System Summary, System Roadmap, and future System Identity records?"
+    ]
+  }
+}

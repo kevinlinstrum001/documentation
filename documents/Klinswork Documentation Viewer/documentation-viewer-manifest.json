@@ -10,7 +10,7 @@
     "rootName": "documentation",
     "rootPath": ".",
     "viewerRootPath": "documents/Klinswork Documentation Viewer",
-    "generatedTimestamp": "2026-08-16T15:18:49Z"
+    "generatedTimestamp": "2026-08-16T15:56:13Z"
   },
   "sources": [
     {
@@ -39,17 +39,17 @@
     }
   ],
   "summary": {
-    "recordCount": 73,
-    "validJsonCount": 73,
+    "recordCount": 74,
+    "validJsonCount": 74,
     "invalidJsonCount": 0,
     "archivedRecordCount": 17,
     "sourceCounts": {
       "common": 67,
-      "projects": 5,
+      "projects": 6,
       "therapy": 1
     },
     "companionCounts": {
-      "resolved": 1,
+      "resolved": 2,
       "inferred": 4,
       "undeclared": 37,
       "missing": 0,
@@ -57,7 +57,7 @@
     },
     "recordTypeCounts": {
       "catalog": 10,
-      "generic-document": 6,
+      "generic-document": 7,
       "implementation-plan": 6,
       "json-document": 21,
       "klinswork_chemical_product_catalog": 2,
@@ -1962,6 +1962,50 @@
         "path": "operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md",
         "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md",
         "manifestRelativePath": "projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md"
+      }
+    },
+    {
+      "sourceId": "projects",
+      "name": "system-summary-sidecar.json",
+      "path": "operations/Task Assignment and Tracking/systems/Work Queue/sidecars/system-summary-sidecar.json",
+      "folder": "operations/Task Assignment and Tracking/systems/Work Queue/sidecars",
+      "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars/system-summary-sidecar.json",
+      "manifestRelativePath": "projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars/system-summary-sidecar.json",
+      "size": 52102,
+      "modifiedTimestamp": "2026-08-16T15:55:39Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Work Queue — System Summary",
+      "description": "Work Queue is the principal known System serving the Task Assignment and Tracking Project. Current Registry and Google Sheets evidence confirms a registered Apps Script application, a primary Work Queue operational datastore with Tasks, Task_Templates, Settings, Task_Activity, and Location_Task_Map sheets, a separate RES-013 Employees workbook with stable EMP-### identities and assignment/schedule context, and a shared canonical Locations workbook. The System also has partial Inventory integration. Detailed Apps Script source/deployment behavior was not freshly inspected, so current runtime claims remain bounded. No System Identity Entity Record or permanent System ID is created.",
+      "recordType": "generic-document",
+      "status": "not-published",
+      "documentDate": "2026-08-16T09:38:00-06:00",
+      "topics": [
+        "Work Queue",
+        "Task Assignment and Tracking",
+        "System documentation",
+        "Google Apps Script",
+        "Google Sheets",
+        "task lifecycle",
+        "task assignment",
+        "Task_Activity",
+        "Task_Templates",
+        "Settings",
+        "Location_Task_Map",
+        "Employees workbook"
+      ],
+      "schemaVersion": "3.0-draft",
+      "previewMode": "generic-document",
+      "companionDocument": {
+        "status": "resolved",
+        "resolutionMethod": "declared",
+        "declaredPath": "../summaries/system-summary.md",
+        "format": "markdown",
+        "exists": true,
+        "path": "operations/Task Assignment and Tracking/systems/Work Queue/summaries/system-summary.md",
+        "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/system-summary.md",
+        "manifestRelativePath": "projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/system-summary.md"
       }
     },
     {

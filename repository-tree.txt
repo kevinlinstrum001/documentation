@@ -76,15 +76,19 @@ documentation/
 │   │   │   │   │   ├── implementation-plans/
 │   │   │   │   │   │   └── implementation-plan-project-definition.md
 │   │   │   │   │   ├── sidecars/
-│   │   │   │   │   │   └── implementation-plan-project-definition-sidecar.json
+│   │   │   │   │   │   ├── implementation-plan-project-definition-sidecar.json
+│   │   │   │   │   │   └── project-summary-sidecar.json
 │   │   │   │   │   ├── summaries/
 │   │   │   │   │   │   └── project-summary.md
 │   │   │   │   │   ├── systems/
 │   │   │   │   │   │   └── Work Queue/
 │   │   │   │   │   │       ├── sidecars/
+│   │   │   │   │   │       │   ├── system-summary-sidecar.json
 │   │   │   │   │   │       │   └── work-queue-roadmap-sidecar.json
-│   │   │   │   │   │       └── summaries/
-│   │   │   │   │   │           └── work-queue-roadmap.md
+│   │   │   │   │   │       ├── summaries/
+│   │   │   │   │   │       │   ├── system-summary.md
+│   │   │   │   │   │       │   └── work-queue-roadmap.md
+│   │   │   │   │   │       └── README.md
 │   │   │   │   │   ├── project-identity.json
 │   │   │   │   │   └── README.md
 │   │   │   │   └── README.md
