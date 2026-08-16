@@ -1,0 +1,672 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured sidecar for one implementation-plan.md document describing one intended body of work performed under a workflow and, when applicable, governed through a Klinswork Work Unit.",
+    "authorityRule": "The implementation-plan.md is the authoritative human-readable plan. This sidecar is a structured description of that plan and must not replace the Work Unit Registry, Work Unit Activities, Work Implementation Session, workflow specification, documentation-run state, execution evidence, final summary, or work-update sidecar.",
+    "designShiftIn31": "Version 3.1 added semantic context resolution through stable Resource IDs, Startup provenance, Project/System/Application/Resource placement, authoritative-resource declarations, and explicit support for plans created after some work had already begun.",
+    "designShiftIn32": "Version 3.2 adds first-class Work Unit linkage, Work Unit state-at-plan-creation, activation-gate representation, formal Work Implementation Session linkage, and allocated Work Unit Activity references without moving current-state or execution-history authority into the plan sidecar.",
+    "resourceResolutionPrinciple": "A workflow should declare the context it needs; the Resource Registry resolves those requirements to stable Resource IDs and current locations.",
+    "indirectionPrinciple": "Implementation plans should depend on stable resource identities and authority roles rather than hard-coded physical URLs whenever registered resources exist.",
+    "planningTruthRule": "Do not represent work completed before plan creation as though it had been prospectively planned.",
+    "workUnitAuthorityRule": "The Work Unit Registry is authoritative for current Work Unit state. This sidecar may snapshot Work Unit state at plan creation and describe the plan's relationship to the Work Unit, but it must not become a competing Work Unit record.",
+    "sessionAuthorityRule": "A Work Implementation Session is the authoritative human-readable execution record for one bounded formal session. This sidecar may link to session records and describe activation relationships, but it must not absorb session execution history.",
+    "wuaAuthorityRule": "Work Unit Activities are the append-oriented timestamped history of material Work Unit events. Reference only WUA IDs already allocated by the Work Unit Activities authority; never pre-allocate future WUA IDs in an implementation-plan sidecar.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, or _fieldNotes are intentional schema commentary and should be ignored by consumers that only need operational values."
+  },
+  "schemaVersion": "3.2-draft",
+  "profile": {
+    "profileType": "implementation-plan",
+    "profileVersion": "1.2",
+    "baseSchemaVersion": "3.2-draft",
+    "templateFile": "implementation-plan-sidecar-template-3.2-draft.json",
+    "previewMode": "implementation-plan"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.2-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.3",
+        "status": "planned",
+        "additions": [
+          "formal validation of Registry-resolved context requirements",
+          "optional implementation-plan approval block",
+          "optional direct linkage to machine-readable execution/run records",
+          "catalog identifiers for implementation-plan sidecars"
+        ],
+        "changes": [
+          "evaluate promotion of planningMode and planningRelation allowed-value lists into shared controlled vocabularies",
+          "clarify repositoryPath semantics for source document versus sidecar location across all document-sidecar profiles",
+          "evaluate whether Work Unit linkage should move into a reusable shared work-context block"
+        ],
+        "deprecations": [
+          "projectContextLoaded and relatedProjectContextLoaded booleans once migration to contextResolution is complete"
+        ],
+        "migrationNotes": [
+          "3.0 and 3.1 sidecars remain valid historical records.",
+          "When migrating a 3.1 sidecar, preserve all existing planning/context facts and add workUnitContext only when a Work Unit relationship is actually supported by evidence.",
+          "Do not infer or invent WORK-####, WUA-####, Session, Project, System, Relationship, or Resource IDs retroactively.",
+          "A formal session path may be recorded even when no durable Session ID exists.",
+          "WUA references should include only activities already allocated by the Work Unit Activities authority."
+        ],
+        "openQuestions": [
+          "Should implementation-plan sidecars include a formal approval block?",
+          "Should machine-readable execution/run records receive a dedicated linkage block separate from formalSessionRecords?",
+          "Should context requirements use controlled semantic role IDs in addition to human-readable descriptions?",
+          "Should Resource Registry resolution snapshots preserve both Resource ID and location-at-plan-time?",
+          "Should workUnitContext become a shared reusable block across implementation-plan, session, summary, and work-update sidecars?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "implementation-plan",
+    "createdTimestamp": "",
+    "updatedTimestamp": ""
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "sidecarFilePath": "",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "implementation-plan-sidecar-template-3.2-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json",
+    "_comment": "document.filePath/documentUrl identify the authoritative implementation-plan.md. metadata.sidecarFilePath identifies this JSON sidecar. Keep source document and sidecar locations distinct."
+  },
+  "workflowContext": {
+    "_comment": "Records the workflow environment in which the implementation plan was created. Startup establishes orientation/routing; the workflow declares needed context; the Resource Registry resolves that context. This block is provenance for the plan, not a replacement for workflow-run state.",
+    "workflowId": "",
+    "workflowResourceId": "",
+    "documentationRunId": "",
+    "documentationStage": "",
+    "sourceSummaryPath": "",
+    "startup": {
+      "_comment": "Describe how the planning session was oriented before plan construction.",
+      "status": "",
+      "mode": "",
+      "procedureResourceId": "",
+      "orientationResourceIds": [],
+      "registryResourceId": "",
+      "notes": []
+    },
+    "contextResolution": {
+      "_comment": "Semantic requirements are declared here. Registered resources should be referenced by stable Resource ID. Physical URLs belong in the Resource Registry or authoritativeResources resolution snapshot, not hard-coded into workflow semantics.",
+      "strategy": "workflow-declared-registry-resolved",
+      "requirements": [
+        {
+          "requirementId": "",
+          "requirement": "",
+          "purpose": "",
+          "authorityRole": "",
+          "resolvedResourceIds": [],
+          "status": "",
+          "notes": []
+        }
+      ],
+      "unresolvedRequirements": [],
+      "resolutionSummary": ""
+    },
+    "projectContextLoaded": false,
+    "relatedProjectContextLoaded": false,
+    "_fieldNotes": {
+      "projectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status.",
+      "relatedProjectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status."
+    }
+  },
+  "workUnitContext": {
+    "_comment": "First-class linkage between this plan and the Work Unit planning layer. The Work Unit Registry remains authoritative for current state; Work Unit Activities remain authoritative for timestamped material history; formal session records remain authoritative for detailed execution. This block describes relationships and captures plan-time snapshots only.",
+    "workUnitId": "",
+    "workUnitTitle": "",
+    "workUnitKind": "",
+    "relationshipToPlan": "",
+    "workUnitRegistryResourceId": "",
+    "stateAtPlanCreation": {
+      "_comment": "Snapshot the Registry state as it existed at the plan authority boundary. Later status/readiness changes belong in the Work Unit Registry and Work Unit Activities, not by rewriting this snapshot.",
+      "status": "",
+      "readiness": "",
+      "formalSessionRequired": "",
+      "sessionRecordRegistered": "",
+      "implementationPlanRegistered": "",
+      "completionRule": "",
+      "lastUpdate": ""
+    },
+    "activationGate": {
+      "_comment": "Use when plan creation/linkage or another prerequisite governs activation. Session initiation and session activation may be distinct material events.",
+      "required": false,
+      "condition": "",
+      "satisfiedAtPlanCreation": false,
+      "satisfiedTimestamp": "",
+      "satisfactionBasis": "",
+      "expectedRegistryEffect": {
+        "status": "",
+        "readiness": ""
+      }
+    },
+    "formalSessionRecords": [
+      {
+        "_comment": "One Work Unit may have multiple formal sessions. Record only sessions actually associated with the plan/Work Unit. A session path may be used when no durable Session ID exists.",
+        "sessionId": "",
+        "sessionTitle": "",
+        "sessionRecordPath": "",
+        "sessionEntryMode": "",
+        "relationshipToPlan": "",
+        "statusAtPlanCreation": "",
+        "initiatedTimestamp": "",
+        "activatedTimestamp": "",
+        "initiationWuaId": "",
+        "activationWuaId": ""
+      }
+    ],
+    "workUnitActivities": {
+      "_comment": "Reference only allocated Work Unit Activities known at plan creation or later deliberately added as references. Do not pre-allocate future WUA IDs. The Work Unit Activities registry remains authoritative.",
+      "knownActivityIdsAtPlanCreation": [],
+      "relatedActivityIds": [],
+      "activityCoverageSummary": "",
+      "materialEventRule": "Reference Work Unit Activities for material Work Unit events; do not create or predict WUA IDs for routine edits or future checkpoints."
+    },
+    "relationshipSummary": ""
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "",
+      "projectType": "",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "",
+      "projectGoal": "",
+      "projectPhase": "",
+      "contributionType": "",
+      "identificationBasis": "",
+      "identificationConfidence": ""
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "relationshipType": "",
+        "relationshipDescription": "",
+        "impact": "",
+        "evidenceSectionAnchors": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "",
+        "foundationType": "",
+        "relationshipDescription": "",
+        "impact": ""
+      }
+    ],
+    "relationshipSummary": "",
+    "_comment": "Retained for compatibility and durable project narrative. Do not assume project placement from repository path alone. Use workPlacement for explicit Project/System/Application/Resource relationships."
+  },
+  "workPlacement": {
+    "_comment": "Explicit semantic placement of this body of work. Project, System, Application/Implementation, and Resource are separate concepts. Physical storage does not determine semantic ownership.",
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "",
+      "relationshipToWork": "",
+      "identificationBasis": "",
+      "identificationConfidence": ""
+    },
+    "systems": [
+      {
+        "systemId": "",
+        "systemName": "",
+        "relationshipToWork": "",
+        "authorityResourceIds": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "applications": [
+      {
+        "applicationId": "",
+        "applicationName": "",
+        "implementationType": "",
+        "relationshipToWork": "",
+        "authorityResourceIds": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "resources": [
+      {
+        "resourceId": "",
+        "resourceName": "",
+        "relationshipToWork": "",
+        "authorityRole": ""
+      }
+    ],
+    "sharedResources": [
+      {
+        "resourceId": "",
+        "resourceName": "",
+        "relationshipToWork": ""
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipId": "",
+        "fromEntity": "",
+        "toEntity": "",
+        "relationshipType": "",
+        "description": ""
+      }
+    ],
+    "placementSummary": ""
+  },
+  "subject": {
+    "projectName": "",
+    "primaryApp": "",
+    "mainFocus": "",
+    "description": "",
+    "topics": [],
+    "keywords": [],
+    "appsAffected": [],
+    "systemsAffected": [],
+    "componentsAffected": [],
+    "_comment": "Subject fields are useful descriptive/indexing tags. They do not replace the semantic relationship statements in workPlacement."
+  },
+  "planContext": {
+    "_comment": "Describes why this plan exists and the temporal boundary of its authority. Use planningMode to distinguish normal prospective plans from plans reconstructed after work has already begun.",
+    "promptingNeed": "",
+    "planningScope": "",
+    "planningStatus": "",
+    "planningMode": "",
+    "planningModeAllowedValues": [
+      "prospective",
+      "reconstructed-continuation",
+      "revised-existing-plan"
+    ],
+    "planningBasis": "",
+    "planningBoundary": {
+      "_comment": "If work predates the plan, preserve that fact here. The sidecar may summarize prior work only to establish the starting state; it must not falsely relabel prior work as prospectively planned.",
+      "priorWorkExists": false,
+      "priorWorkSummary": "",
+      "priorWorkSourceReferences": [],
+      "planAppliesFrom": "",
+      "remainingWorkSummary": ""
+    },
+    "assumptions": [],
+    "constraints": [],
+    "outOfScope": [],
+    "confidence": ""
+  },
+  "targetState": {
+    "currentState": "",
+    "desiredState": "",
+    "successDefinition": "",
+    "nonGoals": [],
+    "transitionSummary": "",
+    "_comment": "currentState means the state at the planning boundary, not necessarily the state at the beginning of the overall conversation."
+  },
+  "authoritativeResources": [
+    {
+      "_comment": "First-class declaration of resources the plan treats as authoritative or operationally required. Prefer stable Resource IDs. Location is a resolution snapshot and may later change without changing identity.",
+      "resourceId": "",
+      "name": "",
+      "resourceType": "",
+      "authorityRole": "",
+      "authorityScope": "",
+      "requiredFor": [],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "",
+      "notes": []
+    }
+  ],
+  "implementationStages": [
+    {
+      "sequence": 1,
+      "stageId": "",
+      "title": "",
+      "objective": "",
+      "description": "",
+      "dependencies": [],
+      "deliverables": [],
+      "tests": [],
+      "exitCriteria": [],
+      "status": "",
+      "evidenceSectionAnchors": [],
+      "_comment": "status answers whether the stage is complete/in progress/etc. planningRelation answers how the stage relates temporally to creation of the plan.",
+      "planningRelation": "",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependencyId": "",
+      "name": "",
+      "dependencyType": "",
+      "requiredFor": [],
+      "description": "",
+      "status": "",
+      "owner": "",
+      "risks": [],
+      "_comment": "Use dependency for a condition/resource/capability required by one or more stages. If the dependency is a registered Klinswork resource, reference its Resource ID in authoritativeResources or contextResolution."
+    }
+  ],
+  "risks": [
+    {
+      "riskId": "",
+      "risk": "",
+      "likelihood": "",
+      "impact": "",
+      "mitigation": "",
+      "contingency": "",
+      "status": ""
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "criterionId": "",
+      "description": "",
+      "verificationMethod": "",
+      "required": true,
+      "status": "",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "plannedTests": [
+    {
+      "testId": "",
+      "name": "",
+      "type": "",
+      "preconditions": [],
+      "steps": [],
+      "expectedResult": "",
+      "failureCondition": "",
+      "status": "planned",
+      "_comment": "plannedTests are prospective. Tests actually executed belong in downstream run/evidence or final work-update records."
+    }
+  ],
+  "implementationOrder": [
+    {
+      "sequence": 1,
+      "stageId": "",
+      "title": "",
+      "reason": "",
+      "gate": ""
+    }
+  ],
+  "roadmapImpact": {
+    "_comment": "Do not imply that a formal roadmap exists when it does not. roadmapAuthorityStatus should state the authority level of the planning source.",
+    "roadmapAuthorityStatus": "",
+    "previousPlan": "",
+    "additions": [],
+    "changes": [],
+    "deprecations": [],
+    "deferredItems": [],
+    "resultingPlan": "",
+    "nextDecision": ""
+  },
+  "audienceViews": {
+    "supervisor": {
+      "_comment": "The supervisor reading path is a modeled audience view and may be retained even when no external supervisor participates.",
+      "readingPathLabel": "Supervisor reading path",
+      "modeledAudienceRole": "supervisor",
+      "actualAudienceRole": "",
+      "actualAudienceName": "",
+      "plainLanguageSummary": "",
+      "operationalImpact": "",
+      "currentStatus": "",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "",
+          "relatedSectionAnchor": "",
+          "type": "",
+          "title": "",
+          "text": ""
+        }
+      ]
+    },
+    "general": {
+      "summary": "",
+      "keyPoints": []
+    },
+    "technical": {
+      "summary": "",
+      "keyPoints": []
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "projectsObservedIn": []
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "description": "",
+        "suggestedDestination": "",
+        "supportingSectionAnchors": []
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "",
+        "changeType": "",
+        "explanation": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "",
+      "title": "",
+      "anchor": "",
+      "contentSummary": "",
+      "narrativeRole": "",
+      "projectRelevance": {
+        "primaryProjectContribution": "",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": ""
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": [
+        {
+          "graphicId": "",
+          "role": "",
+          "url": "",
+          "repositoryPath": "",
+          "altText": "",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [],
+    "integrations": [],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "",
+        "type": "",
+        "result": "",
+        "notes": "",
+        "statusBasis": ""
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "",
+      "notes": []
+    },
+    "_comment": "Technical inventories describe the plan/document. Do not use URLs here as substitutes for stable Resource IDs when a registered resource exists."
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": [
+      {
+        "communicationType": "",
+        "audience": "",
+        "subject": "",
+        "body": ""
+      }
+    ]
+  },
+  "graphics": [
+    {
+      "graphicId": "",
+      "role": "",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "",
+    "listingDescription": "",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "",
+        "destinationType": "",
+        "url": "",
+        "status": ""
+      }
+    ],
+    "_comment": "Publication fields describe the implementation-plan document/sidecar publication state, not deployment of the implementation target."
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "",
+        "resourceName": "",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "_comment": "Deployment describes planned or relevant target deployments. Stable resource identity should remain separate from deployment URL."
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "validation": {
+    "_comment": "Profile-level semantic validation rules for implementation-plan sidecars.",
+    "performed": false,
+    "result": "",
+    "rules": [
+      "The implementation-plan.md is authoritative; this sidecar describes it.",
+      "The Work Unit Registry is authoritative for current Work Unit state; workUnitContext.stateAtPlanCreation is a plan-time snapshot only.",
+      "Work Unit Activities are authoritative for timestamped material Work Unit history; this sidecar may reference allocated WUA IDs but must not pre-allocate future WUA IDs.",
+      "A Work Implementation Session is authoritative for detailed formal-session execution history; this sidecar may link to session records but must not absorb execution evidence.",
+      "Session initiation and session activation must remain distinguishable when an activation gate exists.",
+      "Registered resources should be referenced by stable Resource ID when known.",
+      "Unknown Work Unit Activity, Session, Project, System, Application, Relationship, or Resource identifiers must remain blank rather than be invented.",
+      "A WORK-#### identifier must be used only when allocated by the Work Unit authority.",
+      "Project/System/Application/Resource placement must not be inferred from repository path alone.",
+      "Startup context and session-specific working context must remain distinct.",
+      "The workflow declares required context; the Resource Registry resolves that context.",
+      "A reconstructed-continuation plan must identify its planning boundary and prior-work basis.",
+      "Work completed before plan creation must not be represented as prospectively planned work.",
+      "currentState must describe the state at the plan boundary.",
+      "plannedTests must remain distinct from tests actually executed.",
+      "Resource identity must remain distinct from current physical location or deployment URL.",
+      "The implementation-plan sidecar must not become a substitute for Work Unit current state, Work Unit Activity history, formal-session execution history, workflow-run history, final evidence, summary, or work-update records."
+    ],
+    "notes": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "",
+    "interpretationNotes": [],
+    "unresolvedQuestions": [],
+    "_comment": "Preserve the evidence used to construct the sidecar. For reconstructed-continuation plans, explicitly record reconstruction sources and interpretation limits. Work Unit/session/WUA references must be grounded in their respective authorities.",
+    "sourceResourceIds": [],
+    "sourceWorkUnitIds": [],
+    "sourceWorkUnitActivityIds": [],
+    "sourceSessionRecords": [],
+    "contextResolutionNotes": [],
+    "reconstructionNotes": []
+  }
+}

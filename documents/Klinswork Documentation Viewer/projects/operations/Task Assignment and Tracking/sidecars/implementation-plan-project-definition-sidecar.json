@@ -1,0 +1,2235 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured sidecar for one implementation-plan.md document describing one intended body of work performed under a workflow and, when applicable, governed through a Klinswork Work Unit.",
+    "authorityRule": "The implementation-plan.md is the authoritative human-readable plan. This sidecar is a structured description of that plan and must not replace the Work Unit Registry, Work Unit Activities, Work Implementation Session, workflow specification, documentation-run state, execution evidence, final summary, or work-update sidecar.",
+    "designShiftIn31": "Version 3.1 added semantic context resolution through stable Resource IDs, Startup provenance, Project/System/Application/Resource placement, authoritative-resource declarations, and explicit support for plans created after some work had already begun.",
+    "designShiftIn32": "Version 3.2 adds first-class Work Unit linkage, Work Unit state-at-plan-creation, activation-gate representation, formal Work Implementation Session linkage, and allocated Work Unit Activity references without moving current-state or execution-history authority into the plan sidecar.",
+    "resourceResolutionPrinciple": "A workflow should declare the context it needs; the Resource Registry resolves those requirements to stable Resource IDs and current locations.",
+    "indirectionPrinciple": "Implementation plans should depend on stable resource identities and authority roles rather than hard-coded physical URLs whenever registered resources exist.",
+    "planningTruthRule": "Do not represent work completed before plan creation as though it had been prospectively planned.",
+    "workUnitAuthorityRule": "The Work Unit Registry is authoritative for current Work Unit state. This sidecar may snapshot Work Unit state at plan creation and describe the plan's relationship to the Work Unit, but it must not become a competing Work Unit record.",
+    "sessionAuthorityRule": "A Work Implementation Session is the authoritative human-readable execution record for one bounded formal session. This sidecar may link to session records and describe activation relationships, but it must not absorb session execution history.",
+    "wuaAuthorityRule": "Work Unit Activities are the append-oriented timestamped history of material Work Unit events. Reference only WUA IDs already allocated by the Work Unit Activities authority; never pre-allocate future WUA IDs in an implementation-plan sidecar.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, or _fieldNotes are intentional schema commentary and should be ignored by consumers that only need operational values."
+  },
+  "schemaVersion": "3.2-draft",
+  "profile": {
+    "profileType": "implementation-plan",
+    "profileVersion": "1.2",
+    "baseSchemaVersion": "3.2-draft",
+    "templateFile": "implementation-plan-sidecar-template-3.2-draft.json",
+    "previewMode": "implementation-plan"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.2-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.3",
+        "status": "planned",
+        "additions": [
+          "formal validation of Registry-resolved context requirements",
+          "optional implementation-plan approval block",
+          "optional direct linkage to machine-readable execution/run records",
+          "catalog identifiers for implementation-plan sidecars"
+        ],
+        "changes": [
+          "evaluate promotion of planningMode and planningRelation allowed-value lists into shared controlled vocabularies",
+          "clarify repositoryPath semantics for source document versus sidecar location across all document-sidecar profiles",
+          "evaluate whether Work Unit linkage should move into a reusable shared work-context block"
+        ],
+        "deprecations": [
+          "projectContextLoaded and relatedProjectContextLoaded booleans once migration to contextResolution is complete"
+        ],
+        "migrationNotes": [
+          "3.0 and 3.1 sidecars remain valid historical records.",
+          "When migrating a 3.1 sidecar, preserve all existing planning/context facts and add workUnitContext only when a Work Unit relationship is actually supported by evidence.",
+          "Do not infer or invent WORK-####, WUA-####, Session, Project, System, Relationship, or Resource IDs retroactively.",
+          "A formal session path may be recorded even when no durable Session ID exists.",
+          "WUA references should include only activities already allocated by the Work Unit Activities authority."
+        ],
+        "openQuestions": [
+          "Should implementation-plan sidecars include a formal approval block?",
+          "Should machine-readable execution/run records receive a dedicated linkage block separate from formalSessionRecords?",
+          "Should context requirements use controlled semantic role IDs in addition to human-readable descriptions?",
+          "Should Resource Registry resolution snapshots preserve both Resource ID and location-at-plan-time?",
+          "Should workUnitContext become a shared reusable block across implementation-plan, session, summary, and work-update sidecars?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "implementation-plan-project-definition.md",
+    "documentUrl": "",
+    "title": "Task Assignment and Tracking Project Definition / Work Queue Documentation Implementation Plan",
+    "headline": "Initial Project Definition for Task Assignment and Tracking and current-state Work Queue documentation",
+    "documentType": "implementation-plan",
+    "createdTimestamp": "2026-08-16T07:53:00-06:00",
+    "updatedTimestamp": "2026-08-16T07:53:00-06:00"
+  },
+  "metadata": {
+    "filePath": "implementation-plan-project-definition.md",
+    "url": "",
+    "sidecarFilePath": "implementation-plan-project-definition-sidecar.json",
+    "summaryFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "implementation-plan-sidecar-template-3.2-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json",
+    "_comment": "document.filePath/documentUrl identify the authoritative implementation-plan.md. metadata.sidecarFilePath identifies this JSON sidecar. Keep source document and sidecar locations distinct."
+  },
+  "workflowContext": {
+    "_comment": "Records the workflow environment in which the implementation plan was created. Startup establishes orientation/routing; the workflow declares needed context; the Resource Registry resolves that context. This block is provenance for the plan, not a replacement for workflow-run state.",
+    "workflowId": "",
+    "workflowResourceId": "",
+    "documentationRunId": "",
+    "documentationStage": "implementation-planning-and-project-definition",
+    "sourceSummaryPath": "",
+    "startup": {
+      "_comment": "Describe how the planning session was oriented before plan construction.",
+      "status": "",
+      "mode": "",
+      "procedureResourceId": "",
+      "orientationResourceIds": [],
+      "registryResourceId": "",
+      "notes": []
+    },
+    "contextResolution": {
+      "_comment": "Semantic requirements are declared here. Registered resources should be referenced by stable Resource ID. Physical URLs belong in the Resource Registry or authoritativeResources resolution snapshot, not hard-coded into workflow semantics.",
+      "strategy": "workflow-declared-registry-resolved",
+      "requirements": [
+        {
+          "requirementId": "CTX-01",
+          "requirement": "WORK-0001 current Work Unit context",
+          "purpose": "Establish the bounded body of work, current state, formal-session relationship, and completion rule.",
+          "authorityRole": "Work Unit current-state authority",
+          "resolvedResourceIds": [],
+          "status": "resolved",
+          "notes": [
+            "The plan explicitly identifies WORK-0001 and its plan-time status/readiness."
+          ]
+        },
+        {
+          "requirementId": "CTX-02",
+          "requirement": "Inventory Management → Inventory 3.0 Project Definition exemplar",
+          "purpose": "Provide the first architectural exemplar while requiring independent verification for the second exemplar.",
+          "authorityRole": "reference exemplar",
+          "resolvedResourceIds": [],
+          "status": "resolved",
+          "notes": []
+        },
+        {
+          "requirementId": "CTX-03",
+          "requirement": "Task Assignment and Tracking Project definition records",
+          "purpose": "Establish Project identity, local orientation, Project meaning, and the current Project-definition starting state.",
+          "authorityRole": "Project-definition authority set",
+          "resolvedResourceIds": [],
+          "status": "resolved",
+          "notes": [
+            "project-identity.json, README.md, and summaries/project-summary.md were completed before plan creation."
+          ]
+        },
+        {
+          "requirementId": "CTX-04",
+          "requirement": "Work Queue current architecture and future-state roadmap",
+          "purpose": "Separate current System evidence from future System direction.",
+          "authorityRole": "System evidence and roadmap context",
+          "resolvedResourceIds": [],
+          "status": "resolved",
+          "notes": [
+            "The Work Queue technical manual is architecture/current-state evidence.",
+            "The Work Queue roadmap remains future-state authority."
+          ]
+        },
+        {
+          "requirementId": "CTX-05",
+          "requirement": "Resource Registry and Documentation Viewer context",
+          "purpose": "Resolve registered Resources and validate discovery, companion relationships, and presentation.",
+          "authorityRole": "Resource routing and documentation discovery infrastructure",
+          "resolvedResourceIds": [],
+          "status": "partially-resolved",
+          "notes": [
+            "The source plan names these authorities but does not provide stable Resource IDs for them."
+          ]
+        }
+      ],
+      "unresolvedRequirements": [
+        "Stable Resource IDs for all planning-basis sources are not supplied by the implementation plan itself."
+      ],
+      "resolutionSummary": "Enough semantic context is identified by the implementation plan to govern WORK-0001. Where the source plan does not supply durable Resource IDs, those identifiers remain blank rather than being inferred."
+    },
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true,
+    "_fieldNotes": {
+      "projectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status.",
+      "relatedProjectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status."
+    }
+  },
+  "workUnitContext": {
+    "_comment": "First-class linkage between this plan and the Work Unit planning layer. The Work Unit Registry remains authoritative for current state; Work Unit Activities remain authoritative for timestamped material history; formal session records remain authoritative for detailed execution. This block describes relationships and captures plan-time snapshots only.",
+    "workUnitId": "WORK-0001",
+    "workUnitTitle": "Task Assignment and Tracking — Initial Project Definition",
+    "workUnitKind": "implementation",
+    "relationshipToPlan": "This implementation plan is the governing human-readable intended-work baseline for WORK-0001 from the plan authority boundary forward.",
+    "workUnitRegistryResourceId": "",
+    "stateAtPlanCreation": {
+      "_comment": "Snapshot the Registry state as it existed at the plan authority boundary. Later status/readiness changes belong in the Work Unit Registry and Work Unit Activities, not by rewriting this snapshot.",
+      "status": "planned",
+      "readiness": "ready",
+      "formalSessionRequired": "yes",
+      "sessionRecordRegistered": "yes",
+      "implementationPlanRegistered": "no",
+      "completionRule": "Task Assignment and Tracking has an initial Project Definition package; Work Queue is documented as its principal known System; authority boundaries are preserved; required discovery/validation is completed or explicitly recorded.",
+      "lastUpdate": ""
+    },
+    "activationGate": {
+      "_comment": "Use when plan creation/linkage or another prerequisite governs activation. Session initiation and session activation may be distinct material events.",
+      "required": true,
+      "condition": "The governing implementation plan must be created and linked to WORK-0001 before the formal session / Work Unit is represented as active implementation.",
+      "satisfiedAtPlanCreation": false,
+      "satisfiedTimestamp": "",
+      "satisfactionBasis": "At plan creation the plan existed but was still ready to be linked to WORK-0001; activation had not yet been recorded.",
+      "expectedRegistryEffect": {
+        "status": "active",
+        "readiness": "active"
+      }
+    },
+    "formalSessionRecords": [
+      {
+        "_comment": "The source plan identifies the formal session by record path but does not supply a durable Session ID.",
+        "sessionId": "",
+        "sessionTitle": "Task Assignment and Tracking formal Work Implementation Session",
+        "sessionRecordPath": "work-implementation-session-2026-08-16-task-assignment-and-tracking.md",
+        "sessionEntryMode": "declared-before-work",
+        "relationshipToPlan": "Formal execution record for the bounded WORK-0001 implementation session governed by this plan after activation.",
+        "statusAtPlanCreation": "initiated-not-activated",
+        "initiatedTimestamp": "2026-08-16T07:48:00-06:00",
+        "activatedTimestamp": "",
+        "initiationWuaId": "WUA-0003",
+        "activationWuaId": ""
+      }
+    ],
+    "workUnitActivities": {
+      "_comment": "Reference only allocated Work Unit Activities known at plan creation or later deliberately added as references. Do not pre-allocate future WUA IDs. The Work Unit Activities registry remains authoritative.",
+      "knownActivityIdsAtPlanCreation": [
+        "WUA-0003"
+      ],
+      "relatedActivityIds": [
+        "WUA-0003"
+      ],
+      "activityCoverageSummary": "At the plan boundary, WUA-0003 records formal session initiation. The plan identifies plan-link/session-activation as the next material Work Unit event but does not pre-allocate its WUA ID.",
+      "materialEventRule": "Reference Work Unit Activities for material Work Unit events; do not create or predict WUA IDs for routine edits or future checkpoints."
+    },
+    "relationshipSummary": "WORK-0001 is the bounded work identity. The Work Unit Registry owns its current state; this plan governs intended remaining work; the formal Work Implementation Session records execution; and WUA-0003 is the already-allocated initiation event known at plan creation."
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Task Assignment and Tracking",
+      "projectType": "Project",
+      "parentProjectId": "",
+      "parentProjectName": "",
+      "projectRecordPath": "Task Assignment and Tracking/project-identity.json",
+      "projectGoal": "Establish a durable Project Definition for the operational lifecycle, responsibility, evidence, completion, verification, reporting, and history of discrete work.",
+      "projectPhase": "initial-project-definition",
+      "contributionType": "Project Definition implementation",
+      "identificationBasis": "Implementation-plan front matter, purpose, and work-placement sections.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "infrastructure-and-architecture",
+        "relationshipDescription": "Supplies Project Definition architecture, Record Profiles, Viewer/discovery behavior, and repository conventions.",
+        "impact": "WORK-0001 may require documentation architecture, profile, manifest, Viewer, or changelog reconciliation.",
+        "evidenceSectionAnchors": [
+          "4-work-placement",
+          "7-target-state",
+          "10-implementation-stages"
+        ],
+        "identificationBasis": "Implementation plan Section 4 and later validation/reconciliation stages.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory Management",
+        "relationshipType": "reference-exemplar-and-integration-context",
+        "relationshipDescription": "Inventory Management → Inventory 3.0 is the first Project Definition exemplar and supplies Work Queue ↔ Inventory integration context.",
+        "impact": "Provides architectural comparison without authorizing blind duplication.",
+        "evidenceSectionAnchors": [
+          "1-purpose",
+          "4-work-placement",
+          "12-dependencies"
+        ],
+        "identificationBasis": "Implementation plan purpose, work placement, and D-01.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Scheduling",
+        "relationshipType": "integration-context",
+        "relationshipDescription": "Provides person/place/time boundary context relevant to Task Assignment and Tracking without becoming task-history authority.",
+        "impact": "Must remain a relationship/dependency rather than being absorbed into intrinsic Project identity.",
+        "evidenceSectionAnchors": [
+          "4-work-placement",
+          "15-acceptance-criteria"
+        ],
+        "identificationBasis": "Implementation plan Section 4 and AC-13.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Building Map / Locations",
+        "foundationType": "shared-location-model",
+        "relationshipDescription": "Shared location dependency for task, schedule, QR, inventory-holder, search, reporting, and map relationships.",
+        "impact": "Must be represented as a dependency; WORK-0001 does not authorize completing the Building Map."
+      },
+      {
+        "foundationId": "",
+        "name": "Employee Profile / personnel context",
+        "foundationType": "shared-employee-identity-context",
+        "relationshipDescription": "Shared employee identity/profile context relevant to assignment and attribution.",
+        "impact": "Must remain separate from Task Assignment and Tracking's intrinsic Project identity."
+      }
+    ],
+    "relationshipSummary": "Task Assignment and Tracking is the primary Project. Work Queue is its principal known System. Documentation, Inventory Management, Scheduling, Building Map / Locations, and employee/profile context are related authorities or dependencies rather than intrinsic Project identity.",
+    "_comment": "Retained for compatibility and durable project narrative. Do not assume project placement from repository path alone. Use workPlacement for explicit Project/System/Application/Resource relationships."
+  },
+  "workPlacement": {
+    "_comment": "Explicit semantic placement of this body of work. Project, System, Application/Implementation, and Resource are separate concepts. Physical storage does not determine semantic ownership.",
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Task Assignment and Tracking",
+      "relationshipToWork": "WORK-0001 establishes the initial durable Project Definition package for this Project.",
+      "identificationBasis": "Implementation-plan front matter and Section 4.",
+      "identificationConfidence": "high"
+    },
+    "systems": [
+      {
+        "systemId": "",
+        "systemName": "Work Queue",
+        "relationshipToWork": "Principal known System to be documented within Task Assignment and Tracking.",
+        "authorityResourceIds": [],
+        "identificationBasis": "Implementation-plan front matter, purpose, and Section 4.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "applications": [],
+    "resources": [
+      {
+        "resourceId": "",
+        "resourceName": "Work Queue app technical manual",
+        "relationshipToWork": "Architecture/current-state evidence for the later Work Queue System Summary.",
+        "authorityRole": "technical evidence"
+      },
+      {
+        "resourceId": "",
+        "resourceName": "Work Queue System Roadmap",
+        "relationshipToWork": "Future-state System authority that must remain distinct from the current-state System Summary.",
+        "authorityRole": "future-state roadmap"
+      },
+      {
+        "resourceId": "",
+        "resourceName": "System Roadmap Catalog",
+        "relationshipToWork": "Discovery/catalog context for the existing Work Queue roadmap pair.",
+        "authorityRole": "catalog/discovery"
+      },
+      {
+        "resourceId": "",
+        "resourceName": "Resource Registry",
+        "relationshipToWork": "Stable Resource identity and routing authority.",
+        "authorityRole": "Resource identity/routing"
+      },
+      {
+        "resourceId": "",
+        "resourceName": "Klinswork Documentation Viewer",
+        "relationshipToWork": "Discovery and presentation validation target.",
+        "authorityRole": "documentation presentation/discovery"
+      }
+    ],
+    "sharedResources": [
+      {
+        "resourceId": "",
+        "resourceName": "Building Map / Locations",
+        "relationshipToWork": "Shared location dependency; completion is outside WORK-0001 scope."
+      }
+    ],
+    "relationships": [],
+    "placementSummary": "The work principally belongs to Task Assignment and Tracking and targets Work Queue documentation. Related Projects and shared resources are referenced as dependencies/integration context, not ownership."
+  },
+  "subject": {
+    "projectName": "Task Assignment and Tracking",
+    "primaryApp": "Work Queue",
+    "mainFocus": "Initial Project Definition and Work Queue current-state documentation",
+    "description": "Create and validate the initial Task Assignment and Tracking Project Definition and establish Work Queue as its principal known System, while preserving Project/System/Resource authority boundaries and reconstructed chronology.",
+    "topics": [
+      "Project Definition",
+      "Work Queue System documentation",
+      "Work Units",
+      "Work Unit Activities",
+      "formal implementation sessions",
+      "sidecar companions",
+      "documentation discovery",
+      "authority separation"
+    ],
+    "keywords": [
+      "WORK-0001",
+      "WUA-0003",
+      "reconstructed-continuation",
+      "Task Assignment and Tracking",
+      "Work Queue",
+      "Project Summary",
+      "System Summary",
+      "Building Map",
+      "Resource Registry"
+    ],
+    "appsAffected": [
+      "Work Queue",
+      "Klinswork Documentation Viewer"
+    ],
+    "systemsAffected": [
+      "Work Queue"
+    ],
+    "componentsAffected": [
+      "Project Identity",
+      "Project README",
+      "Project Summary",
+      "Project Summary sidecar",
+      "Work Queue README",
+      "Work Queue System Summary",
+      "Work Queue System Summary sidecar",
+      "Work Queue System Roadmap",
+      "Work Units Registry",
+      "Work Unit Activities"
+    ],
+    "_comment": "Subject fields are useful descriptive/indexing tags. They do not replace the semantic relationship statements in workPlacement."
+  },
+  "planContext": {
+    "_comment": "Describes why this plan exists and the temporal boundary of its authority. Use planningMode to distinguish normal prospective plans from plans reconstructed after work has already begun.",
+    "promptingNeed": "Task Assignment and Tracking required a durable Project Definition and Work Queue required a corresponding current-state System documentation layer.",
+    "planningScope": "Complete and validate the initial Project Definition package, create Work Queue current-state documentation, validate discovery/companions/Viewer behavior, reconcile Registry/architecture effects, and close WORK-0001.",
+    "planningStatus": "governing-baseline-created",
+    "planningMode": "reconstructed-continuation",
+    "planningModeAllowedValues": [
+      "prospective",
+      "reconstructed-continuation",
+      "revised-existing-plan"
+    ],
+    "planningBasis": "Declared formal session, WORK-0001, WUA-0003, Inventory Management → Inventory 3.0 exemplar, current Task Assignment and Tracking records, Work Queue technical manual, Work Queue roadmap pair, Resource Registry, repository structure, Documentation Viewer behavior, and implementation-plan profile semantics.",
+    "planningBoundary": {
+      "_comment": "If work predates the plan, preserve that fact here. The sidecar may summarize prior work only to establish the starting state; it must not falsely relabel prior work as prospectively planned.",
+      "priorWorkExists": true,
+      "priorWorkSummary": "Before plan creation, Task Assignment and Tracking/project-identity.json, README.md, and summaries/project-summary.md were created. WUA-0003 had also recorded formal session initiation at 2026-08-16T07:48:00-06:00.",
+      "priorWorkSourceReferences": [
+        "Task Assignment and Tracking/project-identity.json",
+        "Task Assignment and Tracking/README.md",
+        "Task Assignment and Tracking/summaries/project-summary.md",
+        "WUA-0003"
+      ],
+      "planAppliesFrom": "2026-08-16T07:53:00-06:00",
+      "remainingWorkSummary": "Link/activate WORK-0001; create the Project Summary sidecar; create Work Queue README, System Summary, and System Summary sidecar; validate structure/JSON/companions/Viewer/resume behavior; reconcile registries/architecture; close the formal session and Work Unit."
+    },
+    "assumptions": [
+      "Inventory Management → Inventory 3.0 is a reference exemplar only; applicability must be independently verified.",
+      "The Work Queue technical manual is useful current architecture evidence but does not eliminate the need for current implementation verification where detailed behavior matters."
+    ],
+    "constraints": [
+      "Do not invent permanent PROJ-### or SYS-### identifiers.",
+      "Do not collapse Task Assignment and Tracking into Work Queue.",
+      "Do not treat roadmap intent as current implementation truth.",
+      "Do not infer semantic ownership from repository path.",
+      "Preserve Building Map / Locations as a shared dependency rather than Project ownership.",
+      "Create WUAs for material Work Unit events rather than routine edits.",
+      "Preserve pre-plan chronology under reconstructed-continuation semantics."
+    ],
+    "outOfScope": [
+      "Assigning a permanent PROJ-###",
+      "Assigning a permanent SYS-###",
+      "Creating a System Identity Entity Record unless separately approved",
+      "Implementing a formal Relationship Registry",
+      "Broad Work Queue application feature development",
+      "Work Queue datastore refactoring",
+      "Implementing roadmap capabilities",
+      "Completing the Building Map itself",
+      "Redesigning Scheduling",
+      "Implementing Employee Profile",
+      "Completing Inventory transaction propagation",
+      "Exhaustive normalization of historical Work Queue records",
+      "Universal Project Definition template extraction",
+      "Rewriting historical records to current terminology"
+    ],
+    "confidence": "high"
+  },
+  "targetState": {
+    "currentState": "At the planning boundary, Project Identity, Project README, and Project Summary existed; the Project Summary sidecar was pending; the Work Queue roadmap pair existed; Work Queue README/System Summary/System Summary sidecar were pending; WORK-0001 remained planned/ready and the formal session was initiated but not activated.",
+    "desiredState": "Task Assignment and Tracking has a coherent initial Project Definition package; Work Queue has a corresponding current-state System documentation layer alongside its future-state roadmap; discovery/companion/Viewer behavior is validated; Registry and architecture effects are reconciled; and the formal session closes with a trustworthy continuation point.",
+    "successDefinition": "The Project/System architecture is discoverable, validated, historically traceable, resumable, and satisfies the WORK-0001 completion rule without inventing durable IDs or conflating evidence classes.",
+    "nonGoals": [
+      "Assigning a permanent PROJ-###",
+      "Assigning a permanent SYS-###",
+      "Creating a System Identity Entity Record unless separately approved",
+      "Implementing a formal Relationship Registry",
+      "Broad Work Queue application feature development",
+      "Work Queue datastore refactoring",
+      "Implementing roadmap capabilities",
+      "Completing the Building Map itself",
+      "Redesigning Scheduling",
+      "Implementing Employee Profile",
+      "Completing Inventory transaction propagation",
+      "Exhaustive normalization of historical Work Queue records",
+      "Universal Project Definition template extraction",
+      "Rewriting historical records to current terminology"
+    ],
+    "transitionSummary": "Move from a partially constructed second Project Definition exemplar and initiated-but-not-activated Work Unit into a validated Project/System documentation package with recorded material history and explicit closure.",
+    "_comment": "currentState means the state at the planning boundary, not necessarily the state at the beginning of the overall conversation."
+  },
+  "authoritativeResources": [
+    {
+      "_comment": "The source plan names the Resource authority but does not supply a stable Resource ID.",
+      "resourceId": "",
+      "name": "Work Unit Registry",
+      "resourceType": "registry",
+      "authorityRole": "current Work Unit state",
+      "authorityScope": "WORK-0001 status, readiness, plan/session linkage, completion, result, last update",
+      "requiredFor": [
+        "Stage 1",
+        "Stage 7",
+        "Stage 8"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry / current Registry workbook",
+      "status": "available",
+      "notes": []
+    },
+    {
+      "resourceId": "",
+      "name": "Work Unit Activities",
+      "resourceType": "registry-history",
+      "authorityRole": "timestamped material Work Unit history",
+      "authorityScope": "WUA-0003 and later material WORK-0001 events",
+      "requiredFor": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 5",
+        "Stage 6",
+        "Stage 7",
+        "Stage 8"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry / current Registry workbook",
+      "status": "available",
+      "notes": [
+        "Only already allocated WUA IDs are referenced."
+      ]
+    },
+    {
+      "resourceId": "",
+      "name": "Task Assignment and Tracking Project Identity",
+      "resourceType": "entity-record",
+      "authorityRole": "intrinsic Project identity",
+      "authorityScope": "Task Assignment and Tracking Project identity",
+      "requiredFor": [
+        "Stage 2",
+        "Stage 6"
+      ],
+      "locationSnapshot": "Task Assignment and Tracking/project-identity.json",
+      "resolutionSource": "implementation plan",
+      "status": "available",
+      "notes": [
+        "Permanent Project ID remains unassigned."
+      ]
+    },
+    {
+      "resourceId": "",
+      "name": "Task Assignment and Tracking Project Summary",
+      "resourceType": "documentation",
+      "authorityRole": "human-readable Project definition",
+      "authorityScope": "Project purpose, scope, boundaries, relationships, current interpretation",
+      "requiredFor": [
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 6"
+      ],
+      "locationSnapshot": "Task Assignment and Tracking/summaries/project-summary.md",
+      "resolutionSource": "implementation plan",
+      "status": "available",
+      "notes": []
+    },
+    {
+      "resourceId": "",
+      "name": "Work Queue app technical manual",
+      "resourceType": "technical-documentation",
+      "authorityRole": "current architecture evidence",
+      "authorityScope": "Work Queue architecture/current-state evidence subject to current verification",
+      "requiredFor": [
+        "Stage 4"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "implementation plan",
+      "status": "available-in-part",
+      "notes": []
+    },
+    {
+      "resourceId": "",
+      "name": "Work Queue System Roadmap",
+      "resourceType": "system-roadmap",
+      "authorityRole": "future-state System direction",
+      "authorityScope": "planned Work Queue capability",
+      "requiredFor": [
+        "Stage 3",
+        "Stage 4",
+        "Stage 6"
+      ],
+      "locationSnapshot": "systems/Work Queue/summaries/work-queue-roadmap.md",
+      "resolutionSource": "implementation plan",
+      "status": "available",
+      "notes": [
+        "Must not be treated as proof of current implementation."
+      ]
+    },
+    {
+      "resourceId": "",
+      "name": "Resource Registry",
+      "resourceType": "registry",
+      "authorityRole": "Resource identity and current routing",
+      "authorityScope": "registered Resources needed by WORK-0001",
+      "requiredFor": [
+        "Stage 4",
+        "Stage 6",
+        "Stage 7"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "implementation plan",
+      "status": "available",
+      "notes": []
+    },
+    {
+      "resourceId": "",
+      "name": "Klinswork Documentation Viewer",
+      "resourceType": "documentation-viewer",
+      "authorityRole": "discovery/presentation validation target",
+      "authorityScope": "Project/System document discovery and presentation behavior",
+      "requiredFor": [
+        "Stage 6"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "implementation plan",
+      "status": "available",
+      "notes": []
+    }
+  ],
+  "implementationStages": [
+    {
+      "sequence": 1,
+      "stageId": "STAGE-01",
+      "title": "Reconcile plan boundary and activate WORK-0001",
+      "objective": "Establish the implementation plan as the governing baseline and reconcile Work Unit/session state without falsifying chronology.",
+      "description": "Link the plan, move WORK-0001 to active/active, retain formal-session linkage, and append the activation material-event WUA.",
+      "dependencies": [
+        "WORK-0001 exists",
+        "formal session record exists",
+        "implementation plan created"
+      ],
+      "deliverables": [
+        "governing implementation plan",
+        "updated WORK-0001 row",
+        "activation WUA"
+      ],
+      "tests": [
+        "Plan path recorded",
+        "WORK-0001 active",
+        "chronology explicit",
+        "no permanent Project/System ID invented"
+      ],
+      "exitCriteria": [
+        "Implementation plan is registered",
+        "WORK-0001 status is active",
+        "WORK-0001 readiness is active",
+        "activation material event recorded"
+      ],
+      "status": "in-progress",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages",
+        "17-approval--activation-gate"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 2,
+      "stageId": "STAGE-02",
+      "title": "Complete the Project-level definition package",
+      "objective": "Finish and validate the Task Assignment and Tracking Project-level package.",
+      "description": "Project Identity, README, and Project Summary existed before plan creation; create and validate the Project Summary sidecar.",
+      "dependencies": [
+        "project-identity.json",
+        "README.md",
+        "summaries/project-summary.md"
+      ],
+      "deliverables": [
+        "sidecars/project-summary-sidecar.json"
+      ],
+      "tests": [
+        "JSON parses",
+        "sidecar resolves to Project Summary",
+        "Project ID remains blank/unassigned",
+        "sidecar does not replace Project Identity authority",
+        "Project/System distinction remains explicit",
+        "Building Map remains a shared dependency",
+        "future roadmap intent is not presented as current truth"
+      ],
+      "exitCriteria": [
+        "Project-level definition package is complete and companion-resolved"
+      ],
+      "status": "in-progress",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "in-progress-at-plan-creation",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 3,
+      "stageId": "STAGE-03",
+      "title": "Create Work Queue System-local orientation",
+      "objective": "Create systems/Work Queue/README.md.",
+      "description": "Orient readers to Work Queue as a System, the parent Project, current-state vs future-state authority, resources, integration boundaries, and resume sequence.",
+      "dependencies": [
+        "Task Assignment and Tracking Project documentation",
+        "existing Work Queue roadmap pair"
+      ],
+      "deliverables": [
+        "systems/Work Queue/README.md"
+      ],
+      "tests": [
+        "A context-naive reader can route current-state, roadmap, resource, evidence, and Project-relationship questions correctly."
+      ],
+      "exitCriteria": [
+        "Work Queue README exists and provides correct authority routing"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 4,
+      "stageId": "STAGE-04",
+      "title": "Create Work Queue current-state System Summary",
+      "objective": "Create systems/Work Queue/summaries/system-summary.md.",
+      "description": "Describe what Work Queue currently is based on current/historical/planning evidence kept explicitly distinct.",
+      "dependencies": [
+        "Work Queue technical evidence",
+        "Resource Registry",
+        "Project/System boundary"
+      ],
+      "deliverables": [
+        "systems/Work Queue/summaries/system-summary.md"
+      ],
+      "tests": [
+        "System Summary answers what Work Queue is now without duplicating the System Roadmap"
+      ],
+      "exitCriteria": [
+        "Current-state System Summary exists with evidence discipline and explicit uncertainty"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 5,
+      "stageId": "STAGE-05",
+      "title": "Create Work Queue System Summary sidecar",
+      "objective": "Create systems/Work Queue/sidecars/system-summary-sidecar.json.",
+      "description": "Create and validate the structured companion to the Work Queue current-state System Summary.",
+      "dependencies": [
+        "STAGE-04"
+      ],
+      "deliverables": [
+        "systems/Work Queue/sidecars/system-summary-sidecar.json"
+      ],
+      "tests": [
+        "valid JSON",
+        "correct companion path",
+        "correct preview/document semantics",
+        "Task Assignment and Tracking Project context preserved",
+        "Work Queue represented as System",
+        "no permanent System ID invented",
+        "current state does not silently import planned roadmap state",
+        "known Resource references use stable IDs where available"
+      ],
+      "exitCriteria": [
+        "System Summary and sidecar form a coherent current-state pair"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 6,
+      "stageId": "STAGE-06",
+      "title": "Validate discovery, companions, and Viewer behavior",
+      "objective": "Verify the completed Project Definition package in the current Documentation architecture.",
+      "description": "Run structure, JSON, companion, entity-record, Viewer, semantic, and context-naive resume tests.",
+      "dependencies": [
+        "STAGE-02",
+        "STAGE-03",
+        "STAGE-04",
+        "STAGE-05"
+      ],
+      "deliverables": [
+        "validation results",
+        "recorded failures/follow-up if any"
+      ],
+      "tests": [
+        "T-01",
+        "T-02",
+        "T-03",
+        "T-04",
+        "T-05",
+        "T-06",
+        "T-07",
+        "T-08",
+        "T-09"
+      ],
+      "exitCriteria": [
+        "Required tests pass or failures are explicitly recorded as blockers/follow-up"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 7,
+      "stageId": "STAGE-07",
+      "title": "Reconcile Registry and architecture effects",
+      "objective": "Reconcile documentation work with current Klinswork registries and architecture history.",
+      "description": "Review required Resource, Activity, Work Unit, WUA, Architecture Changelog, catalog, profile, Viewer-manifest, and Project Registry effects.",
+      "dependencies": [
+        "STAGE-06"
+      ],
+      "deliverables": [
+        "required downstream records or explicit follow-up"
+      ],
+      "tests": [
+        "No downstream authority is updated merely because a slot exists; required effects are completed or explicitly deferred"
+      ],
+      "exitCriteria": [
+        "All required downstream effects are completed or explicitly recorded as remaining follow-up"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 8,
+      "stageId": "STAGE-08",
+      "title": "Close the formal session and WORK-0001",
+      "objective": "Establish a trustworthy resulting state and continuation point.",
+      "description": "Update the formal session with actual execution, decisions, deviations, blockers, validation, result, unresolved work, closure WUA, and Work Unit completion if the completion rule is satisfied.",
+      "dependencies": [
+        "STAGE-07"
+      ],
+      "deliverables": [
+        "updated formal session record",
+        "closure WUA",
+        "completed WORK-0001 row when eligible"
+      ],
+      "tests": [
+        "Work Unit can be understood and resumed from durable records without reopening the originating conversation"
+      ],
+      "exitCriteria": [
+        "Session closes explicitly and WORK-0001 closes only if its completion rule is satisfied"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "10-implementation-stages"
+      ],
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependencyId": "D-01",
+      "name": "Project Definition exemplar",
+      "dependencyType": "reference-exemplar",
+      "requiredFor": [
+        "Project Definition architecture"
+      ],
+      "description": "Inventory Management → Inventory 3.0 documentation provides the first architectural exemplar.",
+      "status": "available",
+      "owner": "",
+      "risks": [
+        "Blind duplication would incorrectly treat exemplar-specific details as universal."
+      ]
+    },
+    {
+      "dependencyId": "D-02",
+      "name": "Project Identity profile",
+      "dependencyType": "record-profile",
+      "requiredFor": [
+        "Project Identity"
+      ],
+      "description": "Project Identity profile/template used for the Task Assignment and Tracking identity record.",
+      "status": "available-and-already-used",
+      "owner": "",
+      "risks": []
+    },
+    {
+      "dependencyId": "D-03",
+      "name": "Work Queue technical evidence",
+      "dependencyType": "current-state-evidence",
+      "requiredFor": [
+        "Work Queue System Summary"
+      ],
+      "description": "Known evidence includes the Work Queue app technical manual and registered Work Queue Resources.",
+      "status": "available-in-part",
+      "owner": "",
+      "risks": [
+        "Detailed implementation claims remain subject to current-state verification."
+      ]
+    },
+    {
+      "dependencyId": "D-04",
+      "name": "Resource Registry",
+      "dependencyType": "registry",
+      "requiredFor": [
+        "stable Resource identity and routing"
+      ],
+      "description": "Used to resolve Resource identity and current routing.",
+      "status": "available",
+      "owner": "",
+      "risks": []
+    },
+    {
+      "dependencyId": "D-05",
+      "name": "Documentation Viewer / manifest architecture",
+      "dependencyType": "documentation-infrastructure",
+      "requiredFor": [
+        "discovery and presentation validation"
+      ],
+      "description": "Required for end-stage discovery and presentation validation.",
+      "status": "available",
+      "owner": "",
+      "risks": []
+    },
+    {
+      "dependencyId": "D-06",
+      "name": "Existing Work Queue roadmap pair",
+      "dependencyType": "future-state-authority",
+      "requiredFor": [
+        "current-state/future-state separation"
+      ],
+      "description": "Existing roadmap and sidecar must remain the future-state authority.",
+      "status": "available",
+      "owner": "",
+      "risks": [
+        "Roadmap intent could be accidentally absorbed into current-state documentation."
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "riskId": "R-01",
+      "risk": "Project and System collapse: Work Queue is described as if it is Task Assignment and Tracking.",
+      "likelihood": "",
+      "impact": "high",
+      "mitigation": "Maintain explicit Project → System distinction in every relevant record.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-02",
+      "risk": "Roadmap intent becomes current truth: Planned Work Queue capabilities are described as implemented.",
+      "likelihood": "",
+      "impact": "high",
+      "mitigation": "Separate current evidence from planning evidence; use System Summary for current state and Roadmap for target state.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-03",
+      "risk": "Invented identity: A PROJ-###, SYS-###, relationship ID, run ID, or session ID is created merely to fill a blank.",
+      "likelihood": "",
+      "impact": "high",
+      "mitigation": "Preserve blank/unassigned identity until the applicable authority allocates it.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-04",
+      "risk": "Repository path becomes semantic authority: Physical location is treated as proof of Project/System ownership or identity.",
+      "likelihood": "",
+      "impact": "medium/high",
+      "mitigation": "Keep path/locality rules separate from identity and relationship authority.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-05",
+      "risk": "Building Map ownership drift: Task Assignment and Tracking is incorrectly made owner of Building Map governance.",
+      "likelihood": "",
+      "impact": "medium",
+      "mitigation": "Preserve Building Map / Locations as a shared dependency and relationship.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-06",
+      "risk": "Excessive WUA granularity: Every edit becomes a Work Unit Activity, making history noisy and unusable.",
+      "likelihood": "",
+      "impact": "medium",
+      "mitigation": "Use the plan's material-event rule.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-07",
+      "risk": "Insufficient WUA history: Important session/state transitions happen without timestamped Work Unit history.",
+      "likelihood": "",
+      "impact": "high",
+      "mitigation": "Use the required material-event checkpoints.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-08",
+      "risk": "Reconstructed plan falsifies chronology: Already-completed work is presented as prospectively planned.",
+      "likelihood": "",
+      "impact": "high",
+      "mitigation": "Preserve reconstructed-continuation and completed-before-plan/in-progress-at-plan-creation distinctions.",
+      "contingency": "",
+      "status": "open"
+    },
+    {
+      "riskId": "R-09",
+      "risk": "System Summary becomes implementation archaeology: Documentation expands indefinitely into exhaustive reconstruction of every historical Work Queue version.",
+      "likelihood": "",
+      "impact": "medium",
+      "mitigation": "Document enough to establish current System meaning, history, uncertainty, and next verification; defer exhaustive chronology.",
+      "contingency": "",
+      "status": "open"
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "criterionId": "AC-01",
+      "description": "WORK-0001 is linked to this plan and correctly represented as active during execution.",
+      "verificationMethod": "Inspect Work Unit Registry and activation WUA.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-02",
+      "description": "The record clearly distinguishes work completed before plan creation from remaining planned work.",
+      "verificationMethod": "Inspect planning boundary and stage planningRelation values.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-03",
+      "description": "project-identity.json remains a narrow Entity Record and contains no invented permanent Project ID.",
+      "verificationMethod": "Inspect Project Identity.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-04",
+      "description": "Project README exists and routes readers to the correct authorities.",
+      "verificationMethod": "Inspect README.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-05",
+      "description": "Project Summary exists and explains purpose, scope, boundaries, Work Queue relationship, Resources, evidence classes, Building Map dependency, current state, unresolved questions, and next work.",
+      "verificationMethod": "Inspect Project Summary.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-06",
+      "description": "A valid Project Summary sidecar exists and resolves to its Markdown companion.",
+      "verificationMethod": "JSON and companion-resolution validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-07",
+      "description": "Work Queue README exists.",
+      "verificationMethod": "Repository/document inspection.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-08",
+      "description": "Work Queue System Summary exists and remains distinct from the System Roadmap.",
+      "verificationMethod": "Semantic comparison of System Summary and Roadmap.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-09",
+      "description": "A valid Work Queue System Summary companion sidecar exists.",
+      "verificationMethod": "JSON and companion-resolution validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-10",
+      "description": "The existing Work Queue roadmap and sidecar remain intact as future-state authority.",
+      "verificationMethod": "Inspect roadmap pair before/after.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-11",
+      "description": "Historical, planned, and current implementation evidence are not conflated.",
+      "verificationMethod": "Review evidence classification in System Summary and supporting records.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-12",
+      "description": "No unsupported permanent Project/System/Relationship/session/run ID is invented.",
+      "verificationMethod": "Search created/changed records for unsupported durable IDs.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-13",
+      "description": "Scheduling, Inventory Management, Employee/Profile context, and Building Map / Locations are represented as relationships/dependencies rather than intrinsic Project identity.",
+      "verificationMethod": "Review Project/System documentation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-14",
+      "description": "Required Project/System records are discoverable through the current Documentation architecture or failures are explicitly recorded.",
+      "verificationMethod": "Run Viewer/manifest discovery tests.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-15",
+      "description": "Required companion relationships and relevant Viewer rendering behave correctly or failures are explicitly recorded.",
+      "verificationMethod": "Run companion and Viewer tests.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-16",
+      "description": "Material session/state/stage events are preserved as Work Unit Activities.",
+      "verificationMethod": "Inspect Work Unit Activities.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-17",
+      "description": "The Work Implementation Session records actual result, validation, unresolved work, and a context-naive continuation point.",
+      "verificationMethod": "Inspect session closure sections.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    },
+    {
+      "criterionId": "AC-18",
+      "description": "WORK-0001 is closed only when its Registry completion rule is satisfied.",
+      "verificationMethod": "Compare completion rule, validation evidence, and final Registry state.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "15-acceptance-criteria"
+      ]
+    }
+  ],
+  "plannedTests": [
+    {
+      "testId": "T-01",
+      "name": "Repository structure",
+      "type": "structure",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "Expected required files exist in intended Project/System directories.",
+      "failureCondition": "Expected required files exist in intended Project/System directories. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-02",
+      "name": "JSON validation",
+      "type": "validation",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "All JSON artifacts created or changed during WORK-0001 parse successfully.",
+      "failureCondition": "All JSON artifacts created or changed during WORK-0001 parse successfully. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-03",
+      "name": "Project Summary companion",
+      "type": "companion-resolution",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "project-summary-sidecar.json resolves to project-summary.md.",
+      "failureCondition": "project-summary-sidecar.json resolves to project-summary.md. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-04",
+      "name": "Work Queue System Summary companion",
+      "type": "companion-resolution",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "system-summary-sidecar.json resolves to system-summary.md.",
+      "failureCondition": "system-summary-sidecar.json resolves to system-summary.md. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-05",
+      "name": "Roadmap companion preservation",
+      "type": "regression",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "Existing Work Queue roadmap sidecar continues to resolve to roadmap Markdown.",
+      "failureCondition": "Existing Work Queue roadmap sidecar continues to resolve to roadmap Markdown. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-06",
+      "name": "Entity Record handling",
+      "type": "semantic-validation",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "project-identity.json remains identifiable as an Entity Record and is not disguised as a sidecar.",
+      "failureCondition": "project-identity.json remains identifiable as an Entity Record and is not disguised as a sidecar. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-07",
+      "name": "Viewer discovery",
+      "type": "discovery",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "Relevant Project/System records are discoverable through current source-aware Viewer architecture.",
+      "failureCondition": "Relevant Project/System records are discoverable through current source-aware Viewer architecture. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-08",
+      "name": "Viewer semantics",
+      "type": "semantic-validation",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "Project Summary, System Summary, and System Roadmap do not collapse into one generic meaning.",
+      "failureCondition": "Project Summary, System Summary, and System Roadmap do not collapse into one generic meaning. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    },
+    {
+      "testId": "T-09",
+      "name": "Context-naive resume",
+      "type": "resume-validation",
+      "preconditions": [
+        "Relevant stage deliverables exist."
+      ],
+      "steps": [],
+      "expectedResult": "A fresh reader can follow the planned authority route without the originating conversation.",
+      "failureCondition": "A fresh reader can follow the planned authority route without the originating conversation. is not true or cannot be verified.",
+      "status": "planned",
+      "_comment": "This is a prospective test from the implementation plan. Actual execution/results belong in the Work Implementation Session or corresponding evidence record."
+    }
+  ],
+  "implementationOrder": [
+    {
+      "sequence": 1,
+      "stageId": "STAGE-01",
+      "title": "Create/link governing plan",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 2,
+      "stageId": "STAGE-01",
+      "title": "Activate WORK-0001 + WUA",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 3,
+      "stageId": "STAGE-02",
+      "title": "Complete Project Summary sidecar",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 4,
+      "stageId": "STAGE-02",
+      "title": "Record Project-level package checkpoint",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 5,
+      "stageId": "STAGE-03",
+      "title": "Create Work Queue README",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 6,
+      "stageId": "STAGE-04",
+      "title": "Create Work Queue System Summary",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 7,
+      "stageId": "STAGE-05",
+      "title": "Create System Summary sidecar",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 8,
+      "stageId": "STAGE-05",
+      "title": "Record System-definition checkpoint",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 9,
+      "stageId": "STAGE-06",
+      "title": "Run discovery / Viewer / companion validation",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 10,
+      "stageId": "STAGE-06",
+      "title": "Record validation WUA",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 11,
+      "stageId": "STAGE-07",
+      "title": "Reconcile Registry / architecture effects",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 12,
+      "stageId": "STAGE-08",
+      "title": "Update Work Implementation Session",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 13,
+      "stageId": "STAGE-08",
+      "title": "Close session",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    },
+    {
+      "sequence": 14,
+      "stageId": "STAGE-08",
+      "title": "Close WORK-0001 when completion rule is satisfied",
+      "reason": "Preserves the implementation sequence declared by the source plan.",
+      "gate": ""
+    }
+  ],
+  "roadmapImpact": {
+    "_comment": "Do not imply that a formal roadmap exists when it does not. roadmapAuthorityStatus should state the authority level of the planning source.",
+    "roadmapAuthorityStatus": "existing Work Queue System Roadmap is the future-state authority",
+    "previousPlan": "Existing Work Queue System Roadmap and sidecar",
+    "additions": [],
+    "changes": [],
+    "deprecations": [],
+    "deferredItems": [],
+    "resultingPlan": "Preserve the existing Work Queue roadmap pair; do not treat this implementation plan as the System roadmap.",
+    "nextDecision": "After the current-state Work Queue System Summary exists, reconcile roadmap capability status against verified current state as separate follow-on work."
+  },
+  "audienceViews": {
+    "supervisor": {
+      "_comment": "The supervisor reading path is a modeled audience view and may be retained even when no external supervisor participates.",
+      "readingPathLabel": "Supervisor reading path",
+      "modeledAudienceRole": "supervisor",
+      "actualAudienceRole": "",
+      "actualAudienceName": "",
+      "plainLanguageSummary": "This plan finishes the documentation structure that defines Task Assignment and Tracking and documents Work Queue as its principal System.",
+      "operationalImpact": "Documentation and architecture work only; the plan does not authorize Work Queue feature changes.",
+      "currentStatus": "Governing reconstructed-continuation baseline created; plan linkage and activation are the next operational gate.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Permanent Project/System IDs remain unassigned.",
+        "Current Work Queue behavior must not be inferred from roadmap intent.",
+        "Some stable Resource IDs are not supplied by the source plan."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Link the plan to WORK-0001, update status/readiness to active, and record the corresponding material Work Unit Activity.",
+      "callouts": [
+        {
+          "sequence": 1,
+          "anchor": "",
+          "relatedSectionAnchor": "",
+          "type": "",
+          "title": "",
+          "text": ""
+        }
+      ]
+    },
+    "general": {
+      "summary": "A bounded documentation implementation plan for completing the second Klinswork Project Definition exemplar.",
+      "keyPoints": [
+        "Task Assignment and Tracking is the Project; Work Queue is the principal System.",
+        "The plan is reconstructed-continuation because some Project records existed before plan creation.",
+        "The plan governs remaining work from 2026-08-16T07:53:00-06:00 forward.",
+        "Material Work Unit history is preserved through WUAs."
+      ]
+    },
+    "technical": {
+      "summary": "The plan creates a Project/System documentation package, companion sidecars, Viewer/discovery validation, and Registry/session reconciliation.",
+      "keyPoints": [
+        "Project Summary and System Summary are separate authorities.",
+        "Roadmap intent remains separate from current-state evidence.",
+        "Work Unit current state, WUA history, implementation plan, and formal session execution have distinct authority roles.",
+        "No unsupported durable IDs may be invented."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "projectsObservedIn": []
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "description": "",
+        "suggestedDestination": "",
+        "supportingSectionAnchors": []
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Project and System must remain distinct semantic entities.",
+        "changeType": "confirmed",
+        "explanation": "Task Assignment and Tracking is the durable Project; Work Queue is its principal known System."
+      },
+      {
+        "rule": "Reconstructed planning must preserve chronology.",
+        "changeType": "confirmed",
+        "explanation": "Work completed before the 07:53 plan boundary remains pre-plan history rather than prospectively planned work."
+      },
+      {
+        "rule": "Work Unit Activities record material Work Unit events rather than every low-level edit.",
+        "changeType": "confirmed",
+        "explanation": "The plan defines required and non-required WUA event classes and explicitly prohibits pre-allocation of future WUA IDs."
+      },
+      {
+        "rule": "Current-state evidence, historical evidence, and planning evidence must remain distinct.",
+        "changeType": "confirmed",
+        "explanation": "The Work Queue System Summary must not use the roadmap as proof of current implementation."
+      },
+      {
+        "rule": "Building Map / Locations is a shared dependency, not automatically owned by Task Assignment and Tracking.",
+        "changeType": "confirmed",
+        "explanation": "WORK-0001 documents the dependency but explicitly excludes completing the Building Map."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "SEC-01",
+      "title": "Purpose",
+      "anchor": "1-purpose",
+      "contentSummary": "Defines the bounded Project Definition / Work Queue documentation outcome and explicitly excludes Work Queue feature development.",
+      "narrativeRole": "purpose",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant as a high-level status/outcome view."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-02",
+      "title": "Planning mode and temporal boundary",
+      "anchor": "2-planning-mode-and-temporal-boundary",
+      "contentSummary": "Establishes reconstructed-continuation semantics, the 07:53 authority boundary, pre-plan outputs, and WUA-0003.",
+      "narrativeRole": "planning-boundary",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-03",
+      "title": "Authority model",
+      "anchor": "3-authority-model",
+      "contentSummary": "Separates the plan from Work Unit current state, WUA history, session execution, Project/System records, Resource Registry, and implementation truth.",
+      "narrativeRole": "authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-04",
+      "title": "Work placement",
+      "anchor": "4-work-placement",
+      "contentSummary": "Places the work in Task Assignment and Tracking, targets Work Queue, and identifies related infrastructure/dependencies.",
+      "narrativeRole": "placement",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-05",
+      "title": "Planning basis",
+      "anchor": "5-planning-basis",
+      "contentSummary": "Lists the evidence and architectural sources on which the plan is grounded.",
+      "narrativeRole": "provenance",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-06",
+      "title": "Current state at the planning boundary",
+      "anchor": "6-current-state-at-the-planning-boundary",
+      "contentSummary": "Records the Project/System/documentation state when plan authority begins.",
+      "narrativeRole": "starting-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-07",
+      "title": "Target state",
+      "anchor": "7-target-state",
+      "contentSummary": "Defines the desired completed Project Definition / System documentation package and validation result.",
+      "narrativeRole": "target-state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant as a high-level status/outcome view."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-08",
+      "title": "Scope",
+      "anchor": "8-scope",
+      "contentSummary": "Defines in-scope documentation/validation/reconciliation work and explicit non-goals.",
+      "narrativeRole": "scope",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-09",
+      "title": "Work Unit Activity recording rule",
+      "anchor": "9-work-unit-activity-recording-rule",
+      "contentSummary": "Defines material-event WUA policy and identifies WUA-0003 as the existing initiation event.",
+      "narrativeRole": "work-history",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-10",
+      "title": "Implementation stages",
+      "anchor": "10-implementation-stages",
+      "contentSummary": "Defines eight bounded stages from plan linkage through session and Work Unit closure.",
+      "narrativeRole": "implementation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-11",
+      "title": "Implementation order",
+      "anchor": "11-implementation-order",
+      "contentSummary": "Orders the 14 execution actions across the eight stages.",
+      "narrativeRole": "sequence",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-12",
+      "title": "Dependencies",
+      "anchor": "12-dependencies",
+      "contentSummary": "Defines six dependencies including exemplar, profiles, technical evidence, Registry, Viewer, and roadmap pair.",
+      "narrativeRole": "dependencies",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-13",
+      "title": "Risks and mitigations",
+      "anchor": "13-risks-and-mitigations",
+      "contentSummary": "Defines nine risks covering semantic collapse, evidence conflation, identity invention, WUA quality, chronology, and scope expansion.",
+      "narrativeRole": "risk",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-14",
+      "title": "Evidence to preserve",
+      "anchor": "14-evidence-to-preserve",
+      "contentSummary": "Defines durable evidence needed to reconstruct WORK-0001 without conversation memory.",
+      "narrativeRole": "evidence",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-15",
+      "title": "Acceptance criteria",
+      "anchor": "15-acceptance-criteria",
+      "contentSummary": "Defines 18 acceptance criteria governing activation, documentation, evidence discipline, discovery, history, closure, and completion.",
+      "narrativeRole": "acceptance",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-16",
+      "title": "Plan amendment rule",
+      "anchor": "16-plan-amendment-rule",
+      "contentSummary": "Prevents silent plan rewriting after the governing baseline is linked.",
+      "narrativeRole": "change-control",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-17",
+      "title": "Approval / activation gate",
+      "anchor": "17-approval--activation-gate",
+      "contentSummary": "Defines the Registry update and material-event WUA required to move WORK-0001 into active execution.",
+      "narrativeRole": "activation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-18",
+      "title": "Planned result",
+      "anchor": "18-planned-result",
+      "contentSummary": "Restates the intended authority separation and completion condition for the Project/System documentation package.",
+      "narrativeRole": "result",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to the Task Assignment and Tracking Project Definition and/or Work Queue System documentation.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant as a high-level status/outcome view."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [
+      "Work Queue",
+      "Klinswork Documentation Viewer"
+    ],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [
+      "Work Unit Registry",
+      "Work Unit Activities",
+      "Resource Registry"
+    ],
+    "files": [
+      "implementation-plan-project-definition.md",
+      "Task Assignment and Tracking/project-identity.json",
+      "Task Assignment and Tracking/README.md",
+      "Task Assignment and Tracking/summaries/project-summary.md",
+      "Task Assignment and Tracking/sidecars/project-summary-sidecar.json",
+      "systems/Work Queue/README.md",
+      "systems/Work Queue/summaries/system-summary.md",
+      "systems/Work Queue/sidecars/system-summary-sidecar.json",
+      "systems/Work Queue/summaries/work-queue-roadmap.md",
+      "systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json",
+      "work-implementation-session-2026-08-16-task-assignment-and-tracking.md"
+    ],
+    "integrations": [
+      "Work Unit Registry ↔ Work Unit Activities",
+      "Implementation Plan ↔ Work Unit",
+      "Implementation Plan ↔ Formal Work Implementation Session",
+      "Project Summary ↔ Project Summary sidecar",
+      "Work Queue System Summary ↔ System Summary sidecar",
+      "Documentation Viewer ↔ Project/System records"
+    ],
+    "apis": [],
+    "versions": [],
+    "tests": [
+      {
+        "name": "T-01",
+        "type": "structure",
+        "result": "",
+        "notes": "Expected required files exist in intended Project/System directories.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-02",
+        "type": "validation",
+        "result": "",
+        "notes": "All JSON artifacts created or changed during WORK-0001 parse successfully.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-03",
+        "type": "companion-resolution",
+        "result": "",
+        "notes": "project-summary-sidecar.json resolves to project-summary.md.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-04",
+        "type": "companion-resolution",
+        "result": "",
+        "notes": "system-summary-sidecar.json resolves to system-summary.md.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-05",
+        "type": "regression",
+        "result": "",
+        "notes": "Existing Work Queue roadmap sidecar continues to resolve to roadmap Markdown.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-06",
+        "type": "semantic-validation",
+        "result": "",
+        "notes": "project-identity.json remains identifiable as an Entity Record and is not disguised as a sidecar.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-07",
+        "type": "discovery",
+        "result": "",
+        "notes": "Relevant Project/System records are discoverable through current source-aware Viewer architecture.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-08",
+        "type": "semantic-validation",
+        "result": "",
+        "notes": "Project Summary, System Summary, and System Roadmap do not collapse into one generic meaning.",
+        "statusBasis": "planned-only; not yet executed"
+      },
+      {
+        "name": "T-09",
+        "type": "resume-validation",
+        "result": "",
+        "notes": "A fresh reader can follow the planned authority route without the originating conversation.",
+        "statusBasis": "planned-only; not yet executed"
+      }
+    ],
+    "validation": {
+      "performed": false,
+      "result": "",
+      "notes": [
+        "The source plan defines validation work; actual execution results are not part of the plan."
+      ]
+    },
+    "_comment": "Technical inventories describe the plan/document. Do not use URLs here as substitutes for stable Resource IDs when a registered resource exists."
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": [
+      {
+        "communicationType": "",
+        "audience": "",
+        "subject": "",
+        "body": ""
+      }
+    ]
+  },
+  "graphics": [
+    {
+      "graphicId": "",
+      "role": "",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    }
+  ],
+  "publication": {
+    "status": "",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "",
+    "listingDescription": "",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [
+      {
+        "platform": "",
+        "destinationType": "",
+        "url": "",
+        "status": ""
+      }
+    ],
+    "_comment": "Publication fields describe the implementation-plan document/sidecar publication state, not deployment of the implementation target."
+  },
+  "deployment": {
+    "appsScript": [
+      {
+        "appName": "",
+        "canonicalExecUrl": "",
+        "deploymentId": "",
+        "sourceProjectUrl": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "other": [
+      {
+        "platform": "",
+        "resourceName": "",
+        "canonicalUrl": "",
+        "resourceId": "",
+        "status": "",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "_comment": "Deployment describes planned or relevant target deployments. Stable resource identity should remain separate from deployment URL."
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "validation": {
+    "_comment": "Profile-level semantic validation rules for implementation-plan sidecars.",
+    "performed": true,
+    "result": "pass-with-unresolved-external-identifiers",
+    "rules": [
+      "The implementation-plan.md is authoritative; this sidecar describes it.",
+      "The Work Unit Registry is authoritative for current Work Unit state; workUnitContext.stateAtPlanCreation is a plan-time snapshot only.",
+      "Work Unit Activities are authoritative for timestamped material Work Unit history; this sidecar may reference allocated WUA IDs but must not pre-allocate future WUA IDs.",
+      "A Work Implementation Session is authoritative for detailed formal-session execution history; this sidecar may link to session records but must not absorb execution evidence.",
+      "Session initiation and session activation must remain distinguishable when an activation gate exists.",
+      "Registered resources should be referenced by stable Resource ID when known.",
+      "Unknown Work Unit Activity, Session, Project, System, Application, Relationship, or Resource identifiers must remain blank rather than be invented.",
+      "A WORK-#### identifier must be used only when allocated by the Work Unit authority.",
+      "Project/System/Application/Resource placement must not be inferred from repository path alone.",
+      "Startup context and session-specific working context must remain distinct.",
+      "The workflow declares required context; the Resource Registry resolves that context.",
+      "A reconstructed-continuation plan must identify its planning boundary and prior-work basis.",
+      "Work completed before plan creation must not be represented as prospectively planned work.",
+      "currentState must describe the state at the plan boundary.",
+      "plannedTests must remain distinct from tests actually executed.",
+      "Resource identity must remain distinct from current physical location or deployment URL.",
+      "The implementation-plan sidecar must not become a substitute for Work Unit current state, Work Unit Activity history, formal-session execution history, workflow-run history, final evidence, summary, or work-update records."
+    ],
+    "notes": [
+      "Generated from implementation-plan-sidecar-template-3.2-draft.json.",
+      "The JSON parses successfully.",
+      "WORK-0001 and WUA-0003 are taken directly from the source implementation plan.",
+      "No future WUA ID was pre-allocated.",
+      "Permanent Project, System, Session, Relationship, Run, and unsupported Resource IDs remain blank.",
+      "Work Unit state is represented as a plan-time snapshot rather than current-state authority.",
+      "Actual planned-test execution remains outside this sidecar."
+    ]
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "",
+    "sourceFiles": [
+      "implementation-plan-project-definition.md",
+      "implementation-plan-sidecar-template-3.2-draft.json"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Sol",
+    "generatedTimestamp": "2026-08-16T08:15:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-unreviewed",
+    "interpretationNotes": [
+      "The source implementation plan is treated as the authority for populated plan facts.",
+      "The uploaded filename is used as document.filePath because no verified repository location for this uploaded copy was supplied.",
+      "The plan's intended repository target for the governing plan is described in its implementation stages but is not asserted here as the current physical location.",
+      "Stable Resource IDs not supplied by the source plan are left blank rather than inferred from outside the source."
+    ],
+    "unresolvedQuestions": [
+      "What stable Resource ID identifies the Work Unit Registry workbook in this record context?",
+      "What permanent Project ID will eventually be allocated to Task Assignment and Tracking?",
+      "What permanent System ID will eventually be allocated to Work Queue, if the System identity architecture adopts one?",
+      "What canonical repository filename/path should be used when this uploaded plan is installed in the Project repository?"
+    ],
+    "_comment": "Preserve the evidence used to construct the sidecar. For reconstructed-continuation plans, explicitly record reconstruction sources and interpretation limits. Work Unit/session/WUA references must be grounded in their respective authorities.",
+    "sourceResourceIds": [],
+    "sourceWorkUnitIds": [
+      "WORK-0001"
+    ],
+    "sourceWorkUnitActivityIds": [
+      "WUA-0003"
+    ],
+    "sourceSessionRecords": [
+      "work-implementation-session-2026-08-16-task-assignment-and-tracking.md"
+    ],
+    "contextResolutionNotes": [
+      "The plan identifies the required authority roles and sources; stable Resource IDs are populated only when directly supported by the source."
+    ],
+    "reconstructionNotes": [
+      "planningMode is reconstructed-continuation.",
+      "Plan authority begins at 2026-08-16T07:53:00-06:00.",
+      "Project Identity, Project README, and Project Summary predate the plan boundary.",
+      "WUA-0003 records formal session initiation at 2026-08-16T07:48:00-06:00.",
+      "At plan creation, WORK-0001 remained planned/ready and the plan-link/session-activation gate had not yet been satisfied."
+    ]
+  }
+}
