@@ -10,7 +10,7 @@
     "rootName": "documentation",
     "rootPath": ".",
     "viewerRootPath": "documents/Klinswork Documentation Viewer",
-    "generatedTimestamp": "2026-08-16T14:55:15Z"
+    "generatedTimestamp": "2026-08-16T15:18:49Z"
   },
   "sources": [
     {
@@ -39,17 +39,17 @@
     }
   ],
   "summary": {
-    "recordCount": 72,
-    "validJsonCount": 72,
+    "recordCount": 73,
+    "validJsonCount": 73,
     "invalidJsonCount": 0,
     "archivedRecordCount": 17,
     "sourceCounts": {
       "common": 67,
-      "projects": 4,
+      "projects": 5,
       "therapy": 1
     },
     "companionCounts": {
-      "resolved": 0,
+      "resolved": 1,
       "inferred": 4,
       "undeclared": 37,
       "missing": 0,
@@ -57,7 +57,7 @@
     },
     "recordTypeCounts": {
       "catalog": 10,
-      "generic-document": 5,
+      "generic-document": 6,
       "implementation-plan": 6,
       "json-document": 21,
       "klinswork_chemical_product_catalog": 2,
@@ -1884,6 +1884,50 @@
         "path": "operations/Task Assignment and Tracking/implementation-plans/implementation-plan-project-definition.md",
         "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/implementation-plans/implementation-plan-project-definition.md",
         "manifestRelativePath": "projects/operations/Task Assignment and Tracking/implementation-plans/implementation-plan-project-definition.md"
+      }
+    },
+    {
+      "sourceId": "projects",
+      "name": "project-summary-sidecar.json",
+      "path": "operations/Task Assignment and Tracking/sidecars/project-summary-sidecar.json",
+      "folder": "operations/Task Assignment and Tracking/sidecars",
+      "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/sidecars/project-summary-sidecar.json",
+      "manifestRelativePath": "projects/operations/Task Assignment and Tracking/sidecars/project-summary-sidecar.json",
+      "size": 50132,
+      "modifiedTimestamp": "2026-08-16T15:09:21Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Task Assignment and Tracking — Project Summary",
+      "description": "Task Assignment and Tracking is a Klinswork Project concerned with reliable operational knowledge and control of discrete work from intake through responsibility, performance, completion, verification, history, reporting, and downstream effects. Its principal known System is Work Queue. The Project remains distinct from Work Queue, Scheduling, Inventory Management, employee/personnel authority, Building Map / Locations, Documentation infrastructure, and Meadows Housekeeping. The Project-level definition now consists of Project Identity, local README, human-readable Project Summary, the governing implementation-plan pair, and this structured companion; Work Queue current-state System documentation and full discovery/Viewer validation remain.",
+      "recordType": "generic-document",
+      "status": "not-published",
+      "documentDate": "2026-08-16T07:40:00-06:00",
+      "topics": [
+        "task assignment and tracking",
+        "Project definition",
+        "Project identity",
+        "discrete work lifecycle",
+        "work intake",
+        "assignment",
+        "completion",
+        "verification",
+        "history and audit",
+        "Project boundaries",
+        "Work Queue",
+        "Resource authority"
+      ],
+      "schemaVersion": "3.0-draft",
+      "previewMode": "generic-document",
+      "companionDocument": {
+        "status": "resolved",
+        "resolutionMethod": "declared",
+        "declaredPath": "../summaries/project-summary.md",
+        "format": "markdown",
+        "exists": true,
+        "path": "operations/Task Assignment and Tracking/summaries/project-summary.md",
+        "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/summaries/project-summary.md",
+        "manifestRelativePath": "projects/operations/Task Assignment and Tracking/summaries/project-summary.md"
       }
     },
     {
