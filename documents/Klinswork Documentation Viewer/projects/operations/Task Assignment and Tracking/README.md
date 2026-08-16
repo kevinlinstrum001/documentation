@@ -12,7 +12,7 @@
 | **Project boundary status** | Confirmed at the Project level; Project/System definition package completed and validated through Stage 7; formal relationship records remain future work |
 | **Project-definition role** | Second working exemplar for the Klinswork Project Definition architecture |
 | **Reference exemplar** | Inventory Management → Inventory 3.0 |
-| **Current Work Unit** | `WORK-0001` — active; closure work remains |
+| **Completed Work Unit** | `WORK-0001` — completed 2026-08-16 |
 | **Last reconciled** | 2026-08-16 |
 
 ---
@@ -1047,12 +1047,11 @@ As of 2026-08-16:
 - Registry / Resource Activity / architecture effects have been reconciled through Stage 7;
 - the RES-013 employee-data location correction has been preserved through Resource history.
 
-### Remaining in `WORK-0001`
+### WORK-0001 closure
 
-- reconcile this final Project README creation-time status language;
-- finish the formal Work Implementation Session record;
-- review the `WORK-0001` completion rule;
-- close the formal session and Work Unit if the completion rule remains satisfied.
+`WORK-0001` completed on 2026-08-16 after the final Project README synchronization was verified.
+
+The Work Unit Registry is the authority for its completed/closed state. `WUA-0010` records formal session closure and Work Unit completion.
 
 ### Deliberately deferred
 
@@ -1211,11 +1210,11 @@ Task Assignment and Tracking/
         ↓
     reconcile Registry / Activities / architecture effects ✓
         ↓
-    update formal Work Implementation Session     ← next
+    update formal Work Implementation Session     ✓
         ↓
-    review WORK-0001 completion rule
+    review WORK-0001 completion rule               ✓
         ↓
-    close session / WORK-0001 if satisfied
+    close session / WORK-0001                      ✓
 ```
 
 The Work Queue roadmap and roadmap sidecar remain separate future-state authorities.
