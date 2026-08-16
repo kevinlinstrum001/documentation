@@ -10,7 +10,7 @@
     "rootName": "documentation",
     "rootPath": ".",
     "viewerRootPath": "documents/Klinswork Documentation Viewer",
-    "generatedTimestamp": "2026-08-16T12:57:16Z"
+    "generatedTimestamp": "2026-08-16T13:08:27Z"
   },
   "sources": [
     {
@@ -39,12 +39,12 @@
     }
   ],
   "summary": {
-    "recordCount": 69,
-    "validJsonCount": 69,
+    "recordCount": 70,
+    "validJsonCount": 70,
     "invalidJsonCount": 0,
     "archivedRecordCount": 14,
     "sourceCounts": {
-      "common": 65,
+      "common": 66,
       "projects": 3,
       "therapy": 1
     },
@@ -56,7 +56,7 @@
       "invalid": 0
     },
     "recordTypeCounts": {
-      "catalog": 9,
+      "catalog": 10,
       "generic-document": 5,
       "implementation-plan": 4,
       "json-document": 21,
@@ -160,6 +160,28 @@
       "schemaVersion": "1.0",
       "previewMode": "",
       "entryCount": 7
+    },
+    {
+      "sourceId": "common",
+      "name": "klinswork-system-roadmap-catalog-001.json",
+      "path": "catalogs/klinswork-system-roadmap-catalog-001.json",
+      "folder": "catalogs",
+      "documentationPath": "documents/Klinswork Documentation Viewer/catalogs/klinswork-system-roadmap-catalog-001.json",
+      "manifestRelativePath": "catalogs/klinswork-system-roadmap-catalog-001.json",
+      "size": 7039,
+      "modifiedTimestamp": "2026-08-16T11:49:01Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Klinswork System Roadmap Catalog",
+      "description": "Cross-System discovery catalog for human-readable System roadmaps and their structured sidecars. The catalog indexes roadmaps; it does not replace the human-readable roadmap as authority for planned System direction.",
+      "recordType": "catalog",
+      "status": "",
+      "documentDate": "2026-08-16T05:44:00-06:00",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "",
+      "entryCount": 1
     },
     {
       "sourceId": "common",
@@ -1865,10 +1887,10 @@
     {
       "sourceId": "projects",
       "name": "work-queue-roadmap-sidecar.json",
-      "path": "operations/Task Management/sidecars/work-queue-roadmap-sidecar.json",
-      "folder": "operations/Task Management/sidecars",
-      "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Management/sidecars/work-queue-roadmap-sidecar.json",
-      "manifestRelativePath": "projects/operations/Task Management/sidecars/work-queue-roadmap-sidecar.json",
+      "path": "operations/Task Assignment and Tracking/systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json",
+      "folder": "operations/Task Assignment and Tracking/systems/Work Queue/sidecars",
+      "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json",
+      "manifestRelativePath": "projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json",
       "size": 9214,
       "modifiedTimestamp": "2026-08-16T11:48:59Z",
       "archived": false,
@@ -1891,9 +1913,9 @@
         "declaredPath": "",
         "format": "markdown",
         "exists": true,
-        "path": "operations/Task Management/summaries/work-queue-roadmap.md",
-        "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Management/summaries/work-queue-roadmap.md",
-        "manifestRelativePath": "projects/operations/Task Management/summaries/work-queue-roadmap.md"
+        "path": "operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md",
+        "documentationPath": "documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md",
+        "manifestRelativePath": "projects/operations/Task Assignment and Tracking/systems/Work Queue/summaries/work-queue-roadmap.md"
       }
     },
     {

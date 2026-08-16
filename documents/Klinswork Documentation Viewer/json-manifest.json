@@ -9,7 +9,7 @@
   "repository": {
     "name": "Klinswork Documentation Viewer",
     "rootPath": ".",
-    "generatedTimestamp": "2026-08-16T12:57:06Z"
+    "generatedTimestamp": "2026-08-16T13:08:14Z"
   },
   "summary": {
     "fileCount": 71,
@@ -36,8 +36,8 @@
       "name": "documentation-viewer-manifest.json",
       "path": "documentation-viewer-manifest.json",
       "folder": "",
-      "size": 95016,
-      "modifiedTimestamp": "2026-08-15T23:03:33Z",
+      "size": 94933,
+      "modifiedTimestamp": "2026-08-16T12:57:16Z",
       "archived": false,
       "validJson": true,
       "parseError": "",
@@ -45,7 +45,7 @@
       "description": "",
       "recordType": "json-document",
       "status": "",
-      "documentDate": "2026-08-15T23:03:33Z",
+      "documentDate": "2026-08-16T12:57:16Z",
       "topics": [],
       "schemaVersion": "2.0-draft",
       "previewMode": ""
@@ -125,6 +125,25 @@
       "schemaVersion": "1.0",
       "previewMode": "",
       "entryCount": 7
+    },
+    {
+      "name": "klinswork-system-roadmap-catalog-001.json",
+      "path": "catalogs/klinswork-system-roadmap-catalog-001.json",
+      "folder": "catalogs",
+      "size": 7039,
+      "modifiedTimestamp": "2026-08-16T11:49:01Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Klinswork System Roadmap Catalog",
+      "description": "Cross-System discovery catalog for human-readable System roadmaps and their structured sidecars. The catalog indexes roadmaps; it does not replace the human-readable roadmap as authority for planned System direction.",
+      "recordType": "catalog",
+      "status": "",
+      "documentDate": "2026-08-16T05:44:00-06:00",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "",
+      "entryCount": 1
     },
     {
       "name": "klinswork-document-catalog-005-metadata.json",
@@ -225,28 +244,9 @@
       "previewMode": "generic-document"
     },
     {
-      "name": "klinswork-system-roadmap-catalog-001.json",
-      "path": "projects/operations/Task Management/klinswork-system-roadmap-catalog-001.json",
-      "folder": "projects/operations/Task Management",
-      "size": 7039,
-      "modifiedTimestamp": "2026-08-16T11:49:01Z",
-      "archived": false,
-      "validJson": true,
-      "parseError": "",
-      "title": "Klinswork System Roadmap Catalog",
-      "description": "Cross-System discovery catalog for human-readable System roadmaps and their structured sidecars. The catalog indexes roadmaps; it does not replace the human-readable roadmap as authority for planned System direction.",
-      "recordType": "catalog",
-      "status": "",
-      "documentDate": "2026-08-16T05:44:00-06:00",
-      "topics": [],
-      "schemaVersion": "1.0-draft",
-      "previewMode": "",
-      "entryCount": 1
-    },
-    {
       "name": "work-queue-roadmap-sidecar.json",
-      "path": "projects/operations/Task Management/sidecars/work-queue-roadmap-sidecar.json",
-      "folder": "projects/operations/Task Management/sidecars",
+      "path": "projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json",
+      "folder": "projects/operations/Task Assignment and Tracking/systems/Work Queue/sidecars",
       "size": 9214,
       "modifiedTimestamp": "2026-08-16T11:48:59Z",
       "archived": false,

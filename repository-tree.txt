@@ -49,7 +49,8 @@ documentation/
 │   │   │   ├── klinswork-document-catalog-005-metadata.json
 │   │   │   ├── klinswork-document-catalog-006.json
 │   │   │   ├── klinswork-document-catalog-007.json
-│   │   │   └── klinswork-lesson-catalog-001.json
+│   │   │   ├── klinswork-lesson-catalog-001.json
+│   │   │   └── klinswork-system-roadmap-catalog-001.json
 │   │   ├── projects/
 │   │   │   ├── operations/
 │   │   │   │   ├── Inventory Management/
@@ -69,14 +70,16 @@ documentation/
 │   │   │   │   │   │       └── README.md
 │   │   │   │   │   ├── project-identity.json
 │   │   │   │   │   └── README.md
-│   │   │   │   ├── Task Management/
+│   │   │   │   ├── Task Assignment and Tracking/
 │   │   │   │   │   ├── implementation-plans/
 │   │   │   │   │   ├── sidecars/
-│   │   │   │   │   │   └── work-queue-roadmap-sidecar.json
 │   │   │   │   │   ├── summaries/
-│   │   │   │   │   │   └── work-queue-roadmap.md
-│   │   │   │   │   ├── systems/
-│   │   │   │   │   └── klinswork-system-roadmap-catalog-001.json
+│   │   │   │   │   └── systems/
+│   │   │   │   │       └── Work Queue/
+│   │   │   │   │           ├── sidecars/
+│   │   │   │   │           │   └── work-queue-roadmap-sidecar.json
+│   │   │   │   │           └── summaries/
+│   │   │   │   │               └── work-queue-roadmap.md
 │   │   │   │   └── README.md
 │   │   │   ├── plan.md
 │   │   │   └── projects_README.md
