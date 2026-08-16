@@ -1,0 +1,950 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "generic-document-sidecar-template-3.0.json",
+    "previewMode": "generic-document"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": [
+          "Should Project Summary documents receive a dedicated document-sidecar profile instead of using generic-document?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "../summaries/project-summary.md",
+    "documentUrl": "",
+    "title": "Task Assignment and Tracking — Project Summary",
+    "headline": "Human-readable definition and current interpretation of the Task Assignment and Tracking Project",
+    "documentType": "project-summary",
+    "createdTimestamp": "2026-08-16T07:40:00-06:00",
+    "updatedTimestamp": "2026-08-16T07:40:00-06:00"
+  },
+  "companionDocument": {
+    "path": "../summaries/project-summary.md",
+    "format": "markdown"
+  },
+  "metadata": {
+    "filePath": "../summaries/project-summary.md",
+    "url": "",
+    "sidecarFilePath": "project-summary-sidecar.json",
+    "summaryFilePath": "../summaries/project-summary.md",
+    "repositoryPath": "documentation/documents/Klinswork Documentation Viewer/projects/operations/Task Assignment and Tracking/",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/generic-document-sidecar-template-3.0.json",
+    "baseTemplatePath": "documentation/documents/Klinswork Documentation Viewer/Record Profile Library/document-sidecar-base-template-3.0.json"
+  },
+  "workflowContext": {
+    "workflowId": "",
+    "documentationRunId": "",
+    "documentationStage": "project-definition-exemplar",
+    "sourceSummaryPath": "../summaries/project-summary.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Task Assignment and Tracking",
+      "projectType": "project",
+      "parentProjectId": "",
+      "parentProjectName": "Operations",
+      "projectRecordPath": "../project-identity.json",
+      "projectGoal": "Preserve and improve reliable operational knowledge and control of discrete work.",
+      "projectPhase": "Second Project Definition exemplar / architecture validation",
+      "contributionType": "canonical Project definition / current interpretation",
+      "identificationBasis": "Task Assignment and Tracking Project Identity Entity Record and current Project Summary.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Operations",
+        "relationshipType": "parent-project-current-model",
+        "relationshipDescription": "Task Assignment and Tracking is currently modeled as a child Project of Operations; the formal relationship record/predicate remains pending.",
+        "impact": "Provides organizational context and navigation without becoming intrinsic Project identity.",
+        "evidenceSectionAnchors": [
+          "relationships-and-integration-context",
+          "operations"
+        ],
+        "identificationBasis": "Current Project Summary and Project-local README.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Scheduling",
+        "relationshipType": "operational-context-boundary",
+        "relationshipDescription": "Scheduling provides or is expected to provide person/place/time context; Task Assignment and Tracking preserves the lifecycle of specific work responsibilities.",
+        "impact": "Schedule context may inform assignment without becoming task-history authority.",
+        "evidenceSectionAnchors": [
+          "project-boundaries",
+          "scheduling"
+        ],
+        "identificationBasis": "Current Project Summary boundary narrative.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory Management",
+        "relationshipType": "operational-integration-boundary",
+        "relationshipDescription": "A Work Queue task may cause an inventory-related effect, while Inventory Management retains authority for the resulting inventory-state change and transaction integrity.",
+        "impact": "Preserves task authority and inventory-state authority as separate but linkable domains.",
+        "evidenceSectionAnchors": [
+          "project-boundaries",
+          "inventory-management"
+        ],
+        "identificationBasis": "Current Project Summary boundary narrative.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "infrastructure-support",
+        "relationshipDescription": "Documentation supplies Record Profiles, summaries, sidecars, implementation plans, catalogs, manifests, Viewer infrastructure, workflows, and preservation mechanisms used to describe Task Assignment and Tracking.",
+        "impact": "Supports discovery and interpretation without acquiring task-state authority.",
+        "evidenceSectionAnchors": [
+          "project-boundaries",
+          "documentation"
+        ],
+        "identificationBasis": "Current Project Summary.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Meadows Housekeeping",
+        "foundationType": "operational-environment",
+        "relationshipDescription": "Primary current operational environment in which Task Assignment and Tracking is modeled and used.",
+        "impact": "Provides real work, employees, locations, routines, constraints, and operational evidence without becoming Project identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Building Map / Locations",
+        "foundationType": "shared-location-identity-and-reference-dependency",
+        "relationshipDescription": "Provides shared stable location context for task location, QR reporting, schedule context, inventory-holder relationships, search, reporting, validation, and map navigation.",
+        "impact": "A complete stable location model is a significant dependency for mature Work Queue behavior; Task Assignment and Tracking does not own the shared model."
+      },
+      {
+        "foundationId": "",
+        "name": "Employee Profile / personnel context",
+        "foundationType": "shared-person-identity-context",
+        "relationshipDescription": "Supplies or is expected to supply durable employee/personnel identity and profile context used for assignment and attribution.",
+        "impact": "Task Assignment and Tracking may reference stable employee identities without becoming a competing personnel authority."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "resource-identity-and-routing-authority",
+        "relationshipDescription": "Resolves registered Resource identity, current location, and routing metadata.",
+        "impact": "Prevents mutable paths, URLs, deployments, workbooks, or source locations from being treated as Project identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "documentation-discovery-and-presentation-infrastructure",
+        "relationshipDescription": "Discovers and presents registered documentation records and their companions.",
+        "impact": "Supports retrieval and presentation while preserving source authority."
+      }
+    ],
+    "relationshipSummary": "Task Assignment and Tracking is currently modeled under Operations, implemented principally through the Work Queue System, applied in Meadows Housekeeping, integrated with Scheduling and Inventory Management, dependent on shared employee and location context, and documented through the separate Documentation Project. These are contextual relationships, not intrinsic Project identity."
+  },
+  "subject": {
+    "projectName": "Task Assignment and Tracking",
+    "primaryApp": "",
+    "mainFocus": "Durable Project definition for the discrete-work lifecycle independent of any one System implementation, application, datastore, deployment, or repository location.",
+    "description": "Defines Task Assignment and Tracking as the durable Klinswork Project responsible for reliable operational knowledge and control of discrete work, including purpose, operational function, scope, boundaries, Work Queue context, Resource references, shared dependencies, current state, evidence discipline, history, authority routing, unresolved questions, and next work.",
+    "topics": [
+      "task assignment and tracking",
+      "Project definition",
+      "Project identity",
+      "discrete work lifecycle",
+      "work intake",
+      "assignment",
+      "completion",
+      "verification",
+      "history and audit",
+      "Project boundaries",
+      "Work Queue",
+      "Resource authority",
+      "Building Map dependency",
+      "evidence discipline",
+      "Work Units",
+      "documentation architecture"
+    ],
+    "keywords": [
+      "Task Assignment and Tracking",
+      "Work Queue",
+      "project-identity.json",
+      "project-summary.md",
+      "Project Definition",
+      "Record Profile",
+      "Entity Record",
+      "Resource Registry",
+      "Building Map",
+      "Locations",
+      "Work Unit",
+      "Klinswork Documentation Viewer"
+    ],
+    "appsAffected": [],
+    "systemsAffected": [
+      "Work Queue"
+    ],
+    "componentsAffected": [
+      "Project Identity record",
+      "Project README",
+      "Project Summary",
+      "Project Summary sidecar",
+      "Work Queue System documentation",
+      "Project documentation space"
+    ]
+  },
+  "documentSummary": {
+    "purpose": "Provide the authoritative human-readable Project definition and current interpretation for Task Assignment and Tracking while keeping intrinsic identity, Resource routing, cross-entity relationships, current Work Queue implementation truth, roadmap direction, and execution evidence with their own authorities.",
+    "scope": "Project purpose, discrete-work operational function, scope, functional boundaries, Work Queue System context, Resource references and authority rules, shared Building Map/employee dependencies, current Project-definition state, evidence classes, historical framing, Work Unit/roadmap/plan separation, resume-work guidance, unresolved questions, and next work.",
+    "summary": "Task Assignment and Tracking is a Klinswork Project concerned with reliable operational knowledge and control of discrete work from intake through responsibility, performance, completion, verification, history, reporting, and downstream effects. Its principal known System is Work Queue. The Project remains distinct from Work Queue, Scheduling, Inventory Management, employee/personnel authority, Building Map / Locations, Documentation infrastructure, and Meadows Housekeeping. The Project-level definition now consists of Project Identity, local README, human-readable Project Summary, the governing implementation-plan pair, and this structured companion; Work Queue current-state System documentation and full discovery/Viewer validation remain.",
+    "intendedAudience": [
+      "future Klinswork work sessions",
+      "project maintainers",
+      "documentation tools and Viewer",
+      "technical reviewers",
+      "operations-system designers"
+    ],
+    "status": "current-working-project-definition",
+    "confidence": "high for documented Project-definition facts; detailed current Work Queue implementation state remains intentionally bounded and requires System-level/current-evidence verification"
+  },
+  "keyPoints": [
+    {
+      "sequence": 1,
+      "title": "Task Assignment and Tracking is the Project",
+      "description": "Task Assignment and Tracking is the durable Project; Work Queue is its principal known System, not a synonym for the Project.",
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "principal-system-work-queue"
+      ]
+    },
+    {
+      "sequence": 2,
+      "title": "Project ID remains unassigned",
+      "description": "The permanent PROJ-### value is intentionally blank until formal allocation; names, folders, relationships, Work Queue, Resources, and prior provisional numbering must not be used to invent one.",
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "current-state"
+      ]
+    },
+    {
+      "sequence": 3,
+      "title": "Operational function is the discrete-work lifecycle",
+      "description": "The Project covers identifying work, establishing context and responsibility, tracking performance and state, preserving notes/evidence, completing and verifying work, retaining history, and using that information operationally.",
+      "evidenceSectionAnchors": [
+        "purpose",
+        "operational-function"
+      ]
+    },
+    {
+      "sequence": 4,
+      "title": "Project boundaries are functional",
+      "description": "Scheduling, Inventory Management, employee/personnel authority, Building Map / Locations, Documentation, Meadows Housekeeping, and Work Queue remain distinct even when they are tightly related to the Project.",
+      "evidenceSectionAnchors": [
+        "project-boundaries"
+      ]
+    },
+    {
+      "sequence": 5,
+      "title": "Current System truth and roadmap intent are separate",
+      "description": "The Work Queue System Summary should answer what Work Queue is now; the Work Queue roadmap answers what it should become. Planned roadmap capabilities must not be presented as implemented merely because they are documented.",
+      "evidenceSectionAnchors": [
+        "current-state",
+        "principal-system-work-queue"
+      ]
+    },
+    {
+      "sequence": 6,
+      "title": "Building Map is a shared dependency, not owned scope",
+      "description": "Task Assignment and Tracking depends on a complete, stable shared location model for mature location-aware behavior but does not become the owner of Building Map / Locations.",
+      "evidenceSectionAnchors": [
+        "building-map-dependency",
+        "project-boundaries"
+      ]
+    },
+    {
+      "sequence": 7,
+      "title": "Resource identity is separate from Project identity",
+      "description": "Applications, spreadsheets, datasets, source code, deployments, technical manuals, and other implementation artifacts are Resources whose stable identity and routing belong in the Resource Registry.",
+      "evidenceSectionAnchors": [
+        "resources"
+      ]
+    },
+    {
+      "sequence": 8,
+      "title": "Evidence classes remain explicit",
+      "description": "Historical implementation evidence, planning/design evidence, and current implementation evidence answer different questions and must not be silently merged.",
+      "evidenceSectionAnchors": [
+        "history-and-architectural-evolution",
+        "current-operational-evidence-boundary"
+      ]
+    },
+    {
+      "sequence": 9,
+      "title": "Roadmaps, Work Units, and implementation plans have different granularity",
+      "description": "System Roadmaps provide durable future direction, Roadmap Areas organize capability domains, Work Units track bounded capability outcomes, and implementation plans define intended execution method.",
+      "evidenceSectionAnchors": [
+        "roadmap-work-units-and-implementation-plans"
+      ]
+    },
+    {
+      "sequence": 10,
+      "title": "Next layer is Work Queue current-state documentation",
+      "description": "After this Project Summary companion is installed and validated, the next Project Definition work is the Work Queue README, current-state System Summary, and System Summary sidecar.",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "conceptId": "project",
+      "name": "Task Assignment and Tracking Project",
+      "definition": "The durable undertaking responsible for the discrete-work assignment-and-tracking operational function.",
+      "relationships": [
+        "principal System: Work Queue",
+        "current parent model: Operations",
+        "current operational environment: Meadows Housekeeping"
+      ],
+      "evidenceSectionAnchors": [
+        "project-identity-context",
+        "purpose"
+      ]
+    },
+    {
+      "conceptId": "system",
+      "name": "Work Queue",
+      "definition": "The principal known System presently used to implement and support the Task Assignment and Tracking Project.",
+      "relationships": [
+        "implements/supports Task Assignment and Tracking; formal relationship record pending",
+        "broader than any single application, deployment, spreadsheet, or source file"
+      ],
+      "evidenceSectionAnchors": [
+        "principal-system-work-queue"
+      ]
+    },
+    {
+      "conceptId": "work-lifecycle",
+      "name": "Discrete-work lifecycle",
+      "definition": "The controlled progression from identified work through context, review/release where needed, responsibility, performance/status, completion/verification, preserved history, and operational use.",
+      "relationships": [
+        "may consume Scheduling context",
+        "may produce Inventory Management effects",
+        "may use shared employee and location identities"
+      ],
+      "evidenceSectionAnchors": [
+        "purpose",
+        "operational-function",
+        "scope"
+      ]
+    },
+    {
+      "conceptId": "project-identity",
+      "name": "Project identity separation",
+      "definition": "Project identity remains distinct from name, location, hierarchy, System, application, Resource, environment, deployment, lifecycle, and implementation.",
+      "relationships": [
+        "canonical intrinsic identity facts are assigned to project-identity.json"
+      ],
+      "evidenceSectionAnchors": [
+        "project-identity-context"
+      ]
+    },
+    {
+      "conceptId": "shared-location-dependency",
+      "name": "Building Map / Locations dependency",
+      "definition": "Shared stable location identity used across Work Queue, Scheduling, Inventory relationships, QR reporting, search, reporting, validation, and map navigation.",
+      "relationships": [
+        "consumed by Task Assignment and Tracking",
+        "ownership/governance remains outside the Project unless separately established"
+      ],
+      "evidenceSectionAnchors": [
+        "building-map-dependency",
+        "project-boundaries"
+      ]
+    },
+    {
+      "conceptId": "resource-authority",
+      "name": "Resource authority",
+      "definition": "Stable Resource identity and current location/routing are resolved through the Resource Registry rather than Project identity.",
+      "relationships": [
+        "Project/System relationships to Resources remain separate cross-entity facts"
+      ],
+      "evidenceSectionAnchors": [
+        "resources"
+      ]
+    },
+    {
+      "conceptId": "evidence-classes",
+      "name": "Evidence classes",
+      "definition": "Historical implementation evidence, planning/design evidence, and current implementation evidence are kept separate so intention, dated history, and current behavior are not conflated.",
+      "relationships": [
+        "current behavior claims require current evidence"
+      ],
+      "evidenceSectionAnchors": [
+        "history-and-architectural-evolution",
+        "current-operational-evidence-boundary"
+      ]
+    },
+    {
+      "conceptId": "project-definition",
+      "name": "Project Definition",
+      "definition": "A coordinated record set whose distinct authority roles together make a Project understandable, discoverable, resumable, and reusable.",
+      "relationships": [
+        "Entity Record",
+        "README",
+        "Project Summary",
+        "sidecar",
+        "System documentation",
+        "System roadmap",
+        "implementation plans",
+        "Work Implementation Sessions"
+      ],
+      "evidenceSectionAnchors": [
+        "project-definition-exemplar-role",
+        "resulting-project-state"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "NEXT-001",
+      "title": "Create Work Queue local README",
+      "description": "Create the System-local orientation document under systems/Work Queue/.",
+      "reason": "The Project-level definition package is the prerequisite for descending into the principal System documentation layer.",
+      "priority": "next",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-002",
+      "title": "Create Work Queue System Summary and sidecar",
+      "description": "Define the current-state human-readable Work Queue System interpretation and its structured companion without prematurely assigning a SYS-### value.",
+      "reason": "Completes the non-identity System documentation layer required by WORK-0001 and keeps current-state truth separate from the roadmap.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "principal-system-work-queue",
+        "next-work"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-003",
+      "title": "Validate discovery and companion behavior",
+      "description": "Regenerate the Documentation Viewer manifest and verify Project Summary, Work Queue System Summary, roadmap companion, and Entity Record handling.",
+      "reason": "The second exemplar is not proven until the records are correctly discovered, companion-resolved, and semantically distinguishable in the Viewer.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "next-work",
+        "project-definition-exemplar-role"
+      ]
+    },
+    {
+      "recommendationId": "NEXT-004",
+      "title": "Reconcile Resources and close WORK-0001",
+      "description": "Reconcile current Work Queue Resource references, assess Registry/Activity/Architecture effects, update the Work Implementation Session, and close the Work Unit only after its completion rule is satisfied.",
+      "reason": "Resource routing, material history, and session closure belong to their own authorities and must not be inferred from documentation creation alone.",
+      "priority": "high",
+      "status": "planned",
+      "evidenceSectionAnchors": [
+        "resources",
+        "next-work"
+      ]
+    }
+  ],
+  "openQuestions": [
+    {
+      "questionId": "OQ-001",
+      "question": "What permanent PROJ-### value will be allocated to Task Assignment and Tracking?",
+      "reasonOpen": "Formal Project ID allocation has not occurred.",
+      "nextStep": "Resolve only through the formal Project ID allocation authority."
+    },
+    {
+      "questionId": "OQ-002",
+      "question": "What exact precedence/reconciliation rule applies if the Project Registry and project-identity.json disagree?",
+      "reasonOpen": "The authority/conflict rule has not yet been frozen.",
+      "nextStep": "Resolve as a formal architecture determination before treating either record as an automatic override."
+    },
+    {
+      "questionId": "OQ-003",
+      "question": "What controlled predicate represents Operations → Task Assignment and Tracking, and how should Project → System / Project → Resource / shared-dependency relationships be formalized?",
+      "reasonOpen": "The Relationship Registry schema and controlled predicates are not finalized.",
+      "nextStep": "Define the relationship authority and predicates without encoding them into Project identity."
+    },
+    {
+      "questionId": "OQ-004",
+      "question": "What permanent SYS-### value, if any, will be allocated to Work Queue, and what is the final System boundary?",
+      "reasonOpen": "System Identity work and the final application-versus-System boundary are intentionally deferred.",
+      "nextStep": "Complete current-state System documentation and later reconcile System Identity architecture."
+    },
+    {
+      "questionId": "OQ-005",
+      "question": "Which current Work Queue Resources are fully reconciled in the Resource Registry, and which source, deployment, and datastore records are authoritative for current behavior?",
+      "reasonOpen": "The Project Summary lists known Resource references but does not perform a complete current Resource reconciliation.",
+      "nextStep": "Review the current Resource Registry and fresh implementation evidence during the Work Queue System Summary stage."
+    },
+    {
+      "questionId": "OQ-006",
+      "question": "What is the final controlled task state machine and authorization model for assignment, rejection/release, blocking, deferral, cancellation, reopening, correction, and immutable history?",
+      "reasonOpen": "Current and roadmap material do not yet freeze the complete work-lifecycle vocabulary and transition authority.",
+      "nextStep": "Resolve through current-state verification and later bounded product/architecture work."
+    },
+    {
+      "questionId": "OQ-007",
+      "question": "What exact authentication/current-user, role, and permission model should establish employee, supervisor, and administrator identity in Work Queue?",
+      "reasonOpen": "Reliable current-user identity and role-aware permissions remain incomplete target capabilities.",
+      "nextStep": "Treat as future System/product work after current-state documentation is complete."
+    },
+    {
+      "questionId": "OQ-008",
+      "question": "How should Scheduling context influence assignment without becoming an inflexible task-history authority?",
+      "reasonOpen": "The mature relationship is described conceptually but the final integration rules are not frozen.",
+      "nextStep": "Reconcile Scheduling authority and Work Queue task-history authority in a bounded integration Work Unit."
+    },
+    {
+      "questionId": "OQ-009",
+      "question": "What exact transaction contract should govern Work Queue → Inventory Management transfer propagation?",
+      "reasonOpen": "Holder-event creation is supported as current evidence, but complete source decrement/destination increment propagation is not verified current behavior.",
+      "nextStep": "Verify current behavior and later define atomic transfer/integrity rules through Inventory Management authority."
+    },
+    {
+      "questionId": "OQ-010",
+      "question": "What is the authoritative shared Building Map / Locations relationship, and what gaps must be closed for stable task-location use?",
+      "reasonOpen": "Building Map / Locations is an important shared dependency but its complete target model and formal relationship record remain unresolved.",
+      "nextStep": "Resolve shared location authority before implementing location-dependent Work Queue capabilities; do not create duplicate private location identities."
+    },
+    {
+      "questionId": "OQ-011",
+      "question": "What structured note, image/evidence, QR-reporting, and bounded OpenAI validation rules should be adopted?",
+      "reasonOpen": "These are roadmap/product areas whose schema, privacy, retention, role permissions, and authority limits are not finalized.",
+      "nextStep": "Handle them as later bounded capability Work Units; AI must remain advisory rather than operational authority."
+    },
+    {
+      "questionId": "OQ-012",
+      "question": "Which reports, print layouts, and paperwork-translation outputs are operationally necessary, and which digital record remains authoritative when paper and digital state disagree?",
+      "reasonOpen": "Reporting and paperwork translation are target capabilities without final operational specifications.",
+      "nextStep": "Derive requirements from real operational use after current-state System documentation."
+    },
+    {
+      "questionId": "OQ-013",
+      "question": "Should Project Summaries receive a dedicated Record Profile, and how should Entity Records, Project Summaries, System Summaries, and Roadmaps be visually distinguished in the Viewer?",
+      "reasonOpen": "The current Project Summary uses the generic-document profile and Viewer semantics are still being tested through exemplars.",
+      "nextStep": "Complete the second exemplar and record only demonstrated profile/Viewer defects before revising the Record Profile architecture."
+    },
+    {
+      "questionId": "OQ-014",
+      "question": "Which parts of the Inventory Management and Task Assignment and Tracking exemplars are genuinely generic enough for a reusable Project Definition template?",
+      "reasonOpen": "The second exemplar is still in progress.",
+      "nextStep": "Finish WORK-0001 validation before extracting universal structure."
+    },
+    {
+      "questionId": "OQ-015",
+      "question": "What is the fully reconciled chronology and current implementation state of Tasker → Work Queue?",
+      "reasonOpen": "The Project Summary preserves high-level historical/current evidence boundaries rather than performing complete live implementation reconciliation.",
+      "nextStep": "Inspect dated historical records, current source, datastore, deployment, Registry records, and fresh tests during System-level verification."
+    }
+  ],
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "Task Assignment and Tracking is being formalized as the durable operational Project for discrete work. Work Queue is the System supporting that Project, while Scheduling, Inventory Management, employee/personnel information, and Building Map / Locations retain their own authority.",
+      "operationalImpact": "The structure makes work ownership, assignment, completion, history, location, and downstream effects easier to reason about without forcing every related function into one application or one source of truth.",
+      "whatToKnowNext": [
+        "The Project ID remains intentionally unassigned.",
+        "Work Queue current-state documentation is still being built.",
+        "The Work Queue roadmap describes intended future capability and is not proof that those capabilities already exist.",
+        "Building Map / Locations is a shared dependency rather than owned Project scope."
+      ]
+    },
+    "general": {
+      "summary": "This record describes the Task Assignment and Tracking Project independently of any single app. It explains why the Project exists, where Work Queue fits, what neighboring functions remain separate, what is known now, what is planned, and what remains unresolved.",
+      "readingOrder": [
+        "../project-identity.json",
+        "../README.md",
+        "../summaries/project-summary.md",
+        "../systems/Work Queue/README.md",
+        "../systems/Work Queue/summaries/system-summary.md or work-queue-roadmap.md as appropriate"
+      ]
+    },
+    "technical": {
+      "summary": "Treat this sidecar as a structured interpretation of the Project Summary, not as Project Identity, relationship authority, Resource authority, Work Queue live-state authority, roadmap authority, or execution evidence.",
+      "authorityNotes": [
+        "Project identity facts belong to ../project-identity.json.",
+        "Current Resource identity/routing belongs to the Resource Registry.",
+        "Work Queue detailed current state belongs in systems/Work Queue/summaries/system-summary.md once created.",
+        "Work Queue intended future state belongs in systems/Work Queue/summaries/work-queue-roadmap.md.",
+        "Current software behavior requires current source/data/deployment/test evidence.",
+        "The Work Implementation Session and WUAs preserve bounded execution/material work history."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecific": [
+      "Task Assignment and Tracking is defined as the durable Project for the discrete-work lifecycle; Work Queue is its principal known System.",
+      "Scheduling, Inventory Management, employee/personnel context, Building Map / Locations, Documentation, and Meadows Housekeeping are explicitly bounded from intrinsic Project identity.",
+      "Building Map / Locations is a shared dependency with direct consequences for mature task-location behavior.",
+      "Current Work Queue evidence and future roadmap direction are intentionally separated."
+    ],
+    "reusable": [
+      "A Project Summary can describe relationships and dependencies without turning them into intrinsic identity.",
+      "System current-state documentation and System roadmaps should answer different questions.",
+      "Shared location/person identity should be consumed rather than duplicated locally.",
+      "A second exemplar should test the first architecture before a universal Project Definition template is extracted."
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "sec-001",
+      "title": "1. Document purpose and authority",
+      "anchor": "document-purpose-and-authority",
+      "contentSummary": "Defines the Project Summary as the human-readable explanatory authority for Project purpose, scope, boundaries, current interpretation, historical framing, and unresolved Project-definition questions while preserving distributed authority."
+    },
+    {
+      "sectionId": "sec-002",
+      "title": "2. Project identity context",
+      "anchor": "project-identity-context",
+      "contentSummary": "Defines Task Assignment and Tracking as a Project, preserves its blank/unassigned permanent Project ID, and separates identity from hierarchy, System, Resources, environment, deployment, lifecycle, and implementation."
+    },
+    {
+      "sectionId": "sec-003",
+      "title": "3. Purpose",
+      "anchor": "purpose",
+      "contentSummary": "States the purpose as reliable operational knowledge and control of discrete work across the full lifecycle."
+    },
+    {
+      "sectionId": "sec-004",
+      "title": "4. Operational function",
+      "anchor": "operational-function",
+      "contentSummary": "Models the controlled transition from identified work through context, review, responsibility, performance, completion, preserved history, and operational use."
+    },
+    {
+      "sectionId": "sec-005",
+      "title": "5. Scope",
+      "anchor": "scope",
+      "contentSummary": "Defines in-scope lifecycle, evidence, history, search/reporting, recurring work, integrations, administration/integrity, and documentation concerns and distinguishes adjacent functions."
+    },
+    {
+      "sectionId": "sec-006",
+      "title": "6. Project boundaries",
+      "anchor": "project-boundaries",
+      "contentSummary": "Separates Task Assignment and Tracking from Scheduling, Inventory Management, employee/personnel authority, Building Map / Locations, Documentation, Meadows Housekeeping, and Work Queue."
+    },
+    {
+      "sectionId": "sec-007",
+      "title": "7. Paperwork and human-process parallel",
+      "anchor": "paperwork-and-human-process-parallel",
+      "contentSummary": "Preserves the real operational process as broader than digital participation and recognizes paper, verbal, observational, photographic, and system-originated inputs."
+    },
+    {
+      "sectionId": "sec-008",
+      "title": "8. Principal System: Work Queue",
+      "anchor": "principal-system-work-queue",
+      "contentSummary": "Places Work Queue as the principal known System and records a bounded set of supported high-level current System facts while deferring detailed current-state verification to the System Summary."
+    },
+    {
+      "sectionId": "sec-009",
+      "title": "9. Resources",
+      "anchor": "resources",
+      "contentSummary": "Identifies current Work Queue Resource references and preserves Resource Registry authority for identity, current location, routing, deployment, and version facts."
+    },
+    {
+      "sectionId": "sec-010",
+      "title": "10. Current state",
+      "anchor": "current-state",
+      "contentSummary": "Separates operational/current implementation state, planned System direction, and Project-definition/documentation state."
+    },
+    {
+      "sectionId": "sec-011",
+      "title": "11. Current records and authority routing",
+      "anchor": "current-records-and-authority-routing",
+      "contentSummary": "Routes identity, orientation, Project narrative, structured sidecar interpretation, System records, implementation plans, and execution history to distinct authorities."
+    },
+    {
+      "sectionId": "sec-012",
+      "title": "12. Relationships and integration context",
+      "anchor": "relationships-and-integration-context",
+      "contentSummary": "Describes Operations, Work Queue, Scheduling, Inventory Management, Employee Profile, Building Map / Locations, QR reporting, bounded OpenAI assistance, and Documentation as contextual relationships."
+    },
+    {
+      "sectionId": "sec-013",
+      "title": "13. Building Map dependency",
+      "anchor": "building-map-dependency",
+      "contentSummary": "Explains why shared stable location identity is important to task operations and why dependence on Building Map does not transfer ownership into this Project."
+    },
+    {
+      "sectionId": "sec-014",
+      "title": "14. Roadmap, Work Units, and implementation plans",
+      "anchor": "roadmap-work-units-and-implementation-plans",
+      "contentSummary": "Separates durable System direction, roadmap areas, bounded Work Units, implementation plans, and formal Work Implementation Sessions."
+    },
+    {
+      "sectionId": "sec-015",
+      "title": "15. History and architectural evolution",
+      "anchor": "history-and-architectural-evolution",
+      "contentSummary": "Preserves historical Tasker/application-centered terminology while expressing the current Project/System/Resource interpretation and evidence-class rules."
+    },
+    {
+      "sectionId": "sec-016",
+      "title": "16. Current operational evidence boundary",
+      "anchor": "current-operational-evidence-boundary",
+      "contentSummary": "Limits the Project Summary's implementation claims and defers exact Work Queue architecture, deployment, datastore, behavior, permissions, tests, and unresolved issues to current System evidence."
+    },
+    {
+      "sectionId": "sec-017",
+      "title": "17. How to enter or resume work on this Project",
+      "anchor": "how-to-enter-or-resume-work-on-this-project",
+      "contentSummary": "Defines progressive context-loading routes for Project, roadmap, current implementation, and Building Map-related work."
+    },
+    {
+      "sectionId": "sec-018",
+      "title": "18. Project Definition exemplar role",
+      "anchor": "project-definition-exemplar-role",
+      "contentSummary": "Defines Task Assignment and Tracking → Work Queue as the second Project Definition exemplar after Inventory Management → Inventory 3.0."
+    },
+    {
+      "sectionId": "sec-019",
+      "title": "19. Unresolved questions",
+      "anchor": "unresolved-questions",
+      "contentSummary": "Keeps Project/System identity, relationships, Resource reconciliation, lifecycle, permissions, integrations, evidence, Viewer/Profile, template, and implementation-history questions explicitly open."
+    },
+    {
+      "sectionId": "sec-020",
+      "title": "20. Next work",
+      "anchor": "next-work",
+      "contentSummary": "Directs work from the Project Summary sidecar into Work Queue current-state documentation, discovery/Viewer validation, Registry/architecture reconciliation, session closure, and later product-planning follow-on."
+    },
+    {
+      "sectionId": "sec-021",
+      "title": "21. Resulting Project state",
+      "anchor": "resulting-project-state",
+      "contentSummary": "Shows the layered Project Definition structure and explains how it preserves Project intelligibility through changes in Work Queue, deployment, datastore, repository, relationships, environment, and integrations."
+    },
+    {
+      "sectionId": "sec-022",
+      "title": "22. Current canonical interpretation",
+      "anchor": "current-canonical-interpretation",
+      "contentSummary": "Summarizes the current semantic hierarchy from Klinswork through Operations and Task Assignment and Tracking to Work Queue and its Resources."
+    }
+  ],
+  "technical": {
+    "platforms": [],
+    "apps": [
+      "Work Queue",
+      "Klinswork Documentation Viewer"
+    ],
+    "scripts": [],
+    "languages": [],
+    "services": [],
+    "subscriptions": [],
+    "dataStores": [],
+    "files": [
+      "../project-identity.json",
+      "../README.md",
+      "../summaries/project-summary.md",
+      "project-summary-sidecar.json",
+      "../implementation-plans/implementation-plan-project-definition.md",
+      "../sidecars/implementation-plan-project-definition-sidecar.json",
+      "../systems/Work Queue/summaries/work-queue-roadmap.md",
+      "../systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json"
+    ],
+    "integrations": [
+      "Task Assignment and Tracking ↔ Work Queue",
+      "Scheduling → Task Assignment and Tracking context",
+      "Work Queue → Inventory Management effects",
+      "Employee Profile / personnel context ↔ Work Queue",
+      "Building Map / Locations ↔ Work Queue",
+      "Project Summary ↔ Project Summary sidecar",
+      "Documentation Viewer ↔ Project documentation"
+    ],
+    "apis": [
+      "OpenAI API — planned bounded advisory role only"
+    ],
+    "versions": [],
+    "resourceReferences": [
+      {
+        "resourceId": "RES-002",
+        "resourceName": "Work Queue app",
+        "authorityNote": "Identity/current routing remain with Resource Registry."
+      },
+      {
+        "resourceId": "RES-003",
+        "resourceName": "Work Queue app data sheet",
+        "authorityNote": "Identity/current routing remain with Resource Registry."
+      },
+      {
+        "resourceId": "RES-012",
+        "resourceName": "Work Queue Tasks dataset",
+        "authorityNote": "Identity/current routing remain with Resource Registry."
+      },
+      {
+        "resourceId": "RES-013",
+        "resourceName": "Work Queue Employees dataset",
+        "authorityNote": "Identity/current routing remain with Resource Registry."
+      },
+      {
+        "resourceId": "RES-014",
+        "resourceName": "Work Queue Locations reference",
+        "authorityNote": "Identity/current routing remain with Resource Registry."
+      },
+      {
+        "resourceId": "RES-047",
+        "resourceName": "Work Queue app technical manual",
+        "authorityNote": "Technical evidence; detailed current implementation claims still require appropriate current verification."
+      }
+    ],
+    "tests": [
+      {
+        "name": "JSON parse",
+        "type": "structural-validation",
+        "result": "pass",
+        "notes": "Generated project-summary-sidecar.json was serialized and parsed successfully.",
+        "statusBasis": "executed locally at generation"
+      },
+      {
+        "name": "Project ID discipline",
+        "type": "semantic-validation",
+        "result": "pass",
+        "notes": "projectContext.primaryProject.projectId remains blank; no PROJ-### or SYS-### value was invented.",
+        "statusBasis": "executed locally against generated record"
+      },
+      {
+        "name": "Project/System distinction",
+        "type": "semantic-validation",
+        "result": "pass",
+        "notes": "Task Assignment and Tracking is represented as Project and Work Queue as principal System; primaryApp is intentionally blank.",
+        "statusBasis": "executed locally against generated record"
+      },
+      {
+        "name": "Building Map boundary",
+        "type": "semantic-validation",
+        "result": "pass",
+        "notes": "Building Map / Locations is represented as a shared location dependency rather than intrinsic Project identity or owned scope.",
+        "statusBasis": "executed locally against generated record"
+      },
+      {
+        "name": "Roadmap/current-state separation",
+        "type": "semantic-validation",
+        "result": "pass",
+        "notes": "The sidecar distinguishes future Work Queue roadmap direction from detailed current-state System truth.",
+        "statusBasis": "executed locally against generated record"
+      },
+      {
+        "name": "Companion declaration",
+        "type": "companion-resolution-precheck",
+        "result": "pass-structure-only",
+        "notes": "companionDocument explicitly declares ../summaries/project-summary.md. Repository/manifest resolution must be verified after the sidecar is placed in the Project folder.",
+        "statusBasis": "local structural check only"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "local-pass-repository-resolution-pending",
+      "notes": [
+        "JSON structure parses successfully.",
+        "The explicit Markdown companion path is present and relative to the sidecar.",
+        "Project ID remains blank/unassigned and no System ID is invented.",
+        "Project Identity authority remains with ../project-identity.json.",
+        "Work Queue is modeled as System rather than Project identity or primary application.",
+        "Building Map / Locations remains a shared dependency.",
+        "Roadmap intent is not presented as detailed current implementation truth.",
+        "Final companion resolution, manifest discovery, and Viewer validation remain pending until this file is installed in the repository."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "not-published",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Task Assignment and Tracking — Project Summary",
+    "listingDescription": "Durable Project definition for Task Assignment and Tracking, separating Project identity from Work Queue, neighboring Projects, shared employee/location context, Resources, roadmap intent, and current implementation evidence.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "../summaries/project-summary.md",
+    "sourceConversationReference": "",
+    "sourceFiles": [
+      "../summaries/project-summary.md",
+      "../project-identity.json",
+      "../README.md",
+      "../implementation-plans/implementation-plan-project-definition.md",
+      "Inventory Management/sidecars/project-summary-sidecar.json — reference exemplar",
+      "generic-document-sidecar-template-3.0.json"
+    ],
+    "generatedBy": "ChatGPT (GPT-5.6 Sol)",
+    "generatedTimestamp": "2026-08-16T09:03:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-local-validation-passed-repository-validation-pending",
+    "interpretationNotes": [
+      "This record is a machine-readable companion to project-summary.md; the Markdown source remains authoritative for the Project purpose, scope, boundary narrative, current interpretation, historical framing, and unresolved Project-definition questions expressed there.",
+      "project-identity.json remains the separate Project Identity Entity Record.",
+      "The generic-document profile is used because the current sidecar profile registry does not define a dedicated Project Summary document-sidecar profile.",
+      "Parent Project, Work Queue, operational environment, Scheduling, Inventory Management, Building Map / Locations, employee/personnel context, Documentation, and Resources are represented as contextual/relationship information rather than intrinsic Project identity.",
+      "The sidecar preserves the Project Summary's distinction between high-level current Work Queue evidence, future roadmap direction, and detailed current-state System verification that still belongs in the pending System Summary.",
+      "Building Map / Locations is represented as a shared dependency with direct operational consequences, not as owned Task Assignment and Tracking scope.",
+      "The explicit companionDocument declaration is intended for current source-aware manifest resolution; final repository resolution has not yet been claimed by this local artifact.",
+      "No permanent Project, System, Relationship, Session, or Work Unit Activity identifier has been invented."
+    ],
+    "unresolvedQuestions": [
+      "What permanent PROJ-### value will be allocated to Task Assignment and Tracking?",
+      "What exact precedence/reconciliation rule applies if the Project Registry and project-identity.json disagree?",
+      "What controlled predicates will formalize Operations → Task Assignment and Tracking, Project → System, Project → Resource, and shared dependencies?",
+      "What permanent SYS-### value, if any, will be allocated to Work Queue, and what is its final System boundary?",
+      "Which current Work Queue Resources, source, deployment, and datastore entries are authoritative for current behavior?",
+      "What is the final controlled task lifecycle and authorization model?",
+      "What are the final Scheduling, Inventory, Employee Profile, and Building Map integration contracts?",
+      "What note/evidence, QR/OpenAI, reporting, and paperwork-translation rules should be adopted?",
+      "Should Project Summaries receive a dedicated Record Profile?",
+      "Which Project Definition elements are genuinely reusable after the second exemplar is completed?",
+      "What is the fully reconciled chronology and current implementation state of Tasker → Work Queue?"
+    ]
+  }
+}
