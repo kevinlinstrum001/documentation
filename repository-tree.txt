@@ -1,6 +1,7 @@
 documentation/
 ├── archive/
 │   ├── calendar-utility-sample.html
+│   ├── documentation-viewer-manifest.py
 │   ├── filing_cabinet_and_database_lesson.html
 │   ├── filing_cabinet_metaphor.html
 │   ├── from_messages_to_organizational_memory.html
@@ -75,6 +76,7 @@ documentation/
 │   │   │   │   │   ├── implementation-plans/
 │   │   │   │   │   │   └── implementation-plan-project-definition.md
 │   │   │   │   │   ├── sidecars/
+│   │   │   │   │   │   └── implementation-plan-project-definition-sidecar.json
 │   │   │   │   │   ├── summaries/
 │   │   │   │   │   │   └── project-summary.md
 │   │   │   │   │   ├── systems/
@@ -90,24 +92,26 @@ documentation/
 │   │   │   └── projects_README.md
 │   │   ├── Record Profile Library/
 │   │   │   ├── archive/
+│   │   │   │   ├── document-sidecar-base-template-3.0.json
 │   │   │   │   ├── document-sidecar-template-2.0.json
 │   │   │   │   ├── implementation-plan-sidecar-template-3.0.json
+│   │   │   │   ├── implementation-plan-sidecar-template-3.1-draft.json
 │   │   │   │   ├── sidecar-profile-registry-1.0-original.json
 │   │   │   │   ├── sidecar-profile-registry-1.0.json
 │   │   │   │   ├── sidecar-profile-system-readme-updated.md
-│   │   │   │   └── sidecar-profile-system-readme.md
-│   │   │   ├── document-sidecar-base-template-3.0.json
+│   │   │   │   ├── sidecar-profile-system-readme.md
+│   │   │   │   ├── work-implementation-session-template-1.0-draft.md
+│   │   │   │   └── workflow-specification-sidecar-template-3.0.json
 │   │   │   ├── generic-document-sidecar-template-3.0.json
-│   │   │   ├── implementation-plan-sidecar-template-3.1-draft.json
+│   │   │   ├── implementation-plan-sidecar-template.json
 │   │   │   ├── lesson-reference-sidecar-template-3.0.json
 │   │   │   ├── project-identity-template-1.0-draft.json
 │   │   │   ├── pst-sp-study-guide-sidecar-template-1.0.json
 │   │   │   ├── README.md
 │   │   │   ├── record-profile-registry-1.0.json
 │   │   │   ├── summary-md-template.json
-│   │   │   ├── work-implementation-session-template-1.0-draft.md
-│   │   │   ├── work-update-sidecar-template-3.0.json
-│   │   │   └── workflow-specification-sidecar-template-3.0.json
+│   │   │   ├── work-implementation-session-template.md
+│   │   │   └── work-update-sidecar-template-3.0.json
 │   │   ├── sidecars/
 │   │   │   ├── implementation-plans/
 │   │   │   │   └── implementation-plan-sds-sheet-upgrade-sidecar-3.0-draft.json

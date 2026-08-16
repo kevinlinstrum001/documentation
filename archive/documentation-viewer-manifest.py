@@ -36,18 +36,10 @@ normally a Markdown summary. New sidecars should explicitly declare the pair:
     }
 
 The builder resolves and validates that path relative to the sidecar. For
-migration support, it also performs conservative filename inference when a
-sidecar lives below ``sidecars/``:
-
-- ordinary document sidecars: ``foo-sidecar.json`` -> parallel ``summaries/foo.md``
-- implementation-plan sidecars: ``foo-sidecar.json`` -> parallel
-  ``implementation-plans/foo.md``
-
-The implementation-plan rule is record-type aware and therefore applies
-generically inside every registered Project documentation space. Explicit
-``companionDocument`` metadata always takes precedence over inference.
-Inference is reported as ``inferred`` rather than ``resolved`` so undeclared
-metadata remains visible.
+migration support, it also performs one conservative filename inference when a
+sidecar lives below ``sidecars/``: ``foo-sidecar.json`` is checked against the
+parallel ``summaries/foo.md`` path. Inference is reported as ``inferred`` rather
+than ``resolved`` so undeclared metadata remains visible.
 
 Source configuration
 ====================
@@ -71,17 +63,6 @@ Optional::
 
     py -3 documentation-viewer-manifest.py --documentation-root C:\\path\\to\\documentation
 
-Draft.3 companion-inference update
-===================================
-
-Draft.3 preserves the draft.2 source-aware discovery model and adds generic
-Project-local implementation-plan companion inference:
-
-    project/sidecars/<name>-sidecar.json
-    -> project/implementation-plans/<name>.md
-
-when the sidecar's detected record type is ``implementation-plan``.
-
 No third-party packages are required.
 """
 
@@ -97,7 +78,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Sequence
 
 
-SCRIPT_VERSION = "2.0.0-draft.3"
+SCRIPT_VERSION = "2.0.0-draft.2"
 MANIFEST_SCHEMA_VERSION = "2.0-draft"
 MANIFEST_TYPE = "klinswork-documentation-viewer-manifest"
 
@@ -123,7 +104,6 @@ EXCLUDED_DIRECTORY_NAMES = {
 ARCHIVE_DIRECTORY_NAMES = {"archive", "archived"}
 SIDECAR_DIRECTORY_NAME = "sidecars"
 SUMMARY_DIRECTORY_NAME = "summaries"
-IMPLEMENTATION_PLAN_DIRECTORY_NAME = "implementation-plans"
 
 EXCLUDED_FILE_NAMES = {
     "json-manifest.json",
@@ -723,25 +703,13 @@ def extract_explicit_companion(data: Any) -> tuple[str, str]:
     return alias_path, ""
 
 
-def infer_companion_candidate(
-    source: SourceSpec,
-    sidecar_path: Path,
-    data: Any,
-) -> Path | None:
+def infer_companion_candidate(source: SourceSpec, sidecar_path: Path) -> Path | None:
     """
-    Conservatively infer a human-readable companion from a conventional
-    sidecar filename and the sidecar's detected record type.
+    Conservatively infer a sibling summary from a conventional sidecar name.
 
-    Ordinary document example:
+    Example:
         area/sidecars/systems-summary-sidecar.json
         -> area/summaries/systems-summary.md
-
-    Implementation-plan example:
-        project/sidecars/implementation-plan-project-definition-sidecar.json
-        -> project/implementation-plans/implementation-plan-project-definition.md
-
-    Explicit companionDocument metadata is handled before this function is
-    called and always takes precedence over inference.
     """
 
     relative = sidecar_path.relative_to(source.root_dir)
@@ -760,27 +728,11 @@ def infer_companion_candidate(
     if not stem.casefold().endswith("-sidecar"):
         return None
 
-    companion_name = stem[: -len("-sidecar")] + ".md"
-    record_type = detect_record_type(data).casefold()
-
-    if record_type == "implementation-plan":
-        candidate_directory_names = [
-            IMPLEMENTATION_PLAN_DIRECTORY_NAME,
-            SUMMARY_DIRECTORY_NAME,  # migration fallback only
-        ]
-    else:
-        candidate_directory_names = [SUMMARY_DIRECTORY_NAME]
-
-    for directory_name in candidate_directory_names:
-        candidate_parts = parts[:]
-        candidate_parts[sidecars_index] = directory_name
-        candidate_parts[-1] = companion_name
-        candidate = source.root_dir.joinpath(*candidate_parts)
-
-        if candidate.is_file():
-            return candidate
-
-    return None
+    summary_name = stem[: -len("-sidecar")] + ".md"
+    candidate_parts = parts[:]
+    candidate_parts[sidecars_index] = SUMMARY_DIRECTORY_NAME
+    candidate_parts[-1] = summary_name
+    return source.root_dir.joinpath(*candidate_parts)
 
 
 def resolve_companion_document(
@@ -790,7 +742,7 @@ def resolve_companion_document(
     documentation_root: Path,
     viewer_root: Path,
 ) -> dict[str, Any]:
-    """Resolve and validate the human-readable document represented by a sidecar, using explicit metadata first and record-type-aware inference second."""
+    """Resolve and validate the human-readable document represented by a sidecar."""
 
     declared_path, declared_format = extract_explicit_companion(data)
     resolution_method = "declared" if declared_path else ""
@@ -811,8 +763,8 @@ def resolve_companion_document(
                 validation_error = "Companion path resolves outside its documentation source."
                 candidate = None
     else:
-        candidate = infer_companion_candidate(source, sidecar_path, data)
-        if candidate is not None:
+        candidate = infer_companion_candidate(source, sidecar_path)
+        if candidate is not None and candidate.is_file():
             resolution_method = "inferred"
         else:
             candidate = None
