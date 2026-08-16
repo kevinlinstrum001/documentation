@@ -7,14 +7,14 @@
 | **Parent Project** | Task Assignment and Tracking |
 | **System ID** | Unassigned; permanent `SYS-###` assignment is intentionally deferred |
 | **System Identity Entity Record** | Not created |
-| **Companion sidecar** | `../sidecars/system-summary-sidecar.json` — next |
+| **Companion sidecar** | `../sidecars/system-summary-sidecar.json` — current |
 | **System Roadmap** | `work-queue-roadmap.md` |
 | **Technical documentation Resource** | `RES-047` — Work Queue app technical manual |
 | **Current registered application Resource** | `RES-002` — Work Queue app |
 | **Current registered datastore Resource** | `RES-003` — Work Queue app data sheet |
 | **Current-state confidence** | High for semantic placement, current Registry routing, current Work Queue datastore structure, the separate registered employee/personnel source, and current shared Locations structure; medium for detailed runtime behavior because current Apps Script source/deployment logic was not directly inspected in this reconciliation step |
 | **Last reconciled** | 2026-08-16 |
-| **Reconciliation timestamp** | 2026-08-16T09:38:00-06:00 |
+| **Reconciliation timestamp** | 2026-08-16T10:25:00-06:00 |
 
 ---
 
@@ -1810,7 +1810,7 @@ Work Queue/
 │   ├── system-summary.md
 │   └── work-queue-roadmap.md
 └── sidecars/
-    ├── system-summary-sidecar.json        [next]
+    ├── system-summary-sidecar.json        [current]
     └── work-queue-roadmap-sidecar.json
 ```
 
@@ -1904,8 +1904,8 @@ Remaining questions are:
 
 ### 23.9 Documentation / Viewer
 
-- Will the Viewer discover this System Summary through the Projects Documentation Space after its sidecar is created?
-- Will the System Summary and System Roadmap be visually distinguishable?
+- The Viewer now discovers this System Summary through the Projects Documentation Space via its validated sidecar/companion relationship.
+- The current Viewer semantics distinguish the System Summary and System Roadmap; future presentation refinements may still be considered.
 - Should a dedicated System Summary sidecar profile be created later?
 - What Viewer treatment should be reserved for a future System Identity Entity Record?
 - Which System Definition rules are genuinely reusable after this second exemplar?
@@ -1914,38 +1914,27 @@ Remaining questions are:
 
 ## 24. Next work
 
-The immediate next artifact is:
+The System Summary companion has been created and validated:
 
 ```text
 ../sidecars/system-summary-sidecar.json
 ```
 
-It should:
+Completed after the original drafting of this Summary:
 
-- declare this Markdown file as its human-readable companion;
-- use the currently recognized generic document-sidecar profile unless architecture changes first;
-- identify `Work Queue` as the System subject;
-- identify `Task Assignment and Tracking` as parent Project context;
-- keep `systemId` blank/unassigned;
-- structure current architecture, Work Queue operational datastore, task model, activity/history model, templates, settings, location relationships, Inventory relationship, shared employee/personnel source, Resources, evidence classes, limitations, reconciliations, remaining uncertainty, and open questions;
-- represent `RES-013` as the separate current Employees workbook rather than the stale Work Queue-workbook location;
-- preserve `ACT-0081` as provenance for the Resource-location correction where appropriate;
-- preserve the distinction between current evidence and roadmap intent;
-- support Documentation Viewer discovery.
+1. the sidecar was created as a structured companion to this Markdown source;
+2. `Work Queue` remained the System subject and `Task Assignment and Tracking` remained parent Project context;
+3. `systemId` remained blank/unassigned;
+4. the corrected `RES-013` separate Employees-workbook relationship was preserved;
+5. the source-aware manifest was regenerated;
+6. the System Summary sidecar was discovered under the Projects source;
+7. companion resolution to `summaries/system-summary.md` succeeded;
+8. the Work Queue roadmap sidecar remained discovered and companion-resolved;
+9. current-state and roadmap Viewer semantics were validated as distinct;
+10. context-naive resume behavior was validated;
+11. the material System-definition stage was recorded in Work Unit history.
 
-After the sidecar is created:
-
-1. validate JSON structure;
-2. validate companion resolution to `summaries/system-summary.md`;
-3. verify `RES-013` is represented with the corrected employee-source relationship;
-4. regenerate `documentation-viewer-manifest.json`;
-5. verify the System Summary sidecar is discovered under the Projects source;
-6. verify the Work Queue roadmap sidecar remains discovered;
-7. verify current-state and roadmap records are distinguishable in the Viewer;
-8. reconcile any Viewer/profile problems;
-9. decide whether current-source inspection is required to close any remaining completion-rule gaps;
-10. test the context-naive resume path;
-11. record the material System-definition-stage Work Unit Activity when the README + Summary + sidecar package is complete and validated.
+No additional System-definition artifact is required for WORK-0001. Remaining work belongs to Project Definition closure: reconcile creation-time annotations, update the formal Work Implementation Session, review the completion rule, and close the session/Work Unit if the rule remains satisfied.
 
 ---
 

@@ -7,12 +7,12 @@
 | **Parent Project** | Task Assignment and Tracking |
 | **System ID** | Unassigned; no permanent `SYS-###` is being created in this documentation step |
 | **System Identity Entity Record** | Not created; System Identity schema remains intentionally deferred |
-| **Human-readable current-state System definition** | `summaries/system-summary.md` — next |
-| **System Summary sidecar** | `sidecars/system-summary-sidecar.json` — pending |
+| **Human-readable current-state System definition** | `summaries/system-summary.md` — current |
+| **System Summary sidecar** | `sidecars/system-summary-sidecar.json` — current |
 | **System Roadmap** | `summaries/work-queue-roadmap.md` — current |
 | **System Roadmap sidecar** | `sidecars/work-queue-roadmap-sidecar.json` — current |
 | **Technical documentation Resource** | `RES-047` — Work Queue app technical manual |
-| **Documentation status** | System-local orientation created; current-state System definition still pending |
+| **Documentation status** | System-local README, current-state System Summary/sidecar, and future-state roadmap/sidecar are present; discovery and companion validation completed in WORK-0001 |
 | **Last reconciled** | 2026-08-16 |
 
 ---
@@ -89,7 +89,7 @@ The Project may survive a redesign, replacement, or renaming of Work Queue.
 
 Likewise, Work Queue should not be reduced to one visible application screen, one spreadsheet, one deployment, or one historical implementation.
 
-The Project Summary describes Work Queue as broader than a single application surface and identifies the detailed current-state System interpretation as the responsibility of the pending System Summary.
+The Project Summary describes Work Queue as broader than a single application surface and identifies the detailed current-state System interpretation as the responsibility of the current System Summary.
 
 ---
 
@@ -115,7 +115,7 @@ is being assigned.
 
 That is deliberate.
 
-The second Project Definition exemplar is still testing the separation among:
+The second Project Definition exemplar has validated the separation among:
 
 - Project identity;
 - Project definition;
@@ -169,10 +169,10 @@ It should not silently absorb authority assigned elsewhere.
 **Status:**
 
 ```text
-NEXT — NOT YET CREATED
+CURRENT — created 2026-08-16
 ```
 
-Intended role:
+Role:
 
 - authoritative human-readable current-state System explanation;
 - Work Queue purpose and operational role;
@@ -203,10 +203,10 @@ It must not become a duplicate of the System Roadmap.
 **Status:**
 
 ```text
-PENDING — created after system-summary.md
+CURRENT — created 2026-08-16
 ```
 
-Intended role:
+Role:
 
 - machine-readable structured companion to `summaries/system-summary.md`;
 - Viewer/discovery representation of supported current-state System facts;
@@ -368,16 +368,16 @@ This README should not preempt it.
 
 ## 5. Current System-local documentation structure
 
-Current / near-term structure:
+Current structure:
 
 ```text
 Work Queue/
 ├── README.md
 ├── summaries/
-│   ├── system-summary.md                  [next]
+│   ├── system-summary.md                  [current]
 │   └── work-queue-roadmap.md              [current]
 └── sidecars/
-    ├── system-summary-sidecar.json        [pending]
+    ├── system-summary-sidecar.json        [current]
     └── work-queue-roadmap-sidecar.json    [current]
 ```
 
@@ -399,10 +399,10 @@ Use the following routing rule when entering Work Queue documentation:
 |---|---|
 | What Project is Work Queue part of? | `../../summaries/project-summary.md` |
 | What is intrinsic to the Task Assignment and Tracking Project? | `../../project-identity.json` |
-| What is Work Queue now? | `summaries/system-summary.md` once created |
+| What is Work Queue now? | `summaries/system-summary.md` |
 | What should Work Queue become? | `summaries/work-queue-roadmap.md` |
 | What is the structured roadmap representation? | `sidecars/work-queue-roadmap-sidecar.json` |
-| What is the structured current-state System representation? | `sidecars/system-summary-sidecar.json` once created |
+| What is the structured current-state System representation? | `sidecars/system-summary-sidecar.json` |
 | Where is the technical architecture baseline? | `RES-047` |
 | What is a Resource and where is it now? | Resource Registry |
 | What does the live software actually do? | current source / data / deployment / executable verification |
@@ -474,7 +474,7 @@ Current implementation evidence supports:
 
 > **What does Work Queue actually do now?**
 
-The pending System Summary should reconcile these evidence classes explicitly.
+The current System Summary reconciles these evidence classes explicitly.
 
 ---
 
@@ -516,7 +516,7 @@ Important documented limitations include:
 
 These points are **orientation-level baseline facts**.
 
-The pending System Summary must determine the detailed current state and qualify each claim according to its evidence.
+The current System Summary provides the detailed current-state reconciliation and qualifies claims according to their evidence.
 
 ---
 
@@ -547,7 +547,7 @@ This supports the current System interpretation:
 
 > **Work Queue is the coherent operating mechanism around task assignment and tracking, not merely whichever application happens to render its current user interface.**
 
-The exact final System boundary remains unresolved and should be reconciled in the System Summary and later System Identity work.
+The exact final System boundary remains unresolved in the current System Summary and is also a later System Identity question.
 
 ---
 
@@ -963,7 +963,7 @@ README.md
 summaries/system-summary.md
 ```
 
-The System Summary will become the main human-readable current-state answer.
+The System Summary is the main human-readable current-state answer.
 
 ---
 
@@ -1138,25 +1138,26 @@ As of 2026-08-16:
 ```text
 Work Queue recognized as principal System
 System directory present
-README.md created by this step
+README.md present
+summaries/system-summary.md present
+sidecars/system-summary-sidecar.json present
 summaries/work-queue-roadmap.md present
 sidecars/work-queue-roadmap-sidecar.json present
-roadmap discoverable through current Documentation Viewer architecture
 parent Task Assignment and Tracking Project-level definition package complete
 RES-047 technical documentation available
 known Work Queue Resource references identified
+System Summary and roadmap companions resolved by the source-aware Viewer manifest
+current-state and future-state Viewer semantics validated together
+context-naive resume routing validated
 ```
 
-### Next / in progress
+### Remaining in WORK-0001
 
 ```text
-summaries/system-summary.md
-sidecars/system-summary-sidecar.json
-current Resource reconciliation
-current implementation verification as required by System Summary
-System Summary companion resolution
-Viewer validation of current-state and roadmap records together
-context-naive resume test
+reconcile creation-time status annotations in current human-readable documents
+finish the formal Work Implementation Session record
+review the WORK-0001 completion rule
+close the session and Work Unit if the completion rule remains satisfied
 ```
 
 ### Deliberately deferred
@@ -1175,63 +1176,21 @@ universal reusable System Definition template extraction
 
 ## 20. Next work
 
-The immediate next artifact is:
-
-```text
-summaries/system-summary.md
-```
-
-The System Summary should describe **Work Queue as it currently exists, based on evidence**.
-
-It should include:
-
-- System purpose;
-- System boundary;
-- current architecture;
-- application/data relationships;
-- task model;
-- employee identity and assignment relationships;
-- location relationships;
-- current history behavior;
-- current Inventory relationship;
-- supporting Resources;
-- technical documentation;
-- historical implementation context;
-- known current limitations;
-- evidence confidence and uncertainty;
-- open questions;
-- next verification work.
-
-After that:
-
-```text
-sidecars/system-summary-sidecar.json
-```
-
-should be created as the structured companion.
-
-Then validate:
-
-1. JSON structure;
-2. companion path;
-3. Work Queue represented as System;
-4. Task Assignment and Tracking Project context preserved;
-5. no permanent System ID invented;
-6. current-state claims remain separated from roadmap target state;
-7. Resource references use stable IDs where known;
-8. manifest discovery;
-9. Viewer presentation;
-10. context-naive resume behavior.
-
-The Work Queue System-definition stage should be considered materially complete only after:
+The Work Queue System-definition package for WORK-0001 is complete and validated:
 
 ```text
 README.md
-system-summary.md
-system-summary-sidecar.json
+summaries/system-summary.md
+sidecars/system-summary-sidecar.json
+summaries/work-queue-roadmap.md
+sidecars/work-queue-roadmap-sidecar.json
 ```
 
-exist coherently and the System Summary companion/discovery behavior has been validated.
+No additional Work Queue System-definition artifact is required before closing the current Project Definition Work Unit.
+
+The immediate WORK-0001 work is closure-oriented: reconcile remaining creation-time status annotations, finish the formal Work Implementation Session record, review the Work Unit completion rule, and close the session/Work Unit if the rule remains satisfied.
+
+Future Work Queue feature development should be selected from the System Roadmap through bounded Work Units rather than being silently folded into this Project Definition session.
 
 ---
 

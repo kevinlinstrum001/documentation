@@ -12,10 +12,10 @@
 | **Project-definition status** | Second working Klinswork Project Definition exemplar |
 | **Reference exemplar** | Inventory Management → Inventory 3.0 |
 | **Project Identity profile** | `project-identity / 1.0-draft` |
-| **Companion sidecar** | `../sidecars/project-summary-sidecar.json` — pending |
+| **Companion sidecar** | `../sidecars/project-summary-sidecar.json` — current |
 | **System roadmap** | `../systems/Work Queue/summaries/work-queue-roadmap.md` — current |
 | **Last reconciled** | 2026-08-16 |
-| **Reconciliation timestamp** | 2026-08-16T07:40:00-06:00 |
+| **Reconciliation timestamp** | 2026-08-16T10:25:00-06:00 |
 
 ---
 
@@ -973,7 +973,7 @@ They should not be rewritten here as though they are already implemented.
 
 ### 10.3 Project-definition state
 
-As of 2026-08-16, the Project-definition layer is actively being built as the second Klinswork exemplar.
+As of 2026-08-16, the Project-definition layer has been completed and validated through Stage 7 as the second Klinswork exemplar.
 
 Completed or present:
 
@@ -982,25 +982,28 @@ Task Assignment and Tracking recognized as Project
 Work Queue recognized as principal System
 Project directory created
 project-identity.json instantiated
-README.md created
-Work Queue System directory created
-Work Queue roadmap created
-Work Queue roadmap sidecar created
-System Roadmap Catalog created
-Documentation Viewer taught System Roadmap preview
-project-summary.md created by this step
+README.md present
+project-summary.md present
+sidecars/project-summary-sidecar.json present and companion-resolved
+Work Queue System directory present
+systems/Work Queue/README.md present
+systems/Work Queue/summaries/system-summary.md present
+systems/Work Queue/sidecars/system-summary-sidecar.json present and companion-resolved
+Work Queue roadmap present
+Work Queue roadmap sidecar present and companion-resolved
+System Roadmap Catalog current
+Documentation Viewer current-state / roadmap semantics validated
+source-aware discovery and companion resolution validated
+Registry / Resource Activity / architecture effects reconciled through Stage 7
 ```
 
-Still pending after this document:
+Remaining in WORK-0001:
 
 ```text
-sidecars/project-summary-sidecar.json
-systems/Work Queue/README.md
-systems/Work Queue/summaries/system-summary.md
-systems/Work Queue/sidecars/system-summary-sidecar.json
-discovery / companion validation
-Registry / Activity / architecture effect reconciliation
-implementation-session closure
+creation-time annotation cleanup
+formal Work Implementation Session update
+completion-rule review
+session / Work Unit closure if the completion rule remains satisfied
 ```
 
 ### 10.4 Project ID state
@@ -1056,7 +1059,7 @@ Use it to enter the Project documentation space and determine what to read next.
 
 ### 11.4 `sidecars/project-summary-sidecar.json`
 
-**Status:** pending.
+**Status:** current — created and validated in WORK-0001.
 
 **Role:** machine-readable companion to this Markdown source.
 
@@ -1069,17 +1072,14 @@ It must remain a **sidecar**, not an Entity Record.
 Current records:
 
 ```text
+README.md
+summaries/system-summary.md
+sidecars/system-summary-sidecar.json
 summaries/work-queue-roadmap.md
 sidecars/work-queue-roadmap-sidecar.json
 ```
 
-Still pending:
-
-```text
-README.md
-summaries/system-summary.md
-sidecars/system-summary-sidecar.json
-```
+The current-state System Summary pair and future-state roadmap pair are present and validated as distinct authorities.
 
 ### 11.6 `implementation-plans/`
 
@@ -1433,7 +1433,7 @@ Rules:
 
 This Project Summary is intentionally not a full live verification of Work Queue.
 
-Current evidence is sufficient to support the Project/System interpretation and several high-level implementation facts, but the detailed current-state System record is still pending.
+Current evidence is sufficient to support the Project/System interpretation and several high-level implementation facts, and the detailed current-state System record now exists in `../systems/Work Queue/summaries/system-summary.md`.
 
 The Work Queue technical manual provides a useful architecture baseline.
 
@@ -1846,13 +1846,13 @@ Task Assignment and Tracking
         │     → summaries/project-summary.md
         │
         ├── machine-readable Project Summary
-        │     → ../sidecars/project-summary-sidecar.json [next]
+        │     → ../sidecars/project-summary-sidecar.json [current]
         │
         ├── principal System
         │     → ../systems/Work Queue/
         │
         ├── current System definition
-        │     → Work Queue/system-summary.md [pending]
+        │     → Work Queue/system-summary.md [current]
         │
         ├── future System direction
         │     → Work Queue/work-queue-roadmap.md
@@ -1964,7 +1964,7 @@ Principal source classes include:
 
 This Summary does not silently promote roadmap intent into current implementation truth.
 
-Where detailed current behavior matters, the next Work Queue System Summary should verify it from current implementation evidence.
+Where detailed current behavior matters, the current Work Queue System Summary should be supplemented by current implementation evidence.
 
 ---
 
