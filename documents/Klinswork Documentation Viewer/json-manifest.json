@@ -9,7 +9,7 @@
   "repository": {
     "name": "Klinswork Documentation Viewer",
     "rootPath": ".",
-    "generatedTimestamp": "2026-08-16T13:08:14Z"
+    "generatedTimestamp": "2026-08-16T13:20:45Z"
   },
   "summary": {
     "fileCount": 71,
@@ -36,8 +36,8 @@
       "name": "documentation-viewer-manifest.json",
       "path": "documentation-viewer-manifest.json",
       "folder": "",
-      "size": 94933,
-      "modifiedTimestamp": "2026-08-16T12:57:16Z",
+      "size": 96224,
+      "modifiedTimestamp": "2026-08-16T13:08:27Z",
       "archived": false,
       "validJson": true,
       "parseError": "",
@@ -45,7 +45,7 @@
       "description": "",
       "recordType": "json-document",
       "status": "",
-      "documentDate": "2026-08-16T12:57:16Z",
+      "documentDate": "2026-08-16T13:08:27Z",
       "topics": [],
       "schemaVersion": "2.0-draft",
       "previewMode": ""

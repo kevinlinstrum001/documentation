@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Klinswork Documentation Viewer 2.1-draft</title>
+  <title>Klinswork Documentation Viewer 2.0-draft</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -1209,154 +1209,6 @@
     }
 
 
-
-    .roadmap-stat-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: .45rem;
-      margin-top: .5rem;
-    }
-    .roadmap-stat {
-      min-width: 0;
-      padding: .62rem .65rem;
-      text-align: center;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 9px;
-    }
-    .roadmap-stat strong {
-      display: block;
-      color: var(--accent-strong);
-      font-size: 1.05rem;
-      line-height: 1.1;
-    }
-    .roadmap-stat span {
-      display: block;
-      margin-top: .14rem;
-      color: var(--muted);
-      font-size: .62rem;
-      line-height: 1.3;
-    }
-    .roadmap-baseline-label {
-      display: inline-flex;
-      margin: .25rem 0 .55rem;
-      padding: .22rem .46rem;
-      color: var(--accent-strong);
-      background: var(--accent-soft);
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      font-size: .66rem;
-      font-weight: 760;
-    }
-    .roadmap-two-column {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: .55rem;
-      margin-top: .5rem;
-    }
-    .roadmap-block {
-      min-width: 0;
-      padding: .58rem .62rem;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 9px;
-    }
-    .roadmap-block h4 {
-      margin: 0 0 .32rem;
-      color: var(--accent-strong);
-      font-size: .65rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    .roadmap-block ul {
-      margin: 0;
-      padding-left: 1rem;
-    }
-    .roadmap-block li {
-      margin: .25rem 0;
-      color: var(--text);
-      font-size: .72rem;
-      line-height: 1.4;
-    }
-    .roadmap-area-list,
-    .roadmap-integration-list,
-    .roadmap-sequence-list {
-      display: grid;
-      gap: .45rem;
-      margin-top: .48rem;
-    }
-    .roadmap-area,
-    .roadmap-integration,
-    .roadmap-sequence {
-      min-width: 0;
-      padding: .58rem .62rem;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 9px;
-    }
-    .roadmap-area-head,
-    .roadmap-integration-head,
-    .roadmap-sequence-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: .5rem;
-    }
-    .roadmap-area strong,
-    .roadmap-integration strong,
-    .roadmap-sequence strong {
-      color: var(--text);
-      font-size: .76rem;
-      line-height: 1.35;
-    }
-    .roadmap-area-code {
-      color: var(--accent-strong);
-      font-family: var(--mono);
-      font-size: .63rem;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-    .roadmap-status {
-      flex: 0 0 auto;
-      padding: .14rem .34rem;
-      color: var(--muted);
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: .58rem;
-      white-space: nowrap;
-    }
-    .roadmap-integration p,
-    .roadmap-sequence p,
-    .roadmap-policy p {
-      margin: .28rem 0 0;
-      color: var(--muted);
-      font-size: .7rem;
-      line-height: 1.42;
-    }
-    .roadmap-sequence-number {
-      display: inline-grid;
-      place-items: center;
-      width: 1.55rem;
-      height: 1.55rem;
-      margin-right: .4rem;
-      color: var(--panel);
-      background: var(--accent);
-      border-radius: 999px;
-      font-size: .65rem;
-      font-weight: 850;
-    }
-    .roadmap-vocabulary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .28rem;
-      margin-top: .45rem;
-    }
-    @media (max-width: 560px) {
-      .roadmap-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .roadmap-two-column { grid-template-columns: 1fr; }
-    }
-
     .pst-preview-sections { padding: .85rem 1.12rem 1.1rem; }
     .pst-tabs { position: sticky; top: -.85rem; z-index: 3; display: flex; gap: .32rem; overflow-x: auto; margin: -.85rem -1.12rem .8rem; padding: .68rem 1.12rem; background: color-mix(in srgb, var(--panel) 94%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(8px); }
     .pst-tab { flex: 0 0 auto; padding: .36rem .55rem; font-size: .7rem; font-weight: 750; }
@@ -1437,7 +1289,7 @@
     <div class="sidebar-header">
       <h1>Klinswork Documentation Viewer</h1>
       <p class="subtle">Source-aware, read-only documentation browser</p>
-      <p class="subtle runtime-info" id="runtimeInfo">2.1-draft · detecting runtime…</p>
+      <p class="subtle runtime-info" id="runtimeInfo">2.0-draft · detecting runtime…</p>
       <div class="file-controls">
         <input id="fileFilter" type="search" placeholder="Filter filenames or paths">
         <button id="refreshButton" title="Refresh repository">Refresh</button>
@@ -1661,7 +1513,7 @@
 
   async function loadAbout() {
     if (!isLocalApiRuntime()) {
-      els.runtimeInfo.textContent = "2.1-draft · GitHub Pages · source-aware manifest";
+      els.runtimeInfo.textContent = "2.0-draft · GitHub Pages · source-aware manifest";
       els.runtimeInfo.title = `Static source-aware documentation browser · manifest: ${runtime.manifestUrl}`;
       return;
     }
@@ -1673,7 +1525,7 @@
       els.runtimeInfo.textContent = `v${about.version || "1.6.1"} · build ${about.buildId} · PID ${about.processId} · port ${about.port}`;
       els.runtimeInfo.title = `Script: ${about.scriptPath}\nRepository: ${about.folder}`;
     } catch {
-      els.runtimeInfo.textContent = "2.1-draft · local API runtime unavailable";
+      els.runtimeInfo.textContent = "2.0-draft · local API runtime unavailable";
     }
   }
 
@@ -2234,23 +2086,13 @@
     return {
       title: stringField(["preview.title", "document.title", "document.documentTitle", "documentTitle", "title", "publication.listingTitle", "listing.title", "googleSites.title", "metadata.title"]) || { value: "Untitled document", path: basePath },
       subtitle: stringField(["preview.subtitle", "document.subtitle", "document.headline", "headline", "publication.subtitle", "listing.subtitle"]),
-      summary: pickPreviewField(data, ["preview.summary", "targetState.summary", "document.executiveSummary", "executiveSummary", "document.summary", "summary", "abstract", "document.description", "description", "subject.description", "workCoverage.coverageDescription", "publication.listingDescription", "listing.description", "googleSites.listingDescription"], basePath),
+      summary: pickPreviewField(data, ["preview.summary", "document.executiveSummary", "executiveSummary", "document.summary", "summary", "abstract", "document.description", "description", "subject.description", "workCoverage.coverageDescription", "publication.listingDescription", "listing.description", "googleSites.listingDescription"], basePath),
       documentType: pickPreviewField(data, ["document.documentType", "document.type", "documentType", "recordType", "type"], basePath),
       date: pickPreviewField(data, ["document.publicationDate", "document.publishedDate", "document.date", "document.createdTimestamp", "publication.publishedAt", "publication.publicationDate", "publication.date", "publishedDate", "createdTimestamp", "date"], basePath),
       documentId: pickPreviewField(data, ["document.documentId", "documentId", "id"], basePath),
       documentUrl: stringField(["document.documentUrl", "document.url", "publication.canonicalUrl", "publication.documentUrl", "canonicalUrl", "links.fullDocument", "links.document", "url"]),
       filePath: stringField(["document.filePath", "document.fileName", "filePath", "fileName", "metadata.filePath"]),
       project: pickPreviewField(data, ["projectContext.primaryProject", "primaryProject", "project", "document.project", "subject.primaryProject", "subject.projectName", "subject.primaryApp", "projectName"], basePath),
-      systemName: pickPreviewField(data, ["subject.systemName", "system.systemName", "document.systemName", "systemName"], basePath),
-      roadmapStatus: pickPreviewField(data, ["document.status", "roadmap.status", "status"], basePath),
-      roadmapBaseline: pickPreviewField(data, ["currentBaseline"], basePath),
-      roadmapTargetState: pickPreviewField(data, ["targetState"], basePath),
-      roadmapAreas: pickPreviewField(data, ["roadmapAreas"], basePath),
-      roadmapIntegrations: pickPreviewField(data, ["integrations"], basePath),
-      roadmapMaturitySequence: pickPreviewField(data, ["maturitySequence"], basePath),
-      roadmapWorkUnitPolicy: pickPreviewField(data, ["workUnitPolicy"], basePath),
-      roadmapStatusVocabulary: pickPreviewField(data, ["roadmapStatusVocabulary"], basePath),
-      roadmapValidation: pickPreviewField(data, ["validation"], basePath),
       purpose: pickPreviewField(data, ["preview.purpose", "workCoverage.purpose", "document.purpose", "purpose", "projectContribution.purpose", "subject.mainFocus"], basePath),
       supervisorBrief: pickPreviewField(data, ["supervisorView.brief", "supervisorView.summary", "supervisorBrief", "audienceViews.supervisor.brief", "audiences.supervisor.brief", "publication.supervisorBrief"], basePath),
       outcomes: pickPreviewField(data, ["preview.outcomes", "keyOutcomes", "outcomes", "projectContribution.outcomes", "projectContribution.result", "resultingCapabilities", "currentState.capabilities", "workPerformed.outcomes", "workCoverage.completed", "keywords"], basePath),
@@ -2385,60 +2227,9 @@
     return match ? match[0] : "";
   }
 
-
-  function looksLikeSystemRoadmapCatalog(data) {
-    if (!isPlainObject(data) || !Array.isArray(data.entries)) return false;
-    const catalog = isPlainObject(data.catalog) ? data.catalog : {};
-    const catalogId = String(catalog.catalogId || catalog.catalog_id || "").toLowerCase();
-    const title = String(catalog.title || "").toLowerCase();
-    return catalogId.includes("system-roadmap-catalog") ||
-      title.includes("system roadmap catalog") ||
-      data.entries.some(entry => isPlainObject(entry?.roadmap) && isPlainObject(entry?.system));
-  }
-
-  function roadmapCatalogField(value, path) {
-    return isMeaningful(value) ? { value, path } : null;
-  }
-
-  function buildRoadmapCatalogEntryPreview(entry, basePath = "") {
-    if (!isPlainObject(entry)) return null;
-    const roadmap = isPlainObject(entry.roadmap) ? entry.roadmap : {};
-    const system = isPlainObject(entry.system) ? entry.system : {};
-    const project = isPlainObject(entry.project) ? entry.project : {};
-    return {
-      previewKind: "system-roadmap-catalog-entry",
-      title: roadmapCatalogField(roadmap.title || system.systemName || "System roadmap", `${basePath}.roadmap.title`),
-      subtitle: roadmapCatalogField(system.systemName, `${basePath}.system.systemName`),
-      summary: null,
-      documentType: roadmapCatalogField(roadmap.documentType || "system-roadmap", `${basePath}.roadmap.documentType`),
-      date: null,
-      documentId: roadmapCatalogField(roadmap.documentId, `${basePath}.roadmap.documentId`),
-      documentUrl: roadmapCatalogField(entry.canonicalRoadmapUrl, `${basePath}.canonicalRoadmapUrl`),
-      filePath: roadmapCatalogField(roadmap.fileName, `${basePath}.roadmap.fileName`),
-      project: roadmapCatalogField(project.projectName, `${basePath}.project.projectName`),
-      systemName: roadmapCatalogField(system.systemName, `${basePath}.system.systemName`),
-      roadmapStatus: roadmapCatalogField(entry.status || roadmap.status, `${basePath}.status`),
-      roadmapBaseline: null,
-      roadmapTargetState: null,
-      roadmapAreas: roadmapCatalogField(entry.roadmapAreas, `${basePath}.roadmapAreas`),
-      roadmapIntegrations: null,
-      roadmapMaturitySequence: null,
-      roadmapWorkUnitPolicy: null,
-      roadmapStatusVocabulary: null,
-      roadmapValidation: null,
-      roadmapAreaCount: roadmapCatalogField(entry.roadmapAreaCount, `${basePath}.roadmapAreaCount`),
-      currentResourceReferences: roadmapCatalogField(entry.currentResourceReferences, `${basePath}.currentResourceReferences`),
-      schemaVersion: null,
-      previewMode: roadmapCatalogField("system-roadmap", `${basePath}.roadmap.documentType`),
-      sourceData: entry,
-      basePath,
-    };
-  }
-
   function buildCatalogModel(data) {
     if (!looksLikeCatalog(data)) return null;
     const chemicalCatalog = looksLikeChemicalCatalog(data);
-    const roadmapCatalog = looksLikeSystemRoadmapCatalog(data);
     const catalogRecord = chemicalCatalog
       ? (isPlainObject(data.catalog_metadata) ? data.catalog_metadata : {})
       : (isPlainObject(data.catalog) ? data.catalog : {});
@@ -2477,40 +2268,6 @@
           date,
           topics,
           searchBlob: `${title} ${headlineParts.join(" ")} ${manufacturer} ${form} ${status} ${date} ${topics.join(" ")} ${JSON.stringify(entry)}`.toLowerCase(),
-        };
-      }
-
-      if (roadmapCatalog) {
-        const preview = buildRoadmapCatalogEntryPreview(entry, `entries[${index}]`) || {
-          previewKind: "system-roadmap-catalog-entry",
-          title: { value: `System roadmap ${index + 1}`, path: `entries[${index}]` },
-          sourceData: entry,
-          basePath: `entries[${index}]`
-        };
-        const title = fieldText(preview.title) || `System roadmap ${index + 1}`;
-        const systemName = fieldText(preview.systemName);
-        const project = fieldText(preview.project, formatEntity);
-        const status = fieldText(preview.roadmapStatus);
-        const areaCount = fieldText(preview.roadmapAreaCount);
-        const headline = [
-          systemName && systemName !== title ? systemName : "",
-          areaCount ? `${areaCount} roadmap areas` : "",
-          status
-        ].filter(Boolean).join(" · ");
-        const topics = previewListItems(preview.roadmapAreas?.value, preview.roadmapAreas?.path || "", 20)
-          .map(item => item.title);
-        return {
-          index,
-          entry,
-          preview,
-          title,
-          headline,
-          project,
-          type: systemName,
-          date: "",
-          year: status,
-          topics,
-          searchBlob: `${title} ${headline} ${project} ${systemName} ${status} ${topics.join(" ")} ${JSON.stringify(entry)}`.toLowerCase(),
         };
       }
 
@@ -2571,42 +2328,6 @@
         },
         searchPlaceholder: "Search chemical names, manufacturers, forms, SDS IDs, CAS numbers, or text",
         emptyMessage: "This chemical catalog shell is valid, but no product entries have been appended yet."
-      };
-    }
-
-    if (roadmapCatalog) {
-      return {
-        kind: "system-roadmap",
-        eyebrow: "System roadmap catalog",
-        title: compactText(catalogRecord.title || "Klinswork System Roadmap Catalog", 250),
-        description: compactText(catalogRecord.description || catalogRecord.authorityRule || "", 900),
-        generated: compactText(catalogRecord.updatedTimestamp || catalogRecord.createdTimestamp || "", 120),
-        entries,
-        projects: [...new Set(entries.map(entry => entry.project).filter(Boolean))].sort(),
-        types: [...new Set(entries.map(entry => entry.type).filter(Boolean))].sort(),
-        years: [...new Set(entries.map(entry => entry.year).filter(Boolean))].sort(),
-        filterLabels: {
-          project: "Project",
-          type: "System",
-          year: "Roadmap status"
-        },
-        allLabels: {
-          project: "All projects",
-          type: "All systems",
-          year: "All statuses"
-        },
-        cardMetaLabels: {
-          date: "Date",
-          project: "Project",
-          type: "System",
-          year: "Status"
-        },
-        sortLabels: {
-          newest: "Catalog order",
-          oldest: "Reverse catalog order"
-        },
-        searchPlaceholder: "Search system roadmaps, projects, roadmap areas, or status",
-        emptyMessage: "No System Roadmap entries match the current search and filters."
       };
     }
 
@@ -2726,10 +2447,6 @@
     entries = [...entries].sort((a, b) => {
       if (state.catalogSort === "title") return a.title.localeCompare(b.title, undefined, { numeric: true });
       if (state.catalogSort === "catalog") return a.index - b.index;
-      if (state.catalogModel?.kind === "system-roadmap") {
-        if (state.catalogSort === "oldest") return b.index - a.index;
-        return a.index - b.index;
-      }
       if (state.catalogSort === "oldest") return catalogSortValue(a) - catalogSortValue(b);
       return catalogSortValue(b) - catalogSortValue(a);
     });
@@ -2951,435 +2668,6 @@
   }
 
 
-
-
-  function isSystemRoadmapPreview(model) {
-    if (!model) return false;
-    const mode = fieldText(model.previewMode).toLowerCase();
-    const type = fieldText(model.documentType).toLowerCase();
-    return mode === "system-roadmap" ||
-      type === "system-roadmap" ||
-      model.previewKind === "system-roadmap-catalog-entry" ||
-      Boolean(model.roadmapAreas && Array.isArray(model.roadmapAreas.value));
-  }
-
-  function roadmapObject(field) {
-    return field && isPlainObject(field.value) ? field.value : {};
-  }
-
-  function roadmapArray(field) {
-    return field && Array.isArray(field.value) ? field.value : [];
-  }
-
-  function makeRoadmapSection(title, sourcePath = "") {
-    const section = document.createElement("section");
-    section.className = "preview-section roadmap-section";
-    const header = document.createElement("div");
-    header.className = "preview-section-header";
-    const heading = document.createElement("h3");
-    heading.textContent = title;
-    header.appendChild(heading);
-    const sourceButton = makePreviewSourceButton(sourcePath);
-    if (sourceButton) header.appendChild(sourceButton);
-    section.appendChild(header);
-    return section;
-  }
-
-  function appendRoadmapSimpleList(container, title, values, sourcePath = "") {
-    const listValues = Array.isArray(values) ? values.filter(isMeaningful) : [];
-    if (!listValues.length) return;
-    const block = document.createElement("div");
-    block.className = "roadmap-block";
-    const heading = document.createElement("h4");
-    heading.textContent = title;
-    const list = document.createElement("ul");
-    listValues.forEach((value, index) => {
-      const item = document.createElement("li");
-      item.textContent = compactText(value, 700);
-      const path = sourcePath ? `${sourcePath}[${index}]` : "";
-      if (path) {
-        item.title = `Source: ${path}`;
-        item.addEventListener("dblclick", () => revealJsonPath(path));
-      }
-      list.appendChild(item);
-    });
-    block.append(heading, list);
-    container.appendChild(block);
-  }
-
-  function renderRoadmapBaseline(model) {
-    const baseline = roadmapObject(model.roadmapBaseline);
-    if (!isMeaningful(baseline)) return null;
-    const section = makeRoadmapSection("Current baseline", model.roadmapBaseline.path);
-    if (baseline.classification) {
-      const label = document.createElement("span");
-      label.className = "roadmap-baseline-label";
-      label.textContent = compactText(baseline.classification, 180);
-      section.appendChild(label);
-    }
-    const grid = document.createElement("div");
-    grid.className = "roadmap-two-column";
-    appendRoadmapSimpleList(
-      grid,
-      "Existing / documented capabilities",
-      baseline.verifiedOrDocumentedCapabilities,
-      `${model.roadmapBaseline.path}.verifiedOrDocumentedCapabilities`
-    );
-    appendRoadmapSimpleList(
-      grid,
-      "Known gaps",
-      baseline.knownGaps,
-      `${model.roadmapBaseline.path}.knownGaps`
-    );
-    if (grid.children.length) section.appendChild(grid);
-    return section;
-  }
-
-  function renderRoadmapAreas(model) {
-    const areas = roadmapArray(model.roadmapAreas);
-    if (!areas.length) return null;
-    const section = makeRoadmapSection("Roadmap areas", model.roadmapAreas.path);
-    const list = document.createElement("div");
-    list.className = "roadmap-area-list";
-    areas.forEach((area, index) => {
-      if (!isPlainObject(area)) return;
-      const row = document.createElement("div");
-      row.className = "roadmap-area";
-      const head = document.createElement("div");
-      head.className = "roadmap-area-head";
-      const label = document.createElement("div");
-      const code = document.createElement("span");
-      code.className = "roadmap-area-code";
-      code.textContent = compactText(area.roadmapAreaId || `RA-${String(index + 1).padStart(2, "0")}`, 80);
-      const title = document.createElement("strong");
-      title.textContent = ` ${compactText(area.title || `Roadmap area ${index + 1}`, 500)}`;
-      label.append(code, title);
-      head.appendChild(label);
-      if (area.status) {
-        const status = document.createElement("span");
-        status.className = "roadmap-status";
-        status.textContent = compactText(area.status, 140);
-        head.appendChild(status);
-      }
-      row.appendChild(head);
-      if (Array.isArray(area.workUnitIds) && area.workUnitIds.length) {
-        const detail = document.createElement("p");
-        detail.className = "roadmap-policy";
-        detail.textContent = `Work Units: ${area.workUnitIds.join(", ")}`;
-        row.appendChild(detail);
-      }
-      const path = `${model.roadmapAreas.path}[${index}]`;
-      row.title = `Source: ${path}`;
-      row.addEventListener("dblclick", () => revealJsonPath(path));
-      list.appendChild(row);
-    });
-    section.appendChild(list);
-    return section;
-  }
-
-  function renderRoadmapIntegrations(model) {
-    const integrations = roadmapArray(model.roadmapIntegrations);
-    if (!integrations.length) return null;
-    const section = makeRoadmapSection("Integrations", model.roadmapIntegrations.path);
-    const list = document.createElement("div");
-    list.className = "roadmap-integration-list";
-    integrations.forEach((integration, index) => {
-      if (!isPlainObject(integration)) return;
-      const item = document.createElement("div");
-      item.className = "roadmap-integration";
-      const head = document.createElement("div");
-      head.className = "roadmap-integration-head";
-      const title = document.createElement("strong");
-      title.textContent = compactText(integration.name || `Integration ${index + 1}`, 350);
-      head.appendChild(title);
-      if (integration.status) {
-        const status = document.createElement("span");
-        status.className = "roadmap-status";
-        status.textContent = compactText(integration.status, 120);
-        head.appendChild(status);
-      }
-      item.appendChild(head);
-      const details = [integration.relationship, integration.target].filter(isMeaningful).map(value => compactText(value, 650)).join(" · ");
-      if (details) {
-        const p = document.createElement("p");
-        p.textContent = details;
-        item.appendChild(p);
-      }
-      const path = `${model.roadmapIntegrations.path}[${index}]`;
-      item.title = `Source: ${path}`;
-      item.addEventListener("dblclick", () => revealJsonPath(path));
-      list.appendChild(item);
-    });
-    section.appendChild(list);
-    return section;
-  }
-
-  function renderRoadmapMaturity(model) {
-    const sequence = roadmapArray(model.roadmapMaturitySequence);
-    if (!sequence.length) return null;
-    const section = makeRoadmapSection("Maturity sequence", model.roadmapMaturitySequence.path);
-    const list = document.createElement("div");
-    list.className = "roadmap-sequence-list";
-    sequence.forEach((record, index) => {
-      if (!isPlainObject(record)) return;
-      const item = document.createElement("div");
-      item.className = "roadmap-sequence";
-      const head = document.createElement("div");
-      head.className = "roadmap-sequence-head";
-      const titleWrap = document.createElement("div");
-      const number = document.createElement("span");
-      number.className = "roadmap-sequence-number";
-      number.textContent = compactText(record.sequence ?? index + 1, 10);
-      const title = document.createElement("strong");
-      title.textContent = compactText(record.name || `Stage ${index + 1}`, 450);
-      titleWrap.append(number, title);
-      head.appendChild(titleWrap);
-      if (record.status) {
-        const status = document.createElement("span");
-        status.className = "roadmap-status";
-        status.textContent = compactText(record.status, 120);
-        head.appendChild(status);
-      }
-      item.appendChild(head);
-      const path = `${model.roadmapMaturitySequence.path}[${index}]`;
-      item.title = `Source: ${path}`;
-      item.addEventListener("dblclick", () => revealJsonPath(path));
-      list.appendChild(item);
-    });
-    section.appendChild(list);
-    return section;
-  }
-
-  function renderRoadmapPolicy(model) {
-    const policy = roadmapObject(model.roadmapWorkUnitPolicy);
-    if (!isMeaningful(policy)) return null;
-    const section = makeRoadmapSection("Work Unit policy", model.roadmapWorkUnitPolicy.path);
-    const block = document.createElement("div");
-    block.className = "roadmap-block roadmap-policy";
-    for (const [key, value] of Object.entries(policy)) {
-      if (!isMeaningful(value)) continue;
-      const p = document.createElement("p");
-      const strong = document.createElement("strong");
-      strong.textContent = `${humanizeKey(key)}: `;
-      p.append(strong, document.createTextNode(compactText(value, 1000)));
-      const path = `${model.roadmapWorkUnitPolicy.path}.${key}`;
-      p.title = `Source: ${path}`;
-      p.addEventListener("dblclick", () => revealJsonPath(path));
-      block.appendChild(p);
-    }
-    section.appendChild(block);
-    return section;
-  }
-
-  function renderRoadmapVocabulary(model) {
-    const values = roadmapArray(model.roadmapStatusVocabulary);
-    if (!values.length) return null;
-    const section = makeRoadmapSection("Roadmap status vocabulary", model.roadmapStatusVocabulary.path);
-    const list = document.createElement("div");
-    list.className = "roadmap-vocabulary";
-    values.forEach((value, index) => {
-      const chip = document.createElement("span");
-      chip.className = "preview-topic";
-      chip.textContent = compactText(value, 120);
-      const path = `${model.roadmapStatusVocabulary.path}[${index}]`;
-      chip.title = `Source: ${path}`;
-      chip.addEventListener("dblclick", () => revealJsonPath(path));
-      list.appendChild(chip);
-    });
-    section.appendChild(list);
-    return section;
-  }
-
-  function renderRoadmapResources(model) {
-    const field = model.currentResourceReferences;
-    const resources = roadmapArray(field);
-    if (!resources.length) return null;
-    const section = makeRoadmapSection("Current resource references", field.path);
-    const list = document.createElement("div");
-    list.className = "roadmap-integration-list";
-    resources.forEach((record, index) => {
-      if (!isPlainObject(record)) return;
-      const item = document.createElement("div");
-      item.className = "roadmap-integration";
-      const head = document.createElement("div");
-      head.className = "roadmap-integration-head";
-      const title = document.createElement("strong");
-      title.textContent = compactText(record.name || record.resourceId || `Resource ${index + 1}`, 400);
-      head.appendChild(title);
-      if (record.resourceId) {
-        const id = document.createElement("span");
-        id.className = "roadmap-status";
-        id.textContent = compactText(record.resourceId, 100);
-        head.appendChild(id);
-      }
-      item.appendChild(head);
-      const path = `${field.path}[${index}]`;
-      item.title = `Source: ${path}`;
-      item.addEventListener("dblclick", () => revealJsonPath(path));
-      list.appendChild(item);
-    });
-    section.appendChild(list);
-    return section;
-  }
-
-  function renderSystemRoadmapPreview() {
-    const model = state.previewModel;
-    els.previewFileName.textContent = state.previewContext === "catalog"
-      ? `${state.currentFile?.path || "System Roadmap Catalog"} · entry ${(state.selectedCatalogIndex ?? 0) + 1}`
-      : state.currentFile?.path || "System roadmap sidecar";
-    els.previewPanelHeading.textContent = state.previewContext === "catalog"
-      ? "System roadmap catalog preview"
-      : "System roadmap preview";
-    els.previewContent.innerHTML = "";
-
-    const article = document.createElement("article");
-    article.className = "preview-document";
-
-    const hero = document.createElement("header");
-    hero.className = "preview-hero";
-    const eyebrow = document.createElement("p");
-    eyebrow.className = "preview-eyebrow";
-    eyebrow.textContent = "System roadmap";
-    const title = document.createElement("h2");
-    title.className = "preview-title";
-    title.textContent = compactText(model.title?.value, 300) || "Untitled system roadmap";
-    if (model.title?.path) {
-      title.title = `Source: ${model.title.path}`;
-      title.addEventListener("dblclick", () => revealJsonPath(model.title.path));
-    }
-    hero.append(eyebrow, title);
-
-    const systemName = fieldText(model.systemName);
-    if (systemName && systemName !== fieldText(model.title)) {
-      const subtitle = document.createElement("p");
-      subtitle.className = "preview-subtitle";
-      subtitle.textContent = `System: ${systemName}`;
-      hero.appendChild(subtitle);
-    }
-
-    const meta = document.createElement("div");
-    meta.className = "preview-meta";
-    appendMetaChip(meta, "Type", model.documentType);
-    appendMetaChip(meta, "Status", model.roadmapStatus);
-    appendMetaChip(meta, "Date", model.date);
-    appendMetaChip(meta, "Project", model.project, formatEntity);
-    appendMetaChip(meta, "ID", model.documentId);
-    appendMetaChip(meta, "Schema", model.schemaVersion);
-    if (meta.children.length) hero.appendChild(meta);
-
-    const fullUrl = safeDocumentUrl(model.documentUrl);
-    if (fullUrl) {
-      const actions = document.createElement("div");
-      actions.className = "preview-actions";
-      const link = document.createElement("a");
-      link.className = "preview-link";
-      link.href = fullUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "Open roadmap";
-      actions.appendChild(link);
-      const copy = document.createElement("button");
-      copy.type = "button";
-      copy.textContent = "Copy roadmap URL";
-      copy.addEventListener("click", () => copyText(fullUrl, copy, "Copy roadmap URL"));
-      actions.appendChild(copy);
-      hero.appendChild(actions);
-    }
-    article.appendChild(hero);
-
-    const target = roadmapObject(model.roadmapTargetState);
-    const targetSummary = compactText(target.summary || model.summary?.value || "", 1800);
-    if (targetSummary) {
-      const summary = document.createElement("p");
-      summary.className = "preview-summary";
-      summary.textContent = targetSummary;
-      const path = target.summary && model.roadmapTargetState?.path
-        ? `${model.roadmapTargetState.path}.summary`
-        : model.summary?.path || "";
-      if (path) {
-        summary.title = `Source: ${path}`;
-        summary.addEventListener("dblclick", () => revealJsonPath(path));
-      }
-      article.appendChild(summary);
-    }
-
-    const sections = document.createElement("div");
-    sections.className = "preview-sections";
-
-    const areaCount = roadmapArray(model.roadmapAreas).length || Number(model.roadmapAreaCount?.value) || 0;
-    const integrations = roadmapArray(model.roadmapIntegrations);
-    const maturity = roadmapArray(model.roadmapMaturitySequence);
-    const baseline = roadmapObject(model.roadmapBaseline);
-    const stats = document.createElement("section");
-    stats.className = "preview-section";
-    const statGrid = document.createElement("div");
-    statGrid.className = "roadmap-stat-grid";
-    const statValues = [
-      [areaCount, "Roadmap areas"],
-      [integrations.length, "Integrations"],
-      [maturity.length, "Maturity stages"],
-      [Array.isArray(baseline.knownGaps) ? baseline.knownGaps.length : 0, "Known gaps"]
-    ];
-    for (const [value, label] of statValues) {
-      if (!value && state.previewContext === "catalog" && label !== "Roadmap areas") continue;
-      const item = document.createElement("div");
-      item.className = "roadmap-stat";
-      const strong = document.createElement("strong");
-      strong.textContent = String(value);
-      const span = document.createElement("span");
-      span.textContent = label;
-      item.append(strong, span);
-      statGrid.appendChild(item);
-    }
-    if (statGrid.children.length) {
-      const header = document.createElement("div");
-      header.className = "preview-section-header";
-      const heading = document.createElement("h3");
-      heading.textContent = "Roadmap overview";
-      header.appendChild(heading);
-      stats.append(header, statGrid);
-      sections.appendChild(stats);
-    }
-
-    const candidates = [
-      renderRoadmapBaseline(model),
-      renderRoadmapAreas(model),
-      renderRoadmapIntegrations(model),
-      renderRoadmapMaturity(model),
-      renderRoadmapPolicy(model),
-      renderRoadmapVocabulary(model),
-      renderRoadmapResources(model),
-    ];
-    for (const section of candidates) if (section) sections.appendChild(section);
-    article.appendChild(sections);
-
-    const footer = document.createElement("footer");
-    footer.className = "preview-footer";
-    footer.appendChild(document.createTextNode(
-      state.previewContext === "catalog"
-        ? "This catalog preview summarizes the indexed System Roadmap record. Open the sidecar for the complete structured roadmap metadata."
-        : "This preview is generated from the structured System Roadmap sidecar. The human-readable roadmap remains authoritative for planned System direction."
-    ));
-    const notices = [];
-    if (!targetSummary && state.previewContext !== "catalog") notices.push("No target-state summary was found.");
-    if (!fullUrl) notices.push("No published HTTP(S) roadmap URL is currently recorded.");
-    if (model.filePath) {
-      const pathLine = document.createElement("div");
-      pathLine.className = "preview-notice";
-      pathLine.textContent = `Roadmap file: ${compactText(model.filePath.value, 300)}`;
-      pathLine.title = `Source: ${model.filePath.path}`;
-      pathLine.addEventListener("dblclick", () => revealJsonPath(model.filePath.path));
-      footer.appendChild(pathLine);
-    }
-    if (notices.length) {
-      const notice = document.createElement("div");
-      notice.className = "preview-notice";
-      notice.textContent = notices.join(" ");
-      footer.appendChild(notice);
-    }
-    article.appendChild(footer);
-    els.previewContent.appendChild(article);
-  }
 
   function isPstSpPreview(model) {
     if (!model) return false;
@@ -4154,10 +3442,6 @@
 
   function renderPreview() {
     const model = state.previewModel;
-    if (isSystemRoadmapPreview(model)) {
-      renderSystemRoadmapPreview();
-      return;
-    }
     if (isPstSpPreview(model)) {
       renderPstSpPreview();
       return;
