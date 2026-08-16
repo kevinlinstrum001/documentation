@@ -68,18 +68,23 @@ documentation/
 │   │   │   │   │   │       ├── summaries/
 │   │   │   │   │   │       │   └── system-summary.md
 │   │   │   │   │   │       └── README.md
+│   │   │   │   │   ├── plan-build-roadmap.md
 │   │   │   │   │   ├── project-identity.json
 │   │   │   │   │   └── README.md
 │   │   │   │   ├── Task Assignment and Tracking/
 │   │   │   │   │   ├── implementation-plans/
+│   │   │   │   │   │   └── implementation-plan-project-definition.md
 │   │   │   │   │   ├── sidecars/
 │   │   │   │   │   ├── summaries/
-│   │   │   │   │   └── systems/
-│   │   │   │   │       └── Work Queue/
-│   │   │   │   │           ├── sidecars/
-│   │   │   │   │           │   └── work-queue-roadmap-sidecar.json
-│   │   │   │   │           └── summaries/
-│   │   │   │   │               └── work-queue-roadmap.md
+│   │   │   │   │   │   └── project-summary.md
+│   │   │   │   │   ├── systems/
+│   │   │   │   │   │   └── Work Queue/
+│   │   │   │   │   │       ├── sidecars/
+│   │   │   │   │   │       │   └── work-queue-roadmap-sidecar.json
+│   │   │   │   │   │       └── summaries/
+│   │   │   │   │   │           └── work-queue-roadmap.md
+│   │   │   │   │   ├── project-identity.json
+│   │   │   │   │   └── README.md
 │   │   │   │   └── README.md
 │   │   │   ├── plan.md
 │   │   │   └── projects_README.md
@@ -167,6 +172,7 @@ documentation/
 │   │   │   └── work-implementation-session-2026-08-16-task-assignment-and-tracking.md
 │   │   ├── documentation-viewer-manifest.json
 │   │   ├── json-manifest.json
+│   │   ├── json-viewer-2-0.html
 │   │   ├── json-viewer.html
 │   │   ├── manifest.py
 │   │   └── open-json-viewer-v1.6.0.bat

@@ -1,0 +1,232 @@
+{
+  "_meta": {
+    "templatePurpose": "Instantiated Project Identity Entity Record for the Klinswork Task Assignment and Tracking Project.",
+    "recordFamily": "entity-record",
+    "authorityRule": "An instantiated Project Identity record is intended to be authoritative for the stable Project identity facts explicitly assigned to this profile. It does not become authority for mutable hierarchy, repository location, lifecycle state, Systems, Resources, operational environments, deployments, implementation behavior, or cross-entity relationships merely because those facts concern the same Project.",
+    "identityInvariant": "Project identity != name != location != hierarchy != lifecycle status != System != application != Resource != deployment != implementation.",
+    "constructionRule": "Instantiate this template only for a recognized Klinswork Project. Do not create a Project merely because a folder, application, spreadsheet, document set, or historical label exists.",
+    "unknownValueRule": "Do not invent identifiers or identity facts. Leave unresolved values blank or explicitly unassigned and preserve the evidence needed for later resolution.",
+    "relationshipRule": "Parent Project, contained Systems, Resources used, operational environments, dependencies, integrations, and other cross-entity facts are relationships. They do not belong in the intrinsic Project identity block.",
+    "narrativeRule": "Purpose, scope, boundary explanation, current interpretation, history, roadmap, and other rich Project narrative belong in the human-readable Project Summary and its companion sidecar, not in this narrow identity primitive.",
+    "registryCoordinationRule": "This draft anticipates coordination with a Project Registry for registered identity/index/routing and Project-ID allocation. The final conflict/agreement rule between the local Project Identity record and the Project Registry remains an architecture determination and must be resolved before this profile is frozen as 1.0."
+  },
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileId": "project-identity",
+    "recordFamily": "entity-record",
+    "profileType": "project-identity",
+    "profileVersion": "1.0-draft",
+    "templateFile": "project-identity-template-1.0-draft.json",
+    "profileRegistry": "record-profile-registry-1.0-draft.json",
+    "baseProfile": null,
+    "previewMode": "entity-identity",
+    "status": "draft"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.0",
+        "status": "planned",
+        "additions": [
+          "machine-checkable validation for Project-ID format and assignment state",
+          "formal Project Registry coordination and conflict-resolution rules",
+          "formal Viewer discovery and entity-preview contract",
+          "explicit record supersession/versioning behavior if Entity Records require it"
+        ],
+        "changes": [
+          "confirm whether canonicalName belongs in the identity record as a non-identity-bearing label or should be resolved elsewhere",
+          "confirm whether identity-establishment timestamps belong here or exclusively in Activity/provenance records",
+          "confirm whether the instantiated identity record requires its own stable record identifier distinct from projectId"
+        ],
+        "deprecations": [],
+        "migrationNotes": [
+          "Do not infer Project IDs from folder names, application names, historical numbering, or candidate numbering discussed before formal assignment.",
+          "When creating Project Definition exemplars, preserve any unresolved Project-ID state rather than filling a placeholder with a guessed PROJ-### value.",
+          "Historical documents may use earlier Project/System terminology; do not rewrite them merely to match this profile."
+        ],
+        "openQuestions": [
+          "What exact authority precedence applies if project-identity.json and the Project Registry disagree about a Project identity fact?",
+          "Which authority formally allocates a new PROJ-### value?",
+          "Should Project name/alias history be maintained here, in the Project Registry, in relationship/history records, or in the Project Summary?",
+          "Does an Entity Record require a separate stable record ID in addition to the entity's Project ID?",
+          "Should identity-continuity events such as rename, merge, split, or reclassification be represented only through Activities/relationships or also summarized in this record?"
+        ]
+      }
+    ]
+  },
+  "record": {
+    "_comment": "Metadata about this Project Identity record itself. recordStatus describes the state of the record, not the lifecycle state of the Project.",
+    "recordType": "project-identity",
+    "recordStatus": "draft",
+    "createdTimestamp": "2026-08-16T07:32:00-06:00",
+    "updatedTimestamp": "2026-08-16T07:32:00-06:00",
+    "createdBy": [
+      "Kevin Linstrum",
+      "ChatGPT"
+    ],
+    "updatedBy": [
+      "Kevin Linstrum",
+      "ChatGPT"
+    ],
+    "notes": [
+      "Task Assignment and Tracking Project Identity exemplar instantiated from project-identity-template-1.0-draft.json using the Project Identity architecture established through the Inventory Management exemplar.",
+      "Permanent PROJ-### assignment intentionally remains unassigned pending formal Project Registry allocation.",
+      "Work Queue is intentionally not encoded in intrinsic Project identity; it is a System relationship to be represented in Project/System documentation and future relationship authority."
+    ]
+  },
+  "identity": {
+    "_comment": "Intrinsic Project identity block. Keep this deliberately narrow. Do not add parentProject, systems, resources, paths, URLs, lifecycle state, environment, deployment, or implementation fields here.",
+    "entityType": "project",
+    "projectId": "",
+    "projectIdAssignmentStatus": "unassigned",
+    "identityContinuityStatement": "Task Assignment and Tracking is the durable Klinswork Project identity represented by this record. Its identity is intended to persist across ordinary changes of name, repository location, hierarchy, System implementation, Resource set, deployment, lifecycle state, or operational context.",
+    "identityNotes": [
+      "Do not infer or assign a PROJ-### identifier from this file's repository location, from historical naming, or from the Work Queue System.",
+      "The Project identity is distinct from the Work Queue System and from any Work Queue application, datastore, deployment, or Resource."
+    ]
+  },
+  "labels": {
+    "_comment": "Human-readable labels help people and tools resolve the entity but do not constitute Project identity. A rename must not create a new Project or change projectId.",
+    "canonicalName": "Task Assignment and Tracking",
+    "aliases": []
+  },
+  "identityEvidence": {
+    "_comment": "Evidence supporting the conclusion that this is one recognized durable Project. Use stable Resource/Activity/architecture references where available. Evidence supports identity; it does not automatically become identity.",
+    "identificationBasis": "Current Klinswork Operations architecture and controlled Project/System vocabulary recognize Task Assignment and Tracking as a durable child Project concerned with task intake, assignment, communication, responsibility, status, performance, completion, verification, reporting, history, and downstream effects. The same architecture distinguishes Work Queue as a System within the Project rather than the Project identity itself.",
+    "identificationConfidence": "high",
+    "evidenceReferences": [
+      "Meadows Housekeeping Projects Summary — Task Assignment and Tracking tab",
+      "Operations/README.md",
+      "work-implementation-session-2026-08-16-task-assignment-and-tracking.md"
+    ],
+    "architectureDecisionReferences": [
+      "ARCH-001 — Project Identity Vocabulary Reconciliation",
+      "ARCH-003 — Documentation Project Architecture, Discovery, and Context-Routing Reconciliation"
+    ],
+    "activityReferences": [],
+    "notes": [
+      "Evidence supports recognition of Task Assignment and Tracking as one durable Project.",
+      "The Operations architecture explicitly distinguishes the Project from the Work Queue System.",
+      "Parent Project, operational environment, Systems, Resources, integrations, and repository location are intentionally excluded from intrinsic identity."
+    ]
+  },
+  "registrationCoordination": {
+    "_comment": "Coordination data for the future/formal Project Registry. This block must not be used to smuggle hierarchy or relationship facts into intrinsic identity. Authority overlap remains unresolved in 1.0-draft.",
+    "projectRegistryStatus": "pending",
+    "projectRegistryReference": "",
+    "projectIdAllocationReference": "",
+    "lastRegistryReconciliationTimestamp": "",
+    "notes": [
+      "No permanent Project ID has been allocated.",
+      "Project Registry coordination remains pending until allocation and authority-precedence rules are formalized."
+    ]
+  },
+  "provenance": {
+    "_comment": "Provenance of this identity record and its reconciliation. Project operational history belongs in the appropriate Project Summary, Activities, work updates, or historical records.",
+    "sourceRecords": [
+      "Meadows Housekeeping Projects Summary — Task Assignment and Tracking tab",
+      "Operations/README.md",
+      "work-implementation-session-2026-08-16-task-assignment-and-tracking.md",
+      "project-identity-template-1.0-draft.json",
+      "Inventory Management/project-identity.json",
+      "record-profile-registry-1.0-draft.json"
+    ],
+    "reconciliationBasis": "Instantiated from the Project Identity Record Profile using the current Task Assignment and Tracking architecture and the Inventory Management exemplar. The Project is recognized independently of its repository path and independently of the Work Queue System. Mutable hierarchy, System, Resource, integration, operational-environment, and repository facts were deliberately excluded from the intrinsic identity block.",
+    "reconciledTimestamp": "2026-08-16T07:32:00-06:00",
+    "reconciledBy": [
+      "Kevin Linstrum",
+      "ChatGPT"
+    ],
+    "unresolvedQuestions": [
+      "Permanent PROJ-### allocation.",
+      "Final authority precedence between project-identity.json and the future Project Registry.",
+      "Whether the Entity Record itself requires a separate stable record identifier.",
+      "Whether any historical labels should later be registered as formal Project aliases rather than preserved only in historical records."
+    ]
+  },
+  "validation": {
+    "_comment": "These rules protect the identity boundary. A validator may implement them mechanically where practical.",
+    "requiredFields": [
+      "schemaVersion",
+      "profile.recordFamily",
+      "profile.profileType",
+      "profile.profileVersion",
+      "record.recordType",
+      "record.recordStatus",
+      "identity.entityType",
+      "identity.projectIdAssignmentStatus"
+    ],
+    "fixedValues": {
+      "profile.recordFamily": "entity-record",
+      "profile.profileType": "project-identity",
+      "record.recordType": "project-identity",
+      "identity.entityType": "project"
+    },
+    "projectIdRules": [
+      "If projectId is blank, projectIdAssignmentStatus must indicate an unresolved/unassigned state.",
+      "If projectId is populated, it must have been formally allocated; do not infer or synthesize it.",
+      "A Project-ID change requires explicit identity-governance evidence and must not occur merely because the Project moved, was renamed, changed parent, changed System, or changed implementation."
+    ],
+    "prohibitedIntrinsicIdentityConcepts": [
+      "parentProject",
+      "childProjects",
+      "systems",
+      "applications",
+      "resources",
+      "operationalEnvironment",
+      "dependencies",
+      "integrations",
+      "repositoryPath",
+      "filePath",
+      "url",
+      "deploymentUrl",
+      "lifecycleStatus",
+      "projectPhase",
+      "implementationStatus",
+      "currentVersion"
+    ],
+    "rules": [
+      "Do not infer Project identity from repository location.",
+      "Do not infer Project identity from a current or historical name.",
+      "Do not infer Project identity from an application, System, spreadsheet, deployment, or Resource.",
+      "Do not encode hierarchy into projectId.",
+      "Do not use the Project Identity record as a substitute for the Project Summary.",
+      "Do not use the Project Identity record as a substitute for relationship authority.",
+      "Do not use the Project Identity record as a substitute for the Resource Registry.",
+      "Do not use record.recordStatus as the Project lifecycle state.",
+      "Preserve uncertainty and unresolved identity questions explicitly.",
+      "Historical terminology may remain historically accurate even when it differs from the current ontology."
+    ]
+  },
+  "viewer": {
+    "_comment": "Interpretation guidance for the Klinswork Documentation Viewer. Discovery support for Entity Records must be added deliberately; this record must never be disguised as a sidecar merely to make current sidecar-only discovery find it.",
+    "previewMode": "entity-identity",
+    "primaryDisplayFields": [
+      "labels.canonicalName",
+      "identity.projectId",
+      "identity.projectIdAssignmentStatus",
+      "identity.entityType",
+      "record.recordStatus"
+    ],
+    "secondaryDisplayFields": [
+      "labels.aliases",
+      "identityEvidence.identificationBasis",
+      "identityEvidence.identificationConfidence",
+      "provenance.reconciledTimestamp"
+    ],
+    "authorityWarning": "Viewer presentation does not change the authority of this Entity Record or of any related registry, summary, sidecar, Resource, relationship, Activity, or implementation source."
+  },
+  "templateChecks": [
+    "The template is generic and contains no Inventory Management-specific assumptions.",
+    "The template represents a Project directly and is not a document sidecar.",
+    "The template does not require a parent Project.",
+    "The template does not require a System.",
+    "The template does not require a Resource.",
+    "The template does not require a repository path or URL.",
+    "The template permits a recognized Project to exist before a permanent PROJ-### value is assigned.",
+    "The template keeps Project narrative out of the intrinsic identity block.",
+    "The template records evidence and provenance without converting evidence into identity.",
+    "The template leaves unresolved authority questions visible in schemaRoadmap."
+  ]
+}

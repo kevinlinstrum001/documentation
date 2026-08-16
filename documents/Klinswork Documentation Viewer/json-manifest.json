@@ -9,11 +9,11 @@
   "repository": {
     "name": "Klinswork Documentation Viewer",
     "rootPath": ".",
-    "generatedTimestamp": "2026-08-16T13:20:45Z"
+    "generatedTimestamp": "2026-08-16T13:57:00Z"
   },
   "summary": {
-    "fileCount": 71,
-    "validJsonCount": 71,
+    "fileCount": 72,
+    "validJsonCount": 72,
     "invalidJsonCount": 0,
     "archivedFileCount": 14,
     "recordTypeCounts": {
@@ -24,7 +24,7 @@
       "klinswork_chemical_product_catalog": 2,
       "lesson": 1,
       "lesson-reference": 7,
-      "project-identity": 2,
+      "project-identity": 3,
       "pst-sp-study-guide": 1,
       "work-update": 13,
       "workflow-run": 1,
@@ -242,6 +242,24 @@
       ],
       "schemaVersion": "3.0-draft",
       "previewMode": "generic-document"
+    },
+    {
+      "name": "project-identity.json",
+      "path": "projects/operations/Task Assignment and Tracking/project-identity.json",
+      "folder": "projects/operations/Task Assignment and Tracking",
+      "size": 14681,
+      "modifiedTimestamp": "2026-08-16T13:34:18Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "project-identity",
+      "description": "",
+      "recordType": "project-identity",
+      "status": "",
+      "documentDate": "2026-08-16T13:34:18Z",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "entity-identity"
     },
     {
       "name": "work-queue-roadmap-sidecar.json",
