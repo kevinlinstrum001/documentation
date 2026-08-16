@@ -545,108 +545,10 @@
       color: var(--muted);
       font-size: 0.88rem;
     }
-
-    /* Document navbar — added 2026-08-16 */
-    .document-navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      color: #f7fbff;
-      background: rgba(18, 43, 66, 0.97);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: 0 6px 22px rgba(16, 38, 58, 0.18);
-      backdrop-filter: blur(10px);
-    }
-
-    .document-navbar-inner {
-      width: min(calc(100% - 2rem), var(--content-width));
-      min-height: 3.55rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-    }
-
-    .document-navbar-brand {
-      margin-right: auto;
-      color: #ffffff;
-      font-weight: 850;
-      letter-spacing: 0.035em;
-      text-decoration: none;
-    }
-
-    .document-navbar-brand span {
-      color: #d9bd65;
-    }
-
-    .document-navbar-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.15rem;
-      padding: 0.34rem 0.72rem;
-      color: #f4f8fb;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 750;
-      text-decoration: none;
-    }
-
-    .document-navbar-link:hover,
-    .document-navbar-link:focus-visible {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.10);
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    @media (max-width: 680px) {
-      html {
-        scroll-padding-top: 7.5rem;
-      }
-
-      .document-navbar-inner {
-        width: min(calc(100% - 1rem), var(--content-width));
-        padding: 0.42rem 0;
-        gap: 0.25rem;
-      }
-
-      .document-navbar-brand {
-        flex-basis: 100%;
-        margin-right: 0;
-        padding: 0.08rem 0.2rem;
-      }
-
-      .document-navbar-link {
-        padding: 0.28rem 0.55rem;
-        font-size: 0.79rem;
-      }
-    }
-
-    @media print {
-      .document-navbar {
-        display: none !important;
-      }
-    }
-
 </style>
 </head>
 <body id="document-top">
   <a class="skip-link" href="#main-content">Skip to main content</a>
-
-
-  <nav class="document-navbar" aria-label="Work Update navigation">
-    <div class="document-navbar-inner">
-      <a class="document-navbar-brand" href="https://sites.google.com/view/meadows-hk/home/documentation#h.fbs5hz83yg2f">
-        Klinswork <span>Documentation</span>
-      </a>
-      <a class="document-navbar-link" href="https://sites.google.com/view/meadows-hk/home/documentation#h.fbs5hz83yg2f">Documentation Home</a>
-      <a class="document-navbar-link" href="#contents-title">Contents</a>
-      <a class="document-navbar-link" href="#document-top">Top</a>
-    </div>
-  </nav>
-
 
   <header class="site-header">
     <div class="header-inner">
