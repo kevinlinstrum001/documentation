@@ -9,7 +9,7 @@
   "repository": {
     "name": "Klinswork Documentation Viewer",
     "rootPath": ".",
-    "generatedTimestamp": "2026-08-15T23:03:44Z"
+    "generatedTimestamp": "2026-08-16T12:57:06Z"
   },
   "summary": {
     "fileCount": 71,
@@ -17,8 +17,8 @@
     "invalidJsonCount": 0,
     "archivedFileCount": 14,
     "recordTypeCounts": {
-      "catalog": 9,
-      "generic-document": 4,
+      "catalog": 10,
+      "generic-document": 5,
       "implementation-plan": 4,
       "json-document": 22,
       "klinswork_chemical_product_catalog": 2,
@@ -27,8 +27,8 @@
       "project-identity": 2,
       "pst-sp-study-guide": 1,
       "work-update": 13,
-      "workflow-run": 2,
-      "workflow-specification": 4
+      "workflow-run": 1,
+      "workflow-specification": 3
     }
   },
   "files": [
@@ -222,6 +222,43 @@
         "inventory history"
       ],
       "schemaVersion": "3.0-draft",
+      "previewMode": "generic-document"
+    },
+    {
+      "name": "klinswork-system-roadmap-catalog-001.json",
+      "path": "projects/operations/Task Management/klinswork-system-roadmap-catalog-001.json",
+      "folder": "projects/operations/Task Management",
+      "size": 7039,
+      "modifiedTimestamp": "2026-08-16T11:49:01Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Klinswork System Roadmap Catalog",
+      "description": "Cross-System discovery catalog for human-readable System roadmaps and their structured sidecars. The catalog indexes roadmaps; it does not replace the human-readable roadmap as authority for planned System direction.",
+      "recordType": "catalog",
+      "status": "",
+      "documentDate": "2026-08-16T05:44:00-06:00",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "",
+      "entryCount": 1
+    },
+    {
+      "name": "work-queue-roadmap-sidecar.json",
+      "path": "projects/operations/Task Management/sidecars/work-queue-roadmap-sidecar.json",
+      "folder": "projects/operations/Task Management/sidecars",
+      "size": 9214,
+      "modifiedTimestamp": "2026-08-16T11:48:59Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Work Queue Roadmap",
+      "description": "",
+      "recordType": "generic-document",
+      "status": "local-draft",
+      "documentDate": "2026-08-16T05:44:00-06:00",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
       "previewMode": "generic-document"
     },
     {
@@ -1350,42 +1387,6 @@
       ],
       "schemaVersion": "2.0-draft",
       "previewMode": ""
-    },
-    {
-      "name": "documentation-workflow.json",
-      "path": "workflows/documentation-workflow.json",
-      "folder": "workflows",
-      "size": 69226,
-      "modifiedTimestamp": "2026-08-01T16:16:32Z",
-      "archived": false,
-      "validJson": true,
-      "parseError": "",
-      "title": "documentation-workflow",
-      "description": "",
-      "recordType": "workflow-specification",
-      "status": "",
-      "documentDate": "2026-08-01T16:16:32Z",
-      "topics": [],
-      "schemaVersion": "2.0-draft",
-      "previewMode": ""
-    },
-    {
-      "name": "workflow-run-sidecar-template-3.1-draft.json",
-      "path": "workflows/workflow-run-sidecar-template-3.1-draft.json",
-      "folder": "workflows",
-      "size": 11138,
-      "modifiedTimestamp": "2026-08-09T23:07:59Z",
-      "archived": false,
-      "validJson": true,
-      "parseError": "",
-      "title": "workflow-run-sidecar-template-3.1-draft",
-      "description": "",
-      "recordType": "workflow-run",
-      "status": "",
-      "documentDate": "2026-08-09T23:07:59Z",
-      "topics": [],
-      "schemaVersion": "3.1-draft",
-      "previewMode": "workflow-run"
     },
     {
       "name": "document-sidecar-template-1.0.json",

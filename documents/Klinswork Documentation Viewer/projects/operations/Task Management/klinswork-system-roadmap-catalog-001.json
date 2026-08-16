@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "1.0-draft",
+  "catalog": {
+    "catalogId": "klinswork-system-roadmap-catalog",
+    "title": "Klinswork System Roadmap Catalog",
+    "description": "Cross-System discovery catalog for human-readable System roadmaps and their structured sidecars. The catalog indexes roadmaps; it does not replace the human-readable roadmap as authority for planned System direction.",
+    "version": "001",
+    "createdTimestamp": "2026-08-16T05:44:00-06:00",
+    "updatedTimestamp": "2026-08-16T05:44:00-06:00",
+    "entryCount": 1,
+    "plannedEntryCount": 2,
+    "authorityRule": "Each roadmap.md remains authoritative for planned direction represented by that roadmap. The sidecar structures it; this catalog supports discovery across Systems.",
+    "recordPattern": {
+      "humanReadableRoadmap": "roadmap.md",
+      "sidecar": "roadmap-sidecar.json",
+      "catalogEntry": "one entry per System roadmap",
+      "identityRule": "System and Project IDs must not be invented when unassigned."
+    },
+    "statusVocabulary": [
+      "active-roadmap",
+      "roadmap-not-yet-created",
+      "identity-reconciliation-required",
+      "archived",
+      "superseded"
+    ]
+  },
+  "entries": [
+    {
+      "catalogEntryId": "system-roadmap-work-queue",
+      "status": "active-roadmap",
+      "system": {
+        "systemName": "Work Queue",
+        "systemId": "",
+        "systemIdAssignmentStatus": "unassigned"
+      },
+      "project": {
+        "projectName": "Task Assignment and Tracking",
+        "projectId": "",
+        "projectIdAssignmentStatus": "unassigned"
+      },
+      "roadmap": {
+        "title": "Work Queue Roadmap",
+        "documentId": "work-queue-system-roadmap-2026-08-16",
+        "fileName": "work-queue-roadmap.md",
+        "documentType": "system-roadmap",
+        "status": "working-target-state-roadmap"
+      },
+      "sidecar": {
+        "fileName": "work-queue-roadmap-sidecar.json",
+        "profileType": "generic-document",
+        "documentType": "system-roadmap"
+      },
+      "roadmapAreaCount": 16,
+      "roadmapAreas": [
+        {
+          "roadmapAreaId": "RA-01",
+          "title": "Identity, Authentication, Roles, and Permissions"
+        },
+        {
+          "roadmapAreaId": "RA-02",
+          "title": "Role-Based Dashboards"
+        },
+        {
+          "roadmapAreaId": "RA-03",
+          "title": "Work Intake, Pending State, and Supervisor Review"
+        },
+        {
+          "roadmapAreaId": "RA-04",
+          "title": "Employee Participation and Assignment Lifecycle"
+        },
+        {
+          "roadmapAreaId": "RA-05",
+          "title": "Calendar and Scheduling Integration"
+        },
+        {
+          "roadmapAreaId": "RA-06",
+          "title": "Employee Profile Integration"
+        },
+        {
+          "roadmapAreaId": "RA-07",
+          "title": "Inventory Integration and Transaction Propagation"
+        },
+        {
+          "roadmapAreaId": "RA-08",
+          "title": "Structured Notes, Templates, Images, and Evidence"
+        },
+        {
+          "roadmapAreaId": "RA-09",
+          "title": "QR Reporting and OpenAI-Assisted Validation"
+        },
+        {
+          "roadmapAreaId": "RA-10",
+          "title": "History, Search, Audit, and Operational Inquiry"
+        },
+        {
+          "roadmapAreaId": "RA-11",
+          "title": "Reporting, Printing, and Paperwork Translation"
+        },
+        {
+          "roadmapAreaId": "RA-12",
+          "title": "Recurring Work and Dailies"
+        },
+        {
+          "roadmapAreaId": "RA-13",
+          "title": "Building Map and Location Intelligence"
+        },
+        {
+          "roadmapAreaId": "RA-14",
+          "title": "Supervisor Operations and Exception Handling"
+        },
+        {
+          "roadmapAreaId": "RA-15",
+          "title": "Notifications and Communication"
+        },
+        {
+          "roadmapAreaId": "RA-16",
+          "title": "Administration, Configuration, Reliability, and Data Integrity"
+        }
+      ],
+      "currentResourceReferences": [
+        {
+          "resourceId": "RES-002",
+          "name": "Work Queue app"
+        },
+        {
+          "resourceId": "RES-003",
+          "name": "Work Queue app data sheet"
+        },
+        {
+          "resourceId": "RES-012",
+          "name": "Work Queue Tasks dataset"
+        },
+        {
+          "resourceId": "RES-013",
+          "name": "Work Queue Employees dataset"
+        },
+        {
+          "resourceId": "RES-014",
+          "name": "Work Queue Locations reference"
+        },
+        {
+          "resourceId": "RES-047",
+          "name": "Work Queue app technical manual"
+        }
+      ],
+      "canonicalRoadmapUrl": "",
+      "canonicalSidecarUrl": ""
+    }
+  ],
+  "plannedRecords": [
+    {
+      "candidateCatalogEntryId": "system-roadmap-inventory-3",
+      "status": "roadmap-not-yet-created",
+      "system": {
+        "systemName": "Inventory 3.0",
+        "systemId": "",
+        "systemIdAssignmentStatus": "unassigned"
+      },
+      "project": {
+        "projectName": "Inventory Management",
+        "projectId": "",
+        "projectIdAssignmentStatus": "unassigned"
+      },
+      "intendedArtifacts": {
+        "roadmap": "inventory-3-roadmap.md",
+        "sidecar": "inventory-3-roadmap-sidecar.json"
+      },
+      "note": "Catalog accommodation only. No Inventory 3.0 roadmap content is asserted by this placeholder."
+    },
+    {
+      "candidateCatalogEntryId": "system-roadmap-calendar",
+      "status": "identity-reconciliation-required",
+      "system": {
+        "systemName": "Calendar",
+        "systemId": "",
+        "systemIdAssignmentStatus": "unassigned"
+      },
+      "project": {
+        "projectName": "Scheduling",
+        "projectId": "",
+        "projectIdAssignmentStatus": "unassigned"
+      },
+      "intendedArtifacts": {
+        "roadmap": "calendar-roadmap.md",
+        "sidecar": "calendar-roadmap-sidecar.json"
+      },
+      "note": "Catalog accommodation only. Calendar's final System classification within Scheduling should be reconciled before its roadmap entry is promoted to active."
+    }
+  ],
+  "schemaRoadmap": {
+    "plannedAdditions": [
+      "dedicated system-roadmap Record Profile when defined",
+      "canonical repository and publication URLs",
+      "stable Project/System IDs after allocation",
+      "generated relationships to Work Unit Registry",
+      "roadmap version/supersession lineage",
+      "catalog generation and validation tooling"
+    ],
+    "openQuestions": [
+      "Should roadmap sidecars receive a dedicated document-sidecar profile?",
+      "Should the catalog index roadmap areas directly or only expose them from sidecars?",
+      "How should completed/superseded roadmap versions be retained?",
+      "Should Work Unit relationships be embedded, referenced, or generated from the Work Unit Registry?"
+    ]
+  },
+  "validation": {
+    "jsonValid": true,
+    "activeEntryCount": 1,
+    "plannedRecordCount": 2,
+    "inventedSystemIds": false,
+    "inventedProjectIds": false
+  }
+}

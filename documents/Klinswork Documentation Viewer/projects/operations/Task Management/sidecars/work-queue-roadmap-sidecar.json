@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileType": "generic-document",
+    "profileVersion": "3.0-compatible-draft",
+    "recordFamily": "document-sidecar",
+    "documentType": "system-roadmap",
+    "previewMode": "generic-document",
+    "profileNote": "A dedicated system-roadmap Record Profile has not yet been established; this draft uses generic-document semantics while preserving roadmap-specific structured fields."
+  },
+  "document": {
+    "documentId": "work-queue-system-roadmap-2026-08-16",
+    "title": "Work Queue Roadmap",
+    "documentType": "system-roadmap",
+    "fileName": "work-queue-roadmap.md",
+    "createdTimestamp": "2026-08-16T05:44:00-06:00",
+    "updatedTimestamp": "2026-08-16T05:44:00-06:00",
+    "authority": "human-readable roadmap is authoritative for planned System direction represented in this record",
+    "status": "working-target-state-roadmap"
+  },
+  "subject": {
+    "entityType": "system",
+    "systemName": "Work Queue",
+    "systemId": "",
+    "systemIdAssignmentStatus": "unassigned",
+    "projectName": "Task Assignment and Tracking",
+    "projectId": "",
+    "projectIdAssignmentStatus": "unassigned"
+  },
+  "currentBaseline": {
+    "classification": "functioning-but-incomplete",
+    "verifiedOrDocumentedCapabilities": [
+      "Task creation, assignment, filtering, tracking, updating, and completion",
+      "Google Sheets-backed task and assignment data",
+      "Employee records used for assignee selection",
+      "Stable Assigned Employee ID storage",
+      "Unit/location-based filtering",
+      "Completed Jobs/history capability to some extent",
+      "Inventory-related completion can create an Inventory_Holder_Event"
+    ],
+    "knownGaps": [
+      "No reliable current-user identity in the running application",
+      "No complete employee My Work / Available Work participation model",
+      "Pending work and supervisor-review routing incomplete",
+      "Inventory holder event does not yet complete employee-cart-to-holder inventory transfer",
+      "Schedule context not yet integrated",
+      "Employee Profile integration pending",
+      "Role-based dashboards incomplete",
+      "Search/history/reporting/printing incomplete",
+      "Structured notes/image evidence incomplete",
+      "QR reporting and OpenAI-assisted validation not implemented",
+      "Recurring dailies incomplete",
+      "Building map/location model incomplete for target use"
+    ]
+  },
+  "targetState": {
+    "summary": "A role-aware operational work system with identity, controlled supervisor review, employee participation, schedule context, employee-profile linkage, real inventory propagation, structured evidence, QR reporting, bounded AI validation, recurring work, searchable history, printable reporting, paperwork translation, location intelligence, and maintainable administration.",
+    "principalRoles": [
+      "employee",
+      "supervisor",
+      "administrator"
+    ]
+  },
+  "roadmapAreas": [
+    {
+      "roadmapAreaId": "RA-01",
+      "title": "Identity, Authentication, Roles, and Permissions",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-02",
+      "title": "Role-Based Dashboards",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-03",
+      "title": "Work Intake, Pending State, and Supervisor Review",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-04",
+      "title": "Employee Participation and Assignment Lifecycle",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-05",
+      "title": "Calendar and Scheduling Integration",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-06",
+      "title": "Employee Profile Integration",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-07",
+      "title": "Inventory Integration and Transaction Propagation",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-08",
+      "title": "Structured Notes, Templates, Images, and Evidence",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-09",
+      "title": "QR Reporting and OpenAI-Assisted Validation",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-10",
+      "title": "History, Search, Audit, and Operational Inquiry",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-11",
+      "title": "Reporting, Printing, and Paperwork Translation",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-12",
+      "title": "Recurring Work and Dailies",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-13",
+      "title": "Building Map and Location Intelligence",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-14",
+      "title": "Supervisor Operations and Exception Handling",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-15",
+      "title": "Notifications and Communication",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    },
+    {
+      "roadmapAreaId": "RA-16",
+      "title": "Administration, Configuration, Reliability, and Data Integrity",
+      "status": "planned-or-partial",
+      "workUnitIds": []
+    }
+  ],
+  "integrations": [
+    {
+      "name": "Inventory 3.0",
+      "relationship": "bidirectional operational integration",
+      "status": "partial",
+      "target": "Task-driven, attributable, reconciled inventory transfers and history"
+    },
+    {
+      "name": "Employee Profile",
+      "relationship": "identity/profile provider",
+      "status": "pending",
+      "target": "Shared durable employee identity and profile context without duplicating personnel authority"
+    },
+    {
+      "name": "Calendar / Scheduling",
+      "relationship": "schedule-context provider",
+      "status": "planned",
+      "target": "Flexible who/where/when staffing context for Work Queue"
+    },
+    {
+      "name": "Building Map / Locations",
+      "relationship": "location authority/reference",
+      "status": "partial",
+      "target": "Complete stable location context, QR linkage, map navigation, and reporting"
+    },
+    {
+      "name": "OpenAI API",
+      "relationship": "advisory validation/normalization service",
+      "status": "planned",
+      "target": "Bounded validation assistance for QR/report text and images without becoming operational authority"
+    }
+  ],
+  "maturitySequence": [
+    {
+      "sequence": 1,
+      "name": "Identity and controlled participation",
+      "status": "planned"
+    },
+    {
+      "sequence": 2,
+      "name": "Operational context and real integrations",
+      "status": "planned"
+    },
+    {
+      "sequence": 3,
+      "name": "Evidence, inquiry, and supervisory operations",
+      "status": "planned"
+    },
+    {
+      "sequence": 4,
+      "name": "Reporting and intelligent intake",
+      "status": "planned"
+    },
+    {
+      "sequence": 5,
+      "name": "Administrative maturity and hardening",
+      "status": "planned"
+    }
+  ],
+  "workUnitPolicy": {
+    "relationship": "Roadmap Areas contain candidate capability increments; stable Work Units are created later when sufficiently bounded.",
+    "idPolicy": "Do not invent WORK-#### identifiers. IDs remain absent until assigned by the Work Unit Registry.",
+    "granularityRule": "Prefer capability outcomes over code-edit descriptions."
+  },
+  "roadmapStatusVocabulary": [
+    "existing",
+    "partial",
+    "planned",
+    "candidate",
+    "blocked",
+    "deferred",
+    "completed",
+    "superseded",
+    "not-yet-assessed"
+  ],
+  "catalog": {
+    "catalogId": "klinswork-system-roadmap-catalog",
+    "catalogEntryId": "system-roadmap-work-queue",
+    "cataloged": true,
+    "catalogFile": "klinswork-system-roadmap-catalog-001.json"
+  },
+  "publication": {
+    "status": "local-draft",
+    "canonicalUrl": "",
+    "proposedRepositoryContext": "Projects Documentation Space / Task Assignment and Tracking / Work Queue",
+    "sidecarFileName": "work-queue-roadmap-sidecar.json"
+  },
+  "provenance": {
+    "sourceBasis": [
+      "work-queue-app-technical-manual",
+      "2026-08-16 roadmap planning conversation"
+    ],
+    "interpretationNotes": [
+      "The technical manual is used for current-system baseline where it explicitly describes existing behavior.",
+      "Capabilities introduced in the 2026-08-16 planning conversation are represented as target/planned direction rather than current behavior.",
+      "A dedicated roadmap sidecar profile has not yet been defined.",
+      "Project and System IDs remain intentionally unassigned."
+    ],
+    "generatedTimestamp": "2026-08-16T05:44:00-06:00",
+    "reviewStatus": "draft-for-user-review"
+  },
+  "validation": {
+    "jsonValid": true,
+    "roadmapAreaCount": 16,
+    "workUnitIdsInvented": false
+  }
+}
