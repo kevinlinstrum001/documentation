@@ -676,7 +676,102 @@ input[type="checkbox"] {
   table { min-width: 0; }
 }
 
-  </style>
+  
+/* Work Update cover image */
+.work-update-hero-figure {
+  margin: 0 0 1.65rem;
+  padding: clamp(.65rem, 1.5vw, 1rem);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,244,231,.96)),
+    var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  box-shadow: 0 18px 46px rgba(94, 45, 10, .14);
+}
+
+.work-update-hero-frame {
+  position: relative;
+  overflow: hidden;
+  background: #4b250d;
+  border: 1px solid #d99b64;
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 8px 24px rgba(87, 39, 7, .12);
+}
+
+.work-update-hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+}
+
+.work-update-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #51270c;
+}
+
+.work-update-hero-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: .8rem .25rem .05rem;
+  color: var(--muted);
+  font-size: .83rem;
+  line-height: 1.45;
+}
+
+.work-update-hero-caption strong {
+  color: #743508;
+}
+
+.work-update-hero-caption .hero-caption-note {
+  text-align: right;
+  font-size: .78rem;
+}
+
+@media (max-width: 680px) {
+  .work-update-hero-figure {
+    margin-bottom: 1.35rem;
+    padding: .5rem;
+    border-radius: 14px;
+  }
+
+  .work-update-hero-frame {
+    border-radius: 10px;
+  }
+
+  .work-update-hero-caption {
+    display: block;
+    margin: .65rem .25rem .1rem;
+  }
+
+  .work-update-hero-caption .hero-caption-note {
+    margin-top: .2rem;
+    text-align: left;
+  }
+}
+
+@media print {
+  .work-update-hero-figure {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .work-update-hero-frame {
+    box-shadow: none;
+  }
+}
+
+</style>
 </head>
 <body id="document-top">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -721,6 +816,22 @@ input[type="checkbox"] {
       The page intentionally retains unusually high detail because August 16 changed several layers of
       Klinswork architecture at once.
     </div>
+
+
+    <figure class="work-update-hero-figure" aria-labelledby="work-update-image-caption">
+      <div class="work-update-hero-frame">
+        <img
+          class="work-update-hero-image"
+          src="../images/work-updates/work-update-08-16-2026.png"
+          alt="Work Update for August 16, 2026: Registry as Context Setter, showing Klinswork documentation, registry, and Two-Window Testing concepts."
+          loading="eager"
+          decoding="async">
+      </div>
+      <figcaption class="work-update-hero-caption" id="work-update-image-caption">
+        <span><strong>August 16 Work Update</strong> · Registry as Context Setter</span>
+        <span class="hero-caption-note">Klinswork Documentation · Work Queue · Registry · Two-Window Testing</span>
+      </figcaption>
+    </figure>
 
     <div class="master-intro">
       <blockquote>
