@@ -11,7 +11,7 @@
 | **System Summary sidecar** | `sidecars/system-summary-sidecar.json` — current |
 | **System Roadmap** | `summaries/work-queue-roadmap.md` — current |
 | **System Roadmap sidecar** | `sidecars/work-queue-roadmap-sidecar.json` — current |
-| **Technical documentation Resource** | `RES-047` — Work Queue app technical manual |
+| **Deep technical reference** | [Work Queue app technical manual](https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit) |
 | **Documentation status** | System-local README, current-state System Summary/sidecar, and future-state roadmap/sidecar are present; discovery, companion, Viewer, and context-naive resume validation completed in `WORK-0001` |
 | **Completed Work Unit** | `WORK-0001` — completed and closed 2026-08-16; closure recorded by `WUA-0010` |
 | **Last reconciled** | 2026-08-16 |
@@ -37,7 +37,7 @@ Its job is to help a person, tool, or future work session enter this System dire
 
 The governing rule is:
 
-> **Use this README for orientation. Use the System Summary for current System interpretation, the System Roadmap for intended future direction, the Resource Registry for Resource identity/routing, and current implementation evidence for claims about what the software actually does.**
+> **Use this README for orientation. Use the System Summary for current System interpretation, the System Roadmap for intended future direction, the Work Queue app technical manual for deep technical/ecosystem context, the Resource Registry for current independently important Resource identity/routing, and current implementation evidence for claims about what the software actually does.**
 
 This README is not:
 
@@ -293,12 +293,12 @@ System documentation should not redefine the Project.
 
 ### Technical documentation
 
-The current registered Work Queue technical documentation Resource is:
+A separate deep-detail technical reference is available:
 
-```text
-RES-047
-Work Queue app technical manual
-```
+**Work Queue app technical manual**  
+https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit
+
+The manual is intentionally discoverable through the Work Queue System/Project documentation rather than requiring its own top-level Resource Registry identity.
 
 The dated technical manual provides an important architecture baseline and explains Work Queue as an ecosystem involving:
 
@@ -317,6 +317,8 @@ Because the manual is dated technical evidence, use it as a source for understan
 
 Do not assume every implementation detail in it remains current without current verification.
 
+The manual's discoverability is owned by the Work Queue documentation architecture. Its importance does not require a permanent top-level Resource entry when the correct Project/System route already exposes it.
+
 ---
 
 ### Resource Registry
@@ -328,19 +330,18 @@ Use the Resource Registry for:
 - current routing;
 - known datastore/workbook identity;
 - source/deployment pointers where registered;
-- technical-document routing;
 - other Resource-level facts.
 
-Known Work Queue Resource references currently include:
+Known current Work Queue-related Resource routes include:
 
 ```text
 RES-002   Work Queue app
 RES-003   Work Queue app data sheet
-RES-012   Work Queue Tasks dataset
-RES-013   Work Queue Employees dataset
-RES-014   Work Queue Locations reference
-RES-047   Work Queue app technical manual
+RES-010   shared Locations workbook
+RES-013   Work Queue Employees dataset / employee workbook
 ```
+
+Internal Work Queue datasets and documentation can be discovered through the System documentation and current datastore rather than requiring separate top-level Resource identities.
 
 These IDs identify Resources.
 
@@ -404,7 +405,7 @@ Use the following routing rule when entering Work Queue documentation:
 | What should Work Queue become? | `summaries/work-queue-roadmap.md` |
 | What is the structured roadmap representation? | `sidecars/work-queue-roadmap-sidecar.json` |
 | What is the structured current-state System representation? | `sidecars/system-summary-sidecar.json` |
-| Where is the technical architecture baseline? | `RES-047` |
+| Where is the technical architecture baseline? | [Work Queue app technical manual](https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit) |
 | What is a Resource and where is it now? | Resource Registry |
 | What does the live software actually do? | current source / data / deployment / executable verification |
 | What happened historically? | dated Work Updates, Activities, historical records |
@@ -889,7 +890,7 @@ Work Queue README
         ↓
 summaries/system-summary.md
         ↓
-RES-047 technical manual where relevant
+Work Queue app technical manual where relevant
         ↓
 Resource Registry
         ↓
@@ -996,13 +997,21 @@ sidecars/work-queue-roadmap-sidecar.json
 Resolve through the Resource Registry, especially:
 
 ```text
-RES-002
-RES-003
-RES-012
-RES-013
-RES-014
-RES-047
+RES-002   Work Queue app
+RES-003   Work Queue app data sheet
+RES-010   shared Locations workbook
+RES-013   employee workbook / Work Queue employee source
 ```
+
+For the deeper technical architecture baseline, use the Work Queue app technical manual linked from this README rather than expecting a separate Registry Resource entry.
+
+---
+
+### Where is the deep technical implementation/ecosystem detail?
+
+Read the **Work Queue app technical manual**:
+
+https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit
 
 ---
 
@@ -1145,7 +1154,7 @@ sidecars/system-summary-sidecar.json present
 summaries/work-queue-roadmap.md present
 sidecars/work-queue-roadmap-sidecar.json present
 parent Task Assignment and Tracking Project-level definition package complete
-RES-047 technical documentation available
+Work Queue app technical manual available through System/Project documentation
 known Work Queue Resource references identified
 System Summary and roadmap companions resolved by the source-aware Viewer manifest
 current-state and future-state Viewer semantics validated together
@@ -1204,6 +1213,8 @@ current implementation question
         ↓
 System Summary
         ↓
+Work Queue app technical manual where deeper context is useful
+        ↓
 Resource Registry
         ↓
 authoritative current source / datastore / deployment
@@ -1254,11 +1265,14 @@ System Summary sidecar
 Roadmap sidecar
     = structured companion to planned direction
 
+Work Queue app technical manual
+    = deep dated technical / ecosystem reference discovered through System documentation
+
 Resources
-    = concrete application/data/source/deployment/document artifacts
+    = independently important concrete application/data/source/deployment/shared operational objects
 
 Resource Registry
-    = Resource identity and routing authority
+    = current Resource identity and routing authority
 
 Current source/data/deployment/tests
     = live implementation evidence
@@ -1276,4 +1290,4 @@ Work Unit Activities
     = material Work Unit history
 ```
 
-If a future work session can enter this directory, identify the question it is trying to answer, and route itself to the correct authority without conflating current state, future direction, Project identity, System identity, Resources, or historical evidence, this README is doing its job.
+If a future work session can enter this directory, identify the question it is trying to answer, discover that a deep technical manual exists when needed, and route itself to the correct authority without conflating current state, future direction, Project identity, System identity, Resources, or historical evidence, this README is doing its job.

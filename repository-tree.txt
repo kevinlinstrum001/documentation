@@ -88,9 +88,8 @@ documentation/
 │   │   │   │   │   │       ├── summaries/
 │   │   │   │   │   │       │   ├── system-summary.md
 │   │   │   │   │   │       │   └── work-queue-roadmap.md
-│   │   │   │   │   │       └── README.md
+│   │   │   │   │   │       └── work-queue-README.md
 │   │   │   │   │   ├── project-identity.json
-│   │   │   │   │   ├── project-README.annotation-reconciliation.patch
 │   │   │   │   │   └── README.md
 │   │   │   │   └── README.md
 │   │   │   ├── plan.md
