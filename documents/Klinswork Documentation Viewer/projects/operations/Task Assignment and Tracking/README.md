@@ -8,10 +8,11 @@
 | **Parent Project** | Operations |
 | **Primary operational environment** | Meadows Housekeeping |
 | **Principal identified System** | Work Queue |
-| **Project ID** | Pending formal Project Registry assignment |
-| **Project boundary status** | Confirmed at the Project level; detailed relationship and System records are still being formalized |
+| **Project ID** | Unassigned — pending formal Project Registry assignment |
+| **Project boundary status** | Confirmed at the Project level; Project/System definition package completed and validated through Stage 7; formal relationship records remain future work |
 | **Project-definition role** | Second working exemplar for the Klinswork Project Definition architecture |
 | **Reference exemplar** | Inventory Management → Inventory 3.0 |
+| **Current Work Unit** | `WORK-0001` — active; closure work remains |
 | **Last reconciled** | 2026-08-16 |
 
 ---
@@ -28,10 +29,10 @@ Its job is to help a person, tool, or future work session enter this Project dir
 - how the Project differs from the Work Queue System;
 - which records should be consulted for different kinds of facts;
 - where Project-local and System-local documentation belongs;
-- where the Work Queue roadmap belongs;
+- where current-state and future-state Work Queue records belong;
 - how neighboring Operations Projects interact without collapsing into one another;
 - how to resume work without treating repository location as identity;
-- what parts of the Project Definition structure are complete, provisional, or still missing.
+- what parts of the Project Definition structure are complete, deferred, or still open.
 
 This README is **not** intended to become the canonical authority for every Task Assignment and Tracking fact.
 
@@ -81,7 +82,7 @@ The operational function can exist even when Work Queue is not used. Work may al
 - direct inspection;
 - digital forms;
 - scheduling information;
-- other systems;
+- other Systems;
 - later transcription or structured capture.
 
 A Project may survive changes to:
@@ -117,7 +118,9 @@ A permanent `PROJ-###` identifier has **not yet been assigned**. Do not invent o
 
 ## 3. Operational purpose
 
-The Task Assignment and Tracking Project exists to preserve and improve reliable operational knowledge of **what work exists, who is responsible for it, what state it is in, what happened, and what resulted from it**.
+The Task Assignment and Tracking Project exists to preserve and improve reliable operational knowledge of:
+
+> **what work exists, who is responsible for it, what state it is in, what happened, and what resulted from it.**
 
 At the Project level, the concern is not merely an application screen, task table, or spreadsheet.
 
@@ -207,7 +210,7 @@ At the present working level, this Project concerns:
 
 **Inventory Management** merely because a completed task may consume, replenish, transfer, check, or otherwise affect inventory.
 
-**Employee Profile** merely because employee identity, role, capability, or profile information may be referenced by work records.
+**Employee Profile / personnel authority** merely because employee identity, role, capability, or profile information may be referenced by work records.
 
 **Documentation** merely because the Project has READMEs, summaries, sidecars, catalogs, implementation plans, Viewer records, and publication products.
 
@@ -267,11 +270,11 @@ The operational environment is not the Project identity.
 
 ---
 
-## 5. Paperwork parallel
+## 5. Paperwork and human-process parallel
 
 Task Assignment and Tracking should preserve a **paperwork and human-process parallel**.
 
-Klinswork systems may structure, mirror, reconcile, route, analyze, or preserve work information, but the digital System should not be described as the sole source of the real operational process merely because it exists.
+Klinswork Systems may structure, mirror, reconcile, route, analyze, or preserve work information, but the digital System should not be described as the sole source of the real operational process merely because it exists.
 
 Operational information may originate through:
 
@@ -327,7 +330,7 @@ Do not use it as a substitute for:
 - implementation state;
 - operational history.
 
-### `README.md` — this file
+### `README.md` — current
 
 Role:
 
@@ -342,9 +345,9 @@ Role:
 
 This README should not silently absorb authority assigned to other records.
 
-### `summaries/project-summary.md` — next Project-definition record
+### `summaries/project-summary.md` — current
 
-Intended role:
+Role:
 
 - authoritative human-readable Project explanation;
 - purpose and operational function;
@@ -362,12 +365,12 @@ Intended role:
 Current status:
 
 ```text
-NOT YET CREATED
+CREATED — 2026-08-16
 ```
 
-### `sidecars/project-summary-sidecar.json` — planned companion
+### `sidecars/project-summary-sidecar.json` — current companion
 
-Intended role:
+Role:
 
 - machine-readable structured companion to `summaries/project-summary.md`;
 - structured interpretation of the human-readable Project Summary;
@@ -378,7 +381,8 @@ It is **not** the Project Identity Entity Record.
 Current status:
 
 ```text
-NOT YET CREATED
+CREATED — 2026-08-16
+COMPANION RESOLUTION VALIDATED
 ```
 
 ### `systems/Work Queue/`
@@ -392,6 +396,57 @@ Role:
 - later, a System Identity Entity Record if/when that profile is formally adopted.
 
 System documentation should describe Work Queue without redefining the Task Assignment and Tracking Project.
+
+### `systems/Work Queue/README.md` — current
+
+Role:
+
+- System-local orientation;
+- local authority routing;
+- current-state versus roadmap navigation;
+- System/Project distinction;
+- evidence and resume-work guidance.
+
+### `systems/Work Queue/summaries/system-summary.md` — current
+
+Role:
+
+- current-state human-readable System explanation;
+- Work Queue purpose;
+- architecture;
+- components;
+- data;
+- behavior;
+- Resources;
+- integrations;
+- implementation history;
+- current verified state;
+- limitations;
+- unresolved questions.
+
+Current status:
+
+```text
+CREATED — 2026-08-16
+```
+
+The System Summary answers:
+
+> **What is Work Queue now, based on evidence?**
+
+### `systems/Work Queue/sidecars/system-summary-sidecar.json` — current
+
+Role:
+
+- structured companion to the Work Queue System Summary;
+- Viewer/discovery representation of supported current-state System facts.
+
+Current status:
+
+```text
+CREATED — 2026-08-16
+COMPANION RESOLUTION VALIDATED
+```
 
 ### `systems/Work Queue/summaries/work-queue-roadmap.md` — current
 
@@ -411,7 +466,9 @@ Current status:
 CREATED — 2026-08-16
 ```
 
-The roadmap describes **where Work Queue should go**.
+The roadmap answers:
+
+> **What should Work Queue become?**
 
 It should not be used as proof that planned capabilities already exist.
 
@@ -427,91 +484,39 @@ Current status:
 
 ```text
 CREATED — 2026-08-16
+COMPANION RESOLUTION VALIDATED
 ```
 
-### `systems/Work Queue/summaries/system-summary.md` — planned
-
-Intended role:
-
-- current-state human-readable System explanation;
-- Work Queue purpose;
-- architecture;
-- components;
-- data;
-- behavior;
-- Resources;
-- integrations;
-- implementation history;
-- current verified state;
-- limitations;
-- unresolved questions.
-
-Current status:
-
-```text
-NOT YET CREATED
-```
-
-The System Summary answers:
-
-> **What is Work Queue now, based on evidence?**
-
-The roadmap answers:
-
-> **What should Work Queue become?**
-
-These records should not collapse into one another.
-
-### `systems/Work Queue/sidecars/system-summary-sidecar.json` — planned
-
-Intended role:
-
-- structured companion to the Work Queue System Summary;
-- Viewer/discovery representation of supported current-state System facts.
-
-Current status:
-
-```text
-NOT YET CREATED
-```
-
-### `implementation-plans/`
+### `implementation-plans/implementation-plan-project-definition.md` — current governing plan
 
 Role:
 
-- bounded plans for defined bodies of intended work;
-- implementation sequencing;
+- bounded reconstructed-continuation implementation plan for `WORK-0001`;
+- sequencing;
 - dependencies;
-- planned tests;
+- validation;
 - acceptance criteria;
-- risks;
-- desired transition states.
+- closure conditions.
 
 An implementation plan describes intended work.
 
 It does not prove that the work occurred.
 
-A roadmap and an implementation plan have different roles:
+### `sidecars/implementation-plan-project-definition-sidecar.json` — current companion
 
-```text
-roadmap
-    = durable future direction
+Role:
 
-implementation plan
-    = bounded intended change
+- structured companion to the governing implementation plan;
+- creation-time structured snapshot of the plan context.
 
-work session
-    = execution record
-```
+The sidecar should not be rewritten merely to erase historical creation-time state.
 
-### Project Registry — planned/formalizing
+### Project Registry — not yet formalized
 
 Intended role:
 
 - global registered Project identity/index/routing;
-- formal allocation and lookup of stable `PROJ-###` identities when that process is finalized.
-
-The Project Registry and local Project Identity Entity Record must ultimately have a defined agreement/conflict rule.
+- formal allocation and lookup of stable `PROJ-###` identities.
 
 Until that authority model is finalized, no permanent Project ID should be invented here.
 
@@ -529,7 +534,7 @@ A changing URL, deployment, workbook, source file, script, dataset, or applicati
 
 Known Work Queue Resource relationships should be resolved through the Registry rather than copied here as permanent Project facts.
 
-### Relationship authority — planned
+### Relationship authority — future/formalizing
 
 Intended role:
 
@@ -543,11 +548,26 @@ Intended role:
 
 Relationship facts may be narrated here for orientation without becoming intrinsic Project identity.
 
-### Activity Registry
+### Work Unit Registry
 
 Role:
 
-- registered changes and provenance events represented there.
+- current-state authority for registered Work Units.
+
+Current Project Definition work:
+
+```text
+WORK-0001
+Task Assignment and Tracking — Initial Project Definition
+```
+
+### Work Unit Activities
+
+Role:
+
+- append-oriented material history for Work Units.
+
+Current WORK-0001 history records activation, Project-definition completion, System-definition completion, validation, and Registry/architecture reconciliation checkpoints.
 
 ### Live implementation sources
 
@@ -576,26 +596,28 @@ documentation/
                 └── Task Assignment and Tracking/
 ```
 
-Current / near-term structure:
+Current structure:
 
 ```text
 Task Assignment and Tracking/
-├── project-identity.json                 ← current
-├── README.md                             ← this file
 ├── implementation-plans/
+│   └── implementation-plan-project-definition.md
 ├── sidecars/
-│   └── project-summary-sidecar.json      ← planned
+│   ├── implementation-plan-project-definition-sidecar.json
+│   └── project-summary-sidecar.json
 ├── summaries/
-│   └── project-summary.md                ← planned
-└── systems/
-    └── Work Queue/
-        ├── README.md                     ← planned
-        ├── sidecars/
-        │   ├── system-summary-sidecar.json       ← planned
-        │   └── work-queue-roadmap-sidecar.json   ← current
-        └── summaries/
-            ├── system-summary.md                 ← planned
-            └── work-queue-roadmap.md             ← current
+│   └── project-summary.md
+├── systems/
+│   └── Work Queue/
+│       ├── sidecars/
+│       │   ├── system-summary-sidecar.json
+│       │   └── work-queue-roadmap-sidecar.json
+│       ├── summaries/
+│       │   ├── system-summary.md
+│       │   └── work-queue-roadmap.md
+│       └── README.md
+├── project-identity.json
+└── README.md
 ```
 
 This tree is a **navigation and locality convention**.
@@ -634,6 +656,14 @@ A human-readable source and its sidecar should normally occupy the same Document
 For example:
 
 ```text
+systems/Work Queue/summaries/system-summary.md
+        ⇅
+systems/Work Queue/sidecars/system-summary-sidecar.json
+```
+
+and:
+
+```text
 systems/Work Queue/summaries/work-queue-roadmap.md
         ⇅
 systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json
@@ -667,8 +697,6 @@ Work Queue
 
 The hierarchy displayed above is a relationship view, not an identity encoding.
 
-Work Queue has historically been discussed at different abstraction levels, including as an application or tool.
-
 Current Klinswork vocabulary distinguishes:
 
 ```text
@@ -700,25 +728,26 @@ Do not create a permanent System ID merely to fill a blank.
 
 ## 10. Work Queue current-state versus roadmap authority
 
-Work Queue now has two distinct documentation questions that must remain separate.
+Work Queue has two distinct documentation questions that must remain separate.
 
 ### Current-state question
 
 > **What does Work Queue actually consist of and do now?**
 
-Primary authority, once created:
+Primary authority:
 
 ```text
 systems/Work Queue/summaries/system-summary.md
 ```
 
-That Summary should be grounded in:
+That Summary is grounded in:
 
-- current implementation evidence;
+- current Project definition;
 - current Registry Resources;
-- current datastore/schema;
-- current deployment;
+- current datastore/schema evidence;
 - current technical documentation;
+- direct employee/location-source reconciliation;
+- current implementation evidence where inspected;
 - historical implementation evidence clearly labeled as historical.
 
 ### Future-state question
@@ -731,7 +760,7 @@ Current authority:
 systems/Work Queue/summaries/work-queue-roadmap.md
 ```
 
-The roadmap currently includes target capability areas such as:
+The roadmap includes target capability areas such as:
 
 - identity and role-aware access;
 - employee, supervisor, and administrator dashboards;
@@ -776,36 +805,38 @@ The schedule remains the planned person/place/time relationship.
 
 Work Queue records the specific work relationship and actual task history.
 
+The shared Employees workbook currently also contains `Assignments` and `Weekly_Schedule` context. Their existence does not automatically make Scheduling part of Work Queue.
+
 ### Work Queue → Inventory Management
 
 A Work Queue task may trigger inventory movement or another inventory effect.
-
-Target integration example:
-
-```text
-employee completes inventory-related task
-        ↓
-task identifies product / quantity / destination
-        ↓
-Inventory Management validates transfer
-        ↓
-source inventory decreases
-destination inventory increases
-        ↓
-inventory history preserves transaction
-        ↓
-task and inventory transaction remain linked
-```
 
 Task Assignment and Tracking owns the task/completion relationship.
 
 Inventory Management owns inventory-state correctness and inventory transaction integrity.
 
-### Employee Profile ↔ Work Queue
+Current Work Queue evidence supports partial holder-event integration. Complete source-cart decrement, destination increment, and fully reconciled transfer propagation remain separate implementation work.
 
-The planned Employee Profile capability may supply durable employee/profile context.
+### Employee/personnel source ↔ Work Queue
 
-Task Assignment and Tracking should use shared employee identity rather than create a competing personnel authority.
+Work Queue depends on stable employee identity for assignment and attribution.
+
+Current Resource authority:
+
+```text
+RES-013
+Work Queue Employees dataset
+```
+
+The current source is the separate `Employees` workbook, including:
+
+```text
+Employees
+Assignments
+Weekly_Schedule
+```
+
+Work Queue consumes shared personnel identity/context rather than becoming a competing personnel authority.
 
 ### Building Map / Locations ↔ Work Queue
 
@@ -978,35 +1009,50 @@ The Work Unit Registry assigns stable Work Unit identity.
 
 A roadmap should remain useful even after individual Work Units are completed, split, deferred, or superseded.
 
+Current Project-definition work is governed by:
+
+```text
+WORK-0001
+Task Assignment and Tracking — Initial Project Definition
+```
+
 ---
 
 ## 15. Current Project Definition state
 
 As of 2026-08-16:
 
-### Complete / present
+### Complete / validated through Stage 7
 
 - Task Assignment and Tracking is recognized as a Project under Operations.
 - Work Queue is recognized as the principal known System within the Project.
 - the Project directory exists;
 - `project-identity.json` has been instantiated;
 - Project ID remains intentionally unassigned;
+- Project README exists;
+- Project Summary exists;
+- Project Summary sidecar exists and companion resolution has been validated;
+- governing Project-local implementation plan exists;
+- implementation-plan sidecar exists;
 - Work Queue System directory exists;
-- Work Queue System roadmap exists;
-- Work Queue roadmap sidecar exists;
-- the System Roadmap Catalog can discover the roadmap;
-- the Documentation Viewer has been taught to render System Roadmap records.
+- Work Queue README exists;
+- Work Queue current-state System Summary exists;
+- Work Queue System Summary sidecar exists and companion resolution has been validated;
+- Work Queue roadmap exists;
+- Work Queue roadmap sidecar exists and companion resolution remains valid;
+- the System Roadmap Catalog remains current;
+- source-aware Viewer discovery has been validated;
+- current-state versus future-state Viewer semantics have been validated;
+- context-naive resume routing has been validated;
+- Registry / Resource Activity / architecture effects have been reconciled through Stage 7;
+- the RES-013 employee-data location correction has been preserved through Resource history.
 
-### In progress / next
+### Remaining in `WORK-0001`
 
-- this Project-local README;
-- Project Summary;
-- Project Summary sidecar;
-- Work Queue System README;
-- Work Queue current-state System Summary;
-- Work Queue System Summary sidecar;
-- formal discovery/validation of the complete second Project Definition exemplar;
-- Registry / architecture effect assessment.
+- reconcile this final Project README creation-time status language;
+- finish the formal Work Implementation Session record;
+- review the `WORK-0001` completion rule;
+- close the formal session and Work Unit if the completion rule remains satisfied.
 
 ### Deliberately deferred
 
@@ -1017,7 +1063,8 @@ As of 2026-08-16:
 - broad Work Queue feature implementation;
 - Work Queue datastore redesign;
 - exhaustive historical-record normalization;
-- universal reusable Project Definition template extraction unless separately selected.
+- universal reusable Project Definition template extraction unless separately selected;
+- proposed rename from Task Assignment and Tracking to Task Management.
 
 ---
 
@@ -1051,6 +1098,22 @@ Read:
 systems/Work Queue/summaries/work-queue-roadmap.md
 ```
 
+### How is the Project Summary structured for machines and the Viewer?
+
+Read:
+
+```text
+sidecars/project-summary-sidecar.json
+```
+
+### How is the Work Queue System Summary structured for machines and the Viewer?
+
+Read:
+
+```text
+systems/Work Queue/sidecars/system-summary-sidecar.json
+```
+
 ### How is the Work Queue roadmap structured for machines and the Viewer?
 
 Read:
@@ -1059,7 +1122,7 @@ Read:
 systems/Work Queue/sidecars/work-queue-roadmap-sidecar.json
 ```
 
-### Where is the Work Queue application, datastore, dataset, or technical manual now?
+### Where is the Work Queue application, datastore, dataset, employee source, location source, or technical manual now?
 
 Use the:
 
@@ -1120,36 +1183,44 @@ Unresolved questions should remain visible rather than being filled with unsuppo
 
 ---
 
-## 18. Near-term documentation sequence
+## 18. Project Definition sequence and current position
 
-The present second-exemplar sequence is:
+The second-exemplar sequence is now:
 
 ```text
 Task Assignment and Tracking/
-    project-identity.json          ✓
+    project-identity.json                         ✓
         ↓
-    README.md                      ← current step
+    README.md                                     ✓ current/reconciled
         ↓
-    project-summary.md
+    summaries/project-summary.md                  ✓
         ↓
-    project-summary-sidecar.json
+    sidecars/project-summary-sidecar.json         ✓
         ↓
-    systems/Work Queue/README.md
+    implementation plan + companion               ✓
         ↓
-    systems/Work Queue/system-summary.md
+    systems/Work Queue/README.md                   ✓
         ↓
-    system-summary-sidecar.json
+    systems/Work Queue/summaries/system-summary.md ✓
         ↓
-    validate Viewer / discovery / companions
+    system-summary-sidecar.json                   ✓
         ↓
-    reconcile Registry / Activities / architecture effects
+    Work Queue roadmap + sidecar                  ✓
         ↓
-    close the implementation session
+    validate Viewer / discovery / companions      ✓
+        ↓
+    reconcile Registry / Activities / architecture effects ✓
+        ↓
+    update formal Work Implementation Session     ← next
+        ↓
+    review WORK-0001 completion rule
+        ↓
+    close session / WORK-0001 if satisfied
 ```
 
-The existing Work Queue roadmap and roadmap sidecar remain in place throughout this sequence.
+The Work Queue roadmap and roadmap sidecar remain separate future-state authorities.
 
-They do not need to be recreated as part of the current-state System Summary work.
+They do not need to be recreated as part of current-state System definition work.
 
 ---
 
@@ -1181,6 +1252,12 @@ implementation plan
 
 work session
     = execution record
+
+Work Unit Registry
+    = current bounded-work state
+
+Work Unit Activities
+    = material bounded-work history
 
 Resource Registry
     = Resource identity and routing
