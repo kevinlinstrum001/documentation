@@ -1,0 +1,1025 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured template/profile for creating and describing one authoritative work-update-summary.md master document. The Markdown summary is the canonical retrospective source; the JSON structure exists to guide consistent construction, machine interpretation, sidecar generation, discovery, and downstream HTML projection.",
+    "authorityRule": "work-update-summary.md is the canonical human-readable retrospective master for the Work Update. This JSON template does not replace the Markdown master, Work Unit Registry, Work Unit Activities, Implementation Plan, Work Implementation Session, Resource Registry, Activities, Project/System authorities, Architecture Changelog, or current implementation evidence.",
+    "masterSourceRule": "The Work Update Summary Markdown is the master. work-update.html and any work-update sidecar/catalog/discovery records are downstream products derived from it.",
+    "detailRule": "Prefer useful completeness over brevity. Preserve enough chronology, context, rationale, evidence, decisions, deviations, discoveries, validation, delta, and resulting-state detail that a future context-naive session can reconstruct what happened and why.",
+    "futureReaderRule": "The Markdown master is expected to be read later by ChatGPT for deep context restoration. It may therefore be long, explicit, identifier-rich, and selectively redundant. The downstream HTML is expected to be the more polished human-facing reading product.",
+    "temporalTruthRule": "Preserve actual chronology. If plans, templates, profiles, session records, or other process infrastructure were created after work had already begun, record the reconstruction boundary explicitly and do not describe later-created planning as prospectively existing.",
+    "selectiveRedundancyRule": "Selective repetition is allowed when it materially improves reconstruction. A fact may appear in chronology, architecture interpretation, resulting-state, and continuation sections when each occurrence serves a distinct retrieval role.",
+    "colorRedundancyRule": "Visual color/emoji/typography may reinforce semantics but must never carry substantive meaning alone. Every visual cue must be accompanied by an explicit textual semantic label.",
+    "htmlProjectionRule": "The downstream work-update.html may condense, rearrange, visualize, and selectively omit detail for human readability, but it must remain grounded in the Markdown master and must not introduce unsupported substantive claims.",
+    "noDownstreamOnlyTruthRule": "No substantive retrospective claim should exist only in work-update.html if it belongs in the durable historical record.",
+    "identityRule": "Never invent Project, System, Resource, Work Unit, Work Unit Activity, Activity, Relationship, Run, Session, or other durable IDs. Use identifiers allocated by their respective authorities or leave them blank/unassigned.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, and _fieldNotes are intentional schema commentary."
+  },
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileType": "work-update-summary",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "1.0-draft",
+    "templateFile": "work-update-summary-template-1.0-draft.json",
+    "recordFamily": "human-readable-retrospective-master",
+    "previewMode": "work-update-summary",
+    "masterDocumentType": "work-update-summary",
+    "masterFormat": "markdown"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "formal companion-sidecar linkage block if Work Update sidecar architecture is separated from this template",
+          "optional catalog/discovery identifiers",
+          "formal controlled vocabulary for context-restoration tests such as 2WT",
+          "optional structured HTML projection manifest",
+          "optional explicit cross-work-update continuity relationships"
+        ],
+        "changes": [
+          "evaluate whether workUnitContext should become a reusable shared block across implementation-plan, session, and work-update profiles",
+          "evaluate controlled semantic role IDs for visual grammar",
+          "evaluate shared provenance/evidence-class structures across documentation profiles"
+        ],
+        "openQuestions": [
+          "Should the Work Update sidecar be a separate specialized profile derived from this master-summary template?",
+          "Should context-restoration tests receive durable test/run IDs?",
+          "Should HTML projection guidance remain inside this template or move to a separate presentation profile?",
+          "Should Work Update identity receive its own durable identifier authority?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "",
+    "documentUrl": "",
+    "title": "",
+    "headline": "",
+    "documentType": "work-update-summary",
+    "recordFamily": "human-readable-retrospective-master",
+    "createdTimestamp": "",
+    "updatedTimestamp": "",
+    "status": "",
+    "masterSource": true
+  },
+  "metadata": {
+    "filePath": "",
+    "url": "",
+    "templateFilePath": "",
+    "sidecarFilePath": "",
+    "htmlFilePath": "",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "work-update-summary-template-1.0-draft.json",
+    "_comment": "document.filePath/documentUrl identify the authoritative work-update-summary.md. sidecarFilePath and htmlFilePath identify downstream products and must remain distinct from the master."
+  },
+  "reportingPeriod": {
+    "periodStart": "",
+    "periodEnd": "",
+    "workUpdateDate": "",
+    "timezone": "",
+    "boundarySummary": "",
+    "includedWork": [],
+    "excludedWork": [],
+    "boundaryRationale": ""
+  },
+  "authorityModel": {
+    "_comment": "The Work Update Summary synthesizes these authorities but does not replace them.",
+    "workUnitCurrentState": "Work Unit Registry",
+    "workUnitHistory": "Work Unit Activities",
+    "intendedWork": "Implementation Plan",
+    "formalExecution": "Work Implementation Session",
+    "resourceCurrentState": "Resource Registry",
+    "resourceHistory": "Activities",
+    "projectIdentityAndMeaning": "Project records",
+    "systemCurrentState": "System Summary",
+    "systemFutureDirection": "System Roadmap",
+    "architectureHistory": "Architecture Changelog",
+    "implementationTruth": "current source / datastore / deployment / executable behavior / fresh tests",
+    "retrospectiveSynthesis": "work-update-summary.md",
+    "downstreamPresentation": "work-update.html"
+  },
+  "workPlacement": {
+    "_comment": "Project, System, Application/Implementation, Resource, Work Unit, and physical repository path are separate concepts. Do not infer semantic ownership from physical location.",
+    "primaryProjects": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "parentProjectId": "",
+        "parentProjectName": "",
+        "relationshipToUpdate": "",
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "systems": [
+      {
+        "systemId": "",
+        "systemName": "",
+        "relationshipToUpdate": "",
+        "authorityResourceIds": [],
+        "identificationBasis": "",
+        "identificationConfidence": ""
+      }
+    ],
+    "applications": [
+      {
+        "applicationId": "",
+        "applicationName": "",
+        "implementationType": "",
+        "relationshipToUpdate": "",
+        "authorityResourceIds": []
+      }
+    ],
+    "resources": [
+      {
+        "resourceId": "",
+        "resourceName": "",
+        "relationshipToUpdate": "",
+        "authorityRole": ""
+      }
+    ],
+    "sharedResources": [
+      {
+        "resourceId": "",
+        "resourceName": "",
+        "relationshipToUpdate": ""
+      }
+    ],
+    "physicalPaths": [
+      {
+        "path": "",
+        "role": "",
+        "semanticMeaning": "",
+        "_comment": "A path is physical-state evidence and navigation, not identity or ownership authority."
+      }
+    ],
+    "placementSummary": ""
+  },
+  "workUnitContext": {
+    "_comment": "Reference only Work Units and Work Unit Activities actually allocated by their authorities. The Work Update interprets their meaning but does not become current-state or history authority.",
+    "workUnits": [
+      {
+        "workUnitId": "",
+        "workUnitTitle": "",
+        "workUnitKind": "",
+        "relationshipToUpdate": "",
+        "goal": "",
+        "completionRule": "",
+        "startingState": {
+          "status": "",
+          "readiness": "",
+          "formalSessionRequired": "",
+          "implementationPlan": "",
+          "lastUpdate": ""
+        },
+        "resultingState": {
+          "status": "",
+          "readiness": "",
+          "completedTimestamp": "",
+          "result": "",
+          "lastUpdate": ""
+        },
+        "formalSessions": [
+          {
+            "sessionId": "",
+            "sessionTitle": "",
+            "sessionRecordPath": "",
+            "entryMode": "",
+            "initiatedTimestamp": "",
+            "activatedTimestamp": "",
+            "closedTimestamp": "",
+            "status": ""
+          }
+        ],
+        "implementationPlans": [
+          {
+            "planTitle": "",
+            "planPath": "",
+            "planningMode": "",
+            "authorityBoundary": "",
+            "relationshipToWorkUnit": ""
+          }
+        ],
+        "workUnitActivities": [
+          {
+            "wuaId": "",
+            "timestamp": "",
+            "eventType": "",
+            "action": "",
+            "retrospectiveMeaning": ""
+          }
+        ],
+        "closureInterpretation": ""
+      }
+    ],
+    "activityCoverageSummary": ""
+  },
+  "reconstructionContext": {
+    "_comment": "Use when formal planning, session declaration, templates, or documentation architecture caught up after some work had already begun.",
+    "reconstructionOccurred": false,
+    "reconstructionMode": "",
+    "allowedModes": [
+      "none",
+      "reconstructed-during-work",
+      "reconstructed-after-work",
+      "mixed"
+    ],
+    "temporalBoundary": "",
+    "priorWorkExists": false,
+    "priorWorkSummary": "",
+    "missingInfrastructureAtStart": [],
+    "infrastructureCreatedDuringWork": [],
+    "historyReconciliationActions": [],
+    "sourceReferences": [],
+    "chronologyIntegritySummary": ""
+  },
+  "executiveSummary": {
+    "whatHappened": "",
+    "majorOutcomes": [
+      {
+        "semanticRole": "",
+        "label": "",
+        "summary": "",
+        "evidenceReferences": []
+      }
+    ],
+    "whyItMattered": "",
+    "oneSentenceRetrospective": ""
+  },
+  "startingState": {
+    "_comment": "Starting state should be detailed enough to support a meaningful retrospective delta. Record actual state at the reporting boundary, not desired state.",
+    "workUnitState": "",
+    "projectState": "",
+    "systemState": "",
+    "resourceRegistryState": "",
+    "documentationState": "",
+    "viewerDiscoveryState": "",
+    "contextRestorationState": "",
+    "implementationState": "",
+    "repositoryState": "",
+    "knownUncertainties": [],
+    "importantAssumptions": [],
+    "evidenceReferences": []
+  },
+  "intendedWork": {
+    "_comment": "Summarize the governing plan sufficiently to understand later deviations and outcomes. Do not duplicate the entire plan.",
+    "governingWorkUnitIds": [],
+    "implementationPlanPaths": [],
+    "planAuthorityBoundaries": [],
+    "planningModes": [],
+    "goalSummary": "",
+    "targetStateSummary": "",
+    "relevantStages": [
+      {
+        "stageId": "",
+        "title": "",
+        "objective": "",
+        "planningRelation": ""
+      }
+    ],
+    "relevantAcceptanceCriteria": [
+      {
+        "criterionId": "",
+        "description": "",
+        "required": true
+      }
+    ],
+    "relevantPlannedTests": [
+      {
+        "testId": "",
+        "purpose": "",
+        "expectedResult": ""
+      }
+    ],
+    "constraints": [],
+    "nonGoals": [],
+    "activationGates": []
+  },
+  "chronology": {
+    "_comment": "Chronology should preserve material cause-and-effect without becoming a keystroke transcript.",
+    "entries": [
+      {
+        "sequence": 1,
+        "timestamp": "",
+        "phase": "",
+        "semanticRole": "",
+        "title": "",
+        "workUnitIds": [],
+        "wuaIds": [],
+        "activityIds": [],
+        "projectNames": [],
+        "systemNames": [],
+        "resourceIds": [],
+        "whatHappened": "",
+        "whyItHappened": "",
+        "evidenceAndContext": [],
+        "resultingChange": "",
+        "whyItMattered": "",
+        "ledToNext": ""
+      }
+    ],
+    "chronologyInterpretation": ""
+  },
+  "workPerformed": {
+    "workUnits": [
+      {
+        "workUnitId": "",
+        "goal": "",
+        "majorStagesCompleted": [],
+        "durableDeliverables": [],
+        "result": "",
+        "explicitNonGoals": [],
+        "whyClosureRemainsValid": ""
+      }
+    ],
+    "nonWorkUnitWork": [
+      {
+        "title": "",
+        "description": "",
+        "whyNotFormalizedAsWorkUnit": "",
+        "evidenceReferences": []
+      }
+    ],
+    "overallExecutionSummary": ""
+  },
+  "decisions": [
+    {
+      "decisionId": "",
+      "title": "",
+      "decision": "",
+      "reasonNeeded": "",
+      "evidenceBasis": [],
+      "alternativesConsidered": [],
+      "effectOnCurrentWork": "",
+      "effectBeyondPeriod": "",
+      "architectureChangelogRequired": "",
+      "relatedWuaIds": [],
+      "relatedActivityIds": [],
+      "sourceReferences": []
+    }
+  ],
+  "deviations": [
+    {
+      "deviationId": "",
+      "title": "",
+      "planned": "",
+      "actual": "",
+      "reason": "",
+      "chronologyReconstructed": false,
+      "impact": "",
+      "correctiveOrReconciliationAction": "",
+      "relatedWuaIds": [],
+      "relatedActivityIds": [],
+      "sourceReferences": []
+    }
+  ],
+  "blockersAndProblems": [
+    {
+      "blockerId": "",
+      "title": "",
+      "problem": "",
+      "discoveryMethod": "",
+      "evidence": [],
+      "effect": "",
+      "resolution": "",
+      "residualRiskOrUncertainty": "",
+      "status": ""
+    }
+  ],
+  "discoveries": [
+    {
+      "discoveryId": "",
+      "title": "",
+      "discovery": "",
+      "previousAssumption": "",
+      "newInterpretation": "",
+      "whyItMattersLater": "",
+      "evidenceReferences": []
+    }
+  ],
+  "validationAndTesting": {
+    "_comment": "Planned tests are summarized from the plan; actual execution belongs here and/or in dedicated execution evidence. Do not convert roadmap/planning intent into test evidence.",
+    "summary": "",
+    "executedTests": [
+      {
+        "testId": "",
+        "name": "",
+        "purpose": "",
+        "method": "",
+        "expectedResult": "",
+        "actualResult": "",
+        "status": "",
+        "evidence": [],
+        "relatedWuaIds": []
+      }
+    ],
+    "correctionsTriggeredByTesting": [
+      {
+        "finding": "",
+        "correction": "",
+        "retest": "",
+        "finalStatus": ""
+      }
+    ],
+    "validationGaps": [],
+    "overallConfidence": "",
+    "confidenceBasis": "",
+    "interpretationLimits": []
+  },
+  "resourceAndRegistryEffects": {
+    "resourcesAdded": [
+      {
+        "resourceId": "",
+        "name": "",
+        "resourceType": "",
+        "registrationReason": ""
+      }
+    ],
+    "resourcesChanged": [
+      {
+        "resourceId": "",
+        "name": "",
+        "change": "",
+        "whyMaterial": ""
+      }
+    ],
+    "resourcesRetired": [
+      {
+        "resourceId": "",
+        "name": "",
+        "removalReason": "",
+        "underlyingArtifactRetained": true,
+        "historicalIdReusable": false
+      }
+    ],
+    "importantActivities": [
+      {
+        "activityId": "",
+        "timestamp": "",
+        "resourceId": "",
+        "action": "",
+        "retrospectiveMeaning": ""
+      }
+    ],
+    "registrySemanticChanges": [],
+    "cleanupDecisionRule": "",
+    "activityCoverage": {
+      "materialChangesRepresented": "",
+      "knownGaps": []
+    }
+  },
+  "delta": {
+    "_comment": "The starting-state/resulting-state comparison is a core retrospective structure.",
+    "highLevel": [
+      {
+        "area": "",
+        "startingState": "",
+        "resultingState": "",
+        "evidenceAuthority": ""
+      }
+    ],
+    "projectDeltas": [
+      {
+        "projectId": "",
+        "projectName": "",
+        "before": "",
+        "after": "",
+        "whatIsNowClearer": "",
+        "intentionallyUnresolved": []
+      }
+    ],
+    "systemDeltas": [
+      {
+        "systemId": "",
+        "systemName": "",
+        "before": "",
+        "after": "",
+        "implementationChange": "",
+        "documentationOrInterpretationChange": "",
+        "intentionallyUnresolved": []
+      }
+    ],
+    "resourceInfrastructureDelta": "",
+    "semanticDelta": "",
+    "importantNonChanges": []
+  },
+  "architectureAndDocumentationEffects": {
+    "architectureChanges": [
+      {
+        "title": "",
+        "previousModelOrAssumption": "",
+        "newModelOrRule": "",
+        "reason": "",
+        "authorityAfterChange": "",
+        "architectureChangelogReference": ""
+      }
+    ],
+    "templatesCreatedOrRevised": [
+      {
+        "templateName": "",
+        "previousState": "",
+        "change": "",
+        "whyItMattered": "",
+        "status": ""
+      }
+    ],
+    "profilesOrSchemasCreatedOrRevised": [
+      {
+        "name": "",
+        "version": "",
+        "change": "",
+        "effect": ""
+      }
+    ],
+    "viewerDiscoveryChanges": [],
+    "documentationAuthorityChanges": [],
+    "documentationGapsDiscovered": [],
+    "bootstrapEraCorrections": [
+      {
+        "missingInfrastructure": "",
+        "discoveredWhen": "",
+        "correction": "",
+        "historyReconciliation": "",
+        "futureRule": ""
+      }
+    ]
+  },
+  "contextRestorationTesting": {
+    "_comment": "Use for Two-Window Testing (2WT), Other Window (OW), fresh-context reconstruction, startup validation, or related handoff experiments.",
+    "tests": [
+      {
+        "testCode": "",
+        "testName": "",
+        "purpose": "",
+        "freshReaderLabel": "",
+        "startingContextSupplied": [],
+        "questions": [],
+        "understoodCorrectly": [],
+        "missedOrConfused": [],
+        "timeAndFrictionObservations": "",
+        "architectureChangesCaused": [
+          {
+            "finding": "",
+            "response": "",
+            "durableRecord": ""
+          }
+        ],
+        "conclusion": "",
+        "nextTest": ""
+      }
+    ],
+    "overallContextRestorationAssessment": ""
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [],
+    "generalKlinsworkLessons": [],
+    "recurringProblems": [
+      {
+        "problem": "",
+        "pattern": "",
+        "whereObserved": [],
+        "suggestedResponse": ""
+      }
+    ],
+    "rulesConfirmed": [
+      {
+        "rule": "",
+        "evidence": ""
+      }
+    ],
+    "rulesRevised": [
+      {
+        "previousRuleOrAssumption": "",
+        "revisedRule": "",
+        "reason": ""
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "",
+        "whyReusable": "",
+        "suggestedDestination": "",
+        "supportingReferences": []
+      }
+    ],
+    "retrospectiveInterpretation": ""
+  },
+  "resultingState": {
+    "_comment": "Describe actual state at the end of the reporting period, not desired future state.",
+    "workUnitState": "",
+    "projectState": "",
+    "systemState": "",
+    "resourceRegistryState": "",
+    "documentationState": "",
+    "viewerDiscoveryState": "",
+    "contextRestorationState": "",
+    "implementationState": "",
+    "repositoryState": "",
+    "semanticAuthorityState": "",
+    "newlyTrueFacts": [],
+    "intentionallyUnchangedFacts": [],
+    "evidenceReferences": []
+  },
+  "remainingWork": {
+    "items": [
+      {
+        "title": "",
+        "status": "",
+        "whyRemaining": "",
+        "suggestedDestination": "",
+        "candidateWorkUnit": false
+      }
+    ],
+    "openDeterminations": [
+      {
+        "title": "",
+        "question": "",
+        "whyUnresolved": "",
+        "evidenceAvailable": [],
+        "evidenceNeeded": [],
+        "futureAuthority": ""
+      }
+    ],
+    "deferredArchitectureWork": [],
+    "deferredProductOrImplementationWork": [],
+    "cleanupOrReconciliationRequired": [],
+    "itemsNotToReopen": []
+  },
+  "continuationPoint": {
+    "_comment": "Write for a context-naive future session.",
+    "recommendedFirstRead": [],
+    "currentAuthoritativeStateToExpect": "",
+    "recommendedNextQuestion": "",
+    "recommendedNextBoundedAction": "",
+    "dependenciesBeforeContinuing": [],
+    "warnings": [],
+    "exactHandoffStatement": ""
+  },
+  "importantArtifactsAndReferences": {
+    "workUnits": [
+      {
+        "workUnitId": "",
+        "title": "",
+        "role": ""
+      }
+    ],
+    "workUnitActivities": [
+      {
+        "wuaId": "",
+        "event": "",
+        "whyImportant": ""
+      }
+    ],
+    "resourceActivities": [
+      {
+        "activityId": "",
+        "resourceId": "",
+        "event": "",
+        "whyImportant": ""
+      }
+    ],
+    "resources": [
+      {
+        "resourceId": "",
+        "name": "",
+        "authorityOrRoutingRole": ""
+      }
+    ],
+    "projectSystemDocuments": [
+      {
+        "document": "",
+        "role": "",
+        "pathOrUrl": ""
+      }
+    ],
+    "implementationPlansAndSessions": [
+      {
+        "record": "",
+        "role": "",
+        "path": ""
+      }
+    ],
+    "architectureRecords": [
+      {
+        "record": "",
+        "role": "",
+        "reference": ""
+      }
+    ],
+    "validationEvidence": [
+      {
+        "evidence": "",
+        "establishes": "",
+        "reference": ""
+      }
+    ],
+    "repositoryPaths": []
+  },
+  "presentation": {
+    "_comment": "Presentation rules apply to the Markdown master and inform downstream HTML. Visual semantics are redundant cues, never sole carriers of meaning.",
+    "tableOfContents": {
+      "requiredForSubstantialUpdate": true,
+      "location": "near-beginning-after-identity-and-template-guidance",
+      "includeMajorSections": true,
+      "includeImportantSubsectionsWhenUseful": true
+    },
+    "semanticPalette": {
+      "project": {
+        "marker": "🩵",
+        "suggestedColorName": "cyan",
+        "cssToken": "--semantic-project",
+        "textLabelRequired": true
+      },
+      "systemOrApplicationFunction": {
+        "marker": "🟦",
+        "suggestedColorName": "blue",
+        "cssToken": "--semantic-system",
+        "textLabelRequired": true
+      },
+      "folderOrRepositoryPath": {
+        "marker": "🟨",
+        "suggestedColorName": "yellow",
+        "cssToken": "--semantic-path",
+        "textLabelRequired": true
+      },
+      "resource": {
+        "marker": "🟪",
+        "suggestedColorName": "purple",
+        "cssToken": "--semantic-resource",
+        "textLabelRequired": true
+      },
+      "workUnitOrExecution": {
+        "marker": "🟧",
+        "suggestedColorName": "orange",
+        "cssToken": "--semantic-work",
+        "textLabelRequired": true
+      },
+      "confirmedOrPassed": {
+        "marker": "🟩",
+        "suggestedColorName": "green",
+        "cssToken": "--semantic-confirmed",
+        "textLabelRequired": true
+      },
+      "problemFailureOrBlocker": {
+        "marker": "🟥",
+        "suggestedColorName": "red",
+        "cssToken": "--semantic-problem",
+        "textLabelRequired": true
+      },
+      "decisionOrDetermination": {
+        "marker": "🟨",
+        "suggestedColorName": "amber",
+        "cssToken": "--semantic-decision",
+        "textLabelRequired": true
+      },
+      "historicalOrSuperseded": {
+        "marker": "◻️",
+        "suggestedColorName": "gray",
+        "cssToken": "--semantic-historical",
+        "textLabelRequired": true
+      },
+      "openDetermination": {
+        "marker": "⬜",
+        "suggestedColorName": "neutral",
+        "cssToken": "--semantic-open",
+        "textLabelRequired": true
+      }
+    },
+    "identifierFormatting": {
+      "useMonospace": true,
+      "pairIdentifierWithSemanticMeaningWhenFirstIntroduced": true,
+      "examples": [
+        "WORK-0001 — [Work Unit title]",
+        "WUA-0008 — [material event]",
+        "ACT-0091 — [Resource Activity action]",
+        "RES-043 — [Resource name]"
+      ]
+    },
+    "calloutTypes": [
+      "confirmed",
+      "decision",
+      "problem-discovered",
+      "work-unit-consequence",
+      "open-determination",
+      "historical-note"
+    ],
+    "tableUse": [
+      "before-after comparison",
+      "chronology",
+      "WUA and Activity indexes",
+      "validation results",
+      "Resource changes",
+      "authority maps",
+      "remaining work",
+      "artifact references"
+    ],
+    "proseRule": "Use cohesive explanatory paragraphs for causal reasoning. Use bullets for enumerated facts, tables for structured comparison, code blocks for hierarchy/routing/exact state, and callouts for high-value semantic emphasis.",
+    "repetitionRule": "Intentional repetition is permitted when different sections answer different retrieval questions such as when, why, what is now true, and how to continue."
+  },
+  "htmlProjection": {
+    "_comment": "The HTML is a downstream presentation for human reading. It may be shorter and more visual than the Markdown master.",
+    "readingGoal": "",
+    "materialThatMayBeCompressed": [],
+    "materialThatMustRemainProminent": [],
+    "suggestedVisualTreatments": {
+      "timeline": "",
+      "beforeAfterComparison": "",
+      "architectureDiagram": "",
+      "decisionCards": "",
+      "validationBadges": "",
+      "calloutBoxes": "",
+      "graphics": [],
+      "charts": [],
+      "qrOrLinks": [],
+      "footer": ""
+    },
+    "informationThatMustNotBeLost": [],
+    "unsupportedClaimsAllowed": false
+  },
+  "sections": [
+    {
+      "sectionId": "work-update-identity",
+      "title": "Work Update Identity",
+      "required": true,
+      "narrativeRole": "Establish reporting identity, semantic placement, source/master relationships, and reporting coverage."
+    },
+    {
+      "sectionId": "purpose-and-boundary",
+      "title": "Purpose and Reporting Boundary",
+      "required": true,
+      "narrativeRole": "Explain why this Work Update exists, what it covers, what it excludes, and which authorities own underlying facts."
+    },
+    {
+      "sectionId": "executive-summary",
+      "title": "Executive Summary",
+      "required": true,
+      "narrativeRole": "Orient the reader without replacing the detailed retrospective body."
+    },
+    {
+      "sectionId": "starting-state",
+      "title": "Starting State",
+      "required": true,
+      "narrativeRole": "Preserve the actual state before the reporting period changed anything."
+    },
+    {
+      "sectionId": "intended-work",
+      "title": "Intended Work and Governing Plans",
+      "required": true,
+      "narrativeRole": "Summarize intended work sufficiently to make execution outcomes and deviations intelligible."
+    },
+    {
+      "sectionId": "chronology",
+      "title": "Detailed Work Chronology",
+      "required": true,
+      "narrativeRole": "Preserve material sequence, cause, effect, evidence, and consequence."
+    },
+    {
+      "sectionId": "work-performed",
+      "title": "Work Performed by Work Unit / Session",
+      "required": false,
+      "narrativeRole": "Reconstruct substantial execution through Work Unit and formal-session semantics."
+    },
+    {
+      "sectionId": "decisions-deviations-discoveries",
+      "title": "Decisions, Deviations, Blockers, and Discoveries",
+      "required": true,
+      "narrativeRole": "Preserve changes in understanding and execution that explain why the resulting state differs from a simple planned path."
+    },
+    {
+      "sectionId": "validation",
+      "title": "Validation, Testing, and Confidence",
+      "required": true,
+      "narrativeRole": "Explain what was actually tested, what the evidence establishes, and what remains unverified."
+    },
+    {
+      "sectionId": "registry-effects",
+      "title": "Resource, Registry, and Activity Effects",
+      "required": false,
+      "narrativeRole": "Interpret important Resource current-state/history changes and Registry semantics."
+    },
+    {
+      "sectionId": "delta",
+      "title": "Project and System Delta",
+      "required": true,
+      "narrativeRole": "Explicitly compare starting and resulting state."
+    },
+    {
+      "sectionId": "architecture-documentation",
+      "title": "Architecture and Documentation Effects",
+      "required": false,
+      "narrativeRole": "Preserve architecture, template, schema, Viewer, and documentation-authority changes."
+    },
+    {
+      "sectionId": "context-restoration",
+      "title": "Context Restoration and Cross-Session Testing",
+      "required": false,
+      "narrativeRole": "Document 2WT/fresh-window/context-naive testing and architecture changes caused by those tests."
+    },
+    {
+      "sectionId": "knowledge-produced",
+      "title": "Knowledge Produced",
+      "required": true,
+      "narrativeRole": "Preserve project-specific lessons, general rules, recurring patterns, and retrospective meaning."
+    },
+    {
+      "sectionId": "resulting-state",
+      "title": "Resulting State",
+      "required": true,
+      "narrativeRole": "Describe what is actually true at the end of the reporting period."
+    },
+    {
+      "sectionId": "remaining-work",
+      "title": "Remaining Work and Open Determinations",
+      "required": true,
+      "narrativeRole": "Separate unfinished, deferred, and unresolved work from completed outcomes."
+    },
+    {
+      "sectionId": "continuation",
+      "title": "Continuation Point",
+      "required": true,
+      "narrativeRole": "Provide a context-naive handoff and exact resumption path."
+    },
+    {
+      "sectionId": "references",
+      "title": "Important Artifacts and References",
+      "required": true,
+      "narrativeRole": "Expose high-value Work Units, WUAs, Activities, Resources, documents, paths, and evidence for follow-up."
+    },
+    {
+      "sectionId": "provenance",
+      "title": "Provenance and Interpretation Limits",
+      "required": true,
+      "narrativeRole": "Preserve source basis, evidence classes, reconstruction sources, gaps, and limits."
+    },
+    {
+      "sectionId": "html-projection",
+      "title": "Downstream HTML Projection Notes",
+      "required": false,
+      "narrativeRole": "Guide transformation of the detailed Markdown master into the polished human-facing HTML product."
+    }
+  ],
+  "provenance": {
+    "sourceConversationReference": "",
+    "sourceFiles": [],
+    "sourceResourceIds": [],
+    "sourceWorkUnitIds": [],
+    "sourceWorkUnitActivityIds": [],
+    "sourceActivityIds": [],
+    "sourceSessionRecords": [],
+    "sourceImplementationPlans": [],
+    "sourceArchitectureRecords": [],
+    "sourceValidationEvidence": [],
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "",
+    "reconstructionNotes": [],
+    "interpretationNotes": [],
+    "unresolvedQuestions": []
+  },
+  "validation": {
+    "_comment": "Semantic validation rules for a trustworthy Work Update Summary master.",
+    "performed": false,
+    "result": "",
+    "rules": [
+      "work-update-summary.md is the canonical human-readable retrospective master.",
+      "The downstream work-update.html is a presentation product and must remain grounded in the Markdown master.",
+      "The Work Update sidecar, if generated, is a structured companion and must not replace the Markdown master.",
+      "The Work Unit Registry is authoritative for current Work Unit state.",
+      "Work Unit Activities are authoritative for timestamped material Work Unit history.",
+      "The Implementation Plan is authoritative for intended work from its planning boundary forward.",
+      "The Work Implementation Session is authoritative for detailed formal-session execution.",
+      "The Resource Registry is authoritative for current Resource identity and routing.",
+      "Activities are authoritative for timestamped material Resource history.",
+      "Project/System current-state authorities must not be replaced by retrospective Work Update interpretation.",
+      "Current implementation truth must be grounded in current source/data/deployment/executable behavior/fresh tests where applicable.",
+      "Substantial Work Updates should include a Table of Contents.",
+      "Substantial Work Updates should preserve detailed starting state and resulting state.",
+      "Significant causal relationships must be explained rather than reduced to file-change lists.",
+      "Important false starts, corrected assumptions, missing infrastructure, and discoveries should be preserved when they materially explain the work.",
+      "Reconstructed chronology must be explicitly identified.",
+      "Work completed before plan creation must not be represented as prospectively planned work.",
+      "Closed Work Units must not be silently extended by later related work.",
+      "Resource retirement from the current Registry must not be described as deletion of the underlying artifact unless deletion actually occurred.",
+      "Unknown durable identifiers must remain blank/unassigned rather than be invented.",
+      "Project, System, Application/Implementation, Resource, physical path, deployment, Work Unit, and lifecycle concepts must remain distinct.",
+      "Visual color/emoji cues must be redundant with explicit semantic text labels.",
+      "Selective redundancy is allowed when it materially improves future reconstruction.",
+      "Important tables should be interpreted in prose when their significance is not self-evident.",
+      "The Work Update should distinguish documentation/semantic changes from actual implementation changes.",
+      "The Work Update should record important non-changes when needed to prevent later over-interpretation.",
+      "Context-restoration tests should record what the fresh reader understood, missed, and caused to change.",
+      "Testing-induced architecture changes should be connected to the test finding that caused them.",
+      "The continuation point must be usable by a context-naive future session.",
+      "The Work Update should preserve enough references that important claims can be traced to their authorities.",
+      "No substantive retrospective claim should exist only in the downstream HTML if it belongs in the durable historical record.",
+      "Length alone is not a defect; reconstruction quality is the governing quality test."
+    ],
+    "notes": []
+  }
+}

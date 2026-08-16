@@ -1,0 +1,4608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Klinswork Work Update for August 16, 2026: WORK-0001, the second Project Definition exemplar, Work Queue System documentation, Two-Window Testing, Resource Registry redesign, and the new Work Update master-sidecar-HTML production architecture.">
+  <meta name="author" content="Kevin Linstrum">
+  <meta name="document-id" content="work-update-2026-08-16-formal-project-definition-tested-context-architecture">
+  <meta name="theme-color" content="#9b3f06">
+  <title>From Formal Project Definition to Tested Context Architecture — Klinswork Work Update — August 16, 2026</title>
+  <style>
+
+:root {
+  --ink: #382418;
+  --muted: #756253;
+  --paper: #fffdf9;
+  --page: #f6eee6;
+  --cream: #fff8f0;
+  --orange-dark: #6f2d05;
+  --orange-deep: #8f3d07;
+  --orange: #c55b0d;
+  --orange-mid: #e27a23;
+  --orange-bright: #f39a3b;
+  --orange-soft: #fff0e1;
+  --orange-pale: #fff7ee;
+  --amber: #aa7410;
+  --amber-soft: #fff7d9;
+  --brown: #4b2a15;
+  --line: #e6cdb9;
+  --line-strong: #d8ad8a;
+  --green: #2d6c4f;
+  --green-soft: #edf7f1;
+  --red: #a5483f;
+  --red-soft: #fbecea;
+  --blue: #326d8b;
+  --blue-soft: #eaf5fa;
+  --purple: #7455a6;
+  --purple-soft: #f2edfb;
+  --cyan: #168a9c;
+  --cyan-soft: #e6f7fa;
+  --gray-soft: #f1f0ee;
+  --shadow: 0 15px 42px rgba(94, 45, 10, .10);
+  --shadow-small: 0 7px 22px rgba(94, 45, 10, .08);
+  --radius: 18px;
+  --content-width: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.2rem;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(226, 122, 35, .14), transparent 29rem),
+    linear-gradient(180deg, #f8f0e7 0, var(--page) 35rem);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--orange-deep);
+  text-underline-offset: .18em;
+  text-decoration-thickness: .08em;
+}
+a:hover { color: var(--orange); }
+a:focus-visible {
+  outline: 3px solid #ffb467;
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  left: 1rem;
+  top: -5rem;
+  padding: .7rem 1rem;
+  color: #fff;
+  background: #3f1e09;
+  border-radius: .6rem;
+}
+.skip-link:focus { top: 1rem; }
+
+.document-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: #fff9f2;
+  background: rgba(73, 30, 5, .97);
+  border-bottom: 1px solid rgba(255,255,255,.13);
+  box-shadow: 0 6px 24px rgba(52, 23, 7, .20);
+  backdrop-filter: blur(10px);
+}
+.document-navbar-inner {
+  width: min(calc(100% - 2rem), var(--content-width));
+  min-height: 3.6rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  flex-wrap: wrap;
+}
+.nav-brand {
+  margin-right: auto;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-decoration: none;
+}
+.nav-brand span { color: #ffbd76; }
+.document-navbar-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: .34rem .72rem;
+  color: #fff8ee;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: .86rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+.document-navbar-link:hover,
+.document-navbar-link:focus-visible {
+  color: #fff;
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.16);
+}
+
+.site-header {
+  color: #fff;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 196, 119, .26), transparent 23rem),
+    linear-gradient(128deg, #682804 0%, #9b3f06 42%, #c35a0c 74%, #db7d25 100%);
+  border-bottom: 6px solid #f3a13e;
+}
+.header-inner {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin: 0 auto;
+  padding: 5.2rem 0 4.4rem;
+}
+.kicker {
+  margin: 0 0 .8rem;
+  color: #ffe2c2;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+h1 {
+  max-width: 1000px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.65rem, 6.5vw, 5.3rem);
+  line-height: .99;
+  letter-spacing: -.04em;
+}
+.dek {
+  max-width: 890px;
+  margin: 1.5rem 0 0;
+  color: #fff2e4;
+  font-size: clamp(1.06rem, 2vw, 1.34rem);
+  line-height: 1.58;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: 1.7rem;
+}
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: .37rem .78rem;
+  color: #fffaf5;
+  background: rgba(255,255,255,.11);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.page {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin: 0 auto;
+  padding: 2.2rem 0 5rem;
+}
+
+.source-banner {
+  margin: 0 0 1.35rem;
+  padding: 1.05rem 1.2rem;
+  color: #562705;
+  background: linear-gradient(145deg, #fff6e9, #ffedd9);
+  border: 1px solid #edbd8b;
+  border-left: 7px solid var(--orange);
+  border-radius: 14px;
+  box-shadow: var(--shadow-small);
+}
+.source-banner strong { color: #7d3304; }
+
+.master-intro {
+  margin: 0 0 1.4rem;
+  padding: 1.2rem 1.35rem;
+  background: #fffdf9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-small);
+}
+.master-intro blockquote {
+  margin: .7rem 0;
+}
+
+.reading-path-intro {
+  margin: 0 0 1.5rem;
+  padding: 1.35rem 1.45rem;
+  color: #4e290e;
+  background: linear-gradient(145deg, #fff7e1, #ffedc7);
+  border: 1px solid #e2b768;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-small);
+}
+.reading-path-intro h2 {
+  margin: 0 0 .35rem;
+  color: #6e3507;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+}
+.reading-path-intro p { margin: 0; }
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: .8rem;
+  margin: 1rem 0 0;
+}
+.milestone-card {
+  display: block;
+  padding: 1rem 1.05rem;
+  color: var(--ink);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(157, 90, 25, .24);
+  border-radius: 13px;
+  text-decoration: none;
+  transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+.milestone-card:hover {
+  color: var(--ink);
+  border-color: #d27a29;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(110, 52, 10, .10);
+}
+.milestone-label {
+  display: block;
+  margin-bottom: .18rem;
+  color: #a14908;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.milestone-card strong {
+  display: block;
+  color: #5a2c0a;
+  line-height: 1.25;
+}
+.milestone-card span:last-child {
+  display: block;
+  margin-top: .4rem;
+  color: #6f5d4f;
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.snapshot {
+  scroll-margin-top: 5rem;
+  margin: 0 0 1.5rem;
+}
+.snapshot-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .75rem;
+}
+.snapshot-head h2 {
+  margin: 0;
+  color: #6d3105;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+}
+.snapshot-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .88rem;
+}
+.summary-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: .75rem;
+}
+.summary-stat {
+  padding: .95rem 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--orange-mid);
+  border-radius: 13px;
+  box-shadow: var(--shadow-small);
+}
+.summary-stat strong {
+  display: block;
+  color: #8d3b06;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+.summary-stat span {
+  display: block;
+  margin-top: .25rem;
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.35;
+}
+
+.toc {
+  margin: 0 0 1.8rem;
+  padding: 1.35rem 1.5rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.toc h2 {
+  margin: 0 0 .75rem;
+  color: #6b3107;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+}
+.toc ol {
+  columns: 2 320px;
+  column-gap: 2.4rem;
+  margin: 0;
+  padding-left: 1.3rem;
+}
+.toc li {
+  break-inside: avoid;
+  margin: .28rem 0;
+  padding-right: .8rem;
+}
+.toc a {
+  color: #7a3a0c;
+  font-weight: 650;
+}
+
+.content-section {
+  margin: 1.45rem 0;
+  padding: clamp(1.4rem, 3vw, 2.45rem);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  scroll-margin-top: 5rem;
+}
+.content-section.section-work {
+  border-top: 5px solid #c56b18;
+}
+.content-section.section-confirmed {
+  border-top: 5px solid var(--green);
+}
+.content-section.section-testing {
+  border-top: 5px solid var(--blue);
+}
+.content-section.section-open {
+  border-top: 5px solid #8a7a6c;
+}
+.content-section.section-production {
+  border-top: 5px solid var(--orange-bright);
+  background:
+    linear-gradient(180deg, rgba(255,245,232,.74), rgba(255,253,249,1) 12rem);
+}
+.content-section > h2 {
+  margin: 0;
+  color: #6c3005;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  line-height: 1.13;
+  letter-spacing: -.022em;
+}
+.section-eyebrow {
+  margin: 0 0 .35rem;
+  color: var(--orange);
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.section-body {
+  margin-top: 1.3rem;
+}
+.section-body h2 {
+  margin: 2rem 0 .6rem;
+  color: #773709;
+  font-size: 1.55rem;
+}
+.section-body h3 {
+  margin: 2.15rem 0 .58rem;
+  color: #7d3d10;
+  font-size: 1.38rem;
+  line-height: 1.28;
+}
+.section-body h4 {
+  margin: 1.6rem 0 .42rem;
+  color: #8b4c20;
+  font-size: 1.08rem;
+}
+.section-body h5 {
+  margin: 1.35rem 0 .35rem;
+  color: #76523a;
+  font-size: .98rem;
+}
+.section-body p {
+  margin: .82rem 0;
+}
+.section-body ul,
+.section-body ol {
+  padding-left: 1.4rem;
+}
+.section-body li {
+  margin: .38rem 0;
+}
+.section-body hr {
+  margin: 2.2rem 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+.section-body blockquote,
+.master-intro blockquote {
+  margin: 1.25rem 0;
+  padding: .9rem 1.15rem;
+  color: #5c432e;
+  background: var(--orange-pale);
+  border-left: 5px solid #e08a3c;
+  border-radius: 0 10px 10px 0;
+}
+.section-body blockquote p:first-child,
+.master-intro blockquote p:first-child { margin-top: 0; }
+.section-body blockquote p:last-child,
+.master-intro blockquote p:last-child { margin-bottom: 0; }
+
+strong { color: #4e2b14; }
+
+code {
+  padding: .12em .33em;
+  color: #733407;
+  background: #fff0df;
+  border: 1px solid #efd0b0;
+  border-radius: .3rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: .91em;
+}
+pre {
+  overflow-x: auto;
+  margin: 1.05rem 0;
+  padding: 1.05rem 1.15rem;
+  color: #fff6ea;
+  background:
+    linear-gradient(135deg, #3f210e, #5a2a0a 62%, #71330a);
+  border: 1px solid #7b461e;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+pre code {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  white-space: pre;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.05rem 0;
+  border-radius: 11px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+  font-size: .93rem;
+  background: #fffdf9;
+}
+th, td {
+  padding: .72rem .76rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--line);
+}
+th {
+  color: #653006;
+  background: #fff0df;
+}
+tr:nth-child(even) td {
+  background: #fffaf5;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--orange);
+}
+
+.section-return {
+  margin: 1.7rem 0 0;
+  padding-top: .8rem;
+  border-top: 1px solid #f0ddcb;
+  font-size: .83rem;
+  text-align: right;
+}
+.section-return a {
+  color: #9a531b;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.semantic-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .6rem;
+  margin-top: 1rem;
+}
+.legend-item {
+  padding: .65rem .75rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: .84rem;
+}
+.legend-project { border-left: 5px solid var(--cyan); }
+.legend-system { border-left: 5px solid var(--blue); }
+.legend-resource { border-left: 5px solid var(--purple); }
+.legend-work { border-left: 5px solid var(--orange); }
+.legend-confirmed { border-left: 5px solid var(--green); }
+.legend-problem { border-left: 5px solid var(--red); }
+
+.document-footer {
+  margin-top: 2rem;
+  padding: 2rem 0 0;
+  color: #6f5e51;
+  border-top: 1px solid #d8bca5;
+  font-size: .87rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .8rem;
+}
+.footer-card {
+  padding: .9rem 1rem;
+  background: rgba(255,255,255,.56);
+  border: 1px solid #dfc9b7;
+  border-radius: 11px;
+}
+.footer-card strong {
+  display: block;
+  margin-bottom: .2rem;
+  color: #6b350d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .milestone-card { transition: none; }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  html { scroll-padding-top: 8rem; }
+  .document-navbar-inner {
+    width: min(calc(100% - 1rem), var(--content-width));
+    padding: .45rem 0;
+    gap: .25rem;
+  }
+  .nav-brand {
+    flex-basis: 100%;
+    margin-right: 0;
+    padding: .1rem .25rem;
+  }
+  .document-navbar-link {
+    padding: .28rem .55rem;
+    font-size: .8rem;
+  }
+  .header-inner {
+    padding: 3.5rem 0 3rem;
+  }
+  .page {
+    width: min(calc(100% - 1rem), var(--content-width));
+  }
+  .toc ol { columns: 1; }
+  .content-section,
+  .toc,
+  .reading-path-intro,
+  .master-intro,
+  .source-banner {
+    border-radius: 13px;
+  }
+  .snapshot-head {
+    display: block;
+  }
+  .snapshot-head p {
+    margin-top: .25rem;
+  }
+}
+
+@media print {
+  :root {
+    --page: #fff;
+    --shadow: none;
+    --shadow-small: none;
+  }
+  body {
+    background: #fff;
+    font-size: 10.5pt;
+    color: #111;
+  }
+  .document-navbar,
+  .skip-link,
+  .section-return,
+  .reading-path-intro {
+    display: none !important;
+  }
+  .site-header {
+    color: #111;
+    background: #fff;
+    border-bottom: 3px solid #c55b0d;
+  }
+  .kicker, .dek { color: #333; }
+  .meta-chip {
+    color: #222;
+    background: #fff;
+    border-color: #aaa;
+  }
+  .header-inner {
+    padding: 1.5rem 0 1.2rem;
+  }
+  .page {
+    width: 100%;
+    padding-top: 1rem;
+  }
+  .toc {
+    box-shadow: none;
+  }
+  .content-section,
+  .summary-stat,
+  .source-banner,
+  .master-intro {
+    box-shadow: none;
+  }
+  .content-section {
+    break-inside: auto;
+  }
+  pre {
+    color: #111;
+    background: #f5f5f5;
+    border-color: #bbb;
+    white-space: pre-wrap;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  table { min-width: 0; }
+}
+
+  </style>
+</head>
+<body id="document-top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="document-navbar" aria-label="Work Update navigation">
+    <div class="document-navbar-inner">
+      <a class="nav-brand" href="https://sites.google.com/view/meadows-hk/home/documentation">Klinswork <span>Documentation</span></a>
+      <a class="document-navbar-link" href="https://sites.google.com/view/meadows-hk/home/documentation">Documentation Home</a>
+      <a class="document-navbar-link" href="#contents-title">Contents</a>
+      <a class="document-navbar-link" href="#snapshot">Today at a Glance</a>
+      <a class="document-navbar-link" href="#document-top">Top</a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="kicker">Klinswork · Work Update · August 16, 2026</p>
+      <h1>From Formal Project Definition to Tested Context Architecture</h1>
+      <p class="dek">
+        A new formal Work Unit architecture was forced to prove itself on real work, closed successfully,
+        and was immediately subjected to a harder test: could another ChatGPT context actually reconstruct
+        what happened? The answer reshaped the Resource Registry, context routing, evidence safeguards,
+        technical-document discovery, and finally the Work Update production system itself.
+      </p>
+      <div class="meta-row" aria-label="Document metadata">
+        <span class="meta-chip">WORK-0001 completed</span>
+        <span class="meta-chip">Second Project Definition exemplar</span>
+        <span class="meta-chip">Two-Window Testing operational</span>
+        <span class="meta-chip">48 → 25 Resource routing cleanup</span>
+        <span class="meta-chip">Orange edition</span>
+        <span class="meta-chip">Master updated through 14:53 MDT</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="main-content">
+    <div class="source-banner" role="note">
+      <strong>Source and authority note:</strong>
+      This HTML is the human-facing downstream presentation of
+      <code>work-update-summary-08-16-2026.md</code>, the canonical detailed retrospective master.
+      The structured companion is <code>work-update-08-16-2026-sidecar-3.0.json</code>.
+      The page intentionally retains unusually high detail because August 16 changed several layers of
+      Klinswork architecture at once.
+    </div>
+
+    <div class="master-intro">
+      <blockquote>
+<p><strong>Document role — MASTER</strong></p>
+<p>This Markdown document is the <strong>canonical human-readable retrospective master</strong> for the August 16 Work Update. It is intentionally detailed. It is written so that a future context-naive ChatGPT session can reconstruct the day's work, reasoning, chronology, evidence, failures, architecture changes, and continuation state without depending on retained conversational memory.</p>
+<p>The downstream <code>work-update-08-16-2026.html</code> is expected to become the more polished human-facing reading product. It may be shorter, more visual, and more editorially organized. The HTML should remain grounded in this Markdown master.</p>
+<p>This Work Update synthesizes the Work Unit Registry, Work Unit Activities, Resource Registry, Activities, Project/System documentation, implementation plan, validation evidence, and current repository state. It does <strong>not</strong> replace those authorities.</p>
+</blockquote>
+<hr />
+
+    </div>
+
+    <section class="reading-path-intro" aria-labelledby="quick-path-title">
+      <h2 id="quick-path-title">Quick reading path</h2>
+      <p>
+        The full record is preserved below. For a shorter first pass, follow these six milestones;
+        each one lands inside the detailed record rather than replacing it.
+      </p>
+      <div class="milestone-grid">
+        <a class="milestone-card" href="#7-work-0001-formal-project-definition-work">
+          <span class="milestone-label">Milestone 1 · Formal work</span>
+          <strong>WORK-0001 went from imperfect start to real closure</strong>
+          <span>Reconstructed-continuation planning preserved chronology without pretending the plan existed earlier.</span>
+        </a>
+        <a class="milestone-card" href="#13-two-window-testing-and-context-restoration">
+          <span class="milestone-label">Milestone 2 · Context test</span>
+          <strong>Two-Window Testing put the documentation on trial</strong>
+          <span>A fresh Other Window could reconstruct the system—but exposed routing and ontology weaknesses.</span>
+        </a>
+        <a class="milestone-card" href="#10-resource-registry-and-activity-effects">
+          <span class="milestone-label">Milestone 3 · Registry redesign</span>
+          <strong>The Resources table stopped trying to catalog everything</strong>
+          <span>Twenty-three current rows were retired; the global map became smaller and more semantically useful.</span>
+        </a>
+        <a class="milestone-card" href="#12-architecture-and-documentation-effects">
+          <span class="milestone-label">Milestone 4 · Architecture</span>
+          <strong>Viewer, plan, session, and documentation rules matured through use</strong>
+          <span>Real exemplar failures generated reusable architecture rather than one-off fixes.</span>
+        </a>
+        <a class="milestone-card" href="#15-resulting-state">
+          <span class="milestone-label">Milestone 5 · Resulting state</span>
+          <strong>Project, System, Registry, and work history ended the day cleaner</strong>
+          <span>The Work Unit is closed; later related work remains later work rather than being stuffed back into it.</span>
+        </a>
+        <a class="milestone-card" href="#22-work-update-production-layer-completed">
+          <span class="milestone-label">Milestone 6 · Work Update pipeline</span>
+          <strong>The missing master → sidecar → HTML production chain was formalized</strong>
+          <span>This page is the first full Work Update produced through the newly explicit three-layer architecture.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="snapshot" id="snapshot" aria-labelledby="snapshot-title">
+      <div class="snapshot-head">
+        <h2 id="snapshot-title">Today at a Glance</h2>
+        <p>High-information facts, not vanity metrics.</p>
+      </div>
+      <div class="summary-stat-grid">
+        <div class="summary-stat"><strong>1</strong><span>formal implementation Work Unit completed and closed</span></div>
+        <div class="summary-stat"><strong>74 / 0</strong><span>valid / invalid records in the formal Viewer validation snapshot</span></div>
+        <div class="summary-stat"><strong>23</strong><span>current Resource rows retired during the recorded cleanup passes</span></div>
+        <div class="summary-stat"><strong>25</strong><span>Resources remaining in the current routing map</span></div>
+        <div class="summary-stat"><strong>32</strong><span>August 16 Activities from ACT-0080 through ACT-0111</span></div>
+        <div class="summary-stat"><strong>2</strong><span>Two-Window Tests that directly changed the architecture</span></div>
+      </div>
+      
+<div class="semantic-legend" aria-label="Semantic visual legend">
+  <div class="legend-item legend-project"><strong>🩵 Project</strong><br>durable undertaking</div>
+  <div class="legend-item legend-system"><strong>🟦 System</strong><br>coherent mechanism</div>
+  <div class="legend-item legend-resource"><strong>🟪 Resource</strong><br>registered route</div>
+  <div class="legend-item legend-work"><strong>🟧 Work</strong><br>bounded execution</div>
+  <div class="legend-item legend-confirmed"><strong>🟩 Confirmed</strong><br>validated result</div>
+  <div class="legend-item legend-problem"><strong>🟥 Problem</strong><br>failure or defect</div>
+</div>
+
+    </section>
+
+    <nav class="toc" aria-labelledby="contents-title">
+      <h2 id="contents-title">Contents — Full Detailed Record</h2>
+      <ol>
+        <li><a href="#1-work-update-identity">1. Work Update Identity</a></li>
+<li><a href="#2-purpose-and-reporting-boundary">2. Purpose and Reporting Boundary</a></li>
+<li><a href="#3-executive-summary">3. Executive Summary</a></li>
+<li><a href="#4-starting-state">4. Starting State</a></li>
+<li><a href="#5-intended-work-and-governing-plan">5. Intended Work and Governing Plan</a></li>
+<li><a href="#6-detailed-work-chronology">6. Detailed Work Chronology</a></li>
+<li><a href="#7-work-0001-formal-project-definition-work">7. WORK-0001 — Formal Project Definition Work</a></li>
+<li><a href="#8-decisions-deviations-problems-and-discoveries">8. Decisions, Deviations, Problems, and Discoveries</a></li>
+<li><a href="#9-validation-testing-and-confidence">9. Validation, Testing, and Confidence</a></li>
+<li><a href="#10-resource-registry-and-activity-effects">10. Resource Registry and Activity Effects</a></li>
+<li><a href="#11-project-and-system-delta">11. Project and System Delta</a></li>
+<li><a href="#12-architecture-and-documentation-effects">12. Architecture and Documentation Effects</a></li>
+<li><a href="#13-two-window-testing-and-context-restoration">13. Two-Window Testing and Context Restoration</a></li>
+<li><a href="#14-knowledge-produced">14. Knowledge Produced</a></li>
+<li><a href="#15-resulting-state">15. Resulting State</a></li>
+<li><a href="#16-remaining-work-and-open-determinations">16. Remaining Work and Open Determinations</a></li>
+<li><a href="#17-continuation-point">17. Continuation Point</a></li>
+<li><a href="#18-important-artifacts-and-references">18. Important Artifacts and References</a></li>
+<li><a href="#19-provenance-and-interpretation-limits">19. Provenance and Interpretation Limits</a></li>
+<li><a href="#20-downstream-html-projection-notes">20. Downstream HTML Projection Notes</a></li>
+<li><a href="#21-work-update-completion-check">21. Work Update Completion Check</a></li>
+<li><a href="#22-work-update-production-layer-completed">22. Work Update Production Layer Completed</a></li>
+<li><a href="#closing-assessment">Closing Assessment</a></li>
+      </ol>
+    </nav>
+
+    
+<section class="content-section" id="1-work-update-identity" aria-labelledby="1-work-update-identity-title">
+  <p class="section-eyebrow">Document identity</p>
+  <h2 id="1-work-update-identity-title">1. Work Update Identity</h2>
+  <div class="section-body">
+    <div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Work Update title</strong></td>
+  <td>From Formal Project Definition to Tested Context Architecture</td>
+</tr>
+<tr>
+  <td><strong>Coverage</strong></td>
+  <td>August 16, 2026 — current through 14:53 America/Denver</td>
+</tr>
+<tr>
+  <td><strong>Earliest durable Activity today</strong></td>
+  <td><code>ACT-0080</code> — 05:15</td>
+</tr>
+<tr>
+  <td><strong>Formal Work Unit</strong></td>
+  <td><code>WORK-0001 — Task Assignment and Tracking — Initial Project Definition</code></td>
+</tr>
+<tr>
+  <td><strong>Formal session initiated</strong></td>
+  <td>07:48 — <code>WUA-0003</code></td>
+</tr>
+<tr>
+  <td><strong>Formal session activated</strong></td>
+  <td>08:35 — <code>WUA-0004</code></td>
+</tr>
+<tr>
+  <td><strong>Formal session / Work Unit closed</strong></td>
+  <td>10:49 — <code>WUA-0010</code></td>
+</tr>
+<tr>
+  <td><strong>Primary Project</strong></td>
+  <td>🩵 Task Assignment and Tracking</td>
+</tr>
+<tr>
+  <td><strong>Parent Project</strong></td>
+  <td>🩵 Operations</td>
+</tr>
+<tr>
+  <td><strong>Primary System</strong></td>
+  <td>🟦 Work Queue</td>
+</tr>
+<tr>
+  <td><strong>Cross-project Project</strong></td>
+  <td>🩵 Documentation</td>
+</tr>
+<tr>
+  <td><strong>Reference exemplar</strong></td>
+  <td>🩵 Inventory Management → 🟦 Inventory 3.0</td>
+</tr>
+<tr>
+  <td><strong>Primary Registry</strong></td>
+  <td>🟪 <code>RES-043</code> — Klinswork Resource Registry</td>
+</tr>
+<tr>
+  <td><strong>Primary Viewer</strong></td>
+  <td>🟪 <code>RES-011</code> — Online JSON Viewer</td>
+</tr>
+<tr>
+  <td><strong>Viewer manifest</strong></td>
+  <td>🟪 <code>RES-044</code></td>
+</tr>
+<tr>
+  <td><strong>Viewer manifest builder</strong></td>
+  <td>🟪 <code>RES-045</code></td>
+</tr>
+<tr>
+  <td><strong>Viewer source registry</strong></td>
+  <td>🟪 <code>RES-046</code></td>
+</tr>
+<tr>
+  <td><strong>Current Activity tail</strong></td>
+  <td><code>ACT-0111</code></td>
+</tr>
+<tr>
+  <td><strong>Current Work Unit Activity tail</strong></td>
+  <td><code>WUA-0010</code></td>
+</tr>
+<tr>
+  <td><strong>Current Resource count</strong></td>
+  <td>25 current Resources</td>
+</tr>
+<tr>
+  <td><strong>Work Update status</strong></td>
+  <td>Working master, current through 14:53</td>
+</tr>
+<tr>
+  <td><strong>Master / downstream rule</strong></td>
+  <td>This Markdown is master; sidecar and HTML are downstream</td>
+</tr>
+</tbody>
+</table></div>
+<h2>1.1 Semantic placement</h2>
+<pre><code class="language-text">Klinswork
+│
+├── Documentation                                   [Project]
+│   ├── Record Profile Library
+│   ├── Resource / Work Context Registry
+│   ├── Documentation Viewer
+│   ├── Work Unit planning architecture
+│   └── Work Update / summary architecture
+│
+└── Operations                                      [Project]
+    ├── Inventory Management                        [Project]
+    │   └── Inventory 3.0                          [System]
+    │
+    └── Task Assignment and Tracking                [Project]
+        └── Work Queue                              [System]
+</code></pre>
+<p>The hierarchy remains deliberately distinct from physical repository location and Resource identity.</p>
+<pre><code class="language-text">Project
+    != System
+    != application
+    != Resource
+    != repository folder
+    != deployment
+    != lifecycle state
+</code></pre>
+<h2>1.2 Why this day is one coherent Work Update</h2>
+<p>August 16 began as the first serious attempt to <strong>use the Work Unit / implementation-plan / formal-session machinery prospectively enough to govern a real Project Definition</strong>, even though the infrastructure was still new and some of it had to be repaired while work was already underway.</p>
+<p>The formal body of work, <code>WORK-0001</code>, produced and validated the <strong>second Klinswork Project Definition exemplar</strong>: Task Assignment and Tracking with Work Queue as its principal known System. That alone would justify a major Work Update.</p>
+<p>But the day did not stop when <code>WORK-0001</code> closed. Immediately afterward, the completed documentation architecture was subjected to a fresh-context experiment: <strong>Two-Window Testing (<code>2WT</code>) with an Other Window (<code>OW</code>)</strong>. Instead of merely asserting that the documentation could restore context, the architecture was tested empirically by asking another ChatGPT context to reconstruct the work from durable records.</p>
+<p>That testing exposed new weaknesses. Those weaknesses drove a substantial redesign of how the Resource Registry should behave for a machine reader, a large cleanup of the Resources table, a new spreadsheet-inspection warning, a more explicit context-routing layer, a refined rule about globally registered Resources versus locally discoverable documentation, and post-closure reconciliation of Work Queue technical-document routing.</p>
+<p>The day then moved one layer higher again: the Work Update machinery itself was clarified. The Work Update Summary was established as the <strong>canonical Markdown master</strong>, the HTML as a downstream human-facing product, and a new Work Update Summary JSON template/profile was created to guide future master documents.</p>
+<p>The day therefore has a coherent arc:</p>
+<pre><code class="language-text">build formal work machinery
+        ↓
+use it on WORK-0001
+        ↓
+close the Work Unit
+        ↓
+test context restoration empirically with 2WT
+        ↓
+redesign Registry routing based on test failures
+        ↓
+reconcile Work Queue technical-document routing
+        ↓
+formalize the Work Update master/template layer
+        ↓
+write this retrospective master
+</code></pre>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="2-purpose-and-reporting-boundary" aria-labelledby="2-purpose-and-reporting-boundary-title">
+  <p class="section-eyebrow">Why this record exists</p>
+  <h2 id="2-purpose-and-reporting-boundary-title">2. Purpose and Reporting Boundary</h2>
+  <div class="section-body">
+    <h2>2.1 Purpose</h2>
+<p>This Work Update exists to make August 16 reconstructable later at the level of <strong>meaning</strong>, not merely output.</p>
+<p>A terse record would say that we created a Project Definition, updated a Viewer builder, closed a Work Unit, and deleted a number of Registry rows.</p>
+<p>That would be factually incomplete in the way that matters most.</p>
+<p>The important story is that several architecture layers were <strong>forced to prove themselves through use</strong>:</p>
+<ul>
+<li>the Work Unit model had to govern a real formal session;</li>
+<li>the implementation-plan architecture had to survive being created after some work had already begun;</li>
+<li>the sidecar template had to acquire first-class Work Unit and session semantics;</li>
+<li>the Viewer had to discover Project-local implementation-plan companions;</li>
+<li>the second Project Definition exemplar had to preserve Project/System/current/future distinctions;</li>
+<li>a context-naive reader had to be able to re-enter the work;</li>
+<li>the Registry had to become more than a bag of links;</li>
+<li>spreadsheet inspection itself had to be treated as fallible evidence;</li>
+<li>the distinction between an important document and a globally registered Resource had to become operational;</li>
+<li>the Work Update Summary needed an explicit role as a durable master for future AI reconstruction.</li>
+</ul>
+<p>This document preserves those causal relationships.</p>
+<h2>2.2 Included</h2>
+<p>This Work Update includes:</p>
+<ul>
+<li>the early-morning Task Assignment and Tracking Project Definition work that preceded formal session activation;</li>
+<li><code>WORK-0001</code> initiation, reconstructed-continuation planning, activation, execution, validation, reconciliation, and closure;</li>
+<li>implementation-plan sidecar / formal-session template maturation required by the Work Unit architecture;</li>
+<li>Project-local Viewer companion-resolution changes;</li>
+<li>Task Assignment and Tracking Project-level definition;</li>
+<li>Work Queue System-level current-state definition;</li>
+<li>Work Queue roadmap/current-state authority separation;</li>
+<li>Resource corrections discovered during Project/System verification;</li>
+<li>source-aware Viewer validation;</li>
+<li>Architecture Changelog effects;</li>
+<li><code>2WT001</code> and <code>2WT002</code> observations;</li>
+<li>Registry context-routing improvements;</li>
+<li>the <code>443</code> spreadsheet serialization/inspection defect;</li>
+<li>Resource Registry pruning from a broad asset-like list toward a sparse routing map;</li>
+<li>direct-link reconciliation for Calendar and the image repository;</li>
+<li>reconsideration of <code>RES-047</code> after proving that the technical manual is discoverable through Project/System documentation;</li>
+<li>Work Queue README reconciliation after <code>WORK-0001</code>;</li>
+<li>the GitHub connector write limitation encountered during that reconciliation;</li>
+<li>creation of the new Work Update Summary template/profile;</li>
+<li>creation of this Work Update Summary master.</li>
+</ul>
+<h2>2.3 Intentionally outside this update</h2>
+<p>This update does not claim to document:</p>
+<ul>
+<li>new Work Queue feature development;</li>
+<li>a Work Queue datastore redesign;</li>
+<li>a new Project or System ID allocation process;</li>
+<li>a formal Relationship Registry implementation;</li>
+<li>complete source-code/runtime verification of Work Queue;</li>
+<li>completion of the Building Map;</li>
+<li>Scheduling redesign;</li>
+<li>Employee Profile implementation;</li>
+<li>complete Inventory transaction propagation;</li>
+<li>final retirement of <code>RES-047</code> from the Registry — this remains pending as of the current coverage boundary;</li>
+<li>completion of every possible 2WT case;</li>
+<li>publication of the downstream August 16 HTML Work Update, which has not yet been created in this work period.</li>
+</ul>
+<h2>2.4 Authority model</h2>
+<pre><code class="language-text">Work Unit current state
+    → Work Units Registry
+
+Work Unit material history
+    → Work Unit Activities
+
+Intended bounded work
+    → Implementation Plan
+
+Detailed formal execution
+    → Work Implementation Session
+
+Resource current state
+    → Resources
+
+Resource material history
+    → Activities
+
+Project intrinsic identity
+    → project-identity.json
+
+Project purpose / scope / current interpretation
+    → Project Summary
+
+System current interpretation
+    → System Summary
+
+System future direction
+    → System Roadmap
+
+Current application behavior
+    → current source / datastore / deployment / executable tests
+
+Architecture-change history
+    → Architecture Changelog
+
+Retrospective cross-authority synthesis
+    → this Work Update Summary
+</code></pre>
+<p>The Work Update can quote, summarize, interpret, and connect these records.</p>
+<p>It must not silently replace them.</p>
+<h2>2.5 Reconstruction boundary</h2>
+<p><strong>Reconstruction occurred:</strong> yes.</p>
+<p>The key reconstruction problem occurred inside <code>WORK-0001</code>.</p>
+<p>The formal session was initiated at:</p>
+<pre><code class="language-text">2026-08-16T07:48:00-06:00
+WUA-0003
+</code></pre>
+<p>But the Project Identity, Project README, and Project Summary had already been produced earlier in the same morning.</p>
+<p>The governing implementation plan was created at:</p>
+<pre><code class="language-text">2026-08-16T07:53:00-06:00
+</code></pre>
+<p>and was explicitly labeled:</p>
+<pre><code class="language-text">planning_mode: reconstructed-continuation
+</code></pre>
+<p>The plan therefore did not pretend that it had prospectively authorized work that had already happened.</p>
+<p>That temporal honesty became a major design rule for the day.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="3-executive-summary" aria-labelledby="3-executive-summary-title">
+  <p class="section-eyebrow">What changed</p>
+  <h2 id="3-executive-summary-title">3. Executive Summary</h2>
+  <div class="section-body">
+    <h2>3.1 What happened</h2>
+<p>August 16 converted the new Klinswork Work Unit architecture from a planning concept into a real execution mechanism.</p>
+<p><code>WORK-0001 — Task Assignment and Tracking — Initial Project Definition</code> had been registered on August 15 as the next formal implementation body of work. When work began on August 16, however, the machinery around it was not fully ready. The formal session had not yet been activated through a governing implementation plan, some Project Definition output had already been created, the implementation-plan sidecar architecture needed stronger Work Unit/session semantics, and the execution process itself was still being learned.</p>
+<p>Rather than rewriting history, the session was reconstructed honestly. <code>WUA-0003</code> recorded that the session had been initiated while the plan gate remained unsatisfied. The new <code>implementation-plan-project-definition.md</code> was created as a <strong>reconstructed-continuation</strong> plan. At 08:35, <code>WUA-0004</code> recorded that the plan had been linked, the activation gate had been satisfied, and <code>WORK-0001</code> moved into active execution.</p>
+<p>The work then completed the second Project Definition exemplar. Task Assignment and Tracking received its narrow <code>project-identity.json</code>, Project-local README, detailed Project Summary, structured Project Summary sidecar, and governing implementation plan/sidecar. Work Queue was documented separately as the principal known System through a System-local README, a current-state <code>system-summary.md</code>, a System Summary sidecar, and a distinct roadmap/roadmap-sidecar pair for future direction.</p>
+<p>During this work, the source-aware Documentation Viewer manifest builder was changed to understand a Project-local sidecar whose human-readable companion lives in a parallel <code>implementation-plans/</code> directory. Builder <code>2.0.0-draft.3</code> was syntax-validated and successfully used during <code>WORK-0001</code>. The current generated Viewer manifest used for validation contained <strong>74 valid records, 0 invalid records, and 6 Project-source records</strong>.</p>
+<p>The formal validation matrix passed with non-blocking documentation-freshness notes. Those stale annotations were reconciled before closure. Registry and architecture effects were recorded, including correction of the current employee workbook under <code>RES-013</code>, Activities for Viewer-builder/manifest changes, and <code>ARCH-005</code> in the Meadows Housekeeping Projects Summary. At 10:49, <code>WUA-0010</code> closed the formal session and completed <code>WORK-0001</code>.</p>
+<p>That closure was not the end of the day's architecture work. It created the conditions for the next experiment: <strong>Two-Window Testing (<code>2WT</code>)</strong>.</p>
+<p>A fresh Other Window (<code>OW</code>) was used to see whether a context-naive ChatGPT instance could actually reconstruct the architecture from the durable system we had built. The first test showed that the context was recoverable, but orientation was slower and more fragile than desired. It also contributed to discovery of a spreadsheet-inspection defect in which serialized table representations produced the value <code>443</code> in cells that were literally blank.</p>
+<p>Those observations immediately became architecture changes. The Resource Registry README gained a <strong>Context Routing Index</strong> and explicit authority map through <code>ACT-0091</code>. The spreadsheet defect produced <code>ACT-0092</code> and a permanent warning that direct cell evidence controls when a serialized representation disagrees with literal/effective workbook cells.</p>
+<p>The second Two-Window test was faster, but it exposed another problem: a context-naive reconstruction could over-assimilate Projects and Systems into the Resource model. This reinforced the ontology rule that <code>Project != System != Resource</code> and helped drive a deeper redesign of the Resources tab.</p>
+<p>The Registry was then aggressively cleaned. Twenty-three current Resource rows were retired through <code>ACT-0085</code>–<code>ACT-0090</code>, <code>ACT-0093</code>–<code>ACT-0102</code>, and <code>ACT-0105</code>–<code>ACT-0111</code>. The current Resources table was reduced to <strong>25 Resources</strong>. The removal principle was not “delete unimportant things.” It was:</p>
+<blockquote>
+<p>Register a Resource globally when a future context-naive session needs a stable route, authority, operational dependency, or entry point that would otherwise be difficult to recover.</p>
+</blockquote>
+<p>Internal logical datasets, generated catalogs, individual sidecars, historical summaries, legacy compatibility artifacts, placeholders, and templates were removed from the current routing map when they could be discovered through stronger architecture.</p>
+<p>That principle was then applied to a particularly useful edge case: the Work Queue technical manual. <code>RES-047</code> had actually been registered at 05:15 the same morning because the manual is important. Later, after the Registry model matured, we tested whether its importance actually required a global Resource entry. It did not. The Task Assignment and Tracking / Work Queue documentation already exposes the manual explicitly and directly. The Work Queue README was therefore rewritten so a future reader can discover the manual naturally without a <code>RES-047</code> dependency.</p>
+<p>The current GitHub Work Queue documentation now contains that direct technical-manual route and lists the current Work Queue-related Registry Resources as <code>RES-002</code>, <code>RES-003</code>, <code>RES-010</code>, and <code>RES-013</code>. As of the coverage boundary, however, <code>RES-047</code> still remains in the live Resources table and has not yet received a retirement Activity. The documentation is therefore prepared for that cleanup, but the Registry cleanup itself is still pending.</p>
+<p>Finally, the day clarified the Work Update architecture itself. The Work Update Summary Markdown is now explicitly the <strong>master</strong>. Future ChatGPT sessions are expected to read the detailed Markdown. The human-facing downstream product is <code>work-update.html</code>. A new <code>work-update-summary-template-1.0-draft.json</code> was built around that rule, with detailed chronology, Work Unit/WUA/Activity integration, starting/resulting-state delta, 2WT testing, provenance, continuation, a Table of Contents requirement, and a redundant semantic visual grammar.</p>
+<p>This Work Update is the first substantial attempt to use that model.</p>
+<h2>3.2 Major outcomes</h2>
+<ul>
+<li>🟩 <strong>Completed:</strong> <code>WORK-0001</code> is completed and closed.</li>
+<li>🟩 <strong>Completed:</strong> Task Assignment and Tracking became the second validated Project Definition exemplar.</li>
+<li>🟩 <strong>Completed:</strong> Work Queue gained a current-state System documentation layer distinct from its roadmap.</li>
+<li>🟩 <strong>Validated:</strong> Viewer source-aware discovery/companion behavior worked for the second exemplar.</li>
+<li>🟩 <strong>Validated:</strong> Project Summary, System Summary, and System Roadmap meanings remain distinguishable.</li>
+<li>🟩 <strong>Validated:</strong> Context-naive resume is possible through the Project/System documentation route.</li>
+<li>🟨 <strong>Architecture change:</strong> implementation-plan sidecar handling acquired Work Unit/session semantics and Project-local companion resolution.</li>
+<li>🟨 <strong>Architecture change:</strong> the Registry README acquired explicit context routing and authority routing.</li>
+<li>🟨 <strong>Architecture change:</strong> Resources shifted from broad asset registration toward sparse semantic routing.</li>
+<li>🟨 <strong>Architecture change:</strong> globally registered importance was separated from local discoverability.</li>
+<li>🟥 <strong>Problem discovered:</strong> serialized spreadsheet inspection can fabricate <code>443</code> values in blank cells.</li>
+<li>🟥 <strong>Problem discovered:</strong> the root Documentation README remains partly stale relative to the current architecture.</li>
+<li>🟥 <strong>Tooling constraint:</strong> the connected GitHub integration can read the repository but returned <code>403 Resource not accessible by integration</code> for direct write attempts.</li>
+<li>🟧 <strong>Testing practice:</strong> Two-Window Testing (<code>2WT</code>) became an empirical method for validating durable context.</li>
+<li>🟪 <strong>Registry cleanup:</strong> 23 Resource rows were retired from the current Resources map; 25 remain current.</li>
+<li>⬜ <strong>Open:</strong> <code>RES-047</code> is still present and should be retired only after live Registry write + Activity reconciliation.</li>
+<li>⬜ <strong>Open:</strong> current physical Work Queue README filename should be reconciled with documentation paths expecting <code>README.md</code>.</li>
+<li>🟩 <strong>Documentation infrastructure:</strong> a Work Update Summary master/template model now exists.</li>
+</ul>
+<h2>3.3 Why it mattered</h2>
+<p>The most important result is not the number of files or Registry rows changed.</p>
+<p>August 16 established a feedback loop:</p>
+<pre><code class="language-text">architecture
+    ↓
+real work
+    ↓
+formal execution
+    ↓
+validation
+    ↓
+fresh-context testing
+    ↓
+observed failure
+    ↓
+architecture correction
+    ↓
+better context
+</code></pre>
+<p>That loop is materially stronger than architecture by discussion alone.</p>
+<p>The Documentation system is increasingly becoming a <strong>self-testing context system</strong>.</p>
+<h2>3.4 One-sentence retrospective</h2>
+<blockquote>
+<p><strong>August 16 was the day Klinswork used its new Work Unit architecture to complete a second Project Definition exemplar, then tested whether another ChatGPT context could actually understand the result and redesigned the Registry based on what the test exposed.</strong></p>
+</blockquote>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="4-starting-state" aria-labelledby="4-starting-state-title">
+  <p class="section-eyebrow">Where the day began</p>
+  <h2 id="4-starting-state-title">4. Starting State</h2>
+  <div class="section-body">
+    <h2>4.1 The August 15 baseline</h2>
+<p>August 15 had already produced a major threshold change.</p>
+<p>The Inventory Management → Inventory 3.0 documentation package had become the first real Project Definition exemplar. Record Profiles had been separated into document-sidecar, entity-record, and authoring-template families. Project Identity had become narrow and distinct from Project narrative. A source-aware Documentation Viewer had begun replacing the old single-root discovery model. The Resource Registry had already demonstrated stable identity across repository-location migration.</p>
+<p>But the August 15 summary ended with a clear challenge:</p>
+<blockquote>
+<p>the next challenge was to use the architecture prospectively.</p>
+</blockquote>
+<p>The prior day had still been substantially retrospective and reconstructed.</p>
+<p>The new structures existed.</p>
+<p>They had not yet governed a real formal Work Unit from beginning to closure.</p>
+<h2>4.2 Work Unit architecture existed, but was extremely new</h2>
+<p>The Work Units and Work Unit Activities structures had been initialized on August 15.</p>
+<p>The current Work Unit table shows:</p>
+<pre><code class="language-text">WORK-0005
+Work Unit architecture and registry initialization
+status: completed
+</code></pre>
+<p><code>WUA-0001</code> and <code>WUA-0002</code> belong to <code>WORK-0005</code>, not <code>WORK-0001</code>.</p>
+<p>They record that the new Work Unit architecture and registries were established and that <code>WORK-0001</code> was retained as the next planned implementation Work Unit.</p>
+<p>This distinction matters when reconstructing today.</p>
+<p>The early WUAs are evidence of the <strong>planning architecture that created WORK-0001</strong>, not execution events inside <code>WORK-0001</code>.</p>
+<h2>4.3 WORK-0001 existed before today's formal execution</h2>
+<p>The live Work Unit row records:</p>
+<pre><code class="language-text">WORK-0001
+Task Assignment and Tracking — Initial Project Definition
+
+created:
+2026-08-15T18:25:00-06:00
+
+kind:
+implementation
+
+starting status:
+planned
+
+formal session:
+yes
+</code></pre>
+<p>Its goal was to create the initial Task Assignment and Tracking Project Definition and establish Work Queue as the principal known System, using Inventory Management → Inventory 3.0 as the reference exemplar without blindly copying it.</p>
+<p>Its completion rule required:</p>
+<ul>
+<li>an initial Project Definition package;</li>
+<li>Work Queue documented as the principal known System;</li>
+<li>preserved authority boundaries;</li>
+<li>required discovery/validation completed or explicitly recorded.</li>
+</ul>
+<h2>4.4 The execution architecture was not fully ready when work began</h2>
+<p>This is one of the most important facts of the day.</p>
+<p>The work did <strong>not</strong> begin from a perfectly prepared process.</p>
+<p>By the time <code>WUA-0003</code> was recorded at 07:48:</p>
+<ul>
+<li><code>project-identity.json</code> had already been created;</li>
+<li>the Project-local <code>README.md</code> had already been created;</li>
+<li><code>summaries/project-summary.md</code> had already been created;</li>
+<li>the governing implementation plan did not yet exist as the linked activation authority;</li>
+<li>the implementation-plan sidecar/profile architecture still needed first-class Work Unit/session support;</li>
+<li>the formal Work Implementation Session template had only just been upgraded into the 1.1-draft Work Unit-aware structure;</li>
+<li>Project-local implementation-plan sidecar companion discovery was not yet supported by the Viewer manifest builder.</li>
+</ul>
+<p>This was not treated as a reason to pretend the process had gone perfectly.</p>
+<p>It became evidence for improving the process.</p>
+<h2>4.5 Existing summary/template architecture was not yet sufficient for the new Work Unit model</h2>
+<p>A generic authoring template already existed:</p>
+<pre><code class="language-text">Record Profile Library/summary-md-template.json
+</code></pre>
+<p>It described a Project-aware Work Summary and already established a useful rule:</p>
+<pre><code class="language-text">summary.md
+    = authoritative narrative source
+
+HTML / sidecar / project delta / publication artifacts
+    = derived
+</code></pre>
+<p>However, the new Work Unit / formal-session architecture had outgrown that older template in several ways.</p>
+<p>It did not yet make the new Work Unit layer, WUAs, reconstructed-continuation activation, 2WT context testing, sparse Registry semantics, and the modern master-Markdown/downstream-HTML relationship as explicit as today's work required.</p>
+<p>The need for a more specialized <strong>Work Update Summary template</strong> therefore emerged from actual use rather than from abstract schema planning.</p>
+<h2>4.6 Registry starting state</h2>
+<p>Before today's large cleanup, the Resources table was much broader.</p>
+<p>After <code>RES-047</code> was registered at 05:15 and before the later removals, the current routing map contained 48 Resource rows.</p>
+<p>Many of those rows represented things that certainly existed and were useful, but did not necessarily deserve <strong>global routing identity</strong>:</p>
+<ul>
+<li>internal datasets already reachable through a registered datastore;</li>
+<li>individual sidecars;</li>
+<li>individual lesson records;</li>
+<li>generated catalogs;</li>
+<li>historical summaries;</li>
+<li>legacy Viewer compatibility artifacts;</li>
+<li>reusable templates;</li>
+<li>placeholders.</li>
+</ul>
+<p>The Registry was still carrying some of its original “clickable reference list” ancestry.</p>
+<p>It had not yet fully adapted to the fact that its most important reader was increasingly ChatGPT.</p>
+<h2>4.7 Context restoration had not yet been empirically tested against the second exemplar</h2>
+<p>The architecture already valued:</p>
+<ul>
+<li>READMEs;</li>
+<li>Project Summary;</li>
+<li>System Summary;</li>
+<li>Resource Registry;</li>
+<li>progressive context loading;</li>
+<li>Startup;</li>
+<li>authority separation.</li>
+</ul>
+<p>But the question remained:</p>
+<blockquote>
+<p>Can a fresh ChatGPT window actually use these records efficiently and correctly?</p>
+</blockquote>
+<p>Until 2WT, that was still partly a design assertion.</p>
+<h2>4.8 Current identity state at the start</h2>
+<p>No permanent Project or System ID existed for the new exemplar.</p>
+<p>That remained correct.</p>
+<pre><code class="language-text">Task Assignment and Tracking
+    Project ID: unassigned
+
+Work Queue
+    System ID: unassigned
+</code></pre>
+<p>The work was explicitly prohibited from inventing:</p>
+<pre><code class="language-text">PROJ-###
+SYS-###
+Relationship IDs
+Run IDs
+Session IDs
+other durable IDs
+</code></pre>
+<p>simply to make blanks look complete.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="5-intended-work-and-governing-plan" aria-labelledby="5-intended-work-and-governing-plan-title">
+  <p class="section-eyebrow">Planned work</p>
+  <h2 id="5-intended-work-and-governing-plan-title">5. Intended Work and Governing Plan</h2>
+  <div class="section-body">
+    <h2>5.1 Governing Work Unit</h2>
+<p>🟧 <strong>Work Unit:</strong> <code>WORK-0001 — Task Assignment and Tracking — Initial Project Definition</code></p>
+<p><strong>Goal:</strong></p>
+<p>Create the initial Task Assignment and Tracking Project Definition and establish Work Queue within it as the principal known System, using Inventory Management → Inventory 3.0 as the architectural exemplar while independently verifying what actually applies.</p>
+<p><strong>Completion rule:</strong></p>
+<blockquote>
+<p>Task Assignment and Tracking has an initial Project Definition package; Work Queue is documented as its principal known System; authority boundaries are preserved; required discovery/validation is completed or explicitly recorded.</p>
+</blockquote>
+<h2>5.2 Governing implementation plan</h2>
+<p>The governing plan is:</p>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/operations/
+Task Assignment and Tracking/
+implementation-plans/
+implementation-plan-project-definition.md
+</code></pre>
+<p>The plan was created at:</p>
+<pre><code class="language-text">2026-08-16T07:53:00-06:00
+</code></pre>
+<p>Its planning mode is:</p>
+<pre><code class="language-text">reconstructed-continuation
+</code></pre>
+<p>This is not a cosmetic label.</p>
+<p>It means:</p>
+<pre><code class="language-text">work already completed
+        remains historical
+
+plan boundary
+        begins at 07:53
+
+remaining work
+        becomes intentionally governed
+</code></pre>
+<p>The plan explicitly states that Project Identity, Project README, and Project Summary already existed before the plan was created.</p>
+<h2>5.3 Main plan stages</h2>
+<p>The plan defined eight major stages:</p>
+<ol>
+<li>reconcile the plan boundary and activate <code>WORK-0001</code>;</li>
+<li>complete the Project-level definition package;</li>
+<li>create Work Queue System-local orientation;</li>
+<li>create Work Queue current-state System Summary;</li>
+<li>create Work Queue System Summary sidecar;</li>
+<li>validate discovery, companions, and Viewer behavior;</li>
+<li>reconcile Registry and architecture effects;</li>
+<li>close the formal session and <code>WORK-0001</code>.</li>
+</ol>
+<p>This sequence gave today's work a bounded structure after the reconstructed planning boundary.</p>
+<h2>5.4 Explicit out-of-scope work</h2>
+<p>The plan did <strong>not</strong> authorize:</p>
+<ul>
+<li>permanent Project ID assignment;</li>
+<li>permanent System ID assignment;</li>
+<li>System Identity Entity Record creation;</li>
+<li>formal Relationship Registry implementation;</li>
+<li>broad Work Queue feature development;</li>
+<li>datastore refactoring;</li>
+<li>roadmap feature implementation;</li>
+<li>Building Map completion;</li>
+<li>Scheduling redesign;</li>
+<li>Employee Profile implementation;</li>
+<li>complete Inventory transaction propagation;</li>
+<li>exhaustive historical normalization;</li>
+<li>universal Project Definition template extraction.</li>
+</ul>
+<p>This was a crucial boundary.</p>
+<p>The day was primarily architecture/documentation work, not feature work.</p>
+<h2>5.5 Evidence discipline</h2>
+<p>The plan deliberately separated:</p>
+<pre><code class="language-text">CURRENT EVIDENCE
+    Registry
+    current datastore
+    current source/deployment when inspected
+    fresh verification
+
+HISTORICAL EVIDENCE
+    dated Work Updates
+    screenshots
+    prior source snapshots
+
+PLANNING EVIDENCE
+    roadmap
+    implementation plans
+    design notes
+</code></pre>
+<p>This distinction became particularly important for Work Queue because the roadmap is rich and aspirational while runtime verification remains incomplete.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="6-detailed-work-chronology" aria-labelledby="6-detailed-work-chronology-title">
+  <p class="section-eyebrow">How the work unfolded</p>
+  <h2 id="6-detailed-work-chronology-title">6. Detailed Work Chronology</h2>
+  <div class="section-body">
+    <h2>6.1 Overview</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Time</th>
+  <th>Marker</th>
+  <th>Event</th>
+  <th>Durable consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>05:15</td>
+  <td>🟪</td>
+  <td><code>ACT-0080</code> registers Work Queue technical manual as <code>RES-047</code></td>
+  <td>Manual gains global Resource identity — later reconsidered</td>
+</tr>
+<tr>
+  <td>before 07:48</td>
+  <td>🩵</td>
+  <td>Project Identity, Project README, Project Summary already created</td>
+  <td>Work begins before governing plan exists</td>
+</tr>
+<tr>
+  <td>07:48</td>
+  <td>🟧</td>
+  <td><code>WUA-0003</code> session initiated</td>
+  <td>Formal context exists; activation gate still unsatisfied</td>
+</tr>
+<tr>
+  <td>07:53</td>
+  <td>🟨</td>
+  <td>reconstructed-continuation implementation plan created</td>
+  <td>Honest planning boundary established</td>
+</tr>
+<tr>
+  <td>08:35</td>
+  <td>🟧</td>
+  <td><code>WUA-0004</code> plan linked / session activated</td>
+  <td><code>WORK-0001</code> becomes active/active</td>
+</tr>
+<tr>
+  <td>09:01</td>
+  <td>🟩</td>
+  <td><code>WUA-0005</code> Viewer companion support added/validated</td>
+  <td>Builder becomes <code>2.0.0-draft.3</code></td>
+</tr>
+<tr>
+  <td>09:21</td>
+  <td>🟩</td>
+  <td><code>WUA-0006</code> Project-level package complete</td>
+  <td>Task Assignment and Tracking Project Definition stage passes</td>
+</tr>
+<tr>
+  <td>09:34</td>
+  <td>🟪</td>
+  <td><code>ACT-0081</code> fixes <code>RES-013</code></td>
+  <td>Employee/personnel source corrected</td>
+</tr>
+<tr>
+  <td>10:04</td>
+  <td>🟩</td>
+  <td><code>WUA-0007</code> Work Queue System package complete</td>
+  <td>Current-state System documentation established</td>
+</tr>
+<tr>
+  <td>10:08</td>
+  <td>🟩</td>
+  <td><code>WUA-0008</code> Stage 6 validation passes with notes</td>
+  <td>74 valid / 0 invalid manifest validation</td>
+</tr>
+<tr>
+  <td>10:17</td>
+  <td>🟨</td>
+  <td><code>WUA-0009</code> Registry/architecture reconciliation</td>
+  <td><code>ACT-0082</code>–<code>0084</code>, <code>ARCH-005</code></td>
+</tr>
+<tr>
+  <td>10:49</td>
+  <td>🟧</td>
+  <td><code>WUA-0010</code> closes session and Work Unit</td>
+  <td><code>WORK-0001</code> completed / readiness closed</td>
+</tr>
+<tr>
+  <td>after 10:49</td>
+  <td>🧪</td>
+  <td>2WT begins with Other Window</td>
+  <td>Durable context is empirically tested</td>
+</tr>
+<tr>
+  <td>11:37–11:40</td>
+  <td>🟪</td>
+  <td><code>ACT-0085</code>–<code>0090</code> first Registry pruning pass</td>
+  <td>6 current Resources retired</td>
+</tr>
+<tr>
+  <td>11:45</td>
+  <td>🟨</td>
+  <td><code>ACT-0091</code> Registry context-routing layer</td>
+  <td>Registry README becomes explicit startup router</td>
+</tr>
+<tr>
+  <td>12:01</td>
+  <td>🟥</td>
+  <td><code>ACT-0092</code> spreadsheet-inspection warning</td>
+  <td><code>443</code> representation bug recorded</td>
+</tr>
+<tr>
+  <td>12:12</td>
+  <td>🟪</td>
+  <td><code>ACT-0093</code>–<code>0103</code> second cleanup/reconciliation pass</td>
+  <td>10 Resources retired; Calendar route resolved</td>
+</tr>
+<tr>
+  <td>13:23</td>
+  <td>🟪</td>
+  <td><code>ACT-0104</code> image repository route added</td>
+  <td><code>RES-037</code> becomes directly resolvable</td>
+</tr>
+<tr>
+  <td>13:28</td>
+  <td>🟪</td>
+  <td><code>ACT-0105</code>–<code>0111</code> third cleanup pass</td>
+  <td>internal datasets + generated catalogs removed</td>
+</tr>
+<tr>
+  <td>after 13:28</td>
+  <td>🟨</td>
+  <td>technical-manual discoverability reviewed</td>
+  <td>Registry necessity of <code>RES-047</code> challenged</td>
+</tr>
+<tr>
+  <td>later</td>
+  <td>🟦</td>
+  <td>Work Queue README rewritten</td>
+  <td>direct technical-manual route + current Resource routes</td>
+</tr>
+<tr>
+  <td>later</td>
+  <td>🟥</td>
+  <td>GitHub connector write attempt returns 403</td>
+  <td>manual/download workflow required</td>
+</tr>
+<tr>
+  <td>later</td>
+  <td>🟨</td>
+  <td>Work Update architecture clarified</td>
+  <td>Markdown master / HTML downstream</td>
+</tr>
+<tr>
+  <td>later</td>
+  <td>🟪</td>
+  <td>Work Update Summary JSON template created</td>
+  <td>first specialized retrospective-master profile</td>
+</tr>
+<tr>
+  <td>14:18</td>
+  <td>📝</td>
+  <td>this Work Update master generated</td>
+  <td>current day reconstructed through current boundary</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>6.2 05:15 — 🟪 Work Queue technical manual registered</h2>
+<p><code>ACT-0080</code></p>
+<p>The first durable Registry event of the day registered:</p>
+<pre><code class="language-text">RES-047
+Work Queue app technical manual
+DOCUMENT
+</code></pre>
+<p>At the time, this made sense.</p>
+<p>The technical manual is unusually valuable because it treats Work Queue as an ecosystem rather than just an application. It maps:</p>
+<ul>
+<li>app layer;</li>
+<li>Google Sheets data;</li>
+<li>employee/personnel records;</li>
+<li>Inventory/SDS relationships;</li>
+<li>Documentation;</li>
+<li>repository/publishing infrastructure;</li>
+<li>Google-managed services;</li>
+<li>development/integration work;</li>
+<li>access/publication;</li>
+<li>human operational work.</li>
+</ul>
+<p>This registration later became an important architecture test.</p>
+<p>The manual remained important.</p>
+<p>What changed was our understanding of whether <strong>importance necessarily requires global Resource identity</strong>.</p>
+<hr />
+<h2>6.3 Before 07:48 — 🩵 Project work already underway</h2>
+<p>By the time the formal session-initiation event was recorded, the following were already created:</p>
+<pre><code class="language-text">Task Assignment and Tracking/
+├── project-identity.json
+├── README.md
+└── summaries/
+    └── project-summary.md
+</code></pre>
+<p>This exposed a process gap immediately.</p>
+<p>The Work Unit architecture was supposed to make formal work more deliberate.</p>
+<p>But the actual work had outrun the process.</p>
+<p>The choice was:</p>
+<pre><code class="language-text">A)
+pretend the plan had already existed
+
+or
+
+B)
+record reality and make the planning model support reality
+</code></pre>
+<p>The architecture chose B.</p>
+<p>That decision shaped much of the rest of the morning.</p>
+<hr />
+<h2>6.4 07:48 — 🟧 Formal session initiated but not activated</h2>
+<p><code>WUA-0003</code></p>
+<p>The Work Unit Activity records:</p>
+<pre><code class="language-text">event type:
+session-initiated
+
+Work Unit:
+WORK-0001
+</code></pre>
+<p>The description explicitly says that Project Identity, Project README, and Project Summary had already been produced.</p>
+<p>It also explicitly preserves the gate:</p>
+<blockquote>
+<p>Formal Work Unit activation remains gated on creation/linkage of the governing implementation plan.</p>
+</blockquote>
+<p>This became one of the most useful pieces of evidence in the entire Work Unit.</p>
+<p>It proved that:</p>
+<pre><code class="language-text">session initiation
+    != session activation
+</code></pre>
+<p>A formal work context can exist while an activation prerequisite remains unsatisfied.</p>
+<hr />
+<h2>6.5 07:53 — 🟨 Reconstructed-continuation plan created</h2>
+<p>The new implementation plan was created with:</p>
+<pre><code class="language-text">planning_mode: reconstructed-continuation
+</code></pre>
+<p>and an explicit planning boundary.</p>
+<p>The plan did not backdate authority.</p>
+<p>Instead, it categorized stages by temporal relationship:</p>
+<pre><code class="language-text">completed-before-plan
+in-progress-at-plan-creation
+remaining-planned-work
+conditional-future-work
+</code></pre>
+<p>This is a strong general solution for bootstrap-era work.</p>
+<p>It lets the system say:</p>
+<blockquote>
+<p>We should have had this plan earlier; we did not; here is exactly where its authority begins.</p>
+</blockquote>
+<p>without damaging historical truth.</p>
+<hr />
+<h2>6.6 08:35 — 🟧 Plan linked and session activated</h2>
+<p><code>WUA-0004</code></p>
+<p>The implementation plan and its structured companion were linked.</p>
+<p>The Work Unit changed from:</p>
+<pre><code class="language-text">STATUS: planned
+READINESS: ready
+</code></pre>
+<p>to:</p>
+<pre><code class="language-text">STATUS: active
+READINESS: active
+</code></pre>
+<p>The session was now formally activated.</p>
+<p>The earlier <code>WUA-0003</code> was intentionally <strong>not rewritten</strong>.</p>
+<p>This is an important pattern:</p>
+<pre><code class="language-text">history records what happened
+current state records what is true now
+</code></pre>
+<p>The system did not “correct” the past event out of existence.</p>
+<hr />
+<h2>6.7 Implementation-plan sidecar architecture matured during the work</h2>
+<p>The current <code>implementation-plan-sidecar-template.json</code> is now:</p>
+<pre><code class="language-text">schemaVersion: 3.2-draft
+profileVersion: 1.2
+</code></pre>
+<p>Version 3.2 added first-class structures for:</p>
+<ul>
+<li>Work Unit linkage;</li>
+<li>Work Unit state at plan creation;</li>
+<li>activation-gate representation;</li>
+<li>formal Work Implementation Session linkage;</li>
+<li>allocated Work Unit Activity references;</li>
+<li>explicit rules preventing the sidecar from becoming current Work Unit authority;</li>
+<li>explicit rules preventing it from absorbing execution history.</li>
+</ul>
+<p>This is exactly the kind of bootstrap correction that today's Work Update needs to preserve.</p>
+<p>The template architecture did not fully precede the work.</p>
+<p>The work helped produce the template architecture.</p>
+<hr />
+<h2>6.8 09:01 — 🟩 Project-local implementation-plan companion inference added</h2>
+<p><code>WUA-0005</code></p>
+<p>A real structural issue emerged from the new Project Definition layout.</p>
+<p>The implementation plan lived at:</p>
+<pre><code class="language-text">Task Assignment and Tracking/
+implementation-plans/
+implementation-plan-project-definition.md
+</code></pre>
+<p>while its sidecar lived at:</p>
+<pre><code class="language-text">Task Assignment and Tracking/
+sidecars/
+implementation-plan-project-definition-sidecar.json
+</code></pre>
+<p>The source-aware Viewer manifest builder did not yet know how to infer that relationship.</p>
+<p>Builder <code>2.0.0-draft.3</code> added support for:</p>
+<pre><code class="language-text">Project-local sidecars/
+        ↕
+parallel implementation-plans/
+</code></pre>
+<p>while preserving:</p>
+<ul>
+<li>explicit companion declarations as higher precedence;</li>
+<li>existing summary-sidecar inference behavior.</li>
+</ul>
+<p>The updated builder passed Python syntax validation and was used successfully during the active Work Unit.</p>
+<p>This is a textbook example of exemplar-driven architecture:</p>
+<pre><code class="language-text">new real record
+    exposes missing infrastructure
+        ↓
+infrastructure changes
+        ↓
+record becomes discoverable
+        ↓
+architecture becomes more general
+</code></pre>
+<hr />
+<h2>6.9 09:21 — 🟩 Project-level definition package completed</h2>
+<p><code>WUA-0006</code></p>
+<p>The Task Assignment and Tracking Project-level package was validated after repository synchronization and manifest regeneration.</p>
+<p>The package now contained:</p>
+<pre><code class="language-text">Task Assignment and Tracking/
+├── project-identity.json
+├── README.md
+├── summaries/
+│   └── project-summary.md
+├── sidecars/
+│   ├── project-summary-sidecar.json
+│   └── implementation-plan-project-definition-sidecar.json
+└── implementation-plans/
+    └── implementation-plan-project-definition.md
+</code></pre>
+<p>The Project Summary sidecar was discovered under the Projects source and resolved to:</p>
+<pre><code class="language-text">../summaries/project-summary.md
+</code></pre>
+<p>successfully.</p>
+<p>This established the Project layer before the session moved into Work Queue System documentation.</p>
+<hr />
+<h2>6.10 09:34 — 🟪 Employee source corrected</h2>
+<p><code>ACT-0081</code></p>
+<p>While reconciling Work Queue current-state evidence, the Registry entry for <code>RES-013</code> was found to point to the wrong workbook.</p>
+<p>It was corrected from the Work Queue 2.1 data workbook to the separate Employees workbook:</p>
+<pre><code class="language-text">1It_C3s-4Nwn7bFKt_InO5bblpF3Fo6dJzsF_WwKhnJo
+</code></pre>
+<p>That workbook contains:</p>
+<pre><code class="language-text">Employees
+Assignments
+Weekly_Schedule
+</code></pre>
+<p>and preserves stable:</p>
+<pre><code class="language-text">EMP-###
+</code></pre>
+<p>employee identities.</p>
+<p>The correction preserved <code>RES-013</code>.</p>
+<p>This is a direct application of:</p>
+<pre><code class="language-text">Resource identity
+    != Resource location
+</code></pre>
+<p>and also clarified that employee/personnel context is a separate shared data concern rather than an internal Tasks dataset.</p>
+<hr />
+<h2>6.11 10:04 — 🟩 Work Queue System-definition package completed</h2>
+<p><code>WUA-0007</code></p>
+<p>The Work Queue layer was completed and repository-validated.</p>
+<p>The package included:</p>
+<pre><code class="language-text">Work Queue/
+├── README.md                  [semantic intended path at closure]
+├── summaries/
+│   ├── system-summary.md
+│   └── work-queue-roadmap.md
+└── sidecars/
+    ├── system-summary-sidecar.json
+    └── work-queue-roadmap-sidecar.json
+</code></pre>
+<p>The current-state System Summary and the future-state Roadmap were explicitly kept separate.</p>
+<p>This was one of the strongest architecture tests of the day.</p>
+<pre><code class="language-text">System Summary
+    answers:
+    What is Work Queue now?
+
+System Roadmap
+    answers:
+    What should Work Queue become?
+</code></pre>
+<p>The sidecars structure those two different meanings.</p>
+<p>They do not merge them.</p>
+<p>The revised System Summary also incorporated the corrected employee workbook relationship from <code>ACT-0081</code>.</p>
+<hr />
+<h2>6.12 10:08 — 🟩 Stage 6 validation passed</h2>
+<p><code>WUA-0008</code></p>
+<p>The validation matrix result was:</p>
+<pre><code class="language-text">PASS WITH NON-BLOCKING NOTES
+</code></pre>
+<p>The tests were:</p>
+<pre><code class="language-text">T-01 repository structure
+T-02 JSON validation
+T-03 Project Summary companion
+T-04 Work Queue System Summary companion
+T-05 roadmap companion preservation
+T-06 Entity Record handling
+T-07 Viewer discovery
+T-08 Viewer semantics
+T-09 context-naive resume
+</code></pre>
+<p>The generated source-aware manifest used for validation reported:</p>
+<pre><code class="language-text">74 valid records
+0 invalid records
+6 Projects-source records
+</code></pre>
+<p>Important results included:</p>
+<ul>
+<li><code>project-summary-sidecar.json</code> → Project Summary companion resolved;</li>
+<li><code>system-summary-sidecar.json</code> → System Summary companion resolved;</li>
+<li>roadmap sidecar → roadmap Markdown preserved;</li>
+<li><code>project-identity.json</code> remained an Entity Record rather than being disguised as a sidecar;</li>
+<li>Project Summary and System Summary had distinct semantics;</li>
+<li>System Roadmap had distinct Viewer semantics;</li>
+<li>the Project README and Work Queue README provided a progressive context-naive route.</li>
+</ul>
+<p>The non-blocking problem was documentation freshness.</p>
+<p>Several files still contained creation-time language saying newly created records were “pending” or “next.”</p>
+<p>The authority routing was correct.</p>
+<p>The status annotations needed cleanup before closure.</p>
+<hr />
+<h2>6.13 10:17 — 🟨 Registry and architecture reconciliation completed</h2>
+<p><code>WUA-0009</code></p>
+<p>Stage 7 reconciled the effects of <code>WORK-0001</code>.</p>
+<p>No new permanent Project or System IDs were created.</p>
+<p>No new dedicated profile was invented merely because a specialized name might have been convenient.</p>
+<p>Material Resource-level effects were recorded as:</p>
+<pre><code class="language-text">ACT-0081
+    RES-013 employee source correction
+
+ACT-0082
+    RES-045 manifest-builder 2.0.0-draft.3 change
+
+ACT-0083
+    RES-044 regenerated source-aware manifest state
+
+ACT-0084
+    RES-042 architecture update / ARCH-005
+</code></pre>
+<p>The Meadows Housekeeping Projects Summary received:</p>
+<pre><code class="language-text">ARCH-005
+Second Project Definition Exemplar and System Documentation Validation
+</code></pre>
+<p>This architecture record preserved the larger meaning of the Work Unit:</p>
+<ul>
+<li>Task Assignment and Tracking validated the Project Definition model as a second exemplar;</li>
+<li>Work Queue validated the System-local current-state layer;</li>
+<li>Work Queue Roadmap remained separate future authority;</li>
+<li>Project-local implementation-plan companion handling worked;</li>
+<li>source-aware Viewer discovery worked;</li>
+<li>context-naive resume routing worked;</li>
+<li><code>RES-013</code> identity survived a location/source correction;</li>
+<li>Project/System ID assignment remained intentionally deferred.</li>
+</ul>
+<hr />
+<h2>6.14 10:49 — 🟧 Formal closure</h2>
+<p><code>WUA-0010</code></p>
+<p>The final Project README synchronization was verified.</p>
+<p>The completion rule was satisfied.</p>
+<p><code>WORK-0001</code> became:</p>
+<pre><code class="language-text">status: completed
+readiness: closed
+completed: 2026-08-16T10:49:00-06:00
+</code></pre>
+<p>The Work Unit result states that:</p>
+<ul>
+<li>the Project-level and System-level documentation packages are present and validated;</li>
+<li>Project/System authority boundaries were preserved;</li>
+<li>source-aware discovery and companion resolution were validated;</li>
+<li>Viewer semantics were validated;</li>
+<li>context-naive resume behavior was validated;</li>
+<li>Registry/Resource/architecture effects were reconciled;</li>
+<li>no unsupported Project/System IDs were assigned.</li>
+</ul>
+<p>The closure was real.</p>
+<p>Later Work Queue work should not be stuffed back into <code>WORK-0001</code>.</p>
+<p>That rule became important almost immediately.</p>
+<hr />
+<h2>6.15 After closure — 🧪 Two-Window Testing begins</h2>
+<p>Once <code>WORK-0001</code> closed, we deliberately stopped asking only:</p>
+<blockquote>
+<p>Does our documentation look sensible to the window that created it?</p>
+</blockquote>
+<p>and started asking:</p>
+<blockquote>
+<p>Can another window reconstruct it?</p>
+</blockquote>
+<p>The test framework was named:</p>
+<pre><code class="language-text">Two-Window Test
+2WT
+</code></pre>
+<p>The independent/fresh reader was:</p>
+<pre><code class="language-text">Other Window
+OW
+</code></pre>
+<p>This changed the Documentation architecture from a self-referential design exercise into an empirical context-restoration system.</p>
+<hr />
+<h2>6.16 2WT001 — first cold-context reconstruction</h2>
+<p><code>2WT001</code> showed that the system was <strong>recoverable but not yet efficient enough</strong>.</p>
+<p>The Other Window could find meaningful structure, but orientation still took too much work.</p>
+<p>The test highlighted the difference between:</p>
+<pre><code class="language-text">information exists
+</code></pre>
+<p>and:</p>
+<pre><code class="language-text">information is routed efficiently
+</code></pre>
+<p>The first test also helped expose a dangerous spreadsheet representation problem.</p>
+<p>During context reconstruction, serialized/table inspection showed unexpected values — especially:</p>
+<pre><code class="language-text">443
+</code></pre>
+<p>in places where the underlying workbook cells were blank.</p>
+<p>This contributed to false apparent <code>PROJECT ID</code> values in Resources and false values in <code>Activities!F81:H81</code>.</p>
+<p>Direct cell verification proved the cells were blank.</p>
+<p>This meant the inspection layer itself had to be treated as evidence with failure modes.</p>
+<hr />
+<h2>6.17 11:45 — 🟨 Registry Context Routing Index added</h2>
+<p><code>ACT-0091</code></p>
+<p>The Registry README was expanded specifically in response to context-naive reconstruction.</p>
+<p>A new section states:</p>
+<pre><code class="language-text">CONTEXT ROUTING INDEX
+Navigation layer only;
+it does not replace the authorities it points to.
+</code></pre>
+<p>The route for Task Assignment and Tracking now tells a fresh session:</p>
+<pre><code class="language-text">Type:
+    Project
+
+Project ID:
+    intentionally unassigned
+
+Orientation:
+    Project README
+
+Current definition:
+    Project Summary
+
+Principal System:
+    Work Queue
+</code></pre>
+<p>The current/recent-work route also points to the Work Units tab and explicitly says that <code>WORK-0001</code> is completed.</p>
+<p>This is a major improvement because the Registry README became a <strong>question router</strong>, not merely a workbook description.</p>
+<hr />
+<h2>6.18 12:01 — 🟥 Spreadsheet inspection warning added</h2>
+<p><code>ACT-0092</code></p>
+<p>The Registry README now preserves the confirmed warning:</p>
+<blockquote>
+<p>Serialized/table inspection tools may occasionally return values that are not present in the underlying spreadsheet cells.</p>
+</blockquote>
+<p>The known regression example names:</p>
+<pre><code class="language-text">Activities!F81:H81
+</code></pre>
+<p>and false apparent Resource Project IDs.</p>
+<p>The new rule is:</p>
+<pre><code class="language-text">unexpected inspection value
+        ↓
+direct cell verification
+        ↓
+literal / effective cell value controls
+</code></pre>
+<p>This is subtle but extremely important for an AI-operated system.</p>
+<p>A machine reader must know not only where the data lives, but <strong>how much to trust the representation layer through which it is reading the data</strong>.</p>
+<hr />
+<h2>6.19 2WT002 — faster orientation, new ontology failure</h2>
+<p>The second test showed clear progress.</p>
+<p>Orientation was faster.</p>
+<p>However, a new weakness appeared: the reconstructed architecture could still over-assimilate Projects and Systems into the Resources layer.</p>
+<p>That is exactly the kind of error that a diagram or compact context map can introduce if “everything I can route to” becomes “everything is a Resource.”</p>
+<p>The correction is explicit:</p>
+<pre><code class="language-text">Project
+    != Resource
+
+System
+    != Resource
+
+Project / System documentation
+    may contain or route to Resources
+    without the Project/System becoming a Resource
+</code></pre>
+<p>This observation strongly influenced the next Registry cleanup.</p>
+<hr />
+<h2>6.20 11:37–13:28 — 🟪 Resource Registry pruning</h2>
+<p>The Registry was pruned in several passes.</p>
+<p>The important rule was not:</p>
+<blockquote>
+<p>remove things because they are old or small.</p>
+</blockquote>
+<p>The rule became:</p>
+<blockquote>
+<p><strong>If this Resource disappeared from the Registry, would a future context-naive session lose an important route, authority, operational dependency, or entry point?</strong></p>
+</blockquote>
+<p>If the answer is no, global Resource identity may be unnecessary.</p>
+<p>That led to removal of:</p>
+<ul>
+<li>internal datasets already reachable through registered datastores;</li>
+<li>generated catalogs;</li>
+<li>individual sidecars;</li>
+<li>individual lesson artifacts;</li>
+<li>reusable templates;</li>
+<li>historical summary artifacts;</li>
+<li>legacy Viewer compatibility rows;</li>
+<li>unresolved placeholders;</li>
+<li>duplicate location routes.</li>
+</ul>
+<p>The underlying artifacts were not deleted.</p>
+<p>Their historical Resource IDs were not reused.</p>
+<hr />
+<h2>6.21 13:23 — 🟪 Image repository route made direct</h2>
+<p><code>ACT-0104</code></p>
+<p><code>RES-037</code> received a confirmed directory link:</p>
+<pre><code class="language-text">https://github.com/kevinlinstrum001/documentation/tree/main/images
+</code></pre>
+<p>This is an example of the Registry doing exactly what it should do:</p>
+<ul>
+<li>the resource is a shared root;</li>
+<li>it has cross-system importance;</li>
+<li>it supports documentation/pages/messages;</li>
+<li>it has a non-obvious operational dependency through generated image-index data.</li>
+</ul>
+<p>The resource therefore earns a global route.</p>
+<hr />
+<h2>6.22 13:28 — 🟪 Internal datasets and generated catalogs removed</h2>
+<p>The final recorded cleanup pass removed:</p>
+<pre><code class="language-text">RES-012   Work Queue Tasks dataset
+RES-014   Work Queue Locations reference
+RES-015   Inventory Events dataset
+RES-016   Inventory SDS registry
+RES-017   Inventory Products dataset
+RES-022   Klinswork Documentation Catalog 007
+RES-023   Klinswork Lesson Catalog 001
+</code></pre>
+<p>The reasoning is important.</p>
+<p><code>RES-012</code> does not need independent routing because Tasks is an internal logical dataset inside <code>RES-003</code>.</p>
+<p><code>RES-014</code> duplicates the shared Locations datastore already represented by <code>RES-010</code>.</p>
+<p><code>RES-015</code>, <code>RES-016</code>, and <code>RES-017</code> are logical areas inside the Inventory datastore already represented by <code>RES-005</code>.</p>
+<p><code>RES-022</code> and <code>RES-023</code> are generated discovery artifacts, not independent root routes.</p>
+<p>This is the emerging Registry philosophy in concrete form.</p>
+<hr />
+<h2>6.23 Post-cleanup — technical manual becomes the edge case</h2>
+<p>The technical manual presented a harder question than an internal dataset.</p>
+<p>It is important.</p>
+<p>It is rich.</p>
+<p>It is useful for deep technical work.</p>
+<p>It had just been registered as <code>RES-047</code>.</p>
+<p>But the new test was:</p>
+<blockquote>
+<p>If <code>RES-047</code> disappeared from the Registry, would the technical manual become difficult for a future context-naive session to discover?</p>
+</blockquote>
+<p>We verified the route.</p>
+<p>The Meadows Housekeeping Projects Summary's Task Assignment and Tracking material explicitly says that a separate Work Queue technical/ecosystem manual exists and directly links to it.</p>
+<p>The Work Queue System documentation also routes to it.</p>
+<p>Therefore the answer became:</p>
+<pre><code class="language-text">manual is important
+        yes
+
+manual must be global Resource
+        not necessarily
+</code></pre>
+<p>That is one of the day's most useful architecture distinctions.</p>
+<hr />
+<h2>6.24 Work Queue README reconciled for manual discoverability</h2>
+<p>The Work Queue System README was rewritten so that its technical documentation section directly names and links:</p>
+<pre><code class="language-text">Work Queue app technical manual
+https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit
+</code></pre>
+<p>The README now states that the manual is intentionally discoverable through the Work Queue System/Project documentation rather than requiring top-level Resource Registry identity.</p>
+<p>It also routes current Work Queue-related Resources as:</p>
+<pre><code class="language-text">RES-002   Work Queue app
+RES-003   Work Queue app data sheet
+RES-010   shared Locations workbook
+RES-013   Work Queue Employees dataset / employee workbook
+</code></pre>
+<p>The retired <code>RES-012</code> and <code>RES-014</code> are no longer part of the current routing list.</p>
+<p>The README's authority map now points technical-architecture questions directly to the technical manual rather than to <code>RES-047</code>.</p>
+<p>This is a successful example of replacing:</p>
+<pre><code class="language-text">global Resource lookup
+</code></pre>
+<p>with:</p>
+<pre><code class="language-text">semantic Project/System routing
+</code></pre>
+<p>when the latter is stronger.</p>
+<hr />
+<h2>6.25 🟥 GitHub direct write failed</h2>
+<p>An attempt was made to apply the Work Queue README changes through the connected GitHub integration.</p>
+<p>The connector could read the repository.</p>
+<p>The repository reported normal user-level push permissions.</p>
+<p>But direct write operations returned:</p>
+<pre><code class="language-text">403
+Resource not accessible by integration
+</code></pre>
+<p>Direct file update, blob creation, and branch creation all failed at the integration layer.</p>
+<p>The practical result was that the file had to be prepared for download/manual placement rather than committed directly through the connector.</p>
+<p>This is a tooling constraint, not an architecture rule.</p>
+<p>It should not be confused with repository ownership or user permission.</p>
+<hr />
+<h2>6.26 Current physical Work Queue README naming drift</h2>
+<p>At the time of this Work Update, the current GitHub Work Queue directory listing shows:</p>
+<pre><code class="language-text">work-queue-README.md
+</code></pre>
+<p>rather than the previously validated semantic path:</p>
+<pre><code class="language-text">README.md
+</code></pre>
+<p>The Project README and other documentation still refer to:</p>
+<pre><code class="language-text">systems/Work Queue/README.md
+</code></pre>
+<p>This means there is now a small but real <strong>post-closure physical-path reconciliation item</strong>.</p>
+<p>The content is improved.</p>
+<p>The filename/routing consistency should be checked.</p>
+<p>This does not reopen <code>WORK-0001</code>.</p>
+<p>It is later documentation maintenance.</p>
+<hr />
+<h2>6.27 Work Update architecture clarified</h2>
+<p>The final major design discussion of the current period concerned the Work Update itself.</p>
+<p>The rule is now:</p>
+<pre><code class="language-text">work-update-summary.md
+    = MASTER
+      deep retrospective source
+      future ChatGPT reading path
+
+work-update sidecar.json
+    = structured companion
+
+work-update.html
+    = downstream human-facing presentation
+</code></pre>
+<p>The Markdown master is allowed — and expected — to be long.</p>
+<p>It should preserve the detail needed for future AI reconstruction.</p>
+<p>The HTML can be more concise and visual because it is the principal human reading product.</p>
+<hr />
+<h2>6.28 Work Update Summary template created</h2>
+<p>A specialized JSON template/profile was created:</p>
+<pre><code class="language-text">work-update-summary-template-1.0-draft.json
+</code></pre>
+<p>The profile encodes:</p>
+<ul>
+<li>master-source authority;</li>
+<li>detail-over-brevity rule;</li>
+<li>future-AI-reader rule;</li>
+<li>Work Unit/WUA/Activity integration;</li>
+<li>reconstructed chronology;</li>
+<li>starting/resulting-state comparison;</li>
+<li>Resource/Registry effects;</li>
+<li>Project/System delta;</li>
+<li>architecture effects;</li>
+<li>2WT/context-restoration testing;</li>
+<li>knowledge produced;</li>
+<li>continuation;</li>
+<li>provenance;</li>
+<li>Table of Contents requirement;</li>
+<li>semantic visual grammar;</li>
+<li>HTML projection guidance.</li>
+</ul>
+<p>There was one useful false start.</p>
+<p>A large Markdown “template” was initially created because the phrase “work-update-summary-template” was interpreted as a Markdown structural template. The intended template was actually JSON. Rather than hiding the mistake, it is worth preserving the lesson:</p>
+<blockquote>
+<p>When a Klinswork record family has both a human-readable master and a machine-readable construction/profile template, be explicit about which artifact “template” refers to.</p>
+</blockquote>
+<p>The JSON template is the intended reusable template.</p>
+<p>This Markdown Work Update is the master document produced from that model.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-work" id="7-work-0001-formal-project-definition-work" aria-labelledby="7-work-0001-formal-project-definition-work-title">
+  <p class="section-eyebrow">Bounded formal work</p>
+  <h2 id="7-work-0001-formal-project-definition-work-title">7. WORK-0001 — Formal Project Definition Work</h2>
+  <div class="section-body">
+    <h2>7.1 Work Unit identity</h2>
+<p>🟧 <strong><code>WORK-0001 — Task Assignment and Tracking — Initial Project Definition</code></strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Kind</td>
+  <td>implementation</td>
+</tr>
+<tr>
+  <td>Created</td>
+  <td>2026-08-15T18:25:00-06:00</td>
+</tr>
+<tr>
+  <td>Primary Project</td>
+  <td>Task Assignment and Tracking</td>
+</tr>
+<tr>
+  <td>Target System</td>
+  <td>Work Queue</td>
+</tr>
+<tr>
+  <td>Project ID</td>
+  <td>unassigned</td>
+</tr>
+<tr>
+  <td>System ID</td>
+  <td>unassigned</td>
+</tr>
+<tr>
+  <td>Formal session</td>
+  <td>yes</td>
+</tr>
+<tr>
+  <td>Implementation plan</td>
+  <td><code>implementation-plan-project-definition.md</code></td>
+</tr>
+<tr>
+  <td>Completed</td>
+  <td>2026-08-16T10:49:00-06:00</td>
+</tr>
+<tr>
+  <td>Final status</td>
+  <td>completed</td>
+</tr>
+<tr>
+  <td>Final readiness</td>
+  <td>closed</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7.2 Work Unit Activity sequence</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>WUA</th>
+  <th>Time</th>
+  <th>Event type</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>WUA-0003</code></td>
+  <td>07:48</td>
+  <td>session-initiated</td>
+  <td>formal execution context declared; plan gate still unsatisfied</td>
+</tr>
+<tr>
+  <td><code>WUA-0004</code></td>
+  <td>08:35</td>
+  <td>session-activated</td>
+  <td>implementation plan linked; Work Unit active/active</td>
+</tr>
+<tr>
+  <td><code>WUA-0005</code></td>
+  <td>09:01</td>
+  <td>validation-recorded</td>
+  <td>Project-local implementation-plan companion support added/validated</td>
+</tr>
+<tr>
+  <td><code>WUA-0006</code></td>
+  <td>09:21</td>
+  <td>stage-completed</td>
+  <td>Project-level definition package complete</td>
+</tr>
+<tr>
+  <td><code>WUA-0007</code></td>
+  <td>10:04</td>
+  <td>stage-completed</td>
+  <td>Work Queue System definition package complete</td>
+</tr>
+<tr>
+  <td><code>WUA-0008</code></td>
+  <td>10:08</td>
+  <td>validation-recorded</td>
+  <td>Stage 6 matrix passed with non-blocking freshness notes</td>
+</tr>
+<tr>
+  <td><code>WUA-0009</code></td>
+  <td>10:17</td>
+  <td>stage-completed</td>
+  <td>Registry and architecture reconciliation complete</td>
+</tr>
+<tr>
+  <td><code>WUA-0010</code></td>
+  <td>10:49</td>
+  <td>work-unit-completed</td>
+  <td>formal session closed; completion rule satisfied</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7.3 Why WUA-0001 and WUA-0002 are not WORK-0001 execution events</h2>
+<p><code>WUA-0001</code> and <code>WUA-0002</code> belong to:</p>
+<pre><code class="language-text">WORK-0005
+Work Unit architecture and registry initialization
+</code></pre>
+<p>They document the planning session that created the Work Unit architecture and retained <code>WORK-0001</code> as the first planned implementation Work Unit.</p>
+<p>This distinction is important because otherwise a future reader could mistakenly interpret them as the beginning of <code>WORK-0001</code> execution.</p>
+<h2>7.4 Project-level durable outputs</h2>
+<p>The current Task Assignment and Tracking Project package contains:</p>
+<pre><code class="language-text">Task Assignment and Tracking/
+├── project-identity.json
+├── README.md
+├── summaries/
+│   └── project-summary.md
+├── sidecars/
+│   ├── project-summary-sidecar.json
+│   └── implementation-plan-project-definition-sidecar.json
+├── implementation-plans/
+│   └── implementation-plan-project-definition.md
+└── systems/
+    └── Work Queue/
+        ...
+</code></pre>
+<p>The current Project README identifies Task Assignment and Tracking as:</p>
+<pre><code class="language-text">Entity type:
+    Project
+
+Parent Project:
+    Operations
+
+Principal identified System:
+    Work Queue
+
+Project ID:
+    Unassigned
+</code></pre>
+<p>The Project is defined around the durable operational responsibility of identifying, assigning, performing, completing, verifying, reporting, and preserving discrete work.</p>
+<p>That definition is intentionally broader than one Work Queue application.</p>
+<h2>7.5 Work Queue durable outputs</h2>
+<p>The Work Queue System documentation contains:</p>
+<pre><code class="language-text">Work Queue/
+├── [README / current physical work-queue-README.md]
+├── summaries/
+│   ├── system-summary.md
+│   └── work-queue-roadmap.md
+└── sidecars/
+    ├── system-summary-sidecar.json
+    └── work-queue-roadmap-sidecar.json
+</code></pre>
+<p>The System Summary defines Work Queue as the coherent mechanism currently serving Task Assignment and Tracking.</p>
+<p>The Roadmap defines intended mature direction.</p>
+<p>The two are deliberately separate.</p>
+<h2>7.6 Current Work Queue evidence level</h2>
+<p>The current System Summary records high confidence for:</p>
+<ul>
+<li>semantic placement;</li>
+<li>current Registry routing;</li>
+<li>current datastore structure;</li>
+<li>separate employee/personnel source;</li>
+<li>shared Locations structure.</li>
+</ul>
+<p>It records only medium confidence for detailed runtime behavior because the current Apps Script source/deployment logic was not directly inspected as part of that reconciliation.</p>
+<p>This is evidence discipline, not weakness.</p>
+<p>The documentation says exactly what it knows.</p>
+<h2>7.7 Why WORK-0001 stays closed</h2>
+<p>Post-closure work has already happened:</p>
+<ul>
+<li>2WT;</li>
+<li>Registry cleanup;</li>
+<li>Work Queue technical-manual routing reconciliation;</li>
+<li>Work Update template work.</li>
+</ul>
+<p>None of that means <code>WORK-0001</code> should reopen.</p>
+<p>The Work Unit completion rule concerned the <strong>initial Project Definition</strong>.</p>
+<p>That rule was satisfied.</p>
+<p>Later work may be related to the same Project/System without becoming part of the completed Work Unit.</p>
+<p>This is one of the most important practical Work Unit rules established today.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="8-decisions-deviations-problems-and-discoveries" aria-labelledby="8-decisions-deviations-problems-and-discoveries-title">
+  <p class="section-eyebrow">Why the direction changed</p>
+  <h2 id="8-decisions-deviations-problems-and-discoveries-title">8. Decisions, Deviations, Problems, and Discoveries</h2>
+  <div class="section-body">
+    <h3>8.1 🟨 Decision — preserve reconstructed chronology</h3>
+<p><strong>Decision</strong></p>
+<p>Use <code>reconstructed-continuation</code> rather than backdating the implementation plan.</p>
+<p><strong>Reason</strong></p>
+<p>Substantive work already existed before the plan boundary.</p>
+<p><strong>Effect</strong></p>
+<p>The Work Unit history now truthfully distinguishes:</p>
+<pre><code class="language-text">completed-before-plan
+from
+remaining-planned-work
+</code></pre>
+<p><strong>General lesson</strong></p>
+<p>The process can recover from procedural imperfection without falsifying history.</p>
+<hr />
+<h3>8.2 🟨 Decision — initiation and activation are separate</h3>
+<p><strong>Decision</strong></p>
+<p>A formal Work Session can be initiated before activation when an implementation-plan or prerequisite gate remains unsatisfied.</p>
+<p><strong>Effect</strong></p>
+<p><code>WUA-0003</code> and <code>WUA-0004</code> preserve two distinct material events.</p>
+<p>This prevents the mere existence of a session record from falsely implying that formal implementation authority was active.</p>
+<hr />
+<h3>8.3 🟨 Decision — Project/System/current/future remain separate authorities</h3>
+<p>The second exemplar reinforced:</p>
+<pre><code class="language-text">Project Identity
+    intrinsic Project identity
+
+Project Summary
+    rich Project meaning
+
+Work Queue README
+    System-local orientation
+
+System Summary
+    current System interpretation
+
+System Roadmap
+    future System direction
+
+Resource Registry
+    Resource routing
+</code></pre>
+<p>This division survived actual implementation and Viewer validation.</p>
+<hr />
+<h3>8.4 🟨 Decision — do not freeze System Identity yet</h3>
+<p>No:</p>
+<pre><code class="language-text">system-identity.json
+</code></pre>
+<p>was created.</p>
+<p>No:</p>
+<pre><code class="language-text">SYS-###
+</code></pre>
+<p>was assigned.</p>
+<p>The current System Summary exists specifically to generate evidence for future System Identity design rather than assume the answer now.</p>
+<hr />
+<h3>8.5 🟨 Decision — Resources tab is a sparse routing map, not an asset catalog</h3>
+<p>The most important Registry decision after 2WT was:</p>
+<blockquote>
+<p>A Resource should be globally registered because a future context-naive session needs a stable route, authority, operational dependency, or entry point — not merely because the artifact exists or is important.</p>
+</blockquote>
+<p>This rule explains the large cleanup.</p>
+<p>It also explains why an important technical manual may not need global Resource identity.</p>
+<hr />
+<h3>8.6 🟨 Decision — route by semantic need, not by inventory completeness</h3>
+<p>A future session should ask:</p>
+<pre><code class="language-text">What question am I answering?
+</code></pre>
+<p>then follow the shortest authority route.</p>
+<p>It should not begin by loading every Resource, every file, or every sidecar.</p>
+<p>This is the practical meaning of the new Context Routing Index.</p>
+<hr />
+<h3>8.7 🟨 Decision — Work Update Markdown is master</h3>
+<p>The Work Update architecture is now:</p>
+<pre><code class="language-text">summary.md
+    MASTER
+
+sidecar.json
+    structured companion
+
+work-update.html
+    human-facing downstream product
+</code></pre>
+<p>This is a major documentation rule because the two principal readers are different:</p>
+<pre><code class="language-text">future ChatGPT
+    reads detailed Markdown
+
+Kevin
+    reads polished HTML
+</code></pre>
+<p>That asymmetry is intentional.</p>
+<hr />
+<h3>8.8 Deviation — work began before the plan</h3>
+<p><strong>Planned ideal</strong></p>
+<p>Formal Work Unit → plan → activation → execution.</p>
+<p><strong>Actual</strong></p>
+<p>Some Project Definition output existed before the plan.</p>
+<p><strong>Resolution</strong></p>
+<p>Create a reconstructed-continuation plan and preserve the pre-plan outputs honestly.</p>
+<p><strong>Impact</strong></p>
+<p>The process became stronger because it gained explicit recovery semantics.</p>
+<hr />
+<h3>8.9 Deviation — template/profile infrastructure matured during the Work Unit</h3>
+<p>The ideal process would have had mature Work Unit-aware templates before <code>WORK-0001</code>.</p>
+<p>In reality, the session helped produce them.</p>
+<p>This included:</p>
+<ul>
+<li>stronger implementation-plan sidecar semantics;</li>
+<li>Work Unit linkage;</li>
+<li>activation-gate semantics;</li>
+<li>formal-session linkage;</li>
+<li>WUA references;</li>
+<li>Work Implementation Session 1.1-draft Work Unit integration;</li>
+<li>Project-local implementation-plan companion handling.</li>
+</ul>
+<p>This should not be hidden.</p>
+<p>It is characteristic of bootstrap-era architecture.</p>
+<hr />
+<h3>8.10 🟥 Problem — stale creation-time annotations</h3>
+<p>Stage 6 found that several current human-readable documents still described now-created records as “pending” or “next.”</p>
+<p>This was not an authority failure.</p>
+<p>It was a documentation-freshness problem.</p>
+<p>The annotations were reconciled before formal closure.</p>
+<p>This demonstrates why closure needs a freshness check after structural validation.</p>
+<hr />
+<h3>8.11 🟥 Problem — spreadsheet representation fabricated <code>443</code></h3>
+<p>This was a potentially serious machine-reading defect.</p>
+<p>The serialized representation could make blank cells look populated.</p>
+<p>If promoted blindly, that could have produced false:</p>
+<ul>
+<li>Project IDs;</li>
+<li>Activity values;</li>
+<li>routing assumptions.</li>
+</ul>
+<p>The durable mitigation is now explicit:</p>
+<pre><code class="language-text">representation disagreement
+        ↓
+inspect literal/effective cells
+        ↓
+cells control
+</code></pre>
+<hr />
+<h3>8.12 🟥 Problem — root README remains partly stale</h3>
+<p>The root Documentation README remains the metadata-reference/bootstrap route from <code>RES-000</code>.</p>
+<p>It was reviewed during context work and found to retain stale Viewer architecture in places.</p>
+<p>A replacement/update was drafted, but GitHub write access through the integration failed.</p>
+<p>The current root README therefore remains a known weak point in the startup chain.</p>
+<p>This matters because a bootstrap file can be disproportionately important even when the rest of the documentation is excellent.</p>
+<hr />
+<h3>8.13 🟥 Problem — GitHub integration is read-only in practice</h3>
+<p>The integration can inspect repository content.</p>
+<p>It could not:</p>
+<ul>
+<li>update a file;</li>
+<li>create a blob;</li>
+<li>create a branch.</li>
+</ul>
+<p>All returned the integration-level 403.</p>
+<p>The practical workflow remains:</p>
+<pre><code class="language-text">ChatGPT reads GitHub
+        ↓
+ChatGPT prepares corrected file
+        ↓
+user downloads / places file
+</code></pre>
+<p>until a write-capable route is used.</p>
+<hr />
+<h3>8.14 🟥 Problem — Work Queue README physical filename drift</h3>
+<p>The currently visible GitHub file is:</p>
+<pre><code class="language-text">work-queue-README.md
+</code></pre>
+<p>The Project README and System documents still semantically route to:</p>
+<pre><code class="language-text">systems/Work Queue/README.md
+</code></pre>
+<p>This is likely an artifact of the manual download/upload route.</p>
+<p>It should be reconciled.</p>
+<p>The content improvement is valuable, but the physical name should not quietly break the local navigation contract.</p>
+<hr />
+<h3>8.15 Discovery — importance is not the same as routing identity</h3>
+<p><code>RES-047</code> is the best example.</p>
+<p>The technical manual is important.</p>
+<p>But:</p>
+<pre><code class="language-text">important document
+    != automatically global Resource
+</code></pre>
+<p>If a stronger semantic route already exposes it, Registry registration can become redundant.</p>
+<p>This helps keep the Registry small enough to function as a machine context map.</p>
+<hr />
+<h3>8.16 Discovery — context restoration can be tested empirically</h3>
+<p>2WT turns a vague quality goal:</p>
+<pre><code class="language-text">documentation should provide context
+</code></pre>
+<p>into an observable test:</p>
+<pre><code class="language-text">give fresh window bounded starting context
+        ↓
+ask it to reconstruct architecture
+        ↓
+observe confusion / omissions / overreach
+        ↓
+change documentation
+        ↓
+repeat
+</code></pre>
+<p>This is one of the strongest new practices of the day.</p>
+<hr />
+<h3>8.17 Discovery — a compact architecture can still over-collapse ontology</h3>
+<p>2WT002 showed that making context more compact can create a different failure mode.</p>
+<p>A context diagram can become easy to consume while accidentally implying:</p>
+<pre><code class="language-text">everything routed
+    = Resource
+</code></pre>
+<p>The fix is not “more words everywhere.”</p>
+<p>The fix is explicit semantic typing.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-confirmed" id="9-validation-testing-and-confidence" aria-labelledby="9-validation-testing-and-confidence-title">
+  <p class="section-eyebrow">Evidence</p>
+  <h2 id="9-validation-testing-and-confidence-title">9. Validation, Testing, and Confidence</h2>
+  <div class="section-body">
+    <h2>9.1 Formal Stage 6 validation matrix</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Test</th>
+  <th>Purpose</th>
+  <th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>T-01</td>
+  <td>repository structure</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-02</td>
+  <td>JSON validation</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-03</td>
+  <td>Project Summary companion</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-04</td>
+  <td>Work Queue System Summary companion</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-05</td>
+  <td>roadmap companion preservation</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-06</td>
+  <td>Entity Record handling</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-07</td>
+  <td>Viewer discovery</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-08</td>
+  <td>Viewer semantics</td>
+  <td>🟩 pass</td>
+</tr>
+<tr>
+  <td>T-09</td>
+  <td>context-naive resume</td>
+  <td>🟩 pass with later 2WT refinement</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Manifest state used for formal validation</h3>
+<pre><code class="language-text">records valid: 74
+records invalid: 0
+Projects source records: 6
+</code></pre>
+<h2>9.2 What T-06 established</h2>
+<p><code>project-identity.json</code> remained:</p>
+<pre><code class="language-text">entity-record / Project Identity
+</code></pre>
+<p>It was not forced into:</p>
+<pre><code class="language-text">sidecar
+</code></pre>
+<p>merely so the Projects sidecars-only discovery source could see it.</p>
+<p>Its absence from that discovery rule was treated as discovery policy, not an identity failure.</p>
+<p>This preserved the central sidecar/entity distinction established August 15.</p>
+<h2>9.3 What T-08 established</h2>
+<p>The Viewer/documentation layer can distinguish:</p>
+<pre><code class="language-text">Project Summary
+System Summary
+System Roadmap
+</code></pre>
+<p>as different semantic document roles.</p>
+<p>That matters because a generic “document browser” would otherwise erase one of the architecture's most important current/future distinctions.</p>
+<h2>9.4 What T-09 established — and what 2WT later qualified</h2>
+<p>Formal T-09 established that the documented route exists:</p>
+<pre><code class="language-text">Project README
+    ↓
+Project Summary
+    ↓
+Work Queue README
+    ↓
+System Summary or Roadmap
+    ↓
+Registry / current implementation evidence
+</code></pre>
+<p>2WT later qualified the result:</p>
+<blockquote>
+<p>The route exists, but context-naive efficiency and ontology precision still need improvement.</p>
+</blockquote>
+<p>This is a good example of two different validation levels:</p>
+<pre><code class="language-text">structural validation
+    passed
+
+human/AI reconstruction performance
+    improved but not finished
+</code></pre>
+<h2>9.5 Technical-manual discoverability validation</h2>
+<p>The manual-removal question was tested from more than one route.</p>
+<p>The Task Assignment and Tracking architecture documentation identifies a separate Work Queue technical/ecosystem manual.</p>
+<p>The Work Queue README now directly links it and explains when to use it.</p>
+<p>The current System README route therefore supports:</p>
+<pre><code class="language-text">need deep technical detail
+        ↓
+Work Queue documentation
+        ↓
+technical manual
+</code></pre>
+<p>without requiring the user to already know <code>RES-047</code>.</p>
+<p>That is strong evidence that global Resource identity is unnecessary for discoverability.</p>
+<h2>9.6 Registry cell-verification validation</h2>
+<p>The <code>443</code> issue was not accepted from table output.</p>
+<p>Direct cell verification established that the workbook cells were blank.</p>
+<p>The Registry README now captures the rule permanently.</p>
+<p>This was not merely an error correction.</p>
+<p>It improved the evidence model.</p>
+<h2>9.7 Confidence</h2>
+<p><strong>High confidence</strong></p>
+<ul>
+<li>Work Unit current state;</li>
+<li>WUA chronology;</li>
+<li>current Activities through <code>ACT-0111</code>;</li>
+<li>current Resource count and rows;</li>
+<li>Project Definition package existence;</li>
+<li>Work Queue System documentation package existence;</li>
+<li>Viewer validation results recorded in WUA history;</li>
+<li>current direct technical-manual routing in the Work Queue README;</li>
+<li>current GitHub filename state;</li>
+<li>Registry <code>443</code> warning;</li>
+<li>the distinction between completed <code>WORK-0001</code> and post-closure work.</li>
+</ul>
+<p><strong>Medium confidence</strong></p>
+<ul>
+<li>exact detailed Work Queue runtime behavior;</li>
+<li>precise current Apps Script source/deployment behavior;</li>
+<li>whether all post-closure manual-upload navigation links have been re-tested after the README filename change.</li>
+</ul>
+<p><strong>Not yet established</strong></p>
+<ul>
+<li>final System Identity;</li>
+<li>permanent Project/System IDs;</li>
+<li>final Relationship Registry;</li>
+<li>final <code>RES-047</code> retirement;</li>
+<li>complete context restoration across all Klinswork branches.</li>
+</ul>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="10-resource-registry-and-activity-effects" aria-labelledby="10-resource-registry-and-activity-effects-title">
+  <p class="section-eyebrow">Routing and history</p>
+  <h2 id="10-resource-registry-and-activity-effects-title">10. Resource Registry and Activity Effects</h2>
+  <div class="section-body">
+    <h2>10.1 Today's Activity count</h2>
+<p>The live Activities tab contains:</p>
+<pre><code class="language-text">ACT-0080 through ACT-0111
+</code></pre>
+<p>for August 16.</p>
+<p>That is:</p>
+<pre><code class="language-text">32 material Resource/Registry Activities
+</code></pre>
+<p>Breakdown:</p>
+<pre><code class="language-text">1 Resource registration
+8 non-removal reconciliation/update events
+23 Resource removals from the current Registry
+</code></pre>
+<h2>10.2 Full Activity chronology</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>ACT</th>
+  <th>Resource</th>
+  <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>ACT-0080</code></td>
+  <td><code>RES-047</code></td>
+  <td>Resource registered</td>
+</tr>
+<tr>
+  <td><code>ACT-0081</code></td>
+  <td><code>RES-013</code></td>
+  <td>Employee dataset location reconciled</td>
+</tr>
+<tr>
+  <td><code>ACT-0082</code></td>
+  <td><code>RES-045</code></td>
+  <td>Project-local implementation-plan companion resolution added</td>
+</tr>
+<tr>
+  <td><code>ACT-0083</code></td>
+  <td><code>RES-044</code></td>
+  <td>Viewer manifest regenerated for second Project Definition exemplar</td>
+</tr>
+<tr>
+  <td><code>ACT-0084</code></td>
+  <td><code>RES-042</code></td>
+  <td>Second Project Definition exemplar architecture validation recorded</td>
+</tr>
+<tr>
+  <td><code>ACT-0085</code></td>
+  <td><code>RES-030</code></td>
+  <td>Inventory App SDS implementation plan removed from current Registry</td>
+</tr>
+<tr>
+  <td><code>ACT-0086</code></td>
+  <td><code>RES-032</code></td>
+  <td>Documentation Morning Session Summary removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0087</code></td>
+  <td><code>RES-035</code></td>
+  <td>Issue Form removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0088</code></td>
+  <td><code>RES-036</code></td>
+  <td>Issue Form response sheet removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0089</code></td>
+  <td><code>RES-020</code></td>
+  <td>Legacy JSON manifest removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0090</code></td>
+  <td><code>RES-021</code></td>
+  <td>Legacy manifest builder removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0091</code></td>
+  <td><code>RES-043</code></td>
+  <td>Registry context-routing layer added</td>
+</tr>
+<tr>
+  <td><code>ACT-0092</code></td>
+  <td><code>RES-043</code></td>
+  <td>Spreadsheet inspection warning added</td>
+</tr>
+<tr>
+  <td><code>ACT-0093</code></td>
+  <td><code>RES-024</code></td>
+  <td>Documentation Workflow Sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0094</code></td>
+  <td><code>RES-025</code></td>
+  <td>PST-SP Veteran Study Guide Sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0095</code></td>
+  <td><code>RES-026</code></td>
+  <td>Inventory SDS Upgrade Implementation Plan Sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0096</code></td>
+  <td><code>RES-027</code></td>
+  <td>Controlled Information Spaces lesson sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0097</code></td>
+  <td><code>RES-028</code></td>
+  <td>Organizational Memory lesson sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0098</code></td>
+  <td><code>RES-029</code></td>
+  <td>Housekeeping Information Translation lesson sidecar removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0099</code></td>
+  <td><code>RES-031</code></td>
+  <td>Documentation System Bootstrap Summary removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0100</code></td>
+  <td><code>RES-034</code></td>
+  <td>Calendar data sheet placeholder removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0101</code></td>
+  <td><code>RES-038</code></td>
+  <td>Document sidecar template removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0102</code></td>
+  <td><code>RES-039</code></td>
+  <td>Summary Markdown template removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0103</code></td>
+  <td><code>RES-033</code></td>
+  <td>Calendar app deployment link added</td>
+</tr>
+<tr>
+  <td><code>ACT-0104</code></td>
+  <td><code>RES-037</code></td>
+  <td>Image repository directory link added</td>
+</tr>
+<tr>
+  <td><code>ACT-0105</code></td>
+  <td><code>RES-012</code></td>
+  <td>Work Queue Tasks dataset removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0106</code></td>
+  <td><code>RES-014</code></td>
+  <td>Work Queue Locations reference removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0107</code></td>
+  <td><code>RES-015</code></td>
+  <td>Inventory Events dataset removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0108</code></td>
+  <td><code>RES-016</code></td>
+  <td>Inventory SDS registry removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0109</code></td>
+  <td><code>RES-017</code></td>
+  <td>Inventory Products dataset removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0110</code></td>
+  <td><code>RES-022</code></td>
+  <td>Klinswork Documentation Catalog 007 removed</td>
+</tr>
+<tr>
+  <td><code>ACT-0111</code></td>
+  <td><code>RES-023</code></td>
+  <td>Klinswork Lesson Catalog 001 removed</td>
+</tr>
+</tbody>
+</table></div>
+<h2>10.3 Cleanup arithmetic</h2>
+<p>After the recorded cleanup:</p>
+<pre><code class="language-text">current Resources:
+25
+</code></pre>
+<p>Today's removals:</p>
+<pre><code class="language-text">23
+</code></pre>
+<p>Therefore, immediately before those retirement passes, the current table contained:</p>
+<pre><code class="language-text">48 Resource rows
+</code></pre>
+<p>The result is close to the target scale discussed during the redesign:</p>
+<pre><code class="language-text">roughly 10–20 major routes
+or
+20–30 when key apps/data need direct routing
+</code></pre>
+<p>The current count of 25 is therefore not arbitrary.</p>
+<p>It is consistent with the emerging semantic role of the Registry.</p>
+<h2>10.4 What was removed and why</h2>
+<h3>◻️ Internal logical datasets</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-012
+RES-015
+RES-016
+RES-017
+</code></pre>
+<p>Reason:</p>
+<p>The independently registered datastore already provides the durable route.</p>
+<p>The internal sheets/data families remain real.</p>
+<p>They do not require global Resource identity.</p>
+<h3>◻️ Duplicate shared-location route</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-014
+</code></pre>
+<p>Reason:</p>
+<p>Shared Locations already has:</p>
+<pre><code class="language-text">RES-010
+</code></pre>
+<p>A Work Queue-specific duplicate weakens semantic clarity.</p>
+<h3>◻️ Generated discovery artifacts</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-022
+RES-023
+</code></pre>
+<p>Reason:</p>
+<p>They are generated catalogs discoverable through Documentation architecture.</p>
+<h3>◻️ Individual sidecars / lesson artifacts</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-024
+RES-025
+RES-026
+RES-027
+RES-028
+RES-029
+</code></pre>
+<p>Reason:</p>
+<p>The Viewer/Documentation Space architecture is the stronger discovery mechanism.</p>
+<h3>◻️ Historical / narrative work artifacts</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-031
+RES-032
+</code></pre>
+<p>Reason:</p>
+<p>They are historical summaries, not present-day root routing dependencies.</p>
+<h3>◻️ Legacy Viewer compatibility artifacts</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-020
+RES-021
+</code></pre>
+<p>Reason:</p>
+<p>The files remain physically available, but the current Registry should route to current source-aware infrastructure.</p>
+<h3>◻️ Placeholders</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-034
+</code></pre>
+<p>Reason:</p>
+<p>An unresolved placeholder without a confirmed datastore link does not improve routing.</p>
+<h3>◻️ Reusable templates</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-038
+RES-039
+</code></pre>
+<p>Reason:</p>
+<p>Templates should be found through the Record Profile / Documentation architecture, not individually globalized in the Resource routing map.</p>
+<h3>◻️ Issue form pair</h3>
+<p>Removed:</p>
+<pre><code class="language-text">RES-035
+RES-036
+</code></pre>
+<p>Reason:</p>
+<p>They are not currently needed as independent global routes.</p>
+<p>Their removal did not delete an underlying Form or response datastore.</p>
+<h2>10.5 What remains and why</h2>
+<p>The current Resources table still includes high-value routes such as:</p>
+<ul>
+<li><code>RES-000</code> — bootstrap instruction;</li>
+<li><code>RES-001</code> — Klinswork Site;</li>
+<li><code>RES-002</code> — Work Queue app;</li>
+<li><code>RES-003</code> — Work Queue datastore;</li>
+<li><code>RES-004</code> — Inventory app;</li>
+<li><code>RES-005</code> — Inventory datastore;</li>
+<li><code>RES-006</code> — Email Composer app;</li>
+<li><code>RES-007</code> — Email Composer templates datastore;</li>
+<li><code>RES-010</code> — shared Locations;</li>
+<li><code>RES-011</code> — Online Documentation Viewer;</li>
+<li><code>RES-013</code> — employee/personnel workbook;</li>
+<li><code>RES-018</code> — Chemical Product Catalog;</li>
+<li><code>RES-019</code> — Documentation Viewer root;</li>
+<li><code>RES-033</code> — Calendar app;</li>
+<li><code>RES-037</code> — image repository/root;</li>
+<li><code>RES-040</code> — Registry Apps Script trigger layer;</li>
+<li><code>RES-041</code> — Project documentation root;</li>
+<li><code>RES-042</code> — Meadows Housekeeping Projects Summary;</li>
+<li><code>RES-043</code> — Resource Registry;</li>
+<li><code>RES-044</code> — Viewer manifest;</li>
+<li><code>RES-045</code> — Viewer manifest builder;</li>
+<li><code>RES-046</code> — Viewer source registry.</li>
+</ul>
+<p>These Resources have strong routing or operational roles that are difficult to replace with one local document path.</p>
+<h2>10.6 RES-040 retained deliberately</h2>
+<p><code>RES-040</code> is still:</p>
+<pre><code class="language-text">Resource Registry Apps Script trigger
+</code></pre>
+<p>It currently contains no code.</p>
+<p>It was retained intentionally because it represents the reserved controlled-write/trigger layer for future Registry changes.</p>
+<p>The Registry cleanup therefore was not mechanical.</p>
+<p>A currently empty implementation can still deserve a Resource if its architectural role is concrete and important enough.</p>
+<h2>10.7 RES-047 remains the next obvious cleanup candidate</h2>
+<p>As of 14:18:</p>
+<pre><code class="language-text">RES-047
+still exists in Resources
+</code></pre>
+<p>The Work Queue README has already been reconciled so the technical manual is discoverable without it.</p>
+<p>Therefore the likely next Registry action is:</p>
+<pre><code class="language-text">remove RES-047 from current Resources
+append next ACT-#### retirement entry
+preserve historical ACT-0080
+never reuse RES-047
+</code></pre>
+<p>The fact that <code>ACT-0080</code> registered the Resource earlier the same morning is not a problem.</p>
+<p>It is useful history.</p>
+<p>It shows the Registry model evolving through evidence.</p>
+<h2>10.8 Registry principle now established</h2>
+<p>The Resources tab is best understood as:</p>
+<blockquote>
+<p><strong>a sparse machine-readable routing/context map for independently important, durable, resolvable objects</strong></p>
+</blockquote>
+<p>rather than:</p>
+<blockquote>
+<p>a catalog of every file, dataset, template, sidecar, and generated artifact.</p>
+</blockquote>
+<p>That is one of the day's strongest outcomes.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="11-project-and-system-delta" aria-labelledby="11-project-and-system-delta-title">
+  <p class="section-eyebrow">Before and after</p>
+  <h2 id="11-project-and-system-delta-title">11. Project and System Delta</h2>
+  <div class="section-body">
+    <h2>11.1 High-level before / after</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Area</th>
+  <th>Starting state</th>
+  <th>Resulting state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Work Unit execution</td>
+  <td>new architecture, real execution not yet proven</td>
+  <td><code>WORK-0001</code> completed/closed through formal WUA sequence</td>
+</tr>
+<tr>
+  <td>Task Assignment and Tracking</td>
+  <td>Project concept existed; package incomplete / being created</td>
+  <td>second validated Project Definition exemplar</td>
+</tr>
+<tr>
+  <td>Work Queue</td>
+  <td>roadmap/history existed; current-state layer incomplete</td>
+  <td>current-state README/System Summary/sidecar plus separate roadmap pair</td>
+</tr>
+<tr>
+  <td>Implementation plan</td>
+  <td>missing at beginning of actual work</td>
+  <td>reconstructed-continuation governing plan linked and preserved</td>
+</tr>
+<tr>
+  <td>Plan sidecar semantics</td>
+  <td>insufficient Work Unit/session integration</td>
+  <td>3.2-draft Work Unit-aware model</td>
+</tr>
+<tr>
+  <td>Viewer companion handling</td>
+  <td>no Project-local implementation-plan parallel inference</td>
+  <td>builder <code>2.0.0-draft.3</code> supports it</td>
+</tr>
+<tr>
+  <td>Viewer validation</td>
+  <td>first exemplar experience</td>
+  <td>second exemplar validated; 74 valid / 0 invalid</td>
+</tr>
+<tr>
+  <td>Context restoration</td>
+  <td>architectural intention</td>
+  <td>empirically tested with 2WT</td>
+</tr>
+<tr>
+  <td>Registry README</td>
+  <td>workbook orientation</td>
+  <td>question routing + authority map + inspection warning</td>
+</tr>
+<tr>
+  <td>Resources map</td>
+  <td>broad asset-like set</td>
+  <td>sparse routing-oriented set</td>
+</tr>
+<tr>
+  <td>Resource count</td>
+  <td>48 before cleanup</td>
+  <td>25 current</td>
+</tr>
+<tr>
+  <td>Technical manual routing</td>
+  <td>global Resource identity introduced</td>
+  <td>direct Project/System route proven; Resource retirement pending</td>
+</tr>
+<tr>
+  <td>Work Update architecture</td>
+  <td>older generic summary template existed</td>
+  <td>explicit Markdown master + JSON template + HTML downstream rule</td>
+</tr>
+</tbody>
+</table></div>
+<h2>11.2 🩵 Task Assignment and Tracking Project delta</h2>
+<h3>Before</h3>
+<p>Task Assignment and Tracking was recognized as an Operations child Project and Work Queue was recognized as its likely/principal System.</p>
+<p>But the full Project Definition architecture had not yet been validated against it.</p>
+<h3>After</h3>
+<p>The Project now has:</p>
+<ul>
+<li>narrow Project Identity Entity Record;</li>
+<li>Project-local orientation;</li>
+<li>rich Project Summary;</li>
+<li>structured companion;</li>
+<li>governing implementation plan;</li>
+<li>implementation-plan sidecar;</li>
+<li>Work Queue System subtree;</li>
+<li>completed Work Unit provenance;</li>
+<li>Viewer discovery/companion validation;</li>
+<li>Architecture Changelog validation as the second exemplar.</li>
+</ul>
+<p>The Project ID remains unassigned.</p>
+<p>That is an intentional non-change.</p>
+<h2>11.3 🟦 Work Queue System delta</h2>
+<h3>Before</h3>
+<p>Work Queue already existed as an application/data ecosystem and had a roadmap and technical history.</p>
+<p>Its current System meaning was not yet cleanly separated from:</p>
+<ul>
+<li>parent Project meaning;</li>
+<li>roadmap intent;</li>
+<li>app implementation;</li>
+<li>technical-manual history;</li>
+<li>registered datasets.</li>
+</ul>
+<h3>After</h3>
+<p>Work Queue now has an explicit current-state System layer.</p>
+<p>The System Summary answers:</p>
+<blockquote>
+<p>What coherent implemented mechanism currently serves Task Assignment and Tracking?</p>
+</blockquote>
+<p>The Roadmap answers:</p>
+<blockquote>
+<p>What should Work Queue become?</p>
+</blockquote>
+<p>The README routes among:</p>
+<ul>
+<li>current System Summary;</li>
+<li>future Roadmap;</li>
+<li>technical manual;</li>
+<li>Resource Registry;</li>
+<li>current runtime evidence.</li>
+</ul>
+<p>System identity remains intentionally deferred.</p>
+<h2>11.4 🟪 Registry delta</h2>
+<p>The Registry moved from:</p>
+<pre><code class="language-text">many things exist
+    therefore register many things
+</code></pre>
+<p>toward:</p>
+<pre><code class="language-text">what must a context-naive session be able to resolve globally?
+</code></pre>
+<p>That is a semantic redesign, not just cleanup.</p>
+<h2>11.5 Documentation delta</h2>
+<p>The Documentation Project now has stronger operational distinctions among:</p>
+<ul>
+<li>Project Definition;</li>
+<li>System current state;</li>
+<li>System future state;</li>
+<li>Work Unit;</li>
+<li>implementation plan;</li>
+<li>Work Implementation Session;</li>
+<li>WUA history;</li>
+<li>Resource Activity history;</li>
+<li>Work Update retrospective master;</li>
+<li>Work Update HTML presentation.</li>
+</ul>
+<h2>11.6 What did not change</h2>
+<p>The following non-changes are important:</p>
+<pre><code class="language-text">Task Assignment and Tracking Project ID
+    still unassigned
+
+Work Queue System ID
+    still unassigned
+
+System Identity
+    still deferred
+
+Relationship Registry
+    still not formalized
+
+WORK-0001
+    still closed after later related work
+
+Work Queue roadmap
+    still future-state authority
+
+removing a Registry row
+    still does not delete underlying artifact
+
+technical manual importance
+    did not decrease merely because global Resource identity is being reconsidered
+</code></pre>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="12-architecture-and-documentation-effects" aria-labelledby="12-architecture-and-documentation-effects-title">
+  <p class="section-eyebrow">System meaning</p>
+  <h2 id="12-architecture-and-documentation-effects-title">12. Architecture and Documentation Effects</h2>
+  <div class="section-body">
+    <h2>12.1 Implementation-plan sidecar 3.2-draft</h2>
+<p>The sidecar template now explicitly supports:</p>
+<pre><code class="language-text">Work Unit context
+state at plan creation
+activation gate
+formal session records
+known WUA references
+current-state authority separation
+execution-history authority separation
+</code></pre>
+<p>This is a significant refinement from the 3.1 context-resolution model.</p>
+<p>It emerged because <code>WORK-0001</code> needed it.</p>
+<h2>12.2 Work Implementation Session 1.1-draft</h2>
+<p>The formal-session template now treats:</p>
+<pre><code class="language-text">Work Unit
+Implementation Plan
+Work Unit Activities
+Session initiation
+Session activation
+Registry reconciliation
+</code></pre>
+<p>as first-class execution context.</p>
+<p>The template explicitly says a session may close without completing its Work Unit.</p>
+<p>It also says a Work Unit may be completed only when its own completion rule is satisfied.</p>
+<p>Those distinctions were exercised for real today.</p>
+<h2>12.3 Manifest builder 2.0.0-draft.3</h2>
+<p>The Viewer builder now understands the Project-local layout:</p>
+<pre><code class="language-text">sidecars/
+    implementation-plan-...-sidecar.json
+
+implementation-plans/
+    implementation-plan-....md
+</code></pre>
+<p>This preserves the existing physical architecture without forcing implementation plans into the summaries folder merely to satisfy companion inference.</p>
+<h2>12.4 ARCH-005</h2>
+<p><code>ARCH-005</code> records the second Project Definition exemplar and System documentation validation.</p>
+<p>This is broader than a Work Unit Activity.</p>
+<p>It records a durable architecture conclusion:</p>
+<blockquote>
+<p>the model has now survived a second real Project and a System with separate current/future documentation.</p>
+</blockquote>
+<h2>12.5 Context Routing Index</h2>
+<p>The Registry README now includes explicit “where do I go for this question?” routing.</p>
+<p>This is a major shift in audience:</p>
+<pre><code class="language-text">old:
+Kevin opens spreadsheet and clicks links
+
+current:
+Kevin asks ChatGPT
+ChatGPT uses Registry to resolve context
+</code></pre>
+<p>The Registry should therefore optimize for machine interpretation:</p>
+<ul>
+<li>precision;</li>
+<li>low ambiguity;</li>
+<li>stable identity;</li>
+<li>explicit authority;</li>
+<li>sparse signal;</li>
+<li>resolvable endpoints.</li>
+</ul>
+<h2>12.6 Spreadsheet inspection warning</h2>
+<p>The Registry now documents a failure mode of its own access tooling.</p>
+<p>That is good architecture.</p>
+<p>A robust system documents not only the data model, but also known hazards in how the data is observed.</p>
+<h2>12.7 Work Queue technical documentation route</h2>
+<p>The technical manual is now encoded as part of the System documentation's <strong>reading path</strong> rather than only as a Registry row.</p>
+<p>This makes the Project/System package more self-contained.</p>
+<h2>12.8 Work Update Summary master/template architecture</h2>
+<p>The new Work Update Summary model adds a missing “after work” layer to the planning/execution architecture:</p>
+<pre><code class="language-text">WORK UNIT
+    bounded work identity/current state
+
+IMPLEMENTATION PLAN
+    intended execution
+
+WORK IMPLEMENTATION SESSION
+    detailed actual execution
+
+WORK UNIT ACTIVITIES
+    material history
+
+WORK UPDATE SUMMARY.MD
+    retrospective reconstruction / meaning
+
+WORK UPDATE HTML
+    downstream human presentation
+</code></pre>
+<h2>12.9 Table of Contents and semantic visual grammar</h2>
+<p>The Work Update master now has explicit style rules.</p>
+<p>Semantic markers include:</p>
+<pre><code class="language-text">🩵 Project
+🟦 System / application function
+🟨 folder / path
+🟪 Resource
+🟧 Work Unit / execution
+🟩 confirmed / passed
+🟥 problem / failure
+🟨 decision
+◻️ historical / superseded
+⬜ open determination
+</code></pre>
+<p>The marker is always redundant with text.</p>
+<p>Color is never the only carrier of meaning.</p>
+<p>This allows the same semantics to be projected into richer CSS in the downstream HTML.</p>
+<h2>12.10 Bootstrap correction — the summary template itself</h2>
+<p>The earlier <code>summary-md-template.json</code> already encoded a Project-aware work-summary approach.</p>
+<p>Today's specialized template is not a claim that no prior summary template existed.</p>
+<p>The important correction is more specific:</p>
+<blockquote>
+<p>the prior generic summary template did not yet encode the full Work Unit / WUA / formal-session / 2WT / sparse-Registry architecture that today's work made necessary.</p>
+</blockquote>
+<p>The new Work Update Summary template therefore represents a new specialized layer, not historical erasure.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-testing" id="13-two-window-testing-and-context-restoration" aria-labelledby="13-two-window-testing-and-context-restoration-title">
+  <p class="section-eyebrow">Testing the documentation</p>
+  <h2 id="13-two-window-testing-and-context-restoration-title">13. Two-Window Testing and Context Restoration</h2>
+  <div class="section-body">
+    <h2>13.1 Why 2WT exists</h2>
+<p>The Documentation system is primarily valuable if context survives beyond the originating conversation.</p>
+<p>A serious failure mode is:</p>
+<pre><code class="language-text">documentation looks complete
+because the same context that wrote it
+already knows what everything means
+</code></pre>
+<p>Two-Window Testing tries to break that illusion.</p>
+<h2>13.2 Test model</h2>
+<pre><code class="language-text">Window A
+    originating / current work context
+
+Window B
+    Other Window (OW)
+    context-naive reader
+
+Window A prepares durable state
+        ↓
+Window B enters through approved routes
+        ↓
+Window B reconstructs Project/System/work context
+        ↓
+compare reconstruction to intended architecture
+        ↓
+record omissions / overreach / confusion / friction
+        ↓
+repair durable context
+</code></pre>
+<h2>13.3 2WT001 findings</h2>
+<h3>🟩 What worked</h3>
+<p>The architecture was reconstructable.</p>
+<p>The fresh reader could locate meaningful Project/System context and recent work.</p>
+<h3>🟥 What did not work well enough</h3>
+<p>Orientation took too long.</p>
+<p>The Registry did not yet tell the fresh reader clearly enough which authority to choose for which question.</p>
+<p>The spreadsheet representation defect also created false signals.</p>
+<h3>Architecture response</h3>
+<p><code>ACT-0091</code>:</p>
+<pre><code class="language-text">Context Routing Index
+Authority map
+Task Assignment and Tracking route
+Work Queue route
+current/recent-work route
+</code></pre>
+<p><code>ACT-0092</code>:</p>
+<pre><code class="language-text">Spreadsheet Inspection Warning
+direct-cell verification rule
+</code></pre>
+<h2>13.4 2WT002 findings</h2>
+<p>The second test was faster.</p>
+<p>That means the first correction worked.</p>
+<p>But the fresh reconstruction still showed a semantic weakness: Projects and Systems could be absorbed too casually into a Resource-centered diagram.</p>
+<h3>Architecture response</h3>
+<p>Reinforce:</p>
+<pre><code class="language-text">Project != System != Resource
+</code></pre>
+<p>and stop treating the Registry as the place where all meaningful entities must be globally represented.</p>
+<p>This fed directly into the sparse Resource cleanup.</p>
+<h2>13.5 2WT as an architecture feedback instrument</h2>
+<p>2WT is valuable because it tests things that ordinary file validation cannot.</p>
+<p>A JSON parser can tell us:</p>
+<pre><code class="language-text">record is syntactically valid
+</code></pre>
+<p>A manifest can tell us:</p>
+<pre><code class="language-text">record is discoverable
+</code></pre>
+<p>A Viewer test can tell us:</p>
+<pre><code class="language-text">record can be rendered
+</code></pre>
+<p>2WT can tell us:</p>
+<pre><code class="language-text">a fresh reasoning agent forms the right mental model
+</code></pre>
+<p>Those are different tests.</p>
+<h2>13.6 Next useful 2WT target</h2>
+<p>The next high-value test should focus on:</p>
+<ul>
+<li>source selection;</li>
+<li>non-obvious dependencies;</li>
+<li>knowing when <strong>not</strong> to load something;</li>
+<li>recognizing shared Resources without collapsing ownership;</li>
+<li>selecting current-state authority over stale narrative;</li>
+<li>locating a deep technical document through Project/System routing without a global Resource entry;</li>
+<li>recognizing that a closed Work Unit stays closed.</li>
+</ul>
+<p>A particularly useful case would ask OW to perform a bounded Work Queue change and observe whether it discovers:</p>
+<pre><code class="language-text">Project context
+System Summary
+current Resource routes
+technical manual only if needed
+shared Locations / employee dependencies
+current Work Unit state
+</code></pre>
+<p>before modifying anything.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="14-knowledge-produced" aria-labelledby="14-knowledge-produced-title">
+  <p class="section-eyebrow">What we learned</p>
+  <h2 id="14-knowledge-produced-title">14. Knowledge Produced</h2>
+  <div class="section-body">
+    <h2>14.1 Project-specific lessons</h2>
+<h3>Task Assignment and Tracking is stable even if Work Queue changes</h3>
+<p>The Project represents the operational undertaking.</p>
+<p>Work Queue represents the current principal System.</p>
+<p>That means the Project can survive:</p>
+<ul>
+<li>app replacement;</li>
+<li>datastore change;</li>
+<li>UI change;</li>
+<li>deployment change;</li>
+<li>System redesign.</li>
+</ul>
+<h3>Work Queue is broader than its visible app</h3>
+<p>The System includes the coherent mechanism around:</p>
+<ul>
+<li>task/assignment data;</li>
+<li>employee context;</li>
+<li>location context;</li>
+<li>workflow;</li>
+<li>inventory relationships;</li>
+<li>history;</li>
+<li>documentation;</li>
+<li>operational use.</li>
+</ul>
+<h2>14.2 General Klinswork lessons</h2>
+<h3>Lesson 1 — architecture should be tested by another context</h3>
+<p>Do not assume a README is good because the authoring session understands it.</p>
+<h3>Lesson 2 — sparse routing is stronger than exhaustive registration</h3>
+<p>More Registry rows can create more ambiguity.</p>
+<h3>Lesson 3 — important documents do not all need Resource identity</h3>
+<p>If a local semantic route is stable and obvious, it may be better.</p>
+<h3>Lesson 4 — inspection tools are part of the evidence chain</h3>
+<p>A representation can be wrong even when the underlying workbook is correct.</p>
+<h3>Lesson 5 — plans can be created late without lying</h3>
+<p>Reconstructed-continuation is a legitimate planning mode.</p>
+<h3>Lesson 6 — event history should preserve process imperfections</h3>
+<p>Do not rewrite <code>WUA-0003</code> after activation.</p>
+<h3>Lesson 7 — closure boundaries matter</h3>
+<p>Related later work does not belong in a completed Work Unit simply because the subject is the same.</p>
+<h3>Lesson 8 — documentation should be written for its future reader</h3>
+<p>The Work Update Summary can be longer because future ChatGPT is a principal reader.</p>
+<p>The HTML can optimize separately for Kevin.</p>
+<h2>14.3 Recurring pattern — event/state separation</h2>
+<p>The same pattern appears repeatedly:</p>
+<pre><code class="language-text">Registry Activities
+    explain Resource state
+
+Work Unit Activities
+    explain Work Unit state
+
+Inventory Events
+    explain inventory state
+
+Task Activity
+    explains task state
+
+Architecture Changelog
+    explains architecture state
+</code></pre>
+<p>This is becoming one of Klinswork's most reliable design principles.</p>
+<h2>14.4 Recurring pattern — authority does not follow convenience</h2>
+<p>A record should not become authoritative because it is the easiest thing to read.</p>
+<p>Examples:</p>
+<pre><code class="language-text">README
+    routes
+    does not own everything
+
+sidecar
+    structures
+    does not replace master Markdown
+
+manifest
+    discovers
+    does not define semantic truth
+
+Viewer
+    presents
+    does not become source authority
+
+Work Update
+    interprets
+    does not replace current-state registries
+</code></pre>
+<h2>14.5 Knowledge-base candidate — Two-Window Testing</h2>
+<p>A formal lesson or method should eventually capture:</p>
+<ul>
+<li>purpose;</li>
+<li>setup;</li>
+<li>independent-window requirement;</li>
+<li>starting-context rules;</li>
+<li>questions to ask;</li>
+<li>ontology failure patterns;</li>
+<li>timing/friction measures;</li>
+<li>architecture-change feedback;</li>
+<li>pass/fail criteria;</li>
+<li>naming convention (<code>2WT###</code>);</li>
+<li>treatment of OW output as test evidence rather than authority.</li>
+</ul>
+<h2>14.6 Knowledge-base candidate — sparse Registry design</h2>
+<p>A reusable rule should capture:</p>
+<blockquote>
+<p>If removal of a Registry entry would not cause a context-naive session to lose an important global route, authority, dependency, or entry point, the artifact probably belongs in its local architecture rather than the global Resources map.</p>
+</blockquote>
+<h2>14.7 Knowledge-base candidate — representation verification</h2>
+<p>The <code>443</code> event should become a general lesson:</p>
+<blockquote>
+<p>When a machine-readable representation disagrees with direct underlying cells, verify the source layer before promoting the representation to durable fact.</p>
+</blockquote>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-confirmed" id="15-resulting-state" aria-labelledby="15-resulting-state-title">
+  <p class="section-eyebrow">What is true now</p>
+  <h2 id="15-resulting-state-title">15. Resulting State</h2>
+  <div class="section-body">
+    <h2>15.1 Work Unit</h2>
+<pre><code class="language-text">WORK-0001
+status: completed
+readiness: closed
+completed: 2026-08-16T10:49:00-06:00
+closure WUA: WUA-0010
+</code></pre>
+<p>No active Task Assignment and Tracking / Work Queue Work Unit is currently represented by the reviewed Registry state.</p>
+<p>Future formal Work Queue feature work should receive a new Work Unit if it meets Work Unit granularity.</p>
+<h2>15.2 Project</h2>
+<p>🩵 <strong>Task Assignment and Tracking</strong></p>
+<p>Current durable Project Definition includes:</p>
+<ul>
+<li>Project Identity;</li>
+<li>Project README;</li>
+<li>Project Summary;</li>
+<li>Project Summary sidecar;</li>
+<li>governing implementation plan;</li>
+<li>implementation-plan sidecar;</li>
+<li>Work Queue System subtree.</li>
+</ul>
+<p>Permanent Project ID remains unassigned.</p>
+<h2>15.3 System</h2>
+<p>🟦 <strong>Work Queue</strong></p>
+<p>Current durable documentation includes:</p>
+<ul>
+<li>System orientation;</li>
+<li>current-state System Summary;</li>
+<li>structured current-state sidecar;</li>
+<li>future-state Roadmap;</li>
+<li>Roadmap sidecar;</li>
+<li>direct route to deep technical manual;</li>
+<li>current Work Queue-related Resource routes.</li>
+</ul>
+<p>Permanent System ID remains unassigned.</p>
+<h2>15.4 Viewer</h2>
+<p>Current source-aware Viewer architecture includes:</p>
+<pre><code class="language-text">RES-046 source registry
+        ↓
+RES-045 manifest builder 2.0.0-draft.3
+        ↓
+RES-044 generated manifest
+        ↓
+RES-011 Viewer
+</code></pre>
+<p>The validation snapshot recorded:</p>
+<pre><code class="language-text">74 valid
+0 invalid
+6 Projects records
+</code></pre>
+<h2>15.5 Resource Registry</h2>
+<p>Current live Resource count:</p>
+<pre><code class="language-text">25
+</code></pre>
+<p>Current Activity tail:</p>
+<pre><code class="language-text">ACT-0111
+</code></pre>
+<p>The Registry README includes:</p>
+<ul>
+<li>Context Routing Index;</li>
+<li>authority routing;</li>
+<li>recent-work routing;</li>
+<li>spreadsheet-inspection warning.</li>
+</ul>
+<h2>15.6 Technical manual</h2>
+<p>The manual is now discoverable directly through Work Queue documentation.</p>
+<p>Current live Registry still includes:</p>
+<pre><code class="language-text">RES-047
+</code></pre>
+<p>Retirement is pending.</p>
+<h2>15.7 Work Queue README</h2>
+<p>Current GitHub content includes the new direct manual route and current Resource routes.</p>
+<p>Current physical filename observed:</p>
+<pre><code class="language-text">work-queue-README.md
+</code></pre>
+<p>This should be reconciled with semantic links expecting <code>README.md</code>.</p>
+<h2>15.8 Work Update architecture</h2>
+<p>The current local template/profile is:</p>
+<pre><code class="language-text">work-update-summary-template-1.0-draft.json
+</code></pre>
+<p>The current master is:</p>
+<pre><code class="language-text">work-update-summary-08-16-2026.md
+</code></pre>
+<p>The intended downstream presentation is:</p>
+<pre><code class="language-text">work-update-08-16-2026.html
+</code></pre>
+<h2>15.9 What is now true that was not true at the beginning</h2>
+<ul>
+<li>🟩 The Work Unit architecture has governed and closed a real Project Definition Work Unit.</li>
+<li>🟩 Task Assignment and Tracking is a validated second Project Definition exemplar.</li>
+<li>🟩 Work Queue has a distinct current-state System documentation layer.</li>
+<li>🟩 The implementation-plan sidecar architecture understands Work Unit/session context.</li>
+<li>🟩 The Viewer builder supports Project-local implementation-plan companions.</li>
+<li>🟩 Context restoration has been tested with an independent ChatGPT window.</li>
+<li>🟩 The Registry has an explicit context-routing layer.</li>
+<li>🟩 The Registry documents a known machine-inspection failure mode.</li>
+<li>🟩 The Resources map is substantially sparser and more semantically purposeful.</li>
+<li>🟩 The technical-manual route no longer depends conceptually on global Resource identity.</li>
+<li>🟩 The Work Update Summary has a defined master/downstream architecture.</li>
+<li>🟩 A specialized Work Update Summary JSON template now exists.</li>
+</ul>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-open" id="16-remaining-work-and-open-determinations" aria-labelledby="16-remaining-work-and-open-determinations-title">
+  <p class="section-eyebrow">Still unresolved</p>
+  <h2 id="16-remaining-work-and-open-determinations-title">16. Remaining Work and Open Determinations</h2>
+  <div class="section-body">
+    <h2>16.1 Immediate cleanup — RES-047</h2>
+<p>⬜ <strong>Open determination / likely action</strong></p>
+<p>Remove <code>RES-047</code> from the current Resources table now that the Work Queue documentation independently routes to the technical manual.</p>
+<p>Required process:</p>
+<pre><code class="language-text">live-read Resources
+live-read Activities tail
+remove RES-047 row
+append next ACT-####
+verify current cells
+preserve ACT-0080 history
+never reuse RES-047
+</code></pre>
+<h2>16.2 Work Queue README filename</h2>
+<p>⬜ <strong>Open</strong></p>
+<p>Reconcile:</p>
+<pre><code class="language-text">current physical:
+work-queue-README.md
+
+documented semantic route:
+README.md
+</code></pre>
+<p>Prefer restoring the conventional:</p>
+<pre><code class="language-text">systems/Work Queue/README.md
+</code></pre>
+<p>unless a deliberate naming change is made across all routing documents.</p>
+<p>Do not treat filename repair as reopening <code>WORK-0001</code>.</p>
+<h2>16.3 Registry README stale retired Resource references</h2>
+<p>Some Registry/context documentation may still reference Resources retired today, particularly historical routing language around Work Queue.</p>
+<p>Reconcile current routing references when encountered.</p>
+<p>Do not rewrite historical Activity text.</p>
+<h2>16.4 Root Documentation README</h2>
+<p>The root README remains a high-priority context route because <code>RES-000</code> points to it.</p>
+<p>It should eventually be reconciled to the current:</p>
+<ul>
+<li>source-aware Viewer architecture;</li>
+<li>Resource Registry model;</li>
+<li>Project/System definition architecture;</li>
+<li>Work Unit planning model;</li>
+<li>sparse Resource routing principle;</li>
+<li>context-routing method.</li>
+</ul>
+<p>A replacement was drafted previously, but remote update was blocked by GitHub integration write limitations.</p>
+<h2>16.5 2WT continuation</h2>
+<p>Continue 2WT with harder questions:</p>
+<ul>
+<li>source selection;</li>
+<li>integration dependencies;</li>
+<li>pre-change context requirements;</li>
+<li>shared versus owned Resources;</li>
+<li>current-state versus roadmap authority;</li>
+<li>document discoverability without global Resource registration;</li>
+<li>closed Work Unit handling.</li>
+</ul>
+<h2>16.6 Work Update downstream products</h2>
+<p>Still needed after this master is reviewed:</p>
+<pre><code class="language-text">work-update sidecar.json
+work-update-08-16-2026.html
+</code></pre>
+<p>The HTML should be generated from this master, not independently reconstructed from conversation.</p>
+<h2>16.7 Work Update Summary template repository placement</h2>
+<p>The new:</p>
+<pre><code class="language-text">work-update-summary-template-1.0-draft.json
+</code></pre>
+<p>currently exists as a generated artifact from this session.</p>
+<p>It should be placed in the appropriate Record Profile / template authority location after review.</p>
+<p>Do not register it as a top-level Resource merely because it is useful.</p>
+<p>The day's Registry cleanup argues against that.</p>
+<h2>16.8 WUA coverage of bootstrap template work</h2>
+<p>The WUA sequence captures the material consequences of implementation-plan/template maturation:</p>
+<ul>
+<li>activation;</li>
+<li>companion-discovery support;</li>
+<li>package completion;</li>
+<li>validation;</li>
+<li>reconciliation;</li>
+<li>closure.</li>
+</ul>
+<p>It does not enumerate every template edit by filename.</p>
+<p>That is acceptable under the material-event granularity rule.</p>
+<p>This Work Update preserves the richer retrospective detail.</p>
+<p>Avoid reopening the closed Work Unit merely to turn every low-level template change into a new WUA.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="17-continuation-point" aria-labelledby="17-continuation-point-title">
+  <p class="section-eyebrow">Where to resume</p>
+  <h2 id="17-continuation-point-title">17. Continuation Point</h2>
+  <div class="section-body">
+    <h2>17.1 Recommended first reads for a future context-naive session</h2>
+<ol>
+<li>🟪 <code>RES-043</code> — Registry README / Context Routing Index.</li>
+<li>🟧 Work Units tab — confirm current active work rather than assuming this Work Update is current-state authority.</li>
+<li>This Work Update Summary — reconstruct August 16 architecture and decisions.</li>
+<li>🩵 Task Assignment and Tracking Project README.</li>
+<li>🟦 Work Queue System README.</li>
+<li>Work Queue System Summary or Roadmap according to question type.</li>
+<li>Resource Registry only for independently important current Resource routes.</li>
+<li>Technical manual only when deep implementation/ecosystem detail is needed.</li>
+</ol>
+<h2>17.2 Current authoritative state to expect</h2>
+<pre><code class="language-text">WORK-0001
+    completed / closed
+
+Task Assignment and Tracking
+    Project Definition complete as second exemplar
+    Project ID unassigned
+
+Work Queue
+    principal known System
+    current-state documentation present
+    roadmap present
+    System ID unassigned
+
+Resources
+    25 current rows
+    sparse routing direction
+
+Activities
+    tail ACT-0111
+
+Work Unit Activities
+    tail WUA-0010
+
+2WT
+    begun
+    2WT001 and 2WT002 produced architecture changes
+
+RES-047
+    still current in live Registry
+    likely next retirement
+
+Work Queue README
+    content reconciled
+    physical filename requires check
+</code></pre>
+<h2>17.3 Recommended next bounded action</h2>
+<p>The cleanest immediate action is:</p>
+<blockquote>
+<p>Finish the post-2WT Registry reconciliation by retiring <code>RES-047</code> with an Activity entry, then verify all current Work Queue routing references and the System README physical filename.</p>
+</blockquote>
+<p>This is small enough to be cleanup/reconciliation work rather than automatically creating a new major Work Unit.</p>
+<p>If the scope expands into a broader Registry redesign, formal template rollout, or new Work Queue implementation work, evaluate whether a new Work Unit is warranted.</p>
+<h2>17.4 Exact handoff statement</h2>
+<blockquote>
+<p><strong>Resume from the post-<code>WORK-0001</code> context-testing and Registry-reconciliation state. Do not reopen <code>WORK-0001</code>. The Project Definition is complete. Confirm current Work Units first, then finish the remaining <code>RES-047</code> / Work Queue README routing cleanup and continue Two-Window Testing against the sparse Registry/context-routing model.</strong></p>
+</blockquote>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="18-important-artifacts-and-references" aria-labelledby="18-important-artifacts-and-references-title">
+  <p class="section-eyebrow">Traceability</p>
+  <h2 id="18-important-artifacts-and-references-title">18. Important Artifacts and References</h2>
+  <div class="section-body">
+    <h2>18.1 Registry</h2>
+<p>🟪 <strong>Klinswork Resource Registry — <code>RES-043</code></strong></p>
+<pre><code class="language-text">Google Sheet ID:
+14_bNqnExG6_4Omg0cEqENm2hGivz5qqvWEk9IJaGl_A
+</code></pre>
+<p>Tabs:</p>
+<pre><code class="language-text">README
+Resources
+Activities
+Work Units
+Work Unit Activities
+</code></pre>
+<h2>18.2 Work Unit</h2>
+<p>🟧 <strong><code>WORK-0001</code></strong></p>
+<pre><code class="language-text">Task Assignment and Tracking — Initial Project Definition
+</code></pre>
+<p>Closure:</p>
+<pre><code class="language-text">WUA-0010
+2026-08-16T10:49:00-06:00
+</code></pre>
+<h2>18.3 Governing plan</h2>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/operations/
+Task Assignment and Tracking/
+implementation-plans/
+implementation-plan-project-definition.md
+</code></pre>
+<h2>18.4 Implementation-plan sidecar</h2>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/operations/
+Task Assignment and Tracking/
+sidecars/
+implementation-plan-project-definition-sidecar.json
+</code></pre>
+<h2>18.5 Project Definition</h2>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/operations/
+Task Assignment and Tracking/
+</code></pre>
+<p>Important files:</p>
+<pre><code class="language-text">project-identity.json
+README.md
+summaries/project-summary.md
+sidecars/project-summary-sidecar.json
+</code></pre>
+<h2>18.6 Work Queue System</h2>
+<pre><code class="language-text">documents/Klinswork Documentation Viewer/projects/operations/
+Task Assignment and Tracking/
+systems/Work Queue/
+</code></pre>
+<p>Important current files:</p>
+<pre><code class="language-text">work-queue-README.md        [current physical filename observed]
+summaries/system-summary.md
+summaries/work-queue-roadmap.md
+sidecars/system-summary-sidecar.json
+sidecars/work-queue-roadmap-sidecar.json
+</code></pre>
+<p>Expected semantic README route in other documentation:</p>
+<pre><code class="language-text">systems/Work Queue/README.md
+</code></pre>
+<h2>18.7 Work Queue technical manual</h2>
+<pre><code class="language-text">https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit
+</code></pre>
+<p>Current routing principle:</p>
+<pre><code class="language-text">discover through Project/System documentation
+</code></pre>
+<p>not:</p>
+<pre><code class="language-text">must know RES-047 first
+</code></pre>
+<h2>18.8 Viewer infrastructure</h2>
+<pre><code class="language-text">RES-011
+Online JSON Viewer
+
+RES-044
+Klinswork Documentation Viewer manifest
+
+RES-045
+Documentation Viewer manifest builder
+
+RES-046
+Documentation Viewer source registry
+</code></pre>
+<p>Current builder version established during work:</p>
+<pre><code class="language-text">2.0.0-draft.3
+</code></pre>
+<h2>18.9 Architecture source</h2>
+<p>🟪 <strong><code>RES-042</code> — Meadows Housekeeping Projects Summary</strong></p>
+<pre><code class="language-text">Google Doc ID:
+1fZ5ndjUI0rCVqTFCrNwVGihwJZghW2_giHVoqbXPqo8
+</code></pre>
+<p>Important architecture event:</p>
+<pre><code class="language-text">ARCH-005
+Second Project Definition Exemplar and System Documentation Validation
+</code></pre>
+<h2>18.10 Current Resource endpoints particularly relevant to Work Queue</h2>
+<pre><code class="language-text">RES-002
+Work Queue app
+
+RES-003
+Work Queue app data sheet
+
+RES-010
+Building Map / shared Locations workbook
+
+RES-013
+Work Queue Employees dataset / separate employee workbook
+</code></pre>
+<h2>18.11 Current summary/template architecture</h2>
+<p>Existing older generic authoring template:</p>
+<pre><code class="language-text">Record Profile Library/summary-md-template.json
+</code></pre>
+<p>Current specialized Work Update Summary template generated in this session:</p>
+<pre><code class="language-text">work-update-summary-template-1.0-draft.json
+</code></pre>
+<p>Current master:</p>
+<pre><code class="language-text">work-update-summary-08-16-2026.md
+</code></pre>
+<p>Structured Work Update sidecar:</p>
+<pre><code class="language-text">work-update-08-16-2026-sidecar-3.0.json
+</code></pre>
+<p>Work Update HTML authoring template:</p>
+<pre><code class="language-text">work-update-html-template-1.0-draft.json
+</code></pre>
+<p>Current downstream human-facing product:</p>
+<pre><code class="language-text">work-update-08-16-2026.html
+</code></pre>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="19-provenance-and-interpretation-limits" aria-labelledby="19-provenance-and-interpretation-limits-title">
+  <p class="section-eyebrow">Evidence discipline</p>
+  <h2 id="19-provenance-and-interpretation-limits-title">19. Provenance and Interpretation Limits</h2>
+  <div class="section-body">
+    <h2>19.1 Durable sources consulted</h2>
+<p>This Work Update was reconstructed from:</p>
+<ul>
+<li>live Resources table;</li>
+<li>live Activities table through <code>ACT-0111</code>;</li>
+<li>live Work Units table;</li>
+<li>live Work Unit Activities through <code>WUA-0010</code>;</li>
+<li><code>WORK-0001</code> implementation plan;</li>
+<li>implementation-plan sidecar template 3.2-draft;</li>
+<li>Work Implementation Session template 1.1-draft;</li>
+<li>current Task Assignment and Tracking Project README;</li>
+<li>current Task Assignment and Tracking Project Summary package;</li>
+<li>current Work Queue System Summary / Roadmap package;</li>
+<li>current Work Queue README content;</li>
+<li>current Viewer manifest/builder architecture;</li>
+<li>current Registry README Context Routing Index and spreadsheet warning;</li>
+<li>current GitHub repository directory listings;</li>
+<li>August 15 comprehensive architecture summary;</li>
+<li>August 16 conversation record and 2WT observations.</li>
+</ul>
+<h2>19.2 Current-state evidence</h2>
+<p>Current-state facts in this document were preferentially taken from:</p>
+<pre><code class="language-text">live Registry
+current GitHub repository state
+current Project/System documentation
+current Work Unit row
+current WUA/Activity history
+</code></pre>
+<h2>19.3 Historical evidence</h2>
+<p>Historical or creation-time facts include:</p>
+<ul>
+<li>August 15 architecture baseline;</li>
+<li>Work Unit creation;</li>
+<li><code>ACT-0080</code> technical-manual registration;</li>
+<li>earlier pre-plan Project Definition output;</li>
+<li>creation-time status annotations;</li>
+<li>WUA event chronology.</li>
+</ul>
+<h2>19.4 Planning evidence</h2>
+<p>Planning evidence includes:</p>
+<ul>
+<li><code>implementation-plan-project-definition.md</code>;</li>
+<li>Work Queue roadmap;</li>
+<li>template schema roadmaps;</li>
+<li>candidate future Work Units;</li>
+<li>deferred architecture items.</li>
+</ul>
+<p>Planning evidence is not used as proof of runtime implementation.</p>
+<h2>19.5 Retrospective interpretation</h2>
+<p>The following are explicitly retrospective conclusions:</p>
+<ul>
+<li>2WT transformed context quality into an empirical architecture test;</li>
+<li>the Registry cleanup is best understood as a shift from asset catalog to sparse routing map;</li>
+<li><code>RES-047</code> registration then likely retirement is evidence of learning rather than inconsistency;</li>
+<li>the Work Unit/template bootstrap problem produced stronger reconstructed-continuation semantics;</li>
+<li>the Work Update master should be optimized for future AI reconstruction while HTML is optimized for human reading.</li>
+</ul>
+<h2>19.6 Interpretation limits</h2>
+<p>This Work Update does <strong>not</strong> prove:</p>
+<ul>
+<li>current Work Queue Apps Script behavior in every detail;</li>
+<li>current deployment parity with all documented behavior;</li>
+<li>that every Registry README route has been re-tested after post-closure filename changes;</li>
+<li>that <code>RES-047</code> has already been retired;</li>
+<li>that the root README has already been updated;</li>
+<li>that the downstream HTML or sidecar already exists;</li>
+<li>that 2WT has fully validated all Klinswork contexts.</li>
+</ul>
+<h2>19.7 Coverage boundary</h2>
+<p>This master is current through:</p>
+<pre><code class="language-text">2026-08-16T14:53:00-06:00
+</code></pre>
+<p>If substantial additional work occurs later on August 16, update this master rather than creating a competing same-day narrative unless the later work is intentionally a separate bounded Work Update.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="20-downstream-html-projection-notes" aria-labelledby="20-downstream-html-projection-notes-title">
+  <p class="section-eyebrow">Presentation design</p>
+  <h2 id="20-downstream-html-projection-notes-title">20. Downstream HTML Projection Notes</h2>
+  <div class="section-body">
+    <p>The human-facing HTML should preserve the day's causal story while reducing the density of Registry/provenance material.</p>
+<h2>20.1 Recommended opening</h2>
+<p>Use a strong title:</p>
+<blockquote>
+<p><strong>From Formal Project Definition to Tested Context Architecture</strong></p>
+</blockquote>
+<p>Subtitle:</p>
+<blockquote>
+<p><strong>Klinswork Work Update — August 16, 2026</strong></p>
+</blockquote>
+<p>The opening should emphasize the central sequence:</p>
+<pre><code class="language-text">WORK-0001
+    ↓
+second Project Definition exemplar
+    ↓
+formal closure
+    ↓
+2WT
+    ↓
+Registry redesign
+</code></pre>
+<h2>20.2 Recommended visual timeline</h2>
+<p>A horizontal or vertical timeline should include:</p>
+<pre><code class="language-text">05:15   RES-047 registered
+07:48   session initiated
+08:35   session activated
+09:01   Viewer builder updated
+09:21   Project package complete
+10:04   System package complete
+10:08   validation passed
+10:17   architecture reconciliation
+10:49   WORK-0001 closed
+11:45   context routing added
+12:01   443 warning added
+13:28   major Registry cleanup complete
+</code></pre>
+<h2>20.3 Recommended “before / after” graphic</h2>
+<h3>Before</h3>
+<ul>
+<li>first Project exemplar existed;</li>
+<li>Work Unit machinery new;</li>
+<li>second exemplar not validated;</li>
+<li>Registry broad;</li>
+<li>context restoration untested.</li>
+</ul>
+<h3>After</h3>
+<ul>
+<li>second exemplar complete;</li>
+<li>Work Unit formally closed;</li>
+<li>2WT operational;</li>
+<li>Registry sparse;</li>
+<li>context routes explicit;</li>
+<li>inspection warning explicit;</li>
+<li>Work Update master architecture defined.</li>
+</ul>
+<h2>20.4 Recommended 2WT graphic</h2>
+<pre><code class="language-text">Current Window
+    builds durable context
+        ↓
+Other Window
+    reconstructs
+        ↓
+Mismatch / friction
+        ↓
+architecture correction
+        ↓
+repeat
+</code></pre>
+<h2>20.5 Recommended Registry cleanup graphic</h2>
+<p>Show:</p>
+<pre><code class="language-text">48 Resources
+    ↓
+remove internal / generated / local-discoverable entries
+    ↓
+25 current Resources
+</code></pre>
+<p>with the important note:</p>
+<blockquote>
+<p>Underlying artifacts were retained; retired Resource IDs are historical and are not reused.</p>
+</blockquote>
+<h2>20.6 Recommended color semantics</h2>
+<p>Use the same redundant semantic grammar as the master:</p>
+<pre><code class="language-text">cyan      Project
+blue      System
+yellow    paths / decisions as context indicates
+purple    Resources
+orange    Work Units / execution
+green     validation / confirmed
+red       problems
+gray      historical
+neutral   open determinations
+</code></pre>
+<p>Always keep explicit labels so meaning survives without color.</p>
+<h2>20.7 Material that may be compressed in HTML</h2>
+<p>The HTML can shorten:</p>
+<ul>
+<li>complete WUA descriptions;</li>
+<li>all 32 Activity rows;</li>
+<li>provenance details;</li>
+<li>template-schema commentary;</li>
+<li>long authority reminders;</li>
+<li>detailed open-determination wording.</li>
+</ul>
+<h2>20.8 Material that should remain prominent</h2>
+<p>Do not lose:</p>
+<ul>
+<li>reconstructed-continuation story;</li>
+<li><code>WORK-0001</code> closure;</li>
+<li>second Project Definition exemplar;</li>
+<li>2WT purpose/results;</li>
+<li>Registry context-routing change;</li>
+<li><code>443</code> defect;</li>
+<li>48 → 25 Resources cleanup;</li>
+<li>technical-manual discoverability lesson;</li>
+<li>Markdown master / HTML downstream rule;</li>
+<li>clear continuation point.</li>
+</ul>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="21-work-update-completion-check" aria-labelledby="21-work-update-completion-check-title">
+  <p class="section-eyebrow">Quality control</p>
+  <h2 id="21-work-update-completion-check-title">21. Work Update Completion Check</h2>
+  <div class="section-body">
+    <h2>21.1 Narrative completeness</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Why the work existed is clear.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Starting state is detailed.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Intended work is summarized.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Actual chronology is preserved.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Work Unit/WUA history is interpreted.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Important Activities are preserved.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Decisions are explained.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Deviations and reconstruction are explicit.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Problems and discoveries are preserved.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Formal validation is summarized.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>2WT context testing is documented.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Registry cleanup is explained semantically.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Project/System delta is explicit.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Resulting state is detailed.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Remaining work is separated from completed work.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Continuation guidance is context-naive.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Important references are included.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Provenance and limits are stated.</li>
+</ul>
+<h2>21.2 Authority integrity</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Work Unit current state is taken from the Registry.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>WUA history remains WUA authority.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Activities remain Resource-history authority.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Implementation Plan remains intended-work authority.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>System Summary remains current-System interpretation authority.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Roadmap remains future-state authority.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Current runtime uncertainty is not filled with roadmap assumptions.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>No new PROJ/SYS/WORK/WUA/ACT/RES identifiers were invented.</li>
+</ul>
+<h2>21.3 Temporal integrity</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Pre-plan work is identified.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Reconstructed-continuation is preserved.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/><code>WUA-0003</code> is not rewritten as activation.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/><code>WORK-0001</code> remains closed.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Post-closure work is not inserted back into the Work Unit.</li>
+</ul>
+<h2>21.4 Detail quality</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>The master is intentionally not skimpy.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Causal relationships are explained.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>IDs are paired with semantic meaning.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Selective redundancy is used where it improves reconstruction.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Tables are interpreted rather than left as unexplained data.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Future ChatGPT context restoration is treated as a first-class reader need.</li>
+</ul>
+<h2>21.5 Downstream readiness</h2>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Master Markdown contains enough information to generate a structured sidecar.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Master Markdown contains enough information to generate the downstream HTML.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>HTML projection guidance is included.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Work Update HTML template created and navbar rule added.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Work Update sidecar generated.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Work Update HTML generated.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>New Work Update Summary template committed to canonical repository location.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>This master committed to canonical repository location.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><code>RES-047</code> retirement reconciled.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Work Queue README physical filename reconciled.</li>
+</ul>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section section-production" id="22-work-update-production-layer-completed" aria-labelledby="22-work-update-production-layer-completed-title">
+  <p class="section-eyebrow">Production pipeline</p>
+  <h2 id="22-work-update-production-layer-completed-title">22. Work Update Production Layer Completed</h2>
+  <div class="section-body">
+    <h2>22.1 Work Update sidecar generated</h2>
+<p>After the detailed Markdown master was created, the existing:</p>
+<pre><code class="language-text">work-update-sidecar-template-3.0-draft.json
+</code></pre>
+<p>was used to create:</p>
+<pre><code class="language-text">work-update-08-16-2026-sidecar-3.0.json
+</code></pre>
+<p>The sidecar structures the Work Update for machine interpretation without replacing the Markdown master.</p>
+<p>It preserves:</p>
+<ul>
+<li>Project context;</li>
+<li>the formal <code>WORK-0001</code> relationship;</li>
+<li>narrative progression;</li>
+<li>major decisions and turning points;</li>
+<li>Project delta;</li>
+<li>technical validation;</li>
+<li>2WT findings;</li>
+<li>Registry effects;</li>
+<li>knowledge produced;</li>
+<li>remaining work;</li>
+<li>publication state;</li>
+<li>provenance.</li>
+</ul>
+<p>The generated JSON parsed successfully.</p>
+<h2>22.2 A missing Work Update HTML template was discovered</h2>
+<p>The next production step exposed another documentation gap:</p>
+<blockquote>
+<p>Klinswork had many Work Update HTML documents, but no retained formal template describing how a Work Update HTML should be constructed.</p>
+</blockquote>
+<p>The recent:</p>
+<pre><code class="language-text">work-update-08-09-2026.html
+work-update-08-15-2026.html
+</code></pre>
+<p>were inspected as working exemplars.</p>
+<p>They already demonstrated a recognizable Work Update visual family:</p>
+<ul>
+<li>strong editorial header;</li>
+<li>readable central content width;</li>
+<li>card-based sections;</li>
+<li>quick-reading path;</li>
+<li>Table of Contents;</li>
+<li>summary statistics;</li>
+<li>milestone callouts;</li>
+<li>responsive tables;</li>
+<li>architecture/code blocks;</li>
+<li>print behavior;</li>
+<li>accessible focus and navigation.</li>
+</ul>
+<p>That working lineage was formalized rather than discarded.</p>
+<h2>22.3 Work Update HTML template created</h2>
+<p>A new structured template was created:</p>
+<pre><code class="language-text">work-update-html-template-1.0-draft.json
+</code></pre>
+<p>Its authority model is:</p>
+<pre><code class="language-text">work-update-summary.md
+    canonical retrospective master
+        ↓
+work-update sidecar.json
+    structured companion
+        ↓
+work-update.html
+    polished human-facing projection
+</code></pre>
+<p>The HTML template explicitly permits editorial compression and visual reorganization while forbidding substantive distortion.</p>
+<p>It also establishes:</p>
+<ul>
+<li>static single-file HTML as the default;</li>
+<li>embedded CSS;</li>
+<li>no required JavaScript;</li>
+<li>GitHub Pages compatibility;</li>
+<li>mobile responsiveness;</li>
+<li>print readability;</li>
+<li>accessible navigation;</li>
+<li>semantic color roles;</li>
+<li>timelines;</li>
+<li>before/after delta views;</li>
+<li>validation panels;</li>
+<li>reader milestone callouts;</li>
+<li>native HTML disclosure for deep appendices;</li>
+<li>explicit traceability back to the master/sidecar architecture.</li>
+</ul>
+<h2>22.4 Document navbar added as a required HTML component</h2>
+<p>A further requirement was added immediately after template creation.</p>
+<p>Every Work Update HTML should provide a document-level navbar with a direct route back to:</p>
+<pre><code class="language-text">https://sites.google.com/view/meadows-hk/home/documentation
+</code></pre>
+<p>This is not merely decorative navigation.</p>
+<p>It establishes the Work Update as part of the broader Meadows Housekeeping Documentation environment and gives a reader a stable way back to the documentation home.</p>
+<p>The navbar also supports in-page links such as:</p>
+<pre><code class="language-text">Contents
+Today at a Glance
+Top
+</code></pre>
+<p>without requiring JavaScript.</p>
+<h2>22.5 August 16 HTML generated with an orange editorial theme</h2>
+<p>The first Work Update produced from the newly formalized three-layer architecture is:</p>
+<pre><code class="language-text">work-update-08-16-2026.html
+</code></pre>
+<p>The document uses an orange / burnt-orange editorial theme while retaining the established Klinswork Work Update family structure.</p>
+<p>The HTML deliberately preserves substantial detail rather than reducing this unusually important architecture day to a brief presentation.</p>
+<p>The human-facing page includes:</p>
+<ul>
+<li>a required Documentation navbar;</li>
+<li>a strong orange masthead;</li>
+<li>a reconstruction/source-authority banner;</li>
+<li>a quick-reading milestone path;</li>
+<li>summary-stat cards;</li>
+<li>a generated Table of Contents;</li>
+<li>the full detailed master narrative, reorganized into readable section cards;</li>
+<li>responsive tables;</li>
+<li>architecture/code blocks;</li>
+<li>decision/problem/result emphasis;</li>
+<li>mobile layout;</li>
+<li>print styles;</li>
+<li>clear source/master provenance in the footer.</li>
+</ul>
+<p>This completes the first full production pass through:</p>
+<pre><code class="language-text">DETAILED RETROSPECTIVE MASTER
+    work-update-summary-08-16-2026.md
+
+        ↓
+
+STRUCTURED COMPANION
+    work-update-08-16-2026-sidecar-3.0.json
+
+        ↓
+
+HUMAN PRESENTATION TEMPLATE
+    work-update-html-template-1.0-draft.json
+
+        ↓
+
+HUMAN-FACING WORK UPDATE
+    work-update-08-16-2026.html
+</code></pre>
+<p>The important architectural change is that none of these products now need to be recreated conceptually from scratch during the next Work Update.</p>
+<p>The pipeline finally has durable artifacts at each layer.</p>
+<hr />
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+<section class="content-section" id="closing-assessment" aria-labelledby="closing-assessment-title">
+  <p class="section-eyebrow">Final interpretation</p>
+  <h2 id="closing-assessment-title">Closing Assessment</h2>
+  <div class="section-body">
+    <p>August 16 is one of the clearest examples so far of Klinswork architecture becoming self-correcting through actual use.</p>
+<p>The morning did not begin with a perfect formal process.</p>
+<p>It began with a newly invented process already being overtaken by real work.</p>
+<p>Instead of hiding that, the system learned how to represent it:</p>
+<pre><code class="language-text">session initiated
+plan created later
+activation occurs honestly
+history remains intact
+</code></pre>
+<p>The Project Definition work then completed successfully.</p>
+<p>That success made the next question possible:</p>
+<blockquote>
+<p>Does the documentation actually restore context for someone who was not here?</p>
+</blockquote>
+<p>Two-Window Testing answered:</p>
+<blockquote>
+<p>Yes — but not yet cleanly enough.</p>
+</blockquote>
+<p>That answer immediately improved the Registry.</p>
+<p>The Registry then exposed a deeper issue:</p>
+<blockquote>
+<p>global registration can become noise.</p>
+</blockquote>
+<p>That led to a large cleanup and a better semantic rule.</p>
+<p>The technical manual then tested that rule at the difficult boundary between <strong>important</strong> and <strong>globally routable</strong>.</p>
+<p>The answer was:</p>
+<blockquote>
+<p>important can still be locally discoverable.</p>
+</blockquote>
+<p>Finally, the entire day's complexity exposed why the Work Update Summary needs to be a detailed master rather than a thin executive recap.</p>
+<p>The day can therefore be summarized as a progression of increasingly demanding tests:</p>
+<pre><code class="language-text">Can we define a Project?
+    yes — Inventory Management
+
+Can we repeat it?
+    yes — Task Assignment and Tracking
+
+Can we govern the work formally?
+    yes — WORK-0001
+
+Can we preserve imperfect chronology?
+    yes — reconstructed-continuation
+
+Can the Viewer discover it?
+    yes
+
+Can a fresh window understand it?
+    partly — then better
+
+Can the Registry be simplified without losing context?
+    yes — through semantic routing
+
+Can important technical documentation remain discoverable without global registration?
+    yes
+
+Can we preserve all of that for later reconstruction?
+    this Work Update is the first test of the new master model
+</code></pre>
+<p>The strongest outcome of August 16 is therefore not one document, Registry row, or Viewer change.</p>
+<p>It is that Klinswork now has a more credible cycle for turning work into durable, testable organizational memory.</p>
+
+  </div>
+  <p class="section-return"><a href="#contents-title">Back to contents ↑</a></p>
+</section>
+
+
+    <footer class="document-footer">
+      <div class="footer-grid">
+        <div class="footer-card">
+          <strong>Document role</strong>
+          Human-facing downstream Work Update presentation. The detailed Markdown summary remains the canonical retrospective master.
+        </div>
+        <div class="footer-card">
+          <strong>Source set</strong>
+          <code>work-update-summary-08-16-2026.md</code><br>
+          <code>work-update-08-16-2026-sidecar-3.0.json</code>
+        </div>
+        <div class="footer-card">
+          <strong>Generated</strong>
+          August 16, 2026 · 14:53 MDT<br>
+          Work Update HTML template: <code>1.0-draft</code>
+        </div>
+        <div class="footer-card">
+          <strong>Documentation home</strong>
+          <a href="https://sites.google.com/view/meadows-hk/home/documentation">Meadows Housekeeping · Documentation</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

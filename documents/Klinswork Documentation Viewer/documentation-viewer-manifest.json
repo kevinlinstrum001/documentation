@@ -10,7 +10,7 @@
     "rootName": "documentation",
     "rootPath": ".",
     "viewerRootPath": "documents/Klinswork Documentation Viewer",
-    "generatedTimestamp": "2026-08-16T19:51:33Z"
+    "generatedTimestamp": "2026-08-16T21:38:02Z"
   },
   "sources": [
     {
@@ -39,19 +39,19 @@
     }
   ],
   "summary": {
-    "recordCount": 74,
-    "validJsonCount": 74,
+    "recordCount": 78,
+    "validJsonCount": 78,
     "invalidJsonCount": 0,
     "archivedRecordCount": 17,
     "sourceCounts": {
-      "common": 67,
+      "common": 71,
       "projects": 6,
       "therapy": 1
     },
     "companionCounts": {
       "resolved": 2,
       "inferred": 4,
-      "undeclared": 37,
+      "undeclared": 38,
       "missing": 0,
       "invalid": 0
     },
@@ -65,7 +65,10 @@
       "lesson-reference": 7,
       "project-identity": 1,
       "pst-sp-study-guide": 2,
-      "work-update": 13,
+      "work-update": 14,
+      "work-update-html": 1,
+      "work-update-image-generation": 1,
+      "work-update-summary": 1,
       "workflow-run": 1,
       "workflow-specification": 3
     },
@@ -356,6 +359,48 @@
     },
     {
       "sourceId": "common",
+      "name": "work-update-html-template-1.0-draft.json",
+      "path": "Record Profile Library/work-update-html-template-1.0-draft.json",
+      "folder": "Record Profile Library",
+      "documentationPath": "documents/Klinswork Documentation Viewer/Record Profile Library/work-update-html-template-1.0-draft.json",
+      "manifestRelativePath": "Record Profile Library/work-update-html-template-1.0-draft.json",
+      "size": 37996,
+      "modifiedTimestamp": "2026-08-16T20:52:59Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "work-update-html-template-1.0-draft",
+      "description": "",
+      "recordType": "work-update-html",
+      "status": "",
+      "documentDate": "2026-08-16T20:52:59Z",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "work-update-html"
+    },
+    {
+      "sourceId": "common",
+      "name": "work-update-image-generation-template-1.0-draft.json",
+      "path": "Record Profile Library/work-update-image-generation-template-1.0-draft.json",
+      "folder": "Record Profile Library",
+      "documentationPath": "documents/Klinswork Documentation Viewer/Record Profile Library/work-update-image-generation-template-1.0-draft.json",
+      "manifestRelativePath": "Record Profile Library/work-update-image-generation-template-1.0-draft.json",
+      "size": 23054,
+      "modifiedTimestamp": "2026-08-16T21:06:49Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "work-update-image-generation-template-1.0-draft",
+      "description": "",
+      "recordType": "work-update-image-generation",
+      "status": "",
+      "documentDate": "2026-08-16T21:06:49Z",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "work-update-image-generation"
+    },
+    {
+      "sourceId": "common",
       "name": "work-update-sidecar-template-3.0.json",
       "path": "Record Profile Library/work-update-sidecar-template-3.0.json",
       "folder": "Record Profile Library",
@@ -374,6 +419,27 @@
       "topics": [],
       "schemaVersion": "3.0-draft",
       "previewMode": "work-update"
+    },
+    {
+      "sourceId": "common",
+      "name": "work-update-summary-template-1.0-draft.json",
+      "path": "Record Profile Library/work-update-summary-template-1.0-draft.json",
+      "folder": "Record Profile Library",
+      "documentationPath": "documents/Klinswork Documentation Viewer/Record Profile Library/work-update-summary-template-1.0-draft.json",
+      "manifestRelativePath": "Record Profile Library/work-update-summary-template-1.0-draft.json",
+      "size": 34796,
+      "modifiedTimestamp": "2026-08-16T20:18:33Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "work-update-summary-template-1.0-draft",
+      "description": "",
+      "recordType": "work-update-summary",
+      "status": "",
+      "documentDate": "2026-08-16T20:18:33Z",
+      "topics": [],
+      "schemaVersion": "1.0-draft",
+      "previewMode": "work-update-summary"
     },
     {
       "sourceId": "common",
@@ -1261,6 +1327,50 @@
       "previewMode": "work-update",
       "identityRefs": {
         "documentId": "work-summary-2026-08-15-klinswork-project-definition-and-viewer-reconciliation"
+      },
+      "companionDocument": {
+        "status": "undeclared",
+        "resolutionMethod": "none",
+        "declaredPath": "",
+        "format": "",
+        "exists": false
+      }
+    },
+    {
+      "sourceId": "common",
+      "name": "work-update-08-16-2026-sidecar-3.0.json",
+      "path": "sidecars/work-update-sidecars/work-update-08-16-2026-sidecar-3.0.json",
+      "folder": "sidecars/work-update-sidecars",
+      "documentationPath": "documents/Klinswork Documentation Viewer/sidecars/work-update-sidecars/work-update-08-16-2026-sidecar-3.0.json",
+      "manifestRelativePath": "sidecars/work-update-sidecars/work-update-08-16-2026-sidecar-3.0.json",
+      "size": 90841,
+      "modifiedTimestamp": "2026-08-16T20:58:52Z",
+      "archived": false,
+      "validJson": true,
+      "parseError": "",
+      "title": "Klinswork Work Update — August 16, 2026",
+      "description": "August 16 Klinswork Work Update covering WORK-0001, the second Project Definition exemplar, Work Queue System documentation, Two-Window Testing, Resource Registry redesign, and the new Work Update Summary master architecture.",
+      "recordType": "work-update",
+      "status": "sidecar-generated-html-not-yet-generated",
+      "documentDate": "2026-08-16T14:37:00-06:00",
+      "topics": [
+        "WORK-0001",
+        "Work Unit Activities",
+        "reconstructed-continuation planning",
+        "formal Work Implementation Session",
+        "Task Assignment and Tracking Project Definition",
+        "Work Queue System Summary",
+        "Work Queue Roadmap",
+        "Project versus System authority",
+        "Documentation Viewer",
+        "manifest builder 2.0.0-draft.3",
+        "Project-local implementation-plan companion resolution",
+        "Two-Window Testing"
+      ],
+      "schemaVersion": "3.0-draft",
+      "previewMode": "work-update",
+      "identityRefs": {
+        "documentId": "work-update-2026-08-16-formal-project-definition-tested-context-architecture"
       },
       "companionDocument": {
         "status": "undeclared",

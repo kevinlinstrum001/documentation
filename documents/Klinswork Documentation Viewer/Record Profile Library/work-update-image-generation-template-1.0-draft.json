@@ -1,0 +1,527 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured authoring template for generating one canonical Klinswork Work Update cover/hero image. The image is a downstream visual interpretation of the authoritative work-update-summary.md master, supported by the Work Update sidecar and the Work Update HTML theme/presentation plan.",
+    "authorityRule": "The Work Update image is presentation, not authority. It may symbolize, condense, and visually interpret the work period, but it must not introduce substantive claims that are absent from the Work Update Summary master, structured sidecar, or other explicitly verified authorities.",
+    "visualThesisRule": "The image should communicate one strong visual thesis about the work period rather than attempting to illustrate every Activity, file, test, or decision. The reader should understand the day's central achievement or transition within a few seconds.",
+    "historicalLineageRule": "Use the established Work Update image family in images/work-updates/ as visual precedent: dated PNG cover images paired with Work Update HTML hero sections. Preserve family resemblance while allowing each Work Update to receive a subject-specific composition and color theme.",
+    "textDisciplineRule": "Keep generated-image text deliberately limited. Prefer a short title, Work Update label/date, and small Klinswork branding. Do not place dense prose, long bullet lists, exact URLs, or large technical tables inside a generated image.",
+    "humanReadabilityRule": "The image is primarily for rapid human comprehension and visual memory. It should complement the detailed HTML and Markdown rather than compete with them.",
+    "fileIdentityRule": "The canonical repository image filename is separate from the temporary filename produced by an image-generation tool. Rename/copy the approved image into images/work-updates/ using the canonical Work Update date naming convention.",
+    "manifestRule": "After the canonical image is placed in images/work-updates/, regenerate images/images.json with images/build_images_json.py. Existing manually edited manifest metadata should be preserved by the builder.",
+    "noInventedAssetRule": "Do not reference a repository image URL, manifest entry, or canonical file path as though the image exists until the approved image has actually been placed at that path.",
+    "jsonCommentConvention": "Keys named _meta, _comment, and _fieldNotes are intentional schema commentary."
+  },
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileType": "work-update-image-generation",
+    "profileVersion": "1.0",
+    "templateFile": "work-update-image-generation-template-1.0-draft.json",
+    "outputFamily": "work-update-cover-image",
+    "defaultPreviewRole": "work-update-hero"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "optional multiple-image set support for one Work Update",
+          "formal prompt/result iteration history",
+          "optional image-manifest metadata block",
+          "optional mobile/social crop variants",
+          "formal linkage to HTML figure/hero anchor"
+        ],
+        "changes": [
+          "evaluate shared Klinswork visual-language tokens across Work Update, scenario, profile, and app graphics",
+          "evaluate whether image brief and approved-image metadata should become separate records"
+        ],
+        "openQuestions": [
+          "Should every substantial Work Update receive exactly one canonical cover image?",
+          "Should canonical Work Update images standardize on 16:9 or retain composition-specific aspect ratios?",
+          "Should approved image-generation prompts be retained as provenance records after publication?"
+        ]
+      }
+    ]
+  },
+  "inputs": {
+    "masterSummary": {
+      "required": true,
+      "documentType": "work-update-summary",
+      "expectedFormat": "Markdown",
+      "authorityRole": "canonical-human-readable-retrospective-master",
+      "useFor": [
+        "central narrative",
+        "starting/resulting state",
+        "major turning point",
+        "important visual metaphors",
+        "validated facts",
+        "meaning of the work"
+      ]
+    },
+    "workUpdateSidecar": {
+      "required": "when available",
+      "documentType": "work-update",
+      "expectedFormat": "JSON",
+      "authorityRole": "structured-companion",
+      "useFor": [
+        "headline",
+        "topics",
+        "projects/systems affected",
+        "major outcomes",
+        "validation facts",
+        "graphics metadata",
+        "publication metadata",
+        "identifiers"
+      ]
+    },
+    "workUpdateHtmlTemplateOrPlan": {
+      "required": "when available",
+      "expectedFormat": "JSON or HTML",
+      "useFor": [
+        "current Work Update color theme",
+        "visual tone",
+        "hero placement",
+        "human-reader presentation context"
+      ]
+    },
+    "historicalWorkUpdateImages": {
+      "required": "review at least two when practical",
+      "repositoryDirectory": "images/work-updates/",
+      "useFor": [
+        "family resemblance",
+        "visual density",
+        "title/date treatment",
+        "composition precedent",
+        "how abstract technical work has previously been visualized"
+      ]
+    }
+  },
+  "workUpdateIdentity": {
+    "date": "",
+    "headline": "",
+    "shortTitle": "",
+    "workUnitIds": [],
+    "primaryProject": "",
+    "primarySystem": "",
+    "majorTopics": [],
+    "centralOutcome": "",
+    "centralTransition": "",
+    "oneSentenceVisualThesis": ""
+  },
+  "imageRole": {
+    "role": "canonical-work-update-cover",
+    "primaryPlacement": "Work Update HTML hero / cover",
+    "secondaryUses": [
+      "Work Update catalog/listing",
+      "email/banner preview where appropriate",
+      "Documentation image library",
+      "future historical browsing"
+    ],
+    "notFor": [
+      "detailed technical documentation",
+      "complete evidence record",
+      "exact schema representation",
+      "substitute for the Work Update Summary",
+      "substitute for the Work Update sidecar"
+    ]
+  },
+  "subjectSelection": {
+    "_comment": "Choose a small set of visually legible subjects that express the central work. Do not turn the image into a collage of every topic.",
+    "primarySubject": {
+      "name": "",
+      "semanticRole": "",
+      "whyCentral": "",
+      "visualRepresentation": ""
+    },
+    "secondarySubjects": [
+      {
+        "name": "",
+        "semanticRole": "",
+        "whyIncluded": "",
+        "visualRepresentation": ""
+      }
+    ],
+    "backgroundContext": "",
+    "excludeFromImage": [],
+    "subjectCountGuidance": {
+      "primarySubjects": "1",
+      "secondarySubjects": "0–4",
+      "maximumDistinctNarrativeIdeas": "3"
+    }
+  },
+  "composition": {
+    "archetype": "",
+    "allowedArchetypes": [
+      "editorial-hero-scene",
+      "systems-architecture-infographic",
+      "milestone-montage",
+      "before-after-transformation",
+      "process-flow",
+      "tool-ecosystem",
+      "dashboard-metaphor",
+      "document-and-system-landscape",
+      "custom"
+    ],
+    "description": "",
+    "visualHierarchy": [
+      {
+        "priority": 1,
+        "element": "central visual thesis",
+        "guidance": "Largest and most immediately readable element."
+      },
+      {
+        "priority": 2,
+        "element": "short title / Work Update identity",
+        "guidance": "Readable but should not overpower the visual."
+      },
+      {
+        "priority": 3,
+        "element": "supporting systems / milestones",
+        "guidance": "Secondary visual information with clear separation."
+      },
+      {
+        "priority": 4,
+        "element": "small Klinswork branding",
+        "guidance": "Quiet footer or corner treatment."
+      }
+    ],
+    "safeAreas": {
+      "headline": "Keep title away from busy imagery and page edges.",
+      "htmlHeroCrop": "Keep critical subjects and text within the central 80% of the frame.",
+      "mobile": "Do not place the only important subject at extreme left/right edges.",
+      "footerBranding": "Keep branding within a safe lower margin."
+    },
+    "depthRule": "Use a clear foreground/middle/background relationship or clear infographic panels. Avoid a flat pile of unrelated icons."
+  },
+  "aspectAndOutput": {
+    "preferredOrientation": "landscape",
+    "preferredAspectRatio": "16:9",
+    "aspectRatioStatus": "default-unless-historical-exemplar-or-placement-requires-otherwise",
+    "minimumUsefulWidthPx": 1400,
+    "format": "PNG",
+    "transparentBackground": false,
+    "canonicalRepositoryDirectory": "images/work-updates/",
+    "canonicalFilenamePattern": "work-update-{MM-DD-YYYY}.png",
+    "canonicalRelativePathPattern": "images/work-updates/work-update-{MM-DD-YYYY}.png",
+    "publishedUrlPattern": "https://kevinlinstrum001.github.io/documentation/images/work-updates/work-update-{MM-DD-YYYY}.png",
+    "temporaryGenerationFilenameRule": "The image-generation tool's original filename may be retained only as working provenance; the approved repository copy should use the canonical Work Update filename."
+  },
+  "visualStyle": {
+    "styleFamily": "polished-editorial-technical-illustration",
+    "tone": [
+      "intelligent",
+      "optimistic but not promotional",
+      "precise",
+      "clean",
+      "visually memorable",
+      "slightly playful when appropriate to Klinswork"
+    ],
+    "avoidStyle": [
+      "generic corporate stock-art appearance",
+      "random AI collage",
+      "overly glossy advertising aesthetic",
+      "science-fiction interface clutter unless the subject genuinely calls for it",
+      "excessive tiny text",
+      "fake screenshots with unreadable interface text",
+      "meaningless charts",
+      "visual metaphors that contradict the documented architecture"
+    ],
+    "detailLevel": "high visual detail with low textual density",
+    "illustrationMode": "Prefer coherent illustration/infographic composition over literal screenshots when the work is architectural or conceptual. Use recognizable tools, documents, cards, folders, arrows, systems, workstations, maps, or simplified application surfaces only when they help explain the actual work."
+  },
+  "theme": {
+    "_comment": "The Work Update image should normally harmonize with that day's HTML theme while remaining independently attractive.",
+    "themeName": "",
+    "primaryColors": [],
+    "secondaryColors": [],
+    "accentColors": [],
+    "backgroundTreatment": "",
+    "contrastRule": "Title/date must remain readable against the artwork.",
+    "semanticColorCompatibility": {
+      "project": "cyan / cool aqua cue when useful",
+      "system": "blue cue when useful",
+      "path": "yellow cue when useful",
+      "resource": "purple cue when useful",
+      "work": "orange cue when useful",
+      "confirmed": "green cue when useful",
+      "problem": "red cue when useful",
+      "open": "neutral/gray cue when useful"
+    },
+    "rule": "Semantic colors are optional inside the artwork and should not overwhelm the day's principal theme. When used, they should agree with the Work Update document grammar."
+  },
+  "textOnImage": {
+    "required": [
+      {
+        "role": "document-family",
+        "defaultText": "WORK UPDATE",
+        "placementGuidance": "small kicker / eyebrow"
+      },
+      {
+        "role": "date",
+        "text": "",
+        "placementGuidance": "near title or kicker"
+      }
+    ],
+    "optional": [
+      {
+        "role": "short-title",
+        "text": "",
+        "maximumWords": 8,
+        "placementGuidance": "primary headline"
+      },
+      {
+        "role": "branding",
+        "defaultText": "KLINSWORK",
+        "placementGuidance": "small footer or corner"
+      }
+    ],
+    "maximumRecommendedTextBlocks": 4,
+    "maximumRecommendedWordsTotal": 20,
+    "rules": [
+      "Keep text large enough to read when the image is displayed as an HTML hero.",
+      "Do not ask the image model to render long paragraphs.",
+      "Avoid exact code, URLs, IDs, or multi-column text inside the image unless absolutely necessary.",
+      "If exact technical text is crucial, prefer adding it later in HTML rather than relying on generated-image typography.",
+      "Do not duplicate the entire HTML headline if a shorter image title works better."
+    ]
+  },
+  "visualMetaphor": {
+    "metaphor": "",
+    "whatItRepresents": "",
+    "whyAccurate": "",
+    "riskOfMisinterpretation": "",
+    "mitigation": "",
+    "_comment": "Use this when abstract Documentation/Registry/architecture work needs a concrete visual. A metaphor should clarify the documented work rather than merely look dramatic."
+  },
+  "factsToVisualize": [
+    {
+      "fact": "",
+      "source": "",
+      "visualEncoding": "",
+      "mustBeExact": false
+    }
+  ],
+  "prohibitedClaimsOrImplications": [
+    "Do not imply roadmap features are already implemented.",
+    "Do not imply an unassigned Project/System ID exists.",
+    "Do not depict a Resource as owning a Project or System merely because it routes to it.",
+    "Do not portray a closed Work Unit as active.",
+    "Do not invent quantitative results for visual drama.",
+    "Do not imply institutional endorsement of personal Klinswork tools.",
+    "Do not introduce people, logos, uniforms, or institutional insignia unless their use is actually appropriate and authorized by the source work."
+  ],
+  "promptConstruction": {
+    "promptStrategy": "Write the image-generation prompt as a coherent art-direction brief, not as a JSON dump. Lead with the image type and central visual thesis, then composition, specific subjects, visual style, color theme, limited required text, branding, aspect ratio, and explicit exclusions.",
+    "promptOrder": [
+      "Image type / role",
+      "Central visual thesis",
+      "Composition archetype",
+      "Primary and secondary subjects",
+      "What each subject symbolizes",
+      "Visual style and level of polish",
+      "Theme/palette",
+      "Required text",
+      "Branding/footer",
+      "Aspect ratio / orientation",
+      "Important accuracy constraints",
+      "Things to avoid"
+    ],
+    "promptScaffold": "Create a polished Klinswork Work Update cover image for {DATE}, landscape {ASPECT_RATIO}. The central idea is: {VISUAL_THESIS}. Use a {COMPOSITION_ARCHETYPE} composition. Show {PRIMARY_SUBJECT} as the dominant visual, supported by {SECONDARY_SUBJECTS}. The image should communicate {CENTRAL_TRANSITION} at a glance. Visual style: {STYLE}. Theme: {THEME_NAME}, using {PRIMARY_COLORS} with {ACCENTS}. Include only the following readable text: 'WORK UPDATE', '{DATE_TEXT}', and optionally '{SHORT_TITLE}'. Add small 'KLINSWORK' branding in the footer/corner. Keep critical content within safe central margins. Do not include dense paragraphs, invented metrics, unsupported system features, fake IDs, or cluttered pseudo-UI. Make the artwork coherent, detailed, professional, and memorable rather than a generic icon collage."
+  },
+  "generation": {
+    "tool": "image generation",
+    "requestedImageCount": 1,
+    "iterationPolicy": {
+      "default": "Generate one strong canonical candidate first. Iterate only when the visual thesis, text legibility, composition, factual implication, or family resemblance is materially wrong.",
+      "retainRejectedCandidates": false,
+      "recordMajorPromptRevision": true
+    },
+    "styleTransfer": false,
+    "transparentBackground": false,
+    "inputImages": [],
+    "referenceImages": [
+      {
+        "repositoryPath": "",
+        "relationship": "historical Work Update visual reference",
+        "whatToReuse": "",
+        "whatNotToCopyLiterally": ""
+      }
+    ]
+  },
+  "review": {
+    "requiredChecks": [
+      "Does the image communicate the Work Update's central achievement or transition within a few seconds?",
+      "Is the title/date readable at HTML hero size?",
+      "Is the visual thesis grounded in the Work Update master?",
+      "Does the image avoid implying unsupported implementation or identity claims?",
+      "Is the composition coherent rather than a collection of unrelated icons?",
+      "Does the palette harmonize with the Work Update HTML theme?",
+      "Does it still resemble the Klinswork Work Update image family?",
+      "Are critical elements inside safe crop margins?",
+      "Is there enough contrast for readable text?",
+      "Is the amount of generated text deliberately limited?",
+      "Would the image still make sense without reading tiny labels?",
+      "Does the image avoid fake or misleading application screenshots?",
+      "Is any person depicted only when the Work Update genuinely calls for a person?",
+      "Is the approved image suitable for both desktop and phone-width HTML display?"
+    ],
+    "result": "",
+    "reviewNotes": [],
+    "approved": false
+  },
+  "repositoryIntegration": {
+    "canonicalImage": {
+      "name": "",
+      "file": "",
+      "category": "Work Updates",
+      "repositoryPath": "",
+      "publishedUrl": "",
+      "altText": "",
+      "description": ""
+    },
+    "steps": [
+      {
+        "sequence": 1,
+        "action": "Rename/copy approved output to canonical filename",
+        "example": "images/work-updates/work-update-08-16-2026.png"
+      },
+      {
+        "sequence": 2,
+        "action": "Place canonical PNG in images/work-updates/",
+        "example": ""
+      },
+      {
+        "sequence": 3,
+        "action": "Regenerate images/images.json with images/build_images_json.py",
+        "example": "python images/build_images_json.py"
+      },
+      {
+        "sequence": 4,
+        "action": "Optionally enrich the images.json entry with human-edited name/description metadata",
+        "example": "The current builder preserves existing manually edited metadata for matching file paths."
+      },
+      {
+        "sequence": 5,
+        "action": "Add/update the Work Update sidecar graphics entry",
+        "example": "Record role, URL/path, alt text, description, and manifest-updated state."
+      },
+      {
+        "sequence": 6,
+        "action": "Add the image to the Work Update HTML hero/figure only after the repository URL is real",
+        "example": ""
+      },
+      {
+        "sequence": 7,
+        "action": "Verify the published image URL and HTML rendering",
+        "example": ""
+      }
+    ]
+  },
+  "htmlIntegration": {
+    "defaultRole": "hero-image",
+    "recommendedMarkup": {
+      "element": "img",
+      "className": "hero-image",
+      "attributes": [
+        "src",
+        "alt",
+        "width/height when known",
+        "loading=eager for primary hero"
+      ]
+    },
+    "altTextPattern": "Work Update for {Month D, YYYY}: {brief description of the central image concept}",
+    "caption": {
+      "required": false,
+      "rule": "Use a caption only when it adds interpretation beyond the title and surrounding hero text."
+    },
+    "responsiveRule": "width:100%; height:auto; object-fit:contain unless a deliberate crop treatment is designed and tested.",
+    "fallbackRule": "The Work Update HTML must remain complete and understandable if the image is unavailable."
+  },
+  "sidecarIntegration": {
+    "graphicsEntry": {
+      "graphicId": "",
+      "role": "work-update-cover",
+      "url": "",
+      "repositoryPath": "",
+      "altText": "",
+      "description": "",
+      "referenceGraphicId": "",
+      "manifestId": "",
+      "manifestUpdated": false
+    },
+    "rule": "Do not populate final URL/repositoryPath as completed facts before the image is actually placed and verified."
+  },
+  "provenance": {
+    "masterSummaryPath": "",
+    "workUpdateSidecarPath": "",
+    "workUpdateHtmlPath": "",
+    "imageTemplatePath": "work-update-image-generation-template-1.0-draft.json",
+    "historicalReferencesReviewed": [],
+    "promptUsed": "",
+    "generatedBy": "",
+    "generatedTimestamp": "",
+    "approvedBy": "",
+    "approvedTimestamp": "",
+    "generationNotes": [],
+    "interpretationNotes": []
+  },
+  "validation": {
+    "performed": false,
+    "result": "",
+    "rules": [
+      "The Work Update Summary is the narrative source for the image brief.",
+      "The image is downstream presentation and cannot override source authority.",
+      "The image expresses one primary visual thesis.",
+      "Generated text is intentionally sparse.",
+      "No unsupported IDs, metrics, features, or institutional claims are depicted.",
+      "The canonical repository filename follows the Work Update date convention.",
+      "The image is stored under images/work-updates/.",
+      "images/images.json is regenerated after repository placement.",
+      "Existing manifest metadata is preserved where the builder supports it.",
+      "The Work Update sidecar graphics entry is reconciled after the canonical asset exists.",
+      "The Work Update HTML references only a verified image path/URL.",
+      "Alt text describes the image's meaningful visual content, not merely its filename.",
+      "The output is usable at desktop and mobile hero widths.",
+      "Color and imagery support the Work Update theme without becoming the sole carrier of meaning."
+    ],
+    "notes": []
+  },
+  "exampleBriefSkeleton": {
+    "_comment": "Illustrative field structure only; do not reuse the example facts for a different Work Update.",
+    "date": "YYYY-MM-DD",
+    "visualThesis": "A complex work system crossed from design into tested, durable operation.",
+    "compositionArchetype": "systems-architecture-infographic",
+    "primarySubject": "one central system/architecture metaphor",
+    "secondarySubjects": [
+      "two or three supporting work milestones"
+    ],
+    "theme": "derive from the day's Work Update HTML theme",
+    "text": [
+      "WORK UPDATE",
+      "Month D, YYYY",
+      "short 3–8 word title",
+      "KLINSWORK"
+    ],
+    "aspectRatio": "16:9",
+    "repositoryTarget": "images/work-updates/work-update-MM-DD-YYYY.png"
+  },
+  "revisionNotes": [
+    {
+      "version": "1.0-draft",
+      "date": "2026-08-16",
+      "notes": [
+        "Initial specialized Work Update image-generation template.",
+        "Established the Work Update Summary as the source of visual meaning and the sidecar as structured support.",
+        "Formalized one strong visual-thesis rule instead of exhaustive collage generation.",
+        "Established images/work-updates/ as the canonical repository directory.",
+        "Established canonical work-update-MM-DD-YYYY.png naming.",
+        "Added image-manifest regeneration through images/build_images_json.py.",
+        "Preserved the builder's existing-metadata behavior as part of the integration workflow.",
+        "Added Work Update HTML hero integration and sidecar graphics reconciliation.",
+        "Added limited generated-text guidance, safe areas, aspect ratio, visual archetypes, theme harmonization, review checks, and prompt scaffold.",
+        "Made 16:9 landscape the default while leaving room for later historical-exemplar review to revise that default."
+      ]
+    }
+  ]
+}

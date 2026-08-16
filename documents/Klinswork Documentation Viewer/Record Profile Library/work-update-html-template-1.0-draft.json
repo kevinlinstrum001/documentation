@@ -1,0 +1,984 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured authoring and rendering template for one downstream Klinswork Work Update HTML document. The HTML is a polished human-facing projection of an authoritative work-update-summary.md master, with the work-update sidecar used as structured support for metadata, routing, section indexing, audience views, validation facts, publication data, and other machine-readable details.",
+    "authorityRule": "The work-update-summary.md is the canonical human-readable retrospective master. The work-update sidecar is its structured companion. The generated work-update.html is a downstream presentation product and must not silently become narrative authority or introduce unsupported substantive claims.",
+    "sourcePriorityRule": "When prose or interpretation conflicts, the Markdown master controls the HTML narrative. Use the sidecar to support structured metadata, section selection, visual summaries, identifiers, audience views, publication facts, and validation details that are grounded in the master or other named authorities.",
+    "humanReaderRule": "The HTML is optimized for Kevin and other human readers. It may be shorter, more visual, more navigable, and more editorially structured than the Markdown master, but it must preserve the work's causal story, major decisions, important problems, validated outcomes, resulting state, and continuation meaning.",
+    "compressionRule": "Compression is allowed; distortion is not. Long WUA/Activity tables, provenance inventories, repeated authority warnings, and low-level implementation detail may be summarized or collapsed when the full detail remains preserved in the Markdown master and no material conclusion is lost.",
+    "singleFileRule": "Default output is one portable static HTML file with embedded CSS and no required external JavaScript, fonts, frameworks, build step, or runtime dependency. It should work directly from GitHub Pages and remain readable when saved locally.",
+    "accessibilityRule": "Semantic HTML, keyboard navigation, visible focus states, sufficient contrast, redundant text labels, alt text, responsive layout, and print readability are required. Color must never be the only carrier of meaning.",
+    "historicalStyleRule": "Preserve the established Klinswork Work Update visual lineage visible in recent Work Updates—navy/blue editorial shell, serif display headings, card-based sections, quick-reading path, TOC, summary statistics, gold human-reader callouts, responsive tables, code/architecture blocks, and print styles—while extending it with explicit semantic color roles.",
+    "identityRule": "Never invent Project, System, Resource, Work Unit, WUA, Activity, document, publication, or other durable IDs.",
+    "jsonCommentConvention": "Keys named _meta, _comment, and _fieldNotes are intentional schema commentary."
+  },
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileType": "work-update-html",
+    "profileVersion": "1.0",
+    "templateFile": "work-update-html-template-1.0-draft.json",
+    "outputFormat": "HTML5",
+    "previewMode": "work-update-html"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "optional generated architecture-diagram block registry",
+          "optional collapsible appendix behavior without requiring JavaScript",
+          "formal cross-link back to master Markdown and sidecar when published",
+          "optional publication/catalog navigation footer",
+          "optional semantic-token compatibility with other Klinswork HTML document families"
+        ],
+        "changes": [
+          "evaluate whether repeated CSS shell rules should move into a shared Klinswork document-theme profile",
+          "evaluate formal HTML projection rules derived from work-update-summary-template sections",
+          "evaluate standardized figure/card IDs for sidecar-linked HTML anchors"
+        ],
+        "openQuestions": [
+          "Should the standard Work Update HTML expose a visible link to the Markdown master for technical readers?",
+          "Should detailed appendices be open by default or use native details/summary disclosure blocks?",
+          "Should supervisor reading-path callouts remain a standard optional feature or become a generic audience-path component?"
+        ]
+      }
+    ]
+  },
+  "inputs": {
+    "masterSummary": {
+      "required": true,
+      "documentType": "work-update-summary",
+      "expectedFormat": "Markdown",
+      "authorityRole": "canonical-human-readable-retrospective-master",
+      "purpose": "Supplies the substantive narrative, chronology, reasoning, delta, validation interpretation, resulting state, remaining work, continuation point, and detailed evidence context."
+    },
+    "workUpdateSidecar": {
+      "required": "when available",
+      "documentType": "work-update",
+      "expectedFormat": "JSON",
+      "authorityRole": "structured-companion",
+      "purpose": "Supplies machine-readable metadata, section index, project context, audience views, tests, publication fields, technical facts, identifiers, and structured delta without replacing master-summary narrative authority."
+    },
+    "optionalSources": [
+      {
+        "sourceType": "images-manifest",
+        "purpose": "Resolve approved repository images for optional Work Update graphics."
+      },
+      {
+        "sourceType": "project-system-records",
+        "purpose": "Verify links, labels, current authority names, and publication routes where required."
+      },
+      {
+        "sourceType": "registry",
+        "purpose": "Verify live Resource links or identifiers when the HTML needs current routing."
+      }
+    ],
+    "missingInputBehavior": {
+      "masterSummaryMissing": "Do not generate a substantive Work Update HTML from sidecar alone unless explicitly authorized as a recovery operation.",
+      "sidecarMissing": "HTML may be generated from the Markdown master, but structured metadata, section routing, tests, audience callouts, and publication fields should be derived cautiously and labeled where inferred.",
+      "imageMissing": "Omit the image or use a text/HTML diagram; never invent a repository image path.",
+      "canonicalUrlMissing": "Leave publication URL absent or mark publication pending rather than inventing a URL."
+    }
+  },
+  "output": {
+    "fileNamePattern": "work-update-{MM-DD-YYYY}.html",
+    "doctype": "<!doctype html>",
+    "language": "en",
+    "encoding": "utf-8",
+    "viewport": "width=device-width, initial-scale=1",
+    "standaloneStaticFile": true,
+    "embeddedCss": true,
+    "externalCssRequired": false,
+    "externalFontRequired": false,
+    "javascriptPolicy": {
+      "default": "none",
+      "allowWhen": "Only when a clear usability benefit cannot be achieved with semantic HTML/CSS alone.",
+      "progressiveEnhancementRequired": true
+    },
+    "githubPagesCompatible": true,
+    "localFileReadable": true,
+    "printFriendly": true
+  },
+  "documentHead": {
+    "requiredMeta": [
+      "charset",
+      "viewport",
+      "description",
+      "author",
+      "document-id"
+    ],
+    "titlePattern": "{headline} — Klinswork Work Update — {date}",
+    "descriptionRule": "Use one concise sentence grounded in the master/sidecar naming the date and major work themes. Do not stuff the meta description with every Activity or artifact.",
+    "authorDefault": "Kevin Linstrum",
+    "documentIdSource": "work-update sidecar document.documentId when available",
+    "favicon": {
+      "required": false,
+      "rule": "Do not invent a favicon path."
+    }
+  },
+  "designSystem": {
+    "lineage": {
+      "referenceDocuments": [
+        "work_updates/work-update-08-09-2026.html",
+        "work_updates/work-update-08-15-2026.html"
+      ],
+      "preserve": [
+        "navy-to-blue editorial header",
+        "gold accent line",
+        "serif display headings",
+        "system sans-serif body",
+        "1040px-class readable content width",
+        "card-based content sections",
+        "quick-reading path",
+        "table of contents",
+        "summary statistic cards",
+        "gold human-reader milestone callouts",
+        "responsive tables",
+        "dark code/architecture blocks",
+        "print stylesheet",
+        "keyboard-visible focus"
+      ],
+      "evolutionRule": "Use the established shell as family resemblance, not as a frozen pixel-perfect theme. New Work Updates may introduce graphics, semantic badges, timelines, diagrams, and richer section layouts when those choices improve comprehension."
+    },
+    "baseTokens": {
+      "--ink": "#1c2735",
+      "--muted": "#5d6875",
+      "--paper": "#ffffff",
+      "--page": "#eef2f6",
+      "--navy": "#17324d",
+      "--blue": "#2f628f",
+      "--blue-soft": "#eaf2f9",
+      "--line": "#d6dde5",
+      "--gold": "#9a7419",
+      "--gold-border": "#c9a84d",
+      "--gold-paper": "#fff8dc",
+      "--gold-ink": "#382b0b",
+      "--green": "#266148",
+      "--green-soft": "#edf7f1",
+      "--shadow": "0 16px 45px rgba(21, 41, 62, 0.10)",
+      "--radius": "16px",
+      "--content-width": "1040px"
+    },
+    "semanticTokens": {
+      "project": {
+        "meaning": "Project",
+        "marker": "🩵",
+        "suggestedColor": "#168a9c",
+        "softBackground": "#e6f7fa",
+        "cssToken": "--semantic-project"
+      },
+      "system": {
+        "meaning": "System or application-function context",
+        "marker": "🟦",
+        "suggestedColor": "#2f628f",
+        "softBackground": "#eaf2f9",
+        "cssToken": "--semantic-system"
+      },
+      "path": {
+        "meaning": "Folder / repository / file-system path",
+        "marker": "🟨",
+        "suggestedColor": "#a88118",
+        "softBackground": "#fff8dc",
+        "cssToken": "--semantic-path"
+      },
+      "resource": {
+        "meaning": "Registered Resource",
+        "marker": "🟪",
+        "suggestedColor": "#7356a8",
+        "softBackground": "#f2edfb",
+        "cssToken": "--semantic-resource"
+      },
+      "work": {
+        "meaning": "Work Unit / execution / session event",
+        "marker": "🟧",
+        "suggestedColor": "#b86f19",
+        "softBackground": "#fff1df",
+        "cssToken": "--semantic-work"
+      },
+      "confirmed": {
+        "meaning": "Confirmed / validated / completed",
+        "marker": "🟩",
+        "suggestedColor": "#266148",
+        "softBackground": "#edf7f1",
+        "cssToken": "--semantic-confirmed"
+      },
+      "problem": {
+        "meaning": "Problem / failed assumption / blocker",
+        "marker": "🟥",
+        "suggestedColor": "#a64343",
+        "softBackground": "#fbecec",
+        "cssToken": "--semantic-problem"
+      },
+      "decision": {
+        "meaning": "Decision / important determination",
+        "marker": "🟨",
+        "suggestedColor": "#9a7419",
+        "softBackground": "#fff8dc",
+        "cssToken": "--semantic-decision"
+      },
+      "historical": {
+        "meaning": "Historical / superseded state",
+        "marker": "◻️",
+        "suggestedColor": "#6d7781",
+        "softBackground": "#f0f2f4",
+        "cssToken": "--semantic-historical"
+      },
+      "open": {
+        "meaning": "Open determination / unresolved item",
+        "marker": "⬜",
+        "suggestedColor": "#66717c",
+        "softBackground": "#fafbfc",
+        "cssToken": "--semantic-open"
+      }
+    },
+    "semanticRedundancyRule": "Every semantic color treatment must also include a textual label, icon/marker, heading, aria-label, or other non-color indicator. A monochrome or screen-reader user must not lose the classification.",
+    "typography": {
+      "bodyStack": "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+      "displayStack": "Georgia, 'Times New Roman', serif",
+      "monoStack": "'SFMono-Regular', Consolas, 'Liberation Mono', monospace",
+      "bodySizeDesktop": "17px",
+      "bodySizeMobile": "16px",
+      "bodyLineHeight": 1.68,
+      "maxReadingWidth": "1040px"
+    }
+  },
+  "pageStructure": {
+    "requiredOrder": [
+      "skip-link",
+      "site-header",
+      "context-or-reconstruction-banner",
+      "quick-reading-path",
+      "table-of-contents",
+      "summary-snapshot",
+      "main-narrative-sections",
+      "selected-human-reader-callouts",
+      "resulting-state-and-next-step",
+      "optional-appendices",
+      "page-footer"
+    ],
+    "elements": {
+      "skipLink": {
+        "required": true,
+        "href": "#main-content",
+        "text": "Skip to main content"
+      },
+      "siteHeader": {
+        "required": true,
+        "content": [
+          "kicker",
+          "headline",
+          "dek",
+          "meta-chips"
+        ],
+        "kickerPattern": "Klinswork · Work Update · {date}",
+        "headlineSource": "sidecar.document.headline or master title",
+        "dekRule": "Write a 2–4 sentence human-readable deck from the executive summary. It should explain the day's arc and significance without reproducing the whole executive summary.",
+        "metaChipRule": "Use 3–6 high-information chips such as completed Work Unit, major Project/System milestone, 2WT/context test, Registry change, validation state, or architecture milestone."
+      },
+      "contextBanner": {
+        "required": "when chronology/reconstruction/currentness needs a warning",
+        "className": "bootstrap-banner",
+        "purposes": [
+          "reconstruction note",
+          "coverage cutoff",
+          "historical/current distinction",
+          "important authority warning",
+          "publication status note"
+        ],
+        "rule": "Keep to one concise paragraph; do not turn the banner into a second executive summary."
+      },
+      "quickReadingPath": {
+        "required": true,
+        "className": "reading-path-intro",
+        "defaultLabel": "Quick reading path",
+        "purpose": "Give the human reader a short route through the most important milestones or outcome cards while preserving access to the complete Work Update.",
+        "modes": [
+          "general",
+          "supervisor",
+          "technical",
+          "custom"
+        ],
+        "defaultMode": "general",
+        "milestoneCountGuidance": "3–7"
+      },
+      "tableOfContents": {
+        "required": true,
+        "className": "toc",
+        "columnsDesktop": "2 280px",
+        "columnsMobile": 1,
+        "source": "selected HTML section architecture, not necessarily every Markdown H2",
+        "rule": "The HTML TOC should reflect the editorial presentation. It may combine several master sections into one human-facing section when doing so improves readability, but anchors must remain unique and meaningful."
+      },
+      "summarySnapshot": {
+        "required": "for substantial updates",
+        "className": "summary-stat-grid",
+        "itemClassName": "summary-stat",
+        "recommendedCount": "3–6",
+        "examples": [
+          "1 completed Work Unit",
+          "74 / 74 valid records",
+          "23 Resources retired",
+          "25 current Resources",
+          "2 context-restoration tests"
+        ],
+        "rule": "Only use values grounded in the master/sidecar; avoid vanity statistics."
+      },
+      "mainContent": {
+        "required": true,
+        "id": "main-content",
+        "sectionClassName": "content-section",
+        "bodyClassName": "section-body",
+        "eyebrowClassName": "section-eyebrow"
+      },
+      "footer": {
+        "required": true,
+        "className": "page-footer",
+        "include": [
+          "Klinswork label",
+          "work update date",
+          "document role",
+          "publication/generated date when useful",
+          "optional source/master reference"
+        ],
+        "rule": "Keep footer compact; do not duplicate provenance appendix."
+      }
+    }
+  },
+  "contentProjection": {
+    "_comment": "The HTML is not required to mirror the Markdown section-for-section. It should preserve the master facts and reasoning while choosing a human-readable editorial architecture.",
+    "mustPreserve": [
+      "central causal story of the work period",
+      "starting-state versus resulting-state delta",
+      "major Work Unit outcomes and closure state",
+      "important Project/System distinctions",
+      "major decisions",
+      "meaningful deviations or reconstructed chronology",
+      "important failures and discoveries",
+      "validation result and important confidence limits",
+      "material Registry/Resource consequences when relevant",
+      "major architecture/documentation changes",
+      "remaining work and continuation direction"
+    ],
+    "mayCompress": [
+      "full WUA wording",
+      "full Activity descriptions",
+      "exhaustive Resource tables",
+      "long provenance inventories",
+      "repeated authority disclaimers",
+      "low-level schema commentary",
+      "all repository paths",
+      "all test rows when a summarized validation panel preserves the result"
+    ],
+    "mustNotDo": [
+      "invent facts not present in the master/sidecar/verified authorities",
+      "convert planned roadmap work into completed work",
+      "convert historical evidence into current runtime truth",
+      "imply closed Work Units remain active",
+      "invent missing durable IDs",
+      "hide materially important failures merely to make the HTML look cleaner",
+      "replace semantic text labels with color-only meaning",
+      "make the HTML appear to be the authority over the Markdown master"
+    ],
+    "editorialTransformationsAllowed": [
+      "combine adjacent master sections",
+      "turn chronology into a timeline",
+      "turn before/after text into a delta table",
+      "turn validation tables into status cards",
+      "turn architecture chains into diagrams",
+      "turn selected decisions into callout cards",
+      "summarize long Activities into grouped Registry-change panels",
+      "move deep provenance to appendix",
+      "use selective quotations from the master when short and high-value"
+    ]
+  },
+  "standardComponents": {
+    "contentSection": {
+      "semanticElement": "section",
+      "className": "content-section",
+      "requiredParts": [
+        "unique id",
+        "section eyebrow",
+        "h2",
+        "section body"
+      ]
+    },
+    "architectureNote": {
+      "className": "architecture-note",
+      "semanticRole": "Explain ontology, authority, or structural interpretation.",
+      "visualFamily": "blue"
+    },
+    "decisionCallout": {
+      "className": "semantic-callout decision",
+      "label": "Decision",
+      "visualFamily": "amber"
+    },
+    "problemCallout": {
+      "className": "semantic-callout problem",
+      "label": "Problem discovered",
+      "visualFamily": "red"
+    },
+    "confirmedCallout": {
+      "className": "semantic-callout confirmed",
+      "label": "Confirmed",
+      "visualFamily": "green"
+    },
+    "openCallout": {
+      "className": "semantic-callout open",
+      "label": "Open determination",
+      "visualFamily": "neutral"
+    },
+    "historicalCallout": {
+      "className": "semantic-callout historical",
+      "label": "Historical note",
+      "visualFamily": "gray"
+    },
+    "humanReaderMilestone": {
+      "className": "reader-milestone-callout",
+      "visualFamily": "gold",
+      "purpose": "High-level human-readable milestone or operational meaning. This evolves the existing supervisor-callout pattern into a generic reusable reader-path component.",
+      "supportsNextLink": true
+    },
+    "statGrid": {
+      "className": "summary-stat-grid",
+      "itemClassName": "summary-stat"
+    },
+    "timeline": {
+      "className": "work-timeline",
+      "entryClassName": "timeline-entry",
+      "fields": [
+        "time-or-phase",
+        "semantic-role",
+        "title",
+        "short-description",
+        "optional-evidence-id"
+      ],
+      "rule": "Use for material chronology. Do not represent every edit; include events that explain the work's causal progression."
+    },
+    "deltaTable": {
+      "className": "delta-table",
+      "columns": [
+        "area",
+        "starting-state",
+        "resulting-state"
+      ],
+      "rule": "Prefer when the Work Update has a strong before/after architecture story."
+    },
+    "semanticBadge": {
+      "className": "semantic-badge",
+      "requiredFields": [
+        "role-label",
+        "text"
+      ]
+    },
+    "codeArchitectureBlock": {
+      "semanticElement": "pre",
+      "purpose": "Hierarchy, routing, architecture flow, repository tree, or exact state.",
+      "rule": "Keep text diagrams horizontally readable on mobile via overflow-x:auto."
+    },
+    "responsiveTable": {
+      "wrapperClassName": "table-wrap",
+      "rule": "Wrap wide tables in an overflow container; preserve header associations and readable font size."
+    },
+    "nativeDisclosure": {
+      "semanticElement": "details",
+      "required": false,
+      "recommendedFor": [
+        "long appendices",
+        "full Activity lists",
+        "deep provenance",
+        "complete test matrix"
+      ],
+      "rule": "Use native details/summary so disclosure works without JavaScript."
+    }
+  },
+  "recommendedEditorialArchitecture": {
+    "_comment": "Default projection for a substantial architecture-heavy Work Update. Adapt when the master tells a different story.",
+    "sections": [
+      {
+        "id": "executive-summary",
+        "title": "Executive Summary",
+        "eyebrow": "What changed",
+        "sourceMasterSections": [
+          "Executive Summary",
+          "Purpose and Reporting Boundary"
+        ],
+        "recommendedComponents": [
+          "humanReaderMilestone",
+          "statGrid"
+        ],
+        "required": true
+      },
+      {
+        "id": "starting-point",
+        "title": "Where the Work Started",
+        "eyebrow": "Starting state",
+        "sourceMasterSections": [
+          "Starting State",
+          "Intended Work and Governing Plan"
+        ],
+        "recommendedComponents": [
+          "architectureNote",
+          "deltaTable"
+        ],
+        "required": true
+      },
+      {
+        "id": "work-chronology",
+        "title": "How the Work Unfolded",
+        "eyebrow": "Chronology",
+        "sourceMasterSections": [
+          "Detailed Work Chronology",
+          "Work Performed by Work Unit / Session"
+        ],
+        "recommendedComponents": [
+          "timeline"
+        ],
+        "required": true
+      },
+      {
+        "id": "major-decisions",
+        "title": "Decisions, Problems, and Turning Points",
+        "eyebrow": "Why the direction changed",
+        "sourceMasterSections": [
+          "Decisions, Deviations, Blockers, and Discoveries"
+        ],
+        "recommendedComponents": [
+          "decisionCallout",
+          "problemCallout",
+          "architectureNote"
+        ],
+        "required": true
+      },
+      {
+        "id": "validation",
+        "title": "Validation and What We Know",
+        "eyebrow": "Evidence",
+        "sourceMasterSections": [
+          "Validation, Testing, and Confidence"
+        ],
+        "recommendedComponents": [
+          "confirmedCallout",
+          "responsiveTable"
+        ],
+        "required": true
+      },
+      {
+        "id": "registry-architecture",
+        "title": "Registry and Architecture Effects",
+        "eyebrow": "System change",
+        "sourceMasterSections": [
+          "Resource, Registry, and Activity Effects",
+          "Architecture and Documentation Effects"
+        ],
+        "recommendedComponents": [
+          "statGrid",
+          "deltaTable",
+          "architectureNote"
+        ],
+        "required": false
+      },
+      {
+        "id": "context-testing",
+        "title": "Context Restoration and Two-Window Testing",
+        "eyebrow": "Testing the documentation",
+        "sourceMasterSections": [
+          "Context Restoration and Cross-Session Testing"
+        ],
+        "recommendedComponents": [
+          "codeArchitectureBlock",
+          "problemCallout",
+          "confirmedCallout"
+        ],
+        "required": false
+      },
+      {
+        "id": "resulting-state",
+        "title": "What Is True Now",
+        "eyebrow": "Resulting state",
+        "sourceMasterSections": [
+          "Project and System Delta",
+          "Resulting State"
+        ],
+        "recommendedComponents": [
+          "deltaTable",
+          "semanticBadge"
+        ],
+        "required": true
+      },
+      {
+        "id": "lessons",
+        "title": "What We Learned",
+        "eyebrow": "Knowledge produced",
+        "sourceMasterSections": [
+          "Knowledge Produced"
+        ],
+        "recommendedComponents": [
+          "architectureNote"
+        ],
+        "required": true
+      },
+      {
+        "id": "next",
+        "title": "Remaining Work and Continuation",
+        "eyebrow": "What comes next",
+        "sourceMasterSections": [
+          "Remaining Work and Open Determinations",
+          "Continuation Point"
+        ],
+        "recommendedComponents": [
+          "openCallout",
+          "humanReaderMilestone"
+        ],
+        "required": true
+      },
+      {
+        "id": "references",
+        "title": "Selected Artifacts and References",
+        "eyebrow": "Traceability",
+        "sourceMasterSections": [
+          "Important Artifacts and References"
+        ],
+        "recommendedComponents": [
+          "responsiveTable",
+          "nativeDisclosure"
+        ],
+        "required": false
+      },
+      {
+        "id": "appendices",
+        "title": "Appendices",
+        "eyebrow": "Deep detail",
+        "sourceMasterSections": [
+          "Provenance and Interpretation Limits",
+          "Work Update Completion Check"
+        ],
+        "recommendedComponents": [
+          "nativeDisclosure"
+        ],
+        "required": false
+      }
+    ]
+  },
+  "readingPath": {
+    "purpose": "Give the human reader a curated path through the most meaningful milestones without removing the full document.",
+    "defaultMode": "general",
+    "pathItems": [
+      {
+        "sequence": 1,
+        "anchor": "",
+        "type": "milestone",
+        "title": "",
+        "shortText": ""
+      }
+    ],
+    "navigationStyle": {
+      "showNextMilestoneLink": true,
+      "linkTextPattern": "Next milestone",
+      "optionalPointingHand": true
+    },
+    "supervisorCompatibility": {
+      "supported": true,
+      "rule": "When the sidecar contains a meaningful supervisor audience view, the general reading-path component may be specialized to a supervisor path and use the established gold callout treatment."
+    }
+  },
+  "graphicsPolicy": {
+    "default": "optional",
+    "sourceRule": "Use only verified image paths/URLs from the master, sidecar, repository, or image manifest.",
+    "preferredGraphicRoles": [
+      "architecture overview",
+      "before/after",
+      "timeline",
+      "process flow",
+      "Project/System relationship",
+      "validation snapshot",
+      "Registry cleanup / count change",
+      "2WT context loop"
+    ],
+    "imageRequirements": {
+      "altText": true,
+      "captionWhenMeaningful": true,
+      "responsiveSizing": true,
+      "lazyLoadingRecommended": true
+    },
+    "generatedDiagramRule": "If no suitable image exists, prefer semantic HTML/CSS or a text architecture diagram over inventing an image asset.",
+    "avoid": [
+      "decorative images that add no explanatory value",
+      "invented repository image paths",
+      "graphics that imply unsupported quantitative precision"
+    ]
+  },
+  "accessibility": {
+    "required": [
+      "skip link",
+      "semantic main element",
+      "one h1",
+      "hierarchical headings",
+      "unique section IDs",
+      "aria-labelledby where useful",
+      "visible focus styles",
+      "keyboard-operable navigation",
+      "alt text for informative images",
+      "redundant semantic labels",
+      "responsive text and layout",
+      "print readability"
+    ],
+    "tables": {
+      "useTh": true,
+      "scopeAttributesRecommended": true,
+      "wrapForHorizontalOverflow": true
+    },
+    "color": {
+      "neverSoleSignal": true,
+      "contrastRequired": true
+    },
+    "motion": {
+      "default": "none except native smooth scrolling",
+      "respectReducedMotion": true
+    }
+  },
+  "responsiveBehavior": {
+    "mobileBreakpointPx": 680,
+    "rules": [
+      "reduce body font to approximately 16px",
+      "reduce header vertical padding",
+      "reduce page side margins",
+      "use one-column TOC",
+      "allow tables and code blocks to scroll horizontally",
+      "stack grids when needed",
+      "do not shrink semantic labels below comfortable tap/read size"
+    ]
+  },
+  "printBehavior": {
+    "required": true,
+    "rules": [
+      "white background",
+      "remove decorative shadows",
+      "convert header to light printable treatment",
+      "hide TOC if it wastes print space",
+      "hide milestone-next navigation",
+      "avoid breaking compact callout cards across pages when possible",
+      "render links as readable text without requiring hover",
+      "preserve code blocks and tables legibly",
+      "do not depend on background colors to preserve semantic meaning"
+    ]
+  },
+  "cssRequirements": {
+    "requiredClasses": [
+      "skip-link",
+      "site-header",
+      "header-inner",
+      "kicker",
+      "dek",
+      "meta-row",
+      "meta-chip",
+      "page",
+      "bootstrap-banner",
+      "reading-path-intro",
+      "toc",
+      "content-section",
+      "section-eyebrow",
+      "section-body",
+      "summary-stat-grid",
+      "summary-stat",
+      "architecture-note",
+      "semantic-callout",
+      "reader-milestone-callout",
+      "table-wrap",
+      "page-footer"
+    ],
+    "recommendedClasses": [
+      "semantic-badge",
+      "work-timeline",
+      "timeline-entry",
+      "delta-table",
+      "decision",
+      "problem",
+      "confirmed",
+      "historical",
+      "open"
+    ],
+    "styleRules": [
+      "No CSS framework dependency.",
+      "Use CSS custom properties for theme and semantic roles.",
+      "Maintain readable max content width.",
+      "Use card hierarchy without excessive visual fragmentation.",
+      "Keep long prose comfortable to read.",
+      "Ensure code blocks and tables remain usable on narrow screens.",
+      "Preserve family resemblance with August 9 and August 15 Work Updates."
+    ]
+  },
+  "htmlSemantics": {
+    "preferredElements": {
+      "header": "site document header",
+      "main": "primary work update content",
+      "nav": "table of contents and explicit reading path navigation",
+      "section": "major editorial sections",
+      "article": "optional nested self-contained topic where appropriate",
+      "aside": "optional supporting reader callout",
+      "figure": "graphics/diagrams with captions",
+      "details": "deep optional appendices",
+      "footer": "document footer"
+    },
+    "avoid": [
+      "div-only document structure when semantic elements are available",
+      "multiple h1 elements",
+      "heading levels chosen only for visual size",
+      "anchor IDs generated from unstable numbering alone",
+      "inline styles repeated throughout the body when a class can express the role"
+    ]
+  },
+  "identifierPresentation": {
+    "monospace": [
+      "WORK-####",
+      "WUA-####",
+      "ACT-####",
+      "RES-###",
+      "PROJ-###",
+      "SYS-###",
+      "filenames",
+      "repository paths",
+      "schema versions"
+    ],
+    "firstUseRule": "Pair the identifier with a semantic name or action on first meaningful appearance.",
+    "examples": [
+      "WORK-0001 — Task Assignment and Tracking — Initial Project Definition",
+      "ACT-0091 — Registry context-routing layer added",
+      "RES-043 — Klinswork Resource Registry"
+    ]
+  },
+  "validation": {
+    "performed": false,
+    "result": "",
+    "requiredChecks": [
+      "HTML5 document has one doctype and one h1.",
+      "Required metadata is present.",
+      "Master-summary title/date/headline are represented accurately.",
+      "Every TOC link resolves to a unique section ID.",
+      "No substantive claim contradicts the Markdown master.",
+      "Planned future work is not presented as completed.",
+      "Historical evidence is not presented as current runtime truth.",
+      "Closed Work Units are not presented as active.",
+      "No unsupported durable IDs were invented.",
+      "Semantic colors have redundant labels.",
+      "Images have valid sources and alt text.",
+      "Wide tables and preformatted blocks are responsive.",
+      "Keyboard focus is visible.",
+      "Print view remains intelligible.",
+      "The page remains usable with JavaScript disabled.",
+      "Canonical/document URLs are not invented when unknown.",
+      "Publication state matches the sidecar.",
+      "If the HTML compresses master content, no material causal conclusion is lost.",
+      "Footer identifies the document as a downstream Work Update presentation.",
+      "The document can be opened directly from GitHub Pages or local disk."
+    ],
+    "optionalChecks": [
+      "Run HTML validator when available.",
+      "Inspect at desktop and mobile widths.",
+      "Print-preview at least the first pages and one table/code section.",
+      "Verify external links used in key navigation.",
+      "Compare executive summary and resulting-state claims to sidecar/master."
+    ]
+  },
+  "publication": {
+    "defaultStatus": "draft-local",
+    "canonicalUrlRule": "Populate only after the published GitHub Pages or other canonical URL is known.",
+    "repositoryPathPattern": "work_updates/work-update-{MM-DD-YYYY}.html",
+    "catalogRule": "Catalog/listing metadata should be derived from the sidecar/publication layer after the HTML is finalized.",
+    "masterTraceability": {
+      "recommended": true,
+      "visibleLinkDefault": false,
+      "rule": "The HTML may expose a visible 'technical/source record' link to the Markdown master when published, but this should not distract from the human reading experience."
+    }
+  },
+  "templateUseProcedure": [
+    {
+      "sequence": 1,
+      "step": "Load the authoritative work-update-summary.md master.",
+      "required": true
+    },
+    {
+      "sequence": 2,
+      "step": "Load the matching work-update sidecar when available.",
+      "required": true
+    },
+    {
+      "sequence": 3,
+      "step": "Identify the central human-facing story and 3–7 milestone reading-path points.",
+      "required": true
+    },
+    {
+      "sequence": 4,
+      "step": "Choose the editorial section architecture; do not blindly mirror every Markdown section.",
+      "required": true
+    },
+    {
+      "sequence": 5,
+      "step": "Create header/dek/meta chips and a concise context banner when needed.",
+      "required": true
+    },
+    {
+      "sequence": 6,
+      "step": "Build the TOC and summary-stat snapshot from grounded sidecar/master facts.",
+      "required": true
+    },
+    {
+      "sequence": 7,
+      "step": "Project chronology, delta, decisions, tests, and resulting state into human-readable components.",
+      "required": true
+    },
+    {
+      "sequence": 8,
+      "step": "Add only graphics that improve understanding and have verified sources.",
+      "required": false
+    },
+    {
+      "sequence": 9,
+      "step": "Apply semantic color roles redundantly with textual labels.",
+      "required": true
+    },
+    {
+      "sequence": 10,
+      "step": "Validate links, anchors, authority boundaries, responsive behavior, accessibility, and print behavior.",
+      "required": true
+    },
+    {
+      "sequence": 11,
+      "step": "Publish only after the HTML is reviewed; then populate canonical URL/catalog metadata downstream.",
+      "required": true
+    }
+  ],
+  "templateChecks": [
+    "Is the Markdown master clearly treated as authority?",
+    "Is the sidecar used as structured support rather than replacement narrative?",
+    "Does the HTML tell the day's causal story rather than merely reproduce sections?",
+    "Can the human reader follow a short reading path?",
+    "Is there a TOC for substantial updates?",
+    "Are Project/System/Resource/Work Unit roles visually and textually distinct where useful?",
+    "Are major before/after changes easy to see?",
+    "Are failures and discoveries preserved rather than polished away?",
+    "Is validation understandable without reading the full technical test matrix?",
+    "Is remaining work clearly separated from completed work?",
+    "Does the HTML remain readable on phone, desktop, and print?",
+    "Does it preserve Klinswork Work Update family resemblance while allowing subject-specific visual evolution?",
+    "Would Kevin be able to read this comfortably without needing to open the Markdown master?",
+    "Would a technical reader still be able to trace key claims back to the master/sidecar/authorities?"
+  ],
+  "revisionNotes": [
+    {
+      "version": "1.0-draft",
+      "date": "2026-08-16",
+      "notes": [
+        "Initial specialized Work Update HTML template.",
+        "Established work-update-summary.md as master and sidecar as structured companion.",
+        "Derived the visual lineage from the August 9 and August 15 Work Update HTML documents.",
+        "Preserved navy/blue/gold editorial shell, serif headings, content cards, quick reading path, TOC, stat grid, human-reader callouts, responsive tables, code blocks, and print behavior.",
+        "Added explicit Project/System/Path/Resource/Work/Confirmed/Problem/Decision/Historical/Open semantic color roles.",
+        "Added editorial projection rules so HTML may combine/compress master sections without losing material meaning.",
+        "Added standardized chronology, delta, semantic callout, and native disclosure components.",
+        "Added accessibility, responsive, print, identifier, publication, and validation requirements.",
+        "Established no-external-framework/no-required-JavaScript default for portable GitHub Pages output."
+      ]
+    }
+  ]
+}

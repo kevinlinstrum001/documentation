@@ -1,0 +1,1746 @@
+{
+  "schemaVersion": "3.0-draft",
+  "profile": {
+    "profileType": "work-update",
+    "profileVersion": "1.0",
+    "baseSchemaVersion": "3.0-draft",
+    "templateFile": "work-update-sidecar-template-3.0-draft.json",
+    "previewMode": "work-update"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.1",
+        "status": "planned",
+        "additions": [],
+        "changes": [],
+        "deprecations": [],
+        "migrationNotes": [],
+        "openQuestions": []
+      }
+    ]
+  },
+  "document": {
+    "documentId": "work-update-2026-08-16-formal-project-definition-tested-context-architecture",
+    "filePath": "work-update-08-16-2026.html",
+    "documentUrl": "",
+    "title": "Klinswork Work Update — August 16, 2026",
+    "headline": "From Formal Project Definition to Tested Context Architecture",
+    "documentType": "work-update",
+    "createdTimestamp": "2026-08-16T14:37:00-06:00",
+    "updatedTimestamp": "2026-08-16T14:37:00-06:00"
+  },
+  "metadata": {
+    "filePath": "work-update-08-16-2026.html",
+    "url": "",
+    "sidecarFilePath": "work-update-08-16-2026-sidecar-3.0.json",
+    "summaryFilePath": "work-update-summary-08-16-2026.md",
+    "repositoryPath": "",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "work-update-sidecar-template-3.0-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json"
+  },
+  "workflowContext": {
+    "workflowId": "klinswork-documentation-workflow",
+    "documentationRunId": "",
+    "documentationStage": "work-update-sidecar-generation",
+    "sourceSummaryPath": "work-update-summary-08-16-2026.md",
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true
+  },
+  "workCoverage": {
+    "workStartedAt": "2026-08-16T05:15:00-06:00",
+    "workEndedAt": "2026-08-16T14:18:00-06:00",
+    "workDurationHours": 9.05,
+    "coverageType": "comprehensive-daily-work-update",
+    "coverageDescription": "Covers the August 16, 2026 Klinswork work period through 14:18 America/Denver: formal execution and closure of WORK-0001 for the Task Assignment and Tracking Project Definition; Work Queue current-state System documentation; Project-local Documentation Viewer companion-resolution changes; validation and architecture reconciliation; post-closure Two-Window Testing; Resource Registry context-routing and spreadsheet-inspection safeguards; pruning of the current Resources map from 48 rows before the recorded cleanup passes to 25 current Resources; Work Queue technical-manual routing reconciliation; and creation of the Work Update Summary master/template architecture.",
+    "coverageConfidence": "high"
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Documentation",
+      "projectType": "cross-project Klinswork Project",
+      "parentProjectId": "",
+      "parentProjectName": "Klinswork",
+      "projectRecordPath": "",
+      "projectGoal": "Preserve, structure, route, validate, and present durable Klinswork knowledge so current work, architecture, Projects, Systems, Resources, history, and continuation can be reconstructed across sessions.",
+      "projectPhase": "architecture operationalization and context-restoration validation",
+      "contributionType": "Work Unit execution architecture, Project/System definition, Viewer discovery, Resource Registry redesign, context-naive testing, and Work Update master architecture",
+      "identificationBasis": "The master summary identifies Documentation as a primary Project and most of the day's cross-cutting changes modify Documentation architecture, Registry routing, Viewer behavior, work-planning records, context-restoration testing, and Work Update records.",
+      "identificationConfidence": "explicit"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Task Assignment and Tracking",
+        "relationshipType": "primary subject Project and formal Work Unit target",
+        "relationshipDescription": "WORK-0001 created and validated the initial Task Assignment and Tracking Project Definition and established Work Queue as its principal known System.",
+        "impact": "Became the second validated Project Definition exemplar and supplied the real work that exercised the new Work Unit / implementation-plan / formal-session architecture.",
+        "evidenceSectionAnchors": [
+          "#7-work-0001--formal-project-definition-work",
+          "#11-project-and-system-delta"
+        ],
+        "identificationBasis": "Explicit in WORK-0001, the governing plan, WUAs, and the master summary.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Operations",
+        "relationshipType": "parent Project context",
+        "relationshipDescription": "Operations is the current parent Project of Task Assignment and Tracking and supplies the higher-level operational context for the Project Definition.",
+        "impact": "Clarified hierarchy without treating hierarchy as intrinsic Project identity.",
+        "evidenceSectionAnchors": [
+          "#1-work-update-identity",
+          "#11-project-and-system-delta"
+        ],
+        "identificationBasis": "Explicit in current Task Assignment and Tracking documentation.",
+        "identificationConfidence": "explicit"
+      },
+      {
+        "projectId": "",
+        "projectName": "Inventory Management",
+        "relationshipType": "reference exemplar",
+        "relationshipDescription": "Inventory Management → Inventory 3.0 supplied the first Project Definition exemplar used as a reference while independently validating the second exemplar.",
+        "impact": "Provided evidence for what could be reused while preventing blind copying of the first exemplar into Task Assignment and Tracking.",
+        "evidenceSectionAnchors": [
+          "#4-starting-state",
+          "#5-intended-work-and-governing-plan"
+        ],
+        "identificationBasis": "Explicit in WORK-0001 goal, plan, and current Project README.",
+        "identificationConfidence": "explicit"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "RES-043",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "Resource and work-context registry",
+        "relationshipDescription": "Provides current Resource routing, Activities history, Work Units, Work Unit Activities, context-routing instructions, and machine-reading safeguards.",
+        "impact": "Changed substantially after Two-Window Testing: routing became explicit, inspection warnings were added, and current Resources were pruned toward a sparse routing map."
+      },
+      {
+        "foundationId": "RES-011",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "documentation discovery and presentation system",
+        "relationshipDescription": "Presents structured records discovered through the source-aware manifest architecture.",
+        "impact": "Validated the second Project Definition exemplar and exposed the need for Project-local implementation-plan companion inference."
+      },
+      {
+        "foundationId": "RES-044",
+        "name": "Klinswork Documentation Viewer manifest",
+        "foundationType": "generated discovery snapshot",
+        "relationshipDescription": "Recorded the validated source-aware discovery state used during WORK-0001.",
+        "impact": "Validation snapshot recorded 74 valid records, 0 invalid, and 6 Projects-source records."
+      },
+      {
+        "foundationId": "RES-045",
+        "name": "Documentation Viewer manifest builder",
+        "foundationType": "discovery builder",
+        "relationshipDescription": "Builds the source-aware Viewer manifest and resolves companion relationships.",
+        "impact": "Advanced to 2.0.0-draft.3 with Project-local implementation-plan companion inference."
+      },
+      {
+        "foundationId": "",
+        "name": "Work Unit / Work Unit Activity architecture",
+        "foundationType": "bounded-work planning and history model",
+        "relationshipDescription": "Separates current bounded-work state from append-oriented material work history and formal execution records.",
+        "impact": "WORK-0001 became the first major implementation Work Unit carried through activation, validation, reconciliation, and formal closure."
+      }
+    ],
+    "relationshipSummary": "Documentation is the cross-project architecture being operationalized. Task Assignment and Tracking is the formal subject Project of WORK-0001, Operations is its parent Project context, Inventory Management → Inventory 3.0 is the reference exemplar, and Work Queue is the principal known System whose current/future documentation and Resource routing were reconciled."
+  },
+  "subject": {
+    "projectName": "Documentation / Task Assignment and Tracking",
+    "primaryApp": "Klinswork Documentation Viewer and Work Queue",
+    "mainFocus": "Using the new Work Unit architecture to complete the second Project Definition exemplar, then empirically testing context restoration and redesigning the Resource Registry and Work Update documentation architecture from the results.",
+    "description": "Comprehensive August 16 Klinswork update covering WORK-0001, Task Assignment and Tracking, Work Queue System documentation, source-aware Viewer validation, Two-Window Testing, Resource Registry pruning and context routing, spreadsheet inspection safeguards, technical-manual discoverability, and the Work Update Summary master/template model.",
+    "topics": [
+      "WORK-0001",
+      "Work Unit Activities",
+      "reconstructed-continuation planning",
+      "formal Work Implementation Session",
+      "Task Assignment and Tracking Project Definition",
+      "Work Queue System Summary",
+      "Work Queue Roadmap",
+      "Project versus System authority",
+      "Documentation Viewer",
+      "manifest builder 2.0.0-draft.3",
+      "Project-local implementation-plan companion resolution",
+      "Two-Window Testing",
+      "2WT001",
+      "2WT002",
+      "Other Window",
+      "context restoration",
+      "Resource Registry redesign",
+      "sparse routing map",
+      "Resource retirement",
+      "spreadsheet 443 inspection defect",
+      "technical manual routing",
+      "Work Update Summary master",
+      "work-update sidecar",
+      "downstream HTML"
+    ],
+    "keywords": [
+      "WORK-0001",
+      "WUA-0003",
+      "WUA-0010",
+      "ACT-0091",
+      "ACT-0092",
+      "ACT-0111",
+      "RES-043",
+      "RES-044",
+      "RES-045",
+      "RES-047",
+      "2WT",
+      "OW",
+      "Project Definition",
+      "Work Queue",
+      "Resource Registry",
+      "context-naive",
+      "reconstructed-continuation",
+      "443"
+    ],
+    "appsAffected": [
+      "Klinswork Documentation Viewer",
+      "Work Queue",
+      "Klinswork Resource Registry"
+    ],
+    "systemsAffected": [
+      "Work Queue",
+      "Klinswork Documentation Viewer",
+      "Resource Registry / work-context system",
+      "Work Unit planning system",
+      "Work Update documentation system"
+    ],
+    "componentsAffected": [
+      "Task Assignment and Tracking Project documentation",
+      "Work Queue System documentation",
+      "implementation-plan sidecar architecture",
+      "Work Implementation Session template",
+      "Documentation Viewer manifest builder",
+      "Documentation Viewer manifest",
+      "Registry README context-routing index",
+      "Registry spreadsheet inspection warning",
+      "Resources table",
+      "Activities history",
+      "Work Units",
+      "Work Unit Activities",
+      "Work Update Summary template"
+    ]
+  },
+  "narrative": {
+    "promptingSituation": "The August 15 architecture had produced the first Project Definition exemplar and a new Work Unit planning layer, but those structures had not yet governed a complete real implementation Work Unit or been tested for context reconstruction by an independent ChatGPT window.",
+    "initialUnderstanding": "The next step was to define Task Assignment and Tracking and Work Queue using the Inventory Management exemplar, while preserving Project/System/Resource/current/future authority boundaries and proving the new Work Unit architecture through real use.",
+    "intendedOutcome": "Complete and validate the Task Assignment and Tracking Project Definition and Work Queue System documentation under WORK-0001, then preserve all material Registry/architecture consequences.",
+    "approach": "Reconstruct the planning boundary honestly, activate WORK-0001 only after the governing plan was linked, complete Project and System documentation in stages, validate Viewer discovery and semantic separation, close the Work Unit when its completion rule was satisfied, then use Two-Window Testing to evaluate whether the resulting durable context actually worked for a context-naive reader.",
+    "progression": [
+      {
+        "sequence": 1,
+        "title": "Recognized and preserved the pre-plan work boundary",
+        "description": "Project Identity, the Project README, and the Project Summary already existed before the formal implementation plan was created. WUA-0003 preserved that fact rather than backdating the plan.",
+        "result": "The session gained an explicit reconstructed-continuation planning boundary."
+      },
+      {
+        "sequence": 2,
+        "title": "Created and linked the governing implementation plan",
+        "description": "The reconstructed-continuation plan was created and linked to WORK-0001; WUA-0004 recorded formal activation and moved the Work Unit to active/active.",
+        "result": "Formal execution authority became explicit without rewriting earlier history."
+      },
+      {
+        "sequence": 3,
+        "title": "Expanded the implementation-plan / session architecture",
+        "description": "Implementation-plan sidecar and Work Implementation Session structures were strengthened with first-class Work Unit, activation-gate, session, and WUA semantics.",
+        "result": "The planning/execution documentation model became capable of describing the real session."
+      },
+      {
+        "sequence": 4,
+        "title": "Added Project-local implementation-plan companion discovery",
+        "description": "Documentation Viewer builder 2.0.0-draft.3 learned to resolve sidecars/ implementation-plan companions to the parallel implementation-plans/ directory.",
+        "result": "The real Project Definition layout became discoverable without flattening its directory semantics."
+      },
+      {
+        "sequence": 5,
+        "title": "Completed the Task Assignment and Tracking Project layer",
+        "description": "Project Identity, local orientation, Project Summary, structured companion, and plan/sidecar were validated as a coherent Project Definition package.",
+        "result": "Task Assignment and Tracking became the second working Project Definition exemplar."
+      },
+      {
+        "sequence": 6,
+        "title": "Completed the Work Queue current/future System layer",
+        "description": "Work Queue received System-local orientation, a current-state System Summary/sidecar, and a separate Roadmap/sidecar for future direction.",
+        "result": "Current System interpretation and roadmap intent remained distinct."
+      },
+      {
+        "sequence": 7,
+        "title": "Validated and closed WORK-0001",
+        "description": "The Stage 6 matrix passed with non-blocking documentation-freshness notes; reconciliation recorded ACT-0081 through ACT-0084 and ARCH-005; WUA-0010 then closed the Work Unit.",
+        "result": "WORK-0001 completed at 10:49 with readiness closed."
+      },
+      {
+        "sequence": 8,
+        "title": "Introduced Two-Window Testing",
+        "description": "A context-naive Other Window was asked to reconstruct the architecture from durable records.",
+        "result": "Context quality became an empirical test rather than a design assumption."
+      },
+      {
+        "sequence": 9,
+        "title": "Redesigned the Registry from test findings",
+        "description": "The Registry README gained a context-routing index and spreadsheet inspection warning, while the current Resources map was pruned from 48 pre-cleanup rows to 25 current Resources.",
+        "result": "The Registry became a sparser machine-oriented routing/context layer."
+      },
+      {
+        "sequence": 10,
+        "title": "Reconciled deep technical-document routing",
+        "description": "Work Queue documentation was revised so the technical manual is discoverable directly through Project/System routing without requiring prior knowledge of RES-047.",
+        "result": "Importance was separated from the need for global Resource identity; RES-047 retirement remains pending."
+      },
+      {
+        "sequence": 11,
+        "title": "Formalized the Work Update master architecture",
+        "description": "The Work Update Summary Markdown was defined as the canonical detailed master for future AI reconstruction, with sidecar JSON and HTML as downstream structured/presentation products.",
+        "result": "A specialized work-update-summary-template-1.0-draft.json and this August 16 master were created."
+      }
+    ],
+    "problemsEncountered": [
+      {
+        "problem": "Substantive Project Definition work had already occurred before the governing implementation plan existed.",
+        "effect": "A naive retrospective record could falsely imply prospective planning.",
+        "resolution": "Used reconstructed-continuation planning and preserved the exact pre-plan boundary in WUA/session/plan records.",
+        "status": "resolved"
+      },
+      {
+        "problem": "The Viewer builder did not resolve a Project-local implementation-plan sidecar to the parallel implementation-plans directory.",
+        "effect": "The new Project Definition layout could not be represented cleanly by existing companion inference.",
+        "resolution": "Added Project-local implementation-plan companion inference in builder 2.0.0-draft.3.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Creation-time documentation annotations became stale after the Project/System package was completed.",
+        "effect": "Structurally correct documents could still imply records were pending when they were already present.",
+        "resolution": "Reconciled freshness notes before formal WORK-0001 closure.",
+        "status": "resolved"
+      },
+      {
+        "problem": "Serialized spreadsheet inspection returned 443 values for cells that were actually blank.",
+        "effect": "A machine reader could infer false Project IDs or Activity values.",
+        "resolution": "Direct cell verification established literal/effective cells as controlling evidence and ACT-0092 added a permanent Registry warning.",
+        "status": "resolved-with-durable-safeguard"
+      },
+      {
+        "problem": "The current Resources table contained too many locally discoverable, internal, generated, historical, or duplicate artifacts.",
+        "effect": "Context-naive orientation risked noise and ontology collapse.",
+        "resolution": "Pruned 23 current Resource rows and adopted a sparse routing-map rule.",
+        "status": "substantially-resolved"
+      },
+      {
+        "problem": "The connected GitHub integration could read repository content but could not write updates.",
+        "effect": "Prepared documentation could not be committed directly through the integration.",
+        "resolution": "Generated downloadable replacement content for manual placement; retain the limitation as a tooling constraint.",
+        "status": "open-tooling-constraint"
+      },
+      {
+        "problem": "The current Work Queue README content appears physically as work-queue-README.md while other documentation routes expect README.md.",
+        "effect": "Local semantic navigation may become inconsistent despite improved content.",
+        "resolution": "Identified as post-closure reconciliation work; do not reopen WORK-0001.",
+        "status": "open"
+      }
+    ],
+    "unsuccessfulApproaches": [
+      {
+        "approach": "Treat every important document or dataset as an independently registered Resource.",
+        "whyItWasTried": "The Registry began as a practical reference list and global registration made useful things easy to find.",
+        "whyItDidNotWork": "As the architecture grew, global registration duplicated local discovery, increased noise, and encouraged Project/System/Resource over-assimilation.",
+        "whatWasLearned": "Global Resource identity should be reserved for independently important routing, authority, dependency, or entry-point needs."
+      },
+      {
+        "approach": "Write the reconciled Work Queue README directly through the connected GitHub integration.",
+        "whyItWasTried": "The integration could read the repository and the user account had normal repository permissions.",
+        "whyItDidNotWork": "File update, blob creation, and branch creation returned 403 Resource not accessible by integration.",
+        "whatWasLearned": "The current connector should be treated as read-capable but not relied upon for repository content writes."
+      },
+      {
+        "approach": "Interpret 'work-update-summary template' as a Markdown template file.",
+        "whyItWasTried": "The new master document needed a detailed structure and style grammar.",
+        "whyItDidNotWork": "The intended reusable template artifact was actually JSON.",
+        "whatWasLearned": "When a record family has both a human-readable master and a machine-readable construction template, name the artifact type explicitly."
+      }
+    ],
+    "turningPoints": [
+      {
+        "title": "WUA-0003 preserved an imperfect start",
+        "description": "The formal history recorded that work existed before plan linkage instead of pretending the process had been prospective.",
+        "effectOnDirection": "Made temporal honesty a first-class planning/session rule."
+      },
+      {
+        "title": "WORK-0001 closed successfully",
+        "description": "The second Project Definition exemplar satisfied its completion rule at 10:49.",
+        "effectOnDirection": "Freed the next phase to test the context architecture empirically rather than continue building the exemplar."
+      },
+      {
+        "title": "2WT001 exposed routing friction and the 443 defect",
+        "description": "The fresh-context test showed that recoverable context was not the same as efficient, trustworthy context.",
+        "effectOnDirection": "Led directly to ACT-0091 context routing and ACT-0092 spreadsheet inspection safeguards."
+      },
+      {
+        "title": "2WT002 exposed Resource-centered ontology collapse",
+        "description": "A faster fresh-context reconstruction still over-assimilated Projects and Systems into the Resource model.",
+        "effectOnDirection": "Accelerated the shift to a sparse Resources routing map."
+      },
+      {
+        "title": "RES-047 became an edge-case test",
+        "description": "The technical manual was unquestionably important but proved discoverable through Work Queue documentation.",
+        "effectOnDirection": "Separated document importance from the requirement for global Resource identity."
+      },
+      {
+        "title": "The missing Work Update master layer became explicit",
+        "description": "Review of older workflow history showed that summary.md had acted as an authoritative narrative source but was not consistently retained as a durable master family.",
+        "effectOnDirection": "Established the Work Update Summary Markdown as the canonical retrospective master going forward."
+      }
+    ],
+    "keyDecisions": [
+      {
+        "decision": "Use reconstructed-continuation planning rather than backdating the implementation plan.",
+        "reason": "Some work already existed before the plan authority boundary.",
+        "alternativesConsidered": [
+          "Pretend the plan existed earlier",
+          "Discard the prior work from the formal record"
+        ],
+        "consequences": [
+          "Temporal chronology remained truthful",
+          "The planning schema gained a reusable bootstrap-recovery pattern"
+        ]
+      },
+      {
+        "decision": "Treat session initiation and activation as distinct events.",
+        "reason": "Formal context can exist while an activation prerequisite remains unsatisfied.",
+        "alternativesConsidered": [
+          "Collapse initiation and activation into one event"
+        ],
+        "consequences": [
+          "WUA-0003 and WUA-0004 preserve separate material state transitions"
+        ]
+      },
+      {
+        "decision": "Keep System Summary and System Roadmap as separate authorities.",
+        "reason": "Current-state evidence and future intent answer different questions.",
+        "alternativesConsidered": [
+          "Merge current and future Work Queue documentation"
+        ],
+        "consequences": [
+          "Viewer semantics and future context routing remain clearer"
+        ]
+      },
+      {
+        "decision": "Continue deferring permanent Project/System IDs and System Identity.",
+        "reason": "The exemplar is intended to generate evidence before identity architecture is frozen.",
+        "alternativesConsidered": [
+          "Assign provisional PROJ/SYS IDs",
+          "Create system-identity.json immediately"
+        ],
+        "consequences": [
+          "No unsupported durable identity was invented"
+        ]
+      },
+      {
+        "decision": "Redefine the current Resources table as a sparse routing/context map.",
+        "reason": "2WT showed that exhaustive global registration adds noise and can distort ontology.",
+        "alternativesConsidered": [
+          "Retain every useful artifact as a Resource"
+        ],
+        "consequences": [
+          "23 current Resource rows were retired",
+          "25 current Resources remain"
+        ]
+      },
+      {
+        "decision": "Use direct cell verification when spreadsheet representations disagree with the workbook.",
+        "reason": "The 443 defect proved the serialized/table representation can be wrong.",
+        "alternativesConsidered": [
+          "Trust the inspection representation"
+        ],
+        "consequences": [
+          "Registry README now contains an explicit machine-reading safeguard"
+        ]
+      },
+      {
+        "decision": "Route the Work Queue technical manual through Project/System documentation rather than depending on RES-047.",
+        "reason": "The semantic route already exposes the manual at the correct depth.",
+        "alternativesConsidered": [
+          "Keep the manual as a permanent global Resource"
+        ],
+        "consequences": [
+          "Work Queue README was reconciled",
+          "RES-047 retirement became the likely next cleanup action"
+        ]
+      },
+      {
+        "decision": "Make work-update-summary.md the canonical Work Update master.",
+        "reason": "Future ChatGPT needs a detailed durable retrospective source, while the HTML serves a different human presentation role.",
+        "alternativesConsidered": [
+          "Treat the summary as a temporary construction artifact",
+          "Make HTML the only durable narrative"
+        ],
+        "consequences": [
+          "A specialized Work Update Summary JSON template was created",
+          "The August 16 Markdown became the first strong exemplar"
+        ]
+      }
+    ],
+    "methodEstablished": "Use durable authorities to plan and execute bounded work, preserve material state transitions in WUAs/Activities, close the Work Unit when its completion rule is actually satisfied, then test the resulting documentation with a context-naive Other Window. Convert observed context failures into routing/authority corrections, and preserve the full retrospective meaning in a detailed work-update-summary.md master before generating sidecar and HTML.",
+    "result": "WORK-0001 completed and closed; Task Assignment and Tracking became the second validated Project Definition exemplar; Work Queue gained a distinct current-state System layer and separate roadmap; Viewer companion resolution was extended and validated; 2WT became an empirical context-restoration method; Registry routing became explicit; 23 Resource rows were retired, leaving 25 current Resources; the 443 inspection defect gained a durable safeguard; technical-manual routing was moved into Work Queue documentation; and the Work Update Summary master/template architecture was established.",
+    "lessonsLearned": [
+      "Architecture should be tested by an independent context, not only by the context that authored it.",
+      "Recoverable context is not necessarily efficient context.",
+      "Project, System, Resource, implementation, path, and lifecycle must remain semantically distinct even in compact routing diagrams.",
+      "A globally registered Resource should earn its place through routing/authority/dependency value, not mere importance.",
+      "A late-created implementation plan can govern remaining work honestly when the prior-work boundary is explicit.",
+      "Event history should preserve imperfect process chronology instead of being rewritten to look cleaner.",
+      "Closed Work Units should stay closed; related later work needs its own appropriate scope.",
+      "Inspection representations are evidence layers with failure modes and may require direct-source verification.",
+      "Detailed Markdown masters and polished HTML products can be optimized for different readers without competing for authority.",
+      "Work Update summaries should be retained as durable masters rather than treated as disposable intermediate construction documents."
+    ],
+    "directionChange": "The day shifted from building the second Project Definition exemplar to testing the durability of the context system itself. That test redirected effort toward Registry routing, Resource sparsity, machine-reading safeguards, technical-document discoverability, and preservation of detailed Work Update masters.",
+    "narrativeSummary": "August 16 moved Klinswork from architecture-use into architecture-testing. The morning formally completed WORK-0001 and validated Task Assignment and Tracking → Work Queue as the second Project/System exemplar. The afternoon then used Two-Window Testing to expose context-routing, ontology, and spreadsheet-inspection weaknesses. Those findings produced a major Resource Registry cleanup, explicit context routing, a direct-cell evidence rule, stronger technical-document routing, and finally a new Work Update Summary master architecture designed for future AI reconstruction."
+  },
+  "projectDelta": {
+    "previousState": "As of August 15, Inventory Management → Inventory 3.0 was the first Project Definition exemplar, the source-aware Viewer and Record Profile architecture existed, the new Work Unit layer had just been initialized, and WORK-0001 was registered as planned work. Task Assignment and Tracking had not yet been carried through a complete formal Project Definition Work Unit, context-naive reconstruction had not been tested empirically against the second exemplar, and the current Resources map still contained many individual assets and local artifacts.",
+    "priorOutstandingWork": [
+      {
+        "workItemId": "WORK-0001",
+        "title": "Task Assignment and Tracking — Initial Project Definition",
+        "statusBefore": "planned",
+        "statusAfter": "completed / readiness closed",
+        "contribution": "Created and validated the second Project Definition exemplar and Work Queue current-state System layer.",
+        "evidenceSectionAnchors": [
+          "#7-work-0001--formal-project-definition-work",
+          "#9-validation-testing-and-confidence"
+        ],
+        "notes": "Formal completion recorded by WUA-0010 at 10:49."
+      },
+      {
+        "workItemId": "",
+        "title": "Context-naive Project resume test",
+        "statusBefore": "recommended future test from August 15",
+        "statusAfter": "begun and materially operationalized as 2WT",
+        "contribution": "2WT001 and 2WT002 exposed routing, ontology, and inspection-layer defects.",
+        "evidenceSectionAnchors": [
+          "#13-two-window-testing-and-context-restoration"
+        ],
+        "notes": "Further 2WT cases remain valuable."
+      },
+      {
+        "workItemId": "",
+        "title": "Registry routing and current-context reconciliation",
+        "statusBefore": "broad current Resource map with stale/duplicative/local entries",
+        "statusAfter": "substantially reconciled; 25 current Resources remain",
+        "contribution": "Added context routing, inspection safeguards, direct current routes, and large-scale pruning.",
+        "evidenceSectionAnchors": [
+          "#10-resource-registry-and-activity-effects"
+        ],
+        "notes": "RES-047 and some stale route references remain to reconcile."
+      }
+    ],
+    "completedItems": [
+      {
+        "workItemId": "WORK-0001",
+        "title": "Complete second Project Definition exemplar",
+        "description": "Task Assignment and Tracking Project package and Work Queue System documentation package completed and validated.",
+        "evidenceSectionAnchors": [
+          "#7-work-0001--formal-project-definition-work"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Project-local implementation-plan companion support",
+        "description": "Viewer builder 2.0.0-draft.3 added and validated parallel implementation-plans companion inference.",
+        "evidenceSectionAnchors": [
+          "#6-detailed-work-chronology",
+          "#12-architecture-and-documentation-effects"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Formal validation and architecture reconciliation",
+        "description": "Stage 6 validation passed; ACT-0081 through ACT-0084 and ARCH-005 preserved durable consequences.",
+        "evidenceSectionAnchors": [
+          "#9-validation-testing-and-confidence"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Registry context-routing and inspection safeguards",
+        "description": "ACT-0091 and ACT-0092 added the Context Routing Index and direct-cell verification warning.",
+        "evidenceSectionAnchors": [
+          "#10-resource-registry-and-activity-effects",
+          "#13-two-window-testing-and-context-restoration"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Resource Registry pruning",
+        "description": "23 current Resource rows were retired while preserving underlying artifacts and historical IDs.",
+        "evidenceSectionAnchors": [
+          "#10-resource-registry-and-activity-effects"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Work Update Summary master architecture",
+        "description": "Established detailed Markdown master, structured sidecar, downstream HTML, and created a specialized JSON template.",
+        "evidenceSectionAnchors": [
+          "#12-architecture-and-documentation-effects",
+          "#15-resulting-state"
+        ]
+      }
+    ],
+    "partiallyCompletedItems": [
+      {
+        "workItemId": "RES-047",
+        "title": "Retire Work Queue technical manual from global Resource routing",
+        "completedPortion": "Work Queue documentation now directly exposes and links the technical manual without requiring RES-047.",
+        "remainingPortion": "Remove RES-047 from the live Resources table and append the next Activity entry after live-tail verification.",
+        "evidenceSectionAnchors": [
+          "#10-resource-registry-and-activity-effects",
+          "#16-remaining-work-and-open-determinations"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Work Queue README path/name reconciliation",
+        "completedPortion": "README content was reconciled for current technical/resource routing.",
+        "remainingPortion": "Reconcile current physical filename work-queue-README.md with semantic links expecting README.md.",
+        "evidenceSectionAnchors": [
+          "#8-decisions-deviations-problems-and-discoveries",
+          "#16-remaining-work-and-open-determinations"
+        ]
+      },
+      {
+        "workItemId": "",
+        "title": "Root Documentation README reconciliation",
+        "completedPortion": "Stale sections were identified and a replacement/update was previously drafted.",
+        "remainingPortion": "Apply the update through a write-capable repository route and verify bootstrap behavior.",
+        "evidenceSectionAnchors": [
+          "#8-decisions-deviations-problems-and-discoveries",
+          "#16-remaining-work-and-open-determinations"
+        ]
+      }
+    ],
+    "stillOpenItems": [
+      {
+        "workItemId": "",
+        "title": "Permanent Project/System identity allocation",
+        "description": "Project Registry/System Identity and permanent PROJ/SYS allocation remain intentionally unresolved.",
+        "reasonStillOpen": "The architecture is still collecting exemplar evidence and should not freeze unsupported identity rules."
+      },
+      {
+        "workItemId": "",
+        "title": "Formal Relationship Registry",
+        "description": "Project/System/shared-resource relationships still lack a dedicated formal Relationship Registry.",
+        "reasonStillOpen": "Outside WORK-0001 scope and requires its own architecture work."
+      },
+      {
+        "workItemId": "",
+        "title": "Additional Two-Window Testing",
+        "description": "Test source selection, dependency discovery, current/future authority, and technical-document routing under modification tasks.",
+        "reasonStillOpen": "2WT001 and 2WT002 improved the system but did not exhaust context-restoration failure modes."
+      },
+      {
+        "workItemId": "",
+        "title": "Generate downstream August 16 HTML Work Update",
+        "description": "Create the human-facing HTML from the detailed Markdown master.",
+        "reasonStillOpen": "The master and sidecar are being created before the downstream presentation."
+      }
+    ],
+    "newlyDiscoveredItems": [
+      {
+        "workItemId": "",
+        "title": "Spreadsheet representation 443 defect",
+        "description": "Serialized/table inspection can return values not present in literal/effective cells.",
+        "source": "2WT/Registry inspection and direct-cell verification; ACT-0092."
+      },
+      {
+        "workItemId": "",
+        "title": "Sparse Resource routing requirement",
+        "description": "The current Resources tab works better as a global routing/context map than as an exhaustive artifact catalog.",
+        "source": "2WT002 and post-test Registry cleanup."
+      },
+      {
+        "workItemId": "",
+        "title": "Missing durable Work Update Summary master family",
+        "description": "Earlier summaries had been used to build HTML but were not consistently retained as durable master records.",
+        "source": "Review of workflow history and absence of a specialized retained-summary family/template."
+      },
+      {
+        "workItemId": "",
+        "title": "GitHub connector write limitation",
+        "description": "Connected GitHub repository reads work, but contents/branch write attempts return integration-level 403.",
+        "source": "Direct connector attempts during Work Queue README reconciliation."
+      },
+      {
+        "workItemId": "",
+        "title": "Work Queue README physical-name drift",
+        "description": "Current repository listing shows work-queue-README.md while existing routes expect README.md.",
+        "source": "Current GitHub directory inspection after manual replacement workflow."
+      }
+    ],
+    "deferredItems": [
+      {
+        "workItemId": "",
+        "title": "System Identity Entity Record",
+        "reasonDeferred": "WORK-0001 deliberately tested System documentation before freezing System Identity semantics.",
+        "reconsiderAfter": "Additional exemplars and explicit System Identity design review."
+      },
+      {
+        "workItemId": "",
+        "title": "Relationship Registry implementation",
+        "reasonDeferred": "Outside the bounded Project Definition Work Unit.",
+        "reconsiderAfter": "Project/System identity and relationship predicate design are sufficiently mature."
+      },
+      {
+        "workItemId": "",
+        "title": "Broad Work Queue feature development",
+        "reasonDeferred": "WORK-0001 was documentation/architecture work, not feature implementation.",
+        "reconsiderAfter": "A new bounded Work Unit is selected from the Work Queue roadmap."
+      }
+    ],
+    "supersededItems": [],
+    "resultingState": "WORK-0001 is completed and closed; Task Assignment and Tracking is the second validated Project Definition exemplar; Work Queue has separate current-state and future-state System documentation; Viewer companion discovery supports the Project-local implementation-plan pattern; the Registry README contains explicit context routing and a spreadsheet inspection safeguard; 25 Resources remain current after 23 retirements; 2WT is an active context-restoration method; technical-manual discoverability no longer conceptually depends on RES-047; and a detailed Work Update Summary master plus downstream sidecar/HTML model is now established.",
+    "roadmapChangeSummary": "The day's direction moved beyond the August 15 recommendation to perform one prospective Project Definition test. That test completed, and the roadmap focus shifted toward context-restoration quality, sparse global routing, evidence-layer verification, remaining Registry reconciliation, and continued 2WT before broader identity/relationship work.",
+    "revisedNextSteps": [
+      {
+        "sequence": 1,
+        "workItemId": "RES-047",
+        "title": "Retire RES-047 from the current Registry",
+        "description": "Live-read Resources and Activities tail, remove the current row, append the next Activity, and verify cells.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 2,
+        "workItemId": "",
+        "title": "Reconcile Work Queue README filename/routing",
+        "description": "Restore or formally reconcile README.md path semantics after the manual upload workflow.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 3,
+        "workItemId": "",
+        "title": "Continue Two-Window Testing",
+        "description": "Test source selection, non-obvious dependencies, current/future authority, and modification preconditions.",
+        "priority": "high",
+        "status": "planned"
+      },
+      {
+        "sequence": 4,
+        "workItemId": "",
+        "title": "Generate August 16 Work Update HTML",
+        "description": "Create the polished human-facing presentation from the Markdown master and this structured sidecar.",
+        "priority": "medium",
+        "status": "planned"
+      },
+      {
+        "sequence": 5,
+        "workItemId": "",
+        "title": "Place new Work Update Summary template in canonical profile authority",
+        "description": "Review and add work-update-summary-template-1.0-draft.json to the Record Profile/template architecture without registering it as a global Resource solely because it is useful.",
+        "priority": "medium",
+        "status": "planned"
+      }
+    ]
+  },
+  "audienceViews": {
+    "supervisor": {
+      "readingPathLabel": "Supervisor reading path",
+      "plainLanguageSummary": "This update primarily documents Klinswork's internal project/documentation architecture: a formal Task Assignment and Tracking Project Definition was completed, Work Queue documentation was clarified, and the documentation/registry system was tested and cleaned up. It does not represent a change to institutional supervisory authority or require staff action.",
+      "operationalImpact": "Indirect: clearer Work Queue, location, employee, inventory, and documentation routing improves the reliability of the personal Klinswork support system used to understand and document housekeeping work.",
+      "currentStatus": "Documentation/architecture work substantially completed for WORK-0001; follow-up cleanup/testing remains.",
+      "actionRequired": {
+        "required": false,
+        "description": "No supervisor action is required by this documentation update."
+      },
+      "risksOrLimitations": [
+        "Klinswork is not an official NMBHI system of record.",
+        "Detailed current Work Queue runtime behavior still requires source/deployment verification when consequential.",
+        "Some post-closure documentation routing cleanup remains."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "No staff-facing rollout is implied; continue internal documentation/context validation.",
+      "callouts": []
+    },
+    "general": {
+      "summary": "Klinswork successfully completed a second formal Project Definition, then tested whether a fresh AI context could understand the documentation. Those tests led to a simpler Resource Registry, better routing instructions, a machine-reading safeguard, and a new rule that detailed Markdown Work Update summaries should be preserved as master records.",
+      "keyPoints": [
+        "WORK-0001 completed and closed.",
+        "Task Assignment and Tracking became the second validated Project Definition exemplar.",
+        "Work Queue current-state documentation was separated from future roadmap intent.",
+        "Two-Window Testing exposed real context-restoration weaknesses and directly changed the architecture.",
+        "The Resources map was reduced from 48 pre-cleanup rows to 25 current Resources.",
+        "The detailed Markdown Work Update Summary is now the durable master; HTML is downstream presentation."
+      ]
+    },
+    "technical": {
+      "summary": "The work exercised Klinswork's Work Unit, Project Definition, Documentation Viewer, Resource Registry, and retrospective documentation layers end-to-end. Builder 2.0.0-draft.3 added Project-local implementation-plan companion inference; the validation manifest contained 74 valid / 0 invalid records; WUA history carried WORK-0001 through activation and closure; 2WT drove ACT-0091/0092 and a 23-row Resource retirement pass; direct technical-manual routing replaced the conceptual need for RES-047; and a specialized Work Update Summary template was created.",
+      "keyPoints": [
+        "Implementation-plan sidecar architecture reached 3.2-draft Work Unit/session semantics.",
+        "WUA-0003 and WUA-0004 preserve initiation versus activation.",
+        "WUA-0010 records WORK-0001 completion at 10:49.",
+        "ACT-0082 records Viewer builder Project-local companion inference.",
+        "ACT-0091 records the Registry Context Routing Index.",
+        "ACT-0092 records the serialized-spreadsheet 443 safeguard.",
+        "ACT-0085 through ACT-0111 include the major Registry cleanup and routing reconciliations.",
+        "Current Activity tail at master cutoff is ACT-0111.",
+        "Current Resource count at master cutoff is 25.",
+        "Work Update HTML has not yet been generated."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Task Assignment and Tracking is the durable Project; Work Queue is its principal known System and may change independently.",
+      "Work Queue current-state documentation must remain distinct from roadmap intent.",
+      "Work Queue deep technical detail can be routed through System documentation without requiring a permanent global Resource entry."
+    ],
+    "generalLessons": [
+      "Use independent-context tests to validate documentation quality.",
+      "Preserve real chronology even when planning/process infrastructure arrives late.",
+      "Separate session initiation from activation when a gate remains unsatisfied.",
+      "Keep global Resource routing sparse and semantically purposeful.",
+      "Do not infer Project/System identity from Resource routing or physical repository layout.",
+      "Verify underlying spreadsheet cells when inspection representations produce unexpected values.",
+      "Treat closed Work Units as closed; related later work needs its own scope.",
+      "Preserve detailed Markdown work summaries as durable masters for future AI reconstruction."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Context exists but is hard for a fresh session to route correctly.",
+        "pattern": "Large systems accumulate enough documents and Resources that discoverability alone is insufficient.",
+        "projectsObservedIn": [
+          "Documentation",
+          "Task Assignment and Tracking"
+        ]
+      },
+      {
+        "problem": "Planning/process structures are created after real work has begun.",
+        "pattern": "Bootstrap-era work outruns the documentation machinery intended to govern it.",
+        "projectsObservedIn": [
+          "Documentation",
+          "Task Assignment and Tracking"
+        ]
+      },
+      {
+        "problem": "Current-state facts and historical/planning statements become intermingled.",
+        "pattern": "Roadmaps, creation-time annotations, and technical histories can be mistaken for current truth.",
+        "projectsObservedIn": [
+          "Documentation",
+          "Task Assignment and Tracking",
+          "Inventory Management"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Two-Window Testing for Context Restoration",
+        "description": "Reusable method for testing whether a context-naive Other Window can reconstruct Projects, Systems, Resources, current work, authorities, and dependencies from durable documentation.",
+        "suggestedDestination": "Documentation lessons / context-restoration methods",
+        "supportingSectionAnchors": [
+          "#13-two-window-testing-and-context-restoration"
+        ]
+      },
+      {
+        "title": "Sparse Resource Registry Routing Principle",
+        "description": "Register globally only when removal would cause a context-naive session to lose an important route, authority, operational dependency, or entry point.",
+        "suggestedDestination": "Resource Registry architecture / Documentation lessons",
+        "supportingSectionAnchors": [
+          "#10-resource-registry-and-activity-effects"
+        ]
+      },
+      {
+        "title": "Direct-Cell Verification When Spreadsheet Representations Disagree",
+        "description": "Machine-readable spreadsheet representations can contain values not present in the literal/effective cells; unexpected IDs/statuses/links require direct-cell verification.",
+        "suggestedDestination": "Documentation / data-integrity lessons",
+        "supportingSectionAnchors": [
+          "#8-decisions-deviations-problems-and-discoveries",
+          "#13-two-window-testing-and-context-restoration"
+        ]
+      },
+      {
+        "title": "Reconstructed-Continuation Planning",
+        "description": "Pattern for introducing a formal implementation plan after some work has already occurred without rewriting history.",
+        "suggestedDestination": "Work Unit / implementation planning methods",
+        "supportingSectionAnchors": [
+          "#5-intended-work-and-governing-plan",
+          "#7-work-0001--formal-project-definition-work"
+        ]
+      },
+      {
+        "title": "Work Update Summary as Retrospective Master",
+        "description": "Preserve the detailed Markdown summary as the durable master for future AI reconstruction; derive sidecar and HTML downstream.",
+        "suggestedDestination": "Record Profile Library / Work Update documentation architecture",
+        "supportingSectionAnchors": [
+          "#12-architecture-and-documentation-effects"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "Project identity != name != hierarchy != System != application != Resource != deployment.",
+        "changeType": "confirmed",
+        "explanation": "The second Project Definition exemplar and 2WT reinforced the ontology under real routing pressure."
+      },
+      {
+        "rule": "A sidecar structures a human-readable source; it does not replace the source.",
+        "changeType": "confirmed",
+        "explanation": "Project/System/roadmap and Work Update architecture continued to preserve source/companion separation."
+      },
+      {
+        "rule": "Current Work Unit state belongs to Work Units; material history belongs to WUAs.",
+        "changeType": "confirmed",
+        "explanation": "WORK-0001 activation, validation, reconciliation, and closure were preserved through distinct WUA events."
+      },
+      {
+        "rule": "A Resource is globally registered because of independent routing/authority/dependency value, not merely because an artifact exists.",
+        "changeType": "revised/strengthened",
+        "explanation": "2WT and the 48-to-25 cleanup converted this from a loose preference into a practical Registry design rule."
+      },
+      {
+        "rule": "Unexpected serialized spreadsheet values must be verified against underlying cells.",
+        "changeType": "new",
+        "explanation": "The confirmed 443 defect required a permanent evidence-layer safeguard."
+      },
+      {
+        "rule": "Work Update Summary Markdown is the canonical retrospective master; HTML is downstream presentation.",
+        "changeType": "new/clarified",
+        "explanation": "The missing preserved-summary layer was recognized as a documentation gap and formalized today."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "work-update-identity",
+      "title": "Work Update Identity",
+      "anchor": "#1-work-update-identity",
+      "contentSummary": "Identifies the reporting period, major Projects/Systems/Resources, WORK-0001/WUA/Activity tails, and semantic placement.",
+      "narrativeRole": "orientation and identity",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "purpose-and-reporting-boundary",
+      "title": "Purpose and Reporting Boundary",
+      "anchor": "#2-purpose-and-reporting-boundary",
+      "contentSummary": "Defines what the update covers, excludes, and which underlying records remain authoritative.",
+      "narrativeRole": "scope and authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "executive-summary",
+      "title": "Executive Summary",
+      "anchor": "#3-executive-summary",
+      "contentSummary": "Explains the full daily arc from formal Project Definition through 2WT, Registry redesign, technical routing, and Work Update master architecture.",
+      "narrativeRole": "high-level retrospective",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "starting-state",
+      "title": "Starting State",
+      "anchor": "#4-starting-state",
+      "contentSummary": "Reconstructs the August 15 baseline, new Work Unit architecture, pre-plan work, broad Registry state, and untested context-restoration assumptions.",
+      "narrativeRole": "baseline",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "intended-work",
+      "title": "Intended Work and Governing Plan",
+      "anchor": "#5-intended-work-and-governing-plan",
+      "contentSummary": "Summarizes WORK-0001 goal, reconstructed-continuation plan, stages, non-goals, and evidence discipline.",
+      "narrativeRole": "planned work",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "chronology",
+      "title": "Detailed Work Chronology",
+      "anchor": "#6-detailed-work-chronology",
+      "contentSummary": "Preserves the material timeline from ACT-0080 through formal closure, 2WT, Registry cleanup, and Work Update template creation.",
+      "narrativeRole": "causal chronology",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "work-0001",
+      "title": "WORK-0001 — Formal Project Definition Work",
+      "anchor": "#7-work-0001--formal-project-definition-work",
+      "contentSummary": "Interprets the Work Unit state, WUA sequence, durable Project/System outputs, evidence level, and closure boundary.",
+      "narrativeRole": "formal bounded work",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "decisions-problems-discoveries",
+      "title": "Decisions, Deviations, Problems, and Discoveries",
+      "anchor": "#8-decisions-deviations-problems-and-discoveries",
+      "contentSummary": "Preserves reconstructed-continuation, sparse Registry, 443, GitHub 403, technical-manual routing, and other reasoning.",
+      "narrativeRole": "decision and failure analysis",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "validation",
+      "title": "Validation, Testing, and Confidence",
+      "anchor": "#9-validation-testing-and-confidence",
+      "contentSummary": "Records T-01 through T-09, manifest results, context-naive qualification, technical-manual discoverability, and confidence limits.",
+      "narrativeRole": "verification",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "registry-effects",
+      "title": "Resource Registry and Activity Effects",
+      "anchor": "#10-resource-registry-and-activity-effects",
+      "contentSummary": "Indexes ACT-0080 through ACT-0111, explains the 23 retirements, 25 current Resources, retained routes, and RES-047 status.",
+      "narrativeRole": "Registry delta",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Sparse Resource Registry Routing Principle"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "project-system-delta",
+      "title": "Project and System Delta",
+      "anchor": "#11-project-and-system-delta",
+      "contentSummary": "Compares starting/resulting state for WORK-0001, Task Assignment and Tracking, Work Queue, Viewer, Registry, and Work Update architecture.",
+      "narrativeRole": "before/after delta",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "architecture-documentation-effects",
+      "title": "Architecture and Documentation Effects",
+      "anchor": "#12-architecture-and-documentation-effects",
+      "contentSummary": "Explains template/profile changes, builder 2.0.0-draft.3, ARCH-005, context routing, technical routing, and Work Update master architecture.",
+      "narrativeRole": "architecture interpretation",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Work Update Summary as Retrospective Master"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "two-window-testing",
+      "title": "Two-Window Testing and Context Restoration",
+      "anchor": "#13-two-window-testing-and-context-restoration",
+      "contentSummary": "Defines 2WT/OW, records findings from 2WT001 and 2WT002, and proposes next context-restoration tests.",
+      "narrativeRole": "context-restoration testing",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Two-Window Testing for Context Restoration"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "knowledge-produced",
+      "title": "Knowledge Produced",
+      "anchor": "#14-knowledge-produced",
+      "contentSummary": "Preserves reusable lessons about context testing, sparse routing, event/state separation, authority, and Work Update masters.",
+      "narrativeRole": "knowledge extraction",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "resulting-state",
+      "title": "Resulting State",
+      "anchor": "#15-resulting-state",
+      "contentSummary": "Describes actual end-of-master state for WORK-0001, Project/System docs, Viewer, Registry, technical manual, and Work Update architecture.",
+      "narrativeRole": "current resulting state",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "remaining-work",
+      "title": "Remaining Work and Open Determinations",
+      "anchor": "#16-remaining-work-and-open-determinations",
+      "contentSummary": "Separates pending RES-047 retirement, README filename cleanup, root README, 2WT, HTML generation, and template placement from completed work.",
+      "narrativeRole": "future work",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "continuation-point",
+      "title": "Continuation Point",
+      "anchor": "#17-continuation-point",
+      "contentSummary": "Provides a context-naive reading order, expected current state, next bounded action, and exact handoff statement.",
+      "narrativeRole": "handoff",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "references",
+      "title": "Important Artifacts and References",
+      "anchor": "#18-important-artifacts-and-references",
+      "contentSummary": "Lists Registry, Work Unit, plan, Project/System records, technical manual, Viewer resources, and Work Update artifacts.",
+      "narrativeRole": "traceability",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "provenance",
+      "title": "Provenance and Interpretation Limits",
+      "anchor": "#19-provenance-and-interpretation-limits",
+      "contentSummary": "Separates current-state, historical, planning, and retrospective evidence and defines the 14:18 coverage boundary.",
+      "narrativeRole": "evidence discipline",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "html-projection",
+      "title": "Downstream HTML Projection Notes",
+      "anchor": "#20-downstream-html-projection-notes",
+      "contentSummary": "Defines the human-facing HTML narrative, timeline, before/after, 2WT, Registry-cleanup graphics, color semantics, and compression rules.",
+      "narrativeRole": "presentation guidance",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "completion-check",
+      "title": "Work Update Completion Check",
+      "anchor": "#21-work-update-completion-check",
+      "contentSummary": "Checks narrative, authority, temporal, detail, and downstream readiness while recording remaining sidecar/HTML/repository tasks.",
+      "narrativeRole": "quality control",
+      "projectRelevance": {
+        "primaryProjectContribution": "Contributes to Documentation architecture, durable context, or retrospective reconstruction.",
+        "relatedProjectContributions": [
+          {
+            "projectId": "",
+            "contribution": "Provides Task Assignment and Tracking / Work Queue evidence or interpretation where applicable."
+          }
+        ]
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": "This Work Update is primarily internal Klinswork architecture/documentation rather than a supervisor-directed report."
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "Google Sheets",
+      "Google Docs",
+      "Google Apps Script",
+      "GitHub",
+      "GitHub Pages",
+      "ChatGPT"
+    ],
+    "apps": [
+      "Work Queue",
+      "Klinswork Documentation Viewer",
+      "Klinswork Resource Registry"
+    ],
+    "scripts": [
+      "documentation-viewer-manifest.py"
+    ],
+    "languages": [
+      "Markdown",
+      "JSON",
+      "Python"
+    ],
+    "services": [
+      "Google Drive",
+      "Google Sheets",
+      "Google Docs",
+      "GitHub repository hosting",
+      "GitHub Pages",
+      "connected GitHub integration",
+      "connected Google Drive integration"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Klinswork Resource Registry workbook — RES-043",
+      "Work Queue data workbook — RES-003",
+      "Employees workbook — RES-013",
+      "Shared Locations workbook — RES-010"
+    ],
+    "files": [
+      "work-update-summary-08-16-2026.md",
+      "work-update-summary-template-1.0-draft.json",
+      "implementation-plan-project-definition.md",
+      "implementation-plan-project-definition-sidecar.json",
+      "Task Assignment and Tracking/project-identity.json",
+      "Task Assignment and Tracking/README.md",
+      "Task Assignment and Tracking/summaries/project-summary.md",
+      "Task Assignment and Tracking/sidecars/project-summary-sidecar.json",
+      "Work Queue/summaries/system-summary.md",
+      "Work Queue/summaries/work-queue-roadmap.md",
+      "Work Queue/sidecars/system-summary-sidecar.json",
+      "Work Queue/sidecars/work-queue-roadmap-sidecar.json",
+      "Work Queue/work-queue-README.md",
+      "documentation-viewer-manifest.json",
+      "documentation-viewer-manifest.py",
+      "documentation-viewer-sources.json"
+    ],
+    "integrations": [
+      "Project-local sidecar → implementation-plans companion resolution",
+      "Task Assignment and Tracking → Work Queue Project/System documentation routing",
+      "Work Queue → shared Locations RES-010",
+      "Work Queue → employee/personnel workbook RES-013",
+      "Documentation Viewer source registry → manifest builder → generated manifest → Viewer",
+      "Resource Registry Resources → Activities provenance",
+      "Work Units → Work Unit Activities provenance",
+      "Work Queue documentation → direct technical manual route"
+    ],
+    "apis": [
+      "GitHub contents/branch APIs via connected integration — read succeeded; write attempts returned 403",
+      "Google Drive/Sheets connected data access used for live Registry inspection"
+    ],
+    "versions": [
+      "Documentation Viewer manifest builder 2.0.0-draft.3",
+      "implementation-plan sidecar schema 3.2-draft / profile 1.2",
+      "Work Implementation Session template 1.1-draft",
+      "Work Update Summary template 1.0-draft",
+      "work-update sidecar schema 3.0-draft / profile 1.0"
+    ],
+    "tests": [
+      {
+        "name": "T-01 Repository structure",
+        "type": "Project Definition validation",
+        "result": "pass",
+        "notes": "Required Project/System package structure validated during WORK-0001.",
+        "statusBasis": "WUA-0008 formal validation matrix"
+      },
+      {
+        "name": "T-02 JSON validation",
+        "type": "structured-record validation",
+        "result": "pass",
+        "notes": "Project/System/sidecar JSON validation passed.",
+        "statusBasis": "WUA-0008 formal validation matrix"
+      },
+      {
+        "name": "T-03 Project Summary companion",
+        "type": "Viewer companion resolution",
+        "result": "pass",
+        "notes": "Project Summary sidecar resolved to the correct Markdown companion.",
+        "statusBasis": "WUA-0008"
+      },
+      {
+        "name": "T-04 Work Queue System Summary companion",
+        "type": "Viewer companion resolution",
+        "result": "pass",
+        "notes": "System Summary sidecar resolved correctly.",
+        "statusBasis": "WUA-0008"
+      },
+      {
+        "name": "T-05 Roadmap companion preservation",
+        "type": "Viewer semantic validation",
+        "result": "pass",
+        "notes": "Work Queue roadmap sidecar remained linked to roadmap Markdown rather than current-state Summary.",
+        "statusBasis": "WUA-0008"
+      },
+      {
+        "name": "T-06 Entity Record handling",
+        "type": "record-family validation",
+        "result": "pass",
+        "notes": "project-identity.json remained an Entity Record rather than being forced into sidecar discovery semantics.",
+        "statusBasis": "WUA-0008"
+      },
+      {
+        "name": "T-07 Viewer discovery",
+        "type": "manifest validation",
+        "result": "pass",
+        "notes": "Validation manifest recorded 74 valid records, 0 invalid, and 6 Projects-source records.",
+        "statusBasis": "WUA-0008 / ACT-0083"
+      },
+      {
+        "name": "T-08 Viewer semantics",
+        "type": "presentation/meaning validation",
+        "result": "pass",
+        "notes": "Project Summary, System Summary, and System Roadmap remained semantically distinguishable.",
+        "statusBasis": "WUA-0008"
+      },
+      {
+        "name": "T-09 Context-naive resume",
+        "type": "routing validation",
+        "result": "pass-with-later-refinement",
+        "notes": "Structural route existed; later 2WT showed efficiency and ontology precision still needed improvement.",
+        "statusBasis": "WUA-0008 plus post-closure 2WT"
+      },
+      {
+        "name": "2WT001",
+        "type": "context-restoration experiment",
+        "result": "partial-success",
+        "notes": "Context was recoverable but orientation was slower than desired; test contributed to routing and spreadsheet-inspection corrections.",
+        "statusBasis": "post-WORK-0001 test and ACT-0091/ACT-0092"
+      },
+      {
+        "name": "2WT002",
+        "type": "context-restoration experiment",
+        "result": "improved-with-ontology-finding",
+        "notes": "Orientation was faster, but Project/System concepts were still over-assimilated into the Resource model.",
+        "statusBasis": "post-WORK-0001 test"
+      },
+      {
+        "name": "Spreadsheet direct-cell verification",
+        "type": "data-integrity validation",
+        "result": "pass",
+        "notes": "Confirmed that apparent 443 values were absent from literal/effective workbook cells.",
+        "statusBasis": "direct cell verification summarized by ACT-0092"
+      },
+      {
+        "name": "Work Queue technical manual discoverability",
+        "type": "context-routing validation",
+        "result": "pass",
+        "notes": "Project/System documentation exposes the deep technical manual directly without requiring RES-047.",
+        "statusBasis": "current Task Assignment and Tracking / Work Queue documentation review"
+      }
+    ],
+    "validation": {
+      "performed": true,
+      "result": "Formal WORK-0001 validation passed with non-blocking freshness notes that were reconciled before closure. Post-closure 2WT then exposed additional context-routing and machine-reading weaknesses, which produced ACT-0091/0092 and the subsequent Registry cleanup. This sidecar was generated from the authoritative August 16 Markdown master and parsed successfully as JSON.",
+      "notes": [
+        "WORK-0001 closure recorded by WUA-0010.",
+        "Current master coverage ends at 14:18; sidecar generation occurs afterward at 14:37.",
+        "RES-047 remains live in the Registry at the master cutoff and is not represented as already retired.",
+        "Work Update HTML has not yet been generated or published."
+      ]
+    }
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "sidecar-generated-html-not-yet-generated",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "From Formal Project Definition to Tested Context Architecture",
+    "listingDescription": "August 16 Klinswork Work Update covering WORK-0001, the second Project Definition exemplar, Work Queue System documentation, Two-Window Testing, Resource Registry redesign, and the new Work Update Summary master architecture.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": []
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": []
+  },
+  "links": {
+    "externalUrls": [
+      "https://docs.google.com/document/d/12ejlkcZEs6B7F-Ti2t8uO_uLzMUrI4qNqo77ZkswbaQ/edit"
+    ],
+    "sourceUrls": [
+      "https://docs.google.com/spreadsheets/d/14_bNqnExG6_4Omg0cEqENm2hGivz5qqvWEk9IJaGl_A/edit",
+      "https://github.com/kevinlinstrum001/documentation/blob/main/documents/Klinswork%20Documentation%20Viewer/projects/operations/Task%20Assignment%20and%20Tracking/README.md",
+      "https://github.com/kevinlinstrum001/documentation/blob/main/documents/Klinswork%20Documentation%20Viewer/projects/operations/Task%20Assignment%20and%20Tracking/summaries/project-summary.md",
+      "https://github.com/kevinlinstrum001/documentation/blob/main/documents/Klinswork%20Documentation%20Viewer/projects/operations/Task%20Assignment%20and%20Tracking/systems/Work%20Queue/summaries/system-summary.md"
+    ],
+    "relatedDocumentUrls": [
+      "https://kevinlinstrum001.github.io/documentation/documents/Klinswork%20Documentation%20Viewer/json-viewer.html"
+    ],
+    "replacedUrls": []
+  },
+  "provenance": {
+    "sourceSummaryPath": "work-update-summary-08-16-2026.md",
+    "sourceConversationReference": "Current August 16, 2026 Klinswork Documentation conversation",
+    "sourceFiles": [
+      "work-update-summary-08-16-2026.md",
+      "work-update-sidecar-template-3.0-draft.json",
+      "work-update-summary-template-1.0-draft.json",
+      "implementation-plan-project-definition.md",
+      "implementation-plan-project-definition-sidecar.json",
+      "work-implementation-session-template.md",
+      "Task Assignment and Tracking/README.md",
+      "Task Assignment and Tracking/summaries/project-summary.md",
+      "Work Queue/summaries/system-summary.md",
+      "Work Queue/summaries/work-queue-roadmap.md",
+      "Work Queue/work-queue-README.md",
+      "References for Klinswork Tools and Data — Resources",
+      "References for Klinswork Tools and Data — Activities",
+      "References for Klinswork Tools and Data — Work Units",
+      "References for Klinswork Tools and Data — Work Unit Activities"
+    ],
+    "generatedBy": "OpenAI GPT-5.6 Sol",
+    "generatedTimestamp": "2026-08-16T14:37:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "unreviewed",
+    "interpretationNotes": [
+      "The authoritative narrative source for this sidecar is work-update-summary-08-16-2026.md.",
+      "The Work Update HTML is a downstream presentation product and does not yet exist at sidecar-generation time.",
+      "The master summary coverage ends at 14:18 America/Denver; sidecar generation occurred afterward at 14:37.",
+      "Documentation is used as the primary Project in this 3.0 sidecar because the update spans cross-project Documentation architecture; Task Assignment and Tracking is preserved explicitly as the formal subject Project of WORK-0001.",
+      "No permanent PROJ-### or SYS-### identifier is inferred or invented.",
+      "RES-047 is still current in the live Registry at the master cutoff; only its likely retirement and replacement by semantic Project/System routing are described.",
+      "The current GitHub Work Queue README content was observed under work-queue-README.md while other documentation still references README.md; this remains an open reconciliation item.",
+      "The 48-to-25 Resource change describes the current rows before versus after the recorded August 16 cleanup passes; underlying artifacts were not deleted by Registry retirement."
+    ],
+    "unresolvedQuestions": [
+      "When should RES-047 be retired from the live Resource Registry, and what ACT-#### will record that retirement?",
+      "Should the Work Queue file be restored to systems/Work Queue/README.md or should all routing be intentionally changed to work-queue-README.md?",
+      "When will the root Documentation README be reconciled through a write-capable GitHub workflow?",
+      "What additional 2WT cases are required before the context-restoration architecture is considered mature?",
+      "When will work-update-summary-template-1.0-draft.json be placed in the canonical Record Profile/template authority?",
+      "When will work-update-08-16-2026.html be generated and published from the master?",
+      "Should the Work Update sidecar profile receive a future 3.1 revision with first-class Work Unit/WUA/Activity/context-restoration blocks rather than representing those concepts indirectly through the current 3.0 fields?"
+    ]
+  }
+}
