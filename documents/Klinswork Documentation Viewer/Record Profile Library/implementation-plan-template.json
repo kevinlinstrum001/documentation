@@ -1,0 +1,764 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured authoring template for creating one authoritative human-readable implementation-plan.md document. It guides planning structure, temporal truth, Work Unit linkage, context resolution, stage design, acceptance criteria, planned tests, dependencies, risks, Registry/architecture reconciliation, and closure conditions without becoming an implementation-plan sidecar or execution record.",
+    "authorityRule": "The resulting implementation-plan.md is the authoritative human-readable intended-work record for the bounded body of work it describes. This JSON is only an authoring template. It does not become plan authority, current Work Unit authority, Work Unit Activity history, formal-session execution evidence, Project/System authority, Resource Registry authority, final summary, or Work Update authority.",
+    "companionRule": "After the implementation-plan.md is written, create its structured companion using implementation-plan-sidecar-template-3.2-draft.json or the current successor profile. The sidecar describes the plan; it does not replace it.",
+    "sessionRule": "A Work Implementation Session is the authoritative human-readable execution record for one bounded formal session. The implementation plan defines intended work; the session record documents what materially happened during execution.",
+    "workUnitRule": "When the plan is governed by a Work Unit, the Work Unit Registry remains authoritative for current Work Unit state and Work Unit Activities remain authoritative for timestamped material history. The plan may record a plan-time snapshot and activation conditions but must not compete with those authorities.",
+    "planningTruthRule": "Never represent work completed before plan creation as though it had been prospectively planned. Use reconstructed-continuation when a plan is created after substantive work has already begun, and record the planning boundary explicitly.",
+    "identityRule": "Never invent Project, System, Resource, Relationship, Work Unit, Work Unit Activity, Session, Run, Activity, or other durable identifiers. Use identifiers only when allocated by their authority; otherwise leave them blank and describe the unresolved state.",
+    "resourceResolutionPrinciple": "Declare semantic context requirements first. Resolve registered Resources through the Resource Registry using stable Resource IDs rather than embedding remembered or fragile physical URLs wherever a registered route exists.",
+    "evidenceRule": "Keep current-state evidence, historical evidence, and planning evidence distinct. A roadmap or older plan is evidence of intended direction, not proof of current implementation.",
+    "granularityRule": "An implementation plan should govern one coherent bounded body of work with a meaningful completion condition. Do not turn the plan into a project roadmap, backlog dump, keystroke script, or indefinite aspiration list.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, and _fieldNotes are intentional schema commentary."
+  },
+  "schemaVersion": "1.0-draft",
+  "profile": {
+    "profileType": "implementation-plan-authoring-template",
+    "profileVersion": "1.0",
+    "recordFamily": "authoring-template",
+    "templateFile": "implementation-plan-template-1.0-draft.json",
+    "outputDocumentType": "implementation-plan",
+    "outputFormat": "Markdown",
+    "defaultOutputNamePattern": "implementation-plan-{short-purpose}.md",
+    "structuredCompanionProfile": "implementation-plan-sidecar-template-3.2-draft.json",
+    "executionRecordTemplate": "work-implementation-session-template-1.1-draft.md"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "1.0-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "1.1",
+        "status": "planned",
+        "additions": [
+          "optional approval/review block if Klinswork later adopts formal plan approval",
+          "optional reusable controlled-vocabulary references for planningMode and planningRelation",
+          "optional machine-readable section IDs shared with implementation-plan sidecars",
+          "optional direct linkage conventions for documentation-run or execution-evidence records"
+        ],
+        "changes": [
+          "evaluate whether Work Unit context should move into a shared reusable authoring block",
+          "evaluate whether plan-stage fields should distinguish mandatory, optional, and conditional stages",
+          "evaluate whether Resource-resolution snapshots belong in the human-readable plan or only in the sidecar"
+        ],
+        "openQuestions": [
+          "Should all formal Work Units require an implementation plan, or only selected kinds/readiness states?",
+          "Should implementation-plan documents receive durable document IDs separate from Work Unit IDs?",
+          "Should the authoring template prescribe a universal stage numbering convention?",
+          "Should acceptance criteria and planned tests share a reusable cross-template schema?"
+        ]
+      }
+    ]
+  },
+  "outputContract": {
+    "authoritativeArtifact": "implementation-plan.md",
+    "authorityRole": "intended-bounded-work-authority",
+    "structuredCompanion": "implementation-plan-sidecar.json",
+    "executionArtifact": "work-implementation-session-*.md",
+    "historyAuthority": "Work Unit Activities",
+    "currentStateAuthority": "Work Unit Registry",
+    "rule": "Plan what should happen here. Record what actually happened in the Work Implementation Session and material Work Unit history. Do not rewrite the plan after execution merely to make it look as though events followed the original plan."
+  },
+  "planningModes": {
+    "allowed": [
+      {
+        "value": "prospective",
+        "useWhen": "The plan is created before the governed implementation work begins."
+      },
+      {
+        "value": "reconstructed-continuation",
+        "useWhen": "Substantive work already occurred before plan creation. Preserve prior work as historical starting state and govern only the remaining work from the explicit plan authority boundary forward."
+      },
+      {
+        "value": "revised-existing-plan",
+        "useWhen": "A prior implementation plan already exists and is being deliberately revised. Preserve the previous plan and record what changed rather than silently overwriting planning history."
+      }
+    ],
+    "default": "prospective",
+    "rule": "Choose the mode from evidence, not convenience."
+  },
+  "recommendedFrontMatter": {
+    "required": true,
+    "fields": [
+      {
+        "name": "document_type",
+        "default": "implementation-plan"
+      },
+      {
+        "name": "template_name",
+        "default": "implementation-plan-template-1.0-draft"
+      },
+      {
+        "name": "planning_mode",
+        "default": ""
+      },
+      {
+        "name": "status",
+        "default": "draft"
+      },
+      {
+        "name": "created",
+        "default": ""
+      },
+      {
+        "name": "updated",
+        "default": ""
+      },
+      {
+        "name": "work_unit_id",
+        "default": ""
+      },
+      {
+        "name": "primary_project",
+        "default": ""
+      },
+      {
+        "name": "target_system",
+        "default": ""
+      },
+      {
+        "name": "authority_boundary",
+        "default": ""
+      }
+    ],
+    "rule": "Do not populate IDs that have not been allocated. Front matter is useful indexing metadata and does not replace the narrative authority of the plan body or the current-state authority of registries."
+  },
+  "authoringModel": {
+    "planIdentity": {
+      "purpose": "Identify the plan without conflating plan identity with Project/System/Work Unit identity.",
+      "fields": {
+        "planTitle": "",
+        "shortPurpose": "",
+        "planningStatus": "draft",
+        "planningMode": "",
+        "createdTimestamp": "",
+        "updatedTimestamp": "",
+        "authorityBoundaryTimestamp": "",
+        "planDocumentPath": "",
+        "sidecarPath": ""
+      }
+    },
+    "workUnitContext": {
+      "required": "when the work is governed by a Work Unit",
+      "fields": {
+        "workUnitId": "",
+        "workUnitTitle": "",
+        "workUnitKind": "",
+        "workUnitGoal": "",
+        "workUnitCompletionRule": "",
+        "statusAtPlanCreation": "",
+        "readinessAtPlanCreation": "",
+        "formalSessionRequired": "",
+        "sessionRecordPath": "",
+        "implementationPlanRegisteredAtCreation": "",
+        "knownWuaIdsAtPlanCreation": []
+      },
+      "activationGate": {
+        "required": false,
+        "condition": "",
+        "satisfiedAtPlanCreation": false,
+        "expectedRegistryEffect": {
+          "status": "",
+          "readiness": ""
+        }
+      },
+      "rules": [
+        "The plan-time Work Unit state is a snapshot, not current-state authority.",
+        "Do not pre-allocate future WUA IDs.",
+        "Session initiation and session activation may be separate material events.",
+        "If plan linkage is an activation prerequisite, implementation must not be represented as active until the gate is satisfied."
+      ]
+    },
+    "purposeAndBoundary": {
+      "fields": {
+        "promptingNeed": "",
+        "goal": "",
+        "whyNow": "",
+        "planningScope": "",
+        "completionDefinition": "",
+        "inScope": [],
+        "outOfScope": [],
+        "nonGoals": []
+      },
+      "rule": "The plan should have one coherent intended outcome and a recognizable stopping point. Out-of-scope items should be named explicitly when they are plausible sources of scope creep."
+    },
+    "planningBoundary": {
+      "required": true,
+      "fields": {
+        "priorWorkExists": false,
+        "priorWorkSummary": "",
+        "priorWorkSources": [],
+        "planAppliesFrom": "",
+        "remainingWorkSummary": ""
+      },
+      "rule": "For prospective plans, this section can be brief. For reconstructed-continuation plans, it is mandatory and must clearly separate completed-before-plan work from work governed prospectively from the plan boundary."
+    },
+    "workPlacement": {
+      "purpose": "State where the work belongs semantically without deriving identity from repository location.",
+      "primaryProject": {
+        "projectId": "",
+        "projectName": "",
+        "relationshipToWork": "",
+        "authoritySource": ""
+      },
+      "systems": [
+        {
+          "systemId": "",
+          "systemName": "",
+          "relationshipToWork": "",
+          "authoritySource": ""
+        }
+      ],
+      "applicationsOrImplementations": [
+        {
+          "applicationId": "",
+          "applicationName": "",
+          "relationshipToWork": "",
+          "authoritySource": ""
+        }
+      ],
+      "relatedProjects": [
+        {
+          "projectId": "",
+          "projectName": "",
+          "relationshipType": "",
+          "relationshipToWork": ""
+        }
+      ],
+      "resources": [
+        {
+          "resourceId": "",
+          "resourceName": "",
+          "authorityRole": "",
+          "requiredFor": []
+        }
+      ],
+      "rules": [
+        "Project != System != Application/Implementation != Resource.",
+        "Physical repository path does not determine semantic ownership.",
+        "A shared Resource should remain shared rather than being duplicated into Project identity."
+      ]
+    },
+    "contextResolution": {
+      "strategy": "workflow-declared-registry-resolved",
+      "requirements": [
+        {
+          "requirementId": "CTX-01",
+          "requiredContext": "",
+          "purpose": "",
+          "authorityRole": "",
+          "preferredAuthority": "",
+          "resolvedResourceIds": [],
+          "status": "unresolved",
+          "notes": []
+        }
+      ],
+      "allowedStatuses": [
+        "unresolved",
+        "resolved",
+        "partially-resolved",
+        "not-required",
+        "blocked"
+      ],
+      "orientationSourcesToConsider": [
+        "Work Units Registry",
+        "relevant Work Unit Activities",
+        "controlled vocabulary / Definitions",
+        "Project Identity",
+        "Project README",
+        "Project Summary",
+        "System README",
+        "System Summary",
+        "System Roadmap when future direction is relevant",
+        "Resource Registry",
+        "current source/datastore/deployment when implementation truth matters",
+        "fresh repository tree when physical structure matters",
+        "relevant prior implementation plans",
+        "relevant recent Activities",
+        "Open Determinations"
+      ],
+      "rule": "Load context because it is required for the work, not merely because it exists."
+    },
+    "evidenceModel": {
+      "currentStateEvidence": [],
+      "historicalEvidence": [],
+      "planningEvidence": [],
+      "unverifiedOrInferredEvidence": [],
+      "rule": "The plan must not promote historical or planning material into current implementation truth. When current behavior matters, identify what must be verified live before implementation proceeds."
+    },
+    "startingState": {
+      "workUnitState": "",
+      "projectState": "",
+      "systemState": "",
+      "applicationOrImplementationState": "",
+      "repositoryState": "",
+      "resourceState": "",
+      "knownCompletedWork": [],
+      "knownOpenWork": [],
+      "uncertainties": [],
+      "rule": "Describe the state at the plan authority boundary, not an earlier conversational starting point."
+    },
+    "targetState": {
+      "desiredState": "",
+      "successDefinition": "",
+      "transitionSummary": "",
+      "explicitNonGoals": [],
+      "rule": "Describe the state the bounded work should leave behind. Do not turn this section into an unrestricted long-term roadmap."
+    },
+    "dependencies": [
+      {
+        "dependencyId": "",
+        "name": "",
+        "dependencyType": "",
+        "requiredForStages": [],
+        "description": "",
+        "status": "",
+        "ownerOrAuthority": "",
+        "risks": []
+      }
+    ],
+    "risks": [
+      {
+        "riskId": "",
+        "risk": "",
+        "likelihood": "",
+        "impact": "",
+        "mitigation": "",
+        "contingency": "",
+        "status": ""
+      }
+    ],
+    "implementationStages": [
+      {
+        "sequence": 1,
+        "stageId": "",
+        "title": "",
+        "planningRelation": "",
+        "objective": "",
+        "description": "",
+        "dependencies": [],
+        "actions": [],
+        "deliverables": [],
+        "evidenceRequired": [],
+        "plannedTests": [],
+        "exitCriteria": [],
+        "registryOrArchitectureEffectsToAssess": [],
+        "statusAtPlanCreation": ""
+      }
+    ],
+    "planningRelationAllowedValues": [
+      "completed-before-plan",
+      "in-progress-at-plan-creation",
+      "remaining-planned-work",
+      "conditional-future-work"
+    ],
+    "stageDesignRule": "Each stage should produce a coherent durable result or decision boundary. Do not split stages merely to mirror every file edit. For reconstructed-continuation plans, stages already completed before the plan must be labeled accordingly.",
+    "acceptanceCriteria": [
+      {
+        "criterionId": "AC-01",
+        "description": "",
+        "verificationMethod": "",
+        "required": true
+      }
+    ],
+    "plannedTests": [
+      {
+        "testId": "T-01",
+        "name": "",
+        "type": "",
+        "preconditions": [],
+        "steps": [],
+        "expectedResult": "",
+        "failureCondition": "",
+        "relatedAcceptanceCriteria": []
+      }
+    ],
+    "testRule": "Planned tests belong in the implementation plan. Actual execution results belong in the Work Implementation Session, machine-readable run/evidence where applicable, WUAs for material validation events, and later summaries.",
+    "implementationOrder": [
+      {
+        "sequence": 1,
+        "stageId": "",
+        "title": "",
+        "reason": "",
+        "gate": ""
+      }
+    ],
+    "stopAndReassessmentConditions": [
+      "Evidence contradicts the intended Project/System/Application/Resource placement.",
+      "A required authority cannot be resolved.",
+      "Continuing would require inventing a durable identifier.",
+      "The work materially expands beyond the declared scope.",
+      "A required architecture decision has not been made.",
+      "Current implementation truth cannot be distinguished from historical/planning evidence.",
+      "Validation shows that the approach is producing structurally incorrect results.",
+      "A required activation gate or dependency cannot be satisfied."
+    ],
+    "registryAndArchitectureReconciliation": {
+      "assessAtClosure": [
+        "Work Unit Registry",
+        "Work Unit Activities",
+        "Resource Registry / Activities",
+        "Project/System documentation",
+        "Architecture Changelog",
+        "Open Determinations",
+        "Record Profile Library / Registry",
+        "Viewer manifest/discovery infrastructure",
+        "roadmap/current-state authority separation"
+      ],
+      "rule": "The plan should say which authorities may need reconciliation, but actual changes are recorded only when they occur. Do not pre-allocate Activity, WUA, Project, System, Resource, or architecture identifiers."
+    },
+    "closureConditions": {
+      "planCompletionCondition": "",
+      "workUnitCompletionRelationship": "",
+      "requiredValidationBeforeClosure": [],
+      "requiredReconciliationBeforeClosure": [],
+      "handoffRequirements": [],
+      "rule": "A session may close without completing its Work Unit. A Work Unit may complete only when its own completion rule is satisfied. The plan should make that distinction explicit."
+    },
+    "continuation": {
+      "ifPlanCompletes": "",
+      "ifWorkRemains": "",
+      "candidateNextWork": [],
+      "contextNaiveResumeRequirements": []
+    }
+  },
+  "recommendedMarkdownStructure": {
+    "_comment": "These headings are the default human-readable implementation-plan.md architecture. Adapt them only when the work genuinely requires a different shape; preserve the semantic roles even if headings are combined.",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Plan Identity and Authority",
+        "include": [
+          "plan title",
+          "planning mode",
+          "created/updated timestamps",
+          "authority boundary",
+          "authoritative role",
+          "companion sidecar relationship"
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Purpose, Goal, and Completion Rule",
+        "include": [
+          "prompting need",
+          "bounded goal",
+          "why now",
+          "completion definition"
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Work Unit and Formal Session Relationship",
+        "include": [
+          "Work Unit identity if allocated",
+          "plan-time status/readiness",
+          "formal-session requirement",
+          "activation gate",
+          "known WUA references"
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Work Placement and Authority",
+        "include": [
+          "primary Project",
+          "target System",
+          "application/implementation if relevant",
+          "related Projects",
+          "Resources and authority roles"
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Planning Boundary and Prior Work",
+        "include": [
+          "planning mode",
+          "prior work",
+          "plan authority begins",
+          "remaining work"
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Starting State",
+        "include": [
+          "current Work Unit state",
+          "Project/System state",
+          "implementation state",
+          "physical state",
+          "uncertainties"
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Context and Evidence Requirements",
+        "include": [
+          "required context",
+          "authority sources",
+          "Resource resolution",
+          "current/historical/planning evidence distinction",
+          "live verification still required"
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Scope",
+        "include": [
+          "in scope",
+          "out of scope",
+          "non-goals"
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Target State",
+        "include": [
+          "desired state",
+          "success definition",
+          "transition summary"
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Implementation Stages",
+        "include": [
+          "stage sequence",
+          "planning relation",
+          "objective",
+          "actions",
+          "deliverables",
+          "dependencies",
+          "tests",
+          "exit criteria"
+        ]
+      },
+      {
+        "number": 11,
+        "title": "Dependencies and Risks",
+        "include": [
+          "dependencies",
+          "risk assessment",
+          "mitigations",
+          "contingencies"
+        ]
+      },
+      {
+        "number": 12,
+        "title": "Acceptance Criteria",
+        "include": [
+          "criterion IDs",
+          "observable success conditions",
+          "verification methods"
+        ]
+      },
+      {
+        "number": 13,
+        "title": "Planned Validation and Tests",
+        "include": [
+          "planned tests",
+          "preconditions",
+          "expected results",
+          "failure conditions"
+        ]
+      },
+      {
+        "number": 14,
+        "title": "Implementation Order and Gates",
+        "include": [
+          "stage order",
+          "reasons",
+          "activation/dependency gates"
+        ]
+      },
+      {
+        "number": 15,
+        "title": "Stop and Reassessment Conditions",
+        "include": [
+          "unsupported architecture",
+          "authority conflicts",
+          "scope expansion",
+          "validation failures"
+        ]
+      },
+      {
+        "number": 16,
+        "title": "Registry, Documentation, and Architecture Reconciliation",
+        "include": [
+          "authorities to assess",
+          "possible documentation changes",
+          "possible Registry/Activity effects",
+          "possible Architecture Changelog/Open Determination effects"
+        ]
+      },
+      {
+        "number": 17,
+        "title": "Closure Conditions and Handoff",
+        "include": [
+          "plan completion condition",
+          "Work Unit completion distinction",
+          "required validation",
+          "required reconciliation",
+          "context-naive continuation point"
+        ]
+      },
+      {
+        "number": 18,
+        "title": "Provenance and Interpretation Limits",
+        "include": [
+          "sources used",
+          "reconstruction notes",
+          "unverified assumptions",
+          "known limits"
+        ]
+      }
+    ]
+  },
+  "authoringGuidance": {
+    "detailRule": "Write enough detail that a context-naive future session can understand what was intended and why, but do not duplicate entire Project/System summaries or technical manuals. Route to authorities rather than copying them wholesale.",
+    "stageRule": "A stage should be meaningful enough to declare complete and should have explicit deliverables or exit criteria.",
+    "reconstructionRule": "For reconstructed-continuation plans, state what was already completed, what was in progress, and exactly where prospective plan authority begins.",
+    "futureStateRule": "Do not use the implementation plan as a substitute for a System Roadmap. Include only future state needed to define this bounded change.",
+    "revisionRule": "If the intended body of work materially changes, revise the plan deliberately and preserve the prior plan/version or record the deviation in execution. Do not silently edit history after the fact.",
+    "resourceRule": "Prefer stable Resource IDs and authority roles over copied URLs. Include a location only when useful as a plan-time resolution snapshot.",
+    "idRule": "Never invent identifiers to make the plan look complete."
+  },
+  "templateUseProcedure": [
+    {
+      "sequence": 1,
+      "step": "Confirm whether the intended work is bounded enough to justify an implementation plan and, when applicable, a Work Unit.",
+      "required": true
+    },
+    {
+      "sequence": 2,
+      "step": "Read the Work Unit current state and completion rule when a Work Unit already exists.",
+      "required": "when Work Unit exists"
+    },
+    {
+      "sequence": 3,
+      "step": "Choose the planning mode from evidence: prospective, reconstructed-continuation, or revised-existing-plan.",
+      "required": true
+    },
+    {
+      "sequence": 4,
+      "step": "Establish the planning authority boundary and preserve any prior work truthfully.",
+      "required": true
+    },
+    {
+      "sequence": 5,
+      "step": "Resolve the primary Project, target System/application, related Projects, and required Resources without inferring identity from paths.",
+      "required": true
+    },
+    {
+      "sequence": 6,
+      "step": "Declare the semantic context requirements and resolve them through appropriate authorities/Registry routes.",
+      "required": true
+    },
+    {
+      "sequence": 7,
+      "step": "Record the starting state at the plan boundary and distinguish current, historical, planning, and unverified evidence.",
+      "required": true
+    },
+    {
+      "sequence": 8,
+      "step": "Define scope, target state, dependencies, risks, stages, acceptance criteria, and planned tests.",
+      "required": true
+    },
+    {
+      "sequence": 9,
+      "step": "Define implementation order, gates, stop/reassessment conditions, and reconciliation responsibilities.",
+      "required": true
+    },
+    {
+      "sequence": 10,
+      "step": "Write the authoritative implementation-plan.md using the recommended Markdown structure.",
+      "required": true
+    },
+    {
+      "sequence": 11,
+      "step": "Validate the plan for temporal truth, authority separation, boundedness, testability, and unsupported IDs.",
+      "required": true
+    },
+    {
+      "sequence": 12,
+      "step": "Generate the structured implementation-plan sidecar from the completed Markdown plan using the current sidecar profile.",
+      "required": true
+    },
+    {
+      "sequence": 13,
+      "step": "Link/register the plan to the Work Unit and satisfy any activation gate through the appropriate Registry/WUA process; do not pre-allocate history.",
+      "required": "when governed by a Work Unit"
+    },
+    {
+      "sequence": 14,
+      "step": "Execute through the Work Implementation Session rather than recording actual execution back into the plan.",
+      "required": "when formal execution begins"
+    }
+  ],
+  "validation": {
+    "performed": false,
+    "result": "",
+    "requiredChecks": [
+      "The template is an authoring template, not an implementation-plan sidecar.",
+      "The resulting implementation-plan.md is explicitly identified as the intended-work authority.",
+      "Work Unit current-state authority remains with the Work Unit Registry.",
+      "Work Unit Activity history remains with Work Unit Activities.",
+      "Detailed execution remains with the Work Implementation Session.",
+      "The planning mode is explicit.",
+      "A reconstructed-continuation plan states a real planning authority boundary.",
+      "Work completed before plan creation is not represented as prospectively planned.",
+      "The primary Project/System/Application/Resource placement is not inferred from repository path alone.",
+      "Unknown durable IDs remain blank rather than being invented.",
+      "Context requirements are semantic and authority-oriented.",
+      "Current, historical, planning, and unverified evidence are distinguishable.",
+      "The plan has a bounded goal and meaningful completion condition.",
+      "In-scope and out-of-scope work are explicit.",
+      "Implementation stages have objectives, deliverables, dependencies where applicable, and exit criteria.",
+      "Stage planningRelation is used when reconstruction makes temporal placement relevant.",
+      "Acceptance criteria are observable.",
+      "Planned tests are prospective and distinguishable from executed tests.",
+      "Dependencies and material risks are visible.",
+      "Stop/reassessment conditions prevent unsupported scope or architecture expansion.",
+      "Potential Registry/architecture reconciliation is identified without inventing future Activity/WUA IDs.",
+      "Session closure and Work Unit completion are not treated as automatically identical.",
+      "The plan ends with a continuation/handoff model usable by a context-naive session.",
+      "The structured companion is generated only after the human-readable plan exists."
+    ]
+  },
+  "templateChecks": [
+    "Can a future reader explain why this plan exists?",
+    "Is it obvious exactly what body of work the plan governs?",
+    "Is the planning mode and authority boundary explicit?",
+    "If work predates the plan, is that chronology preserved honestly?",
+    "Can the reader distinguish Work Unit, Project, System, application, and Resource roles?",
+    "Are the required authorities and context routes identifiable?",
+    "Is the current state grounded rather than copied from future roadmap language?",
+    "Are the desired state and completion condition bounded?",
+    "Can each implementation stage be meaningfully declared complete?",
+    "Are acceptance criteria and tests specific enough to evaluate?",
+    "Are likely dependencies, blockers, and architecture gates visible before execution?",
+    "Does the plan say when to stop rather than forcing progress through uncertainty?",
+    "Does the plan avoid inventing durable identifiers?",
+    "Does it make clear what must be reconciled at closure?",
+    "Does it leave actual execution history to the Work Implementation Session?",
+    "Can the plan be converted cleanly into the implementation-plan sidecar without the sidecar becoming the plan?"
+  ],
+  "revisionNotes": [
+    {
+      "version": "1.0-draft",
+      "date": "2026-08-16",
+      "notes": [
+        "Initial specialized authoring template for authoritative human-readable implementation-plan.md documents.",
+        "Created to close the gap between the existing implementation-plan sidecar profile and the Work Implementation Session execution template.",
+        "Incorporates Work Unit linkage and activation-gate semantics established during WORK-0001.",
+        "Supports prospective, reconstructed-continuation, and revised-existing-plan planning modes.",
+        "Preserves the distinction between plan-time Work Unit snapshots and current Work Unit authority.",
+        "Preserves session initiation versus activation when plan linkage or another prerequisite is an activation gate.",
+        "Adds semantic context-resolution guidance through stable Resource IDs and authority roles.",
+        "Adds explicit current/historical/planning/unverified evidence separation.",
+        "Adds bounded scope, target state, dependencies, risks, implementation stages, acceptance criteria, planned tests, implementation order, stop conditions, reconciliation, closure, and handoff guidance.",
+        "Defines the expected downstream relationship: implementation-plan.md → implementation-plan-sidecar.json → Work Implementation Session execution."
+      ]
+    }
+  ]
+}

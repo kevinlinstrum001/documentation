@@ -56,9 +56,12 @@ documentation/
 │   │   │   ├── operations/
 │   │   │   │   ├── Inventory Management/
 │   │   │   │   │   ├── implementation-plans/
-│   │   │   │   │   │   ├── implementation-plan.md
-│   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── implementation-plan-sds.md
+│   │   │   │   │   │   ├── implementation-plan-work-0006.md
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── work-implementation-session-2026-08-16-inventory-3-roadmap.md
 │   │   │   │   │   ├── sidecars/
+│   │   │   │   │   │   ├── implementation-plan-work-0006-sidecar.json
 │   │   │   │   │   │   └── project-summary-sidecar.json
 │   │   │   │   │   ├── summaries/
 │   │   │   │   │   │   └── project-summary.md
@@ -69,7 +72,7 @@ documentation/
 │   │   │   │   │   │       ├── summaries/
 │   │   │   │   │   │       │   └── system-summary.md
 │   │   │   │   │   │       └── README.md
-│   │   │   │   │   ├── plan-build-roadmap.md
+│   │   │   │   │   ├── inventory-3-roadmap.md
 │   │   │   │   │   ├── project-identity.json
 │   │   │   │   │   └── README.md
 │   │   │   │   ├── Task Assignment and Tracking/
@@ -105,17 +108,19 @@ documentation/
 │   │   │   │   ├── sidecar-profile-system-readme-updated.md
 │   │   │   │   ├── sidecar-profile-system-readme.md
 │   │   │   │   ├── work-implementation-session-template-1.0-draft.md
+│   │   │   │   ├── work-update-html-template-1.0-draft.json
 │   │   │   │   └── workflow-specification-sidecar-template-3.0.json
 │   │   │   ├── generic-document-sidecar-template-3.0.json
 │   │   │   ├── implementation-plan-sidecar-template.json
+│   │   │   ├── implementation-plan-template.json
 │   │   │   ├── lesson-reference-sidecar-template-3.0.json
 │   │   │   ├── project-identity-template-1.0-draft.json
 │   │   │   ├── pst-sp-study-guide-sidecar-template-1.0.json
 │   │   │   ├── README.md
 │   │   │   ├── record-profile-registry-1.0.json
 │   │   │   ├── summary-md-template.json
-│   │   │   ├── work-implementation-session-template.md
-│   │   │   ├── work-update-html-template-1.0-draft.json
+│   │   │   ├── work-implementation-session-template.json
+│   │   │   ├── work-update-html-template.json
 │   │   │   ├── work-update-image-generation-template-1.0-draft.json
 │   │   │   ├── work-update-sidecar-template-3.0.json
 │   │   │   ├── work-update-summary-template-1.0-draft.json
@@ -226,6 +231,7 @@ documentation/
 │   └── work-narrative/
 │       ├── Narrative Document/
 │       │   ├── index.html
+│       │   ├── plan-08-23.md
 │       │   └── work-queue-ecosystem.docx
 │       ├── apd-narrative-supervisor.md
 │       ├── nmbhi-first-supervisor-profile-image-prompts.md
@@ -245,6 +251,12 @@ documentation/
 │   ├── meadows/
 │   │   ├── calendar-monthly.png
 │   │   ├── calendar-weekly.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 05_26_27 PM.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 06_55_39 PM.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 07_15_51 PM.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 07_30_23 PM.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 07_38_55 PM.png
+│   │   ├── ChatGPT Image Aug 23, 2026, 07_46_57 PM.png
 │   │   ├── ChatGPT Image Jul 21, 2026, 10_21_37 PM.png
 │   │   ├── ChatGPT Image Jul 23, 2026, 05_28_26 PM.png
 │   │   └── IMG_20260105_111746_663.jpg

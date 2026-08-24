@@ -1,0 +1,671 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured authoring template for creating one authoritative human-readable work-implementation-session.md record for one bounded formal execution session.",
+    "authorityRule": "The resulting work-implementation-session Markdown document is the authoritative human-readable record for one bounded execution session: its declaration or reconstruction, context actually resolved, selected work package, material execution, decisions, deviations, blockers, tests actually executed, resulting state, reconciliation, closure, and handoff. This JSON is only an authoring template.",
+    "workUnitRule": "Every formal Work Implementation Session should correspond to a Work Unit, but a Work Unit and a Work Implementation Session are not the same object. One Work Unit may have multiple formal sessions. The Work Unit Registry remains authoritative for current Work Unit state.",
+    "planRule": "The implementation plan remains authoritative for intended bounded work. The Work Implementation Session records what actually happened during one execution session and must not silently rewrite the implementation plan.",
+    "wuaRule": "Work Unit Activities preserve timestamped material Work Unit history. The session may reference allocated WUA IDs, but must never pre-allocate future WUA IDs or replace the Work Unit Activities authority.",
+    "temporalRule": "Declare the session before implementation begins whenever possible. When this is not true, use reconstructed-during-work or reconstructed-after-work and preserve actual chronology rather than making later records appear prospective.",
+    "activationRule": "Session initiation and session activation are distinct when an implementation-plan or other gate applies. If activation was recorded prematurely, preserve the historical WUA and explain the discrepancy in the session record rather than rewriting history.",
+    "executionRule": "Record material state transitions and execution evidence, not every click, file save, or keystroke. Planned tests belong in the implementation plan; actual test execution and results belong in the session record or machine-readable run/evidence.",
+    "identityRule": "Never invent Project, System, Resource, Relationship, Run, Session, Work Unit, Work Unit Activity, Activity, or other durable identifiers.",
+    "placementRule": "The session record may be physically co-located with its governing implementation plan for navigation. Physical co-location does not merge their authority or imply one Work Unit equals one session.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, and _fieldNotes are intentional schema commentary."
+  },
+  "schemaVersion": "1.1-draft",
+  "profile": {
+    "profileType": "work-implementation-session-authoring-template",
+    "profileVersion": "1.1",
+    "recordFamily": "authoring-template",
+    "templateFile": "work-implementation-session-template-1.1-draft.json",
+    "outputDocumentType": "work-implementation-session",
+    "outputFormat": "Markdown",
+    "defaultOutputNamePattern": "work-implementation-session-{YYYY-MM-DD}-{short-purpose}.md",
+    "governingPlanDocumentType": "implementation-plan",
+    "structuredCompanionProfile": "",
+    "sourceTemplateReplaced": "work-implementation-session-template-1.1-draft.md"
+  },
+  "outputContract": {
+    "authoritativeArtifactPattern": "work-implementation-session-*.md",
+    "authorityRole": "authoritative-human-readable-record-for-one-bounded-work-implementation-session",
+    "currentStateAuthority": "Work Unit Registry",
+    "historyAuthority": "Work Unit Activities",
+    "intendedWorkAuthority": "implementation-plan.md",
+    "machineReadableEvidenceAuthority": "workflow/run evidence when present",
+    "rule": "Record what actually happened in this execution session. Do not absorb current Work Unit state, Work Unit Activity history, implementation-plan authority, Project/System identity, Resource Registry authority, or final retrospective Work Update authority."
+  },
+  "sessionEntryModes": {
+    "allowed": [
+      {
+        "value": "declared-before-work",
+        "useWhen": "The formal session is declared before implementation begins."
+      },
+      {
+        "value": "reconstructed-during-work",
+        "useWhen": "Implementation or governance events have already occurred and the formal session record is being created while the Work Unit remains in progress."
+      },
+      {
+        "value": "reconstructed-after-work",
+        "useWhen": "The formal session record is created after the execution session has ended and must reconstruct the session from evidence."
+      },
+      {
+        "value": "resumed-existing-session",
+        "useWhen": "An already-declared session is being resumed after pause/interruption."
+      }
+    ],
+    "default": "declared-before-work"
+  },
+  "sessionStatuses": [
+    "planned",
+    "active",
+    "paused",
+    "blocked",
+    "completed",
+    "abandoned",
+    "superseded"
+  ],
+  "workItemStatuses": [
+    "not-started",
+    "in-progress",
+    "complete",
+    "partial",
+    "blocked",
+    "skipped"
+  ],
+  "testResultStatuses": [
+    "pass",
+    "fail",
+    "partial",
+    "not-run",
+    "not-applicable"
+  ],
+  "contextResolutionStatuses": [
+    "unresolved",
+    "resolved",
+    "partially-resolved",
+    "not-required",
+    "blocked"
+  ],
+  "recommendedFrontMatter": {
+    "required": true,
+    "fields": [
+      {
+        "name": "template_name",
+        "default": "work-implementation-session-template-1.1-draft"
+      },
+      {
+        "name": "template_version",
+        "default": "1.1-draft"
+      },
+      {
+        "name": "record_type",
+        "default": "work-implementation-session"
+      },
+      {
+        "name": "record_family",
+        "default": "human-readable-execution-record"
+      },
+      {
+        "name": "status",
+        "default": "planned"
+      },
+      {
+        "name": "authority_role",
+        "default": "authoritative-human-readable-record-for-one-bounded-work-implementation-session"
+      },
+      {
+        "name": "created",
+        "default": ""
+      },
+      {
+        "name": "updated",
+        "default": ""
+      },
+      {
+        "name": "work_unit_id",
+        "default": ""
+      },
+      {
+        "name": "session_entry_mode",
+        "default": "declared-before-work"
+      }
+    ],
+    "rule": "Do not invent IDs. Front matter is indexing metadata and does not replace the narrative execution record or Registry/WUA authorities."
+  },
+  "authoringModel": {
+    "sessionDeclaration": {
+      "purpose": "Declare or reconstruct one formal execution session and its relationship to the Work Unit.",
+      "fields": {
+        "sessionTitle": "",
+        "sessionDate": "",
+        "sessionStatus": "planned",
+        "sessionEntryMode": "declared-before-work",
+        "sessionId": "",
+        "workUnitId": "",
+        "workUnitTitle": "",
+        "workUnitKind": "",
+        "workUnitStatusAtEntry": "",
+        "workUnitReadinessAtEntry": "",
+        "primaryProject": "",
+        "projectId": "",
+        "targetSystem": "",
+        "systemId": "",
+        "targetApplicationOrImplementation": "",
+        "primaryOperationalEnvironment": "",
+        "implementationPlan": "",
+        "implementationPlanSidecar": "",
+        "sessionRecordPath": "",
+        "sessionOwnerOrOperator": ""
+      },
+      "sessionGoal": {
+        "goal": "",
+        "whyThisSessionExists": "",
+        "sessionBoundary": ""
+      }
+    },
+    "sessionInitiation": {
+      "fields": {
+        "initiatedTimestamp": "",
+        "initiationWuaId": "",
+        "eventType": "session-initiated",
+        "workUnitStatusAfterInitiation": "",
+        "workUnitReadinessAfterInitiation": "",
+        "activationGateSatisfied": "undetermined"
+      },
+      "rule": "Initiation establishes the formal execution context but does not by itself prove that the governing implementation plan exists, prerequisites are satisfied, or implementation is active."
+    },
+    "sessionActivation": {
+      "fields": {
+        "activationRequired": "undetermined",
+        "activationCondition": "",
+        "activatedTimestamp": "",
+        "activationWuaId": "",
+        "eventType": "session-activated",
+        "workUnitStatusAfterActivation": "",
+        "workUnitReadinessAfterActivation": ""
+      },
+      "rule": "Do not backdate activation. If activation occurred before the required artifact/gate was actually satisfied, preserve the historical event and record the discrepancy as reconstruction/deviation."
+    },
+    "governingWorkUnit": {
+      "fields": {
+        "workUnitId": "",
+        "workUnitTitle": "",
+        "workUnitKind": "",
+        "workUnitGoal": "",
+        "workUnitCompletionRule": "",
+        "workUnitStatus": "",
+        "workUnitReadiness": "",
+        "primaryProject": "",
+        "targetSystemOrApp": "",
+        "formalSessionRequired": "",
+        "sessionRecordRegistered": "",
+        "implementationPlanRegistered": ""
+      }
+    },
+    "governingImplementationPlan": {
+      "fields": {
+        "planTitle": "",
+        "planDocumentId": "",
+        "planPath": "",
+        "planSidecarPath": "",
+        "planStatus": "",
+        "planPlanningMode": "",
+        "planAuthorityBoundaryTimestamp": "",
+        "relevantPlanStages": [],
+        "relevantAcceptanceCriteria": [],
+        "relevantPlannedTests": []
+      },
+      "rule": "The implementation plan remains intended-work authority. The session records actual execution and may document deviations without silently modifying the plan."
+    },
+    "startingState": {
+      "fields": {
+        "workUnitState": "",
+        "projectState": "",
+        "systemState": "",
+        "physicalRepositoryState": "",
+        "priorWorkRelevantToSession": [],
+        "priorWuaReferences": [],
+        "uncertainties": []
+      },
+      "rule": "Record the state at the session boundary. For reconstructed sessions, clearly identify the reconstruction boundary and distinguish earlier work from work governed prospectively from that point."
+    },
+    "contextResolution": {
+      "strategy": "semantic-requirement-authority-resolved",
+      "requirements": [
+        {
+          "requirementId": "CTX-01",
+          "requiredContext": "",
+          "purpose": "",
+          "authorityRole": "",
+          "resolvedResourceIds": [],
+          "status": "unresolved",
+          "notes": []
+        }
+      ],
+      "orientationSourcesLoaded": [],
+      "unresolvedContext": [],
+      "resolutionSummary": "",
+      "rule": "Load only context needed to perform this session correctly."
+    },
+    "sessionWorkPackage": [
+      {
+        "sequence": 1,
+        "workItem": "",
+        "objective": "",
+        "deliverable": "",
+        "dependencies": [],
+        "exitCriterion": "",
+        "status": "not-started",
+        "materialWuaExpected": false,
+        "expectedWuaEventType": ""
+      }
+    ],
+    "successCriteria": [
+      {
+        "criterionId": "SC-01",
+        "description": "",
+        "verificationMethod": "",
+        "status": "pending"
+      }
+    ],
+    "minimumAcceptableOutcome": "",
+    "nonGoals": [],
+    "stopAndReassessmentConditions": [
+      "Evidence contradicts planned Project/System/Application/Resource placement.",
+      "A required authority cannot be resolved.",
+      "Continuing would require inventing a durable identifier.",
+      "The work begins expanding into an explicitly out-of-scope body of work.",
+      "A planned stage requires an architecture decision that has not been made.",
+      "Current implementation truth cannot be distinguished from historical or planning evidence.",
+      "Validation reveals structurally incorrect records.",
+      "A required Work Unit/session activation gate cannot be satisfied.",
+      "Work Unit Registry state and actual execution cannot be reconciled without falsifying chronology."
+    ],
+    "workUnitActivityRecording": {
+      "materialEventRule": "Create a WUA for materially meaningful Work Unit events, not routine edits or file saves.",
+      "sessionWuaLog": [
+        {
+          "sequence": 1,
+          "wuaId": "",
+          "timestamp": "",
+          "eventType": "",
+          "materialEvent": "",
+          "workUnitStateEffect": "",
+          "relatedExecutionDecisionOrTest": ""
+        }
+      ],
+      "registrySynchronizationRule": "When a WUA represents a current-state change, reconcile the Work Unit Registry in the same material event."
+    },
+    "liveExecutionRecord": [
+      {
+        "executionId": "EXE-001",
+        "workItem": "",
+        "status": "not-started",
+        "started": "",
+        "completed": "",
+        "relatedWuaIds": [],
+        "objective": "",
+        "action": "",
+        "evidenceOrSourcesUsed": [],
+        "findingOrObservation": "",
+        "result": "",
+        "filesOrRecordsAffected": [],
+        "resourceIdsAffected": [],
+        "workUnitOrRegistryEffect": "",
+        "nextAction": ""
+      }
+    ],
+    "decisions": [
+      {
+        "decisionId": "DEC-001",
+        "status": "",
+        "decision": "",
+        "reason": "",
+        "evidenceOrBasis": [],
+        "effectOnSession": "",
+        "effectOnWorkUnit": "",
+        "relatedWuaId": "",
+        "effectBeyondSession": "",
+        "architectureChangelogRequired": "uncertain"
+      }
+    ],
+    "deviations": [
+      {
+        "deviationId": "DEV-001",
+        "planned": "",
+        "actuallyDone": "",
+        "reason": "",
+        "impact": "",
+        "effectOnWorkUnit": "",
+        "relatedWuaId": "",
+        "planRevisionRequired": "uncertain"
+      }
+    ],
+    "blockers": [
+      {
+        "blockerId": "BLOCK-001",
+        "blockedWorkItem": "",
+        "status": "open",
+        "cause": "",
+        "evidence": [],
+        "requiredResolution": "",
+        "canOtherSessionWorkContinue": "undetermined",
+        "ownerOrAuthorityNeeded": "",
+        "effectOnWorkUnitStatusOrReadiness": "",
+        "relatedWuaId": ""
+      }
+    ],
+    "executedTests": [
+      {
+        "testId": "",
+        "plannedTestOrCriterion": "",
+        "verificationMethod": "",
+        "expectedResult": "",
+        "actualResult": "",
+        "resultStatus": "not-run",
+        "evidence": [],
+        "relatedWuaId": ""
+      }
+    ],
+    "validationSummary": {
+      "summary": "",
+      "failedOrPartialValidation": [],
+      "materialValidationEventOccurred": "no",
+      "relatedWuaIds": [],
+      "reason": ""
+    },
+    "resultingState": {
+      "workUnit": {
+        "status": "",
+        "readiness": "",
+        "implementationPlan": "",
+        "formalSession": "",
+        "completionRuleSatisfied": "",
+        "completedTimestamp": "",
+        "result": "",
+        "lastUpdate": ""
+      },
+      "projectState": "",
+      "systemState": "",
+      "physicalRepositoryState": "",
+      "semanticOrAuthorityState": "",
+      "newTruthsSinceSessionStart": [],
+      "remainingUncertainties": []
+    },
+    "effectsAndReconciliation": {
+      "resourcesCreated": [],
+      "resourcesChanged": [],
+      "registriesToAssess": [
+        "Work Units Registry",
+        "Work Unit Activities",
+        "Resource Registry",
+        "Project Registry",
+        "System Registry",
+        "Relationship Registry",
+        "Activity Registry",
+        "Record Profile Registry"
+      ],
+      "workUnitRegistryReconciliation": [],
+      "workUnitActivitiesCreated": [],
+      "architectureChanged": "uncertain",
+      "architectureChangelogRequired": "uncertain",
+      "architectureReason": "",
+      "openDeterminationsAffected": []
+    },
+    "remainingWork": [
+      {
+        "item": "",
+        "status": "",
+        "whyRemaining": "",
+        "suggestedDestination": ""
+      }
+    ],
+    "recommendedNextSession": {
+      "sessionTitle": "",
+      "primaryWorkUnit": "",
+      "primaryProject": "",
+      "targetSystem": "",
+      "goal": "",
+      "requiredStartingContext": [],
+      "dependenciesBeforeNextSession": [],
+      "whyNext": "",
+      "sameWorkUnit": "undetermined"
+    },
+    "sessionClosure": {
+      "closureStatus": "",
+      "closedTimestamp": "",
+      "sessionClosureWuaId": "",
+      "workUnitCompletionWuaId": "",
+      "workUnitStatusAfterSession": "",
+      "workUnitReadinessAfterSession": "",
+      "workUnitCompletionRuleSatisfied": "undetermined",
+      "workUnitCompletedTimestamp": "",
+      "workUnitResult": "",
+      "successCriteriaResults": [],
+      "closureSummary": "",
+      "filesCreated": [],
+      "filesModified": [],
+      "downstreamRecordsRequired": [],
+      "handoffOrContinuationPoint": ""
+    },
+    "provenance": {
+      "sourcesUsedToDeclareSession": [],
+      "sourcesUsedDuringExecution": [],
+      "resourceIdsUsed": [],
+      "workUnitIdsUsed": [],
+      "workUnitActivityIdsUsed": [],
+      "reconstructionNotes": "",
+      "interpretationLimits": ""
+    }
+  },
+  "recommendedMarkdownStructure": {
+    "_comment": "The JSON template guides creation of the human-readable Markdown session record. The Markdown output retains this section architecture.",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Session Declaration"
+      },
+      {
+        "number": 2,
+        "title": "Relationship to the Work Unit and Implementation Plan"
+      },
+      {
+        "number": 3,
+        "title": "Starting State"
+      },
+      {
+        "number": 4,
+        "title": "Context Resolution"
+      },
+      {
+        "number": 5,
+        "title": "Session Work Package"
+      },
+      {
+        "number": 6,
+        "title": "Success Criteria"
+      },
+      {
+        "number": 7,
+        "title": "Stop / Reassessment Conditions"
+      },
+      {
+        "number": 8,
+        "title": "Work Unit Activity Recording"
+      },
+      {
+        "number": 9,
+        "title": "Live Execution Record"
+      },
+      {
+        "number": 10,
+        "title": "Decisions"
+      },
+      {
+        "number": 11,
+        "title": "Deviations"
+      },
+      {
+        "number": 12,
+        "title": "Blockers"
+      },
+      {
+        "number": 13,
+        "title": "Validation and Executed Tests"
+      },
+      {
+        "number": 14,
+        "title": "Resulting State"
+      },
+      {
+        "number": 15,
+        "title": "Resource, Registry, Work Unit, and Architecture Effects"
+      },
+      {
+        "number": 16,
+        "title": "Remaining Work"
+      },
+      {
+        "number": 17,
+        "title": "Recommended Next Session"
+      },
+      {
+        "number": 18,
+        "title": "Session Closure"
+      },
+      {
+        "number": 19,
+        "title": "Provenance"
+      }
+    ]
+  },
+  "authoringGuidance": {
+    "sessionVsWorkUnitRule": "Do not name or structure the session in a way that implies one Work Unit equals one session. A session belongs to a Work Unit, but multiple sessions may execute the same Work Unit.",
+    "defaultPlacementRule": "For navigation, co-locate the session record with its governing implementation plan unless a Project has a justified alternative. Physical placement does not determine semantic authority.",
+    "executionDetailRule": "Record enough detail for trustworthy reconstruction of material execution, but do not create a transcript.",
+    "planDifferenceRule": "Do not rewrite the implementation plan when execution differs; record the difference under Decisions, Deviations, Blockers, and Resulting State.",
+    "testRule": "Planned tests belong in the implementation plan. Actual execution/results belong in this session or machine-readable evidence.",
+    "closureRule": "Close every session explicitly. A session may close without completing its Work Unit.",
+    "continuationRule": "End with an exact continuation point usable by a context-naive future session.",
+    "idRule": "Never invent durable identifiers."
+  },
+  "templateUseProcedure": [
+    {
+      "sequence": 1,
+      "step": "Read the current Work Unit state and material WUA history.",
+      "required": true
+    },
+    {
+      "sequence": 2,
+      "step": "Read the governing implementation plan and its sidecar when present.",
+      "required": true
+    },
+    {
+      "sequence": 3,
+      "step": "Choose the session entry mode from actual chronology.",
+      "required": true
+    },
+    {
+      "sequence": 4,
+      "step": "Declare or reconstruct the session and record its boundary.",
+      "required": true
+    },
+    {
+      "sequence": 5,
+      "step": "Resolve only the context required for this execution session.",
+      "required": true
+    },
+    {
+      "sequence": 6,
+      "step": "Select the bounded implementation-plan work package for this session.",
+      "required": true
+    },
+    {
+      "sequence": 7,
+      "step": "Define success criteria and stop/reassessment conditions.",
+      "required": true
+    },
+    {
+      "sequence": 8,
+      "step": "Initiate and activate only according to actual Registry/WUA chronology and gates.",
+      "required": true
+    },
+    {
+      "sequence": 9,
+      "step": "Record material execution, decisions, deviations, blockers, and actual tests.",
+      "required": true
+    },
+    {
+      "sequence": 10,
+      "step": "Reconcile Registry/WUA/Resource/architecture effects as they actually occur.",
+      "required": true
+    },
+    {
+      "sequence": 11,
+      "step": "Record the resulting state, remaining work, and next-session recommendation.",
+      "required": true
+    },
+    {
+      "sequence": 12,
+      "step": "Close the session explicitly without automatically completing the Work Unit.",
+      "required": true
+    },
+    {
+      "sequence": 13,
+      "step": "Write an exact context-naive handoff/continuation point.",
+      "required": true
+    }
+  ],
+  "validation": {
+    "performed": false,
+    "result": "",
+    "requiredChecks": [
+      "This file is an authoring template, not the Work Implementation Session itself.",
+      "The resulting session artifact is human-readable Markdown.",
+      "The Work Unit Registry remains authoritative for current Work Unit state.",
+      "Work Unit Activities remain authoritative for timestamped material Work Unit history.",
+      "The implementation plan remains authoritative for intended work.",
+      "The session records actual execution and does not silently rewrite the plan.",
+      "Session initiation and activation remain distinguishable when a gate exists.",
+      "Reconstructed sessions preserve actual chronology.",
+      "One Work Unit may have multiple formal sessions.",
+      "Session naming does not imply session identity equals Work Unit identity.",
+      "Physical co-location with the plan does not merge semantic authority.",
+      "Only allocated durable IDs are used.",
+      "Planned tests remain separate from executed test results.",
+      "Material WUA events are distinguished from routine edits.",
+      "Resulting state is described at session closure rather than copied from desired target state.",
+      "Session closure is distinguished from Work Unit completion.",
+      "The record ends with a context-naive continuation point."
+    ]
+  },
+  "templateChecks": [
+    "Can a future reader identify the Work Unit without confusing it with the session?",
+    "Is the session entry mode consistent with actual chronology?",
+    "Is the implementation plan clearly identified as intended-work authority?",
+    "Is the current Work Unit state taken from the Registry rather than inferred?",
+    "Are only actually allocated WUA IDs referenced?",
+    "Is the selected session work package bounded?",
+    "Are material execution events distinguishable from routine edits?",
+    "Are decisions, deviations, and blockers separately identifiable?",
+    "Are actual test results recorded separately from planned tests?",
+    "Can a session close without falsely completing its Work Unit?",
+    "Can another session later continue the same Work Unit without naming collision?",
+    "Can a context-naive reader resume from the handoff point?"
+  ],
+  "revisionNotes": [
+    {
+      "version": "1.1-draft",
+      "date": "2026-08-16",
+      "notes": [
+        "Converted the Work Implementation Session authoring template from Markdown representation to canonical JSON authoring-template form.",
+        "Preserves the 19-section human-readable Markdown session output architecture.",
+        "Preserves first-class Work Unit linkage, session initiation/activation, WUA policy, Registry synchronization, execution records, decisions, deviations, blockers, validation, resulting state, reconciliation, closure, and handoff.",
+        "Clarifies that a Work Unit and a Work Implementation Session are distinct objects and that one Work Unit may have multiple sessions.",
+        "Adds default physical co-location guidance: session records may live beside their governing implementation plan without merging semantic authority.",
+        "Preserves reconstructed chronology and premature-activation handling.",
+        "The previous work-implementation-session-template-1.1-draft.md is superseded as the authoring-template representation; actual Work Implementation Session records remain Markdown."
+      ]
+    }
+  ]
+}

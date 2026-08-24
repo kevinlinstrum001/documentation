@@ -1,0 +1,2302 @@
+{
+  "_meta": {
+    "templatePurpose": "Structured sidecar for one implementation-plan.md document describing one intended body of work performed under a workflow and, when applicable, governed through a Klinswork Work Unit.",
+    "authorityRule": "The implementation-plan.md is the authoritative human-readable plan. This sidecar is a structured description of that plan and must not replace the Work Unit Registry, Work Unit Activities, Work Implementation Session, workflow specification, documentation-run state, execution evidence, final summary, or work-update sidecar.",
+    "designShiftIn31": "Version 3.1 added semantic context resolution through stable Resource IDs, Startup provenance, Project/System/Application/Resource placement, authoritative-resource declarations, and explicit support for plans created after some work had already begun.",
+    "designShiftIn32": "Version 3.2 adds first-class Work Unit linkage, Work Unit state-at-plan-creation, activation-gate representation, formal Work Implementation Session linkage, and allocated Work Unit Activity references without moving current-state or execution-history authority into the plan sidecar.",
+    "resourceResolutionPrinciple": "A workflow should declare the context it needs; the Resource Registry resolves those requirements to stable Resource IDs and current locations.",
+    "indirectionPrinciple": "Implementation plans should depend on stable resource identities and authority roles rather than hard-coded physical URLs whenever registered resources exist.",
+    "planningTruthRule": "Do not represent work completed before plan creation as though it had been prospectively planned.",
+    "workUnitAuthorityRule": "The Work Unit Registry is authoritative for current Work Unit state. This sidecar may snapshot Work Unit state at plan creation and describe the plan's relationship to the Work Unit, but it must not become a competing Work Unit record.",
+    "sessionAuthorityRule": "A Work Implementation Session is the authoritative human-readable execution record for one bounded formal session. This sidecar may link to session records and describe activation relationships, but it must not absorb session execution history.",
+    "wuaAuthorityRule": "Work Unit Activities are the append-oriented timestamped history of material Work Unit events. Reference only WUA IDs already allocated by the Work Unit Activities authority; never pre-allocate future WUA IDs in an implementation-plan sidecar.",
+    "jsonCommentConvention": "JSON does not support native comments. Keys named _meta, _comment, or _fieldNotes are intentional schema commentary and should be ignored by consumers that only need operational values."
+  },
+  "schemaVersion": "3.2-draft",
+  "profile": {
+    "profileType": "implementation-plan",
+    "profileVersion": "1.2",
+    "baseSchemaVersion": "3.2-draft",
+    "templateFile": "implementation-plan-sidecar-template-3.2-draft.json",
+    "previewMode": "implementation-plan"
+  },
+  "schemaRoadmap": {
+    "currentVersion": "3.2-draft",
+    "plannedVersions": [
+      {
+        "targetVersion": "3.3",
+        "status": "planned",
+        "additions": [
+          "formal validation of Registry-resolved context requirements",
+          "optional implementation-plan approval block",
+          "optional direct linkage to machine-readable execution/run records",
+          "catalog identifiers for implementation-plan sidecars"
+        ],
+        "changes": [
+          "evaluate promotion of planningMode and planningRelation allowed-value lists into shared controlled vocabularies",
+          "clarify repositoryPath semantics for source document versus sidecar location across all document-sidecar profiles",
+          "evaluate whether Work Unit linkage should move into a reusable shared work-context block"
+        ],
+        "deprecations": [
+          "projectContextLoaded and relatedProjectContextLoaded booleans once migration to contextResolution is complete"
+        ],
+        "migrationNotes": [
+          "3.0 and 3.1 sidecars remain valid historical records.",
+          "When migrating a 3.1 sidecar, preserve all existing planning/context facts and add workUnitContext only when a Work Unit relationship is actually supported by evidence.",
+          "Do not infer or invent WORK-####, WUA-####, Session, Project, System, Relationship, or Resource IDs retroactively.",
+          "A formal session path may be recorded even when no durable Session ID exists.",
+          "WUA references should include only activities already allocated by the Work Unit Activities authority."
+        ],
+        "openQuestions": [
+          "Should implementation-plan sidecars include a formal approval block?",
+          "Should machine-readable execution/run records receive a dedicated linkage block separate from formalSessionRecords?",
+          "Should context requirements use controlled semantic role IDs in addition to human-readable descriptions?",
+          "Should Resource Registry resolution snapshots preserve both Resource ID and location-at-plan-time?",
+          "Should workUnitContext become a shared reusable block across implementation-plan, session, summary, and work-update sidecars?"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "documentId": "",
+    "filePath": "implementation-plan-work-0006.md",
+    "documentUrl": "",
+    "title": "Inventory Management / Inventory 3.0 Roadmap and Documentation Reconciliation",
+    "headline": "Verify Inventory 3.0 current state, reconcile its documentation, and establish its mature System roadmap.",
+    "documentType": "implementation-plan",
+    "createdTimestamp": "2026-08-16T16:40:00-06:00",
+    "updatedTimestamp": "2026-08-16T16:40:00-06:00"
+  },
+  "metadata": {
+    "filePath": "implementation-plan-work-0006.md",
+    "url": "",
+    "sidecarFilePath": "implementation-plan-work-0006-sidecar.json",
+    "summaryFilePath": "",
+    "repositoryPath": "documents/Klinswork Documentation Viewer/projects/operations/Inventory Management/sidecars/implementation-plan-work-0006-sidecar.json",
+    "catalogId": "",
+    "catalogEntryId": "",
+    "profileTemplatePath": "implementation-plan-sidecar-template-3.2-draft.json",
+    "baseTemplatePath": "document-sidecar-base-template-3.0-draft.json",
+    "_comment": "document.filePath/documentUrl identify the authoritative implementation-plan.md. metadata.sidecarFilePath identifies this JSON sidecar. Keep source document and sidecar locations distinct."
+  },
+  "workflowContext": {
+    "_comment": "Records the workflow environment in which the implementation plan was created. Startup establishes orientation/routing; the workflow declares needed context; the Resource Registry resolves that context. This block is provenance for the plan, not a replacement for workflow-run state.",
+    "workflowId": "",
+    "workflowResourceId": "",
+    "documentationRunId": "",
+    "documentationStage": "implementation-planning-before-formal-session-activation",
+    "sourceSummaryPath": "",
+    "startup": {
+      "_comment": "Describe how the planning session was oriented before plan construction.",
+      "status": "resolved-for-planning",
+      "mode": "registry-and-project-oriented",
+      "procedureResourceId": "",
+      "orientationResourceIds": [
+        "RES-043",
+        "RES-041"
+      ],
+      "registryResourceId": "RES-043",
+      "notes": [
+        "WORK-0006 and WUA-0011 were read from the live Work Unit Registry before the authoritative plan was authored.",
+        "Current Inventory Management and Inventory 3.0 repository records, the System Roadmap Catalog, Work Queue roadmap context, and current Resource Registry routes informed the plan.",
+        "Earlier generated Inventory roadmap planning text was treated as planning notes only and not as plan authority."
+      ]
+    },
+    "contextResolution": {
+      "_comment": "Semantic requirements are declared here. Registered resources should be referenced by stable Resource ID. Physical URLs belong in the Resource Registry or authoritativeResources resolution snapshot, not hard-coded into workflow semantics.",
+      "strategy": "workflow-declared-registry-resolved",
+      "requirements": [
+        {
+          "requirementId": "CTX-01",
+          "requirement": "WORK-0006 current Work Unit state",
+          "purpose": "Establish the bounded work identity, plan-time status/readiness, formal-session requirement, and completion rule.",
+          "authorityRole": "Work Unit current-state authority",
+          "resolvedResourceIds": [
+            "RES-043"
+          ],
+          "status": "resolved",
+          "notes": [
+            "WORK-0006 is the governing bounded Work Unit."
+          ]
+        },
+        {
+          "requirementId": "CTX-02",
+          "requirement": "Relevant Work Unit history",
+          "purpose": "Preserve the planning chronology and reference only WUAs already allocated.",
+          "authorityRole": "Work Unit Activity history",
+          "resolvedResourceIds": [
+            "RES-043"
+          ],
+          "status": "resolved",
+          "notes": [
+            "WUA-0011 records creation of WORK-0006. No later WUA is asserted by this sidecar."
+          ]
+        },
+        {
+          "requirementId": "CTX-03",
+          "requirement": "Inventory Management Project definition",
+          "purpose": "Establish Project purpose, scope, boundaries, and Project-local documentation context.",
+          "authorityRole": "Project-definition authority set",
+          "resolvedResourceIds": [
+            "RES-041"
+          ],
+          "status": "resolved",
+          "notes": []
+        },
+        {
+          "requirementId": "CTX-04",
+          "requirement": "Inventory 3.0 current System documentation",
+          "purpose": "Establish the documented System interpretation and identify where live verification is still required.",
+          "authorityRole": "System documentation authority set",
+          "resolvedResourceIds": [
+            "RES-041"
+          ],
+          "status": "resolved",
+          "notes": []
+        },
+        {
+          "requirementId": "CTX-05",
+          "requirement": "Existing Inventory 3.0 SDS Registry implementation plan",
+          "purpose": "Preserve the prior plan as historical/planning evidence and prevent silent overwrite when the new canonical WORK-0006 plan is installed.",
+          "authorityRole": "prior implementation-plan evidence",
+          "resolvedResourceIds": [
+            "RES-041"
+          ],
+          "status": "resolved",
+          "notes": [
+            "The older plan currently occupies the generic implementation-plan.md filename in the repository and must be preserved under a non-conflicting descriptive filename before replacement."
+          ]
+        },
+        {
+          "requirementId": "CTX-06",
+          "requirement": "Current Inventory 3.0 application",
+          "purpose": "Verify current user-facing behavior before roadmap baseline claims are finalized.",
+          "authorityRole": "current runtime evidence",
+          "resolvedResourceIds": [
+            "RES-004"
+          ],
+          "status": "resolved",
+          "notes": [
+            "Route is resolved; formal execution-stage verification remains planned."
+          ]
+        },
+        {
+          "requirementId": "CTX-07",
+          "requirement": "Current Inventory 3.0 datastore",
+          "purpose": "Verify current sheet/schema/data-model evidence before roadmap baseline claims are finalized.",
+          "authorityRole": "current datastore evidence",
+          "resolvedResourceIds": [
+            "RES-005"
+          ],
+          "status": "resolved",
+          "notes": [
+            "Route is resolved; formal execution-stage verification remains planned."
+          ]
+        },
+        {
+          "requirementId": "CTX-08",
+          "requirement": "Work Queue System roadmap",
+          "purpose": "Provide cross-System inventory-integration context from the Task Assignment and Tracking side.",
+          "authorityRole": "related System planned-direction authority",
+          "resolvedResourceIds": [
+            "RES-041"
+          ],
+          "status": "resolved",
+          "notes": []
+        },
+        {
+          "requirementId": "CTX-09",
+          "requirement": "Klinswork System Roadmap Catalog",
+          "purpose": "Establish Inventory 3.0 planned-placeholder state and the intended roadmap/sidecar filenames.",
+          "authorityRole": "cross-System roadmap discovery catalog",
+          "resolvedResourceIds": [
+            "RES-041"
+          ],
+          "status": "resolved",
+          "notes": []
+        },
+        {
+          "requirementId": "CTX-10",
+          "requirement": "Documentation Viewer discovery infrastructure",
+          "purpose": "Validate roadmap discovery, companion resolution, and System Summary versus System Roadmap semantics.",
+          "authorityRole": "documentation discovery and presentation infrastructure",
+          "resolvedResourceIds": [
+            "RES-011",
+            "RES-044",
+            "RES-045",
+            "RES-046"
+          ],
+          "status": "resolved",
+          "notes": [
+            "Routes are resolved; validation is a later planned implementation stage."
+          ]
+        },
+        {
+          "requirementId": "CTX-11",
+          "requirement": "Current Resource routing",
+          "purpose": "Use stable Resource identities rather than remembered implementation URLs.",
+          "authorityRole": "Resource identity and routing authority",
+          "resolvedResourceIds": [
+            "RES-043"
+          ],
+          "status": "resolved",
+          "notes": []
+        }
+      ],
+      "unresolvedRequirements": [
+        "Formal session execution has not yet reverified current Inventory runtime behavior or workbook schema for roadmap baseline claims.",
+        "The preservation filename/location for the older SDS implementation plan must be finalized before canonical plan installation."
+      ],
+      "resolutionSummary": "Planning context is sufficient to describe the intended WORK-0006 body of work. Current runtime and datastore routes are resolved, while their formal verification remains prospective execution work."
+    },
+    "projectContextLoaded": true,
+    "relatedProjectContextLoaded": true,
+    "_fieldNotes": {
+      "projectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status.",
+      "relatedProjectContextLoaded": "Legacy 3.0 compatibility field; prefer contextResolution requirements/status."
+    }
+  },
+  "workUnitContext": {
+    "_comment": "First-class linkage between this plan and the Work Unit planning layer. The Work Unit Registry remains authoritative for current state; Work Unit Activities remain authoritative for timestamped material history; formal session records remain authoritative for detailed execution. This block describes relationships and captures plan-time snapshots only.",
+    "workUnitId": "WORK-0006",
+    "workUnitTitle": "Inventory Management — Inventory 3.0 Roadmap and Documentation Reconciliation",
+    "workUnitKind": "implementation",
+    "relationshipToPlan": "implementation-plan-work-0006.md is the authoritative human-readable intended-work plan for WORK-0006 once linked in the Work Unit Registry.",
+    "workUnitRegistryResourceId": "RES-043",
+    "stateAtPlanCreation": {
+      "_comment": "Snapshot the Registry state as it existed at the plan authority boundary. Later status/readiness changes belong in the Work Unit Registry and Work Unit Activities, not by rewriting this snapshot.",
+      "status": "planned",
+      "readiness": "ready",
+      "formalSessionRequired": "yes",
+      "sessionRecordRegistered": "yes",
+      "implementationPlanRegistered": "no",
+      "completionRule": "Inventory 3.0 has a current-evidence-grounded System roadmap and sidecar; Inventory Management / Inventory 3.0 current-state documentation is reconciled where necessary; the System Roadmap Catalog promotes Inventory 3.0 from planned to active; required source-aware discovery, companion resolution, Viewer semantics, and context-naive continuation are validated; material Registry/architecture effects are reconciled; no unsupported Project/System IDs are assigned.",
+      "lastUpdate": "2026-08-16T16:29:39-06:00"
+    },
+    "activationGate": {
+      "_comment": "Use when plan creation/linkage or another prerequisite governs activation. Session initiation and session activation may be distinct material events.",
+      "required": true,
+      "condition": "The older SDS implementation plan must be preserved; implementation-plan-work-0006.md must be installed/linked as the governing plan; this sidecar and the formal Work Implementation Session record must exist; then session initiation/activation and the Work Unit current-state change may be recorded.",
+      "satisfiedAtPlanCreation": false,
+      "satisfiedTimestamp": "",
+      "satisfactionBasis": "At sidecar generation the authoritative plan exists as a user-retained file, but the prior SDS plan preservation, repository installation/linkage, formal session creation, and activation WUAs have not yet been recorded.",
+      "expectedRegistryEffect": {
+        "status": "active",
+        "readiness": "active"
+      }
+    },
+    "formalSessionRecords": [
+      {
+        "_comment": "The plan requires one formal session if practical. The record is not yet created/initiated at sidecar generation.",
+        "sessionId": "",
+        "sessionTitle": "Inventory 3.0 Roadmap and Documentation Reconciliation",
+        "sessionRecordPath": "work-implementation-session-2026-08-16-inventory-3-roadmap.md",
+        "sessionEntryMode": "declared-before-work",
+        "relationshipToPlan": "Formal execution record for WORK-0006 after plan linkage and activation.",
+        "statusAtPlanCreation": "not-yet-initiated",
+        "initiatedTimestamp": "",
+        "activatedTimestamp": "",
+        "initiationWuaId": "",
+        "activationWuaId": ""
+      }
+    ],
+    "workUnitActivities": {
+      "_comment": "Reference only allocated Work Unit Activities known at plan creation or later deliberately added as references. Do not pre-allocate future WUA IDs. The Work Unit Activities registry remains authoritative.",
+      "knownActivityIdsAtPlanCreation": [
+        "WUA-0011"
+      ],
+      "relatedActivityIds": [
+        "WUA-0011"
+      ],
+      "activityCoverageSummary": "WUA-0011 records creation of WORK-0006. The plan identifies future plan-link/session-initiation/session-activation and later material checkpoints, but no future WUA IDs are pre-allocated.",
+      "materialEventRule": "Reference Work Unit Activities for material Work Unit events; do not create or predict WUA IDs for routine edits or future checkpoints."
+    },
+    "relationshipSummary": "WORK-0006 is the bounded work identity. The Work Unit Registry owns current state; implementation-plan-work-0006.md owns intended work; this sidecar structures that plan; the future Work Implementation Session will own detailed execution; WUA-0011 is the only allocated Work Unit Activity referenced at plan creation."
+  },
+  "projectContext": {
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory Management",
+      "projectType": "Project",
+      "parentProjectId": "",
+      "parentProjectName": "Operations",
+      "projectRecordPath": "projects/operations/Inventory Management/project-identity.json",
+      "projectGoal": "Preserve and improve reliable knowledge and operational control of inventory.",
+      "projectPhase": "roadmap-and-documentation-reconciliation",
+      "contributionType": "System roadmap creation and current documentation reconciliation",
+      "identificationBasis": "Inventory Management Project Definition package and WORK-0006.",
+      "identificationConfidence": "high"
+    },
+    "relatedProjects": [
+      {
+        "projectId": "",
+        "projectName": "Documentation",
+        "relationshipType": "infrastructure-and-architecture",
+        "relationshipDescription": "Supplies Record Profiles, Work Unit/session architecture, Project/System documentation conventions, Viewer discovery, roadmap cataloging, and downstream documentation infrastructure.",
+        "impact": "WORK-0006 may produce material documentation, catalog, Viewer-manifest, or architecture reconciliation effects.",
+        "evidenceSectionAnchors": [
+          "4-work-placement-and-authority",
+          "16-registry-documentation-and-architecture-reconciliation"
+        ],
+        "identificationBasis": "Implementation plan Sections 4 and 16.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Task Assignment and Tracking",
+        "relationshipType": "cross-system-integration-context",
+        "relationshipDescription": "Work Queue supplies the task-side planned requirements for inventory-related task completion; Inventory 3.0 must define the inventory-state side without absorbing Work Queue authority.",
+        "impact": "Roadmap design must reconcile cross-System transactional responsibilities.",
+        "evidenceSectionAnchors": [
+          "4-work-placement-and-authority",
+          "9-target-state"
+        ],
+        "identificationBasis": "Implementation plan Sections 4 and 9.",
+        "identificationConfidence": "high"
+      },
+      {
+        "projectId": "",
+        "projectName": "Scheduling",
+        "relationshipType": "boundary-context",
+        "relationshipDescription": "Provides person/place/time context where relevant without becoming Inventory Management authority.",
+        "impact": "Inventory roadmap must preserve Project boundaries.",
+        "evidenceSectionAnchors": [
+          "4-work-placement-and-authority"
+        ],
+        "identificationBasis": "Implementation plan Section 4.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "sharedFoundations": [
+      {
+        "foundationId": "",
+        "name": "Klinswork Resource Registry",
+        "foundationType": "registry",
+        "relationshipDescription": "Provides stable Resource routing and Work Unit current/history context.",
+        "impact": "Prevents the plan from treating remembered URLs or physical paths as identity."
+      },
+      {
+        "foundationId": "",
+        "name": "Klinswork Documentation Viewer",
+        "foundationType": "documentation-discovery",
+        "relationshipDescription": "Provides source-aware discovery, companion resolution, and structured preview semantics.",
+        "impact": "The new roadmap must be discoverable without collapsing current-state and future-state records."
+      }
+    ],
+    "relationshipSummary": "Inventory Management is primary. Documentation provides documentation/work-governance infrastructure; Task Assignment and Tracking provides cross-System integration context; Scheduling remains a neighboring boundary context.",
+    "_comment": "Retained for compatibility and durable project narrative. Do not assume project placement from repository path alone. Use workPlacement for explicit Project/System/Application/Resource relationships."
+  },
+  "workPlacement": {
+    "_comment": "Explicit semantic placement of this body of work. Project, System, Application/Implementation, and Resource are separate concepts. Physical storage does not determine semantic ownership.",
+    "primaryProject": {
+      "projectId": "",
+      "projectName": "Inventory Management",
+      "relationshipToWork": "Primary Project whose Inventory 3.0 System documentation and planned direction are being reconciled.",
+      "identificationBasis": "Project Definition package and WORK-0006.",
+      "identificationConfidence": "high"
+    },
+    "systems": [
+      {
+        "systemId": "",
+        "systemName": "Inventory 3.0",
+        "relationshipToWork": "Target System for current-state verification, documentation reconciliation, and System roadmap creation.",
+        "authorityResourceIds": [
+          "RES-004",
+          "RES-005"
+        ],
+        "identificationBasis": "Inventory Management Project Summary and Inventory 3.0 System Summary.",
+        "identificationConfidence": "high"
+      },
+      {
+        "systemId": "",
+        "systemName": "Work Queue",
+        "relationshipToWork": "Related System providing the task-side integration context only.",
+        "authorityResourceIds": [
+          "RES-002",
+          "RES-003"
+        ],
+        "identificationBasis": "Work Queue System roadmap.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "applications": [
+      {
+        "applicationId": "",
+        "applicationName": "Inventory app",
+        "implementationType": "Apps Script web application",
+        "relationshipToWork": "Current runtime evidence source; product-feature modification is outside WORK-0006.",
+        "authorityResourceIds": [
+          "RES-004"
+        ],
+        "identificationBasis": "Resource Registry.",
+        "identificationConfidence": "high"
+      }
+    ],
+    "resources": [
+      {
+        "resourceId": "RES-004",
+        "resourceName": "Inventory app",
+        "relationshipToWork": "current runtime evidence",
+        "authorityRole": "application route"
+      },
+      {
+        "resourceId": "RES-005",
+        "resourceName": "Inventory app data sheet",
+        "relationshipToWork": "current datastore/schema evidence",
+        "authorityRole": "data-store route"
+      },
+      {
+        "resourceId": "RES-010",
+        "resourceName": "Building Map (Locations sheet)",
+        "relationshipToWork": "shared physical-location context",
+        "authorityRole": "shared location authority"
+      },
+      {
+        "resourceId": "RES-011",
+        "resourceName": "Online JSON viewer",
+        "relationshipToWork": "Viewer semantic validation",
+        "authorityRole": "presentation/inspection"
+      },
+      {
+        "resourceId": "RES-018",
+        "resourceName": "Klinswork Chemical Product Catalog",
+        "relationshipToWork": "product/SDS structured evidence",
+        "authorityRole": "catalog"
+      },
+      {
+        "resourceId": "RES-041",
+        "resourceName": "Project documentation root",
+        "relationshipToWork": "Project/System documentation space",
+        "authorityRole": "Projects Documentation Space"
+      },
+      {
+        "resourceId": "RES-043",
+        "resourceName": "Klinswork Resource Registry",
+        "relationshipToWork": "Resource and Work Unit routing/current state",
+        "authorityRole": "registry"
+      },
+      {
+        "resourceId": "RES-044",
+        "resourceName": "Klinswork Documentation Viewer manifest",
+        "relationshipToWork": "discovery validation",
+        "authorityRole": "generated discovery snapshot"
+      },
+      {
+        "resourceId": "RES-045",
+        "resourceName": "Documentation Viewer manifest builder",
+        "relationshipToWork": "manifest generation",
+        "authorityRole": "discovery builder"
+      },
+      {
+        "resourceId": "RES-046",
+        "resourceName": "Documentation Viewer source registry",
+        "relationshipToWork": "source-aware discovery configuration",
+        "authorityRole": "source registry"
+      }
+    ],
+    "sharedResources": [
+      {
+        "resourceId": "RES-010",
+        "resourceName": "Building Map (Locations sheet)",
+        "relationshipToWork": "Shared location authority used by Inventory and neighboring operational Systems."
+      }
+    ],
+    "relationships": [],
+    "placementSummary": "Inventory Management → Inventory 3.0 is the primary Project/System placement. Applications and data stores remain Resources/implementations rather than System identity. Documentation and Task Assignment and Tracking are related Projects, not absorbed scopes."
+  },
+  "subject": {
+    "projectName": "Inventory Management",
+    "primaryApp": "Inventory 3.0",
+    "mainFocus": "Current-state verification, documentation reconciliation, System roadmap creation, roadmap-sidecar creation, catalog promotion, and Viewer/context validation.",
+    "description": "Prospective WORK-0006 plan to bring Inventory Management → Inventory 3.0 to the current Klinswork System-roadmap documentation standard without implementing roadmap product features.",
+    "topics": [
+      "Inventory 3.0",
+      "Inventory Management",
+      "System roadmap",
+      "current-state verification",
+      "documentation reconciliation",
+      "System Roadmap Catalog",
+      "Documentation Viewer",
+      "context-naive continuation"
+    ],
+    "keywords": [
+      "WORK-0006",
+      "inventory",
+      "roadmap",
+      "system-summary",
+      "implementation-plan",
+      "sidecar",
+      "catalog",
+      "viewer"
+    ],
+    "appsAffected": [
+      "Inventory app",
+      "Klinswork Documentation Viewer"
+    ],
+    "systemsAffected": [
+      "Inventory 3.0"
+    ],
+    "componentsAffected": [
+      "Inventory Management Project documentation",
+      "Inventory 3.0 System documentation",
+      "System Roadmap Catalog",
+      "Documentation Viewer manifest"
+    ],
+    "_comment": "Subject fields are useful descriptive/indexing tags. They do not replace the semantic relationship statements in workPlacement."
+  },
+  "planContext": {
+    "_comment": "Describes why this plan exists and the temporal boundary of its authority. Use planningMode to distinguish normal prospective plans from plans reconstructed after work has already begun.",
+    "promptingNeed": "Inventory Management was the first Project Definition exemplar and Inventory 3.0 lacks the mature current-state-summary plus future-roadmap package later established for Work Queue.",
+    "planningScope": "Preserve the older SDS implementation plan; establish the WORK-0006 plan; verify current Inventory state; reconcile current documentation; design/create the Inventory 3.0 System roadmap and sidecar; promote the roadmap catalog entry; validate Viewer/context behavior; reconcile downstream effects.",
+    "planningStatus": "authoritative-plan-created-sidecar-generated-pending-registry-linkage",
+    "planningMode": "prospective",
+    "planningModeAllowedValues": [
+      "prospective",
+      "reconstructed-continuation",
+      "revised-existing-plan"
+    ],
+    "planningBasis": "implementation-plan-template-1.0-draft.json; WORK-0006/WUA-0011; current Inventory Project/System documentation; existing SDS implementation plan; plan-build-roadmap.md; Work Queue roadmap; current System Roadmap Catalog; current Resource Registry.",
+    "planningBoundary": {
+      "_comment": "If work predates the plan, preserve that fact here. The sidecar may summarize prior work only to establish the starting state; it must not falsely relabel prior work as prospectively planned.",
+      "priorWorkExists": true,
+      "priorWorkSummary": "Inventory Management already has Project Definition records; Inventory 3.0 already has README, System Summary, and System Summary sidecar; an older SDS Registry implementation plan and historical roadmap/design evidence also predate WORK-0006. Earlier generated WORK-0006 planning text is notes only.",
+      "priorWorkSourceReferences": [
+        "Inventory Management/project-identity.json",
+        "Inventory Management/README.md",
+        "Inventory Management/summaries/project-summary.md",
+        "Inventory Management/sidecars/project-summary-sidecar.json",
+        "Inventory Management/systems/Inventory 3.0/README.md",
+        "Inventory Management/systems/Inventory 3.0/summaries/system-summary.md",
+        "Inventory Management/systems/Inventory 3.0/sidecars/system-summary-sidecar.json",
+        "Inventory Management/implementation-plans/implementation-plan.md (older SDS Registry plan)",
+        "Inventory Management/plan-build-roadmap.md",
+        "Work Queue roadmap",
+        "klinswork-system-roadmap-catalog-001.json"
+      ],
+      "planAppliesFrom": "2026-08-16T16:40:00-06:00",
+      "remainingWorkSummary": "Preserve/install/link the plan package; activate the formal session; verify current Inventory state; reconcile docs; design/create roadmap + sidecar; promote catalog; validate Viewer/context; reconcile and close."
+    },
+    "assumptions": [
+      "Inventory 3.0 remains the principal known System inside Inventory Management unless live evidence contradicts that placement.",
+      "The planned Inventory roadmap catalog placeholder can be promoted rather than conceptually replaced when the roadmap exists."
+    ],
+    "constraints": [
+      "No permanent Project/System IDs may be invented.",
+      "No future WUA/Activity/Session identifiers may be pre-allocated.",
+      "Current/historical/planning/unverified evidence must remain distinguishable.",
+      "Product-feature implementation is outside WORK-0006.",
+      "The older SDS implementation plan must be preserved before the new canonical plan replaces its generic filename in the repository."
+    ],
+    "outOfScope": [
+      "Inventory product-feature implementation",
+      "execution of the older SDS Registry rebuild plan",
+      "Work Queue feature implementation",
+      "System Identity creation",
+      "PROJ-### or SYS-### allocation",
+      "Relationship Registry creation",
+      "broad Resource Registry redesign"
+    ],
+    "confidence": "high for documentation/work architecture; live implementation baseline remains prospective execution work"
+  },
+  "targetState": {
+    "currentState": "Inventory Management has a Project Definition package and Inventory 3.0 has README + System Summary + System Summary sidecar, but Inventory 3.0 has no current Project-local roadmap pair; the System Roadmap Catalog contains only a planned Inventory placeholder; current live implementation is not comprehensively reverified by current System documentation.",
+    "desiredState": "Inventory 3.0 has reconciled current-state documentation plus a distinct authoritative System roadmap and roadmap sidecar; the System Roadmap Catalog exposes Inventory 3.0 as active; Viewer discovery/companion semantics are validated; a context-naive session can distinguish current state, future direction, and live Resource routes.",
+    "successDefinition": "Inventory 3.0 has a trustworthy current interpretation and durable planned direction that remain semantically distinct, discoverable, and usable for selecting future bounded Work Units.",
+    "nonGoals": [
+      "implement roadmap capabilities",
+      "execute the SDS Registry rebuild",
+      "formalize System Identity",
+      "assign Project/System IDs"
+    ],
+    "transitionSummary": "Move Inventory 3.0 from first-exemplar System documentation to parity with the later Work Queue model: current-state System Summary plus a separate future-state System Roadmap, structured companion, catalog entry, and validated discovery.",
+    "_comment": "currentState means the state at the planning boundary, not necessarily the state at the beginning of the overall conversation."
+  },
+  "authoritativeResources": [
+    {
+      "_comment": "Registered route for the current Inventory web application.",
+      "resourceId": "RES-004",
+      "name": "Inventory app",
+      "resourceType": "APPLICATION",
+      "authorityRole": "current runtime route",
+      "authorityScope": "current user-facing Inventory behavior",
+      "requiredFor": [
+        "Stage 2 current implementation verification"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": [
+        "Formal session verification remains prospective."
+      ]
+    },
+    {
+      "_comment": "Registered route for the current Inventory datastore.",
+      "resourceId": "RES-005",
+      "name": "Inventory app data sheet",
+      "resourceType": "DATA STORE",
+      "authorityRole": "current datastore route",
+      "authorityScope": "current workbook/schema evidence",
+      "requiredFor": [
+        "Stage 2 current implementation verification"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": [
+        "Inspection should be read-only unless separately authorized."
+      ]
+    },
+    {
+      "_comment": "Projects Documentation Space.",
+      "resourceId": "RES-041",
+      "name": "Project documentation root",
+      "resourceType": "REPOSITORY / ROOT",
+      "authorityRole": "Projects Documentation Space",
+      "authorityScope": "Inventory Management and Inventory 3.0 project-local records",
+      "requiredFor": [
+        "Stages 1, 3, 5, 6, 8, 9"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    },
+    {
+      "_comment": "Current Resource and Work Unit routing/current-state container.",
+      "resourceId": "RES-043",
+      "name": "Klinswork Resource Registry",
+      "resourceType": "REGISTRY",
+      "authorityRole": "Resource routing and Work Unit current-state/history container",
+      "authorityScope": "Resources, Work Units, and Work Unit Activities",
+      "requiredFor": [
+        "Plan linkage",
+        "session activation",
+        "closure reconciliation"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    },
+    {
+      "_comment": "Generated Viewer discovery snapshot.",
+      "resourceId": "RES-044",
+      "name": "Klinswork Documentation Viewer manifest",
+      "resourceType": "MANIFEST",
+      "authorityRole": "generated discovery snapshot",
+      "authorityScope": "record discovery and companion-resolution evidence",
+      "requiredFor": [
+        "Stage 7 Viewer/discovery validation"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    },
+    {
+      "_comment": "Source-aware manifest builder.",
+      "resourceId": "RES-045",
+      "name": "Documentation Viewer manifest builder",
+      "resourceType": "SCRIPT / UTILITY",
+      "authorityRole": "manifest generation",
+      "authorityScope": "source-aware discovery build",
+      "requiredFor": [
+        "Stage 7 Viewer/discovery validation"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    },
+    {
+      "_comment": "Source registry controlling Documentation Spaces.",
+      "resourceId": "RES-046",
+      "name": "Documentation Viewer source registry",
+      "resourceType": "REGISTRY",
+      "authorityRole": "discovery source configuration",
+      "authorityScope": "configured Documentation Spaces and discovery modes",
+      "requiredFor": [
+        "Stage 7 Viewer/discovery validation"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    },
+    {
+      "_comment": "Structured chemical/product/SDS evidence relevant to Inventory roadmap design.",
+      "resourceId": "RES-018",
+      "name": "Klinswork Chemical Product Catalog",
+      "resourceType": "CATALOG",
+      "authorityRole": "structured product/SDS evidence",
+      "authorityScope": "chemical product identity and SDS research context",
+      "requiredFor": [
+        "Stage 4 target-state design where SDS/product direction is discussed"
+      ],
+      "locationSnapshot": "",
+      "resolutionSource": "Resource Registry",
+      "status": "resolved",
+      "notes": []
+    }
+  ],
+  "implementationStages": [
+    {
+      "sequence": 1,
+      "stageId": "STAGE-01",
+      "title": "Preserve plan history and establish the canonical plan",
+      "objective": "Install the adopted WORK-0006 plan without destroying the earlier SDS implementation plan.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Review/adopt implementation-plan-work-0006.md; Preserve the older SDS Registry implementation plan under a non-conflicting descriptive filename; Install/link the WORK-0006 plan in the Project implementation-plan collection; Create this structured sidecar from the settled Markdown plan; Create the formal Work Implementation Session; Reconcile the Work Unit and record session initiation/activation using allocated WUAs.",
+      "dependencies": [],
+      "deliverables": [
+        "preserved historical SDS plan",
+        "canonical WORK-0006 implementation plan",
+        "implementation-plan sidecar",
+        "formal session record",
+        "Registry/WUA activation evidence"
+      ],
+      "tests": [
+        "T-01"
+      ],
+      "exitCriteria": [
+        "Plan authority and historical-plan preservation are unambiguous",
+        "Formal session can begin without falsifying chronology"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-1-preserve-plan-history-and-establish-the-canonical-plan"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 2,
+      "stageId": "STAGE-02",
+      "title": "Verify current Inventory 3.0 implementation baseline",
+      "objective": "Establish current runtime/data evidence sufficient to distinguish current capability from historical/planned capability.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Inspect current Inventory application; Inspect current Inventory workbook/schema; Record current capability, historical capability, planned capability, and unknown capability distinctly.",
+      "dependencies": [],
+      "deliverables": [
+        "formal-session current-state verification record",
+        "documentation discrepancy list"
+      ],
+      "tests": [
+        "T-02",
+        "T-03"
+      ],
+      "exitCriteria": [
+        "Roadmap authorship can distinguish current, historical, planned, and unresolved capability"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-2-verify-current-inventory-3-0-implementation-baseline"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 3,
+      "stageId": "STAGE-03",
+      "title": "Reconcile current Project/System documentation",
+      "objective": "Bring current Inventory Management and Inventory 3.0 documentation into alignment with verified package/runtime state without rewriting history.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Review Project README/Summary/sidecar; Review Inventory 3.0 README/System Summary/sidecar; Correct materially stale present-tense status/routing claims; Preserve unresolved questions.",
+      "dependencies": [],
+      "deliverables": [
+        "reconciled current documentation",
+        "explicit remaining uncertainties"
+      ],
+      "tests": [
+        "T-04"
+      ],
+      "exitCriteria": [
+        "Context-naive reader is not routed through known-stale present-tense claims"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-3-reconcile-current-project-system-documentation"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 4,
+      "stageId": "STAGE-04",
+      "title": "Define the mature Inventory 3.0 target state",
+      "objective": "Settle roadmap principles, capability areas, boundaries, candidate Work Units, and open determinations before roadmap authoring.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Define mature System purpose; Define product principles; Settle roadmap areas; Define cross-System boundaries; Identify candidate future Work Units without IDs; Record open determinations.",
+      "dependencies": [],
+      "deliverables": [
+        "settled roadmap architecture",
+        "settled roadmap-area titles",
+        "candidate Work Units",
+        "open determinations"
+      ],
+      "tests": [],
+      "exitCriteria": [
+        "Roadmap can be authored from an agreed System concept rather than unreviewed brainstorming"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-4-define-the-mature-inventory-3-0-target-state"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 5,
+      "stageId": "STAGE-05",
+      "title": "Create the Inventory 3.0 System Roadmap",
+      "objective": "Create the authoritative human-readable planned-direction document for Inventory 3.0.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Write systems/Inventory 3.0/summaries/inventory-3-roadmap.md; Separate verified current baseline from planned direction; Include product principles, roadmap areas, candidate Work Units, integration responsibilities, and open determinations.",
+      "dependencies": [],
+      "deliverables": [
+        "inventory-3-roadmap.md"
+      ],
+      "tests": [
+        "T-05"
+      ],
+      "exitCriteria": [
+        "Roadmap explains what mature Inventory 3.0 should become, why, and how future work can be selected"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-5-create-the-inventory-3-0-system-roadmap"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 6,
+      "stageId": "STAGE-06",
+      "title": "Create roadmap sidecar and promote the System Roadmap Catalog",
+      "objective": "Create the roadmap's structured companion and promote Inventory 3.0 from planned placeholder to active roadmap entry.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Create inventory-3-roadmap-sidecar.json; Validate JSON/companion; Promote system-roadmap-inventory-3 to active-roadmap; Update counts/timestamps; Preserve blank Project/System IDs; Leave Calendar planned.",
+      "dependencies": [],
+      "deliverables": [
+        "inventory-3-roadmap-sidecar.json",
+        "updated klinswork-system-roadmap-catalog-001.json"
+      ],
+      "tests": [
+        "T-06",
+        "T-07",
+        "T-08"
+      ],
+      "exitCriteria": [
+        "Catalog points to actual Inventory roadmap artifacts and no longer describes them as not yet created"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-6-create-roadmap-sidecar-and-promote-the-system-roadmap-catalog"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 7,
+      "stageId": "STAGE-07",
+      "title": "Validate source-aware discovery and Viewer semantics",
+      "objective": "Prove the new roadmap participates correctly in the current Documentation Viewer architecture.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Regenerate source-aware manifest; Check valid/invalid record counts; Verify roadmap discovery; Verify companion resolution; Verify Project/System Summary companions remain correct; Verify roadmap-specific Viewer semantics; Verify Entity Records are not treated as sidecars.",
+      "dependencies": [],
+      "deliverables": [
+        "formal validation results",
+        "bounded compatibility correction only if needed"
+      ],
+      "tests": [
+        "T-09",
+        "T-10"
+      ],
+      "exitCriteria": [
+        "Roadmap is discoverable and current-state/future-state authority remains distinct"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-7-validate-source-aware-discovery-and-viewer-semantics"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 8,
+      "stageId": "STAGE-08",
+      "title": "Test context-naive continuation",
+      "objective": "Verify that a fresh future session can select the correct Inventory authority and continuation path.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Follow Project → System routing; Test current-state question routing; Test future-direction question routing; Test next-Work-Unit selection path.",
+      "dependencies": [],
+      "deliverables": [
+        "context-naive continuation result"
+      ],
+      "tests": [
+        "T-11"
+      ],
+      "exitCriteria": [
+        "Fresh reader can distinguish Project, System, Resource, current System Summary, future roadmap, and next-work process"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-8-test-context-naive-continuation"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    },
+    {
+      "sequence": 9,
+      "stageId": "STAGE-09",
+      "title": "Reconcile downstream effects and close",
+      "objective": "Reconcile only durable effects actually produced, then close the formal session and Work Unit if justified.",
+      "description": "Planned stage from implementation-plan-work-0006.md. Actions: Assess Work Unit/Activities; Assess Resource Activities; Assess Project/System current docs; Assess Roadmap Catalog; Assess Viewer manifest; Assess Architecture Changelog/Open Determinations/Record Profile implications; Close session; Review Work Unit completion rule.",
+      "dependencies": [],
+      "deliverables": [
+        "reconciled downstream authorities",
+        "formal session closure",
+        "Work Unit result/closure if justified"
+      ],
+      "tests": [
+        "T-12"
+      ],
+      "exitCriteria": [
+        "Session is explicitly closed and WORK-0006 is completed only if completion rule is supported by evidence"
+      ],
+      "status": "not-started",
+      "evidenceSectionAnchors": [
+        "stage-9-reconcile-downstream-effects-and-close"
+      ],
+      "_comment": "Prospective stage. Actual execution/results belong in the Work Implementation Session.",
+      "planningRelation": "remaining-planned-work",
+      "planningRelationAllowedValues": [
+        "completed-before-plan",
+        "in-progress-at-plan-creation",
+        "remaining-planned-work",
+        "conditional-future-work"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependencyId": "D-01",
+      "name": "Preserve the existing SDS implementation plan",
+      "dependencyType": "historical-record-preservation",
+      "requiredFor": [
+        "STAGE-01"
+      ],
+      "description": "The older SDS plan occupies the generic implementation-plan.md path and must be preserved before the WORK-0006 plan is installed there.",
+      "status": "unresolved",
+      "owner": "Inventory Management Project documentation",
+      "risks": [
+        "Silent overwrite would destroy planning history and violate temporal truth."
+      ],
+      "_comment": "Recommended preserved filename in the authoritative plan: implementation-plan-sds-registry-rebuild-and-app-integration.md."
+    },
+    {
+      "dependencyId": "D-02",
+      "name": "Current Inventory app accessibility",
+      "dependencyType": "current-state-evidence",
+      "requiredFor": [
+        "STAGE-02"
+      ],
+      "description": "Needed to verify current user-facing Inventory behavior.",
+      "status": "route-resolved-verification-pending",
+      "owner": "RES-004",
+      "risks": [
+        "Access limitations may reduce confidence in current behavior claims."
+      ],
+      "_comment": ""
+    },
+    {
+      "dependencyId": "D-03",
+      "name": "Current Inventory datastore accessibility",
+      "dependencyType": "current-state-evidence",
+      "requiredFor": [
+        "STAGE-02"
+      ],
+      "description": "Needed to verify current sheet/schema/data-model evidence.",
+      "status": "route-resolved-verification-pending",
+      "owner": "RES-005",
+      "risks": [
+        "Inspection must not become unauthorized operational editing."
+      ],
+      "_comment": ""
+    },
+    {
+      "dependencyId": "D-04",
+      "name": "Current Project/System documentation",
+      "dependencyType": "documentation-authority",
+      "requiredFor": [
+        "STAGE-03",
+        "STAGE-04",
+        "STAGE-05",
+        "STAGE-08"
+      ],
+      "description": "Provides the current semantic Project/System package.",
+      "status": "resolved",
+      "owner": "RES-041",
+      "risks": [],
+      "_comment": ""
+    },
+    {
+      "dependencyId": "D-05",
+      "name": "Current System Roadmap Catalog",
+      "dependencyType": "catalog-authority",
+      "requiredFor": [
+        "STAGE-06"
+      ],
+      "description": "Contains the planned Inventory 3.0 placeholder to promote.",
+      "status": "resolved",
+      "owner": "Documentation",
+      "risks": [],
+      "_comment": ""
+    },
+    {
+      "dependencyId": "D-06",
+      "name": "Current Documentation Viewer discovery infrastructure",
+      "dependencyType": "validation-infrastructure",
+      "requiredFor": [
+        "STAGE-07"
+      ],
+      "description": "Required for source-aware manifest regeneration and Viewer semantic validation.",
+      "status": "routes-resolved",
+      "owner": "RES-044; RES-045; RES-046; RES-011",
+      "risks": [
+        "A blocking Viewer/profile defect may require a bounded compatibility change."
+      ],
+      "_comment": ""
+    },
+    {
+      "dependencyId": "D-07",
+      "name": "Work Queue roadmap",
+      "dependencyType": "cross-system-planning-context",
+      "requiredFor": [
+        "STAGE-04"
+      ],
+      "description": "Supplies the task-side inventory integration context.",
+      "status": "resolved",
+      "owner": "Task Assignment and Tracking / Work Queue",
+      "risks": [
+        "Inventory roadmap must not absorb Work Queue task-lifecycle authority."
+      ],
+      "_comment": ""
+    }
+  ],
+  "risks": [
+    {
+      "riskId": "R-01",
+      "risk": "Historical design or planning evidence is misreported as current Inventory behavior.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Require live current-state verification before roadmap baseline claims.",
+      "contingency": "Preserve the capability as historical/planned/unresolved rather than asserting current implementation.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-02",
+      "risk": "The System roadmap turns into an implementation backlog or file-edit plan.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Keep roadmap areas capability-oriented and create later bounded Work Units for implementation.",
+      "contingency": "Move low-level actions out of the roadmap into candidate future Work Units.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-03",
+      "risk": "Current-document reconciliation rewrites historical truth.",
+      "likelihood": "low-to-medium",
+      "impact": "high",
+      "mitigation": "Edit only current authorities; preserve dated historical records.",
+      "contingency": "Record uncertainty rather than harmonizing historical text retroactively.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-04",
+      "risk": "Inventory Management absorbs neighboring Project/System authority.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Keep Inventory, Work Queue, Scheduling, Documentation, and shared Resources explicitly distinct.",
+      "contingency": "Create relationship/open-determination notes rather than collapsing scopes.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-05",
+      "risk": "WORK-0006 expands into Inventory or Work Queue feature implementation.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Use stop/reassessment conditions and create later roadmap-derived Work Units.",
+      "contingency": "Pause the affected stage and register a separate bounded Work Unit if implementation becomes necessary.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-06",
+      "risk": "Roadmap catalog promotion invents Project/System identity.",
+      "likelihood": "low",
+      "impact": "high",
+      "mitigation": "Keep Project/System ID fields blank until formally allocated.",
+      "contingency": "Do not promote any identity field from names or repository paths.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-07",
+      "risk": "The structured sidecar begins driving or rewriting the human-readable master.",
+      "likelihood": "low",
+      "impact": "medium",
+      "mitigation": "Treat implementation-plan-work-0006.md and later inventory-3-roadmap.md as authorities; generate sidecars downstream.",
+      "contingency": "Regenerate the sidecar from the master rather than modifying the master to match sidecar convenience.",
+      "status": "open"
+    },
+    {
+      "riskId": "R-08",
+      "risk": "Installing the WORK-0006 canonical plan destroys the older SDS implementation plan.",
+      "likelihood": "material",
+      "impact": "high",
+      "mitigation": "Preserve and verify the older plan before replacement.",
+      "contingency": "Do not install the new plan at the conflicting path until preservation is complete.",
+      "status": "open"
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "criterionId": "AC-01",
+      "description": "The adopted WORK-0006 implementation plan is clearly the intended-work authority.",
+      "verificationMethod": "Review source plan, Work Unit linkage, and authority statements.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-02",
+      "description": "The earlier SDS implementation plan remains retrievable and unchanged in historical/planning meaning.",
+      "verificationMethod": "Verify preserved source and references.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-03",
+      "description": "Current Inventory 3.0 behavior/schema is verified sufficiently for roadmap baseline claims.",
+      "verificationMethod": "Formal session current-state verification.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-04",
+      "description": "Current, historical, planning, and unresolved evidence remain distinguishable.",
+      "verificationMethod": "Document and roadmap review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-05",
+      "description": "Materially stale current Project/System annotations are reconciled.",
+      "verificationMethod": "Before/after review against current evidence.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-06",
+      "description": "inventory-3-roadmap.md exists and clearly represents planned direction rather than current state.",
+      "verificationMethod": "Roadmap authority/boundary review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-07",
+      "description": "The roadmap contains coherent capability areas, candidate Work Units, product principles, integration boundaries, and open determinations.",
+      "verificationMethod": "Roadmap content review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-08",
+      "description": "inventory-3-roadmap-sidecar.json is valid and resolves its Markdown companion.",
+      "verificationMethod": "JSON parse + manifest companion validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-09",
+      "description": "Inventory 3.0 is an active roadmap entry with internally consistent counts/statuses and no invented IDs.",
+      "verificationMethod": "System Roadmap Catalog validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-10",
+      "description": "The source-aware Viewer manifest discovers the intended Inventory roadmap structured record without new invalid JSON.",
+      "verificationMethod": "Manifest regeneration/inspection.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-11",
+      "description": "Viewer presentation keeps System Summary/current interpretation distinct from System Roadmap/future direction.",
+      "verificationMethod": "Viewer semantic validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-12",
+      "description": "A context-naive reader can select the correct current-state or future-state authority.",
+      "verificationMethod": "Context-naive continuation test.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-13",
+      "description": "Project/System/Application/Resource and neighboring Project boundaries remain distinct.",
+      "verificationMethod": "Semantic review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-14",
+      "description": "Material downstream Registry/architecture effects are assessed and recorded only where they occurred.",
+      "verificationMethod": "Closure reconciliation review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-15",
+      "description": "No Inventory product-feature implementation is falsely represented as completed under WORK-0006.",
+      "verificationMethod": "Session scope/results review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-16",
+      "description": "No unsupported Project/System/Resource/WUA/Activity/Session identifiers are invented.",
+      "verificationMethod": "Identity validation.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    },
+    {
+      "criterionId": "AC-17",
+      "description": "Session closure and Work Unit completion are evaluated separately.",
+      "verificationMethod": "Closure review.",
+      "required": true,
+      "status": "planned",
+      "evidenceSectionAnchors": []
+    }
+  ],
+  "plannedTests": [
+    {
+      "testId": "T-01",
+      "name": "Canonical implementation-plan installation",
+      "type": "authority/repository",
+      "preconditions": [
+        "WORK-0006 plan accepted",
+        "historical SDS plan preservation destination selected"
+      ],
+      "steps": [
+        "Preserve old SDS plan",
+        "Install/link implementation-plan-work-0006.md as governing plan",
+        "Verify both records remain retrievable",
+        "Verify WORK-0006 points to the new plan"
+      ],
+      "expectedResult": "No historical plan loss and unambiguous active plan authority.",
+      "failureCondition": "Old plan is overwritten or plan authority remains ambiguous.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-02",
+      "name": "Current Inventory implementation baseline",
+      "type": "current-state-verification",
+      "preconditions": [
+        "Formal session activated",
+        "RES-004 accessible"
+      ],
+      "steps": [
+        "Inspect major user-facing capabilities",
+        "Record confirmed versus unresolved current behavior"
+      ],
+      "expectedResult": "Sufficient current behavior baseline for roadmap writing.",
+      "failureCondition": "Live behavior cannot be distinguished from historical evidence.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-03",
+      "name": "Current datastore/schema baseline",
+      "type": "current-state-verification",
+      "preconditions": [
+        "RES-005 accessible"
+      ],
+      "steps": [
+        "Inspect current sheets and relevant schemas",
+        "Compare with System Summary/historical design",
+        "Record discrepancies"
+      ],
+      "expectedResult": "Sufficient current data-model baseline for roadmap writing.",
+      "failureCondition": "Schema authority cannot be resolved sufficiently.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-04",
+      "name": "Current-document freshness",
+      "type": "documentation-validation",
+      "preconditions": [
+        "T-02/T-03 evidence available as needed"
+      ],
+      "steps": [
+        "Inspect present-tense status statements",
+        "Verify each changed statement against current evidence"
+      ],
+      "expectedResult": "No material known-stale current status claim remains.",
+      "failureCondition": "Reconciliation would require unsupported inference.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-05",
+      "name": "Roadmap authority/boundary review",
+      "type": "semantic-validation",
+      "preconditions": [],
+      "steps": [
+        "Confirm current baseline is separate from planned direction",
+        "Confirm candidate Work Units are unallocated",
+        "Confirm cross-System responsibilities remain bounded"
+      ],
+      "expectedResult": "Roadmap is a System roadmap, not a current-state summary or implementation plan.",
+      "failureCondition": "Current/planned authority or Project/System boundaries collapse.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-06",
+      "name": "Roadmap sidecar JSON validation",
+      "type": "structural",
+      "preconditions": [
+        "Roadmap sidecar created"
+      ],
+      "steps": [
+        "Parse JSON",
+        "Inspect document/profile semantics",
+        "Check identity fields"
+      ],
+      "expectedResult": "Valid JSON with correct document type and no invented IDs.",
+      "failureCondition": "JSON invalid or unsupported identity asserted.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-07",
+      "name": "Roadmap companion resolution",
+      "type": "discovery",
+      "preconditions": [
+        "Roadmap + sidecar created"
+      ],
+      "steps": [
+        "Regenerate/inspect manifest",
+        "Inspect Inventory roadmap record"
+      ],
+      "expectedResult": "Roadmap sidecar resolves inventory-3-roadmap.md.",
+      "failureCondition": "Companion is missing or unresolved.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-08",
+      "name": "System Roadmap Catalog promotion",
+      "type": "catalog-validation",
+      "preconditions": [
+        "Roadmap created"
+      ],
+      "steps": [
+        "Verify Inventory becomes active",
+        "Verify Calendar remains planned",
+        "Verify counts/timestamps",
+        "Verify Project/System IDs remain blank"
+      ],
+      "expectedResult": "Internally consistent catalog with active Inventory roadmap.",
+      "failureCondition": "Counts/status/identity become inconsistent.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-09",
+      "name": "Viewer manifest validation",
+      "type": "discovery-infrastructure",
+      "preconditions": [
+        "Roadmap + sidecar present"
+      ],
+      "steps": [
+        "Regenerate manifest",
+        "Inspect valid/invalid results",
+        "Inspect Inventory roadmap entry"
+      ],
+      "expectedResult": "Roadmap is discovered without introducing invalid JSON.",
+      "failureCondition": "Manifest generation or JSON validation fails.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-10",
+      "name": "Viewer semantic separation",
+      "type": "presentation-authority",
+      "preconditions": [
+        "Viewer/manifest available"
+      ],
+      "steps": [
+        "Inspect System Summary handling",
+        "Inspect System Roadmap handling"
+      ],
+      "expectedResult": "Current-state and future-state records remain semantically distinct.",
+      "failureCondition": "Viewer collapses or confuses the two roles.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-11",
+      "name": "Context-naive continuation",
+      "type": "context-restoration",
+      "preconditions": [
+        "Current docs and roadmap complete"
+      ],
+      "steps": [
+        "Follow Project/System routing",
+        "Select current-state authority",
+        "Select future-state authority",
+        "Identify next Work Unit path"
+      ],
+      "expectedResult": "Fresh reader selects the correct authorities and continuation process.",
+      "failureCondition": "Fresh reader confuses current state, roadmap, Resource, or work-selection authority.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    },
+    {
+      "testId": "T-12",
+      "name": "Closure reconciliation",
+      "type": "work-governance",
+      "preconditions": [
+        "All substantive stages assessed"
+      ],
+      "steps": [
+        "Review Work Unit completion rule",
+        "Reconcile Registry/WUAs",
+        "Assess Resource/architecture effects",
+        "Verify session closure separately from Work Unit completion"
+      ],
+      "expectedResult": "Closure does not overstate completion.",
+      "failureCondition": "Session/Work Unit closure would falsify remaining state.",
+      "status": "planned",
+      "_comment": "Prospective test from implementation-plan-work-0006.md; actual result belongs in execution evidence/session records."
+    }
+  ],
+  "implementationOrder": [
+    {
+      "sequence": 1,
+      "stageId": "STAGE-01",
+      "title": "Preserve plan history and establish the canonical plan",
+      "reason": "Plan authority/history must be clean before execution.",
+      "gate": "WORK-0006 plan accepted; historical-plan preservation selected."
+    },
+    {
+      "sequence": 2,
+      "stageId": "STAGE-02",
+      "title": "Verify current Inventory 3.0 implementation baseline",
+      "reason": "Roadmap baseline requires current truth.",
+      "gate": "Formal session activated."
+    },
+    {
+      "sequence": 3,
+      "stageId": "STAGE-03",
+      "title": "Reconcile current Project/System documentation",
+      "reason": "Current docs should reflect verified state.",
+      "gate": "Current evidence sufficient."
+    },
+    {
+      "sequence": 4,
+      "stageId": "STAGE-04",
+      "title": "Define the mature Inventory 3.0 target state",
+      "reason": "Deliberate target-state design precedes roadmap writing.",
+      "gate": "Current baseline understood."
+    },
+    {
+      "sequence": 5,
+      "stageId": "STAGE-05",
+      "title": "Create the Inventory 3.0 System Roadmap",
+      "reason": "Human-readable roadmap is future-direction authority.",
+      "gate": "Target state settled."
+    },
+    {
+      "sequence": 6,
+      "stageId": "STAGE-06",
+      "title": "Create roadmap sidecar and promote the System Roadmap Catalog",
+      "reason": "Structured companion follows the roadmap master.",
+      "gate": "Roadmap settled."
+    },
+    {
+      "sequence": 7,
+      "stageId": "STAGE-07",
+      "title": "Validate source-aware discovery and Viewer semantics",
+      "reason": "Prove repository/discovery integration.",
+      "gate": "Roadmap + sidecar exist."
+    },
+    {
+      "sequence": 8,
+      "stageId": "STAGE-08",
+      "title": "Test context-naive continuation",
+      "reason": "Test the architecture's restoration value, not only syntax.",
+      "gate": "Validation package present."
+    },
+    {
+      "sequence": 9,
+      "stageId": "STAGE-09",
+      "title": "Reconcile downstream effects and close",
+      "reason": "Reconciliation follows actual effects.",
+      "gate": "Prior stages assessed."
+    }
+  ],
+  "roadmapImpact": {
+    "_comment": "Do not imply that a formal roadmap exists when it does not. roadmapAuthorityStatus should state the authority level of the planning source.",
+    "roadmapAuthorityStatus": "Inventory 3.0 roadmap not yet created; this implementation plan governs creation of that future roadmap.",
+    "previousPlan": "Existing historical Inventory 3.0 roadmap/design evidence and a System Roadmap Catalog placeholder are planning context, not current roadmap authority.",
+    "additions": [
+      "Authoritative Inventory 3.0 System roadmap",
+      "Inventory 3.0 roadmap sidecar",
+      "Active Inventory 3.0 System Roadmap Catalog entry"
+    ],
+    "changes": [
+      "Current Inventory Management / Inventory 3.0 documentation may be reconciled where verified evidence makes present-tense annotations stale.",
+      "System Roadmap Catalog Inventory entry moves from planned placeholder to active only after roadmap creation."
+    ],
+    "deprecations": [],
+    "deferredItems": [
+      "Roadmap capability implementation",
+      "System Identity",
+      "Project/System ID allocation",
+      "Relationship Registry",
+      "execution of older SDS Registry rebuild plan"
+    ],
+    "resultingPlan": "inventory-3-roadmap.md when created under WORK-0006",
+    "nextDecision": "After roadmap completion, select a bounded roadmap candidate as a separate future Work Unit based on operational need and roadmap priority."
+  },
+  "audienceViews": {
+    "supervisor": {
+      "_comment": "The supervisor reading path is a modeled audience view and may be retained even when no external supervisor participates.",
+      "readingPathLabel": "Supervisor reading path",
+      "modeledAudienceRole": "supervisor",
+      "actualAudienceRole": "",
+      "actualAudienceName": "",
+      "plainLanguageSummary": "This work session is documentation and planning work for Inventory 3.0: verify what the system does now, clean up stale current documentation, define the mature roadmap, and validate that future sessions can find and interpret it correctly.",
+      "operationalImpact": "No Inventory product-feature implementation or operational stock change is planned under WORK-0006.",
+      "currentStatus": "Plan and sidecar created; formal session not yet activated.",
+      "actionRequired": {
+        "required": false,
+        "description": ""
+      },
+      "risksOrLimitations": [
+        "Current runtime/datastore verification is still prospective.",
+        "The older SDS implementation plan must be preserved before the new plan is installed at the generic canonical path."
+      ],
+      "staffVisibleChanges": [],
+      "nextOperationalStep": "Preserve/install/link the plan package, create the formal session record, then begin current-state verification.",
+      "callouts": []
+    },
+    "general": {
+      "summary": "WORK-0006 will bring Inventory 3.0 up to the current Klinswork documentation standard by combining verified current-state documentation with a separate future System roadmap.",
+      "keyPoints": [
+        "No Inventory product features are being implemented in this Work Unit.",
+        "The new roadmap will remain separate from the current System Summary.",
+        "The old SDS implementation plan is preserved as prior planning evidence.",
+        "Future implementation work will be selected as separate roadmap-derived Work Units."
+      ]
+    },
+    "technical": {
+      "summary": "Prospective documentation/architecture Work Unit covering current runtime/datastore verification, current-document reconciliation, System roadmap + sidecar generation, catalog promotion, source-aware Viewer validation, context-naive continuation, and closure reconciliation.",
+      "keyPoints": [
+        "WORK-0006 planned/ready at plan creation.",
+        "WUA-0011 is the only allocated WUA referenced.",
+        "Project/System IDs remain blank.",
+        "RES-004 and RES-005 are current implementation routes.",
+        "RES-044/045/046/011 provide Viewer discovery/validation infrastructure."
+      ]
+    }
+  },
+  "knowledgeProduced": {
+    "projectSpecificLessons": [
+      "Inventory 3.0 currently lacks the roadmap pair already established for Work Queue.",
+      "The generic implementation-plan.md filename currently collides with an older SDS Registry plan and must be handled without destroying history."
+    ],
+    "generalLessons": [
+      "Authoritative human-readable plans should be created before their structured sidecars.",
+      "A new canonical plan must not silently overwrite an older plan that still carries historical/planning meaning.",
+      "Current-state System Summaries and future-state System Roadmaps should remain separate authorities."
+    ],
+    "recurringProblems": [
+      {
+        "problem": "Creation-time documentation can remain present-tense stale after the architecture matures.",
+        "pattern": "Initial exemplar files retain planned/not-yet-created annotations after companion records later exist.",
+        "projectsObservedIn": [
+          "Inventory Management",
+          "Task Assignment and Tracking"
+        ]
+      }
+    ],
+    "knowledgeBaseCandidates": [
+      {
+        "title": "Canonical Plan Replacement Without History Loss",
+        "description": "Procedure for installing a new canonical implementation-plan.md when an older historical plan occupies that filename.",
+        "suggestedDestination": "Documentation / implementation-plan guidance",
+        "supportingSectionAnchors": [
+          "5-planning-boundary-and-prior-work",
+          "10-implementation-stages"
+        ]
+      }
+    ],
+    "rulesConfirmedOrRevised": [
+      {
+        "rule": "implementation-plan.md is the authoritative intended-work plan; its sidecar is downstream.",
+        "changeType": "confirmed",
+        "explanation": "WORK-0006 is the first use of the newly created implementation-plan authoring template."
+      },
+      {
+        "rule": "Do not rewrite prior work to make current planning appear prospective.",
+        "changeType": "confirmed",
+        "explanation": "The older SDS plan and earlier Inventory records remain prior planning/history evidence."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "sectionId": "SEC-01",
+      "title": "Plan Identity and Authority",
+      "anchor": "1-plan-identity-and-authority",
+      "contentSummary": "Defines the WORK-0006 implementation-plan identity, authority boundaries, canonical role, and identity discipline.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-02",
+      "title": "Purpose, Goal, and Completion Rule",
+      "anchor": "2-purpose-goal-and-completion-rule",
+      "contentSummary": "Explains why Inventory 3.0 needs roadmap parity with Work Queue and defines the bounded goal and Work Unit completion conditions.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant to scope, intended outcome, or closure"
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-03",
+      "title": "Work Unit and Formal Session Relationship",
+      "anchor": "3-work-unit-and-formal-session-relationship",
+      "contentSummary": "Records plan-time WORK-0006 state, formal-session relationship, and the activation gate.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-04",
+      "title": "Work Placement and Authority",
+      "anchor": "4-work-placement-and-authority",
+      "contentSummary": "Places the work under Inventory Management → Inventory 3.0 while preserving related Project/System/Resource boundaries.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-05",
+      "title": "Planning Boundary and Prior Work",
+      "anchor": "5-planning-boundary-and-prior-work",
+      "contentSummary": "Separates prior Inventory Project/System work, the older SDS plan, and earlier notes from prospective WORK-0006 authority.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Canonical Plan Replacement Without History Loss"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-06",
+      "title": "Starting State",
+      "anchor": "6-starting-state",
+      "contentSummary": "Describes the plan-boundary Work Unit, Project, System, implementation, repository, catalog, and uncertainty state.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-07",
+      "title": "Context and Evidence Requirements",
+      "anchor": "7-context-and-evidence-requirements",
+      "contentSummary": "Declares semantic context requirements and separates current, historical, planning, and unresolved evidence.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-08",
+      "title": "Scope",
+      "anchor": "8-scope",
+      "contentSummary": "Defines in-scope documentation/roadmap work and excludes product implementation, identity allocation, and broader architecture work.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant to scope, intended outcome, or closure"
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-09",
+      "title": "Target State",
+      "anchor": "9-target-state",
+      "contentSummary": "Defines the desired current-state-summary plus future-roadmap architecture and candidate Inventory capability families.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant to scope, intended outcome, or closure"
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-10",
+      "title": "Implementation Stages",
+      "anchor": "10-implementation-stages",
+      "contentSummary": "Defines nine coherent prospective implementation stages from plan preservation through closure.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": [
+          "Canonical Plan Replacement Without History Loss"
+        ]
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-11",
+      "title": "Dependencies and Risks",
+      "anchor": "11-dependencies-and-risks",
+      "contentSummary": "Identifies dependencies and risks, especially current-state verification and historical-plan preservation.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-12",
+      "title": "Acceptance Criteria",
+      "anchor": "12-acceptance-criteria",
+      "contentSummary": "Defines observable acceptance criteria for authority, evidence, roadmap, catalog, Viewer, context, identity, and closure integrity.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-13",
+      "title": "Planned Validation and Tests",
+      "anchor": "13-planned-validation-and-tests",
+      "contentSummary": "Defines twelve prospective tests; actual results are downstream execution evidence.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-14",
+      "title": "Implementation Order and Gates",
+      "anchor": "14-implementation-order-and-gates",
+      "contentSummary": "Orders the stages and states the gates that prevent roadmap writing before current-state verification.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": false,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-15",
+      "title": "Stop and Reassessment Conditions",
+      "anchor": "15-stop-and-reassessment-conditions",
+      "contentSummary": "Defines conditions requiring pause/reassessment rather than unsupported continuation.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-16",
+      "title": "Registry, Documentation, and Architecture Reconciliation",
+      "anchor": "16-registry-documentation-and-architecture-reconciliation",
+      "contentSummary": "Defines downstream Work Unit, WUA, Resource, documentation, catalog, architecture, and Viewer authorities to assess at closure.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-17",
+      "title": "Closure Conditions and Handoff",
+      "anchor": "17-closure-conditions-and-handoff",
+      "contentSummary": "Separates session closure from Work Unit completion and defines completed/incomplete handoff behavior.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": true,
+        "calloutAnchor": "",
+        "reason": "Relevant to scope, intended outcome, or closure"
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    },
+    {
+      "sectionId": "SEC-18",
+      "title": "Provenance and Interpretation Limits",
+      "anchor": "18-provenance-and-interpretation-limits",
+      "contentSummary": "Preserves source provenance, notes-versus-authority distinction, planning-preparation limits, and unresolved activation/install conditions.",
+      "narrativeRole": "implementation-plan-authority",
+      "projectRelevance": {
+        "primaryProjectContribution": "Defines or constrains WORK-0006 work for Inventory Management / Inventory 3.0.",
+        "relatedProjectContributions": []
+      },
+      "supervisorRelevance": {
+        "isRelevant": false,
+        "calloutAnchor": "",
+        "reason": ""
+      },
+      "knowledgeRelevance": {
+        "containsReusableKnowledge": true,
+        "knowledgeBaseCandidateTitles": []
+      },
+      "graphics": []
+    }
+  ],
+  "technical": {
+    "platforms": [
+      "GitHub repository",
+      "Google Apps Script",
+      "Google Sheets",
+      "Klinswork Documentation Viewer"
+    ],
+    "apps": [
+      "Inventory app",
+      "Klinswork Documentation Viewer"
+    ],
+    "scripts": [
+      "documentation-viewer-manifest.py"
+    ],
+    "languages": [
+      "Markdown",
+      "JSON"
+    ],
+    "services": [
+      "Google Sheets",
+      "Google Apps Script",
+      "GitHub Pages"
+    ],
+    "subscriptions": [],
+    "dataStores": [
+      "Inventory app data sheet",
+      "Klinswork Resource Registry"
+    ],
+    "files": [
+      "implementation-plan-work-0006.md",
+      "implementation-plan-work-0006-sidecar.json",
+      "inventory-3-roadmap.md (planned)",
+      "inventory-3-roadmap-sidecar.json (planned)",
+      "klinswork-system-roadmap-catalog-001.json"
+    ],
+    "integrations": [
+      "Inventory 3.0 ↔ Work Queue planned inventory-transaction boundary",
+      "Documentation Viewer source-aware discovery"
+    ],
+    "apis": [],
+    "versions": [
+      "implementation-plan authoring template 1.0-draft",
+      "implementation-plan sidecar schema 3.2-draft / profile 1.2",
+      "Work Implementation Session template 1.1-draft"
+    ],
+    "tests": [],
+    "validation": {
+      "performed": true,
+      "result": "PASS — sidecar generated from the settled WORK-0006 Markdown plan and validated as JSON; execution tests remain planned.",
+      "notes": [
+        "This validation concerns sidecar construction only, not execution of WORK-0006 planned tests.",
+        "Only WUA-0011 is referenced; no future WUA IDs were pre-allocated.",
+        "Project/System IDs remain blank."
+      ]
+    },
+    "_comment": "Technical inventories describe the plan/document. Do not use URLs here as substitutes for stable Resource IDs when a registered resource exists."
+  },
+  "communications": {
+    "email": {
+      "subject": "",
+      "body": "",
+      "audiences": [],
+      "detailLevel": "",
+      "sourceAudienceView": "supervisor"
+    },
+    "messages": []
+  },
+  "graphics": [],
+  "publication": {
+    "status": "local-generated-unpublished",
+    "canonicalDocumentUrl": "",
+    "listingTitle": "Inventory Management / Inventory 3.0 Roadmap and Documentation Reconciliation — Implementation Plan",
+    "listingDescription": "Structured sidecar for the WORK-0006 authoritative implementation plan.",
+    "indexPageUrl": "",
+    "googleSitesUrl": "",
+    "repositoryUrl": "",
+    "catalogId": "",
+    "cataloged": false,
+    "publishedTimestamp": "",
+    "lastVerifiedTimestamp": "",
+    "destinations": [],
+    "_comment": "Publication fields describe the implementation-plan document/sidecar publication state, not deployment of the implementation target."
+  },
+  "deployment": {
+    "appsScript": [],
+    "other": [
+      {
+        "platform": "Klinswork Resource Registry",
+        "resourceName": "Inventory app",
+        "canonicalUrl": "",
+        "resourceId": "RES-004",
+        "status": "registered-route",
+        "lastVerifiedTimestamp": ""
+      },
+      {
+        "platform": "Klinswork Resource Registry",
+        "resourceName": "Inventory app data sheet",
+        "canonicalUrl": "",
+        "resourceId": "RES-005",
+        "status": "registered-route",
+        "lastVerifiedTimestamp": ""
+      }
+    ],
+    "_comment": "Deployment describes planned or relevant target deployments. Stable resource identity should remain separate from deployment URL."
+  },
+  "links": {
+    "externalUrls": [],
+    "sourceUrls": [],
+    "relatedDocumentUrls": [],
+    "replacedUrls": []
+  },
+  "validation": {
+    "_comment": "Profile-level semantic validation rules for implementation-plan sidecars.",
+    "performed": true,
+    "result": "PASS — sidecar conforms to the supplied 3.2-draft implementation-plan profile and preserves the Markdown plan as authority.",
+    "rules": [
+      "The implementation-plan.md is authoritative; this sidecar describes it.",
+      "The Work Unit Registry is authoritative for current Work Unit state; workUnitContext.stateAtPlanCreation is a plan-time snapshot only.",
+      "Work Unit Activities are authoritative for timestamped material Work Unit history; this sidecar may reference allocated WUA IDs but must not pre-allocate future WUA IDs.",
+      "A Work Implementation Session is authoritative for detailed formal-session execution history; this sidecar may link to session records but must not absorb execution evidence.",
+      "Session initiation and session activation must remain distinguishable when an activation gate exists.",
+      "Registered resources should be referenced by stable Resource ID when known.",
+      "Unknown Work Unit Activity, Session, Project, System, Application, Relationship, or Resource identifiers must remain blank rather than be invented.",
+      "A WORK-#### identifier must be used only when allocated by the Work Unit authority.",
+      "Project/System/Application/Resource placement must not be inferred from repository path alone.",
+      "Startup context and session-specific working context must remain distinct.",
+      "The workflow declares required context; the Resource Registry resolves that context.",
+      "A reconstructed-continuation plan must identify its planning boundary and prior-work basis.",
+      "Work completed before plan creation must not be represented as prospectively planned work.",
+      "currentState must describe the state at the plan boundary.",
+      "plannedTests must remain distinct from tests actually executed.",
+      "Resource identity must remain distinct from current physical location or deployment URL.",
+      "The implementation-plan sidecar must not become a substitute for Work Unit current state, Work Unit Activity history, formal-session execution history, workflow-run history, final evidence, summary, or work-update records."
+    ],
+    "notes": [
+      "Source document filename follows the user's retained name: implementation-plan-work-0006.md.",
+      "The sidecar filename is implementation-plan-work-0006-sidecar.json.",
+      "Only allocated WUA-0011 is referenced.",
+      "No Project or System ID was invented.",
+      "Formal session initiation/activation remains unrecorded.",
+      "Current Inventory runtime/datastore verification remains planned execution work.",
+      "The older SDS implementation plan remains a preservation dependency."
+    ]
+  },
+  "provenance": {
+    "sourceSummaryPath": "",
+    "sourceConversationReference": "2026-08-16 WORK-0006 implementation-plan authoring conversation",
+    "sourceFiles": [
+      "implementation-plan-work-0006.md",
+      "implementation-plan-sidecar-template-3.2-draft.json",
+      "implementation-plan-template-1.0-draft.json",
+      "Inventory Management Project package",
+      "Inventory 3.0 System package",
+      "plan-build-roadmap.md",
+      "Work Queue roadmap",
+      "klinswork-system-roadmap-catalog-001.json"
+    ],
+    "generatedBy": "ChatGPT",
+    "generatedTimestamp": "2026-08-16T16:48:00-06:00",
+    "reviewedBy": "",
+    "reviewedTimestamp": "",
+    "reviewStatus": "generated-pending-user-review",
+    "interpretationNotes": [
+      "The sidecar is generated from the authoritative WORK-0006 Markdown plan content authored immediately before this step.",
+      "The user retained that plan under the filename implementation-plan-work-0006.md; this sidecar uses that filename as its source-document path.",
+      "Earlier generated Inventory roadmap plan material is treated as planning notes only."
+    ],
+    "unresolvedQuestions": [
+      "What exact repository filename/location will preserve the older SDS implementation plan before canonical WORK-0006 plan installation?",
+      "Will the formal Work Implementation Session use the proposed path work-implementation-session-2026-08-16-inventory-3-roadmap.md or another final naming convention?",
+      "What current runtime/datastore facts will formal Stage 2 verification establish?"
+    ],
+    "_comment": "Preserve the evidence used to construct the sidecar. For reconstructed-continuation plans, explicitly record reconstruction sources and interpretation limits. Work Unit/session/WUA references must be grounded in their respective authorities.",
+    "sourceResourceIds": [
+      "RES-004",
+      "RES-005",
+      "RES-010",
+      "RES-011",
+      "RES-018",
+      "RES-041",
+      "RES-043",
+      "RES-044",
+      "RES-045",
+      "RES-046"
+    ],
+    "sourceWorkUnitIds": [
+      "WORK-0006"
+    ],
+    "sourceWorkUnitActivityIds": [
+      "WUA-0011"
+    ],
+    "sourceSessionRecords": [],
+    "contextResolutionNotes": [
+      "Resource routes were resolved through the current Registry where available.",
+      "Repository paths are used for document locality, not as entity identity."
+    ],
+    "reconstructionNotes": []
+  }
+}
