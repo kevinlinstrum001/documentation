@@ -31,6 +31,8 @@ documentation/
 │   │   │   ├── document-sidecar-template-1.0.json
 │   │   │   ├── document-sidecar-template-1.1.json
 │   │   │   ├── documentation-workflow-1.0.json
+│   │   │   ├── json-viewer-2-0.html
+│   │   │   ├── json-viewer-2-1.html
 │   │   │   ├── json-viewer-2.html
 │   │   │   ├── json-viewer-diagnostics-v1.1.0.txt
 │   │   │   ├── json-viewer-original.html
@@ -191,7 +193,6 @@ documentation/
 │   │   │   └── work-implementation-session-2026-08-16-task-assignment-and-tracking.md
 │   │   ├── documentation-viewer-manifest.json
 │   │   ├── json-manifest.json
-│   │   ├── json-viewer-2-0.html
 │   │   ├── json-viewer.html
 │   │   ├── manifest.py
 │   │   └── open-json-viewer-v1.6.0.bat
@@ -239,6 +240,7 @@ documentation/
 │       └── transparent-system.html
 ├── images/
 │   ├── banners/
+│   │   ├── ChatGPT Image Jul 18, 2026, 07_23_34 PM.png
 │   │   ├── general-announcement.png
 │   │   └── image-001.png
 │   ├── icons/
@@ -257,8 +259,16 @@ documentation/
 │   │   ├── ChatGPT Image Aug 23, 2026, 07_30_23 PM.png
 │   │   ├── ChatGPT Image Aug 23, 2026, 07_38_55 PM.png
 │   │   ├── ChatGPT Image Aug 23, 2026, 07_46_57 PM.png
+│   │   ├── ChatGPT Image Jul 11, 2026, 02_30_28 PM.png
+│   │   ├── ChatGPT Image Jul 11, 2026, 02_37_24 PM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 01_14_50 PM.png
+│   │   ├── ChatGPT Image Jul 19, 2026, 01_14_58 PM.png
 │   │   ├── ChatGPT Image Jul 21, 2026, 10_21_37 PM.png
 │   │   ├── ChatGPT Image Jul 23, 2026, 05_28_26 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 09_13_32 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 10_07_34 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 11_41_28 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 11_42_00 PM.png
 │   │   └── IMG_20260105_111746_663.jpg
 │   ├── misc/
 │   │   ├── ChatGPT Image Aug 16, 2026, 03_15_23 PM.png
@@ -272,6 +282,8 @@ documentation/
 │   │   ├── ChatGPT Image Jul 19, 2026, 09_24_06 AM.png
 │   │   ├── ChatGPT Image Jul 19, 2026, 09_31_55 AM.png
 │   │   ├── ChatGPT Image Jul 19, 2026, 09_50_15 AM.png
+│   │   ├── cockpit.png
+│   │   ├── flask-route.png
 │   │   ├── image001.png
 │   │   └── relative-paths-appScript.png
 │   ├── monkeys/
@@ -281,7 +293,9 @@ documentation/
 │   │   ├── ChatGPT Image Jul 21, 2026, 06_38_25 PM.png
 │   │   ├── ChatGPT Image Jul 21, 2026, 06_40_03 PM.png
 │   │   ├── ChatGPT Image Jul 21, 2026, 06_56_22 PM.png
-│   │   └── ChatGPT Image Jul 21, 2026, 07_01_53 PM.png
+│   │   ├── ChatGPT Image Jul 21, 2026, 07_01_53 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 04_22_32 PM.png
+│   │   └── munkay.png
 │   ├── personal/
 │   │   └── floor-image.png
 │   ├── req-forms/
@@ -331,6 +345,11 @@ documentation/
 │   │   ├── ChatGPT Image Jul 25, 2026, 02_45_43 AM.png
 │   │   ├── ChatGPT Image Jul 25, 2026, 06_47_53 PM.png
 │   │   ├── ChatGPT Image Jul 26, 2026, 07_34_24 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 06_12_09 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 06_14_57 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 06_17_55 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 09_19_59 PM.png
+│   │   ├── ChatGPT Image Jul 9, 2026, 09_22_09 PM.png
 │   │   ├── delivery-service-01.png
 │   │   ├── delivery-service-02.png
 │   │   ├── delivery-service-03.png

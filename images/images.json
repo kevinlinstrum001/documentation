@@ -1,5 +1,10 @@
 [
   {
+    "name": "Chatgpt Image Jul 18, 2026, 07 23 34 Pm",
+    "file": "banners/ChatGPT Image Jul 18, 2026, 07_23_34 PM.png",
+    "category": "Banners"
+  },
+  {
     "name": "General Announcement",
     "file": "banners/general-announcement.png",
     "category": "Banners"
@@ -80,6 +85,26 @@
     "category": "Meadows"
   },
   {
+    "name": "Chatgpt Image Jul 11, 2026, 02 30 28 Pm",
+    "file": "meadows/ChatGPT Image Jul 11, 2026, 02_30_28 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 11, 2026, 02 37 24 Pm",
+    "file": "meadows/ChatGPT Image Jul 11, 2026, 02_37_24 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 19, 2026, 01 14 50 Pm",
+    "file": "meadows/ChatGPT Image Jul 19, 2026, 01_14_50 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 19, 2026, 01 14 58 Pm",
+    "file": "meadows/ChatGPT Image Jul 19, 2026, 01_14_58 PM.png",
+    "category": "Meadows"
+  },
+  {
     "name": "Chatgpt Image Jul 21, 2026, 10 21 37 Pm",
     "file": "meadows/ChatGPT Image Jul 21, 2026, 10_21_37 PM.png",
     "category": "Meadows"
@@ -87,6 +112,26 @@
   {
     "name": "Chatgpt Image Jul 23, 2026, 05 28 26 Pm",
     "file": "meadows/ChatGPT Image Jul 23, 2026, 05_28_26 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 09 13 32 Pm",
+    "file": "meadows/ChatGPT Image Jul 9, 2026, 09_13_32 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 10 07 34 Pm",
+    "file": "meadows/ChatGPT Image Jul 9, 2026, 10_07_34 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 11 41 28 Pm",
+    "file": "meadows/ChatGPT Image Jul 9, 2026, 11_41_28 PM.png",
+    "category": "Meadows"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 11 42 00 Pm",
+    "file": "meadows/ChatGPT Image Jul 9, 2026, 11_42_00 PM.png",
     "category": "Meadows"
   },
   {
@@ -150,6 +195,16 @@
     "category": "Misc"
   },
   {
+    "name": "Cockpit",
+    "file": "misc/cockpit.png",
+    "category": "Misc"
+  },
+  {
+    "name": "Flask Route",
+    "file": "misc/flask-route.png",
+    "category": "Misc"
+  },
+  {
     "name": "Image001",
     "file": "misc/image001.png",
     "category": "Misc"
@@ -192,6 +247,16 @@
   {
     "name": "Chatgpt Image Jul 21, 2026, 07 01 53 Pm",
     "file": "monkeys/ChatGPT Image Jul 21, 2026, 07_01_53 PM.png",
+    "category": "Monkeys"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 04 22 32 Pm",
+    "file": "monkeys/ChatGPT Image Jul 9, 2026, 04_22_32 PM.png",
+    "category": "Monkeys"
+  },
+  {
+    "name": "Munkay",
+    "file": "monkeys/munkay.png",
     "category": "Monkeys"
   },
   {
@@ -397,6 +462,31 @@
   {
     "name": "Chatgpt Image Jul 26, 2026, 07 34 24 Pm",
     "file": "web-apps/ChatGPT Image Jul 26, 2026, 07_34_24 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 06 12 09 Pm",
+    "file": "web-apps/ChatGPT Image Jul 9, 2026, 06_12_09 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 06 14 57 Pm",
+    "file": "web-apps/ChatGPT Image Jul 9, 2026, 06_14_57 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 06 17 55 Pm",
+    "file": "web-apps/ChatGPT Image Jul 9, 2026, 06_17_55 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 09 19 59 Pm",
+    "file": "web-apps/ChatGPT Image Jul 9, 2026, 09_19_59 PM.png",
+    "category": "Web Apps"
+  },
+  {
+    "name": "Chatgpt Image Jul 9, 2026, 09 22 09 Pm",
+    "file": "web-apps/ChatGPT Image Jul 9, 2026, 09_22_09 PM.png",
     "category": "Web Apps"
   },
   {

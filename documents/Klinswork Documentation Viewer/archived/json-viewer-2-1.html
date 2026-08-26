@@ -1,14 +1,9 @@
-<!--
-  Klinswork Documentation Viewer
-  Version: 2.1.1-draft
-  Patch: Browser-storage failures no longer prevent repository or catalog loading.
--->
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="application-version" content="2.1.1-draft">
-  <title>Klinswork Documentation Viewer 2.1.1-draft</title>
+  <title>Klinswork Documentation Viewer 2.1-draft</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -1442,7 +1437,7 @@
     <div class="sidebar-header">
       <h1>Klinswork Documentation Viewer</h1>
       <p class="subtle">Source-aware, read-only documentation browser</p>
-      <p class="subtle runtime-info" id="runtimeInfo">2.1.1-draft · detecting runtime…</p>
+      <p class="subtle runtime-info" id="runtimeInfo">2.1-draft · detecting runtime…</p>
       <div class="file-controls">
         <input id="fileFilter" type="search" placeholder="Filter filenames or paths">
         <button id="refreshButton" title="Refresh repository">Refresh</button>
@@ -1550,27 +1545,6 @@
   const runtime = {
     mode: ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname) ? "local-api" : "static-manifest",
     manifestUrl: "documentation-viewer-manifest.json",
-  };
-
-  // Persistence is optional. Catalog and document rendering must continue when
-  // browser storage is blocked, unavailable, full, or restricted by an embed.
-  const safeStorage = {
-    get(key, fallback = null) {
-      try {
-        const value = window.localStorage.getItem(key);
-        return value === null ? fallback : value;
-      } catch {
-        return fallback;
-      }
-    },
-    set(key, value) {
-      try {
-        window.localStorage.setItem(key, String(value));
-        return true;
-      } catch {
-        return false;
-      }
-    },
   };
 
   function isLocalApiRuntime() {
@@ -1687,7 +1661,7 @@
 
   async function loadAbout() {
     if (!isLocalApiRuntime()) {
-      els.runtimeInfo.textContent = "2.1.1-draft · GitHub Pages · source-aware manifest";
+      els.runtimeInfo.textContent = "2.1-draft · GitHub Pages · source-aware manifest";
       els.runtimeInfo.title = `Static source-aware documentation browser · manifest: ${runtime.manifestUrl}`;
       return;
     }
@@ -1699,7 +1673,7 @@
       els.runtimeInfo.textContent = `v${about.version || "1.6.1"} · build ${about.buildId} · PID ${about.processId} · port ${about.port}`;
       els.runtimeInfo.title = `Script: ${about.scriptPath}\nRepository: ${about.folder}`;
     } catch {
-      els.runtimeInfo.textContent = "2.1.1-draft · local API runtime unavailable";
+      els.runtimeInfo.textContent = "2.1-draft · local API runtime unavailable";
     }
   }
 
@@ -1760,7 +1734,7 @@
 
       if (!state.initialSelectionApplied) {
         state.initialSelectionApplied = true;
-        const saved = safeStorage.get("jsonExplorerSelectedPath");
+        const saved = localStorage.getItem("jsonExplorerSelectedPath");
         if (saved && state.files.some(file => file.path === saved)) loadFile(saved);
       }
     } catch (error) {
@@ -1814,7 +1788,7 @@
       const relativeFolder = folderPath ? `${folderPath}/${folderName}` : folderName;
       const details = document.createElement("details");
       details.className = "folder-group";
-      details.open = forceOpen || depth === 0 || safeStorage.get(`jsonFolderOpen:${relativeFolder}`) === "1";
+      details.open = forceOpen || depth === 0 || localStorage.getItem(`jsonFolderOpen:${relativeFolder}`) === "1";
 
       const summary = document.createElement("summary");
       const label = document.createElement("span");
@@ -1828,7 +1802,7 @@
       const children = document.createElement("div");
       children.className = "folder-children";
       details.appendChild(children);
-      details.addEventListener("toggle", () => safeStorage.set(`jsonFolderOpen:${relativeFolder}`, details.open ? "1" : "0"));
+      details.addEventListener("toggle", () => localStorage.setItem(`jsonFolderOpen:${relativeFolder}`, details.open ? "1" : "0"));
       container.appendChild(details);
       renderFolderContents(child, children, relativeFolder, depth + 1, forceOpen);
     }
@@ -1908,7 +1882,7 @@
       state.selectedCatalogIndex = null;
       els.searchInput.value = "";
       els.currentFileName.textContent = path;
-      safeStorage.set("jsonExplorerSelectedPath", path);
+      localStorage.setItem("jsonExplorerSelectedPath", path);
 
       state.catalogModel = buildCatalogModel(state.currentData);
       if (state.catalogModel) {
@@ -3517,7 +3491,7 @@
     const model=state.previewModel, field=model?.pstSpContent, content=pstObject(field?.value), basePath=field?.path||pathJoin(model?.basePath||"","pstSpContent");
     els.previewFileName.textContent=state.currentFile?.path||"PST-SP sidecar";els.previewPanelHeading.textContent="PST-SP study guide";els.previewContent.innerHTML="";
     const article=document.createElement("article");article.className="preview-document";const hero=document.createElement("header");hero.className="preview-hero";const eyebrow=document.createElement("p");eyebrow.className="preview-eyebrow";eyebrow.textContent="PST-SP structured preview";const title=document.createElement("h2");title.className="preview-title";title.textContent=compactText(model.title?.value,300)||"PST-SP Study Guide";hero.append(eyebrow,title);if(model.subtitle){const subtitle=document.createElement("p");subtitle.className="preview-subtitle";subtitle.textContent=compactText(model.subtitle.value,500);hero.appendChild(subtitle);}const meta=document.createElement("div");meta.className="preview-meta";appendMetaChip(meta,"Type",model.documentType);appendMetaChip(meta,"Date",model.date);appendMetaChip(meta,"Schema",model.schemaVersion);if(meta.children.length)hero.appendChild(meta);article.appendChild(hero);if(model.summary){const summary=document.createElement("p");summary.className="preview-summary";summary.textContent=compactText(model.summary.value,1800);article.appendChild(summary);}
-    const shell=document.createElement("div");shell.className="pst-preview-sections";const tabs=[["overview","Overview"],["toolkits","Toolkits"],["exercises","Exercises"],["measures","Measures"],["visuals","Visuals"],["coverage","Coverage"]];const tabBar=document.createElement("div");tabBar.className="pst-tabs";tabBar.setAttribute("role","tablist");const panels=new Map([["overview",renderPstOverview(content,model)],["toolkits",renderPstToolkits(content,basePath)],["exercises",renderPstExercises(content,basePath)],["measures",renderPstMeasures(content,basePath)],["visuals",renderPstVisuals(content,basePath)],["coverage",renderPstCoverage(content,basePath)]]);const activate=id=>{tabBar.querySelectorAll(".pst-tab").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tabId===id)));for(const [key,panel] of panels)panel.hidden=key!==id;safeStorage.set("jsonExplorerPstSpTab",id);};for(const [id,label] of tabs){const b=document.createElement("button");b.type="button";b.className="pst-tab";b.dataset.tabId=id;b.textContent=label;b.addEventListener("click",()=>activate(id));tabBar.appendChild(b);}shell.appendChild(tabBar);for(const panel of panels.values())shell.appendChild(panel);article.appendChild(shell);const footer=document.createElement("footer");footer.className="preview-footer";footer.textContent="Use JSON buttons to reveal authoritative records in Tree view.";article.appendChild(footer);els.previewContent.appendChild(article);const saved=safeStorage.get("jsonExplorerPstSpTab");activate(panels.has(saved)?saved:"overview");
+    const shell=document.createElement("div");shell.className="pst-preview-sections";const tabs=[["overview","Overview"],["toolkits","Toolkits"],["exercises","Exercises"],["measures","Measures"],["visuals","Visuals"],["coverage","Coverage"]];const tabBar=document.createElement("div");tabBar.className="pst-tabs";tabBar.setAttribute("role","tablist");const panels=new Map([["overview",renderPstOverview(content,model)],["toolkits",renderPstToolkits(content,basePath)],["exercises",renderPstExercises(content,basePath)],["measures",renderPstMeasures(content,basePath)],["visuals",renderPstVisuals(content,basePath)],["coverage",renderPstCoverage(content,basePath)]]);const activate=id=>{tabBar.querySelectorAll(".pst-tab").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tabId===id)));for(const [key,panel] of panels)panel.hidden=key!==id;localStorage.setItem("jsonExplorerPstSpTab",id);};for(const [id,label] of tabs){const b=document.createElement("button");b.type="button";b.className="pst-tab";b.dataset.tabId=id;b.textContent=label;b.addEventListener("click",()=>activate(id));tabBar.appendChild(b);}shell.appendChild(tabBar);for(const panel of panels.values())shell.appendChild(panel);article.appendChild(shell);const footer=document.createElement("footer");footer.className="preview-footer";footer.textContent="Use JSON buttons to reveal authoritative records in Tree view.";article.appendChild(footer);els.previewContent.appendChild(article);const saved=localStorage.getItem("jsonExplorerPstSpTab");activate(panels.has(saved)?saved:"overview");
   }
 
   function isWorkflowPreview(model) {
@@ -4356,7 +4330,7 @@
   }
 
   function initializePreviewResizer() {
-    const savedWidth = Number(safeStorage.get("jsonExplorerPreviewWidth"));
+    const savedWidth = Number(localStorage.getItem("jsonExplorerPreviewWidth"));
     if (Number.isFinite(savedWidth) && savedWidth >= 360 && savedWidth <= 820) els.app.style.setProperty("--preview-width", `${savedWidth}px`);
     els.previewResizer.addEventListener("pointerdown", event => {
       if (!state.previewOpen) return;
@@ -4370,7 +4344,7 @@
       const stop = () => {
         document.body.classList.remove("resizing-preview");
         const width = parseInt(getComputedStyle(els.app).getPropertyValue("--preview-width"), 10);
-        if (Number.isFinite(width)) safeStorage.set("jsonExplorerPreviewWidth", String(width));
+        if (Number.isFinite(width)) localStorage.setItem("jsonExplorerPreviewWidth", String(width));
         window.removeEventListener("pointermove", move);
       };
       window.addEventListener("pointermove", move);
@@ -4378,7 +4352,7 @@
     });
     els.previewResizer.addEventListener("dblclick", () => {
       els.app.style.setProperty("--preview-width", "470px");
-      safeStorage.set("jsonExplorerPreviewWidth", "470");
+      localStorage.setItem("jsonExplorerPreviewWidth", "470");
     });
     els.previewResizer.addEventListener("keydown", event => {
       if (!state.previewOpen || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
@@ -4386,7 +4360,7 @@
       const current = parseInt(getComputedStyle(els.app).getPropertyValue("--preview-width"), 10) || 470;
       const width = Math.max(360, Math.min(820, current + (event.key === "ArrowLeft" ? 24 : -24)));
       els.app.style.setProperty("--preview-width", `${width}px`);
-      safeStorage.set("jsonExplorerPreviewWidth", String(width));
+      localStorage.setItem("jsonExplorerPreviewWidth", String(width));
     });
   }
 
@@ -4400,7 +4374,7 @@
   els.sortSelect.addEventListener("change", renderFileTree);
   els.includeArchived.addEventListener("change", () => {
     state.includeArchived = els.includeArchived.checked;
-    safeStorage.set("jsonExplorerIncludeArchived", state.includeArchived ? "1" : "0");
+    localStorage.setItem("jsonExplorerIncludeArchived", state.includeArchived ? "1" : "0");
     loadFileList();
   });
   els.treeButton.addEventListener("click", () => setView("tree"));
@@ -4415,7 +4389,7 @@
   els.menuButton.addEventListener("click", () => els.sidebar.classList.toggle("open"));
   document.addEventListener("keydown", event => { if (event.key === "Escape" && state.previewOpen) setPreviewOpen(false); });
 
-  state.includeArchived = safeStorage.get("jsonExplorerIncludeArchived") === "1";
+  state.includeArchived = localStorage.getItem("jsonExplorerIncludeArchived") === "1";
   els.includeArchived.checked = state.includeArchived;
   initializePreviewResizer();
   loadAbout();
